@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tftestacc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			ApplicationName: pulumi.String(name),
-// 			Description:     pulumi.String(name),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tftestacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ApplicationName: pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // OOS Application can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/application:Application example <id>
+//
+//	$ pulumi import alicloud:oos/application:Application example <id>
+//
 // ```
 type Application struct {
 	pulumi.CustomResourceState
@@ -184,7 +189,7 @@ func (i *Application) ToApplicationOutputWithContext(ctx context.Context) Applic
 // ApplicationArrayInput is an input type that accepts ApplicationArray and ApplicationArrayOutput values.
 // You can construct a concrete instance of `ApplicationArrayInput` via:
 //
-//          ApplicationArray{ ApplicationArgs{...} }
+//	ApplicationArray{ ApplicationArgs{...} }
 type ApplicationArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +214,7 @@ func (i ApplicationArray) ToApplicationArrayOutputWithContext(ctx context.Contex
 // ApplicationMapInput is an input type that accepts ApplicationMap and ApplicationMapOutput values.
 // You can construct a concrete instance of `ApplicationMapInput` via:
 //
-//          ApplicationMap{ "key": ApplicationArgs{...} }
+//	ApplicationMap{ "key": ApplicationArgs{...} }
 type ApplicationMapInput interface {
 	pulumi.Input
 

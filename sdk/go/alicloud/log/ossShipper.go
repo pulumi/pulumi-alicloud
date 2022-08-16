@@ -18,59 +18,62 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-// 			Description: pulumi.String("created by terraform"),
-// 			Tags: pulumi.AnyMap{
-// 				"test": pulumi.Any("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-// 			Project:            exampleProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.NewOssShipper(ctx, "exampleOssShipper", &log.OssShipperArgs{
-// 			ProjectName:    exampleProject.Name,
-// 			LogstoreName:   exampleStore.Name,
-// 			ShipperName:    pulumi.String("oss_shipper_name"),
-// 			OssBucket:      pulumi.String("test_bucket"),
-// 			OssPrefix:      pulumi.String("root"),
-// 			BufferInterval: pulumi.Int(300),
-// 			BufferSize:     pulumi.Int(250),
-// 			CompressType:   pulumi.String("none"),
-// 			PathFormat:     pulumi.String(fmt.Sprintf("%vY/%vm/%vd/%vH/%vM", "%", "%", "%", "%", "%")),
-// 			Format:         pulumi.String("json"),
-// 			JsonEnableTag:  pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//				Tags: pulumi.AnyMap{
+//					"test": pulumi.Any("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewOssShipper(ctx, "exampleOssShipper", &log.OssShipperArgs{
+//				ProjectName:    exampleProject.Name,
+//				LogstoreName:   exampleStore.Name,
+//				ShipperName:    pulumi.String("oss_shipper_name"),
+//				OssBucket:      pulumi.String("test_bucket"),
+//				OssPrefix:      pulumi.String("root"),
+//				BufferInterval: pulumi.Int(300),
+//				BufferSize:     pulumi.Int(250),
+//				CompressType:   pulumi.String("none"),
+//				PathFormat:     pulumi.String(fmt.Sprintf("%vY/%vm/%vd/%vH/%vM", "%", "%", "%", "%", "%")),
+//				Format:         pulumi.String("json"),
+//				JsonEnableTag:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // Log oss shipper can be imported using the id or name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
+//
+//	$ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
+//
 // ```
 type OssShipper struct {
 	pulumi.CustomResourceState
@@ -400,7 +405,7 @@ func (i *OssShipper) ToOssShipperOutputWithContext(ctx context.Context) OssShipp
 // OssShipperArrayInput is an input type that accepts OssShipperArray and OssShipperArrayOutput values.
 // You can construct a concrete instance of `OssShipperArrayInput` via:
 //
-//          OssShipperArray{ OssShipperArgs{...} }
+//	OssShipperArray{ OssShipperArgs{...} }
 type OssShipperArrayInput interface {
 	pulumi.Input
 
@@ -425,7 +430,7 @@ func (i OssShipperArray) ToOssShipperArrayOutputWithContext(ctx context.Context)
 // OssShipperMapInput is an input type that accepts OssShipperMap and OssShipperMapOutput values.
 // You can construct a concrete instance of `OssShipperMapInput` via:
 //
-//          OssShipperMap{ "key": OssShipperArgs{...} }
+//	OssShipperMap{ "key": OssShipperArgs{...} }
 type OssShipperMapInput interface {
 	pulumi.Input
 
@@ -502,19 +507,19 @@ func (o OssShipperOutput) CsvConfigQuote() pulumi.StringPtrOutput {
 
 // Storage format, only supports three types: `json`, `parquet`, `csv`.
 // **According to the different format, please select the following parameters**
-// - format = `json`
-//   `jsonEnableTag` - (Optional) Whether to deliver the label.
-// - format = `csv`
-//   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-//   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-//   `csvConfigNullidentifier` - (Optional) Invalid field content.
-//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-// - format = `parquet`
-//   `parquetConfig` - (Optional) Configure to use parquet storage format.
-//   `name` - (Required) The name of the key.
-//   `type` - (Required) Type of configuration name.
+//   - format = `json`
+//     `jsonEnableTag` - (Optional) Whether to deliver the label.
+//   - format = `csv`
+//     `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+//     `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+//     `csvConfigNullidentifier` - (Optional) Invalid field content.
+//     `csvConfigQuote` - (Optional) Escape character under csv configuration.
+//     `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+//     `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+//   - format = `parquet`
+//     `parquetConfig` - (Optional) Configure to use parquet storage format.
+//     `name` - (Required) The name of the key.
+//     `type` - (Required) Type of configuration name.
 func (o OssShipperOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }

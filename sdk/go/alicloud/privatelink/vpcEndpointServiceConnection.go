@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
-// 			Bandwidth:  pulumi.Int(1024),
-// 			EndpointId: pulumi.String("example_value"),
-// 			ServiceId:  pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
+//				Bandwidth:  pulumi.Int(1024),
+//				EndpointId: pulumi.String("example_value"),
+//				ServiceId:  pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Private Link Vpc Endpoint Connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example <service_id>:<endpoint_id>
+//
+//	$ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example <service_id>:<endpoint_id>
+//
 // ```
 type VpcEndpointServiceConnection struct {
 	pulumi.CustomResourceState
@@ -179,7 +184,7 @@ func (i *VpcEndpointServiceConnection) ToVpcEndpointServiceConnectionOutputWithC
 // VpcEndpointServiceConnectionArrayInput is an input type that accepts VpcEndpointServiceConnectionArray and VpcEndpointServiceConnectionArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceConnectionArrayInput` via:
 //
-//          VpcEndpointServiceConnectionArray{ VpcEndpointServiceConnectionArgs{...} }
+//	VpcEndpointServiceConnectionArray{ VpcEndpointServiceConnectionArgs{...} }
 type VpcEndpointServiceConnectionArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +209,7 @@ func (i VpcEndpointServiceConnectionArray) ToVpcEndpointServiceConnectionArrayOu
 // VpcEndpointServiceConnectionMapInput is an input type that accepts VpcEndpointServiceConnectionMap and VpcEndpointServiceConnectionMapOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceConnectionMapInput` via:
 //
-//          VpcEndpointServiceConnectionMap{ "key": VpcEndpointServiceConnectionArgs{...} }
+//	VpcEndpointServiceConnectionMap{ "key": VpcEndpointServiceConnectionArgs{...} }
 type VpcEndpointServiceConnectionMapInput interface {
 	pulumi.Input
 

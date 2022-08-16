@@ -17,73 +17,76 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newalicloud(ctx, "account1", &providers.alicloudArgs{
-// 			AccessKey: "access123",
-// 			SecretKey: "secret123",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "account2", &providers.alicloudArgs{
-// 			AccessKey: "access456",
-// 			SecretKey: "secret456",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccCenInstanceGrantBasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Account2))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		}, pulumi.Provider(alicloud.Account1))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooInstanceGrant, err := cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
-// 			CenId:           cen.ID(),
-// 			ChildInstanceId: vpc.ID(),
-// 			CenOwnerId:      pulumi.String("uid2"),
-// 		}, pulumi.Provider(alicloud.Account1))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            cen.ID(),
-// 			ChildInstanceId:       vpc.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-qingdao"),
-// 			ChildInstanceOwnerId:  pulumi.Int("uid1"),
-// 		}, pulumi.Provider(alicloud.Account2), pulumi.DependsOn([]pulumi.Resource{
-// 			fooInstanceGrant,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := providers.Newalicloud(ctx, "account1", &providers.alicloudArgs{
+//				AccessKey: "access123",
+//				SecretKey: "secret123",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "account2", &providers.alicloudArgs{
+//				AccessKey: "access456",
+//				SecretKey: "secret456",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccCenInstanceGrantBasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Account2))
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Account1))
+//			if err != nil {
+//				return err
+//			}
+//			fooInstanceGrant, err := cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
+//				CenId:           cen.ID(),
+//				ChildInstanceId: vpc.ID(),
+//				CenOwnerId:      pulumi.String("uid2"),
+//			}, pulumi.Provider(alicloud.Account1))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            cen.ID(),
+//				ChildInstanceId:       vpc.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-qingdao"),
+//				ChildInstanceOwnerId:  pulumi.Int("uid1"),
+//			}, pulumi.Provider(alicloud.Account2), pulumi.DependsOn([]pulumi.Resource{
+//				fooInstanceGrant,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -91,7 +94,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
+//
+//	$ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
+//
 // ```
 type InstanceGrant struct {
 	pulumi.CustomResourceState
@@ -208,7 +213,7 @@ func (i *InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) In
 // InstanceGrantArrayInput is an input type that accepts InstanceGrantArray and InstanceGrantArrayOutput values.
 // You can construct a concrete instance of `InstanceGrantArrayInput` via:
 //
-//          InstanceGrantArray{ InstanceGrantArgs{...} }
+//	InstanceGrantArray{ InstanceGrantArgs{...} }
 type InstanceGrantArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +238,7 @@ func (i InstanceGrantArray) ToInstanceGrantArrayOutputWithContext(ctx context.Co
 // InstanceGrantMapInput is an input type that accepts InstanceGrantMap and InstanceGrantMapOutput values.
 // You can construct a concrete instance of `InstanceGrantMapInput` via:
 //
-//          InstanceGrantMap{ "key": InstanceGrantArgs{...} }
+//	InstanceGrantMap{ "key": InstanceGrantArgs{...} }
 type InstanceGrantMapInput interface {
 	pulumi.Input
 

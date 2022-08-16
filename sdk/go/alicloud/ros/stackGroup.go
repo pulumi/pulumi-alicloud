@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ros.NewStackGroup(ctx, "example", &ros.StackGroupArgs{
-// 			StackGroupName: pulumi.String("example_value"),
-// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewStackGroup(ctx, "example", &ros.StackGroupArgs{
+//				StackGroupName: pulumi.String("example_value"),
+//				TemplateBody:   pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ROS Stack Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+//
+//	$ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+//
 // ```
 type StackGroup struct {
 	pulumi.CustomResourceState
@@ -263,7 +268,7 @@ func (i *StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGro
 // StackGroupArrayInput is an input type that accepts StackGroupArray and StackGroupArrayOutput values.
 // You can construct a concrete instance of `StackGroupArrayInput` via:
 //
-//          StackGroupArray{ StackGroupArgs{...} }
+//	StackGroupArray{ StackGroupArgs{...} }
 type StackGroupArrayInput interface {
 	pulumi.Input
 
@@ -288,7 +293,7 @@ func (i StackGroupArray) ToStackGroupArrayOutputWithContext(ctx context.Context)
 // StackGroupMapInput is an input type that accepts StackGroupMap and StackGroupMapOutput values.
 // You can construct a concrete instance of `StackGroupMapInput` via:
 //
-//          StackGroupMap{ "key": StackGroupArgs{...} }
+//	StackGroupMap{ "key": StackGroupArgs{...} }
 type StackGroupMapInput interface {
 	pulumi.Input
 

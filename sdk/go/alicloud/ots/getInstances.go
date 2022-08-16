@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instancesDs, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-// 			NameRegex:  pulumi.StringRef("sample-instance"),
-// 			OutputFile: pulumi.StringRef("instances.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instancesDs, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
+//				NameRegex:  pulumi.StringRef("sample-instance"),
+//				OutputFile: pulumi.StringRef("instances.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstInstanceId", instancesDs.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

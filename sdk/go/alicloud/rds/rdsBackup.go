@@ -19,38 +19,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
-// 			Engine:                pulumi.String("MySQL"),
-// 			EngineVersion:         pulumi.String("5.6"),
-// 			InstanceType:          pulumi.String("rds.mysql.t1.small"),
-// 			InstanceStorage:       pulumi.Int(30),
-// 			InstanceChargeType:    pulumi.String("Postpaid"),
-// 			DbInstanceStorageType: pulumi.String("local_ssd"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewRdsBackup(ctx, "exampleRdsBackup", &rds.RdsBackupArgs{
-// 			DbInstanceId: exampleInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("5.6"),
+//				InstanceType:          pulumi.String("rds.mysql.t1.small"),
+//				InstanceStorage:       pulumi.Int(30),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewRdsBackup(ctx, "exampleRdsBackup", &rds.RdsBackupArgs{
+//				DbInstanceId: exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // RDS Backup can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
+//
+//	$ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
+//
 // ```
 type RdsBackup struct {
 	pulumi.CustomResourceState
@@ -231,7 +236,7 @@ func (i *RdsBackup) ToRdsBackupOutputWithContext(ctx context.Context) RdsBackupO
 // RdsBackupArrayInput is an input type that accepts RdsBackupArray and RdsBackupArrayOutput values.
 // You can construct a concrete instance of `RdsBackupArrayInput` via:
 //
-//          RdsBackupArray{ RdsBackupArgs{...} }
+//	RdsBackupArray{ RdsBackupArgs{...} }
 type RdsBackupArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +261,7 @@ func (i RdsBackupArray) ToRdsBackupArrayOutputWithContext(ctx context.Context) R
 // RdsBackupMapInput is an input type that accepts RdsBackupMap and RdsBackupMapOutput values.
 // You can construct a concrete instance of `RdsBackupMapInput` via:
 //
-//          RdsBackupMap{ "key": RdsBackupArgs{...} }
+//	RdsBackupMap{ "key": RdsBackupArgs{...} }
 type RdsBackupMapInput interface {
 	pulumi.Input
 

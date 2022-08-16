@@ -16,80 +16,83 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
-// 			DedicatedHostGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cddcDedicatedHostId1", ids.Hosts[0].Id)
-// 		status, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
-// 			DedicatedHostGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 			Status: pulumi.StringRef("1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cddcDedicatedHostId2", status.Hosts[0].Id)
-// 		zoneId, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
-// 			DedicatedHostGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 			ZoneId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cddcDedicatedHostId3", zoneId.Hosts[0].Id)
-// 		allocationStatus, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
-// 			DedicatedHostGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 			AllocationStatus: pulumi.StringRef("Allocatable"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cddcDedicatedHostId4", allocationStatus.Hosts[0].Id)
-// 		hostType, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
-// 			DedicatedHostGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 			HostType: pulumi.StringRef("dhg_cloud_ssd"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cddcDedicatedHostId5", hostType.Hosts[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
+//				DedicatedHostGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostId1", ids.Hosts[0].Id)
+//			status, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
+//				DedicatedHostGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				Status: pulumi.StringRef("1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostId2", status.Hosts[0].Id)
+//			zoneId, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
+//				DedicatedHostGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				ZoneId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostId3", zoneId.Hosts[0].Id)
+//			allocationStatus, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
+//				DedicatedHostGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				AllocationStatus: pulumi.StringRef("Allocatable"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostId4", allocationStatus.Hosts[0].Id)
+//			hostType, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
+//				DedicatedHostGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				HostType: pulumi.StringRef("dhg_cloud_ssd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostId5", hostType.Hosts[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDedicatedHosts(ctx *pulumi.Context, args *GetDedicatedHostsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostsResult, error) {
 	var rv GetDedicatedHostsResult

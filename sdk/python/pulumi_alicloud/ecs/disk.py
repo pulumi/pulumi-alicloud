@@ -1202,7 +1202,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[Optional[int]]:
+    def size(self) -> pulumi.Output[int]:
         """
         The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         """

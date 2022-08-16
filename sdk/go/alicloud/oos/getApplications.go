@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := oos.GetApplications(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("oosApplicationId1", ids.Applications[0].Id)
-// 		nameRegex, err := oos.GetApplications(ctx, &oos.GetApplicationsArgs{
-// 			NameRegex: pulumi.StringRef("^my-Application"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("oosApplicationId2", nameRegex.Applications[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := oos.GetApplications(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oosApplicationId1", ids.Applications[0].Id)
+//			nameRegex, err := oos.GetApplications(ctx, &oos.GetApplicationsArgs{
+//				NameRegex: pulumi.StringRef("^my-Application"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oosApplicationId2", nameRegex.Applications[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplications(ctx *pulumi.Context, args *GetApplicationsArgs, opts ...pulumi.InvokeOption) (*GetApplicationsResult, error) {
 	var rv GetApplicationsResult

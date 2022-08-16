@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccFileSystem"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := dfs.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
-// 			StorageType:    pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
-// 			ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
-// 			ProtocolType:   pulumi.String("HDFS"),
-// 			Description:    pulumi.String(name),
-// 			FileSystemName: pulumi.String(name),
-// 			ThroughputMode: pulumi.String("Standard"),
-// 			SpaceCapacity:  pulumi.Int(1024),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccFileSystem"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := dfs.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
+//				StorageType:    pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ProtocolType:   pulumi.String("HDFS"),
+//				Description:    pulumi.String(name),
+//				FileSystemName: pulumi.String(name),
+//				ThroughputMode: pulumi.String("Standard"),
+//				SpaceCapacity:  pulumi.Int(1024),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // DFS File System can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
+//
+//	$ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
+//
 // ```
 type FileSystem struct {
 	pulumi.CustomResourceState
@@ -236,7 +241,7 @@ func (i *FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSyst
 // FileSystemArrayInput is an input type that accepts FileSystemArray and FileSystemArrayOutput values.
 // You can construct a concrete instance of `FileSystemArrayInput` via:
 //
-//          FileSystemArray{ FileSystemArgs{...} }
+//	FileSystemArray{ FileSystemArgs{...} }
 type FileSystemArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +266,7 @@ func (i FileSystemArray) ToFileSystemArrayOutputWithContext(ctx context.Context)
 // FileSystemMapInput is an input type that accepts FileSystemMap and FileSystemMapOutput values.
 // You can construct a concrete instance of `FileSystemMapInput` via:
 //
-//          FileSystemMap{ "key": FileSystemArgs{...} }
+//	FileSystemMap{ "key": FileSystemArgs{...} }
 type FileSystemMapInput interface {
 	pulumi.Input
 

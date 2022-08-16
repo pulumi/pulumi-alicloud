@@ -20,7 +20,9 @@ import (
 // CEN transit router VBR attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+//
+//	$ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+//
 // ```
 type TransitRouterVbrAttachment struct {
 	pulumi.CustomResourceState
@@ -226,7 +228,7 @@ func (i *TransitRouterVbrAttachment) ToTransitRouterVbrAttachmentOutputWithConte
 // TransitRouterVbrAttachmentArrayInput is an input type that accepts TransitRouterVbrAttachmentArray and TransitRouterVbrAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterVbrAttachmentArrayInput` via:
 //
-//          TransitRouterVbrAttachmentArray{ TransitRouterVbrAttachmentArgs{...} }
+//	TransitRouterVbrAttachmentArray{ TransitRouterVbrAttachmentArgs{...} }
 type TransitRouterVbrAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +253,7 @@ func (i TransitRouterVbrAttachmentArray) ToTransitRouterVbrAttachmentArrayOutput
 // TransitRouterVbrAttachmentMapInput is an input type that accepts TransitRouterVbrAttachmentMap and TransitRouterVbrAttachmentMapOutput values.
 // You can construct a concrete instance of `TransitRouterVbrAttachmentMapInput` via:
 //
-//          TransitRouterVbrAttachmentMap{ "key": TransitRouterVbrAttachmentArgs{...} }
+//	TransitRouterVbrAttachmentMap{ "key": TransitRouterVbrAttachmentArgs{...} }
 type TransitRouterVbrAttachmentMapInput interface {
 	pulumi.Input
 

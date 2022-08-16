@@ -15,7 +15,9 @@ import (
 // VPC can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+//
+//	$ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+//
 // ```
 type Network struct {
 	pulumi.CustomResourceState
@@ -239,7 +241,7 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 // NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkArrayInput` via:
 //
-//          NetworkArray{ NetworkArgs{...} }
+//	NetworkArray{ NetworkArgs{...} }
 type NetworkArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +266,7 @@ func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) Netwo
 // NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
 // You can construct a concrete instance of `NetworkMapInput` via:
 //
-//          NetworkMap{ "key": NetworkArgs{...} }
+//	NetworkMap{ "key": NetworkArgs{...} }
 type NetworkMapInput interface {
 	pulumi.Input
 

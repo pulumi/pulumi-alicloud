@@ -22,7 +22,9 @@ import (
 // DFS Mount Point can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
+//
+//	$ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
+//
 // ```
 type MountPoint struct {
 	pulumi.CustomResourceState
@@ -191,7 +193,7 @@ func (i *MountPoint) ToMountPointOutputWithContext(ctx context.Context) MountPoi
 // MountPointArrayInput is an input type that accepts MountPointArray and MountPointArrayOutput values.
 // You can construct a concrete instance of `MountPointArrayInput` via:
 //
-//          MountPointArray{ MountPointArgs{...} }
+//	MountPointArray{ MountPointArgs{...} }
 type MountPointArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +218,7 @@ func (i MountPointArray) ToMountPointArrayOutputWithContext(ctx context.Context)
 // MountPointMapInput is an input type that accepts MountPointMap and MountPointMapOutput values.
 // You can construct a concrete instance of `MountPointMapInput` via:
 //
-//          MountPointMap{ "key": MountPointArgs{...} }
+//	MountPointMap{ "key": MountPointArgs{...} }
 type MountPointMapInput interface {
 	pulumi.Input
 

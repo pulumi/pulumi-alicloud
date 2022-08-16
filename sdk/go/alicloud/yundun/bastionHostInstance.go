@@ -149,7 +149,7 @@ func (i *BastionHostInstance) ToBastionHostInstanceOutputWithContext(ctx context
 // BastionHostInstanceArrayInput is an input type that accepts BastionHostInstanceArray and BastionHostInstanceArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceArrayInput` via:
 //
-//          BastionHostInstanceArray{ BastionHostInstanceArgs{...} }
+//	BastionHostInstanceArray{ BastionHostInstanceArgs{...} }
 type BastionHostInstanceArrayInput interface {
 	pulumi.Input
 
@@ -174,7 +174,7 @@ func (i BastionHostInstanceArray) ToBastionHostInstanceArrayOutputWithContext(ct
 // BastionHostInstanceMapInput is an input type that accepts BastionHostInstanceMap and BastionHostInstanceMapOutput values.
 // You can construct a concrete instance of `BastionHostInstanceMapInput` via:
 //
-//          BastionHostInstanceMap{ "key": BastionHostInstanceArgs{...} }
+//	BastionHostInstanceMap{ "key": BastionHostInstanceArgs{...} }
 type BastionHostInstanceMapInput interface {
 	pulumi.Input
 

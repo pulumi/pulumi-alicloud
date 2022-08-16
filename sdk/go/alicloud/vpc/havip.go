@@ -13,28 +13,31 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewHAVip(ctx, "foo", &vpc.HAVipArgs{
-// 			Description: pulumi.String("test_havip"),
-// 			VswitchId:   pulumi.String("vsw-fakeid"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewHAVip(ctx, "foo", &vpc.HAVipArgs{
+//				Description: pulumi.String("test_havip"),
+//				VswitchId:   pulumi.String("vsw-fakeid"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // The havip can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+//
+//	$ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+//
 // ```
 type HAVip struct {
 	pulumi.CustomResourceState
@@ -169,7 +174,7 @@ func (i *HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 // HAVipArrayInput is an input type that accepts HAVipArray and HAVipArrayOutput values.
 // You can construct a concrete instance of `HAVipArrayInput` via:
 //
-//          HAVipArray{ HAVipArgs{...} }
+//	HAVipArray{ HAVipArgs{...} }
 type HAVipArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +199,7 @@ func (i HAVipArray) ToHAVipArrayOutputWithContext(ctx context.Context) HAVipArra
 // HAVipMapInput is an input type that accepts HAVipMap and HAVipMapOutput values.
 // You can construct a concrete instance of `HAVipMapInput` via:
 //
-//          HAVipMap{ "key": HAVipArgs{...} }
+//	HAVipMap{ "key": HAVipArgs{...} }
 type HAVipMapInput interface {
 	pulumi.Input
 

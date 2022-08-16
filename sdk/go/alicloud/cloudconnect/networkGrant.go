@@ -21,56 +21,59 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newalicloud(ctx, "ccnAccount", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "cenAccount", &providers.alicloudArgs{
-// 			Region:    "cn-hangzhou",
-// 			AccessKey: "xxxxxx",
-// 			SecretKey: "xxxxxx",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Cen_account))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
-// 			IsDefault: pulumi.Bool(true),
-// 		}, pulumi.Provider(alicloud.Ccn_account))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
-// 			CcnId:  ccn.ID(),
-// 			CenId:  cen.ID(),
-// 			CenUid: pulumi.String("xxxxxx"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			ccn,
-// 			cen,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := providers.Newalicloud(ctx, "ccnAccount", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "cenAccount", &providers.alicloudArgs{
+//				Region:    "cn-hangzhou",
+//				AccessKey: "xxxxxx",
+//				SecretKey: "xxxxxx",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Cen_account))
+//			if err != nil {
+//				return err
+//			}
+//			ccn, err := cloudconnect.NewNetwork(ctx, "ccn", &cloudconnect.NetworkArgs{
+//				IsDefault: pulumi.Bool(true),
+//			}, pulumi.Provider(alicloud.Ccn_account))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
+//				CcnId:  ccn.ID(),
+//				CenId:  cen.ID(),
+//				CenUid: pulumi.String("xxxxxx"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				ccn,
+//				cen,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // The Cloud Connect Network Grant can be imported using the instance_id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
+//
+//	$ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
+//
 // ```
 type NetworkGrant struct {
 	pulumi.CustomResourceState
@@ -195,7 +200,7 @@ func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) Netw
 // NetworkGrantArrayInput is an input type that accepts NetworkGrantArray and NetworkGrantArrayOutput values.
 // You can construct a concrete instance of `NetworkGrantArrayInput` via:
 //
-//          NetworkGrantArray{ NetworkGrantArgs{...} }
+//	NetworkGrantArray{ NetworkGrantArgs{...} }
 type NetworkGrantArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i NetworkGrantArray) ToNetworkGrantArrayOutputWithContext(ctx context.Cont
 // NetworkGrantMapInput is an input type that accepts NetworkGrantMap and NetworkGrantMapOutput values.
 // You can construct a concrete instance of `NetworkGrantMapInput` via:
 //
-//          NetworkGrantMap{ "key": NetworkGrantArgs{...} }
+//	NetworkGrantMap{ "key": NetworkGrantArgs{...} }
 type NetworkGrantMapInput interface {
 	pulumi.Input
 

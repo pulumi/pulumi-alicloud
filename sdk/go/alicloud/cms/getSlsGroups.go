@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cms.GetSlsGroups(ctx, &cms.GetSlsGroupsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cmsSlsGroupId1", ids.Groups[0].Id)
-// 		nameRegex, err := cms.GetSlsGroups(ctx, &cms.GetSlsGroupsArgs{
-// 			NameRegex: pulumi.StringRef("^my-SlsGroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cmsSlsGroupId2", nameRegex.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cms.GetSlsGroups(ctx, &cms.GetSlsGroupsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsSlsGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := cms.GetSlsGroups(ctx, &cms.GetSlsGroupsArgs{
+//				NameRegex: pulumi.StringRef("^my-SlsGroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsSlsGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSlsGroups(ctx *pulumi.Context, args *GetSlsGroupsArgs, opts ...pulumi.InvokeOption) (*GetSlsGroupsResult, error) {
 	var rv GetSlsGroupsResult

@@ -19,47 +19,50 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
-// 			AccessPointId:          pulumi.String("ap-cn-hangzhou-yh-B"),
-// 			Bandwidth:              pulumi.String("100"),
-// 			Description:            pulumi.String("my domestic connection"),
-// 			LineOperator:           pulumi.String("CT"),
-// 			PeerLocation:           pulumi.String("example_value"),
-// 			PhysicalConnectionName: pulumi.String("example_value"),
-// 			PortType:               pulumi.String("1000Base-LX"),
-// 			Type:                   pulumi.String("VPC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = expressconnect.NewPhysicalConnection(ctx, "international", &expressconnect.PhysicalConnectionArgs{
-// 			AccessPointId:          pulumi.String("ap-sg-singpore-A"),
-// 			Bandwidth:              pulumi.String("100"),
-// 			Description:            pulumi.String("my domestic connection"),
-// 			LineOperator:           pulumi.String("Other"),
-// 			PeerLocation:           pulumi.String("example_value"),
-// 			PhysicalConnectionName: pulumi.String("example_value"),
-// 			PortType:               pulumi.String("1000Base-LX"),
-// 			Type:                   pulumi.String("VPC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
+//				AccessPointId:          pulumi.String("ap-cn-hangzhou-yh-B"),
+//				Bandwidth:              pulumi.String("100"),
+//				Description:            pulumi.String("my domestic connection"),
+//				LineOperator:           pulumi.String("CT"),
+//				PeerLocation:           pulumi.String("example_value"),
+//				PhysicalConnectionName: pulumi.String("example_value"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Type:                   pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewPhysicalConnection(ctx, "international", &expressconnect.PhysicalConnectionArgs{
+//				AccessPointId:          pulumi.String("ap-sg-singpore-A"),
+//				Bandwidth:              pulumi.String("100"),
+//				Description:            pulumi.String("my domestic connection"),
+//				LineOperator:           pulumi.String("Other"),
+//				PeerLocation:           pulumi.String("example_value"),
+//				PhysicalConnectionName: pulumi.String("example_value"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Type:                   pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // Express Connect Physical Connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
+//
+//	$ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
+//
 // ```
 type PhysicalConnection struct {
 	pulumi.CustomResourceState
@@ -319,7 +324,7 @@ func (i *PhysicalConnection) ToPhysicalConnectionOutputWithContext(ctx context.C
 // PhysicalConnectionArrayInput is an input type that accepts PhysicalConnectionArray and PhysicalConnectionArrayOutput values.
 // You can construct a concrete instance of `PhysicalConnectionArrayInput` via:
 //
-//          PhysicalConnectionArray{ PhysicalConnectionArgs{...} }
+//	PhysicalConnectionArray{ PhysicalConnectionArgs{...} }
 type PhysicalConnectionArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +349,7 @@ func (i PhysicalConnectionArray) ToPhysicalConnectionArrayOutputWithContext(ctx 
 // PhysicalConnectionMapInput is an input type that accepts PhysicalConnectionMap and PhysicalConnectionMapOutput values.
 // You can construct a concrete instance of `PhysicalConnectionMapInput` via:
 //
-//          PhysicalConnectionMap{ "key": PhysicalConnectionArgs{...} }
+//	PhysicalConnectionMap{ "key": PhysicalConnectionArgs{...} }
 type PhysicalConnectionMapInput interface {
 	pulumi.Input
 

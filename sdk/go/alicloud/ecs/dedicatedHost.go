@@ -16,7 +16,9 @@ import (
 // Ecs dedicated host can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
+//
+//	$ pulumi import alicloud:ecs/dedicatedHost:DedicatedHost default dh-2zedmxxxx
+//
 // ```
 type DedicatedHost struct {
 	pulumi.CustomResourceState
@@ -303,7 +305,7 @@ func (i *DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) De
 // DedicatedHostArrayInput is an input type that accepts DedicatedHostArray and DedicatedHostArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostArrayInput` via:
 //
-//          DedicatedHostArray{ DedicatedHostArgs{...} }
+//	DedicatedHostArray{ DedicatedHostArgs{...} }
 type DedicatedHostArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +330,7 @@ func (i DedicatedHostArray) ToDedicatedHostArrayOutputWithContext(ctx context.Co
 // DedicatedHostMapInput is an input type that accepts DedicatedHostMap and DedicatedHostMapOutput values.
 // You can construct a concrete instance of `DedicatedHostMapInput` via:
 //
-//          DedicatedHostMap{ "key": DedicatedHostArgs{...} }
+//	DedicatedHostMap{ "key": DedicatedHostArgs{...} }
 type DedicatedHostMapInput interface {
 	pulumi.Input
 

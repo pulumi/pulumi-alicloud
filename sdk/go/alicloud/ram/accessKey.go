@@ -23,32 +23,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewAccessKey(ctx, "ak", &ram.AccessKeyArgs{
-// 			UserName:   user.Name,
-// 			SecretFile: pulumi.String("/xxx/xxx/xxx.txt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewAccessKey(ctx, "ak", &ram.AccessKeyArgs{
+//				UserName:   user.Name,
+//				SecretFile: pulumi.String("/xxx/xxx/xxx.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Using `pgpKey` to encrypt the secret.
@@ -56,33 +59,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-// 			DisplayName: pulumi.String("user_display_name"),
-// 			Mobile:      pulumi.String("86-18688888888"),
-// 			Email:       pulumi.String("hello.uuu@aaa.com"),
-// 			Comments:    pulumi.String("yoyoyo"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		encrypt, err := ram.NewAccessKey(ctx, "encrypt", &ram.AccessKeyArgs{
-// 			UserName: user.Name,
-// 			PgpKey:   pulumi.String("keybase:some_person_that_exists"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("secret", encrypt.EncryptedSecret)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			encrypt, err := ram.NewAccessKey(ctx, "encrypt", &ram.AccessKeyArgs{
+//				UserName: user.Name,
+//				PgpKey:   pulumi.String("keybase:some_person_that_exists"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("secret", encrypt.EncryptedSecret)
+//			return nil
+//		})
+//	}
+//
 // ```
 type AccessKey struct {
 	pulumi.CustomResourceState
@@ -212,7 +218,7 @@ func (i *AccessKey) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyO
 // AccessKeyArrayInput is an input type that accepts AccessKeyArray and AccessKeyArrayOutput values.
 // You can construct a concrete instance of `AccessKeyArrayInput` via:
 //
-//          AccessKeyArray{ AccessKeyArgs{...} }
+//	AccessKeyArray{ AccessKeyArgs{...} }
 type AccessKeyArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +243,7 @@ func (i AccessKeyArray) ToAccessKeyArrayOutputWithContext(ctx context.Context) A
 // AccessKeyMapInput is an input type that accepts AccessKeyMap and AccessKeyMapOutput values.
 // You can construct a concrete instance of `AccessKeyMapInput` via:
 //
-//          AccessKeyMap{ "key": AccessKeyArgs{...} }
+//	AccessKeyMap{ "key": AccessKeyArgs{...} }
 type AccessKeyMapInput interface {
 	pulumi.Input
 

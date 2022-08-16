@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
-// 			HasTrigger: pulumi.BoolRef(false),
-// 			NameRegex:  pulumi.StringRef("test"),
-// 			ShareType:  pulumi.StringRef("Private"),
-// 			Tags: map[string]interface{}{
-// 				"Created": "TF",
-// 				"For":     "template Test",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstTemplateName", example.Templates[0].TemplateName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
+//				HasTrigger: pulumi.BoolRef(false),
+//				NameRegex:  pulumi.StringRef("test"),
+//				ShareType:  pulumi.StringRef("Private"),
+//				Tags: map[string]interface{}{
+//					"Created": "TF",
+//					"For":     "template Test",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTemplateName", example.Templates[0].TemplateName)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTemplates(ctx *pulumi.Context, args *GetTemplatesArgs, opts ...pulumi.InvokeOption) (*GetTemplatesResult, error) {
 	var rv GetTemplatesResult

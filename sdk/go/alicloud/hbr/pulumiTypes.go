@@ -18,7 +18,7 @@ type OtsBackupPlanOtsDetail struct {
 // OtsBackupPlanOtsDetailInput is an input type that accepts OtsBackupPlanOtsDetailArgs and OtsBackupPlanOtsDetailOutput values.
 // You can construct a concrete instance of `OtsBackupPlanOtsDetailInput` via:
 //
-//          OtsBackupPlanOtsDetailArgs{...}
+//	OtsBackupPlanOtsDetailArgs{...}
 type OtsBackupPlanOtsDetailInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i OtsBackupPlanOtsDetailArgs) ToOtsBackupPlanOtsDetailOutputWithContext(ct
 // OtsBackupPlanOtsDetailArrayInput is an input type that accepts OtsBackupPlanOtsDetailArray and OtsBackupPlanOtsDetailArrayOutput values.
 // You can construct a concrete instance of `OtsBackupPlanOtsDetailArrayInput` via:
 //
-//          OtsBackupPlanOtsDetailArray{ OtsBackupPlanOtsDetailArgs{...} }
+//	OtsBackupPlanOtsDetailArray{ OtsBackupPlanOtsDetailArgs{...} }
 type OtsBackupPlanOtsDetailArrayInput interface {
 	pulumi.Input
 
@@ -123,7 +123,7 @@ type OtsBackupPlanRule struct {
 // OtsBackupPlanRuleInput is an input type that accepts OtsBackupPlanRuleArgs and OtsBackupPlanRuleOutput values.
 // You can construct a concrete instance of `OtsBackupPlanRuleInput` via:
 //
-//          OtsBackupPlanRuleArgs{...}
+//	OtsBackupPlanRuleArgs{...}
 type OtsBackupPlanRuleInput interface {
 	pulumi.Input
 
@@ -159,7 +159,7 @@ func (i OtsBackupPlanRuleArgs) ToOtsBackupPlanRuleOutputWithContext(ctx context.
 // OtsBackupPlanRuleArrayInput is an input type that accepts OtsBackupPlanRuleArray and OtsBackupPlanRuleArrayOutput values.
 // You can construct a concrete instance of `OtsBackupPlanRuleArrayInput` via:
 //
-//          OtsBackupPlanRuleArray{ OtsBackupPlanRuleArgs{...} }
+//	OtsBackupPlanRuleArray{ OtsBackupPlanRuleArgs{...} }
 type OtsBackupPlanRuleArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +266,7 @@ type ServerBackupPlanDetail struct {
 // ServerBackupPlanDetailInput is an input type that accepts ServerBackupPlanDetailArgs and ServerBackupPlanDetailOutput values.
 // You can construct a concrete instance of `ServerBackupPlanDetailInput` via:
 //
-//          ServerBackupPlanDetailArgs{...}
+//	ServerBackupPlanDetailArgs{...}
 type ServerBackupPlanDetailInput interface {
 	pulumi.Input
 
@@ -312,7 +312,7 @@ func (i ServerBackupPlanDetailArgs) ToServerBackupPlanDetailOutputWithContext(ct
 // ServerBackupPlanDetailArrayInput is an input type that accepts ServerBackupPlanDetailArray and ServerBackupPlanDetailArrayOutput values.
 // You can construct a concrete instance of `ServerBackupPlanDetailArrayInput` via:
 //
-//          ServerBackupPlanDetailArray{ ServerBackupPlanDetailArgs{...} }
+//	ServerBackupPlanDetailArray{ ServerBackupPlanDetailArgs{...} }
 type ServerBackupPlanDetailArrayInput interface {
 	pulumi.Input
 
@@ -430,7 +430,7 @@ type GetBackupJobsFilter struct {
 // GetBackupJobsFilterInput is an input type that accepts GetBackupJobsFilterArgs and GetBackupJobsFilterOutput values.
 // You can construct a concrete instance of `GetBackupJobsFilterInput` via:
 //
-//          GetBackupJobsFilterArgs{...}
+//	GetBackupJobsFilterArgs{...}
 type GetBackupJobsFilterInput interface {
 	pulumi.Input
 
@@ -462,7 +462,7 @@ func (i GetBackupJobsFilterArgs) ToGetBackupJobsFilterOutputWithContext(ctx cont
 // GetBackupJobsFilterArrayInput is an input type that accepts GetBackupJobsFilterArray and GetBackupJobsFilterArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsFilterArrayInput` via:
 //
-//          GetBackupJobsFilterArray{ GetBackupJobsFilterArgs{...} }
+//	GetBackupJobsFilterArray{ GetBackupJobsFilterArgs{...} }
 type GetBackupJobsFilterArrayInput interface {
 	pulumi.Input
 
@@ -596,7 +596,7 @@ type GetBackupJobsJob struct {
 // GetBackupJobsJobInput is an input type that accepts GetBackupJobsJobArgs and GetBackupJobsJobOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobInput` via:
 //
-//          GetBackupJobsJobArgs{...}
+//	GetBackupJobsJobArgs{...}
 type GetBackupJobsJobInput interface {
 	pulumi.Input
 
@@ -679,7 +679,7 @@ func (i GetBackupJobsJobArgs) ToGetBackupJobsJobOutputWithContext(ctx context.Co
 // GetBackupJobsJobArrayInput is an input type that accepts GetBackupJobsJobArray and GetBackupJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobArrayInput` via:
 //
-//          GetBackupJobsJobArray{ GetBackupJobsJobArgs{...} }
+//	GetBackupJobsJobArray{ GetBackupJobsJobArgs{...} }
 type GetBackupJobsJobArrayInput interface {
 	pulumi.Input
 
@@ -886,7 +886,7 @@ type GetBackupJobsJobOtsDetail struct {
 // GetBackupJobsJobOtsDetailInput is an input type that accepts GetBackupJobsJobOtsDetailArgs and GetBackupJobsJobOtsDetailOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobOtsDetailInput` via:
 //
-//          GetBackupJobsJobOtsDetailArgs{...}
+//	GetBackupJobsJobOtsDetailArgs{...}
 type GetBackupJobsJobOtsDetailInput interface {
 	pulumi.Input
 
@@ -913,7 +913,7 @@ func (i GetBackupJobsJobOtsDetailArgs) ToGetBackupJobsJobOtsDetailOutputWithCont
 // GetBackupJobsJobOtsDetailArrayInput is an input type that accepts GetBackupJobsJobOtsDetailArray and GetBackupJobsJobOtsDetailArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobOtsDetailArrayInput` via:
 //
-//          GetBackupJobsJobOtsDetailArray{ GetBackupJobsJobOtsDetailArgs{...} }
+//	GetBackupJobsJobOtsDetailArray{ GetBackupJobsJobOtsDetailArgs{...} }
 type GetBackupJobsJobOtsDetailArrayInput interface {
 	pulumi.Input
 
@@ -1031,7 +1031,7 @@ type GetEcsBackupClientsClient struct {
 // GetEcsBackupClientsClientInput is an input type that accepts GetEcsBackupClientsClientArgs and GetEcsBackupClientsClientOutput values.
 // You can construct a concrete instance of `GetEcsBackupClientsClientInput` via:
 //
-//          GetEcsBackupClientsClientArgs{...}
+//	GetEcsBackupClientsClientArgs{...}
 type GetEcsBackupClientsClientInput interface {
 	pulumi.Input
 
@@ -1109,7 +1109,7 @@ func (i GetEcsBackupClientsClientArgs) ToGetEcsBackupClientsClientOutputWithCont
 // GetEcsBackupClientsClientArrayInput is an input type that accepts GetEcsBackupClientsClientArray and GetEcsBackupClientsClientArrayOutput values.
 // You can construct a concrete instance of `GetEcsBackupClientsClientArrayInput` via:
 //
-//          GetEcsBackupClientsClientArray{ GetEcsBackupClientsClientArgs{...} }
+//	GetEcsBackupClientsClientArray{ GetEcsBackupClientsClientArgs{...} }
 type GetEcsBackupClientsClientArrayInput interface {
 	pulumi.Input
 
@@ -1337,7 +1337,7 @@ type GetEcsBackupPlansPlan struct {
 // GetEcsBackupPlansPlanInput is an input type that accepts GetEcsBackupPlansPlanArgs and GetEcsBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetEcsBackupPlansPlanInput` via:
 //
-//          GetEcsBackupPlansPlanArgs{...}
+//	GetEcsBackupPlansPlanArgs{...}
 type GetEcsBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -1399,7 +1399,7 @@ func (i GetEcsBackupPlansPlanArgs) ToGetEcsBackupPlansPlanOutputWithContext(ctx 
 // GetEcsBackupPlansPlanArrayInput is an input type that accepts GetEcsBackupPlansPlanArray and GetEcsBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetEcsBackupPlansPlanArrayInput` via:
 //
-//          GetEcsBackupPlansPlanArray{ GetEcsBackupPlansPlanArgs{...} }
+//	GetEcsBackupPlansPlanArray{ GetEcsBackupPlansPlanArgs{...} }
 type GetEcsBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -1575,7 +1575,7 @@ type GetHanaBackupPlansPlan struct {
 // GetHanaBackupPlansPlanInput is an input type that accepts GetHanaBackupPlansPlanArgs and GetHanaBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetHanaBackupPlansPlanInput` via:
 //
-//          GetHanaBackupPlansPlanArgs{...}
+//	GetHanaBackupPlansPlanArgs{...}
 type GetHanaBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -1622,7 +1622,7 @@ func (i GetHanaBackupPlansPlanArgs) ToGetHanaBackupPlansPlanOutputWithContext(ct
 // GetHanaBackupPlansPlanArrayInput is an input type that accepts GetHanaBackupPlansPlanArray and GetHanaBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetHanaBackupPlansPlanArrayInput` via:
 //
-//          GetHanaBackupPlansPlanArray{ GetHanaBackupPlansPlanArgs{...} }
+//	GetHanaBackupPlansPlanArray{ GetHanaBackupPlansPlanArgs{...} }
 type GetHanaBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -1764,7 +1764,7 @@ type GetHanaInstancesInstance struct {
 // GetHanaInstancesInstanceInput is an input type that accepts GetHanaInstancesInstanceArgs and GetHanaInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetHanaInstancesInstanceInput` via:
 //
-//          GetHanaInstancesInstanceArgs{...}
+//	GetHanaInstancesInstanceArgs{...}
 type GetHanaInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -1816,7 +1816,7 @@ func (i GetHanaInstancesInstanceArgs) ToGetHanaInstancesInstanceOutputWithContex
 // GetHanaInstancesInstanceArrayInput is an input type that accepts GetHanaInstancesInstanceArray and GetHanaInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetHanaInstancesInstanceArrayInput` via:
 //
-//          GetHanaInstancesInstanceArray{ GetHanaInstancesInstanceArgs{...} }
+//	GetHanaInstancesInstanceArray{ GetHanaInstancesInstanceArgs{...} }
 type GetHanaInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1971,7 +1971,7 @@ type GetNasBackupPlansPlan struct {
 // GetNasBackupPlansPlanInput is an input type that accepts GetNasBackupPlansPlanArgs and GetNasBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetNasBackupPlansPlanInput` via:
 //
-//          GetNasBackupPlansPlanArgs{...}
+//	GetNasBackupPlansPlanArgs{...}
 type GetNasBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -2025,7 +2025,7 @@ func (i GetNasBackupPlansPlanArgs) ToGetNasBackupPlansPlanOutputWithContext(ctx 
 // GetNasBackupPlansPlanArrayInput is an input type that accepts GetNasBackupPlansPlanArray and GetNasBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetNasBackupPlansPlanArrayInput` via:
 //
-//          GetNasBackupPlansPlanArray{ GetNasBackupPlansPlanArgs{...} }
+//	GetNasBackupPlansPlanArray{ GetNasBackupPlansPlanArgs{...} }
 type GetNasBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -2181,7 +2181,7 @@ type GetOssBackupPlansPlan struct {
 // GetOssBackupPlansPlanInput is an input type that accepts GetOssBackupPlansPlanArgs and GetOssBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetOssBackupPlansPlanInput` via:
 //
-//          GetOssBackupPlansPlanArgs{...}
+//	GetOssBackupPlansPlanArgs{...}
 type GetOssBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -2231,7 +2231,7 @@ func (i GetOssBackupPlansPlanArgs) ToGetOssBackupPlansPlanOutputWithContext(ctx 
 // GetOssBackupPlansPlanArrayInput is an input type that accepts GetOssBackupPlansPlanArray and GetOssBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetOssBackupPlansPlanArrayInput` via:
 //
-//          GetOssBackupPlansPlanArray{ GetOssBackupPlansPlanArgs{...} }
+//	GetOssBackupPlansPlanArray{ GetOssBackupPlansPlanArgs{...} }
 type GetOssBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -2377,7 +2377,7 @@ type GetOtsBackupPlansPlan struct {
 // GetOtsBackupPlansPlanInput is an input type that accepts GetOtsBackupPlansPlanArgs and GetOtsBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanInput` via:
 //
-//          GetOtsBackupPlansPlanArgs{...}
+//	GetOtsBackupPlansPlanArgs{...}
 type GetOtsBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -2427,7 +2427,7 @@ func (i GetOtsBackupPlansPlanArgs) ToGetOtsBackupPlansPlanOutputWithContext(ctx 
 // GetOtsBackupPlansPlanArrayInput is an input type that accepts GetOtsBackupPlansPlanArray and GetOtsBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanArrayInput` via:
 //
-//          GetOtsBackupPlansPlanArray{ GetOtsBackupPlansPlanArgs{...} }
+//	GetOtsBackupPlansPlanArray{ GetOtsBackupPlansPlanArgs{...} }
 type GetOtsBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -2550,7 +2550,7 @@ type GetOtsBackupPlansPlanOtsDetail struct {
 // GetOtsBackupPlansPlanOtsDetailInput is an input type that accepts GetOtsBackupPlansPlanOtsDetailArgs and GetOtsBackupPlansPlanOtsDetailOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanOtsDetailInput` via:
 //
-//          GetOtsBackupPlansPlanOtsDetailArgs{...}
+//	GetOtsBackupPlansPlanOtsDetailArgs{...}
 type GetOtsBackupPlansPlanOtsDetailInput interface {
 	pulumi.Input
 
@@ -2577,7 +2577,7 @@ func (i GetOtsBackupPlansPlanOtsDetailArgs) ToGetOtsBackupPlansPlanOtsDetailOutp
 // GetOtsBackupPlansPlanOtsDetailArrayInput is an input type that accepts GetOtsBackupPlansPlanOtsDetailArray and GetOtsBackupPlansPlanOtsDetailArrayOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanOtsDetailArrayInput` via:
 //
-//          GetOtsBackupPlansPlanOtsDetailArray{ GetOtsBackupPlansPlanOtsDetailArgs{...} }
+//	GetOtsBackupPlansPlanOtsDetailArray{ GetOtsBackupPlansPlanOtsDetailArgs{...} }
 type GetOtsBackupPlansPlanOtsDetailArrayInput interface {
 	pulumi.Input
 
@@ -2685,7 +2685,7 @@ type GetOtsSnapshotsSnapshot struct {
 // GetOtsSnapshotsSnapshotInput is an input type that accepts GetOtsSnapshotsSnapshotArgs and GetOtsSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetOtsSnapshotsSnapshotInput` via:
 //
-//          GetOtsSnapshotsSnapshotArgs{...}
+//	GetOtsSnapshotsSnapshotArgs{...}
 type GetOtsSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -2753,7 +2753,7 @@ func (i GetOtsSnapshotsSnapshotArgs) ToGetOtsSnapshotsSnapshotOutputWithContext(
 // GetOtsSnapshotsSnapshotArrayInput is an input type that accepts GetOtsSnapshotsSnapshotArray and GetOtsSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetOtsSnapshotsSnapshotArrayInput` via:
 //
-//          GetOtsSnapshotsSnapshotArray{ GetOtsSnapshotsSnapshotArgs{...} }
+//	GetOtsSnapshotsSnapshotArray{ GetOtsSnapshotsSnapshotArgs{...} }
 type GetOtsSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -2922,7 +2922,7 @@ type GetReplicationVaultRegionsRegion struct {
 // GetReplicationVaultRegionsRegionInput is an input type that accepts GetReplicationVaultRegionsRegionArgs and GetReplicationVaultRegionsRegionOutput values.
 // You can construct a concrete instance of `GetReplicationVaultRegionsRegionInput` via:
 //
-//          GetReplicationVaultRegionsRegionArgs{...}
+//	GetReplicationVaultRegionsRegionArgs{...}
 type GetReplicationVaultRegionsRegionInput interface {
 	pulumi.Input
 
@@ -2950,7 +2950,7 @@ func (i GetReplicationVaultRegionsRegionArgs) ToGetReplicationVaultRegionsRegion
 // GetReplicationVaultRegionsRegionArrayInput is an input type that accepts GetReplicationVaultRegionsRegionArray and GetReplicationVaultRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetReplicationVaultRegionsRegionArrayInput` via:
 //
-//          GetReplicationVaultRegionsRegionArray{ GetReplicationVaultRegionsRegionArgs{...} }
+//	GetReplicationVaultRegionsRegionArray{ GetReplicationVaultRegionsRegionArgs{...} }
 type GetReplicationVaultRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -3077,7 +3077,7 @@ type GetRestoreJobsJob struct {
 // GetRestoreJobsJobInput is an input type that accepts GetRestoreJobsJobArgs and GetRestoreJobsJobOutput values.
 // You can construct a concrete instance of `GetRestoreJobsJobInput` via:
 //
-//          GetRestoreJobsJobArgs{...}
+//	GetRestoreJobsJobArgs{...}
 type GetRestoreJobsJobInput interface {
 	pulumi.Input
 
@@ -3163,7 +3163,7 @@ func (i GetRestoreJobsJobArgs) ToGetRestoreJobsJobOutputWithContext(ctx context.
 // GetRestoreJobsJobArrayInput is an input type that accepts GetRestoreJobsJobArray and GetRestoreJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetRestoreJobsJobArrayInput` via:
 //
-//          GetRestoreJobsJobArray{ GetRestoreJobsJobArgs{...} }
+//	GetRestoreJobsJobArray{ GetRestoreJobsJobArgs{...} }
 type GetRestoreJobsJobArrayInput interface {
 	pulumi.Input
 
@@ -3385,7 +3385,7 @@ type GetServerBackupPlansFilter struct {
 // GetServerBackupPlansFilterInput is an input type that accepts GetServerBackupPlansFilterArgs and GetServerBackupPlansFilterOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansFilterInput` via:
 //
-//          GetServerBackupPlansFilterArgs{...}
+//	GetServerBackupPlansFilterArgs{...}
 type GetServerBackupPlansFilterInput interface {
 	pulumi.Input
 
@@ -3415,7 +3415,7 @@ func (i GetServerBackupPlansFilterArgs) ToGetServerBackupPlansFilterOutputWithCo
 // GetServerBackupPlansFilterArrayInput is an input type that accepts GetServerBackupPlansFilterArray and GetServerBackupPlansFilterArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansFilterArrayInput` via:
 //
-//          GetServerBackupPlansFilterArray{ GetServerBackupPlansFilterArgs{...} }
+//	GetServerBackupPlansFilterArray{ GetServerBackupPlansFilterArgs{...} }
 type GetServerBackupPlansFilterArrayInput interface {
 	pulumi.Input
 
@@ -3505,7 +3505,7 @@ type GetServerBackupPlansPlan struct {
 // GetServerBackupPlansPlanInput is an input type that accepts GetServerBackupPlansPlanArgs and GetServerBackupPlansPlanOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanInput` via:
 //
-//          GetServerBackupPlansPlanArgs{...}
+//	GetServerBackupPlansPlanArgs{...}
 type GetServerBackupPlansPlanInput interface {
 	pulumi.Input
 
@@ -3549,7 +3549,7 @@ func (i GetServerBackupPlansPlanArgs) ToGetServerBackupPlansPlanOutputWithContex
 // GetServerBackupPlansPlanArrayInput is an input type that accepts GetServerBackupPlansPlanArray and GetServerBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanArrayInput` via:
 //
-//          GetServerBackupPlansPlanArray{ GetServerBackupPlansPlanArgs{...} }
+//	GetServerBackupPlansPlanArray{ GetServerBackupPlansPlanArgs{...} }
 type GetServerBackupPlansPlanArrayInput interface {
 	pulumi.Input
 
@@ -3676,7 +3676,7 @@ type GetServerBackupPlansPlanDetail struct {
 // GetServerBackupPlansPlanDetailInput is an input type that accepts GetServerBackupPlansPlanDetailArgs and GetServerBackupPlansPlanDetailOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanDetailInput` via:
 //
-//          GetServerBackupPlansPlanDetailArgs{...}
+//	GetServerBackupPlansPlanDetailArgs{...}
 type GetServerBackupPlansPlanDetailInput interface {
 	pulumi.Input
 
@@ -3722,7 +3722,7 @@ func (i GetServerBackupPlansPlanDetailArgs) ToGetServerBackupPlansPlanDetailOutp
 // GetServerBackupPlansPlanDetailArrayInput is an input type that accepts GetServerBackupPlansPlanDetailArray and GetServerBackupPlansPlanDetailArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanDetailArrayInput` via:
 //
-//          GetServerBackupPlansPlanDetailArray{ GetServerBackupPlansPlanDetailArgs{...} }
+//	GetServerBackupPlansPlanDetailArray{ GetServerBackupPlansPlanDetailArgs{...} }
 type GetServerBackupPlansPlanDetailArrayInput interface {
 	pulumi.Input
 
@@ -3887,7 +3887,7 @@ type GetSnapshotsSnapshot struct {
 // GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
 //
-//          GetSnapshotsSnapshotArgs{...}
+//	GetSnapshotsSnapshotArgs{...}
 type GetSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -3966,7 +3966,7 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
-//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+//	GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
 type GetSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -4211,7 +4211,7 @@ type GetVaultsVault struct {
 // GetVaultsVaultInput is an input type that accepts GetVaultsVaultArgs and GetVaultsVaultOutput values.
 // You can construct a concrete instance of `GetVaultsVaultInput` via:
 //
-//          GetVaultsVaultArgs{...}
+//	GetVaultsVaultArgs{...}
 type GetVaultsVaultInput interface {
 	pulumi.Input
 
@@ -4286,7 +4286,7 @@ func (i GetVaultsVaultArgs) ToGetVaultsVaultOutputWithContext(ctx context.Contex
 // GetVaultsVaultArrayInput is an input type that accepts GetVaultsVaultArray and GetVaultsVaultArrayOutput values.
 // You can construct a concrete instance of `GetVaultsVaultArrayInput` via:
 //
-//          GetVaultsVaultArray{ GetVaultsVaultArgs{...} }
+//	GetVaultsVaultArray{ GetVaultsVaultArgs{...} }
 type GetVaultsVaultArrayInput interface {
 	pulumi.Input
 

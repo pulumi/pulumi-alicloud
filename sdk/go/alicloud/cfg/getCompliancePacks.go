@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cfg.GetCompliancePacks(ctx, &cfg.GetCompliancePacksArgs{
-// 			Ids: []string{
-// 				"cp-152a626622af00bc****",
-// 			},
-// 			NameRegex: pulumi.StringRef("the_resource_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstConfigCompliancePackId", example.Packs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cfg.GetCompliancePacks(ctx, &cfg.GetCompliancePacksArgs{
+//				Ids: []string{
+//					"cp-152a626622af00bc****",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstConfigCompliancePackId", example.Packs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCompliancePacks(ctx *pulumi.Context, args *GetCompliancePacksArgs, opts ...pulumi.InvokeOption) (*GetCompliancePacksResult, error) {
 	var rv GetCompliancePacksResult

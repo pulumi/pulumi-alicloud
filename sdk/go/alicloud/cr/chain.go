@@ -22,7 +22,9 @@ import (
 // CR Chain can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
+//
+//	$ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
+//
 // ```
 type Chain struct {
 	pulumi.CustomResourceState
@@ -172,7 +174,7 @@ func (i *Chain) ToChainOutputWithContext(ctx context.Context) ChainOutput {
 // ChainArrayInput is an input type that accepts ChainArray and ChainArrayOutput values.
 // You can construct a concrete instance of `ChainArrayInput` via:
 //
-//          ChainArray{ ChainArgs{...} }
+//	ChainArray{ ChainArgs{...} }
 type ChainArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +199,7 @@ func (i ChainArray) ToChainArrayOutputWithContext(ctx context.Context) ChainArra
 // ChainMapInput is an input type that accepts ChainMap and ChainMapOutput values.
 // You can construct a concrete instance of `ChainMapInput` via:
 //
-//          ChainMap{ "key": ChainArgs{...} }
+//	ChainMap{ "key": ChainArgs{...} }
 type ChainMapInput interface {
 	pulumi.Input
 

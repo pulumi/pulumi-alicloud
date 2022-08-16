@@ -17,41 +17,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccCenTransitRouter"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-// 			CenInstanceName: pulumi.String(name),
-// 			Description:     pulumi.String("terraform01"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-// 			TransitRouterName: pulumi.String(name),
-// 			CenId:             defaultInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccCenTransitRouter"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String("terraform01"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+//
+//	$ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+//
 // ```
 type TransitRouter struct {
 	pulumi.CustomResourceState
@@ -198,7 +203,7 @@ func (i *TransitRouter) ToTransitRouterOutputWithContext(ctx context.Context) Tr
 // TransitRouterArrayInput is an input type that accepts TransitRouterArray and TransitRouterArrayOutput values.
 // You can construct a concrete instance of `TransitRouterArrayInput` via:
 //
-//          TransitRouterArray{ TransitRouterArgs{...} }
+//	TransitRouterArray{ TransitRouterArgs{...} }
 type TransitRouterArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +228,7 @@ func (i TransitRouterArray) ToTransitRouterArrayOutputWithContext(ctx context.Co
 // TransitRouterMapInput is an input type that accepts TransitRouterMap and TransitRouterMapOutput values.
 // You can construct a concrete instance of `TransitRouterMapInput` via:
 //
-//          TransitRouterMap{ "key": TransitRouterArgs{...} }
+//	TransitRouterMap{ "key": TransitRouterArgs{...} }
 type TransitRouterMapInput interface {
 	pulumi.Input
 

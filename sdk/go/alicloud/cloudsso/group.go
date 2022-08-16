@@ -24,7 +24,9 @@ import (
 // Cloud SSO Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
+//
+//	$ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
+//
 // ```
 type Group struct {
 	pulumi.CustomResourceState
@@ -144,7 +146,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//          GroupArray{ GroupArgs{...} }
+//	GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +171,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//          GroupMap{ "key": GroupArgs{...} }
+//	GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 

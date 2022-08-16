@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
-// 			RecordId:     pulumi.String("user_tf_test_resource_1"),
-// 			ResourceName: pulumi.String("user.tf.test_resource"),
-// 			Tag:          pulumi.String("test resource tag"),
-// 			Value:        pulumi.String("{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
+//				RecordId:     pulumi.String("user_tf_test_resource_1"),
+//				ResourceName: pulumi.String("user.tf.test_resource"),
+//				Tag:          pulumi.String("test resource tag"),
+//				Value:        pulumi.String("{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Log resource record can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+//
+//	$ pulumi import alicloud:log/resourceRecord:ResourceRecord example user.tf.test_resource:user_tf_test_resource_1
+//
 // ```
 type ResourceRecord struct {
 	pulumi.CustomResourceState
@@ -180,7 +185,7 @@ func (i *ResourceRecord) ToResourceRecordOutputWithContext(ctx context.Context) 
 // ResourceRecordArrayInput is an input type that accepts ResourceRecordArray and ResourceRecordArrayOutput values.
 // You can construct a concrete instance of `ResourceRecordArrayInput` via:
 //
-//          ResourceRecordArray{ ResourceRecordArgs{...} }
+//	ResourceRecordArray{ ResourceRecordArgs{...} }
 type ResourceRecordArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +210,7 @@ func (i ResourceRecordArray) ToResourceRecordArrayOutputWithContext(ctx context.
 // ResourceRecordMapInput is an input type that accepts ResourceRecordMap and ResourceRecordMapOutput values.
 // You can construct a concrete instance of `ResourceRecordMapInput` via:
 //
-//          ResourceRecordMap{ "key": ResourceRecordArgs{...} }
+//	ResourceRecordMap{ "key": ResourceRecordArgs{...} }
 type ResourceRecordMapInput interface {
 	pulumi.Input
 

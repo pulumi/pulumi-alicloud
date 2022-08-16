@@ -19,185 +19,194 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-// 			Description: pulumi.String("created by terraform"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-// 			Project:            exampleProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		example2, err := log.NewStore(ctx, "example2", &log.StoreArgs{
-// 			Project:            exampleProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		example3, err := log.NewStore(ctx, "example3", &log.StoreArgs{
-// 			Project:            exampleProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.NewEtl(ctx, "exampleEtl", &log.EtlArgs{
-// 			EtlName:         pulumi.String("etl_name"),
-// 			Project:         exampleProject.Name,
-// 			DisplayName:     pulumi.String("display_name"),
-// 			Description:     pulumi.String("etl_description"),
-// 			AccessKeyId:     pulumi.String("access_key_id"),
-// 			AccessKeySecret: pulumi.String("access_key_secret"),
-// 			Script:          pulumi.String("e_set('new','key')"),
-// 			Logstore:        exampleStore.Name,
-// 			EtlSinks: log.EtlEtlSinkArray{
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name"),
-// 					AccessKeyId:     pulumi.String("example2_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example2_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         exampleProject.Name,
-// 					Logstore:        example2.Name,
-// 				},
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name2"),
-// 					AccessKeyId:     pulumi.String("example3_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example3_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         exampleProject.Name,
-// 					Logstore:        example3.Name,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example2, err := log.NewStore(ctx, "example2", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example3, err := log.NewStore(ctx, "example3", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewEtl(ctx, "exampleEtl", &log.EtlArgs{
+//				EtlName:         pulumi.String("etl_name"),
+//				Project:         exampleProject.Name,
+//				DisplayName:     pulumi.String("display_name"),
+//				Description:     pulumi.String("etl_description"),
+//				AccessKeyId:     pulumi.String("access_key_id"),
+//				AccessKeySecret: pulumi.String("access_key_secret"),
+//				Script:          pulumi.String("e_set('new','key')"),
+//				Logstore:        exampleStore.Name,
+//				EtlSinks: log.EtlEtlSinkArray{
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name"),
+//						AccessKeyId:     pulumi.String("example2_access_key_id"),
+//						AccessKeySecret: pulumi.String("example2_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         exampleProject.Name,
+//						Logstore:        example2.Name,
+//					},
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name2"),
+//						AccessKeyId:     pulumi.String("example3_access_key_id"),
+//						AccessKeySecret: pulumi.String("example3_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         exampleProject.Name,
+//						Logstore:        example3.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // Stop the task in progress
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
-// 			Status:          pulumi.Any(STOPPED),
-// 			EtlName:         pulumi.String("etl_name"),
-// 			Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 			DisplayName:     pulumi.String("display_name"),
-// 			Description:     pulumi.String("etl_description"),
-// 			AccessKeyId:     pulumi.String("access_key_id"),
-// 			AccessKeySecret: pulumi.String("access_key_secret"),
-// 			Script:          pulumi.String("e_set('new','key')"),
-// 			Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
-// 			EtlSinks: log.EtlEtlSinkArray{
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name"),
-// 					AccessKeyId:     pulumi.String("example2_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example2_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 					Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
-// 				},
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name2"),
-// 					AccessKeyId:     pulumi.String("example3_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example3_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 					Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
+//				Status:          pulumi.Any(STOPPED),
+//				EtlName:         pulumi.String("etl_name"),
+//				Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//				DisplayName:     pulumi.String("display_name"),
+//				Description:     pulumi.String("etl_description"),
+//				AccessKeyId:     pulumi.String("access_key_id"),
+//				AccessKeySecret: pulumi.String("access_key_secret"),
+//				Script:          pulumi.String("e_set('new','key')"),
+//				Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
+//				EtlSinks: log.EtlEtlSinkArray{
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name"),
+//						AccessKeyId:     pulumi.String("example2_access_key_id"),
+//						AccessKeySecret: pulumi.String("example2_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//						Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
+//					},
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name2"),
+//						AccessKeyId:     pulumi.String("example3_access_key_id"),
+//						AccessKeySecret: pulumi.String("example3_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//						Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ReStart the stopped task
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
-// 			Status:          pulumi.Any(RUNNING),
-// 			EtlName:         pulumi.String("etl_name"),
-// 			Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 			DisplayName:     pulumi.String("display_name"),
-// 			Description:     pulumi.String("etl_description"),
-// 			AccessKeyId:     pulumi.String("access_key_id"),
-// 			AccessKeySecret: pulumi.String("access_key_secret"),
-// 			Script:          pulumi.String("e_set('new','key')"),
-// 			Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
-// 			EtlSinks: log.EtlEtlSinkArray{
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name"),
-// 					AccessKeyId:     pulumi.String("example2_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example2_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 					Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
-// 				},
-// 				&log.EtlEtlSinkArgs{
-// 					Name:            pulumi.String("target_name2"),
-// 					AccessKeyId:     pulumi.String("example3_access_key_id"),
-// 					AccessKeySecret: pulumi.String("example3_access_key_secret"),
-// 					Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-// 					Project:         pulumi.Any(alicloud_log_project.Example.Name),
-// 					Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
+//				Status:          pulumi.Any(RUNNING),
+//				EtlName:         pulumi.String("etl_name"),
+//				Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//				DisplayName:     pulumi.String("display_name"),
+//				Description:     pulumi.String("etl_description"),
+//				AccessKeyId:     pulumi.String("access_key_id"),
+//				AccessKeySecret: pulumi.String("access_key_secret"),
+//				Script:          pulumi.String("e_set('new','key')"),
+//				Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
+//				EtlSinks: log.EtlEtlSinkArray{
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name"),
+//						AccessKeyId:     pulumi.String("example2_access_key_id"),
+//						AccessKeySecret: pulumi.String("example2_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//						Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
+//					},
+//					&log.EtlEtlSinkArgs{
+//						Name:            pulumi.String("target_name2"),
+//						AccessKeyId:     pulumi.String("example3_access_key_id"),
+//						AccessKeySecret: pulumi.String("example3_access_key_secret"),
+//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
+//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
+//						Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -205,7 +214,9 @@ import (
 // Log etl can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
+//
+//	$ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
+//
 // ```
 type Etl struct {
 	pulumi.CustomResourceState
@@ -531,7 +542,7 @@ func (i *Etl) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 // EtlArrayInput is an input type that accepts EtlArray and EtlArrayOutput values.
 // You can construct a concrete instance of `EtlArrayInput` via:
 //
-//          EtlArray{ EtlArgs{...} }
+//	EtlArray{ EtlArgs{...} }
 type EtlArrayInput interface {
 	pulumi.Input
 
@@ -556,7 +567,7 @@ func (i EtlArray) ToEtlArrayOutputWithContext(ctx context.Context) EtlArrayOutpu
 // EtlMapInput is an input type that accepts EtlMap and EtlMapOutput values.
 // You can construct a concrete instance of `EtlMapInput` via:
 //
-//          EtlMap{ "key": EtlArgs{...} }
+//	EtlMap{ "key": EtlArgs{...} }
 type EtlMapInput interface {
 	pulumi.Input
 

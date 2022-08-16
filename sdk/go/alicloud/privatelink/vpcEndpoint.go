@@ -22,7 +22,9 @@ import (
 // Private Link Vpc Endpoint can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+//
+//	$ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+//
 // ```
 type VpcEndpoint struct {
 	pulumi.CustomResourceState
@@ -206,7 +208,7 @@ func (i *VpcEndpoint) ToVpcEndpointOutputWithContext(ctx context.Context) VpcEnd
 // VpcEndpointArrayInput is an input type that accepts VpcEndpointArray and VpcEndpointArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointArrayInput` via:
 //
-//          VpcEndpointArray{ VpcEndpointArgs{...} }
+//	VpcEndpointArray{ VpcEndpointArgs{...} }
 type VpcEndpointArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +233,7 @@ func (i VpcEndpointArray) ToVpcEndpointArrayOutputWithContext(ctx context.Contex
 // VpcEndpointMapInput is an input type that accepts VpcEndpointMap and VpcEndpointMapOutput values.
 // You can construct a concrete instance of `VpcEndpointMapInput` via:
 //
-//          VpcEndpointMap{ "key": VpcEndpointArgs{...} }
+//	VpcEndpointMap{ "key": VpcEndpointArgs{...} }
 type VpcEndpointMapInput interface {
 	pulumi.Input
 

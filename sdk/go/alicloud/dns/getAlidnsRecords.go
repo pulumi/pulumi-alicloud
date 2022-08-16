@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		recordsDs, err := dns.GetAlidnsRecords(ctx, &dns.GetAlidnsRecordsArgs{
-// 			DomainName: "xiaozhu.top",
-// 			Ids: []string{
-// 				"1978593525779****",
-// 			},
-// 			OutputFile: pulumi.StringRef("records.txt"),
-// 			Type:       pulumi.StringRef("A"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstRecordId", recordsDs.Records[0].RecordId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			recordsDs, err := dns.GetAlidnsRecords(ctx, &dns.GetAlidnsRecordsArgs{
+//				DomainName: "xiaozhu.top",
+//				Ids: []string{
+//					"1978593525779****",
+//				},
+//				OutputFile: pulumi.StringRef("records.txt"),
+//				Type:       pulumi.StringRef("A"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRecordId", recordsDs.Records[0].RecordId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAlidnsRecords(ctx *pulumi.Context, args *GetAlidnsRecordsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsRecordsResult, error) {
 	var rv GetAlidnsRecordsResult

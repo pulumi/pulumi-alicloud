@@ -18,40 +18,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudsso.GetGroups(ctx, &cloudsso.GetGroupsArgs{
-// 			DirectoryId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudSsoGroupId1", ids.Groups[0].Id)
-// 		nameRegex, err := cloudsso.GetGroups(ctx, &cloudsso.GetGroupsArgs{
-// 			DirectoryId: "example_value",
-// 			NameRegex:   pulumi.StringRef("^my-Group"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudSsoGroupId2", nameRegex.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetGroups(ctx, &cloudsso.GetGroupsArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := cloudsso.GetGroups(ctx, &cloudsso.GetGroupsArgs{
+//				DirectoryId: "example_value",
+//				NameRegex:   pulumi.StringRef("^my-Group"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult

@@ -18,30 +18,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := arms.NewAlertContact(ctx, "example", &arms.AlertContactArgs{
-// 			AlertContactName:    pulumi.String("example_value"),
-// 			DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
-// 			Email:               pulumi.String("someone@example.com"),
-// 			PhoneNum:            pulumi.String("1381111****"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := arms.NewAlertContact(ctx, "example", &arms.AlertContactArgs{
+//				AlertContactName:    pulumi.String("example_value"),
+//				DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
+//				Email:               pulumi.String("someone@example.com"),
+//				PhoneNum:            pulumi.String("1381111****"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:arms/alertContact:AlertContact example <id>
+//
+//	$ pulumi import alicloud:arms/alertContact:AlertContact example <id>
+//
 // ```
 type AlertContact struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *AlertContact) ToAlertContactOutputWithContext(ctx context.Context) Aler
 // AlertContactArrayInput is an input type that accepts AlertContactArray and AlertContactArrayOutput values.
 // You can construct a concrete instance of `AlertContactArrayInput` via:
 //
-//          AlertContactArray{ AlertContactArgs{...} }
+//	AlertContactArray{ AlertContactArgs{...} }
 type AlertContactArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i AlertContactArray) ToAlertContactArrayOutputWithContext(ctx context.Cont
 // AlertContactMapInput is an input type that accepts AlertContactMap and AlertContactMapOutput values.
 // You can construct a concrete instance of `AlertContactMapInput` via:
 //
-//          AlertContactMap{ "key": AlertContactArgs{...} }
+//	AlertContactMap{ "key": AlertContactArgs{...} }
 type AlertContactMapInput interface {
 	pulumi.Input
 

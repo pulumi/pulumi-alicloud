@@ -28,7 +28,7 @@ type BastionHostInstanceAdAuthServer struct {
 // BastionHostInstanceAdAuthServerInput is an input type that accepts BastionHostInstanceAdAuthServerArgs and BastionHostInstanceAdAuthServerOutput values.
 // You can construct a concrete instance of `BastionHostInstanceAdAuthServerInput` via:
 //
-//          BastionHostInstanceAdAuthServerArgs{...}
+//	BastionHostInstanceAdAuthServerArgs{...}
 type BastionHostInstanceAdAuthServerInput interface {
 	pulumi.Input
 
@@ -66,7 +66,7 @@ func (i BastionHostInstanceAdAuthServerArgs) ToBastionHostInstanceAdAuthServerOu
 // BastionHostInstanceAdAuthServerArrayInput is an input type that accepts BastionHostInstanceAdAuthServerArray and BastionHostInstanceAdAuthServerArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceAdAuthServerArrayInput` via:
 //
-//          BastionHostInstanceAdAuthServerArray{ BastionHostInstanceAdAuthServerArgs{...} }
+//	BastionHostInstanceAdAuthServerArray{ BastionHostInstanceAdAuthServerArgs{...} }
 type BastionHostInstanceAdAuthServerArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ type BastionHostInstanceLdapAuthServer struct {
 // BastionHostInstanceLdapAuthServerInput is an input type that accepts BastionHostInstanceLdapAuthServerArgs and BastionHostInstanceLdapAuthServerOutput values.
 // You can construct a concrete instance of `BastionHostInstanceLdapAuthServerInput` via:
 //
-//          BastionHostInstanceLdapAuthServerArgs{...}
+//	BastionHostInstanceLdapAuthServerArgs{...}
 type BastionHostInstanceLdapAuthServerInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ func (i BastionHostInstanceLdapAuthServerArgs) ToBastionHostInstanceLdapAuthServ
 // BastionHostInstanceLdapAuthServerArrayInput is an input type that accepts BastionHostInstanceLdapAuthServerArray and BastionHostInstanceLdapAuthServerArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceLdapAuthServerArrayInput` via:
 //
-//          BastionHostInstanceLdapAuthServerArray{ BastionHostInstanceLdapAuthServerArgs{...} }
+//	BastionHostInstanceLdapAuthServerArray{ BastionHostInstanceLdapAuthServerArgs{...} }
 type BastionHostInstanceLdapAuthServerArrayInput interface {
 	pulumi.Input
 
@@ -346,7 +346,7 @@ type GetBastionHostInstancesInstance struct {
 // GetBastionHostInstancesInstanceInput is an input type that accepts GetBastionHostInstancesInstanceArgs and GetBastionHostInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetBastionHostInstancesInstanceInput` via:
 //
-//          GetBastionHostInstancesInstanceArgs{...}
+//	GetBastionHostInstancesInstanceArgs{...}
 type GetBastionHostInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -382,7 +382,7 @@ func (i GetBastionHostInstancesInstanceArgs) ToGetBastionHostInstancesInstanceOu
 // GetBastionHostInstancesInstanceArrayInput is an input type that accepts GetBastionHostInstancesInstanceArray and GetBastionHostInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetBastionHostInstancesInstanceArrayInput` via:
 //
-//          GetBastionHostInstancesInstanceArray{ GetBastionHostInstancesInstanceArgs{...} }
+//	GetBastionHostInstancesInstanceArray{ GetBastionHostInstancesInstanceArgs{...} }
 type GetBastionHostInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -493,7 +493,7 @@ type GetDBAuditInstanceInstance struct {
 // GetDBAuditInstanceInstanceInput is an input type that accepts GetDBAuditInstanceInstanceArgs and GetDBAuditInstanceInstanceOutput values.
 // You can construct a concrete instance of `GetDBAuditInstanceInstanceInput` via:
 //
-//          GetDBAuditInstanceInstanceArgs{...}
+//	GetDBAuditInstanceInstanceArgs{...}
 type GetDBAuditInstanceInstanceInput interface {
 	pulumi.Input
 
@@ -528,7 +528,7 @@ func (i GetDBAuditInstanceInstanceArgs) ToGetDBAuditInstanceInstanceOutputWithCo
 // GetDBAuditInstanceInstanceArrayInput is an input type that accepts GetDBAuditInstanceInstanceArray and GetDBAuditInstanceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDBAuditInstanceInstanceArrayInput` via:
 //
-//          GetDBAuditInstanceInstanceArray{ GetDBAuditInstanceInstanceArgs{...} }
+//	GetDBAuditInstanceInstanceArray{ GetDBAuditInstanceInstanceArgs{...} }
 type GetDBAuditInstanceInstanceArrayInput interface {
 	pulumi.Input
 

@@ -21,33 +21,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ddos.NewDdosCooInstance(ctx, "newInstance", &ddos.DdosCooInstanceArgs{
-// 			Bandwidth:        pulumi.String("30"),
-// 			BaseBandwidth:    pulumi.String("30"),
-// 			DomainCount:      pulumi.String("50"),
-// 			Period:           pulumi.Int(1),
-// 			PortCount:        pulumi.String("50"),
-// 			ProductType:      pulumi.String("ddoscoo"),
-// 			ServiceBandwidth: pulumi.String("100"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ddos.NewDdosCooInstance(ctx, "newInstance", &ddos.DdosCooInstanceArgs{
+//				Bandwidth:        pulumi.String("30"),
+//				BaseBandwidth:    pulumi.String("30"),
+//				DomainCount:      pulumi.String("50"),
+//				Period:           pulumi.Int(1),
+//				PortCount:        pulumi.String("50"),
+//				ProductType:      pulumi.String("ddoscoo"),
+//				ServiceBandwidth: pulumi.String("100"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Ddoscoo instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+//
+//	$ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+//
 // ```
 //
 // Deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance
@@ -245,7 +250,7 @@ func (i *DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context
 // DdosCooInstanceArrayInput is an input type that accepts DdosCooInstanceArray and DdosCooInstanceArrayOutput values.
 // You can construct a concrete instance of `DdosCooInstanceArrayInput` via:
 //
-//          DdosCooInstanceArray{ DdosCooInstanceArgs{...} }
+//	DdosCooInstanceArray{ DdosCooInstanceArgs{...} }
 type DdosCooInstanceArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +275,7 @@ func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutputWithContext(ctx contex
 // DdosCooInstanceMapInput is an input type that accepts DdosCooInstanceMap and DdosCooInstanceMapOutput values.
 // You can construct a concrete instance of `DdosCooInstanceMapInput` via:
 //
-//          DdosCooInstanceMap{ "key": DdosCooInstanceArgs{...} }
+//	DdosCooInstanceMap{ "key": DdosCooInstanceArgs{...} }
 type DdosCooInstanceMapInput interface {
 	pulumi.Input
 
@@ -337,9 +342,9 @@ func (o DdosCooInstanceOutput) PortCount() pulumi.StringOutput {
 }
 
 // The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
-// - ddoscoo: Only supports domestic account.
-// - ddoscoo_intl: Only supports to international account.
-//   Default to ddoscoo.
+//   - ddoscoo: Only supports domestic account.
+//   - ddoscoo_intl: Only supports to international account.
+//     Default to ddoscoo.
 func (o DdosCooInstanceOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
 }

@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-// 			GatewayClass: pulumi.StringRef("Advanced"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("zoneId", _default.Stocks[0].ZoneId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
+//				GatewayClass: pulumi.StringRef("Advanced"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("zoneId", _default.Stocks[0].ZoneId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetStocks(ctx *pulumi.Context, args *GetStocksArgs, opts ...pulumi.InvokeOption) (*GetStocksResult, error) {
 	var rv GetStocksResult

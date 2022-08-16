@@ -18,7 +18,7 @@ type InstanceEcsList struct {
 // InstanceEcsListInput is an input type that accepts InstanceEcsListArgs and InstanceEcsListOutput values.
 // You can construct a concrete instance of `InstanceEcsListInput` via:
 //
-//          InstanceEcsListArgs{...}
+//	InstanceEcsListArgs{...}
 type InstanceEcsListInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i InstanceEcsListArgs) ToInstanceEcsListOutputWithContext(ctx context.Cont
 // InstanceEcsListArrayInput is an input type that accepts InstanceEcsListArray and InstanceEcsListArrayOutput values.
 // You can construct a concrete instance of `InstanceEcsListArrayInput` via:
 //
-//          InstanceEcsListArray{ InstanceEcsListArgs{...} }
+//	InstanceEcsListArray{ InstanceEcsListArgs{...} }
 type InstanceEcsListArrayInput interface {
 	pulumi.Input
 
@@ -147,7 +147,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -207,7 +207,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -356,7 +356,7 @@ type GetInstancesInstanceEcsList struct {
 // GetInstancesInstanceEcsListInput is an input type that accepts GetInstancesInstanceEcsListArgs and GetInstancesInstanceEcsListOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceEcsListInput` via:
 //
-//          GetInstancesInstanceEcsListArgs{...}
+//	GetInstancesInstanceEcsListArgs{...}
 type GetInstancesInstanceEcsListInput interface {
 	pulumi.Input
 
@@ -384,7 +384,7 @@ func (i GetInstancesInstanceEcsListArgs) ToGetInstancesInstanceEcsListOutputWith
 // GetInstancesInstanceEcsListArrayInput is an input type that accepts GetInstancesInstanceEcsListArray and GetInstancesInstanceEcsListArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceEcsListArrayInput` via:
 //
-//          GetInstancesInstanceEcsListArray{ GetInstancesInstanceEcsListArgs{...} }
+//	GetInstancesInstanceEcsListArray{ GetInstancesInstanceEcsListArgs{...} }
 type GetInstancesInstanceEcsListArrayInput interface {
 	pulumi.Input
 
@@ -479,7 +479,7 @@ type GetSnapshotsSnapshot struct {
 // GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
 //
-//          GetSnapshotsSnapshotArgs{...}
+//	GetSnapshotsSnapshotArgs{...}
 type GetSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -533,7 +533,7 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
-//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+//	GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
 type GetSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 

@@ -19,78 +19,81 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "dbInstancevpc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
-// 			Engine:             pulumi.String("MySQL"),
-// 			EngineVersion:      pulumi.String("5.6"),
-// 			InstanceType:       pulumi.String("rds.mysql.t1.small"),
-// 			InstanceStorage:    pulumi.Int(20),
-// 			InstanceChargeType: pulumi.String("Postpaid"),
-// 			InstanceName:       pulumi.String(name),
-// 			VswitchId:          defaultSwitch.ID(),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.168.1.12"),
-// 				pulumi.String("100.69.7.112"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
-// 			MasterDbInstanceId: defaultInstance.ID(),
-// 			ZoneId:             defaultInstance.ZoneId,
-// 			EngineVersion:      defaultInstance.EngineVersion,
-// 			InstanceType:       defaultInstance.InstanceType,
-// 			InstanceStorage:    pulumi.Int(30),
-// 			InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
-// 			VswitchId:          defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "Rds"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "dbInstancevpc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//				Engine:             pulumi.String("MySQL"),
+//				EngineVersion:      pulumi.String("5.6"),
+//				InstanceType:       pulumi.String("rds.mysql.t1.small"),
+//				InstanceStorage:    pulumi.Int(20),
+//				InstanceChargeType: pulumi.String("Postpaid"),
+//				InstanceName:       pulumi.String(name),
+//				VswitchId:          defaultSwitch.ID(),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+//				MasterDbInstanceId: defaultInstance.ID(),
+//				ZoneId:             defaultInstance.ZoneId,
+//				EngineVersion:      defaultInstance.EngineVersion,
+//				InstanceType:       defaultInstance.InstanceType,
+//				InstanceStorage:    pulumi.Int(30),
+//				InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
+//				VswitchId:          defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,7 +101,9 @@ import (
 // RDS readonly instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
+//
+//	$ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
+//
 // ```
 type ReadOnlyInstance struct {
 	pulumi.CustomResourceState
@@ -626,7 +631,7 @@ func (i *ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Conte
 // ReadOnlyInstanceArrayInput is an input type that accepts ReadOnlyInstanceArray and ReadOnlyInstanceArrayOutput values.
 // You can construct a concrete instance of `ReadOnlyInstanceArrayInput` via:
 //
-//          ReadOnlyInstanceArray{ ReadOnlyInstanceArgs{...} }
+//	ReadOnlyInstanceArray{ ReadOnlyInstanceArgs{...} }
 type ReadOnlyInstanceArrayInput interface {
 	pulumi.Input
 
@@ -651,7 +656,7 @@ func (i ReadOnlyInstanceArray) ToReadOnlyInstanceArrayOutputWithContext(ctx cont
 // ReadOnlyInstanceMapInput is an input type that accepts ReadOnlyInstanceMap and ReadOnlyInstanceMapOutput values.
 // You can construct a concrete instance of `ReadOnlyInstanceMapInput` via:
 //
-//          ReadOnlyInstanceMap{ "key": ReadOnlyInstanceArgs{...} }
+//	ReadOnlyInstanceMap{ "key": ReadOnlyInstanceArgs{...} }
 type ReadOnlyInstanceMapInput interface {
 	pulumi.Input
 

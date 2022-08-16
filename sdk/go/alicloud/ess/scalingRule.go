@@ -16,7 +16,9 @@ import (
 // ESS scaling rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+//
+//	$ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+//
 // ```
 type ScalingRule struct {
 	pulumi.CustomResourceState
@@ -240,7 +242,7 @@ func (i *ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) Scalin
 // ScalingRuleArrayInput is an input type that accepts ScalingRuleArray and ScalingRuleArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleArrayInput` via:
 //
-//          ScalingRuleArray{ ScalingRuleArgs{...} }
+//	ScalingRuleArray{ ScalingRuleArgs{...} }
 type ScalingRuleArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +267,7 @@ func (i ScalingRuleArray) ToScalingRuleArrayOutputWithContext(ctx context.Contex
 // ScalingRuleMapInput is an input type that accepts ScalingRuleMap and ScalingRuleMapOutput values.
 // You can construct a concrete instance of `ScalingRuleMapInput` via:
 //
-//          ScalingRuleMap{ "key": ScalingRuleArgs{...} }
+//	ScalingRuleMap{ "key": ScalingRuleArgs{...} }
 type ScalingRuleMapInput interface {
 	pulumi.Input
 

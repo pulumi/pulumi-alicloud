@@ -22,28 +22,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		typesDs, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			CpuCoreCount: pulumi.IntRef(1),
-// 			MemorySize:   pulumi.Float64Ref(2),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-// 			InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			typesDs, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				CpuCoreCount: pulumi.IntRef(1),
+//				MemorySize:   pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
+//				InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	var rv GetInstanceTypesResult

@@ -21,34 +21,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewRegistryEnterpriseSyncRule(ctx, "default", &cs.RegistryEnterpriseSyncRuleArgs{
-// 			InstanceId:          pulumi.String("my-source-instance-id"),
-// 			NamespaceName:       pulumi.String("my-source-namespace"),
-// 			RepoName:            pulumi.String("my-source-repo"),
-// 			TagFilter:           pulumi.String(".*"),
-// 			TargetInstanceId:    pulumi.String("my-target-instance-id"),
-// 			TargetNamespaceName: pulumi.String("my-target-namespace"),
-// 			TargetRegionId:      pulumi.String("cn-hangzhou"),
-// 			TargetRepoName:      pulumi.String("my-target-repo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewRegistryEnterpriseSyncRule(ctx, "default", &cs.RegistryEnterpriseSyncRuleArgs{
+//				InstanceId:          pulumi.String("my-source-instance-id"),
+//				NamespaceName:       pulumi.String("my-source-namespace"),
+//				RepoName:            pulumi.String("my-source-repo"),
+//				TagFilter:           pulumi.String(".*"),
+//				TargetInstanceId:    pulumi.String("my-target-instance-id"),
+//				TargetNamespaceName: pulumi.String("my-target-namespace"),
+//				TargetRegionId:      pulumi.String("cn-hangzhou"),
+//				TargetRepoName:      pulumi.String("my-target-repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+//
+//	$ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+//
 // ```
 type RegistryEnterpriseSyncRule struct {
 	pulumi.CustomResourceState
@@ -260,7 +265,7 @@ func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithConte
 // RegistryEnterpriseSyncRuleArrayInput is an input type that accepts RegistryEnterpriseSyncRuleArray and RegistryEnterpriseSyncRuleArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseSyncRuleArrayInput` via:
 //
-//          RegistryEnterpriseSyncRuleArray{ RegistryEnterpriseSyncRuleArgs{...} }
+//	RegistryEnterpriseSyncRuleArray{ RegistryEnterpriseSyncRuleArgs{...} }
 type RegistryEnterpriseSyncRuleArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +290,7 @@ func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutput
 // RegistryEnterpriseSyncRuleMapInput is an input type that accepts RegistryEnterpriseSyncRuleMap and RegistryEnterpriseSyncRuleMapOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseSyncRuleMapInput` via:
 //
-//          RegistryEnterpriseSyncRuleMap{ "key": RegistryEnterpriseSyncRuleArgs{...} }
+//	RegistryEnterpriseSyncRuleMap{ "key": RegistryEnterpriseSyncRuleArgs{...} }
 type RegistryEnterpriseSyncRuleMapInput interface {
 	pulumi.Input
 

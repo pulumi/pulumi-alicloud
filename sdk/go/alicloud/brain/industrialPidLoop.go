@@ -17,32 +17,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := brain.NewIndustrialPidLoop(ctx, "example", &brain.IndustrialPidLoopArgs{
-// 			PidLoopConfiguration: pulumi.String("YourLoopConfiguration"),
-// 			PidLoopDcsType:       pulumi.String("standard"),
-// 			PidLoopIsCrucial:     pulumi.Bool(true),
-// 			PidLoopName:          pulumi.String("tf-testAcc"),
-// 			PidLoopType:          pulumi.String("0"),
-// 			PidProjectId:         pulumi.String("856c6b8f-ca63-40a4-xxxx-xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := brain.NewIndustrialPidLoop(ctx, "example", &brain.IndustrialPidLoopArgs{
+//				PidLoopConfiguration: pulumi.String("YourLoopConfiguration"),
+//				PidLoopDcsType:       pulumi.String("standard"),
+//				PidLoopIsCrucial:     pulumi.Bool(true),
+//				PidLoopName:          pulumi.String("tf-testAcc"),
+//				PidLoopType:          pulumi.String("0"),
+//				PidProjectId:         pulumi.String("856c6b8f-ca63-40a4-xxxx-xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Brain Industrial Pid Loop can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
+//
+//	$ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
+//
 // ```
 type IndustrialPidLoop struct {
 	pulumi.CustomResourceState
@@ -222,7 +227,7 @@ func (i *IndustrialPidLoop) ToIndustrialPidLoopOutputWithContext(ctx context.Con
 // IndustrialPidLoopArrayInput is an input type that accepts IndustrialPidLoopArray and IndustrialPidLoopArrayOutput values.
 // You can construct a concrete instance of `IndustrialPidLoopArrayInput` via:
 //
-//          IndustrialPidLoopArray{ IndustrialPidLoopArgs{...} }
+//	IndustrialPidLoopArray{ IndustrialPidLoopArgs{...} }
 type IndustrialPidLoopArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +252,7 @@ func (i IndustrialPidLoopArray) ToIndustrialPidLoopArrayOutputWithContext(ctx co
 // IndustrialPidLoopMapInput is an input type that accepts IndustrialPidLoopMap and IndustrialPidLoopMapOutput values.
 // You can construct a concrete instance of `IndustrialPidLoopMapInput` via:
 //
-//          IndustrialPidLoopMap{ "key": IndustrialPidLoopArgs{...} }
+//	IndustrialPidLoopMap{ "key": IndustrialPidLoopArgs{...} }
 type IndustrialPidLoopMapInput interface {
 	pulumi.Input
 

@@ -30,31 +30,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbase"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
-// 			ColdStorageSize:      pulumi.Int(0),
-// 			CoreDiskSize:         pulumi.Int(400),
-// 			CoreDiskType:         pulumi.String("cloud_efficiency"),
-// 			CoreInstanceQuantity: pulumi.Int(2),
-// 			CoreInstanceType:     pulumi.String("hbase.sn1.large"),
-// 			Engine:               pulumi.String("hbaseue"),
-// 			EngineVersion:        pulumi.String("2.0"),
-// 			MasterInstanceType:   pulumi.String("hbase.sn1.large"),
-// 			PayType:              pulumi.String("PostPaid"),
-// 			VswitchId:            pulumi.String("vsw-123456"),
-// 			ZoneId:               pulumi.String("cn-shenzhen-b"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
+//				ColdStorageSize:      pulumi.Int(0),
+//				CoreDiskSize:         pulumi.Int(400),
+//				CoreDiskType:         pulumi.String("cloud_efficiency"),
+//				CoreInstanceQuantity: pulumi.Int(2),
+//				CoreInstanceType:     pulumi.String("hbase.sn1.large"),
+//				Engine:               pulumi.String("hbaseue"),
+//				EngineVersion:        pulumi.String("2.0"),
+//				MasterInstanceType:   pulumi.String("hbase.sn1.large"),
+//				PayType:              pulumi.String("PostPaid"),
+//				VswitchId:            pulumi.String("vsw-123456"),
+//				ZoneId:               pulumi.String("cn-shenzhen-b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // this is a example for class netType instance. you can find more detail with the examples/hbase dir.
@@ -64,7 +67,9 @@ import (
 // HBase can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+//
+//	$ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -420,7 +425,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -445,7 +450,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -504,7 +509,7 @@ func (o InstanceOutput) CoreDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreDiskSize }).(pulumi.IntPtrOutput)
 }
 
-// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
+// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，“, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 func (o InstanceOutput) CoreDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CoreDiskType }).(pulumi.StringPtrOutput)
 }

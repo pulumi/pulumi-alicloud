@@ -31,7 +31,7 @@ class FunctionAsyncInvokeConfigArgs:
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
-        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration. valid values true or false, default `false`
+        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         pulumi.set(__self__, "function_name", function_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -122,7 +122,7 @@ class FunctionAsyncInvokeConfigArgs:
     @pulumi.getter(name="statefulInvocation")
     def stateful_invocation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Function Compute async job configuration. valid values true or false, default `false`
+        Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         return pulumi.get(self, "stateful_invocation")
 
@@ -153,7 +153,7 @@ class _FunctionAsyncInvokeConfigState:
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
-        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration. valid values true or false, default `false`
+        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         if created_time is not None:
             pulumi.set(__self__, "created_time", created_time)
@@ -274,7 +274,7 @@ class _FunctionAsyncInvokeConfigState:
     @pulumi.getter(name="statefulInvocation")
     def stateful_invocation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Function Compute async job configuration. valid values true or false, default `false`
+        Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         return pulumi.get(self, "stateful_invocation")
 
@@ -375,7 +375,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
-        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration. valid values true or false, default `false`
+        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         ...
     @overload
@@ -532,7 +532,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
-        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration. valid values true or false, default `false`
+        :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -617,7 +617,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     @pulumi.getter(name="statefulInvocation")
     def stateful_invocation(self) -> pulumi.Output[Optional[bool]]:
         """
-        Function Compute async job configuration. valid values true or false, default `false`
+        Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         return pulumi.get(self, "stateful_invocation")
 

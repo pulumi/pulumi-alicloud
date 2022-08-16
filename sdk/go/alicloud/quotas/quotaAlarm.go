@@ -19,36 +19,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := quotas.NewQuotaAlarm(ctx, "example", &quotas.QuotaAlarmArgs{
-// 			ProductCode:     pulumi.String("ecs"),
-// 			QuotaActionCode: pulumi.String("q_prepaid-instance-count-per-once-purchase"),
-// 			QuotaAlarmName:  pulumi.String("tf-testAcc"),
-// 			QuotaDimensions: quotas.QuotaAlarmQuotaDimensionArray{
-// 				&quotas.QuotaAlarmQuotaDimensionArgs{
-// 					Key:   pulumi.String("regionId"),
-// 					Value: pulumi.String("cn-hangzhou"),
-// 				},
-// 			},
-// 			Threshold: pulumi.Float64(100),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := quotas.NewQuotaAlarm(ctx, "example", &quotas.QuotaAlarmArgs{
+//				ProductCode:     pulumi.String("ecs"),
+//				QuotaActionCode: pulumi.String("q_prepaid-instance-count-per-once-purchase"),
+//				QuotaAlarmName:  pulumi.String("tf-testAcc"),
+//				QuotaDimensions: quotas.QuotaAlarmQuotaDimensionArray{
+//					&quotas.QuotaAlarmQuotaDimensionArgs{
+//						Key:   pulumi.String("regionId"),
+//						Value: pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				Threshold: pulumi.Float64(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // Quotas Quota Alarm can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+//
+//	$ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+//
 // ```
 type QuotaAlarm struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *QuotaAlarm) ToQuotaAlarmOutputWithContext(ctx context.Context) QuotaAla
 // QuotaAlarmArrayInput is an input type that accepts QuotaAlarmArray and QuotaAlarmArrayOutput values.
 // You can construct a concrete instance of `QuotaAlarmArrayInput` via:
 //
-//          QuotaAlarmArray{ QuotaAlarmArgs{...} }
+//	QuotaAlarmArray{ QuotaAlarmArgs{...} }
 type QuotaAlarmArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i QuotaAlarmArray) ToQuotaAlarmArrayOutputWithContext(ctx context.Context)
 // QuotaAlarmMapInput is an input type that accepts QuotaAlarmMap and QuotaAlarmMapOutput values.
 // You can construct a concrete instance of `QuotaAlarmMapInput` via:
 //
-//          QuotaAlarmMap{ "key": QuotaAlarmArgs{...} }
+//	QuotaAlarmMap{ "key": QuotaAlarmArgs{...} }
 type QuotaAlarmMapInput interface {
 	pulumi.Input
 

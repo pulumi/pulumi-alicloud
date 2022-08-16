@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
-// 			NameRegex: pulumi.StringRef("^ddosbgp"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 []interface{}
-// 		for _, val0 := range alicloud_ddosbgp_instances.Instance {
-// 			splat0 = append(splat0, val0.Id)
-// 		}
-// 		ctx.Export("instance", splat0)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
+//				NameRegex: pulumi.StringRef("^ddosbgp"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []interface{}
+//			for _, val0 := range alicloud_ddosbgp_instances.Instance {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("instance", splat0)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDdosBgpInstances(ctx *pulumi.Context, args *GetDdosBgpInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpInstancesResult, error) {
 	var rv GetDdosBgpInstancesResult

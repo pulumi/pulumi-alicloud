@@ -36,7 +36,7 @@ type ClusterAdditionalVolume struct {
 // ClusterAdditionalVolumeInput is an input type that accepts ClusterAdditionalVolumeArgs and ClusterAdditionalVolumeOutput values.
 // You can construct a concrete instance of `ClusterAdditionalVolumeInput` via:
 //
-//          ClusterAdditionalVolumeArgs{...}
+//	ClusterAdditionalVolumeArgs{...}
 type ClusterAdditionalVolumeInput interface {
 	pulumi.Input
 
@@ -82,7 +82,7 @@ func (i ClusterAdditionalVolumeArgs) ToClusterAdditionalVolumeOutputWithContext(
 // ClusterAdditionalVolumeArrayInput is an input type that accepts ClusterAdditionalVolumeArray and ClusterAdditionalVolumeArrayOutput values.
 // You can construct a concrete instance of `ClusterAdditionalVolumeArrayInput` via:
 //
-//          ClusterAdditionalVolumeArray{ ClusterAdditionalVolumeArgs{...} }
+//	ClusterAdditionalVolumeArray{ ClusterAdditionalVolumeArgs{...} }
 type ClusterAdditionalVolumeArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +196,7 @@ type ClusterAdditionalVolumeRole struct {
 // ClusterAdditionalVolumeRoleInput is an input type that accepts ClusterAdditionalVolumeRoleArgs and ClusterAdditionalVolumeRoleOutput values.
 // You can construct a concrete instance of `ClusterAdditionalVolumeRoleInput` via:
 //
-//          ClusterAdditionalVolumeRoleArgs{...}
+//	ClusterAdditionalVolumeRoleArgs{...}
 type ClusterAdditionalVolumeRoleInput interface {
 	pulumi.Input
 
@@ -224,7 +224,7 @@ func (i ClusterAdditionalVolumeRoleArgs) ToClusterAdditionalVolumeRoleOutputWith
 // ClusterAdditionalVolumeRoleArrayInput is an input type that accepts ClusterAdditionalVolumeRoleArray and ClusterAdditionalVolumeRoleArrayOutput values.
 // You can construct a concrete instance of `ClusterAdditionalVolumeRoleArrayInput` via:
 //
-//          ClusterAdditionalVolumeRoleArray{ ClusterAdditionalVolumeRoleArgs{...} }
+//	ClusterAdditionalVolumeRoleArray{ ClusterAdditionalVolumeRoleArgs{...} }
 type ClusterAdditionalVolumeRoleArrayInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ type ClusterApplication struct {
 // ClusterApplicationInput is an input type that accepts ClusterApplicationArgs and ClusterApplicationOutput values.
 // You can construct a concrete instance of `ClusterApplicationInput` via:
 //
-//          ClusterApplicationArgs{...}
+//	ClusterApplicationArgs{...}
 type ClusterApplicationInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (i ClusterApplicationArgs) ToClusterApplicationOutputWithContext(ctx contex
 // ClusterApplicationArrayInput is an input type that accepts ClusterApplicationArray and ClusterApplicationArrayOutput values.
 // You can construct a concrete instance of `ClusterApplicationArrayInput` via:
 //
-//          ClusterApplicationArray{ ClusterApplicationArgs{...} }
+//	ClusterApplicationArray{ ClusterApplicationArgs{...} }
 type ClusterApplicationArrayInput interface {
 	pulumi.Input
 
@@ -392,7 +392,7 @@ type ClusterPostInstallScript struct {
 // ClusterPostInstallScriptInput is an input type that accepts ClusterPostInstallScriptArgs and ClusterPostInstallScriptOutput values.
 // You can construct a concrete instance of `ClusterPostInstallScriptInput` via:
 //
-//          ClusterPostInstallScriptArgs{...}
+//	ClusterPostInstallScriptArgs{...}
 type ClusterPostInstallScriptInput interface {
 	pulumi.Input
 
@@ -422,7 +422,7 @@ func (i ClusterPostInstallScriptArgs) ToClusterPostInstallScriptOutputWithContex
 // ClusterPostInstallScriptArrayInput is an input type that accepts ClusterPostInstallScriptArray and ClusterPostInstallScriptArrayOutput values.
 // You can construct a concrete instance of `ClusterPostInstallScriptArrayInput` via:
 //
-//          ClusterPostInstallScriptArray{ ClusterPostInstallScriptArgs{...} }
+//	ClusterPostInstallScriptArray{ ClusterPostInstallScriptArgs{...} }
 type ClusterPostInstallScriptArrayInput interface {
 	pulumi.Input
 
@@ -559,7 +559,7 @@ type GetClustersCluster struct {
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
 // You can construct a concrete instance of `GetClustersClusterInput` via:
 //
-//          GetClustersClusterArgs{...}
+//	GetClustersClusterArgs{...}
 type GetClustersClusterInput interface {
 	pulumi.Input
 
@@ -650,7 +650,7 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
-//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+//	GetClustersClusterArray{ GetClustersClusterArgs{...} }
 type GetClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -874,7 +874,7 @@ type GetClustersClusterApplication struct {
 // GetClustersClusterApplicationInput is an input type that accepts GetClustersClusterApplicationArgs and GetClustersClusterApplicationOutput values.
 // You can construct a concrete instance of `GetClustersClusterApplicationInput` via:
 //
-//          GetClustersClusterApplicationArgs{...}
+//	GetClustersClusterApplicationArgs{...}
 type GetClustersClusterApplicationInput interface {
 	pulumi.Input
 
@@ -901,7 +901,7 @@ func (i GetClustersClusterApplicationArgs) ToGetClustersClusterApplicationOutput
 // GetClustersClusterApplicationArrayInput is an input type that accepts GetClustersClusterApplicationArray and GetClustersClusterApplicationArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterApplicationArrayInput` via:
 //
-//          GetClustersClusterApplicationArray{ GetClustersClusterApplicationArgs{...} }
+//	GetClustersClusterApplicationArray{ GetClustersClusterApplicationArgs{...} }
 type GetClustersClusterApplicationArrayInput interface {
 	pulumi.Input
 
@@ -969,7 +969,7 @@ type GetClustersClusterPostInstallScript struct {
 // GetClustersClusterPostInstallScriptInput is an input type that accepts GetClustersClusterPostInstallScriptArgs and GetClustersClusterPostInstallScriptOutput values.
 // You can construct a concrete instance of `GetClustersClusterPostInstallScriptInput` via:
 //
-//          GetClustersClusterPostInstallScriptArgs{...}
+//	GetClustersClusterPostInstallScriptArgs{...}
 type GetClustersClusterPostInstallScriptInput interface {
 	pulumi.Input
 
@@ -997,7 +997,7 @@ func (i GetClustersClusterPostInstallScriptArgs) ToGetClustersClusterPostInstall
 // GetClustersClusterPostInstallScriptArrayInput is an input type that accepts GetClustersClusterPostInstallScriptArray and GetClustersClusterPostInstallScriptArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterPostInstallScriptArrayInput` via:
 //
-//          GetClustersClusterPostInstallScriptArray{ GetClustersClusterPostInstallScriptArgs{...} }
+//	GetClustersClusterPostInstallScriptArray{ GetClustersClusterPostInstallScriptArgs{...} }
 type GetClustersClusterPostInstallScriptArrayInput interface {
 	pulumi.Input
 
@@ -1105,7 +1105,7 @@ type GetJobTemplatesTemplate struct {
 // GetJobTemplatesTemplateInput is an input type that accepts GetJobTemplatesTemplateArgs and GetJobTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetJobTemplatesTemplateInput` via:
 //
-//          GetJobTemplatesTemplateArgs{...}
+//	GetJobTemplatesTemplateArgs{...}
 type GetJobTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -1169,7 +1169,7 @@ func (i GetJobTemplatesTemplateArgs) ToGetJobTemplatesTemplateOutputWithContext(
 // GetJobTemplatesTemplateArrayInput is an input type that accepts GetJobTemplatesTemplateArray and GetJobTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetJobTemplatesTemplateArrayInput` via:
 //
-//          GetJobTemplatesTemplateArray{ GetJobTemplatesTemplateArgs{...} }
+//	GetJobTemplatesTemplateArray{ GetJobTemplatesTemplateArgs{...} }
 type GetJobTemplatesTemplateArrayInput interface {
 	pulumi.Input
 

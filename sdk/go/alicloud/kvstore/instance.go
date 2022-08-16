@@ -14,44 +14,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
-// 			Config: pulumi.AnyMap{
-// 				"appendonly":             pulumi.Any("yes"),
-// 				"lazyfree-lazy-eviction": pulumi.Any("yes"),
-// 			},
-// 			DbInstanceName:  pulumi.String("tf-test-basic"),
-// 			EngineVersion:   pulumi.String("4.0"),
-// 			InstanceClass:   pulumi.String("redis.master.large.default"),
-// 			InstanceType:    pulumi.String("Redis"),
-// 			ResourceGroupId: pulumi.String("rg-123456"),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.23.12.24"),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Test"),
-// 			},
-// 			VswitchId: pulumi.String("vsw-123456"),
-// 			ZoneId:    pulumi.String("cn-beijing-h"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				DbInstanceName:  pulumi.String("tf-test-basic"),
+//				EngineVersion:   pulumi.String("4.0"),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				ResourceGroupId: pulumi.String("rg-123456"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Test"),
+//				},
+//				VswitchId: pulumi.String("vsw-123456"),
+//				ZoneId:    pulumi.String("cn-beijing-h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Transform To PrePaid
@@ -59,40 +62,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
-// 			Config: pulumi.AnyMap{
-// 				"appendonly":             pulumi.Any("yes"),
-// 				"lazyfree-lazy-eviction": pulumi.Any("yes"),
-// 			},
-// 			DbInstanceName:  pulumi.String("tf-test-basic"),
-// 			EngineVersion:   pulumi.String("4.0"),
-// 			InstanceClass:   pulumi.String("redis.master.large.default"),
-// 			InstanceType:    pulumi.String("Redis"),
-// 			PaymentType:     pulumi.String("PrePaid"),
-// 			Period:          pulumi.String("12"),
-// 			ResourceGroupId: pulumi.String("rg-123456"),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.23.12.24"),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Test"),
-// 			},
-// 			VswitchId: pulumi.String("vsw-123456"),
-// 			ZoneId:    pulumi.String("cn-beijing-h"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				DbInstanceName:  pulumi.String("tf-test-basic"),
+//				EngineVersion:   pulumi.String("4.0"),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				PaymentType:     pulumi.String("PrePaid"),
+//				Period:          pulumi.String("12"),
+//				ResourceGroupId: pulumi.String("rg-123456"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Test"),
+//				},
+//				VswitchId: pulumi.String("vsw-123456"),
+//				ZoneId:    pulumi.String("cn-beijing-h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Modify Private Connection String
@@ -100,39 +106,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
-// 			Config: pulumi.AnyMap{
-// 				"appendonly":             pulumi.Any("yes"),
-// 				"lazyfree-lazy-eviction": pulumi.Any("yes"),
-// 			},
-// 			DbInstanceName:          pulumi.String("tf-test-basic"),
-// 			EngineVersion:           pulumi.String("4.0"),
-// 			InstanceClass:           pulumi.String("redis.master.large.default"),
-// 			InstanceType:            pulumi.String("Redis"),
-// 			PrivateConnectionPrefix: pulumi.String("privateconnectionstringprefix"),
-// 			ResourceGroupId:         pulumi.String("rg-123456"),
-// 			SecurityIps: pulumi.StringArray{
-// 				pulumi.String("10.23.12.24"),
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Test"),
-// 			},
-// 			VswitchId: pulumi.String("vsw-123456"),
-// 			ZoneId:    pulumi.String("cn-beijing-h"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kvstore.NewInstance(ctx, "example", &kvstore.InstanceArgs{
+//				Config: pulumi.AnyMap{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				DbInstanceName:          pulumi.String("tf-test-basic"),
+//				EngineVersion:           pulumi.String("4.0"),
+//				InstanceClass:           pulumi.String("redis.master.large.default"),
+//				InstanceType:            pulumi.String("Redis"),
+//				PrivateConnectionPrefix: pulumi.String("privateconnectionstringprefix"),
+//				ResourceGroupId:         pulumi.String("rg-123456"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Test"),
+//				},
+//				VswitchId: pulumi.String("vsw-123456"),
+//				ZoneId:    pulumi.String("cn-beijing-h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -140,7 +149,9 @@ import (
 // KVStore instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+//
+//	$ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -879,7 +890,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -904,7 +915,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

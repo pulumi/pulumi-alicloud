@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
-// 			PaymentType:  pulumi.String("Subscription"),
-// 			Period:       pulumi.Int(1),
-// 			InstanceType: pulumi.String("Advanced"),
-// 			InstanceName: pulumi.String("name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cr.NewChartNamespace(ctx, "defaultChartNamespace", &cr.ChartNamespaceArgs{
-// 			InstanceId:    defaultRegistryEnterpriseInstance.ID(),
-// 			NamespaceName: pulumi.String("name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:  pulumi.String("Subscription"),
+//				Period:       pulumi.Int(1),
+//				InstanceType: pulumi.String("Advanced"),
+//				InstanceName: pulumi.String("name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewChartNamespace(ctx, "defaultChartNamespace", &cr.ChartNamespaceArgs{
+//				InstanceId:    defaultRegistryEnterpriseInstance.ID(),
+//				NamespaceName: pulumi.String("name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // CR Chart Namespace can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
+//
+//	$ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
+//
 // ```
 type ChartNamespace struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *ChartNamespace) ToChartNamespaceOutputWithContext(ctx context.Context) 
 // ChartNamespaceArrayInput is an input type that accepts ChartNamespaceArray and ChartNamespaceArrayOutput values.
 // You can construct a concrete instance of `ChartNamespaceArrayInput` via:
 //
-//          ChartNamespaceArray{ ChartNamespaceArgs{...} }
+//	ChartNamespaceArray{ ChartNamespaceArgs{...} }
 type ChartNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i ChartNamespaceArray) ToChartNamespaceArrayOutputWithContext(ctx context.
 // ChartNamespaceMapInput is an input type that accepts ChartNamespaceMap and ChartNamespaceMapOutput values.
 // You can construct a concrete instance of `ChartNamespaceMapInput` via:
 //
-//          ChartNamespaceMap{ "key": ChartNamespaceArgs{...} }
+//	ChartNamespaceMap{ "key": ChartNamespaceArgs{...} }
 type ChartNamespaceMapInput interface {
 	pulumi.Input
 

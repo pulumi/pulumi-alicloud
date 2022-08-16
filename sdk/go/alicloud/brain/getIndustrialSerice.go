@@ -22,21 +22,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := brain.GetIndustrialSerice(ctx, &brain.GetIndustrialSericeArgs{
-// 			Enable: pulumi.StringRef("On"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := brain.GetIndustrialSerice(ctx, &brain.GetIndustrialSericeArgs{
+//				Enable: pulumi.StringRef("On"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIndustrialSerice(ctx *pulumi.Context, args *GetIndustrialSericeArgs, opts ...pulumi.InvokeOption) (*GetIndustrialSericeResult, error) {
 	var rv GetIndustrialSericeResult

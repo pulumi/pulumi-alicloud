@@ -20,7 +20,9 @@ import (
 // The network acl can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+//
+//	$ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+//
 // ```
 type NetworkAcl struct {
 	pulumi.CustomResourceState
@@ -187,7 +189,7 @@ func (i *NetworkAcl) ToNetworkAclOutputWithContext(ctx context.Context) NetworkA
 // NetworkAclArrayInput is an input type that accepts NetworkAclArray and NetworkAclArrayOutput values.
 // You can construct a concrete instance of `NetworkAclArrayInput` via:
 //
-//          NetworkAclArray{ NetworkAclArgs{...} }
+//	NetworkAclArray{ NetworkAclArgs{...} }
 type NetworkAclArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +214,7 @@ func (i NetworkAclArray) ToNetworkAclArrayOutputWithContext(ctx context.Context)
 // NetworkAclMapInput is an input type that accepts NetworkAclMap and NetworkAclMapOutput values.
 // You can construct a concrete instance of `NetworkAclMapInput` via:
 //
-//          NetworkAclMap{ "key": NetworkAclArgs{...} }
+//	NetworkAclMap{ "key": NetworkAclArgs{...} }
 type NetworkAclMapInput interface {
 	pulumi.Input
 

@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := sag.GetSmartagFlowLogs(ctx, &sag.GetSmartagFlowLogsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("smartagFlowLogId1", ids.Logs[0].Id)
-// 		nameRegex, err := sag.GetSmartagFlowLogs(ctx, &sag.GetSmartagFlowLogsArgs{
-// 			NameRegex: pulumi.StringRef("^my-FlowLog"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("smartagFlowLogId2", nameRegex.Logs[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := sag.GetSmartagFlowLogs(ctx, &sag.GetSmartagFlowLogsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("smartagFlowLogId1", ids.Logs[0].Id)
+//			nameRegex, err := sag.GetSmartagFlowLogs(ctx, &sag.GetSmartagFlowLogsArgs{
+//				NameRegex: pulumi.StringRef("^my-FlowLog"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("smartagFlowLogId2", nameRegex.Logs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSmartagFlowLogs(ctx *pulumi.Context, args *GetSmartagFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetSmartagFlowLogsResult, error) {
 	var rv GetSmartagFlowLogsResult

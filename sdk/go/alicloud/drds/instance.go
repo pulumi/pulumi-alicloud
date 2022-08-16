@@ -27,26 +27,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := drds.NewInstance(ctx, "default", &drds.InstanceArgs{
-// 			Description:        pulumi.String("drds instance"),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			InstanceSeries:     pulumi.String("drds.sn1.4c8g"),
-// 			Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
-// 			VswitchId:          pulumi.String("vsw-bp1jlu3swk8rq2yoi40ey"),
-// 			ZoneId:             pulumi.String("cn-hangzhou-e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := drds.NewInstance(ctx, "default", &drds.InstanceArgs{
+//				Description:        pulumi.String("drds instance"),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				InstanceSeries:     pulumi.String("drds.sn1.4c8g"),
+//				Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
+//				VswitchId:          pulumi.String("vsw-bp1jlu3swk8rq2yoi40ey"),
+//				ZoneId:             pulumi.String("cn-hangzhou-e"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+//
+//	$ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -262,7 +267,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +292,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

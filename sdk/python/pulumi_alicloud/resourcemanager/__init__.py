@@ -8,10 +8,12 @@ import typing
 from .account import *
 from .control_policy import *
 from .control_policy_attachment import *
+from .delegated_administrator import *
 from .folder import *
 from .get_accounts import *
 from .get_control_policies import *
 from .get_control_policy_attachments import *
+from .get_delegated_administrators import *
 from .get_folders import *
 from .get_handshakes import *
 from .get_policies import *

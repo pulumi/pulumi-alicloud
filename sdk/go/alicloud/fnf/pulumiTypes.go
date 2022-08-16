@@ -32,7 +32,7 @@ type GetExecutionsExecution struct {
 // GetExecutionsExecutionInput is an input type that accepts GetExecutionsExecutionArgs and GetExecutionsExecutionOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionInput` via:
 //
-//          GetExecutionsExecutionArgs{...}
+//	GetExecutionsExecutionArgs{...}
 type GetExecutionsExecutionInput interface {
 	pulumi.Input
 
@@ -74,7 +74,7 @@ func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutputWithContext(ct
 // GetExecutionsExecutionArrayInput is an input type that accepts GetExecutionsExecutionArray and GetExecutionsExecutionArrayOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionArrayInput` via:
 //
-//          GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
+//	GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
 type GetExecutionsExecutionArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +192,7 @@ type GetFlowsFlow struct {
 // GetFlowsFlowInput is an input type that accepts GetFlowsFlowArgs and GetFlowsFlowOutput values.
 // You can construct a concrete instance of `GetFlowsFlowInput` via:
 //
-//          GetFlowsFlowArgs{...}
+//	GetFlowsFlowArgs{...}
 type GetFlowsFlowInput interface {
 	pulumi.Input
 
@@ -234,7 +234,7 @@ func (i GetFlowsFlowArgs) ToGetFlowsFlowOutputWithContext(ctx context.Context) G
 // GetFlowsFlowArrayInput is an input type that accepts GetFlowsFlowArray and GetFlowsFlowArrayOutput values.
 // You can construct a concrete instance of `GetFlowsFlowArrayInput` via:
 //
-//          GetFlowsFlowArray{ GetFlowsFlowArgs{...} }
+//	GetFlowsFlowArray{ GetFlowsFlowArgs{...} }
 type GetFlowsFlowArrayInput interface {
 	pulumi.Input
 
@@ -352,7 +352,7 @@ type GetSchedulesSchedule struct {
 // GetSchedulesScheduleInput is an input type that accepts GetSchedulesScheduleArgs and GetSchedulesScheduleOutput values.
 // You can construct a concrete instance of `GetSchedulesScheduleInput` via:
 //
-//          GetSchedulesScheduleArgs{...}
+//	GetSchedulesScheduleArgs{...}
 type GetSchedulesScheduleInput interface {
 	pulumi.Input
 
@@ -394,7 +394,7 @@ func (i GetSchedulesScheduleArgs) ToGetSchedulesScheduleOutputWithContext(ctx co
 // GetSchedulesScheduleArrayInput is an input type that accepts GetSchedulesScheduleArray and GetSchedulesScheduleArrayOutput values.
 // You can construct a concrete instance of `GetSchedulesScheduleArrayInput` via:
 //
-//          GetSchedulesScheduleArray{ GetSchedulesScheduleArgs{...} }
+//	GetSchedulesScheduleArray{ GetSchedulesScheduleArgs{...} }
 type GetSchedulesScheduleArrayInput interface {
 	pulumi.Input
 

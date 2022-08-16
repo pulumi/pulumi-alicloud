@@ -31,47 +31,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultCluster, err := cassandra.NewCluster(ctx, "defaultCluster", &cassandra.ClusterArgs{
-// 			ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
-// 			DataCenterName:    pulumi.String("dc-1"),
-// 			AutoRenew:         pulumi.Bool(false),
-// 			InstanceType:      pulumi.String("cassandra.c.large"),
-// 			MajorVersion:      pulumi.String("3.11"),
-// 			NodeCount:         pulumi.Int(2),
-// 			PayType:           pulumi.String("PayAsYouGo"),
-// 			VswitchId:         pulumi.String("vsw-xxxx1"),
-// 			DiskSize:          pulumi.Int(160),
-// 			DiskType:          pulumi.String("cloud_ssd"),
-// 			MaintainStartTime: pulumi.String("18:00Z"),
-// 			MaintainEndTime:   pulumi.String("20:00Z"),
-// 			IpWhite:           pulumi.String("127.0.0.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cassandra.NewDataCenter(ctx, "defaultDataCenter", &cassandra.DataCenterArgs{
-// 			ClusterId:      defaultCluster.ID(),
-// 			DataCenterName: pulumi.String("dc-2"),
-// 			AutoRenew:      pulumi.Bool(false),
-// 			InstanceType:   pulumi.String("cassandra.c.large"),
-// 			NodeCount:      pulumi.Int(2),
-// 			PayType:        pulumi.String("PayAsYouGo"),
-// 			VswitchId:      pulumi.String("vsw-xxxx2"),
-// 			DiskSize:       pulumi.Int(160),
-// 			DiskType:       pulumi.String("cloud_ssd"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCluster, err := cassandra.NewCluster(ctx, "defaultCluster", &cassandra.ClusterArgs{
+//				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
+//				DataCenterName:    pulumi.String("dc-1"),
+//				AutoRenew:         pulumi.Bool(false),
+//				InstanceType:      pulumi.String("cassandra.c.large"),
+//				MajorVersion:      pulumi.String("3.11"),
+//				NodeCount:         pulumi.Int(2),
+//				PayType:           pulumi.String("PayAsYouGo"),
+//				VswitchId:         pulumi.String("vsw-xxxx1"),
+//				DiskSize:          pulumi.Int(160),
+//				DiskType:          pulumi.String("cloud_ssd"),
+//				MaintainStartTime: pulumi.String("18:00Z"),
+//				MaintainEndTime:   pulumi.String("20:00Z"),
+//				IpWhite:           pulumi.String("127.0.0.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cassandra.NewDataCenter(ctx, "defaultDataCenter", &cassandra.DataCenterArgs{
+//				ClusterId:      defaultCluster.ID(),
+//				DataCenterName: pulumi.String("dc-2"),
+//				AutoRenew:      pulumi.Bool(false),
+//				InstanceType:   pulumi.String("cassandra.c.large"),
+//				NodeCount:      pulumi.Int(2),
+//				PayType:        pulumi.String("PayAsYouGo"),
+//				VswitchId:      pulumi.String("vsw-xxxx2"),
+//				DiskSize:       pulumi.Int(160),
+//				DiskType:       pulumi.String("cloud_ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
@@ -81,7 +84,9 @@ import (
 // If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+//
+//	$ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+//
 // ```
 type DataCenter struct {
 	pulumi.CustomResourceState
@@ -318,7 +323,7 @@ func (i *DataCenter) ToDataCenterOutputWithContext(ctx context.Context) DataCent
 // DataCenterArrayInput is an input type that accepts DataCenterArray and DataCenterArrayOutput values.
 // You can construct a concrete instance of `DataCenterArrayInput` via:
 //
-//          DataCenterArray{ DataCenterArgs{...} }
+//	DataCenterArray{ DataCenterArgs{...} }
 type DataCenterArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +348,7 @@ func (i DataCenterArray) ToDataCenterArrayOutputWithContext(ctx context.Context)
 // DataCenterMapInput is an input type that accepts DataCenterMap and DataCenterMapOutput values.
 // You can construct a concrete instance of `DataCenterMapInput` via:
 //
-//          DataCenterMap{ "key": DataCenterArgs{...} }
+//	DataCenterMap{ "key": DataCenterArgs{...} }
 type DataCenterMapInput interface {
 	pulumi.Input
 

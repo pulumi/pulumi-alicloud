@@ -24,7 +24,7 @@ type AlarmEscalationsCritical struct {
 // AlarmEscalationsCriticalInput is an input type that accepts AlarmEscalationsCriticalArgs and AlarmEscalationsCriticalOutput values.
 // You can construct a concrete instance of `AlarmEscalationsCriticalInput` via:
 //
-//          AlarmEscalationsCriticalArgs{...}
+//	AlarmEscalationsCriticalArgs{...}
 type AlarmEscalationsCriticalInput interface {
 	pulumi.Input
 
@@ -66,11 +66,11 @@ func (i AlarmEscalationsCriticalArgs) ToAlarmEscalationsCriticalPtrOutputWithCon
 // AlarmEscalationsCriticalPtrInput is an input type that accepts AlarmEscalationsCriticalArgs, AlarmEscalationsCriticalPtr and AlarmEscalationsCriticalPtrOutput values.
 // You can construct a concrete instance of `AlarmEscalationsCriticalPtrInput` via:
 //
-//          AlarmEscalationsCriticalArgs{...}
+//	        AlarmEscalationsCriticalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlarmEscalationsCriticalPtrInput interface {
 	pulumi.Input
 
@@ -218,7 +218,7 @@ type AlarmEscalationsInfo struct {
 // AlarmEscalationsInfoInput is an input type that accepts AlarmEscalationsInfoArgs and AlarmEscalationsInfoOutput values.
 // You can construct a concrete instance of `AlarmEscalationsInfoInput` via:
 //
-//          AlarmEscalationsInfoArgs{...}
+//	AlarmEscalationsInfoArgs{...}
 type AlarmEscalationsInfoInput interface {
 	pulumi.Input
 
@@ -260,11 +260,11 @@ func (i AlarmEscalationsInfoArgs) ToAlarmEscalationsInfoPtrOutputWithContext(ctx
 // AlarmEscalationsInfoPtrInput is an input type that accepts AlarmEscalationsInfoArgs, AlarmEscalationsInfoPtr and AlarmEscalationsInfoPtrOutput values.
 // You can construct a concrete instance of `AlarmEscalationsInfoPtrInput` via:
 //
-//          AlarmEscalationsInfoArgs{...}
+//	        AlarmEscalationsInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlarmEscalationsInfoPtrInput interface {
 	pulumi.Input
 
@@ -412,7 +412,7 @@ type AlarmEscalationsWarn struct {
 // AlarmEscalationsWarnInput is an input type that accepts AlarmEscalationsWarnArgs and AlarmEscalationsWarnOutput values.
 // You can construct a concrete instance of `AlarmEscalationsWarnInput` via:
 //
-//          AlarmEscalationsWarnArgs{...}
+//	AlarmEscalationsWarnArgs{...}
 type AlarmEscalationsWarnInput interface {
 	pulumi.Input
 
@@ -454,11 +454,11 @@ func (i AlarmEscalationsWarnArgs) ToAlarmEscalationsWarnPtrOutputWithContext(ctx
 // AlarmEscalationsWarnPtrInput is an input type that accepts AlarmEscalationsWarnArgs, AlarmEscalationsWarnPtr and AlarmEscalationsWarnPtrOutput values.
 // You can construct a concrete instance of `AlarmEscalationsWarnPtrInput` via:
 //
-//          AlarmEscalationsWarnArgs{...}
+//	        AlarmEscalationsWarnArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlarmEscalationsWarnPtrInput interface {
 	pulumi.Input
 
@@ -606,7 +606,7 @@ type AlarmPrometheus struct {
 // AlarmPrometheusInput is an input type that accepts AlarmPrometheusArgs and AlarmPrometheusOutput values.
 // You can construct a concrete instance of `AlarmPrometheusInput` via:
 //
-//          AlarmPrometheusArgs{...}
+//	AlarmPrometheusArgs{...}
 type AlarmPrometheusInput interface {
 	pulumi.Input
 
@@ -640,7 +640,7 @@ func (i AlarmPrometheusArgs) ToAlarmPrometheusOutputWithContext(ctx context.Cont
 // AlarmPrometheusArrayInput is an input type that accepts AlarmPrometheusArray and AlarmPrometheusArrayOutput values.
 // You can construct a concrete instance of `AlarmPrometheusArrayInput` via:
 //
-//          AlarmPrometheusArray{ AlarmPrometheusArgs{...} }
+//	AlarmPrometheusArray{ AlarmPrometheusArgs{...} }
 type AlarmPrometheusArrayInput interface {
 	pulumi.Input
 
@@ -726,7 +726,7 @@ type DynamicTagGroupMatchExpress struct {
 // DynamicTagGroupMatchExpressInput is an input type that accepts DynamicTagGroupMatchExpressArgs and DynamicTagGroupMatchExpressOutput values.
 // You can construct a concrete instance of `DynamicTagGroupMatchExpressInput` via:
 //
-//          DynamicTagGroupMatchExpressArgs{...}
+//	DynamicTagGroupMatchExpressArgs{...}
 type DynamicTagGroupMatchExpressInput interface {
 	pulumi.Input
 
@@ -756,7 +756,7 @@ func (i DynamicTagGroupMatchExpressArgs) ToDynamicTagGroupMatchExpressOutputWith
 // DynamicTagGroupMatchExpressArrayInput is an input type that accepts DynamicTagGroupMatchExpressArray and DynamicTagGroupMatchExpressArrayOutput values.
 // You can construct a concrete instance of `DynamicTagGroupMatchExpressArrayInput` via:
 //
-//          DynamicTagGroupMatchExpressArray{ DynamicTagGroupMatchExpressArgs{...} }
+//	DynamicTagGroupMatchExpressArray{ DynamicTagGroupMatchExpressArgs{...} }
 type DynamicTagGroupMatchExpressArrayInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ type GroupMetricRuleEscalations struct {
 // GroupMetricRuleEscalationsInput is an input type that accepts GroupMetricRuleEscalationsArgs and GroupMetricRuleEscalationsOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsInput` via:
 //
-//          GroupMetricRuleEscalationsArgs{...}
+//	GroupMetricRuleEscalationsArgs{...}
 type GroupMetricRuleEscalationsInput interface {
 	pulumi.Input
 
@@ -874,11 +874,11 @@ func (i GroupMetricRuleEscalationsArgs) ToGroupMetricRuleEscalationsPtrOutputWit
 // GroupMetricRuleEscalationsPtrInput is an input type that accepts GroupMetricRuleEscalationsArgs, GroupMetricRuleEscalationsPtr and GroupMetricRuleEscalationsPtrOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsPtrInput` via:
 //
-//          GroupMetricRuleEscalationsArgs{...}
+//	        GroupMetricRuleEscalationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GroupMetricRuleEscalationsPtrInput interface {
 	pulumi.Input
 
@@ -1011,7 +1011,7 @@ type GroupMetricRuleEscalationsCritical struct {
 // GroupMetricRuleEscalationsCriticalInput is an input type that accepts GroupMetricRuleEscalationsCriticalArgs and GroupMetricRuleEscalationsCriticalOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsCriticalInput` via:
 //
-//          GroupMetricRuleEscalationsCriticalArgs{...}
+//	GroupMetricRuleEscalationsCriticalArgs{...}
 type GroupMetricRuleEscalationsCriticalInput interface {
 	pulumi.Input
 
@@ -1053,11 +1053,11 @@ func (i GroupMetricRuleEscalationsCriticalArgs) ToGroupMetricRuleEscalationsCrit
 // GroupMetricRuleEscalationsCriticalPtrInput is an input type that accepts GroupMetricRuleEscalationsCriticalArgs, GroupMetricRuleEscalationsCriticalPtr and GroupMetricRuleEscalationsCriticalPtrOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsCriticalPtrInput` via:
 //
-//          GroupMetricRuleEscalationsCriticalArgs{...}
+//	        GroupMetricRuleEscalationsCriticalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GroupMetricRuleEscalationsCriticalPtrInput interface {
 	pulumi.Input
 
@@ -1205,7 +1205,7 @@ type GroupMetricRuleEscalationsInfo struct {
 // GroupMetricRuleEscalationsInfoInput is an input type that accepts GroupMetricRuleEscalationsInfoArgs and GroupMetricRuleEscalationsInfoOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsInfoInput` via:
 //
-//          GroupMetricRuleEscalationsInfoArgs{...}
+//	GroupMetricRuleEscalationsInfoArgs{...}
 type GroupMetricRuleEscalationsInfoInput interface {
 	pulumi.Input
 
@@ -1247,11 +1247,11 @@ func (i GroupMetricRuleEscalationsInfoArgs) ToGroupMetricRuleEscalationsInfoPtrO
 // GroupMetricRuleEscalationsInfoPtrInput is an input type that accepts GroupMetricRuleEscalationsInfoArgs, GroupMetricRuleEscalationsInfoPtr and GroupMetricRuleEscalationsInfoPtrOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsInfoPtrInput` via:
 //
-//          GroupMetricRuleEscalationsInfoArgs{...}
+//	        GroupMetricRuleEscalationsInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GroupMetricRuleEscalationsInfoPtrInput interface {
 	pulumi.Input
 
@@ -1399,7 +1399,7 @@ type GroupMetricRuleEscalationsWarn struct {
 // GroupMetricRuleEscalationsWarnInput is an input type that accepts GroupMetricRuleEscalationsWarnArgs and GroupMetricRuleEscalationsWarnOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsWarnInput` via:
 //
-//          GroupMetricRuleEscalationsWarnArgs{...}
+//	GroupMetricRuleEscalationsWarnArgs{...}
 type GroupMetricRuleEscalationsWarnInput interface {
 	pulumi.Input
 
@@ -1441,11 +1441,11 @@ func (i GroupMetricRuleEscalationsWarnArgs) ToGroupMetricRuleEscalationsWarnPtrO
 // GroupMetricRuleEscalationsWarnPtrInput is an input type that accepts GroupMetricRuleEscalationsWarnArgs, GroupMetricRuleEscalationsWarnPtr and GroupMetricRuleEscalationsWarnPtrOutput values.
 // You can construct a concrete instance of `GroupMetricRuleEscalationsWarnPtrInput` via:
 //
-//          GroupMetricRuleEscalationsWarnArgs{...}
+//	        GroupMetricRuleEscalationsWarnArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GroupMetricRuleEscalationsWarnPtrInput interface {
 	pulumi.Input
 
@@ -1589,7 +1589,7 @@ type HybridMonitorSlsTaskAttachLabel struct {
 // HybridMonitorSlsTaskAttachLabelInput is an input type that accepts HybridMonitorSlsTaskAttachLabelArgs and HybridMonitorSlsTaskAttachLabelOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskAttachLabelInput` via:
 //
-//          HybridMonitorSlsTaskAttachLabelArgs{...}
+//	HybridMonitorSlsTaskAttachLabelArgs{...}
 type HybridMonitorSlsTaskAttachLabelInput interface {
 	pulumi.Input
 
@@ -1619,7 +1619,7 @@ func (i HybridMonitorSlsTaskAttachLabelArgs) ToHybridMonitorSlsTaskAttachLabelOu
 // HybridMonitorSlsTaskAttachLabelArrayInput is an input type that accepts HybridMonitorSlsTaskAttachLabelArray and HybridMonitorSlsTaskAttachLabelArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskAttachLabelArrayInput` via:
 //
-//          HybridMonitorSlsTaskAttachLabelArray{ HybridMonitorSlsTaskAttachLabelArgs{...} }
+//	HybridMonitorSlsTaskAttachLabelArray{ HybridMonitorSlsTaskAttachLabelArgs{...} }
 type HybridMonitorSlsTaskAttachLabelArrayInput interface {
 	pulumi.Input
 
@@ -1699,7 +1699,7 @@ type HybridMonitorSlsTaskSlsProcessConfig struct {
 // HybridMonitorSlsTaskSlsProcessConfigInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigArgs and HybridMonitorSlsTaskSlsProcessConfigOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigInput interface {
 	pulumi.Input
 
@@ -1741,11 +1741,11 @@ func (i HybridMonitorSlsTaskSlsProcessConfigArgs) ToHybridMonitorSlsTaskSlsProce
 // HybridMonitorSlsTaskSlsProcessConfigPtrInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigArgs, HybridMonitorSlsTaskSlsProcessConfigPtr and HybridMonitorSlsTaskSlsProcessConfigPtrOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigPtrInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigArgs{...}
+//	        HybridMonitorSlsTaskSlsProcessConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HybridMonitorSlsTaskSlsProcessConfigPtrInput interface {
 	pulumi.Input
 
@@ -1897,7 +1897,7 @@ type HybridMonitorSlsTaskSlsProcessConfigExpress struct {
 // HybridMonitorSlsTaskSlsProcessConfigExpressInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigExpressArgs and HybridMonitorSlsTaskSlsProcessConfigExpressOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigExpressInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigExpressInput interface {
 	pulumi.Input
 
@@ -1927,7 +1927,7 @@ func (i HybridMonitorSlsTaskSlsProcessConfigExpressArgs) ToHybridMonitorSlsTaskS
 // HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigExpressArray and HybridMonitorSlsTaskSlsProcessConfigExpressArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigExpressArray{ HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...} }
+//	HybridMonitorSlsTaskSlsProcessConfigExpressArray{ HybridMonitorSlsTaskSlsProcessConfigExpressArgs{...} }
 type HybridMonitorSlsTaskSlsProcessConfigExpressArrayInput interface {
 	pulumi.Input
 
@@ -2003,7 +2003,7 @@ type HybridMonitorSlsTaskSlsProcessConfigFilter struct {
 // HybridMonitorSlsTaskSlsProcessConfigFilterInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterArgs and HybridMonitorSlsTaskSlsProcessConfigFilterOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigFilterInput interface {
 	pulumi.Input
 
@@ -2041,11 +2041,11 @@ func (i HybridMonitorSlsTaskSlsProcessConfigFilterArgs) ToHybridMonitorSlsTaskSl
 // HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterArgs, HybridMonitorSlsTaskSlsProcessConfigFilterPtr and HybridMonitorSlsTaskSlsProcessConfigFilterPtrOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
+//	        HybridMonitorSlsTaskSlsProcessConfigFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HybridMonitorSlsTaskSlsProcessConfigFilterPtrInput interface {
 	pulumi.Input
 
@@ -2163,7 +2163,7 @@ type HybridMonitorSlsTaskSlsProcessConfigFilterFilter struct {
 // HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs and HybridMonitorSlsTaskSlsProcessConfigFilterFilterOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigFilterFilterInput interface {
 	pulumi.Input
 
@@ -2195,7 +2195,7 @@ func (i HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs) ToHybridMonitorSls
 // HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray and HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{ HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...} }
+//	HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{ HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{...} }
 type HybridMonitorSlsTaskSlsProcessConfigFilterFilterArrayInput interface {
 	pulumi.Input
 
@@ -2276,7 +2276,7 @@ type HybridMonitorSlsTaskSlsProcessConfigGroupBy struct {
 // HybridMonitorSlsTaskSlsProcessConfigGroupByInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigGroupByArgs and HybridMonitorSlsTaskSlsProcessConfigGroupByOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigGroupByInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigGroupByInput interface {
 	pulumi.Input
 
@@ -2306,7 +2306,7 @@ func (i HybridMonitorSlsTaskSlsProcessConfigGroupByArgs) ToHybridMonitorSlsTaskS
 // HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigGroupByArray and HybridMonitorSlsTaskSlsProcessConfigGroupByArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigGroupByArray{ HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...} }
+//	HybridMonitorSlsTaskSlsProcessConfigGroupByArray{ HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{...} }
 type HybridMonitorSlsTaskSlsProcessConfigGroupByArrayInput interface {
 	pulumi.Input
 
@@ -2390,7 +2390,7 @@ type HybridMonitorSlsTaskSlsProcessConfigStatistic struct {
 // HybridMonitorSlsTaskSlsProcessConfigStatisticInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigStatisticArgs and HybridMonitorSlsTaskSlsProcessConfigStatisticOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigStatisticInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...}
+//	HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...}
 type HybridMonitorSlsTaskSlsProcessConfigStatisticInput interface {
 	pulumi.Input
 
@@ -2428,7 +2428,7 @@ func (i HybridMonitorSlsTaskSlsProcessConfigStatisticArgs) ToHybridMonitorSlsTas
 // HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput is an input type that accepts HybridMonitorSlsTaskSlsProcessConfigStatisticArray and HybridMonitorSlsTaskSlsProcessConfigStatisticArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput` via:
 //
-//          HybridMonitorSlsTaskSlsProcessConfigStatisticArray{ HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...} }
+//	HybridMonitorSlsTaskSlsProcessConfigStatisticArray{ HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{...} }
 type HybridMonitorSlsTaskSlsProcessConfigStatisticArrayInput interface {
 	pulumi.Input
 
@@ -2529,7 +2529,7 @@ type MetricRuleTemplateAlertTemplate struct {
 // MetricRuleTemplateAlertTemplateInput is an input type that accepts MetricRuleTemplateAlertTemplateArgs and MetricRuleTemplateAlertTemplateOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateInput` via:
 //
-//          MetricRuleTemplateAlertTemplateArgs{...}
+//	MetricRuleTemplateAlertTemplateArgs{...}
 type MetricRuleTemplateAlertTemplateInput interface {
 	pulumi.Input
 
@@ -2567,7 +2567,7 @@ func (i MetricRuleTemplateAlertTemplateArgs) ToMetricRuleTemplateAlertTemplateOu
 // MetricRuleTemplateAlertTemplateArrayInput is an input type that accepts MetricRuleTemplateAlertTemplateArray and MetricRuleTemplateAlertTemplateArrayOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateArrayInput` via:
 //
-//          MetricRuleTemplateAlertTemplateArray{ MetricRuleTemplateAlertTemplateArgs{...} }
+//	MetricRuleTemplateAlertTemplateArray{ MetricRuleTemplateAlertTemplateArgs{...} }
 type MetricRuleTemplateAlertTemplateArrayInput interface {
 	pulumi.Input
 
@@ -2667,7 +2667,7 @@ type MetricRuleTemplateAlertTemplateEscalations struct {
 // MetricRuleTemplateAlertTemplateEscalationsInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsArgs and MetricRuleTemplateAlertTemplateEscalationsOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsArgs{...}
+//	MetricRuleTemplateAlertTemplateEscalationsArgs{...}
 type MetricRuleTemplateAlertTemplateEscalationsInput interface {
 	pulumi.Input
 
@@ -2707,11 +2707,11 @@ func (i MetricRuleTemplateAlertTemplateEscalationsArgs) ToMetricRuleTemplateAler
 // MetricRuleTemplateAlertTemplateEscalationsPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsArgs, MetricRuleTemplateAlertTemplateEscalationsPtr and MetricRuleTemplateAlertTemplateEscalationsPtrOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsPtrInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsArgs{...}
+//	        MetricRuleTemplateAlertTemplateEscalationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricRuleTemplateAlertTemplateEscalationsPtrInput interface {
 	pulumi.Input
 
@@ -2850,7 +2850,7 @@ type MetricRuleTemplateAlertTemplateEscalationsCritical struct {
 // MetricRuleTemplateAlertTemplateEscalationsCriticalInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsCriticalArgs and MetricRuleTemplateAlertTemplateEscalationsCriticalOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsCriticalInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
+//	MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
 type MetricRuleTemplateAlertTemplateEscalationsCriticalInput interface {
 	pulumi.Input
 
@@ -2892,11 +2892,11 @@ func (i MetricRuleTemplateAlertTemplateEscalationsCriticalArgs) ToMetricRuleTemp
 // MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsCriticalArgs, MetricRuleTemplateAlertTemplateEscalationsCriticalPtr and MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
+//	        MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput interface {
 	pulumi.Input
 
@@ -3044,7 +3044,7 @@ type MetricRuleTemplateAlertTemplateEscalationsInfo struct {
 // MetricRuleTemplateAlertTemplateEscalationsInfoInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsInfoArgs and MetricRuleTemplateAlertTemplateEscalationsInfoOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInfoInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
+//	MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
 type MetricRuleTemplateAlertTemplateEscalationsInfoInput interface {
 	pulumi.Input
 
@@ -3086,11 +3086,11 @@ func (i MetricRuleTemplateAlertTemplateEscalationsInfoArgs) ToMetricRuleTemplate
 // MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsInfoArgs, MetricRuleTemplateAlertTemplateEscalationsInfoPtr and MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
+//	        MetricRuleTemplateAlertTemplateEscalationsInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput interface {
 	pulumi.Input
 
@@ -3238,7 +3238,7 @@ type MetricRuleTemplateAlertTemplateEscalationsWarn struct {
 // MetricRuleTemplateAlertTemplateEscalationsWarnInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsWarnArgs and MetricRuleTemplateAlertTemplateEscalationsWarnOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsWarnInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
+//	MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
 type MetricRuleTemplateAlertTemplateEscalationsWarnInput interface {
 	pulumi.Input
 
@@ -3280,11 +3280,11 @@ func (i MetricRuleTemplateAlertTemplateEscalationsWarnArgs) ToMetricRuleTemplate
 // MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput is an input type that accepts MetricRuleTemplateAlertTemplateEscalationsWarnArgs, MetricRuleTemplateAlertTemplateEscalationsWarnPtr and MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput` via:
 //
-//          MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
+//	        MetricRuleTemplateAlertTemplateEscalationsWarnArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput interface {
 	pulumi.Input
 
@@ -3432,7 +3432,7 @@ type MonitorGroupInstancesInstance struct {
 // MonitorGroupInstancesInstanceInput is an input type that accepts MonitorGroupInstancesInstanceArgs and MonitorGroupInstancesInstanceOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesInstanceInput` via:
 //
-//          MonitorGroupInstancesInstanceArgs{...}
+//	MonitorGroupInstancesInstanceArgs{...}
 type MonitorGroupInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -3466,7 +3466,7 @@ func (i MonitorGroupInstancesInstanceArgs) ToMonitorGroupInstancesInstanceOutput
 // MonitorGroupInstancesInstanceArrayInput is an input type that accepts MonitorGroupInstancesInstanceArray and MonitorGroupInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesInstanceArrayInput` via:
 //
-//          MonitorGroupInstancesInstanceArray{ MonitorGroupInstancesInstanceArgs{...} }
+//	MonitorGroupInstancesInstanceArray{ MonitorGroupInstancesInstanceArgs{...} }
 type MonitorGroupInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -3550,7 +3550,7 @@ type SiteMonitorIspCity struct {
 // SiteMonitorIspCityInput is an input type that accepts SiteMonitorIspCityArgs and SiteMonitorIspCityOutput values.
 // You can construct a concrete instance of `SiteMonitorIspCityInput` via:
 //
-//          SiteMonitorIspCityArgs{...}
+//	SiteMonitorIspCityArgs{...}
 type SiteMonitorIspCityInput interface {
 	pulumi.Input
 
@@ -3578,7 +3578,7 @@ func (i SiteMonitorIspCityArgs) ToSiteMonitorIspCityOutputWithContext(ctx contex
 // SiteMonitorIspCityArrayInput is an input type that accepts SiteMonitorIspCityArray and SiteMonitorIspCityArrayOutput values.
 // You can construct a concrete instance of `SiteMonitorIspCityArrayInput` via:
 //
-//          SiteMonitorIspCityArray{ SiteMonitorIspCityArgs{...} }
+//	SiteMonitorIspCityArray{ SiteMonitorIspCityArgs{...} }
 type SiteMonitorIspCityArrayInput interface {
 	pulumi.Input
 
@@ -3656,7 +3656,7 @@ type SlsGroupSlsGroupConfig struct {
 // SlsGroupSlsGroupConfigInput is an input type that accepts SlsGroupSlsGroupConfigArgs and SlsGroupSlsGroupConfigOutput values.
 // You can construct a concrete instance of `SlsGroupSlsGroupConfigInput` via:
 //
-//          SlsGroupSlsGroupConfigArgs{...}
+//	SlsGroupSlsGroupConfigArgs{...}
 type SlsGroupSlsGroupConfigInput interface {
 	pulumi.Input
 
@@ -3690,7 +3690,7 @@ func (i SlsGroupSlsGroupConfigArgs) ToSlsGroupSlsGroupConfigOutputWithContext(ct
 // SlsGroupSlsGroupConfigArrayInput is an input type that accepts SlsGroupSlsGroupConfigArray and SlsGroupSlsGroupConfigArrayOutput values.
 // You can construct a concrete instance of `SlsGroupSlsGroupConfigArrayInput` via:
 //
-//          SlsGroupSlsGroupConfigArray{ SlsGroupSlsGroupConfigArgs{...} }
+//	SlsGroupSlsGroupConfigArray{ SlsGroupSlsGroupConfigArgs{...} }
 type SlsGroupSlsGroupConfigArrayInput interface {
 	pulumi.Input
 
@@ -3782,7 +3782,7 @@ type GetAlarmContactGroupsGroup struct {
 // GetAlarmContactGroupsGroupInput is an input type that accepts GetAlarmContactGroupsGroupArgs and GetAlarmContactGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAlarmContactGroupsGroupInput` via:
 //
-//          GetAlarmContactGroupsGroupArgs{...}
+//	GetAlarmContactGroupsGroupArgs{...}
 type GetAlarmContactGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3818,7 +3818,7 @@ func (i GetAlarmContactGroupsGroupArgs) ToGetAlarmContactGroupsGroupOutputWithCo
 // GetAlarmContactGroupsGroupArrayInput is an input type that accepts GetAlarmContactGroupsGroupArray and GetAlarmContactGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAlarmContactGroupsGroupArrayInput` via:
 //
-//          GetAlarmContactGroupsGroupArray{ GetAlarmContactGroupsGroupArgs{...} }
+//	GetAlarmContactGroupsGroupArray{ GetAlarmContactGroupsGroupArgs{...} }
 type GetAlarmContactGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -3930,7 +3930,7 @@ type GetAlarmContactsContact struct {
 // GetAlarmContactsContactInput is an input type that accepts GetAlarmContactsContactArgs and GetAlarmContactsContactOutput values.
 // You can construct a concrete instance of `GetAlarmContactsContactInput` via:
 //
-//          GetAlarmContactsContactArgs{...}
+//	GetAlarmContactsContactArgs{...}
 type GetAlarmContactsContactInput interface {
 	pulumi.Input
 
@@ -3981,7 +3981,7 @@ func (i GetAlarmContactsContactArgs) ToGetAlarmContactsContactOutputWithContext(
 // GetAlarmContactsContactArrayInput is an input type that accepts GetAlarmContactsContactArray and GetAlarmContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetAlarmContactsContactArrayInput` via:
 //
-//          GetAlarmContactsContactArray{ GetAlarmContactsContactArgs{...} }
+//	GetAlarmContactsContactArray{ GetAlarmContactsContactArgs{...} }
 type GetAlarmContactsContactArrayInput interface {
 	pulumi.Input
 
@@ -4119,7 +4119,7 @@ type GetDynamicTagGroupsGroup struct {
 // GetDynamicTagGroupsGroupInput is an input type that accepts GetDynamicTagGroupsGroupArgs and GetDynamicTagGroupsGroupOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupInput` via:
 //
-//          GetDynamicTagGroupsGroupArgs{...}
+//	GetDynamicTagGroupsGroupArgs{...}
 type GetDynamicTagGroupsGroupInput interface {
 	pulumi.Input
 
@@ -4157,7 +4157,7 @@ func (i GetDynamicTagGroupsGroupArgs) ToGetDynamicTagGroupsGroupOutputWithContex
 // GetDynamicTagGroupsGroupArrayInput is an input type that accepts GetDynamicTagGroupsGroupArray and GetDynamicTagGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupArrayInput` via:
 //
-//          GetDynamicTagGroupsGroupArray{ GetDynamicTagGroupsGroupArgs{...} }
+//	GetDynamicTagGroupsGroupArray{ GetDynamicTagGroupsGroupArgs{...} }
 type GetDynamicTagGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -4253,7 +4253,7 @@ type GetDynamicTagGroupsGroupMatchExpress struct {
 // GetDynamicTagGroupsGroupMatchExpressInput is an input type that accepts GetDynamicTagGroupsGroupMatchExpressArgs and GetDynamicTagGroupsGroupMatchExpressOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupMatchExpressInput` via:
 //
-//          GetDynamicTagGroupsGroupMatchExpressArgs{...}
+//	GetDynamicTagGroupsGroupMatchExpressArgs{...}
 type GetDynamicTagGroupsGroupMatchExpressInput interface {
 	pulumi.Input
 
@@ -4283,7 +4283,7 @@ func (i GetDynamicTagGroupsGroupMatchExpressArgs) ToGetDynamicTagGroupsGroupMatc
 // GetDynamicTagGroupsGroupMatchExpressArrayInput is an input type that accepts GetDynamicTagGroupsGroupMatchExpressArray and GetDynamicTagGroupsGroupMatchExpressArrayOutput values.
 // You can construct a concrete instance of `GetDynamicTagGroupsGroupMatchExpressArrayInput` via:
 //
-//          GetDynamicTagGroupsGroupMatchExpressArray{ GetDynamicTagGroupsGroupMatchExpressArgs{...} }
+//	GetDynamicTagGroupsGroupMatchExpressArray{ GetDynamicTagGroupsGroupMatchExpressArgs{...} }
 type GetDynamicTagGroupsGroupMatchExpressArrayInput interface {
 	pulumi.Input
 
@@ -4393,7 +4393,7 @@ type GetGroupMetricRulesRule struct {
 // GetGroupMetricRulesRuleInput is an input type that accepts GetGroupMetricRulesRuleArgs and GetGroupMetricRulesRuleOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleInput` via:
 //
-//          GetGroupMetricRulesRuleArgs{...}
+//	GetGroupMetricRulesRuleArgs{...}
 type GetGroupMetricRulesRuleInput interface {
 	pulumi.Input
 
@@ -4457,7 +4457,7 @@ func (i GetGroupMetricRulesRuleArgs) ToGetGroupMetricRulesRuleOutputWithContext(
 // GetGroupMetricRulesRuleArrayInput is an input type that accepts GetGroupMetricRulesRuleArray and GetGroupMetricRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleArrayInput` via:
 //
-//          GetGroupMetricRulesRuleArray{ GetGroupMetricRulesRuleArgs{...} }
+//	GetGroupMetricRulesRuleArray{ GetGroupMetricRulesRuleArgs{...} }
 type GetGroupMetricRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -4620,7 +4620,7 @@ type GetGroupMetricRulesRuleEscalation struct {
 // GetGroupMetricRulesRuleEscalationInput is an input type that accepts GetGroupMetricRulesRuleEscalationArgs and GetGroupMetricRulesRuleEscalationOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationArgs{...}
+//	GetGroupMetricRulesRuleEscalationArgs{...}
 type GetGroupMetricRulesRuleEscalationInput interface {
 	pulumi.Input
 
@@ -4652,7 +4652,7 @@ func (i GetGroupMetricRulesRuleEscalationArgs) ToGetGroupMetricRulesRuleEscalati
 // GetGroupMetricRulesRuleEscalationArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationArray and GetGroupMetricRulesRuleEscalationArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationArrayInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationArray{ GetGroupMetricRulesRuleEscalationArgs{...} }
+//	GetGroupMetricRulesRuleEscalationArray{ GetGroupMetricRulesRuleEscalationArgs{...} }
 type GetGroupMetricRulesRuleEscalationArrayInput interface {
 	pulumi.Input
 
@@ -4739,7 +4739,7 @@ type GetGroupMetricRulesRuleEscalationCritical struct {
 // GetGroupMetricRulesRuleEscalationCriticalInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArgs and GetGroupMetricRulesRuleEscalationCriticalOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationCriticalInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationCriticalArgs{...}
+//	GetGroupMetricRulesRuleEscalationCriticalArgs{...}
 type GetGroupMetricRulesRuleEscalationCriticalInput interface {
 	pulumi.Input
 
@@ -4773,7 +4773,7 @@ func (i GetGroupMetricRulesRuleEscalationCriticalArgs) ToGetGroupMetricRulesRule
 // GetGroupMetricRulesRuleEscalationCriticalArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArray and GetGroupMetricRulesRuleEscalationCriticalArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationCriticalArrayInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationCriticalArray{ GetGroupMetricRulesRuleEscalationCriticalArgs{...} }
+//	GetGroupMetricRulesRuleEscalationCriticalArray{ GetGroupMetricRulesRuleEscalationCriticalArgs{...} }
 type GetGroupMetricRulesRuleEscalationCriticalArrayInput interface {
 	pulumi.Input
 
@@ -4863,7 +4863,7 @@ type GetGroupMetricRulesRuleEscalationInfo struct {
 // GetGroupMetricRulesRuleEscalationInfoInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArgs and GetGroupMetricRulesRuleEscalationInfoOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInfoInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationInfoArgs{...}
+//	GetGroupMetricRulesRuleEscalationInfoArgs{...}
 type GetGroupMetricRulesRuleEscalationInfoInput interface {
 	pulumi.Input
 
@@ -4897,7 +4897,7 @@ func (i GetGroupMetricRulesRuleEscalationInfoArgs) ToGetGroupMetricRulesRuleEsca
 // GetGroupMetricRulesRuleEscalationInfoArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArray and GetGroupMetricRulesRuleEscalationInfoArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationInfoArrayInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationInfoArray{ GetGroupMetricRulesRuleEscalationInfoArgs{...} }
+//	GetGroupMetricRulesRuleEscalationInfoArray{ GetGroupMetricRulesRuleEscalationInfoArgs{...} }
 type GetGroupMetricRulesRuleEscalationInfoArrayInput interface {
 	pulumi.Input
 
@@ -4987,7 +4987,7 @@ type GetGroupMetricRulesRuleEscalationWarn struct {
 // GetGroupMetricRulesRuleEscalationWarnInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArgs and GetGroupMetricRulesRuleEscalationWarnOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationWarnInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationWarnArgs{...}
+//	GetGroupMetricRulesRuleEscalationWarnArgs{...}
 type GetGroupMetricRulesRuleEscalationWarnInput interface {
 	pulumi.Input
 
@@ -5021,7 +5021,7 @@ func (i GetGroupMetricRulesRuleEscalationWarnArgs) ToGetGroupMetricRulesRuleEsca
 // GetGroupMetricRulesRuleEscalationWarnArrayInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArray and GetGroupMetricRulesRuleEscalationWarnArrayOutput values.
 // You can construct a concrete instance of `GetGroupMetricRulesRuleEscalationWarnArrayInput` via:
 //
-//          GetGroupMetricRulesRuleEscalationWarnArray{ GetGroupMetricRulesRuleEscalationWarnArgs{...} }
+//	GetGroupMetricRulesRuleEscalationWarnArray{ GetGroupMetricRulesRuleEscalationWarnArgs{...} }
 type GetGroupMetricRulesRuleEscalationWarnArrayInput interface {
 	pulumi.Input
 
@@ -5109,7 +5109,7 @@ type GetHybridMonitorDatasData struct {
 // GetHybridMonitorDatasDataInput is an input type that accepts GetHybridMonitorDatasDataArgs and GetHybridMonitorDatasDataOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataInput` via:
 //
-//          GetHybridMonitorDatasDataArgs{...}
+//	GetHybridMonitorDatasDataArgs{...}
 type GetHybridMonitorDatasDataInput interface {
 	pulumi.Input
 
@@ -5141,7 +5141,7 @@ func (i GetHybridMonitorDatasDataArgs) ToGetHybridMonitorDatasDataOutputWithCont
 // GetHybridMonitorDatasDataArrayInput is an input type that accepts GetHybridMonitorDatasDataArray and GetHybridMonitorDatasDataArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataArrayInput` via:
 //
-//          GetHybridMonitorDatasDataArray{ GetHybridMonitorDatasDataArgs{...} }
+//	GetHybridMonitorDatasDataArray{ GetHybridMonitorDatasDataArgs{...} }
 type GetHybridMonitorDatasDataArrayInput interface {
 	pulumi.Input
 
@@ -5222,7 +5222,7 @@ type GetHybridMonitorDatasDataLabel struct {
 // GetHybridMonitorDatasDataLabelInput is an input type that accepts GetHybridMonitorDatasDataLabelArgs and GetHybridMonitorDatasDataLabelOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataLabelInput` via:
 //
-//          GetHybridMonitorDatasDataLabelArgs{...}
+//	GetHybridMonitorDatasDataLabelArgs{...}
 type GetHybridMonitorDatasDataLabelInput interface {
 	pulumi.Input
 
@@ -5252,7 +5252,7 @@ func (i GetHybridMonitorDatasDataLabelArgs) ToGetHybridMonitorDatasDataLabelOutp
 // GetHybridMonitorDatasDataLabelArrayInput is an input type that accepts GetHybridMonitorDatasDataLabelArray and GetHybridMonitorDatasDataLabelArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataLabelArrayInput` via:
 //
-//          GetHybridMonitorDatasDataLabelArray{ GetHybridMonitorDatasDataLabelArgs{...} }
+//	GetHybridMonitorDatasDataLabelArray{ GetHybridMonitorDatasDataLabelArgs{...} }
 type GetHybridMonitorDatasDataLabelArrayInput interface {
 	pulumi.Input
 
@@ -5328,7 +5328,7 @@ type GetHybridMonitorDatasDataValue struct {
 // GetHybridMonitorDatasDataValueInput is an input type that accepts GetHybridMonitorDatasDataValueArgs and GetHybridMonitorDatasDataValueOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataValueInput` via:
 //
-//          GetHybridMonitorDatasDataValueArgs{...}
+//	GetHybridMonitorDatasDataValueArgs{...}
 type GetHybridMonitorDatasDataValueInput interface {
 	pulumi.Input
 
@@ -5358,7 +5358,7 @@ func (i GetHybridMonitorDatasDataValueArgs) ToGetHybridMonitorDatasDataValueOutp
 // GetHybridMonitorDatasDataValueArrayInput is an input type that accepts GetHybridMonitorDatasDataValueArray and GetHybridMonitorDatasDataValueArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorDatasDataValueArrayInput` via:
 //
-//          GetHybridMonitorDatasDataValueArray{ GetHybridMonitorDatasDataValueArgs{...} }
+//	GetHybridMonitorDatasDataValueArray{ GetHybridMonitorDatasDataValueArgs{...} }
 type GetHybridMonitorDatasDataValueArrayInput interface {
 	pulumi.Input
 
@@ -5442,7 +5442,7 @@ type GetHybridMonitorFcTasksTask struct {
 // GetHybridMonitorFcTasksTaskInput is an input type that accepts GetHybridMonitorFcTasksTaskArgs and GetHybridMonitorFcTasksTaskOutput values.
 // You can construct a concrete instance of `GetHybridMonitorFcTasksTaskInput` via:
 //
-//          GetHybridMonitorFcTasksTaskArgs{...}
+//	GetHybridMonitorFcTasksTaskArgs{...}
 type GetHybridMonitorFcTasksTaskInput interface {
 	pulumi.Input
 
@@ -5480,7 +5480,7 @@ func (i GetHybridMonitorFcTasksTaskArgs) ToGetHybridMonitorFcTasksTaskOutputWith
 // GetHybridMonitorFcTasksTaskArrayInput is an input type that accepts GetHybridMonitorFcTasksTaskArray and GetHybridMonitorFcTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorFcTasksTaskArrayInput` via:
 //
-//          GetHybridMonitorFcTasksTaskArray{ GetHybridMonitorFcTasksTaskArgs{...} }
+//	GetHybridMonitorFcTasksTaskArray{ GetHybridMonitorFcTasksTaskArgs{...} }
 type GetHybridMonitorFcTasksTaskArrayInput interface {
 	pulumi.Input
 
@@ -5625,7 +5625,7 @@ type GetHybridMonitorSlsTasksTask struct {
 // GetHybridMonitorSlsTasksTaskInput is an input type that accepts GetHybridMonitorSlsTasksTaskArgs and GetHybridMonitorSlsTasksTaskOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskArgs{...}
+//	GetHybridMonitorSlsTasksTaskArgs{...}
 type GetHybridMonitorSlsTasksTaskInput interface {
 	pulumi.Input
 
@@ -5704,7 +5704,7 @@ func (i GetHybridMonitorSlsTasksTaskArgs) ToGetHybridMonitorSlsTasksTaskOutputWi
 // GetHybridMonitorSlsTasksTaskArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskArray and GetHybridMonitorSlsTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskArray{ GetHybridMonitorSlsTasksTaskArgs{...} }
+//	GetHybridMonitorSlsTasksTaskArray{ GetHybridMonitorSlsTasksTaskArgs{...} }
 type GetHybridMonitorSlsTasksTaskArrayInput interface {
 	pulumi.Input
 
@@ -5908,7 +5908,7 @@ type GetHybridMonitorSlsTasksTaskAttachLabel struct {
 // GetHybridMonitorSlsTasksTaskAttachLabelInput is an input type that accepts GetHybridMonitorSlsTasksTaskAttachLabelArgs and GetHybridMonitorSlsTasksTaskAttachLabelOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskAttachLabelInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskAttachLabelArgs{...}
+//	GetHybridMonitorSlsTasksTaskAttachLabelArgs{...}
 type GetHybridMonitorSlsTasksTaskAttachLabelInput interface {
 	pulumi.Input
 
@@ -5938,7 +5938,7 @@ func (i GetHybridMonitorSlsTasksTaskAttachLabelArgs) ToGetHybridMonitorSlsTasksT
 // GetHybridMonitorSlsTasksTaskAttachLabelArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskAttachLabelArray and GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskAttachLabelArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskAttachLabelArray{ GetHybridMonitorSlsTasksTaskAttachLabelArgs{...} }
+//	GetHybridMonitorSlsTasksTaskAttachLabelArray{ GetHybridMonitorSlsTasksTaskAttachLabelArgs{...} }
 type GetHybridMonitorSlsTasksTaskAttachLabelArrayInput interface {
 	pulumi.Input
 
@@ -6016,7 +6016,7 @@ type GetHybridMonitorSlsTasksTaskMatchExpress struct {
 // GetHybridMonitorSlsTasksTaskMatchExpressInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArgs and GetHybridMonitorSlsTasksTaskMatchExpressOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskMatchExpressInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskMatchExpressArgs{...}
+//	GetHybridMonitorSlsTasksTaskMatchExpressArgs{...}
 type GetHybridMonitorSlsTasksTaskMatchExpressInput interface {
 	pulumi.Input
 
@@ -6048,7 +6048,7 @@ func (i GetHybridMonitorSlsTasksTaskMatchExpressArgs) ToGetHybridMonitorSlsTasks
 // GetHybridMonitorSlsTasksTaskMatchExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArray and GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskMatchExpressArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskMatchExpressArray{ GetHybridMonitorSlsTasksTaskMatchExpressArgs{...} }
+//	GetHybridMonitorSlsTasksTaskMatchExpressArray{ GetHybridMonitorSlsTasksTaskMatchExpressArgs{...} }
 type GetHybridMonitorSlsTasksTaskMatchExpressArrayInput interface {
 	pulumi.Input
 
@@ -6133,7 +6133,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfig struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigInput interface {
 	pulumi.Input
 
@@ -6167,7 +6167,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs) ToGetHybridMonitorSlsT
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayInput interface {
 	pulumi.Input
 
@@ -6261,7 +6261,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput interface {
 	pulumi.Input
 
@@ -6291,7 +6291,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs) ToGetHybridMoni
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput interface {
 	pulumi.Input
 
@@ -6367,7 +6367,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterInput interface {
 	pulumi.Input
 
@@ -6397,7 +6397,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs) ToGetHybridMonit
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput interface {
 	pulumi.Input
 
@@ -6477,7 +6477,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput interface {
 	pulumi.Input
 
@@ -6509,7 +6509,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ToGetHybri
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayInput interface {
 	pulumi.Input
 
@@ -6590,7 +6590,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput interface {
 	pulumi.Input
 
@@ -6620,7 +6620,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs) ToGetHybridMoni
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayInput interface {
 	pulumi.Input
 
@@ -6702,7 +6702,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic struct {
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...}
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...}
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput interface {
 	pulumi.Input
 
@@ -6738,7 +6738,7 @@ func (i GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ToGetHybridMo
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayOutput values.
 // You can construct a concrete instance of `GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput` via:
 //
-//          GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...} }
+//	GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArray{ GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs{...} }
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArrayInput interface {
 	pulumi.Input
 
@@ -6839,7 +6839,7 @@ type GetMetricRuleTemplatesTemplate struct {
 // GetMetricRuleTemplatesTemplateInput is an input type that accepts GetMetricRuleTemplatesTemplateArgs and GetMetricRuleTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateInput` via:
 //
-//          GetMetricRuleTemplatesTemplateArgs{...}
+//	GetMetricRuleTemplatesTemplateArgs{...}
 type GetMetricRuleTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -6879,7 +6879,7 @@ func (i GetMetricRuleTemplatesTemplateArgs) ToGetMetricRuleTemplatesTemplateOutp
 // GetMetricRuleTemplatesTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateArray and GetMetricRuleTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateArray{ GetMetricRuleTemplatesTemplateArgs{...} }
+//	GetMetricRuleTemplatesTemplateArray{ GetMetricRuleTemplatesTemplateArgs{...} }
 type GetMetricRuleTemplatesTemplateArrayInput interface {
 	pulumi.Input
 
@@ -6991,7 +6991,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplate struct {
 // GetMetricRuleTemplatesTemplateAlertTemplateInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArgs and GetMetricRuleTemplatesTemplateAlertTemplateOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateArgs{...}
+//	GetMetricRuleTemplatesTemplateAlertTemplateArgs{...}
 type GetMetricRuleTemplatesTemplateAlertTemplateInput interface {
 	pulumi.Input
 
@@ -7030,7 +7030,7 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateArgs) ToGetMetricRuleTemplate
 // GetMetricRuleTemplatesTemplateAlertTemplateArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArray and GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateArray{ GetMetricRuleTemplatesTemplateAlertTemplateArgs{...} }
+//	GetMetricRuleTemplatesTemplateAlertTemplateArray{ GetMetricRuleTemplatesTemplateAlertTemplateArgs{...} }
 type GetMetricRuleTemplatesTemplateAlertTemplateArrayInput interface {
 	pulumi.Input
 
@@ -7134,7 +7134,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalation struct {
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...}
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...}
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput interface {
 	pulumi.Input
 
@@ -7166,7 +7166,7 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ToGetMetricRu
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...} }
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{...} }
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput interface {
 	pulumi.Input
 
@@ -7258,7 +7258,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical struct {
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...}
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...}
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput interface {
 	pulumi.Input
 
@@ -7293,7 +7293,7 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ToGet
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...} }
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{...} }
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput interface {
 	pulumi.Input
 
@@ -7387,7 +7387,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo struct {
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...}
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...}
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput interface {
 	pulumi.Input
 
@@ -7422,7 +7422,7 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ToGetMetr
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...} }
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{...} }
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput interface {
 	pulumi.Input
 
@@ -7514,7 +7514,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn struct {
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...}
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...}
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput interface {
 	pulumi.Input
 
@@ -7549,7 +7549,7 @@ func (i GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ToGetMetr
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput values.
 // You can construct a concrete instance of `GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput` via:
 //
-//          GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...} }
+//	GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray{ GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{...} }
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput interface {
 	pulumi.Input
 
@@ -7633,7 +7633,7 @@ type GetMonitorGroupInstancesInstance struct {
 // GetMonitorGroupInstancesInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceArgs and GetMonitorGroupInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInput` via:
 //
-//          GetMonitorGroupInstancesInstanceArgs{...}
+//	GetMonitorGroupInstancesInstanceArgs{...}
 type GetMonitorGroupInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -7660,7 +7660,7 @@ func (i GetMonitorGroupInstancesInstanceArgs) ToGetMonitorGroupInstancesInstance
 // GetMonitorGroupInstancesInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceArray and GetMonitorGroupInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceArrayInput` via:
 //
-//          GetMonitorGroupInstancesInstanceArray{ GetMonitorGroupInstancesInstanceArgs{...} }
+//	GetMonitorGroupInstancesInstanceArray{ GetMonitorGroupInstancesInstanceArgs{...} }
 type GetMonitorGroupInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -7732,7 +7732,7 @@ type GetMonitorGroupInstancesInstanceInstance struct {
 // GetMonitorGroupInstancesInstanceInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArgs and GetMonitorGroupInstancesInstanceInstanceOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInstanceInput` via:
 //
-//          GetMonitorGroupInstancesInstanceInstanceArgs{...}
+//	GetMonitorGroupInstancesInstanceInstanceArgs{...}
 type GetMonitorGroupInstancesInstanceInstanceInput interface {
 	pulumi.Input
 
@@ -7762,7 +7762,7 @@ func (i GetMonitorGroupInstancesInstanceInstanceArgs) ToGetMonitorGroupInstances
 // GetMonitorGroupInstancesInstanceInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArray and GetMonitorGroupInstancesInstanceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInstanceArrayInput` via:
 //
-//          GetMonitorGroupInstancesInstanceInstanceArray{ GetMonitorGroupInstancesInstanceInstanceArgs{...} }
+//	GetMonitorGroupInstancesInstanceInstanceArray{ GetMonitorGroupInstancesInstanceInstanceArgs{...} }
 type GetMonitorGroupInstancesInstanceInstanceArrayInput interface {
 	pulumi.Input
 
@@ -7864,7 +7864,7 @@ type GetMonitorGroupsGroup struct {
 // GetMonitorGroupsGroupInput is an input type that accepts GetMonitorGroupsGroupArgs and GetMonitorGroupsGroupOutput values.
 // You can construct a concrete instance of `GetMonitorGroupsGroupInput` via:
 //
-//          GetMonitorGroupsGroupArgs{...}
+//	GetMonitorGroupsGroupArgs{...}
 type GetMonitorGroupsGroupInput interface {
 	pulumi.Input
 
@@ -7914,7 +7914,7 @@ func (i GetMonitorGroupsGroupArgs) ToGetMonitorGroupsGroupOutputWithContext(ctx 
 // GetMonitorGroupsGroupArrayInput is an input type that accepts GetMonitorGroupsGroupArray and GetMonitorGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetMonitorGroupsGroupArrayInput` via:
 //
-//          GetMonitorGroupsGroupArray{ GetMonitorGroupsGroupArgs{...} }
+//	GetMonitorGroupsGroupArray{ GetMonitorGroupsGroupArgs{...} }
 type GetMonitorGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -8050,7 +8050,7 @@ type GetNamespacesNamespace struct {
 // GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
 //
-//          GetNamespacesNamespaceArgs{...}
+//	GetNamespacesNamespaceArgs{...}
 type GetNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -8090,7 +8090,7 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
-//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
+//	GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
 type GetNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -8197,7 +8197,7 @@ type GetSlsGroupsGroup struct {
 // GetSlsGroupsGroupInput is an input type that accepts GetSlsGroupsGroupArgs and GetSlsGroupsGroupOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupInput` via:
 //
-//          GetSlsGroupsGroupArgs{...}
+//	GetSlsGroupsGroupArgs{...}
 type GetSlsGroupsGroupInput interface {
 	pulumi.Input
 
@@ -8233,7 +8233,7 @@ func (i GetSlsGroupsGroupArgs) ToGetSlsGroupsGroupOutputWithContext(ctx context.
 // GetSlsGroupsGroupArrayInput is an input type that accepts GetSlsGroupsGroupArray and GetSlsGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupArrayInput` via:
 //
-//          GetSlsGroupsGroupArray{ GetSlsGroupsGroupArgs{...} }
+//	GetSlsGroupsGroupArray{ GetSlsGroupsGroupArgs{...} }
 type GetSlsGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -8328,7 +8328,7 @@ type GetSlsGroupsGroupSlsGroupConfig struct {
 // GetSlsGroupsGroupSlsGroupConfigInput is an input type that accepts GetSlsGroupsGroupSlsGroupConfigArgs and GetSlsGroupsGroupSlsGroupConfigOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupSlsGroupConfigInput` via:
 //
-//          GetSlsGroupsGroupSlsGroupConfigArgs{...}
+//	GetSlsGroupsGroupSlsGroupConfigArgs{...}
 type GetSlsGroupsGroupSlsGroupConfigInput interface {
 	pulumi.Input
 
@@ -8362,7 +8362,7 @@ func (i GetSlsGroupsGroupSlsGroupConfigArgs) ToGetSlsGroupsGroupSlsGroupConfigOu
 // GetSlsGroupsGroupSlsGroupConfigArrayInput is an input type that accepts GetSlsGroupsGroupSlsGroupConfigArray and GetSlsGroupsGroupSlsGroupConfigArrayOutput values.
 // You can construct a concrete instance of `GetSlsGroupsGroupSlsGroupConfigArrayInput` via:
 //
-//          GetSlsGroupsGroupSlsGroupConfigArray{ GetSlsGroupsGroupSlsGroupConfigArgs{...} }
+//	GetSlsGroupsGroupSlsGroupConfigArray{ GetSlsGroupsGroupSlsGroupConfigArgs{...} }
 type GetSlsGroupsGroupSlsGroupConfigArrayInput interface {
 	pulumi.Input
 

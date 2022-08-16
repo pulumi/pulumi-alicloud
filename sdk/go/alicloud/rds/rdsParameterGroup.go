@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.NewRdsParameterGroup(ctx, "default", &rds.RdsParameterGroupArgs{
-// 			Engine:        pulumi.String("mysql"),
-// 			EngineVersion: pulumi.String("5.7"),
-// 			ParamDetails: rds.RdsParameterGroupParamDetailArray{
-// 				&rds.RdsParameterGroupParamDetailArgs{
-// 					ParamName:  pulumi.String("back_log"),
-// 					ParamValue: pulumi.String("4000"),
-// 				},
-// 				&rds.RdsParameterGroupParamDetailArgs{
-// 					ParamName:  pulumi.String("wait_timeout"),
-// 					ParamValue: pulumi.String("86460"),
-// 				},
-// 			},
-// 			ParameterGroupDesc: pulumi.String("test"),
-// 			ParameterGroupName: pulumi.String("test1234"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rds.NewRdsParameterGroup(ctx, "default", &rds.RdsParameterGroupArgs{
+//				Engine:        pulumi.String("mysql"),
+//				EngineVersion: pulumi.String("5.7"),
+//				ParamDetails: rds.RdsParameterGroupParamDetailArray{
+//					&rds.RdsParameterGroupParamDetailArgs{
+//						ParamName:  pulumi.String("back_log"),
+//						ParamValue: pulumi.String("4000"),
+//					},
+//					&rds.RdsParameterGroupParamDetailArgs{
+//						ParamName:  pulumi.String("wait_timeout"),
+//						ParamValue: pulumi.String("86460"),
+//					},
+//				},
+//				ParameterGroupDesc: pulumi.String("test"),
+//				ParameterGroupName: pulumi.String("test1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // RDS Parameter Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
+//
+//	$ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
+//
 // ```
 type RdsParameterGroup struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *RdsParameterGroup) ToRdsParameterGroupOutputWithContext(ctx context.Con
 // RdsParameterGroupArrayInput is an input type that accepts RdsParameterGroupArray and RdsParameterGroupArrayOutput values.
 // You can construct a concrete instance of `RdsParameterGroupArrayInput` via:
 //
-//          RdsParameterGroupArray{ RdsParameterGroupArgs{...} }
+//	RdsParameterGroupArray{ RdsParameterGroupArgs{...} }
 type RdsParameterGroupArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i RdsParameterGroupArray) ToRdsParameterGroupArrayOutputWithContext(ctx co
 // RdsParameterGroupMapInput is an input type that accepts RdsParameterGroupMap and RdsParameterGroupMapOutput values.
 // You can construct a concrete instance of `RdsParameterGroupMapInput` via:
 //
-//          RdsParameterGroupMap{ "key": RdsParameterGroupArgs{...} }
+//	RdsParameterGroupMap{ "key": RdsParameterGroupArgs{...} }
 type RdsParameterGroupMapInput interface {
 	pulumi.Input
 

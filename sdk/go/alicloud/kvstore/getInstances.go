@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := kvstore.GetInstances(ctx, &kvstore.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("testname"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstInstanceName", _default.Instances[0].Name)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := kvstore.GetInstances(ctx, &kvstore.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("testname"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstInstanceName", _default.Instances[0].Name)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
@@ -244,8 +247,8 @@ func (o GetInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 }
 
 // (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-// * `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
-//   For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+//   - `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
+//     For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }

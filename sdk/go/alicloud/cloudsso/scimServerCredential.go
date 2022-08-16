@@ -24,7 +24,9 @@ import (
 // Cloud SSO SCIM Server Credential can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
+//
+//	$ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
+//
 // ```
 type ScimServerCredential struct {
 	pulumi.CustomResourceState
@@ -131,7 +133,7 @@ func (i *ScimServerCredential) ToScimServerCredentialOutputWithContext(ctx conte
 // ScimServerCredentialArrayInput is an input type that accepts ScimServerCredentialArray and ScimServerCredentialArrayOutput values.
 // You can construct a concrete instance of `ScimServerCredentialArrayInput` via:
 //
-//          ScimServerCredentialArray{ ScimServerCredentialArgs{...} }
+//	ScimServerCredentialArray{ ScimServerCredentialArgs{...} }
 type ScimServerCredentialArrayInput interface {
 	pulumi.Input
 
@@ -156,7 +158,7 @@ func (i ScimServerCredentialArray) ToScimServerCredentialArrayOutputWithContext(
 // ScimServerCredentialMapInput is an input type that accepts ScimServerCredentialMap and ScimServerCredentialMapOutput values.
 // You can construct a concrete instance of `ScimServerCredentialMapInput` via:
 //
-//          ScimServerCredentialMap{ "key": ScimServerCredentialArgs{...} }
+//	ScimServerCredentialMap{ "key": ScimServerCredentialArgs{...} }
 type ScimServerCredentialMapInput interface {
 	pulumi.Input
 

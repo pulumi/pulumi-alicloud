@@ -13,35 +13,38 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		zone, err := pvtz.NewZone(ctx, "zone", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pvtz.NewZoneRecord(ctx, "foo", &pvtz.ZoneRecordArgs{
-// 			ZoneId: zone.ID(),
-// 			Rr:     pulumi.String("www"),
-// 			Type:   pulumi.String("CNAME"),
-// 			Value:  pulumi.String("bbb.test.com"),
-// 			Ttl:    pulumi.Int(60),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			zone, err := pvtz.NewZone(ctx, "zone", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pvtz.NewZoneRecord(ctx, "foo", &pvtz.ZoneRecordArgs{
+//				ZoneId: zone.ID(),
+//				Rr:     pulumi.String("www"),
+//				Type:   pulumi.String("CNAME"),
+//				Value:  pulumi.String("bbb.test.com"),
+//				Ttl:    pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Private Zone Record can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+//
+//	$ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+//
 // ```
 type ZoneRecord struct {
 	pulumi.CustomResourceState
@@ -267,7 +272,7 @@ func (i *ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneReco
 // ZoneRecordArrayInput is an input type that accepts ZoneRecordArray and ZoneRecordArrayOutput values.
 // You can construct a concrete instance of `ZoneRecordArrayInput` via:
 //
-//          ZoneRecordArray{ ZoneRecordArgs{...} }
+//	ZoneRecordArray{ ZoneRecordArgs{...} }
 type ZoneRecordArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +297,7 @@ func (i ZoneRecordArray) ToZoneRecordArrayOutputWithContext(ctx context.Context)
 // ZoneRecordMapInput is an input type that accepts ZoneRecordMap and ZoneRecordMapOutput values.
 // You can construct a concrete instance of `ZoneRecordMapInput` via:
 //
-//          ZoneRecordMap{ "key": ZoneRecordArgs{...} }
+//	ZoneRecordMap{ "key": ZoneRecordArgs{...} }
 type ZoneRecordMapInput interface {
 	pulumi.Input
 

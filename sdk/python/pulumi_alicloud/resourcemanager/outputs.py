@@ -15,6 +15,7 @@ __all__ = [
     'GetAccountsAccountResult',
     'GetControlPoliciesPolicyResult',
     'GetControlPolicyAttachmentsAttachmentResult',
+    'GetDelegatedAdministratorsAdministratorResult',
     'GetFoldersFolderResult',
     'GetHandshakesHandshakeResult',
     'GetPoliciesPolicyResult',
@@ -378,6 +379,57 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
         The type of policy.
         """
         return pulumi.get(self, "policy_type")
+
+
+@pulumi.output_type
+class GetDelegatedAdministratorsAdministratorResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 delegation_enabled_time: str,
+                 id: str,
+                 service_principal: str):
+        """
+        :param str account_id: The ID of the member account.
+        :param str delegation_enabled_time: The time when the member was specified as a delegated administrator account.
+        :param str id: The ID of the Delegated Administrator.
+        :param str service_principal: The identity of the trusted service.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "delegation_enabled_time", delegation_enabled_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_principal", service_principal)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The ID of the member account.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="delegationEnabledTime")
+    def delegation_enabled_time(self) -> str:
+        """
+        The time when the member was specified as a delegated administrator account.
+        """
+        return pulumi.get(self, "delegation_enabled_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Delegated Administrator.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="servicePrincipal")
+    def service_principal(self) -> str:
+        """
+        The identity of the trusted service.
+        """
+        return pulumi.get(self, "service_principal")
 
 
 @pulumi.output_type

@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *         var this_ = new DBCluster(&#34;this&#34;, DBClusterArgs.builder()        
  *             .dbClusterCategory(&#34;Cluster&#34;)
- *             .dbClusterClass(&#34;C8&#34;)
+ *             .dbNodeClass(&#34;C8&#34;)
  *             .dbNodeCount(&#34;4&#34;)
  *             .dbNodeStorage(&#34;400&#34;)
  *             .mode(&#34;reserver&#34;)

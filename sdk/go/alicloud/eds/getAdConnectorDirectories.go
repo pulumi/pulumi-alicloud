@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := eds.GetAdConnectorDirectories(ctx, &eds.GetAdConnectorDirectoriesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("ecdAdConnectorDirectoryId1", ids.Directories[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := eds.GetAdConnectorDirectories(ctx, &eds.GetAdConnectorDirectoriesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdAdConnectorDirectoryId1", ids.Directories[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAdConnectorDirectories(ctx *pulumi.Context, args *GetAdConnectorDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetAdConnectorDirectoriesResult, error) {
 	var rv GetAdConnectorDirectoriesResult

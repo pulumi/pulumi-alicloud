@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ddos.GetDdosCooDomainResources(ctx, &ddos.GetDdosCooDomainResourcesArgs{
-// 			Ids: []string{
-// 				"tftestacc1234.abc",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDdoscooDomainResourceId", example.Resources[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ddos.GetDdosCooDomainResources(ctx, &ddos.GetDdosCooDomainResourcesArgs{
+//				Ids: []string{
+//					"tftestacc1234.abc",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDdoscooDomainResourceId", example.Resources[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDdosCooDomainResources(ctx *pulumi.Context, args *GetDdosCooDomainResourcesArgs, opts ...pulumi.InvokeOption) (*GetDdosCooDomainResourcesResult, error) {
 	var rv GetDdosCooDomainResourcesResult

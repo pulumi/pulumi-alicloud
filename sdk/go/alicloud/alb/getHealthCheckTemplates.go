@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := alb.GetHealthCheckTemplates(ctx, &alb.GetHealthCheckTemplatesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albHealthCheckTemplateId1", ids.Templates[0].Id)
-// 		nameRegex, err := alb.GetHealthCheckTemplates(ctx, &alb.GetHealthCheckTemplatesArgs{
-// 			NameRegex: pulumi.StringRef("^my-HealthCheckTemplate"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albHealthCheckTemplateId2", nameRegex.Templates[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := alb.GetHealthCheckTemplates(ctx, &alb.GetHealthCheckTemplatesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albHealthCheckTemplateId1", ids.Templates[0].Id)
+//			nameRegex, err := alb.GetHealthCheckTemplates(ctx, &alb.GetHealthCheckTemplatesArgs{
+//				NameRegex: pulumi.StringRef("^my-HealthCheckTemplate"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albHealthCheckTemplateId2", nameRegex.Templates[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHealthCheckTemplates(ctx *pulumi.Context, args *GetHealthCheckTemplatesArgs, opts ...pulumi.InvokeOption) (*GetHealthCheckTemplatesResult, error) {
 	var rv GetHealthCheckTemplatesResult

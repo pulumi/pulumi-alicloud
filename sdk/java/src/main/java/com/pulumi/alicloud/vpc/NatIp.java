@@ -145,14 +145,14 @@ public class NatIp extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="natIp", type=String.class, parameters={})
-    private Output</* @Nullable */ String> natIp;
+    private Output<String> natIp;
 
     /**
      * @return The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      * 
      */
-    public Output<Optional<String>> natIp() {
-        return Codegen.optional(this.natIp);
+    public Output<String> natIp() {
+        return this.natIp;
     }
     /**
      * NAT IP ADDRESS of the address segment.
@@ -196,9 +196,17 @@ public class NatIp extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> natIpDescription() {
         return Codegen.optional(this.natIpDescription);
     }
+    /**
+     * Ihe ID of the Nat Ip.
+     * 
+     */
     @Export(name="natIpId", type=String.class, parameters={})
     private Output<String> natIpId;
 
+    /**
+     * @return Ihe ID of the Nat Ip.
+     * 
+     */
     public Output<String> natIpId() {
         return this.natIpId;
     }

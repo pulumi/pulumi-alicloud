@@ -20,7 +20,9 @@ import (
 // EDAS k8s application can be imported as below, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
+//
+//	$ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
+//
 // ```
 type K8sApplication struct {
 	pulumi.CustomResourceState
@@ -414,7 +416,7 @@ func (i *K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) 
 // K8sApplicationArrayInput is an input type that accepts K8sApplicationArray and K8sApplicationArrayOutput values.
 // You can construct a concrete instance of `K8sApplicationArrayInput` via:
 //
-//          K8sApplicationArray{ K8sApplicationArgs{...} }
+//	K8sApplicationArray{ K8sApplicationArgs{...} }
 type K8sApplicationArrayInput interface {
 	pulumi.Input
 
@@ -439,7 +441,7 @@ func (i K8sApplicationArray) ToK8sApplicationArrayOutputWithContext(ctx context.
 // K8sApplicationMapInput is an input type that accepts K8sApplicationMap and K8sApplicationMapOutput values.
 // You can construct a concrete instance of `K8sApplicationMapInput` via:
 //
-//          K8sApplicationMap{ "key": K8sApplicationArgs{...} }
+//	K8sApplicationMap{ "key": K8sApplicationArgs{...} }
 type K8sApplicationMapInput interface {
 	pulumi.Input
 

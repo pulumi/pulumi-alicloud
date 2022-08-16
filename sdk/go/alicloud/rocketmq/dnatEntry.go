@@ -21,33 +21,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewDnatEntry(ctx, "default", &rocketmq.DnatEntryArgs{
-// 			ExternalIp:   pulumi.String("1.0.0.2"),
-// 			ExternalPort: pulumi.String("1"),
-// 			InternalIp:   pulumi.String("10.0.0.2"),
-// 			InternalPort: pulumi.String("20"),
-// 			IpProtocol:   pulumi.String("tcp"),
-// 			SagId:        pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
-// 			Type:         pulumi.String("Intranet"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rocketmq.NewDnatEntry(ctx, "default", &rocketmq.DnatEntryArgs{
+//				ExternalIp:   pulumi.String("1.0.0.2"),
+//				ExternalPort: pulumi.String("1"),
+//				InternalIp:   pulumi.String("10.0.0.2"),
+//				InternalPort: pulumi.String("20"),
+//				IpProtocol:   pulumi.String("tcp"),
+//				SagId:        pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
+//				Type:         pulumi.String("Intranet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // The Sag DnatEntry can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
+//
 // ```
 type DnatEntry struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *DnatEntry) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryO
 // DnatEntryArrayInput is an input type that accepts DnatEntryArray and DnatEntryArrayOutput values.
 // You can construct a concrete instance of `DnatEntryArrayInput` via:
 //
-//          DnatEntryArray{ DnatEntryArgs{...} }
+//	DnatEntryArray{ DnatEntryArgs{...} }
 type DnatEntryArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i DnatEntryArray) ToDnatEntryArrayOutputWithContext(ctx context.Context) D
 // DnatEntryMapInput is an input type that accepts DnatEntryMap and DnatEntryMapOutput values.
 // You can construct a concrete instance of `DnatEntryMapInput` via:
 //
-//          DnatEntryMap{ "key": DnatEntryArgs{...} }
+//	DnatEntryMap{ "key": DnatEntryArgs{...} }
 type DnatEntryMapInput interface {
 	pulumi.Input
 

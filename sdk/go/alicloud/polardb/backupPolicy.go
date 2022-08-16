@@ -16,7 +16,9 @@ import (
 // PolarDB backup policy can be imported using the id or cluster id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+//
+//	$ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+//
 // ```
 type BackupPolicy struct {
 	pulumi.CustomResourceState
@@ -143,7 +145,7 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 // BackupPolicyArrayInput is an input type that accepts BackupPolicyArray and BackupPolicyArrayOutput values.
 // You can construct a concrete instance of `BackupPolicyArrayInput` via:
 //
-//          BackupPolicyArray{ BackupPolicyArgs{...} }
+//	BackupPolicyArray{ BackupPolicyArgs{...} }
 type BackupPolicyArrayInput interface {
 	pulumi.Input
 
@@ -168,7 +170,7 @@ func (i BackupPolicyArray) ToBackupPolicyArrayOutputWithContext(ctx context.Cont
 // BackupPolicyMapInput is an input type that accepts BackupPolicyMap and BackupPolicyMapOutput values.
 // You can construct a concrete instance of `BackupPolicyMapInput` via:
 //
-//          BackupPolicyMap{ "key": BackupPolicyArgs{...} }
+//	BackupPolicyMap{ "key": BackupPolicyArgs{...} }
 type BackupPolicyMapInput interface {
 	pulumi.Input
 

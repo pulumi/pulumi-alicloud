@@ -18,40 +18,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
-// 			KeyPairName: pulumi.String("key_pair_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsKeyPair(ctx, "prefix", &ecs.EcsKeyPairArgs{
-// 			KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsKeyPair(ctx, "publickey", &ecs.EcsKeyPairArgs{
-// 			KeyPairName: pulumi.String("my_public_key"),
-// 			PublicKey:   pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
+//				KeyPairName: pulumi.String("key_pair_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsKeyPair(ctx, "prefix", &ecs.EcsKeyPairArgs{
+//				KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsKeyPair(ctx, "publickey", &ecs.EcsKeyPairArgs{
+//				KeyPairName: pulumi.String("my_public_key"),
+//				PublicKey:   pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // ECS Key Pair can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+//
+//	$ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+//
 // ```
 type EcsKeyPair struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *EcsKeyPair) ToEcsKeyPairOutputWithContext(ctx context.Context) EcsKeyPa
 // EcsKeyPairArrayInput is an input type that accepts EcsKeyPairArray and EcsKeyPairArrayOutput values.
 // You can construct a concrete instance of `EcsKeyPairArrayInput` via:
 //
-//          EcsKeyPairArray{ EcsKeyPairArgs{...} }
+//	EcsKeyPairArray{ EcsKeyPairArgs{...} }
 type EcsKeyPairArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i EcsKeyPairArray) ToEcsKeyPairArrayOutputWithContext(ctx context.Context)
 // EcsKeyPairMapInput is an input type that accepts EcsKeyPairMap and EcsKeyPairMapOutput values.
 // You can construct a concrete instance of `EcsKeyPairMapInput` via:
 //
-//          EcsKeyPairMap{ "key": EcsKeyPairArgs{...} }
+//	EcsKeyPairMap{ "key": EcsKeyPairArgs{...} }
 type EcsKeyPairMapInput interface {
 	pulumi.Input
 

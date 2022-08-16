@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-server-backup-plan"),
-// 			Status:    pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewServerBackupPlan(ctx, "example", &hbr.ServerBackupPlanArgs{
-// 			EcsServerBackupPlanName: pulumi.String("server_backup_plan"),
-// 			InstanceId:              pulumi.String(_default.Instances[0].Id),
-// 			Schedule:                pulumi.String("I|1602673264|PT2H"),
-// 			Retention:               pulumi.Int(1),
-// 			Details: hbr.ServerBackupPlanDetailArray{
-// 				&hbr.ServerBackupPlanDetailArgs{
-// 					AppConsistent: pulumi.Bool(true),
-// 					SnapshotGroup: pulumi.Bool(true),
-// 				},
-// 			},
-// 			Disabled: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-server-backup-plan"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewServerBackupPlan(ctx, "example", &hbr.ServerBackupPlanArgs{
+//				EcsServerBackupPlanName: pulumi.String("server_backup_plan"),
+//				InstanceId:              pulumi.String(_default.Instances[0].Id),
+//				Schedule:                pulumi.String("I|1602673264|PT2H"),
+//				Retention:               pulumi.Int(1),
+//				Details: hbr.ServerBackupPlanDetailArray{
+//					&hbr.ServerBackupPlanDetailArgs{
+//						AppConsistent: pulumi.Bool(true),
+//						SnapshotGroup: pulumi.Bool(true),
+//					},
+//				},
+//				Disabled: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
+//
+//	$ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
+//
 // ```
 type ServerBackupPlan struct {
 	pulumi.CustomResourceState
@@ -218,7 +223,7 @@ func (i *ServerBackupPlan) ToServerBackupPlanOutputWithContext(ctx context.Conte
 // ServerBackupPlanArrayInput is an input type that accepts ServerBackupPlanArray and ServerBackupPlanArrayOutput values.
 // You can construct a concrete instance of `ServerBackupPlanArrayInput` via:
 //
-//          ServerBackupPlanArray{ ServerBackupPlanArgs{...} }
+//	ServerBackupPlanArray{ ServerBackupPlanArgs{...} }
 type ServerBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +248,7 @@ func (i ServerBackupPlanArray) ToServerBackupPlanArrayOutputWithContext(ctx cont
 // ServerBackupPlanMapInput is an input type that accepts ServerBackupPlanMap and ServerBackupPlanMapOutput values.
 // You can construct a concrete instance of `ServerBackupPlanMapInput` via:
 //
-//          ServerBackupPlanMap{ "key": ServerBackupPlanArgs{...} }
+//	ServerBackupPlanMap{ "key": ServerBackupPlanArgs{...} }
 type ServerBackupPlanMapInput interface {
 	pulumi.Input
 

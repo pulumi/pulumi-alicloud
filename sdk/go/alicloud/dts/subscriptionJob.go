@@ -22,7 +22,9 @@ import (
 // DTS Subscription Job can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+//
+//	$ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+//
 // ```
 type SubscriptionJob struct {
 	pulumi.CustomResourceState
@@ -493,7 +495,7 @@ func (i *SubscriptionJob) ToSubscriptionJobOutputWithContext(ctx context.Context
 // SubscriptionJobArrayInput is an input type that accepts SubscriptionJobArray and SubscriptionJobArrayOutput values.
 // You can construct a concrete instance of `SubscriptionJobArrayInput` via:
 //
-//          SubscriptionJobArray{ SubscriptionJobArgs{...} }
+//	SubscriptionJobArray{ SubscriptionJobArgs{...} }
 type SubscriptionJobArrayInput interface {
 	pulumi.Input
 
@@ -518,7 +520,7 @@ func (i SubscriptionJobArray) ToSubscriptionJobArrayOutputWithContext(ctx contex
 // SubscriptionJobMapInput is an input type that accepts SubscriptionJobMap and SubscriptionJobMapOutput values.
 // You can construct a concrete instance of `SubscriptionJobMapInput` via:
 //
-//          SubscriptionJobMap{ "key": SubscriptionJobArgs{...} }
+//	SubscriptionJobMap{ "key": SubscriptionJobArgs{...} }
 type SubscriptionJobMapInput interface {
 	pulumi.Input
 

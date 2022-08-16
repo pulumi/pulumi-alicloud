@@ -21,25 +21,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewAlidnsDomainAttachment(ctx, "dns", &dns.AlidnsDomainAttachmentArgs{
-// 			DomainNames: pulumi.StringArray{
-// 				pulumi.String("test111.abc"),
-// 				pulumi.String("test222.abc"),
-// 			},
-// 			InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewAlidnsDomainAttachment(ctx, "dns", &dns.AlidnsDomainAttachmentArgs{
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("test111.abc"),
+//					pulumi.String("test222.abc"),
+//				},
+//				InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // DNS domain attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+//
+//	$ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+//
 // ```
 type AlidnsDomainAttachment struct {
 	pulumi.CustomResourceState
@@ -151,7 +156,7 @@ func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx c
 // AlidnsDomainAttachmentArrayInput is an input type that accepts AlidnsDomainAttachmentArray and AlidnsDomainAttachmentArrayOutput values.
 // You can construct a concrete instance of `AlidnsDomainAttachmentArrayInput` via:
 //
-//          AlidnsDomainAttachmentArray{ AlidnsDomainAttachmentArgs{...} }
+//	AlidnsDomainAttachmentArray{ AlidnsDomainAttachmentArgs{...} }
 type AlidnsDomainAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -176,7 +181,7 @@ func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutputWithCont
 // AlidnsDomainAttachmentMapInput is an input type that accepts AlidnsDomainAttachmentMap and AlidnsDomainAttachmentMapOutput values.
 // You can construct a concrete instance of `AlidnsDomainAttachmentMapInput` via:
 //
-//          AlidnsDomainAttachmentMap{ "key": AlidnsDomainAttachmentArgs{...} }
+//	AlidnsDomainAttachmentMap{ "key": AlidnsDomainAttachmentArgs{...} }
 type AlidnsDomainAttachmentMapInput interface {
 	pulumi.Input
 

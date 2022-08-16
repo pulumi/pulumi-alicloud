@@ -20,7 +20,7 @@ type AlertAnnotation struct {
 // AlertAnnotationInput is an input type that accepts AlertAnnotationArgs and AlertAnnotationOutput values.
 // You can construct a concrete instance of `AlertAnnotationInput` via:
 //
-//          AlertAnnotationArgs{...}
+//	AlertAnnotationArgs{...}
 type AlertAnnotationInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AlertAnnotationArgs) ToAlertAnnotationOutputWithContext(ctx context.Cont
 // AlertAnnotationArrayInput is an input type that accepts AlertAnnotationArray and AlertAnnotationArrayOutput values.
 // You can construct a concrete instance of `AlertAnnotationArrayInput` via:
 //
-//          AlertAnnotationArray{ AlertAnnotationArgs{...} }
+//	AlertAnnotationArray{ AlertAnnotationArgs{...} }
 type AlertAnnotationArrayInput interface {
 	pulumi.Input
 
@@ -125,7 +125,7 @@ type AlertGroupConfiguration struct {
 // AlertGroupConfigurationInput is an input type that accepts AlertGroupConfigurationArgs and AlertGroupConfigurationOutput values.
 // You can construct a concrete instance of `AlertGroupConfigurationInput` via:
 //
-//          AlertGroupConfigurationArgs{...}
+//	AlertGroupConfigurationArgs{...}
 type AlertGroupConfigurationInput interface {
 	pulumi.Input
 
@@ -162,11 +162,11 @@ func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationPtrOutputWithConte
 // AlertGroupConfigurationPtrInput is an input type that accepts AlertGroupConfigurationArgs, AlertGroupConfigurationPtr and AlertGroupConfigurationPtrOutput values.
 // You can construct a concrete instance of `AlertGroupConfigurationPtrInput` via:
 //
-//          AlertGroupConfigurationArgs{...}
+//	        AlertGroupConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertGroupConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -278,7 +278,7 @@ type AlertJoinConfiguration struct {
 // AlertJoinConfigurationInput is an input type that accepts AlertJoinConfigurationArgs and AlertJoinConfigurationOutput values.
 // You can construct a concrete instance of `AlertJoinConfigurationInput` via:
 //
-//          AlertJoinConfigurationArgs{...}
+//	AlertJoinConfigurationArgs{...}
 type AlertJoinConfigurationInput interface {
 	pulumi.Input
 
@@ -308,7 +308,7 @@ func (i AlertJoinConfigurationArgs) ToAlertJoinConfigurationOutputWithContext(ct
 // AlertJoinConfigurationArrayInput is an input type that accepts AlertJoinConfigurationArray and AlertJoinConfigurationArrayOutput values.
 // You can construct a concrete instance of `AlertJoinConfigurationArrayInput` via:
 //
-//          AlertJoinConfigurationArray{ AlertJoinConfigurationArgs{...} }
+//	AlertJoinConfigurationArray{ AlertJoinConfigurationArgs{...} }
 type AlertJoinConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +384,7 @@ type AlertLabel struct {
 // AlertLabelInput is an input type that accepts AlertLabelArgs and AlertLabelOutput values.
 // You can construct a concrete instance of `AlertLabelInput` via:
 //
-//          AlertLabelArgs{...}
+//	AlertLabelArgs{...}
 type AlertLabelInput interface {
 	pulumi.Input
 
@@ -414,7 +414,7 @@ func (i AlertLabelArgs) ToAlertLabelOutputWithContext(ctx context.Context) Alert
 // AlertLabelArrayInput is an input type that accepts AlertLabelArray and AlertLabelArrayOutput values.
 // You can construct a concrete instance of `AlertLabelArrayInput` via:
 //
-//          AlertLabelArray{ AlertLabelArgs{...} }
+//	AlertLabelArray{ AlertLabelArgs{...} }
 type AlertLabelArrayInput interface {
 	pulumi.Input
 
@@ -496,7 +496,7 @@ type AlertNotificationList struct {
 // AlertNotificationListInput is an input type that accepts AlertNotificationListArgs and AlertNotificationListOutput values.
 // You can construct a concrete instance of `AlertNotificationListInput` via:
 //
-//          AlertNotificationListArgs{...}
+//	AlertNotificationListArgs{...}
 type AlertNotificationListInput interface {
 	pulumi.Input
 
@@ -532,7 +532,7 @@ func (i AlertNotificationListArgs) ToAlertNotificationListOutputWithContext(ctx 
 // AlertNotificationListArrayInput is an input type that accepts AlertNotificationListArray and AlertNotificationListArrayOutput values.
 // You can construct a concrete instance of `AlertNotificationListArrayInput` via:
 //
-//          AlertNotificationListArray{ AlertNotificationListArgs{...} }
+//	AlertNotificationListArray{ AlertNotificationListArgs{...} }
 type AlertNotificationListArrayInput interface {
 	pulumi.Input
 
@@ -625,7 +625,7 @@ type AlertPolicyConfiguration struct {
 // AlertPolicyConfigurationInput is an input type that accepts AlertPolicyConfigurationArgs and AlertPolicyConfigurationOutput values.
 // You can construct a concrete instance of `AlertPolicyConfigurationInput` via:
 //
-//          AlertPolicyConfigurationArgs{...}
+//	AlertPolicyConfigurationArgs{...}
 type AlertPolicyConfigurationInput interface {
 	pulumi.Input
 
@@ -665,11 +665,11 @@ func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationPtrOutputWithCon
 // AlertPolicyConfigurationPtrInput is an input type that accepts AlertPolicyConfigurationArgs, AlertPolicyConfigurationPtr and AlertPolicyConfigurationPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConfigurationPtrInput` via:
 //
-//          AlertPolicyConfigurationArgs{...}
+//	        AlertPolicyConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ type AlertQueryList struct {
 // AlertQueryListInput is an input type that accepts AlertQueryListArgs and AlertQueryListOutput values.
 // You can construct a concrete instance of `AlertQueryListInput` via:
 //
-//          AlertQueryListArgs{...}
+//	AlertQueryListArgs{...}
 type AlertQueryListInput interface {
 	pulumi.Input
 
@@ -876,7 +876,7 @@ func (i AlertQueryListArgs) ToAlertQueryListOutputWithContext(ctx context.Contex
 // AlertQueryListArrayInput is an input type that accepts AlertQueryListArray and AlertQueryListArrayOutput values.
 // You can construct a concrete instance of `AlertQueryListArrayInput` via:
 //
-//          AlertQueryListArray{ AlertQueryListArgs{...} }
+//	AlertQueryListArray{ AlertQueryListArgs{...} }
 type AlertQueryListArrayInput interface {
 	pulumi.Input
 
@@ -1019,7 +1019,7 @@ type AlertSchedule struct {
 // AlertScheduleInput is an input type that accepts AlertScheduleArgs and AlertScheduleOutput values.
 // You can construct a concrete instance of `AlertScheduleInput` via:
 //
-//          AlertScheduleArgs{...}
+//	AlertScheduleArgs{...}
 type AlertScheduleInput interface {
 	pulumi.Input
 
@@ -1067,11 +1067,11 @@ func (i AlertScheduleArgs) ToAlertSchedulePtrOutputWithContext(ctx context.Conte
 // AlertSchedulePtrInput is an input type that accepts AlertScheduleArgs, AlertSchedulePtr and AlertSchedulePtrOutput values.
 // You can construct a concrete instance of `AlertSchedulePtrInput` via:
 //
-//          AlertScheduleArgs{...}
+//	        AlertScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertSchedulePtrInput interface {
 	pulumi.Input
 
@@ -1271,7 +1271,7 @@ type AlertSeverityConfiguration struct {
 // AlertSeverityConfigurationInput is an input type that accepts AlertSeverityConfigurationArgs and AlertSeverityConfigurationOutput values.
 // You can construct a concrete instance of `AlertSeverityConfigurationInput` via:
 //
-//          AlertSeverityConfigurationArgs{...}
+//	AlertSeverityConfigurationArgs{...}
 type AlertSeverityConfigurationInput interface {
 	pulumi.Input
 
@@ -1301,7 +1301,7 @@ func (i AlertSeverityConfigurationArgs) ToAlertSeverityConfigurationOutputWithCo
 // AlertSeverityConfigurationArrayInput is an input type that accepts AlertSeverityConfigurationArray and AlertSeverityConfigurationArrayOutput values.
 // You can construct a concrete instance of `AlertSeverityConfigurationArrayInput` via:
 //
-//          AlertSeverityConfigurationArray{ AlertSeverityConfigurationArgs{...} }
+//	AlertSeverityConfigurationArray{ AlertSeverityConfigurationArgs{...} }
 type AlertSeverityConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -1393,7 +1393,7 @@ type EtlEtlSink struct {
 // EtlEtlSinkInput is an input type that accepts EtlEtlSinkArgs and EtlEtlSinkOutput values.
 // You can construct a concrete instance of `EtlEtlSinkInput` via:
 //
-//          EtlEtlSinkArgs{...}
+//	EtlEtlSinkArgs{...}
 type EtlEtlSinkInput interface {
 	pulumi.Input
 
@@ -1439,7 +1439,7 @@ func (i EtlEtlSinkArgs) ToEtlEtlSinkOutputWithContext(ctx context.Context) EtlEt
 // EtlEtlSinkArrayInput is an input type that accepts EtlEtlSinkArray and EtlEtlSinkArrayOutput values.
 // You can construct a concrete instance of `EtlEtlSinkArrayInput` via:
 //
-//          EtlEtlSinkArray{ EtlEtlSinkArgs{...} }
+//	EtlEtlSinkArray{ EtlEtlSinkArgs{...} }
 type EtlEtlSinkArrayInput interface {
 	pulumi.Input
 
@@ -1553,7 +1553,7 @@ type OssShipperParquetConfig struct {
 // OssShipperParquetConfigInput is an input type that accepts OssShipperParquetConfigArgs and OssShipperParquetConfigOutput values.
 // You can construct a concrete instance of `OssShipperParquetConfigInput` via:
 //
-//          OssShipperParquetConfigArgs{...}
+//	OssShipperParquetConfigArgs{...}
 type OssShipperParquetConfigInput interface {
 	pulumi.Input
 
@@ -1581,7 +1581,7 @@ func (i OssShipperParquetConfigArgs) ToOssShipperParquetConfigOutputWithContext(
 // OssShipperParquetConfigArrayInput is an input type that accepts OssShipperParquetConfigArray and OssShipperParquetConfigArrayOutput values.
 // You can construct a concrete instance of `OssShipperParquetConfigArrayInput` via:
 //
-//          OssShipperParquetConfigArray{ OssShipperParquetConfigArgs{...} }
+//	OssShipperParquetConfigArray{ OssShipperParquetConfigArgs{...} }
 type OssShipperParquetConfigArrayInput interface {
 	pulumi.Input
 
@@ -1657,7 +1657,7 @@ type StoreEncryptConf struct {
 // StoreEncryptConfInput is an input type that accepts StoreEncryptConfArgs and StoreEncryptConfOutput values.
 // You can construct a concrete instance of `StoreEncryptConfInput` via:
 //
-//          StoreEncryptConfArgs{...}
+//	StoreEncryptConfArgs{...}
 type StoreEncryptConfInput interface {
 	pulumi.Input
 
@@ -1697,11 +1697,11 @@ func (i StoreEncryptConfArgs) ToStoreEncryptConfPtrOutputWithContext(ctx context
 // StoreEncryptConfPtrInput is an input type that accepts StoreEncryptConfArgs, StoreEncryptConfPtr and StoreEncryptConfPtrOutput values.
 // You can construct a concrete instance of `StoreEncryptConfPtrInput` via:
 //
-//          StoreEncryptConfArgs{...}
+//	        StoreEncryptConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StoreEncryptConfPtrInput interface {
 	pulumi.Input
 
@@ -1832,7 +1832,7 @@ type StoreEncryptConfUserCmkInfo struct {
 // StoreEncryptConfUserCmkInfoInput is an input type that accepts StoreEncryptConfUserCmkInfoArgs and StoreEncryptConfUserCmkInfoOutput values.
 // You can construct a concrete instance of `StoreEncryptConfUserCmkInfoInput` via:
 //
-//          StoreEncryptConfUserCmkInfoArgs{...}
+//	StoreEncryptConfUserCmkInfoArgs{...}
 type StoreEncryptConfUserCmkInfoInput interface {
 	pulumi.Input
 
@@ -1872,11 +1872,11 @@ func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoPtrOutputW
 // StoreEncryptConfUserCmkInfoPtrInput is an input type that accepts StoreEncryptConfUserCmkInfoArgs, StoreEncryptConfUserCmkInfoPtr and StoreEncryptConfUserCmkInfoPtrOutput values.
 // You can construct a concrete instance of `StoreEncryptConfUserCmkInfoPtrInput` via:
 //
-//          StoreEncryptConfUserCmkInfoArgs{...}
+//	        StoreEncryptConfUserCmkInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StoreEncryptConfUserCmkInfoPtrInput interface {
 	pulumi.Input
 
@@ -2017,7 +2017,7 @@ type StoreIndexFieldSearch struct {
 // StoreIndexFieldSearchInput is an input type that accepts StoreIndexFieldSearchArgs and StoreIndexFieldSearchOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchInput` via:
 //
-//          StoreIndexFieldSearchArgs{...}
+//	StoreIndexFieldSearchArgs{...}
 type StoreIndexFieldSearchInput interface {
 	pulumi.Input
 
@@ -2059,7 +2059,7 @@ func (i StoreIndexFieldSearchArgs) ToStoreIndexFieldSearchOutputWithContext(ctx 
 // StoreIndexFieldSearchArrayInput is an input type that accepts StoreIndexFieldSearchArray and StoreIndexFieldSearchArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchArrayInput` via:
 //
-//          StoreIndexFieldSearchArray{ StoreIndexFieldSearchArgs{...} }
+//	StoreIndexFieldSearchArray{ StoreIndexFieldSearchArgs{...} }
 type StoreIndexFieldSearchArrayInput interface {
 	pulumi.Input
 
@@ -2169,7 +2169,7 @@ type StoreIndexFieldSearchJsonKey struct {
 // StoreIndexFieldSearchJsonKeyInput is an input type that accepts StoreIndexFieldSearchJsonKeyArgs and StoreIndexFieldSearchJsonKeyOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchJsonKeyInput` via:
 //
-//          StoreIndexFieldSearchJsonKeyArgs{...}
+//	StoreIndexFieldSearchJsonKeyArgs{...}
 type StoreIndexFieldSearchJsonKeyInput interface {
 	pulumi.Input
 
@@ -2203,7 +2203,7 @@ func (i StoreIndexFieldSearchJsonKeyArgs) ToStoreIndexFieldSearchJsonKeyOutputWi
 // StoreIndexFieldSearchJsonKeyArrayInput is an input type that accepts StoreIndexFieldSearchJsonKeyArray and StoreIndexFieldSearchJsonKeyArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchJsonKeyArrayInput` via:
 //
-//          StoreIndexFieldSearchJsonKeyArray{ StoreIndexFieldSearchJsonKeyArgs{...} }
+//	StoreIndexFieldSearchJsonKeyArray{ StoreIndexFieldSearchJsonKeyArgs{...} }
 type StoreIndexFieldSearchJsonKeyArrayInput interface {
 	pulumi.Input
 
@@ -2291,7 +2291,7 @@ type StoreIndexFullText struct {
 // StoreIndexFullTextInput is an input type that accepts StoreIndexFullTextArgs and StoreIndexFullTextOutput values.
 // You can construct a concrete instance of `StoreIndexFullTextInput` via:
 //
-//          StoreIndexFullTextArgs{...}
+//	StoreIndexFullTextArgs{...}
 type StoreIndexFullTextInput interface {
 	pulumi.Input
 
@@ -2331,11 +2331,11 @@ func (i StoreIndexFullTextArgs) ToStoreIndexFullTextPtrOutputWithContext(ctx con
 // StoreIndexFullTextPtrInput is an input type that accepts StoreIndexFullTextArgs, StoreIndexFullTextPtr and StoreIndexFullTextPtrOutput values.
 // You can construct a concrete instance of `StoreIndexFullTextPtrInput` via:
 //
-//          StoreIndexFullTextArgs{...}
+//	        StoreIndexFullTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StoreIndexFullTextPtrInput interface {
 	pulumi.Input
 
@@ -2468,7 +2468,7 @@ type StoreShard struct {
 // StoreShardInput is an input type that accepts StoreShardArgs and StoreShardOutput values.
 // You can construct a concrete instance of `StoreShardInput` via:
 //
-//          StoreShardArgs{...}
+//	StoreShardArgs{...}
 type StoreShardInput interface {
 	pulumi.Input
 
@@ -2502,7 +2502,7 @@ func (i StoreShardArgs) ToStoreShardOutputWithContext(ctx context.Context) Store
 // StoreShardArrayInput is an input type that accepts StoreShardArray and StoreShardArrayOutput values.
 // You can construct a concrete instance of `StoreShardArrayInput` via:
 //
-//          StoreShardArray{ StoreShardArgs{...} }
+//	StoreShardArray{ StoreShardArgs{...} }
 type StoreShardArrayInput interface {
 	pulumi.Input
 
@@ -2598,7 +2598,7 @@ type GetProjectsProject struct {
 // GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
 // You can construct a concrete instance of `GetProjectsProjectInput` via:
 //
-//          GetProjectsProjectArgs{...}
+//	GetProjectsProjectArgs{...}
 type GetProjectsProjectInput interface {
 	pulumi.Input
 
@@ -2638,7 +2638,7 @@ func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx contex
 // GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
 //
-//          GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
+//	GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
 type GetProjectsProjectArrayInput interface {
 	pulumi.Input
 
@@ -2739,7 +2739,7 @@ type GetStoresStore struct {
 // GetStoresStoreInput is an input type that accepts GetStoresStoreArgs and GetStoresStoreOutput values.
 // You can construct a concrete instance of `GetStoresStoreInput` via:
 //
-//          GetStoresStoreArgs{...}
+//	GetStoresStoreArgs{...}
 type GetStoresStoreInput interface {
 	pulumi.Input
 
@@ -2769,7 +2769,7 @@ func (i GetStoresStoreArgs) ToGetStoresStoreOutputWithContext(ctx context.Contex
 // GetStoresStoreArrayInput is an input type that accepts GetStoresStoreArray and GetStoresStoreArrayOutput values.
 // You can construct a concrete instance of `GetStoresStoreArrayInput` via:
 //
-//          GetStoresStoreArray{ GetStoresStoreArgs{...} }
+//	GetStoresStoreArray{ GetStoresStoreArgs{...} }
 type GetStoresStoreArrayInput interface {
 	pulumi.Input
 

@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
-// 			CommandContent: pulumi.String("bHMK"),
-// 			Description:    pulumi.String("For Terraform Test"),
-// 			Type:           pulumi.String("RunShellScript"),
-// 			WorkingDir:     pulumi.String("/root"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			Status: pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsInvocation(ctx, "defaultEcsInvocation", &ecs.EcsInvocationArgs{
-// 			CommandId: defaultCommand.ID(),
-// 			InstanceIds: pulumi.StringArray{
-// 				pulumi.String(defaultInstances.Ids[0]),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
+//				CommandContent: pulumi.String("bHMK"),
+//				Description:    pulumi.String("For Terraform Test"),
+//				Type:           pulumi.String("RunShellScript"),
+//				WorkingDir:     pulumi.String("/root"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				Status: pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsInvocation(ctx, "defaultEcsInvocation", &ecs.EcsInvocationArgs{
+//				CommandId: defaultCommand.ID(),
+//				InstanceIds: pulumi.StringArray{
+//					pulumi.String(defaultInstances.Ids[0]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // ECS Invocation can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
+//
 // ```
 type EcsInvocation struct {
 	pulumi.CustomResourceState
@@ -265,7 +270,7 @@ func (i *EcsInvocation) ToEcsInvocationOutputWithContext(ctx context.Context) Ec
 // EcsInvocationArrayInput is an input type that accepts EcsInvocationArray and EcsInvocationArrayOutput values.
 // You can construct a concrete instance of `EcsInvocationArrayInput` via:
 //
-//          EcsInvocationArray{ EcsInvocationArgs{...} }
+//	EcsInvocationArray{ EcsInvocationArgs{...} }
 type EcsInvocationArrayInput interface {
 	pulumi.Input
 
@@ -290,7 +295,7 @@ func (i EcsInvocationArray) ToEcsInvocationArrayOutputWithContext(ctx context.Co
 // EcsInvocationMapInput is an input type that accepts EcsInvocationMap and EcsInvocationMapOutput values.
 // You can construct a concrete instance of `EcsInvocationMapInput` via:
 //
-//          EcsInvocationMap{ "key": EcsInvocationArgs{...} }
+//	EcsInvocationMap{ "key": EcsInvocationArgs{...} }
 type EcsInvocationMapInput interface {
 	pulumi.Input
 

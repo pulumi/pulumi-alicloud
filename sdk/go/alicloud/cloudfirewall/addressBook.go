@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudfirewall.NewAddressBook(ctx, "example", &cloudfirewall.AddressBookArgs{
-// 			AutoAddTagEcs: pulumi.Int(0),
-// 			Description:   pulumi.String("example_value"),
-// 			EcsTags: cloudfirewall.AddressBookEcsTagArray{
-// 				&cloudfirewall.AddressBookEcsTagArgs{
-// 					TagKey:   pulumi.String("created"),
-// 					TagValue: pulumi.String("tfTestAcc0"),
-// 				},
-// 			},
-// 			GroupName:   pulumi.String("example_value"),
-// 			GroupType:   pulumi.String("tag"),
-// 			TagRelation: pulumi.String("and"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfirewall.NewAddressBook(ctx, "example", &cloudfirewall.AddressBookArgs{
+//				AutoAddTagEcs: pulumi.Int(0),
+//				Description:   pulumi.String("example_value"),
+//				EcsTags: cloudfirewall.AddressBookEcsTagArray{
+//					&cloudfirewall.AddressBookEcsTagArgs{
+//						TagKey:   pulumi.String("created"),
+//						TagValue: pulumi.String("tfTestAcc0"),
+//					},
+//				},
+//				GroupName:   pulumi.String("example_value"),
+//				GroupType:   pulumi.String("tag"),
+//				TagRelation: pulumi.String("and"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Cloud Firewall Address Book can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
+//
+//	$ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
+//
 // ```
 type AddressBook struct {
 	pulumi.CustomResourceState
@@ -234,7 +239,7 @@ func (i *AddressBook) ToAddressBookOutputWithContext(ctx context.Context) Addres
 // AddressBookArrayInput is an input type that accepts AddressBookArray and AddressBookArrayOutput values.
 // You can construct a concrete instance of `AddressBookArrayInput` via:
 //
-//          AddressBookArray{ AddressBookArgs{...} }
+//	AddressBookArray{ AddressBookArgs{...} }
 type AddressBookArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +264,7 @@ func (i AddressBookArray) ToAddressBookArrayOutputWithContext(ctx context.Contex
 // AddressBookMapInput is an input type that accepts AddressBookMap and AddressBookMapOutput values.
 // You can construct a concrete instance of `AddressBookMapInput` via:
 //
-//          AddressBookMap{ "key": AddressBookArgs{...} }
+//	AddressBookMap{ "key": AddressBookArgs{...} }
 type AddressBookMapInput interface {
 	pulumi.Input
 

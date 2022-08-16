@@ -19,90 +19,93 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: pulumi.StringRef("OK"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
-// 			AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
-// 				&cfg.AggregatorAggregatorAccountArgs{
-// 					AccountId:   pulumi.String("140278452670****"),
-// 					AccountName: pulumi.String("test-2"),
-// 					AccountType: pulumi.String("ResourceDirectory"),
-// 				},
-// 			},
-// 			AggregatorName: pulumi.String("tf-testaccaggregator"),
-// 			Description:    pulumi.String("tf-testaccaggregator"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "defaultAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
-// 			AggregatorId:            defaultAggregator.ID(),
-// 			AggregateConfigRuleName: pulumi.String(name),
-// 			SourceOwner:             pulumi.String("ALIYUN"),
-// 			SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
-// 			ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-// 			ResourceTypesScopes: pulumi.StringArray{
-// 				pulumi.String("ACS::ECS::Instance"),
-// 			},
-// 			RiskLevel:               pulumi.Int(1),
-// 			Description:             pulumi.String(name),
-// 			ExcludeResourceIdsScope: pulumi.String(defaultInstances.Ids[0]),
-// 			InputParameters: pulumi.AnyMap{
-// 				"cpuCount": pulumi.Any("4"),
-// 			},
-// 			RegionIdsScope:        pulumi.String("cn-hangzhou"),
-// 			ResourceGroupIdsScope: pulumi.String(defaultResourceGroups.Ids[0]),
-// 			TagKeyScope:           pulumi.String("tFTest"),
-// 			TagValueScope:         pulumi.String("forTF 123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewAggregateCompliancePack(ctx, "defaultAggregateCompliancePack", &cfg.AggregateCompliancePackArgs{
-// 			AggregateCompliancePackName: pulumi.String("tf-testaccConfig1234"),
-// 			AggregatorId:                defaultAggregator.ID(),
-// 			Description:                 pulumi.String("tf-testaccConfig1234"),
-// 			RiskLevel:                   pulumi.Int(1),
-// 			ConfigRuleIds: cfg.AggregateCompliancePackConfigRuleIdArray{
-// 				&cfg.AggregateCompliancePackConfigRuleIdArgs{
-// 					ConfigRuleId: defaultAggregateConfigRule.ConfigRuleId,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
+//				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
+//					&cfg.AggregatorAggregatorAccountArgs{
+//						AccountId:   pulumi.String("140278452670****"),
+//						AccountName: pulumi.String("test-2"),
+//						AccountType: pulumi.String("ResourceDirectory"),
+//					},
+//				},
+//				AggregatorName: pulumi.String("tf-testaccaggregator"),
+//				Description:    pulumi.String("tf-testaccaggregator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "defaultAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+//				AggregatorId:            defaultAggregator.ID(),
+//				AggregateConfigRuleName: pulumi.String(name),
+//				SourceOwner:             pulumi.String("ALIYUN"),
+//				SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
+//				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ECS::Instance"),
+//				},
+//				RiskLevel:               pulumi.Int(1),
+//				Description:             pulumi.String(name),
+//				ExcludeResourceIdsScope: pulumi.String(defaultInstances.Ids[0]),
+//				InputParameters: pulumi.AnyMap{
+//					"cpuCount": pulumi.Any("4"),
+//				},
+//				RegionIdsScope:        pulumi.String("cn-hangzhou"),
+//				ResourceGroupIdsScope: pulumi.String(defaultResourceGroups.Ids[0]),
+//				TagKeyScope:           pulumi.String("tFTest"),
+//				TagValueScope:         pulumi.String("forTF 123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewAggregateCompliancePack(ctx, "defaultAggregateCompliancePack", &cfg.AggregateCompliancePackArgs{
+//				AggregateCompliancePackName: pulumi.String("tf-testaccConfig1234"),
+//				AggregatorId:                defaultAggregator.ID(),
+//				Description:                 pulumi.String("tf-testaccConfig1234"),
+//				RiskLevel:                   pulumi.Int(1),
+//				ConfigRuleIds: cfg.AggregateCompliancePackConfigRuleIdArray{
+//					&cfg.AggregateCompliancePackConfigRuleIdArgs{
+//						ConfigRuleId: defaultAggregateConfigRule.ConfigRuleId,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -110,7 +113,9 @@ import (
 // Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
+//
+//	$ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
+//
 // ```
 type AggregateCompliancePack struct {
 	pulumi.CustomResourceState
@@ -286,7 +291,7 @@ func (i *AggregateCompliancePack) ToAggregateCompliancePackOutputWithContext(ctx
 // AggregateCompliancePackArrayInput is an input type that accepts AggregateCompliancePackArray and AggregateCompliancePackArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackArrayInput` via:
 //
-//          AggregateCompliancePackArray{ AggregateCompliancePackArgs{...} }
+//	AggregateCompliancePackArray{ AggregateCompliancePackArgs{...} }
 type AggregateCompliancePackArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +316,7 @@ func (i AggregateCompliancePackArray) ToAggregateCompliancePackArrayOutputWithCo
 // AggregateCompliancePackMapInput is an input type that accepts AggregateCompliancePackMap and AggregateCompliancePackMapOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackMapInput` via:
 //
-//          AggregateCompliancePackMap{ "key": AggregateCompliancePackArgs{...} }
+//	AggregateCompliancePackMap{ "key": AggregateCompliancePackArgs{...} }
 type AggregateCompliancePackMapInput interface {
 	pulumi.Input
 

@@ -17,30 +17,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewApplicationScale(ctx, "default", &edas.ApplicationScaleArgs{
-// 			AppId:       pulumi.Any(_var.App_id),
-// 			DeployGroup: pulumi.Any(_var.Deploy_group),
-// 			EcuInfos:    pulumi.Any(_var.Ecu_info),
-// 			ForceStatus: pulumi.Any(_var.Force_status),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewApplicationScale(ctx, "default", &edas.ApplicationScaleArgs{
+//				AppId:       pulumi.Any(_var.App_id),
+//				DeployGroup: pulumi.Any(_var.Deploy_group),
+//				EcuInfos:    pulumi.Any(_var.Ecu_info),
+//				ForceStatus: pulumi.Any(_var.Force_status),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ApplicationScale struct {
 	pulumi.CustomResourceState
@@ -173,7 +176,7 @@ func (i *ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Conte
 // ApplicationScaleArrayInput is an input type that accepts ApplicationScaleArray and ApplicationScaleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScaleArrayInput` via:
 //
-//          ApplicationScaleArray{ ApplicationScaleArgs{...} }
+//	ApplicationScaleArray{ ApplicationScaleArgs{...} }
 type ApplicationScaleArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +201,7 @@ func (i ApplicationScaleArray) ToApplicationScaleArrayOutputWithContext(ctx cont
 // ApplicationScaleMapInput is an input type that accepts ApplicationScaleMap and ApplicationScaleMapOutput values.
 // You can construct a concrete instance of `ApplicationScaleMapInput` via:
 //
-//          ApplicationScaleMap{ "key": ApplicationScaleArgs{...} }
+//	ApplicationScaleMap{ "key": ApplicationScaleArgs{...} }
 type ApplicationScaleMapInput interface {
 	pulumi.Input
 

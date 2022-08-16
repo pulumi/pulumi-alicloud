@@ -13,29 +13,32 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.NewVpcAccess(ctx, "foo", &apigateway.VpcAccessArgs{
-// 			InstanceId: pulumi.String("i-kai2ks92kzkw92ka"),
-// 			Port:       pulumi.Int(8080),
-// 			VpcId:      pulumi.String("vpc-awkcj192ka9zalz"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewVpcAccess(ctx, "foo", &apigateway.VpcAccessArgs{
+//				InstanceId: pulumi.String("i-kai2ks92kzkw92ka"),
+//				Port:       pulumi.Int(8080),
+//				VpcId:      pulumi.String("vpc-awkcj192ka9zalz"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Api gateway app can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+//
+//	$ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+//
 // ```
 type VpcAccess struct {
 	pulumi.CustomResourceState
@@ -170,7 +175,7 @@ func (i *VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessO
 // VpcAccessArrayInput is an input type that accepts VpcAccessArray and VpcAccessArrayOutput values.
 // You can construct a concrete instance of `VpcAccessArrayInput` via:
 //
-//          VpcAccessArray{ VpcAccessArgs{...} }
+//	VpcAccessArray{ VpcAccessArgs{...} }
 type VpcAccessArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +200,7 @@ func (i VpcAccessArray) ToVpcAccessArrayOutputWithContext(ctx context.Context) V
 // VpcAccessMapInput is an input type that accepts VpcAccessMap and VpcAccessMapOutput values.
 // You can construct a concrete instance of `VpcAccessMapInput` via:
 //
-//          VpcAccessMap{ "key": VpcAccessArgs{...} }
+//	VpcAccessMap{ "key": VpcAccessArgs{...} }
 type VpcAccessMapInput interface {
 	pulumi.Input
 

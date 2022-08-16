@@ -17,29 +17,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewUserAttachment(ctx, "example", &bastionhost.UserAttachmentArgs{
-// 			InstanceId:  pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-// 			UserGroupId: pulumi.String("10"),
-// 			UserId:      pulumi.String("100"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewUserAttachment(ctx, "example", &bastionhost.UserAttachmentArgs{
+//				InstanceId:  pulumi.String("bastionhost-cn-tl3xxxxxxx"),
+//				UserGroupId: pulumi.String("10"),
+//				UserId:      pulumi.String("100"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Bastion Host User Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
+//
+//	$ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
+//
 // ```
 type UserAttachment struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *UserAttachment) ToUserAttachmentOutputWithContext(ctx context.Context) 
 // UserAttachmentArrayInput is an input type that accepts UserAttachmentArray and UserAttachmentArrayOutput values.
 // You can construct a concrete instance of `UserAttachmentArrayInput` via:
 //
-//          UserAttachmentArray{ UserAttachmentArgs{...} }
+//	UserAttachmentArray{ UserAttachmentArgs{...} }
 type UserAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i UserAttachmentArray) ToUserAttachmentArrayOutputWithContext(ctx context.
 // UserAttachmentMapInput is an input type that accepts UserAttachmentMap and UserAttachmentMapOutput values.
 // You can construct a concrete instance of `UserAttachmentMapInput` via:
 //
-//          UserAttachmentMap{ "key": UserAttachmentArgs{...} }
+//	UserAttachmentMap{ "key": UserAttachmentArgs{...} }
 type UserAttachmentMapInput interface {
 	pulumi.Input
 

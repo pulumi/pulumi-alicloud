@@ -19,68 +19,73 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceDirectory, err := resourcemanager.NewResourceDirectory(ctx, "exampleResourceDirectory", &resourcemanager.ResourceDirectoryArgs{
-// 			Status: pulumi.String("Enabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "exampleControlPolicy", &resourcemanager.ControlPolicyArgs{
-// 			ControlPolicyName: pulumi.String("tf-testAccName"),
-// 			Description:       pulumi.String("tf-testAccRDControlPolicy"),
-// 			EffectScope:       pulumi.String("RAM"),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf(`  {
-//     "Version": "1",
-//     "Statement": [
-//       {
-//         "Effect": "Deny",
-//         "Action": [
-//           "ram:UpdateRole",
-//           "ram:DeleteRole",
-//           "ram:AttachPolicyToRole",
-//           "ram:DetachPolicyFromRole"
-//         ],
-//         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
-//       }
-//     ]
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleResourceDirectory, err := resourcemanager.NewResourceDirectory(ctx, "exampleResourceDirectory", &resourcemanager.ResourceDirectoryArgs{
+//				Status: pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "exampleControlPolicy", &resourcemanager.ControlPolicyArgs{
+//				ControlPolicyName: pulumi.String("tf-testAccName"),
+//				Description:       pulumi.String("tf-testAccRDControlPolicy"),
+//				EffectScope:       pulumi.String("RAM"),
+//				PolicyDocument: pulumi.String(fmt.Sprintf(`  {
+//	    "Version": "1",
+//	    "Statement": [
+//	      {
+//	        "Effect": "Deny",
+//	        "Action": [
+//	          "ram:UpdateRole",
+//	          "ram:DeleteRole",
+//	          "ram:AttachPolicyToRole",
+//	          "ram:DetachPolicyFromRole"
+//	        ],
+//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//	      }
+//	    ]
+//	  }
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
-// 			FolderName: pulumi.String("tf-testAccName"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = resourcemanager.NewControlPolicyAttachment(ctx, "exampleControlPolicyAttachment", &resourcemanager.ControlPolicyAttachmentArgs{
-// 			PolicyId: exampleControlPolicy.ID(),
-// 			TargetId: exampleFolder.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleResourceDirectory,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String("tf-testAccName"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "exampleControlPolicyAttachment", &resourcemanager.ControlPolicyAttachmentArgs{
+//				PolicyId: exampleControlPolicy.ID(),
+//				TargetId: exampleFolder.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleResourceDirectory,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -88,7 +93,9 @@ import (
 // Resource Manager Control Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+//
+//	$ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+//
 // ```
 type ControlPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -192,7 +199,7 @@ func (i *ControlPolicyAttachment) ToControlPolicyAttachmentOutputWithContext(ctx
 // ControlPolicyAttachmentArrayInput is an input type that accepts ControlPolicyAttachmentArray and ControlPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyAttachmentArrayInput` via:
 //
-//          ControlPolicyAttachmentArray{ ControlPolicyAttachmentArgs{...} }
+//	ControlPolicyAttachmentArray{ ControlPolicyAttachmentArgs{...} }
 type ControlPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +224,7 @@ func (i ControlPolicyAttachmentArray) ToControlPolicyAttachmentArrayOutputWithCo
 // ControlPolicyAttachmentMapInput is an input type that accepts ControlPolicyAttachmentMap and ControlPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `ControlPolicyAttachmentMapInput` via:
 //
-//          ControlPolicyAttachmentMap{ "key": ControlPolicyAttachmentArgs{...} }
+//	ControlPolicyAttachmentMap{ "key": ControlPolicyAttachmentArgs{...} }
 type ControlPolicyAttachmentMapInput interface {
 	pulumi.Input
 

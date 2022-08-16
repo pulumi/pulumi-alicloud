@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := bastionhost.GetHostAccounts(ctx, &bastionhost.GetHostAccountsArgs{
-// 			HostId:     "15",
-// 			InstanceId: "example_value",
-// 			Ids: []string{
-// 				"1",
-// 				"2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostHostAccountId1", ids.Accounts[0].Id)
-// 		nameRegex, err := bastionhost.GetHostAccounts(ctx, &bastionhost.GetHostAccountsArgs{
-// 			HostId:     "15",
-// 			InstanceId: "example_value",
-// 			NameRegex:  pulumi.StringRef("^my-HostAccount"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostHostAccountId2", nameRegex.Accounts[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := bastionhost.GetHostAccounts(ctx, &bastionhost.GetHostAccountsArgs{
+//				HostId:     "15",
+//				InstanceId: "example_value",
+//				Ids: []string{
+//					"1",
+//					"2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostAccountId1", ids.Accounts[0].Id)
+//			nameRegex, err := bastionhost.GetHostAccounts(ctx, &bastionhost.GetHostAccountsArgs{
+//				HostId:     "15",
+//				InstanceId: "example_value",
+//				NameRegex:  pulumi.StringRef("^my-HostAccount"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostAccountId2", nameRegex.Accounts[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHostAccounts(ctx *pulumi.Context, args *GetHostAccountsArgs, opts ...pulumi.InvokeOption) (*GetHostAccountsResult, error) {
 	var rv GetHostAccountsResult

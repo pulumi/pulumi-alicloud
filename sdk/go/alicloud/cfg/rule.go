@@ -26,32 +26,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.NewRule(ctx, "example", &cfg.RuleArgs{
-// 			ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
-// 			Description:            pulumi.String("ecs instances in vpc"),
-// 			InputParameters: pulumi.AnyMap{
-// 				"vpcIds": pulumi.Any("vpc-uf6gksw4ctjd******"),
-// 			},
-// 			ResourceTypesScopes: pulumi.StringArray{
-// 				pulumi.String("ACS::ECS::Instance"),
-// 			},
-// 			RiskLevel:        pulumi.Int(1),
-// 			RuleName:         pulumi.String("instances-in-vpc"),
-// 			SourceIdentifier: pulumi.String("ecs-instances-in-vpc"),
-// 			SourceOwner:      pulumi.String("ALIYUN"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cfg.NewRule(ctx, "example", &cfg.RuleArgs{
+//				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
+//				Description:            pulumi.String("ecs instances in vpc"),
+//				InputParameters: pulumi.AnyMap{
+//					"vpcIds": pulumi.Any("vpc-uf6gksw4ctjd******"),
+//				},
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ECS::Instance"),
+//				},
+//				RiskLevel:        pulumi.Int(1),
+//				RuleName:         pulumi.String("instances-in-vpc"),
+//				SourceIdentifier: pulumi.String("ecs-instances-in-vpc"),
+//				SourceOwner:      pulumi.String("ALIYUN"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // Alicloud Config Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+//
+//	$ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+//
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -359,7 +364,7 @@ func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +389,7 @@ func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOu
 // RuleMapInput is an input type that accepts RuleMap and RuleMapOutput values.
 // You can construct a concrete instance of `RuleMapInput` via:
 //
-//          RuleMap{ "key": RuleArgs{...} }
+//	RuleMap{ "key": RuleArgs{...} }
 type RuleMapInput interface {
 	pulumi.Input
 

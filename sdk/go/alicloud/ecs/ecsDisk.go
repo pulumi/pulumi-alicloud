@@ -18,36 +18,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
-// 			Category:    pulumi.String("cloud_efficiency"),
-// 			Description: pulumi.String("Hello ecs disk."),
-// 			DiskName:    pulumi.String("tf-test"),
-// 			Encrypted:   pulumi.Bool(true),
-// 			KmsKeyId:    pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
-// 			Size:        pulumi.Int(30),
-// 			Tags: pulumi.AnyMap{
-// 				"Name": pulumi.Any("TerraformTest"),
-// 			},
-// 			ZoneId: pulumi.String("cn-beijing-b"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
+//				Category:    pulumi.String("cloud_efficiency"),
+//				Description: pulumi.String("Hello ecs disk."),
+//				DiskName:    pulumi.String("tf-test"),
+//				Encrypted:   pulumi.Bool(true),
+//				KmsKeyId:    pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
+//				Size:        pulumi.Int(30),
+//				Tags: pulumi.AnyMap{
+//					"Name": pulumi.Any("TerraformTest"),
+//				},
+//				ZoneId: pulumi.String("cn-beijing-b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // ECS Disk can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
+//
+//	$ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
+//
 // ```
 type EcsDisk struct {
 	pulumi.CustomResourceState
@@ -105,7 +110,7 @@ type EcsDisk struct {
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-	Size pulumi.IntPtrOutput `pulumi:"size"`
+	Size pulumi.IntOutput `pulumi:"size"`
 	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// The disk status.
@@ -439,7 +444,7 @@ func (i *EcsDisk) ToEcsDiskOutputWithContext(ctx context.Context) EcsDiskOutput 
 // EcsDiskArrayInput is an input type that accepts EcsDiskArray and EcsDiskArrayOutput values.
 // You can construct a concrete instance of `EcsDiskArrayInput` via:
 //
-//          EcsDiskArray{ EcsDiskArgs{...} }
+//	EcsDiskArray{ EcsDiskArgs{...} }
 type EcsDiskArrayInput interface {
 	pulumi.Input
 
@@ -464,7 +469,7 @@ func (i EcsDiskArray) ToEcsDiskArrayOutputWithContext(ctx context.Context) EcsDi
 // EcsDiskMapInput is an input type that accepts EcsDiskMap and EcsDiskMapOutput values.
 // You can construct a concrete instance of `EcsDiskMapInput` via:
 //
-//          EcsDiskMap{ "key": EcsDiskArgs{...} }
+//	EcsDiskMap{ "key": EcsDiskArgs{...} }
 type EcsDiskMapInput interface {
 	pulumi.Input
 
@@ -599,8 +604,8 @@ func (o EcsDiskOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-func (o EcsDiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.IntPtrOutput { return v.Size }).(pulumi.IntPtrOutput)
+func (o EcsDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
 // A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.

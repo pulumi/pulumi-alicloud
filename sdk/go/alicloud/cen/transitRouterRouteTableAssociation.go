@@ -20,7 +20,9 @@ import (
 // CEN transit router route table association can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+//
+//	$ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+//
 // ```
 type TransitRouterRouteTableAssociation struct {
 	pulumi.CustomResourceState
@@ -140,7 +142,7 @@ func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociatio
 // TransitRouterRouteTableAssociationArrayInput is an input type that accepts TransitRouterRouteTableAssociationArray and TransitRouterRouteTableAssociationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTableAssociationArrayInput` via:
 //
-//          TransitRouterRouteTableAssociationArray{ TransitRouterRouteTableAssociationArgs{...} }
+//	TransitRouterRouteTableAssociationArray{ TransitRouterRouteTableAssociationArgs{...} }
 type TransitRouterRouteTableAssociationArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +167,7 @@ func (i TransitRouterRouteTableAssociationArray) ToTransitRouterRouteTableAssoci
 // TransitRouterRouteTableAssociationMapInput is an input type that accepts TransitRouterRouteTableAssociationMap and TransitRouterRouteTableAssociationMapOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTableAssociationMapInput` via:
 //
-//          TransitRouterRouteTableAssociationMap{ "key": TransitRouterRouteTableAssociationArgs{...} }
+//	TransitRouterRouteTableAssociationMap{ "key": TransitRouterRouteTableAssociationArgs{...} }
 type TransitRouterRouteTableAssociationMapInput interface {
 	pulumi.Input
 

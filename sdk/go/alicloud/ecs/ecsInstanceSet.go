@@ -67,7 +67,7 @@ type EcsInstanceSet struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
-	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
 	// The name of key pair that can login ECS instance successfully without password.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
@@ -208,7 +208,7 @@ type ecsInstanceSetState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The name of key pair that can login ECS instance successfully without password.
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -312,7 +312,7 @@ type EcsInstanceSetState struct {
 	InstanceType pulumi.StringPtrInput
 	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The name of key pair that can login ECS instance successfully without password.
 	KeyPairName pulumi.StringPtrInput
@@ -418,7 +418,7 @@ type ecsInstanceSetArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The name of key pair that can login ECS instance successfully without password.
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -521,7 +521,7 @@ type EcsInstanceSetArgs struct {
 	InstanceType pulumi.StringInput
 	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The name of key pair that can login ECS instance successfully without password.
 	KeyPairName pulumi.StringPtrInput
@@ -608,7 +608,7 @@ func (i *EcsInstanceSet) ToEcsInstanceSetOutputWithContext(ctx context.Context) 
 // EcsInstanceSetArrayInput is an input type that accepts EcsInstanceSetArray and EcsInstanceSetArrayOutput values.
 // You can construct a concrete instance of `EcsInstanceSetArrayInput` via:
 //
-//          EcsInstanceSetArray{ EcsInstanceSetArgs{...} }
+//	EcsInstanceSetArray{ EcsInstanceSetArgs{...} }
 type EcsInstanceSetArrayInput interface {
 	pulumi.Input
 
@@ -633,7 +633,7 @@ func (i EcsInstanceSetArray) ToEcsInstanceSetArrayOutputWithContext(ctx context.
 // EcsInstanceSetMapInput is an input type that accepts EcsInstanceSetMap and EcsInstanceSetMapOutput values.
 // You can construct a concrete instance of `EcsInstanceSetMapInput` via:
 //
-//          EcsInstanceSetMap{ "key": EcsInstanceSetArgs{...} }
+//	EcsInstanceSetMap{ "key": EcsInstanceSetArgs{...} }
 type EcsInstanceSetMapInput interface {
 	pulumi.Input
 
@@ -768,7 +768,7 @@ func (o EcsInstanceSetOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 func (o EcsInstanceSetOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
 }

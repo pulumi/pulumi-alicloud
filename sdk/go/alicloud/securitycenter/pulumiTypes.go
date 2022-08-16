@@ -24,7 +24,7 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+//	GetGroupsGroupArgs{...}
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 

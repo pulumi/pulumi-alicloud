@@ -19,65 +19,68 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccReplicationVault"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		regionSource := "you Replication value source region"
-// 		if param := cfg.Get("regionSource"); param != "" {
-// 			regionSource = param
-// 		}
-// 		_, err := providers.Newalicloud(ctx, "source", &providers.alicloudArgs{
-// 			Region: regionSource,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-// 			VaultName: pulumi.String(name),
-// 		}, pulumi.Provider(alicloud.Source))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultReplicationVaultRegions, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		regionReplication := defaultReplicationVaultRegions.Regions[0].ReplicationRegionId
-// 		_, err = providers.Newalicloud(ctx, "replication", &providers.alicloudArgs{
-// 			Region: regionReplication,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
-// 			ReplicationSourceRegionId: pulumi.String(regionReplication),
-// 			ReplicationSourceVaultId:  defaultVault.ID(),
-// 			VaultName:                 pulumi.String(name),
-// 			VaultStorageClass:         pulumi.String("STANDARD"),
-// 			Description:               pulumi.String(name),
-// 		}, pulumi.Provider(alicloud.Replication))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccReplicationVault"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			regionSource := "you Replication value source region"
+//			if param := cfg.Get("regionSource"); param != "" {
+//				regionSource = param
+//			}
+//			_, err := providers.Newalicloud(ctx, "source", &providers.alicloudArgs{
+//				Region: regionSource,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Source))
+//			if err != nil {
+//				return err
+//			}
+//			defaultReplicationVaultRegions, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			regionReplication := defaultReplicationVaultRegions.Regions[0].ReplicationRegionId
+//			_, err = providers.Newalicloud(ctx, "replication", &providers.alicloudArgs{
+//				Region: regionReplication,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
+//				ReplicationSourceRegionId: pulumi.String(regionReplication),
+//				ReplicationSourceVaultId:  defaultVault.ID(),
+//				VaultName:                 pulumi.String(name),
+//				VaultStorageClass:         pulumi.String("STANDARD"),
+//				Description:               pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Replication))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,7 +88,9 @@ import (
 // Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
+//
+//	$ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
+//
 // ```
 type ReplicationVault struct {
 	pulumi.CustomResourceState
@@ -228,7 +233,7 @@ func (i *ReplicationVault) ToReplicationVaultOutputWithContext(ctx context.Conte
 // ReplicationVaultArrayInput is an input type that accepts ReplicationVaultArray and ReplicationVaultArrayOutput values.
 // You can construct a concrete instance of `ReplicationVaultArrayInput` via:
 //
-//          ReplicationVaultArray{ ReplicationVaultArgs{...} }
+//	ReplicationVaultArray{ ReplicationVaultArgs{...} }
 type ReplicationVaultArrayInput interface {
 	pulumi.Input
 
@@ -253,7 +258,7 @@ func (i ReplicationVaultArray) ToReplicationVaultArrayOutputWithContext(ctx cont
 // ReplicationVaultMapInput is an input type that accepts ReplicationVaultMap and ReplicationVaultMapOutput values.
 // You can construct a concrete instance of `ReplicationVaultMapInput` via:
 //
-//          ReplicationVaultMap{ "key": ReplicationVaultArgs{...} }
+//	ReplicationVaultMap{ "key": ReplicationVaultArgs{...} }
 type ReplicationVaultMapInput interface {
 	pulumi.Input
 

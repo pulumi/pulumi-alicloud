@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
-// 			Status: pulumi.StringRef("ACTIVE"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("tid", _default.Ids[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
+//				Status: pulumi.StringRef("ACTIVE"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("tid", _default.Ids[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetUserTenants(ctx *pulumi.Context, args *GetUserTenantsArgs, opts ...pulumi.InvokeOption) (*GetUserTenantsResult, error) {
 	var rv GetUserTenantsResult

@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ram.GetSamlProviders(ctx, &ram.GetSamlProvidersArgs{
-// 			Ids: []string{
-// 				"samlProviderName",
-// 			},
-// 			NameRegex: pulumi.StringRef("tf-testAcc"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstRamSamlProviderId", example.Providers[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ram.GetSamlProviders(ctx, &ram.GetSamlProvidersArgs{
+//				Ids: []string{
+//					"samlProviderName",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRamSamlProviderId", example.Providers[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSamlProviders(ctx *pulumi.Context, args *GetSamlProvidersArgs, opts ...pulumi.InvokeOption) (*GetSamlProvidersResult, error) {
 	var rv GetSamlProvidersResult

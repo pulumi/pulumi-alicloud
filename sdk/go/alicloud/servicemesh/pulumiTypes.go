@@ -18,7 +18,7 @@ type ServiceMeshExtraConfiguration struct {
 // ServiceMeshExtraConfigurationInput is an input type that accepts ServiceMeshExtraConfigurationArgs and ServiceMeshExtraConfigurationOutput values.
 // You can construct a concrete instance of `ServiceMeshExtraConfigurationInput` via:
 //
-//          ServiceMeshExtraConfigurationArgs{...}
+//	ServiceMeshExtraConfigurationArgs{...}
 type ServiceMeshExtraConfigurationInput interface {
 	pulumi.Input
 
@@ -54,11 +54,11 @@ func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationPtrOut
 // ServiceMeshExtraConfigurationPtrInput is an input type that accepts ServiceMeshExtraConfigurationArgs, ServiceMeshExtraConfigurationPtr and ServiceMeshExtraConfigurationPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshExtraConfigurationPtrInput` via:
 //
-//          ServiceMeshExtraConfigurationArgs{...}
+//	        ServiceMeshExtraConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshExtraConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -159,7 +159,7 @@ type ServiceMeshLoadBalancer struct {
 // ServiceMeshLoadBalancerInput is an input type that accepts ServiceMeshLoadBalancerArgs and ServiceMeshLoadBalancerOutput values.
 // You can construct a concrete instance of `ServiceMeshLoadBalancerInput` via:
 //
-//          ServiceMeshLoadBalancerArgs{...}
+//	ServiceMeshLoadBalancerArgs{...}
 type ServiceMeshLoadBalancerInput interface {
 	pulumi.Input
 
@@ -199,11 +199,11 @@ func (i ServiceMeshLoadBalancerArgs) ToServiceMeshLoadBalancerPtrOutputWithConte
 // ServiceMeshLoadBalancerPtrInput is an input type that accepts ServiceMeshLoadBalancerArgs, ServiceMeshLoadBalancerPtr and ServiceMeshLoadBalancerPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshLoadBalancerPtrInput` via:
 //
-//          ServiceMeshLoadBalancerArgs{...}
+//	        ServiceMeshLoadBalancerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshLoadBalancerPtrInput interface {
 	pulumi.Input
 
@@ -365,7 +365,7 @@ type ServiceMeshMeshConfig struct {
 // ServiceMeshMeshConfigInput is an input type that accepts ServiceMeshMeshConfigArgs and ServiceMeshMeshConfigOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigInput` via:
 //
-//          ServiceMeshMeshConfigArgs{...}
+//	ServiceMeshMeshConfigArgs{...}
 type ServiceMeshMeshConfigInput interface {
 	pulumi.Input
 
@@ -425,11 +425,11 @@ func (i ServiceMeshMeshConfigArgs) ToServiceMeshMeshConfigPtrOutputWithContext(c
 // ServiceMeshMeshConfigPtrInput is an input type that accepts ServiceMeshMeshConfigArgs, ServiceMeshMeshConfigPtr and ServiceMeshMeshConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigPtrInput` via:
 //
-//          ServiceMeshMeshConfigArgs{...}
+//	        ServiceMeshMeshConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigPtrInput interface {
 	pulumi.Input
 
@@ -708,7 +708,7 @@ type ServiceMeshMeshConfigAccessLog struct {
 // ServiceMeshMeshConfigAccessLogInput is an input type that accepts ServiceMeshMeshConfigAccessLogArgs and ServiceMeshMeshConfigAccessLogOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigAccessLogInput` via:
 //
-//          ServiceMeshMeshConfigAccessLogArgs{...}
+//	ServiceMeshMeshConfigAccessLogArgs{...}
 type ServiceMeshMeshConfigAccessLogInput interface {
 	pulumi.Input
 
@@ -746,11 +746,11 @@ func (i ServiceMeshMeshConfigAccessLogArgs) ToServiceMeshMeshConfigAccessLogPtrO
 // ServiceMeshMeshConfigAccessLogPtrInput is an input type that accepts ServiceMeshMeshConfigAccessLogArgs, ServiceMeshMeshConfigAccessLogPtr and ServiceMeshMeshConfigAccessLogPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigAccessLogPtrInput` via:
 //
-//          ServiceMeshMeshConfigAccessLogArgs{...}
+//	        ServiceMeshMeshConfigAccessLogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigAccessLogPtrInput interface {
 	pulumi.Input
 
@@ -864,7 +864,7 @@ type ServiceMeshMeshConfigAudit struct {
 // ServiceMeshMeshConfigAuditInput is an input type that accepts ServiceMeshMeshConfigAuditArgs and ServiceMeshMeshConfigAuditOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigAuditInput` via:
 //
-//          ServiceMeshMeshConfigAuditArgs{...}
+//	ServiceMeshMeshConfigAuditArgs{...}
 type ServiceMeshMeshConfigAuditInput interface {
 	pulumi.Input
 
@@ -902,11 +902,11 @@ func (i ServiceMeshMeshConfigAuditArgs) ToServiceMeshMeshConfigAuditPtrOutputWit
 // ServiceMeshMeshConfigAuditPtrInput is an input type that accepts ServiceMeshMeshConfigAuditArgs, ServiceMeshMeshConfigAuditPtr and ServiceMeshMeshConfigAuditPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigAuditPtrInput` via:
 //
-//          ServiceMeshMeshConfigAuditArgs{...}
+//	        ServiceMeshMeshConfigAuditArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigAuditPtrInput interface {
 	pulumi.Input
 
@@ -1020,7 +1020,7 @@ type ServiceMeshMeshConfigControlPlaneLog struct {
 // ServiceMeshMeshConfigControlPlaneLogInput is an input type that accepts ServiceMeshMeshConfigControlPlaneLogArgs and ServiceMeshMeshConfigControlPlaneLogOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigControlPlaneLogInput` via:
 //
-//          ServiceMeshMeshConfigControlPlaneLogArgs{...}
+//	ServiceMeshMeshConfigControlPlaneLogArgs{...}
 type ServiceMeshMeshConfigControlPlaneLogInput interface {
 	pulumi.Input
 
@@ -1058,11 +1058,11 @@ func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControl
 // ServiceMeshMeshConfigControlPlaneLogPtrInput is an input type that accepts ServiceMeshMeshConfigControlPlaneLogArgs, ServiceMeshMeshConfigControlPlaneLogPtr and ServiceMeshMeshConfigControlPlaneLogPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigControlPlaneLogPtrInput` via:
 //
-//          ServiceMeshMeshConfigControlPlaneLogArgs{...}
+//	        ServiceMeshMeshConfigControlPlaneLogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigControlPlaneLogPtrInput interface {
 	pulumi.Input
 
@@ -1174,7 +1174,7 @@ type ServiceMeshMeshConfigKiali struct {
 // ServiceMeshMeshConfigKialiInput is an input type that accepts ServiceMeshMeshConfigKialiArgs and ServiceMeshMeshConfigKialiOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigKialiInput` via:
 //
-//          ServiceMeshMeshConfigKialiArgs{...}
+//	ServiceMeshMeshConfigKialiArgs{...}
 type ServiceMeshMeshConfigKialiInput interface {
 	pulumi.Input
 
@@ -1210,11 +1210,11 @@ func (i ServiceMeshMeshConfigKialiArgs) ToServiceMeshMeshConfigKialiPtrOutputWit
 // ServiceMeshMeshConfigKialiPtrInput is an input type that accepts ServiceMeshMeshConfigKialiArgs, ServiceMeshMeshConfigKialiPtr and ServiceMeshMeshConfigKialiPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigKialiPtrInput` via:
 //
-//          ServiceMeshMeshConfigKialiArgs{...}
+//	        ServiceMeshMeshConfigKialiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigKialiPtrInput interface {
 	pulumi.Input
 
@@ -1321,7 +1321,7 @@ type ServiceMeshMeshConfigOpa struct {
 // ServiceMeshMeshConfigOpaInput is an input type that accepts ServiceMeshMeshConfigOpaArgs and ServiceMeshMeshConfigOpaOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigOpaInput` via:
 //
-//          ServiceMeshMeshConfigOpaArgs{...}
+//	ServiceMeshMeshConfigOpaArgs{...}
 type ServiceMeshMeshConfigOpaInput interface {
 	pulumi.Input
 
@@ -1367,11 +1367,11 @@ func (i ServiceMeshMeshConfigOpaArgs) ToServiceMeshMeshConfigOpaPtrOutputWithCon
 // ServiceMeshMeshConfigOpaPtrInput is an input type that accepts ServiceMeshMeshConfigOpaArgs, ServiceMeshMeshConfigOpaPtr and ServiceMeshMeshConfigOpaPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigOpaPtrInput` via:
 //
-//          ServiceMeshMeshConfigOpaArgs{...}
+//	        ServiceMeshMeshConfigOpaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigOpaPtrInput interface {
 	pulumi.Input
 
@@ -1545,7 +1545,7 @@ type ServiceMeshMeshConfigPilot struct {
 // ServiceMeshMeshConfigPilotInput is an input type that accepts ServiceMeshMeshConfigPilotArgs and ServiceMeshMeshConfigPilotOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigPilotInput` via:
 //
-//          ServiceMeshMeshConfigPilotArgs{...}
+//	ServiceMeshMeshConfigPilotArgs{...}
 type ServiceMeshMeshConfigPilotInput interface {
 	pulumi.Input
 
@@ -1583,11 +1583,11 @@ func (i ServiceMeshMeshConfigPilotArgs) ToServiceMeshMeshConfigPilotPtrOutputWit
 // ServiceMeshMeshConfigPilotPtrInput is an input type that accepts ServiceMeshMeshConfigPilotArgs, ServiceMeshMeshConfigPilotPtr and ServiceMeshMeshConfigPilotPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigPilotPtrInput` via:
 //
-//          ServiceMeshMeshConfigPilotArgs{...}
+//	        ServiceMeshMeshConfigPilotArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigPilotPtrInput interface {
 	pulumi.Input
 
@@ -1705,7 +1705,7 @@ type ServiceMeshMeshConfigProxy struct {
 // ServiceMeshMeshConfigProxyInput is an input type that accepts ServiceMeshMeshConfigProxyArgs and ServiceMeshMeshConfigProxyOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigProxyInput` via:
 //
-//          ServiceMeshMeshConfigProxyArgs{...}
+//	ServiceMeshMeshConfigProxyArgs{...}
 type ServiceMeshMeshConfigProxyInput interface {
 	pulumi.Input
 
@@ -1747,11 +1747,11 @@ func (i ServiceMeshMeshConfigProxyArgs) ToServiceMeshMeshConfigProxyPtrOutputWit
 // ServiceMeshMeshConfigProxyPtrInput is an input type that accepts ServiceMeshMeshConfigProxyArgs, ServiceMeshMeshConfigProxyPtr and ServiceMeshMeshConfigProxyPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigProxyPtrInput` via:
 //
-//          ServiceMeshMeshConfigProxyArgs{...}
+//	        ServiceMeshMeshConfigProxyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigProxyPtrInput interface {
 	pulumi.Input
 
@@ -1903,7 +1903,7 @@ type ServiceMeshMeshConfigSidecarInjector struct {
 // ServiceMeshMeshConfigSidecarInjectorInput is an input type that accepts ServiceMeshMeshConfigSidecarInjectorArgs and ServiceMeshMeshConfigSidecarInjectorOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigSidecarInjectorInput` via:
 //
-//          ServiceMeshMeshConfigSidecarInjectorArgs{...}
+//	ServiceMeshMeshConfigSidecarInjectorArgs{...}
 type ServiceMeshMeshConfigSidecarInjectorInput interface {
 	pulumi.Input
 
@@ -1949,11 +1949,11 @@ func (i ServiceMeshMeshConfigSidecarInjectorArgs) ToServiceMeshMeshConfigSidecar
 // ServiceMeshMeshConfigSidecarInjectorPtrInput is an input type that accepts ServiceMeshMeshConfigSidecarInjectorArgs, ServiceMeshMeshConfigSidecarInjectorPtr and ServiceMeshMeshConfigSidecarInjectorPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshMeshConfigSidecarInjectorPtrInput` via:
 //
-//          ServiceMeshMeshConfigSidecarInjectorArgs{...}
+//	        ServiceMeshMeshConfigSidecarInjectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshMeshConfigSidecarInjectorPtrInput interface {
 	pulumi.Input
 
@@ -2127,7 +2127,7 @@ type ServiceMeshNetwork struct {
 // ServiceMeshNetworkInput is an input type that accepts ServiceMeshNetworkArgs and ServiceMeshNetworkOutput values.
 // You can construct a concrete instance of `ServiceMeshNetworkInput` via:
 //
-//          ServiceMeshNetworkArgs{...}
+//	ServiceMeshNetworkArgs{...}
 type ServiceMeshNetworkInput interface {
 	pulumi.Input
 
@@ -2165,11 +2165,11 @@ func (i ServiceMeshNetworkArgs) ToServiceMeshNetworkPtrOutputWithContext(ctx con
 // ServiceMeshNetworkPtrInput is an input type that accepts ServiceMeshNetworkArgs, ServiceMeshNetworkPtr and ServiceMeshNetworkPtrOutput values.
 // You can construct a concrete instance of `ServiceMeshNetworkPtrInput` via:
 //
-//          ServiceMeshNetworkArgs{...}
+//	        ServiceMeshNetworkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMeshNetworkPtrInput interface {
 	pulumi.Input
 
@@ -2292,7 +2292,7 @@ type UserPermissionPermission struct {
 // UserPermissionPermissionInput is an input type that accepts UserPermissionPermissionArgs and UserPermissionPermissionOutput values.
 // You can construct a concrete instance of `UserPermissionPermissionInput` via:
 //
-//          UserPermissionPermissionArgs{...}
+//	UserPermissionPermissionArgs{...}
 type UserPermissionPermissionInput interface {
 	pulumi.Input
 
@@ -2331,7 +2331,7 @@ func (i UserPermissionPermissionArgs) ToUserPermissionPermissionOutputWithContex
 // UserPermissionPermissionArrayInput is an input type that accepts UserPermissionPermissionArray and UserPermissionPermissionArrayOutput values.
 // You can construct a concrete instance of `UserPermissionPermissionArrayInput` via:
 //
-//          UserPermissionPermissionArray{ UserPermissionPermissionArgs{...} }
+//	UserPermissionPermissionArray{ UserPermissionPermissionArgs{...} }
 type UserPermissionPermissionArrayInput interface {
 	pulumi.Input
 
@@ -2451,7 +2451,7 @@ type GetServiceMeshesMesh struct {
 // GetServiceMeshesMeshInput is an input type that accepts GetServiceMeshesMeshArgs and GetServiceMeshesMeshOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshInput` via:
 //
-//          GetServiceMeshesMeshArgs{...}
+//	GetServiceMeshesMeshArgs{...}
 type GetServiceMeshesMeshInput interface {
 	pulumi.Input
 
@@ -2507,7 +2507,7 @@ func (i GetServiceMeshesMeshArgs) ToGetServiceMeshesMeshOutputWithContext(ctx co
 // GetServiceMeshesMeshArrayInput is an input type that accepts GetServiceMeshesMeshArray and GetServiceMeshesMeshArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshArrayInput` via:
 //
-//          GetServiceMeshesMeshArray{ GetServiceMeshesMeshArgs{...} }
+//	GetServiceMeshesMeshArray{ GetServiceMeshesMeshArgs{...} }
 type GetServiceMeshesMeshArrayInput interface {
 	pulumi.Input
 
@@ -2652,7 +2652,7 @@ type GetServiceMeshesMeshEndpoint struct {
 // GetServiceMeshesMeshEndpointInput is an input type that accepts GetServiceMeshesMeshEndpointArgs and GetServiceMeshesMeshEndpointOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshEndpointInput` via:
 //
-//          GetServiceMeshesMeshEndpointArgs{...}
+//	GetServiceMeshesMeshEndpointArgs{...}
 type GetServiceMeshesMeshEndpointInput interface {
 	pulumi.Input
 
@@ -2686,7 +2686,7 @@ func (i GetServiceMeshesMeshEndpointArgs) ToGetServiceMeshesMeshEndpointOutputWi
 // GetServiceMeshesMeshEndpointArrayInput is an input type that accepts GetServiceMeshesMeshEndpointArray and GetServiceMeshesMeshEndpointArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshEndpointArrayInput` via:
 //
-//          GetServiceMeshesMeshEndpointArray{ GetServiceMeshesMeshEndpointArgs{...} }
+//	GetServiceMeshesMeshEndpointArray{ GetServiceMeshesMeshEndpointArgs{...} }
 type GetServiceMeshesMeshEndpointArrayInput interface {
 	pulumi.Input
 
@@ -2776,7 +2776,7 @@ type GetServiceMeshesMeshLoadBalancer struct {
 // GetServiceMeshesMeshLoadBalancerInput is an input type that accepts GetServiceMeshesMeshLoadBalancerArgs and GetServiceMeshesMeshLoadBalancerOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshLoadBalancerInput` via:
 //
-//          GetServiceMeshesMeshLoadBalancerArgs{...}
+//	GetServiceMeshesMeshLoadBalancerArgs{...}
 type GetServiceMeshesMeshLoadBalancerInput interface {
 	pulumi.Input
 
@@ -2810,7 +2810,7 @@ func (i GetServiceMeshesMeshLoadBalancerArgs) ToGetServiceMeshesMeshLoadBalancer
 // GetServiceMeshesMeshLoadBalancerArrayInput is an input type that accepts GetServiceMeshesMeshLoadBalancerArray and GetServiceMeshesMeshLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshLoadBalancerArrayInput` via:
 //
-//          GetServiceMeshesMeshLoadBalancerArray{ GetServiceMeshesMeshLoadBalancerArgs{...} }
+//	GetServiceMeshesMeshLoadBalancerArray{ GetServiceMeshesMeshLoadBalancerArgs{...} }
 type GetServiceMeshesMeshLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -2922,7 +2922,7 @@ type GetServiceMeshesMeshMeshConfig struct {
 // GetServiceMeshesMeshMeshConfigInput is an input type that accepts GetServiceMeshesMeshMeshConfigArgs and GetServiceMeshesMeshMeshConfigOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigArgs{...}
+//	GetServiceMeshesMeshMeshConfigArgs{...}
 type GetServiceMeshesMeshMeshConfigInput interface {
 	pulumi.Input
 
@@ -2978,7 +2978,7 @@ func (i GetServiceMeshesMeshMeshConfigArgs) ToGetServiceMeshesMeshMeshConfigOutp
 // GetServiceMeshesMeshMeshConfigArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigArray and GetServiceMeshesMeshMeshConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigArray{ GetServiceMeshesMeshMeshConfigArgs{...} }
+//	GetServiceMeshesMeshMeshConfigArray{ GetServiceMeshesMeshMeshConfigArgs{...} }
 type GetServiceMeshesMeshMeshConfigArrayInput interface {
 	pulumi.Input
 
@@ -3125,7 +3125,7 @@ type GetServiceMeshesMeshMeshConfigAccessLog struct {
 // GetServiceMeshesMeshMeshConfigAccessLogInput is an input type that accepts GetServiceMeshesMeshMeshConfigAccessLogArgs and GetServiceMeshesMeshMeshConfigAccessLogOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAccessLogInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigAccessLogArgs{...}
+//	GetServiceMeshesMeshMeshConfigAccessLogArgs{...}
 type GetServiceMeshesMeshMeshConfigAccessLogInput interface {
 	pulumi.Input
 
@@ -3155,7 +3155,7 @@ func (i GetServiceMeshesMeshMeshConfigAccessLogArgs) ToGetServiceMeshesMeshMeshC
 // GetServiceMeshesMeshMeshConfigAccessLogArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigAccessLogArray and GetServiceMeshesMeshMeshConfigAccessLogArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAccessLogArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigAccessLogArray{ GetServiceMeshesMeshMeshConfigAccessLogArgs{...} }
+//	GetServiceMeshesMeshMeshConfigAccessLogArray{ GetServiceMeshesMeshMeshConfigAccessLogArgs{...} }
 type GetServiceMeshesMeshMeshConfigAccessLogArrayInput interface {
 	pulumi.Input
 
@@ -3231,7 +3231,7 @@ type GetServiceMeshesMeshMeshConfigAudit struct {
 // GetServiceMeshesMeshMeshConfigAuditInput is an input type that accepts GetServiceMeshesMeshMeshConfigAuditArgs and GetServiceMeshesMeshMeshConfigAuditOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAuditInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigAuditArgs{...}
+//	GetServiceMeshesMeshMeshConfigAuditArgs{...}
 type GetServiceMeshesMeshMeshConfigAuditInput interface {
 	pulumi.Input
 
@@ -3261,7 +3261,7 @@ func (i GetServiceMeshesMeshMeshConfigAuditArgs) ToGetServiceMeshesMeshMeshConfi
 // GetServiceMeshesMeshMeshConfigAuditArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigAuditArray and GetServiceMeshesMeshMeshConfigAuditArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigAuditArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigAuditArray{ GetServiceMeshesMeshMeshConfigAuditArgs{...} }
+//	GetServiceMeshesMeshMeshConfigAuditArray{ GetServiceMeshesMeshMeshConfigAuditArgs{...} }
 type GetServiceMeshesMeshMeshConfigAuditArrayInput interface {
 	pulumi.Input
 
@@ -3337,7 +3337,7 @@ type GetServiceMeshesMeshMeshConfigControlPlaneLog struct {
 // GetServiceMeshesMeshMeshConfigControlPlaneLogInput is an input type that accepts GetServiceMeshesMeshMeshConfigControlPlaneLogArgs and GetServiceMeshesMeshMeshConfigControlPlaneLogOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigControlPlaneLogInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...}
+//	GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...}
 type GetServiceMeshesMeshMeshConfigControlPlaneLogInput interface {
 	pulumi.Input
 
@@ -3367,7 +3367,7 @@ func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ToGetServiceMeshesMes
 // GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigControlPlaneLogArray and GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigControlPlaneLogArray{ GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...} }
+//	GetServiceMeshesMeshMeshConfigControlPlaneLogArray{ GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...} }
 type GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput interface {
 	pulumi.Input
 
@@ -3443,7 +3443,7 @@ type GetServiceMeshesMeshMeshConfigKiali struct {
 // GetServiceMeshesMeshMeshConfigKialiInput is an input type that accepts GetServiceMeshesMeshMeshConfigKialiArgs and GetServiceMeshesMeshMeshConfigKialiOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigKialiInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigKialiArgs{...}
+//	GetServiceMeshesMeshMeshConfigKialiArgs{...}
 type GetServiceMeshesMeshMeshConfigKialiInput interface {
 	pulumi.Input
 
@@ -3473,7 +3473,7 @@ func (i GetServiceMeshesMeshMeshConfigKialiArgs) ToGetServiceMeshesMeshMeshConfi
 // GetServiceMeshesMeshMeshConfigKialiArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigKialiArray and GetServiceMeshesMeshMeshConfigKialiArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigKialiArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigKialiArray{ GetServiceMeshesMeshMeshConfigKialiArgs{...} }
+//	GetServiceMeshesMeshMeshConfigKialiArray{ GetServiceMeshesMeshMeshConfigKialiArgs{...} }
 type GetServiceMeshesMeshMeshConfigKialiArrayInput interface {
 	pulumi.Input
 
@@ -3557,7 +3557,7 @@ type GetServiceMeshesMeshMeshConfigOpa struct {
 // GetServiceMeshesMeshMeshConfigOpaInput is an input type that accepts GetServiceMeshesMeshMeshConfigOpaArgs and GetServiceMeshesMeshMeshConfigOpaOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigOpaInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigOpaArgs{...}
+//	GetServiceMeshesMeshMeshConfigOpaArgs{...}
 type GetServiceMeshesMeshMeshConfigOpaInput interface {
 	pulumi.Input
 
@@ -3595,7 +3595,7 @@ func (i GetServiceMeshesMeshMeshConfigOpaArgs) ToGetServiceMeshesMeshMeshConfigO
 // GetServiceMeshesMeshMeshConfigOpaArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigOpaArray and GetServiceMeshesMeshMeshConfigOpaArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigOpaArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigOpaArray{ GetServiceMeshesMeshMeshConfigOpaArgs{...} }
+//	GetServiceMeshesMeshMeshConfigOpaArray{ GetServiceMeshesMeshMeshConfigOpaArgs{...} }
 type GetServiceMeshesMeshMeshConfigOpaArrayInput interface {
 	pulumi.Input
 
@@ -3691,7 +3691,7 @@ type GetServiceMeshesMeshMeshConfigPilot struct {
 // GetServiceMeshesMeshMeshConfigPilotInput is an input type that accepts GetServiceMeshesMeshMeshConfigPilotArgs and GetServiceMeshesMeshMeshConfigPilotOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPilotInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigPilotArgs{...}
+//	GetServiceMeshesMeshMeshConfigPilotArgs{...}
 type GetServiceMeshesMeshMeshConfigPilotInput interface {
 	pulumi.Input
 
@@ -3721,7 +3721,7 @@ func (i GetServiceMeshesMeshMeshConfigPilotArgs) ToGetServiceMeshesMeshMeshConfi
 // GetServiceMeshesMeshMeshConfigPilotArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigPilotArray and GetServiceMeshesMeshMeshConfigPilotArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPilotArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigPilotArray{ GetServiceMeshesMeshMeshConfigPilotArgs{...} }
+//	GetServiceMeshesMeshMeshConfigPilotArray{ GetServiceMeshesMeshMeshConfigPilotArgs{...} }
 type GetServiceMeshesMeshMeshConfigPilotArrayInput interface {
 	pulumi.Input
 
@@ -3797,7 +3797,7 @@ type GetServiceMeshesMeshMeshConfigPrometheus struct {
 // GetServiceMeshesMeshMeshConfigPrometheusInput is an input type that accepts GetServiceMeshesMeshMeshConfigPrometheusArgs and GetServiceMeshesMeshMeshConfigPrometheusOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPrometheusInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigPrometheusArgs{...}
+//	GetServiceMeshesMeshMeshConfigPrometheusArgs{...}
 type GetServiceMeshesMeshMeshConfigPrometheusInput interface {
 	pulumi.Input
 
@@ -3827,7 +3827,7 @@ func (i GetServiceMeshesMeshMeshConfigPrometheusArgs) ToGetServiceMeshesMeshMesh
 // GetServiceMeshesMeshMeshConfigPrometheusArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigPrometheusArray and GetServiceMeshesMeshMeshConfigPrometheusArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigPrometheusArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigPrometheusArray{ GetServiceMeshesMeshMeshConfigPrometheusArgs{...} }
+//	GetServiceMeshesMeshMeshConfigPrometheusArray{ GetServiceMeshesMeshMeshConfigPrometheusArgs{...} }
 type GetServiceMeshesMeshMeshConfigPrometheusArrayInput interface {
 	pulumi.Input
 
@@ -3909,7 +3909,7 @@ type GetServiceMeshesMeshMeshConfigProxy struct {
 // GetServiceMeshesMeshMeshConfigProxyInput is an input type that accepts GetServiceMeshesMeshMeshConfigProxyArgs and GetServiceMeshesMeshMeshConfigProxyOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigProxyInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigProxyArgs{...}
+//	GetServiceMeshesMeshMeshConfigProxyArgs{...}
 type GetServiceMeshesMeshMeshConfigProxyInput interface {
 	pulumi.Input
 
@@ -3945,7 +3945,7 @@ func (i GetServiceMeshesMeshMeshConfigProxyArgs) ToGetServiceMeshesMeshMeshConfi
 // GetServiceMeshesMeshMeshConfigProxyArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigProxyArray and GetServiceMeshesMeshMeshConfigProxyArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigProxyArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigProxyArray{ GetServiceMeshesMeshMeshConfigProxyArgs{...} }
+//	GetServiceMeshesMeshMeshConfigProxyArray{ GetServiceMeshesMeshMeshConfigProxyArgs{...} }
 type GetServiceMeshesMeshMeshConfigProxyArrayInput interface {
 	pulumi.Input
 
@@ -4048,7 +4048,7 @@ type GetServiceMeshesMeshMeshConfigSidecarInjector struct {
 // GetServiceMeshesMeshMeshConfigSidecarInjectorInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorArgs and GetServiceMeshesMeshMeshConfigSidecarInjectorOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigSidecarInjectorArgs{...}
+//	GetServiceMeshesMeshMeshConfigSidecarInjectorArgs{...}
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInput interface {
 	pulumi.Input
 
@@ -4090,7 +4090,7 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorArgs) ToGetServiceMeshesMes
 // GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorArray and GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigSidecarInjectorArray{ GetServiceMeshesMeshMeshConfigSidecarInjectorArgs{...} }
+//	GetServiceMeshesMeshMeshConfigSidecarInjectorArray{ GetServiceMeshesMeshMeshConfigSidecarInjectorArgs{...} }
 type GetServiceMeshesMeshMeshConfigSidecarInjectorArrayInput interface {
 	pulumi.Input
 
@@ -4198,7 +4198,7 @@ type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration struct {
 // GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs and GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...}
+//	GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...}
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationInput interface {
 	pulumi.Input
 
@@ -4228,7 +4228,7 @@ func (i GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) T
 // GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray and GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput` via:
 //
-//          GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray{ GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...} }
+//	GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray{ GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...} }
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -4308,7 +4308,7 @@ type GetServiceMeshesMeshNetwork struct {
 // GetServiceMeshesMeshNetworkInput is an input type that accepts GetServiceMeshesMeshNetworkArgs and GetServiceMeshesMeshNetworkOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshNetworkInput` via:
 //
-//          GetServiceMeshesMeshNetworkArgs{...}
+//	GetServiceMeshesMeshNetworkArgs{...}
 type GetServiceMeshesMeshNetworkInput interface {
 	pulumi.Input
 
@@ -4340,7 +4340,7 @@ func (i GetServiceMeshesMeshNetworkArgs) ToGetServiceMeshesMeshNetworkOutputWith
 // GetServiceMeshesMeshNetworkArrayInput is an input type that accepts GetServiceMeshesMeshNetworkArray and GetServiceMeshesMeshNetworkArrayOutput values.
 // You can construct a concrete instance of `GetServiceMeshesMeshNetworkArrayInput` via:
 //
-//          GetServiceMeshesMeshNetworkArray{ GetServiceMeshesMeshNetworkArgs{...} }
+//	GetServiceMeshesMeshNetworkArray{ GetServiceMeshesMeshNetworkArgs{...} }
 type GetServiceMeshesMeshNetworkArrayInput interface {
 	pulumi.Input
 
@@ -4423,7 +4423,7 @@ type GetVersionsVersion struct {
 // GetVersionsVersionInput is an input type that accepts GetVersionsVersionArgs and GetVersionsVersionOutput values.
 // You can construct a concrete instance of `GetVersionsVersionInput` via:
 //
-//          GetVersionsVersionArgs{...}
+//	GetVersionsVersionArgs{...}
 type GetVersionsVersionInput interface {
 	pulumi.Input
 
@@ -4455,7 +4455,7 @@ func (i GetVersionsVersionArgs) ToGetVersionsVersionOutputWithContext(ctx contex
 // GetVersionsVersionArrayInput is an input type that accepts GetVersionsVersionArray and GetVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetVersionsVersionArrayInput` via:
 //
-//          GetVersionsVersionArray{ GetVersionsVersionArgs{...} }
+//	GetVersionsVersionArray{ GetVersionsVersionArgs{...} }
 type GetVersionsVersionArrayInput interface {
 	pulumi.Input
 

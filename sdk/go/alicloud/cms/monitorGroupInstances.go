@@ -19,49 +19,52 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("tf-testacc-vpcname"),
-// 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
-// 			MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewMonitorGroupInstances(ctx, "example", &cms.MonitorGroupInstancesArgs{
-// 			GroupId: defaultMonitorGroup.ID(),
-// 			Instances: cms.MonitorGroupInstancesInstanceArray{
-// 				&cms.MonitorGroupInstancesInstanceArgs{
-// 					InstanceId:   defaultNetwork.ID(),
-// 					InstanceName: pulumi.String("tf-testacc-vpcname"),
-// 					RegionId:     pulumi.String("cn-hangzhou"),
-// 					Category:     pulumi.String("vpc"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf-testacc-vpcname"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
+//				MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewMonitorGroupInstances(ctx, "example", &cms.MonitorGroupInstancesArgs{
+//				GroupId: defaultMonitorGroup.ID(),
+//				Instances: cms.MonitorGroupInstancesInstanceArray{
+//					&cms.MonitorGroupInstancesInstanceArgs{
+//						InstanceId:   defaultNetwork.ID(),
+//						InstanceName: pulumi.String("tf-testacc-vpcname"),
+//						RegionId:     pulumi.String("cn-hangzhou"),
+//						Category:     pulumi.String("vpc"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -69,7 +72,9 @@ import (
 // Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
+//
+//	$ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
+//
 // ```
 type MonitorGroupInstances struct {
 	pulumi.CustomResourceState
@@ -173,7 +178,7 @@ func (i *MonitorGroupInstances) ToMonitorGroupInstancesOutputWithContext(ctx con
 // MonitorGroupInstancesArrayInput is an input type that accepts MonitorGroupInstancesArray and MonitorGroupInstancesArrayOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesArrayInput` via:
 //
-//          MonitorGroupInstancesArray{ MonitorGroupInstancesArgs{...} }
+//	MonitorGroupInstancesArray{ MonitorGroupInstancesArgs{...} }
 type MonitorGroupInstancesArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +203,7 @@ func (i MonitorGroupInstancesArray) ToMonitorGroupInstancesArrayOutputWithContex
 // MonitorGroupInstancesMapInput is an input type that accepts MonitorGroupInstancesMap and MonitorGroupInstancesMapOutput values.
 // You can construct a concrete instance of `MonitorGroupInstancesMapInput` via:
 //
-//          MonitorGroupInstancesMap{ "key": MonitorGroupInstancesArgs{...} }
+//	MonitorGroupInstancesMap{ "key": MonitorGroupInstancesArgs{...} }
 type MonitorGroupInstancesMapInput interface {
 	pulumi.Input
 

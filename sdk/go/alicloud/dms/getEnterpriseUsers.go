@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dmsEnterpriseUsersDs, err := dms.GetEnterpriseUsers(ctx, &dms.GetEnterpriseUsersArgs{
-// 			Ids: []string{
-// 				"uid",
-// 			},
-// 			Role:   pulumi.StringRef("USER"),
-// 			Status: pulumi.StringRef("NORMAL"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstUserId", dmsEnterpriseUsersDs.Users[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dmsEnterpriseUsersDs, err := dms.GetEnterpriseUsers(ctx, &dms.GetEnterpriseUsersArgs{
+//				Ids: []string{
+//					"uid",
+//				},
+//				Role:   pulumi.StringRef("USER"),
+//				Status: pulumi.StringRef("NORMAL"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstUserId", dmsEnterpriseUsersDs.Users[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEnterpriseUsers(ctx *pulumi.Context, args *GetEnterpriseUsersArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseUsersResult, error) {
 	var rv GetEnterpriseUsersResult

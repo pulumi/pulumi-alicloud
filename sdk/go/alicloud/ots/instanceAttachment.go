@@ -19,57 +19,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
-// 			Description: pulumi.String("for table"),
-// 			AccessedBy:  pulumi.String("Vpc"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Building table"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-// 			VpcId:       fooNetwork.ID(),
-// 			VswitchName: pulumi.String("for-ots-instance"),
-// 			CidrBlock:   pulumi.String("172.16.1.0/24"),
-// 			ZoneId:      pulumi.String(fooZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ots.NewInstanceAttachment(ctx, "fooInstanceAttachment", &ots.InstanceAttachmentArgs{
-// 			InstanceName: fooInstance.Name,
-// 			VpcName:      pulumi.String("attachment1"),
-// 			VswitchId:    fooSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
+//				Description: pulumi.String("for table"),
+//				AccessedBy:  pulumi.String("Vpc"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Building table"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:       fooNetwork.ID(),
+//				VswitchName: pulumi.String("for-ots-instance"),
+//				CidrBlock:   pulumi.String("172.16.1.0/24"),
+//				ZoneId:      pulumi.String(fooZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewInstanceAttachment(ctx, "fooInstanceAttachment", &ots.InstanceAttachmentArgs{
+//				InstanceName: fooInstance.Name,
+//				VpcName:      pulumi.String("attachment1"),
+//				VswitchId:    fooSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
@@ -192,7 +195,7 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 // InstanceAttachmentArrayInput is an input type that accepts InstanceAttachmentArray and InstanceAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAttachmentArrayInput` via:
 //
-//          InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
+//	InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
 type InstanceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +220,7 @@ func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutputWithContext(ctx 
 // InstanceAttachmentMapInput is an input type that accepts InstanceAttachmentMap and InstanceAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceAttachmentMapInput` via:
 //
-//          InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
+//	InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
 type InstanceAttachmentMapInput interface {
 	pulumi.Input
 

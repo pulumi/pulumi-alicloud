@@ -16,7 +16,9 @@ import (
 // Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+//
+//	$ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -90,6 +92,12 @@ type Instance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+	MaintenanceAction pulumi.StringOutput `pulumi:"maintenanceAction"`
+	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+	MaintenanceNotify pulumi.BoolPtrOutput `pulumi:"maintenanceNotify"`
+	// The time of maintenance. See the following `Block maintenanceTime`.
+	MaintenanceTime InstanceMaintenanceTimePtrOutput `pulumi:"maintenanceTime"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrOutput `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -276,6 +284,12 @@ type instanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+	MaintenanceAction *string `pulumi:"maintenanceAction"`
+	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+	MaintenanceNotify *bool `pulumi:"maintenanceNotify"`
+	// The time of maintenance. See the following `Block maintenanceTime`.
+	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -425,6 +439,12 @@ type InstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapInput
+	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+	MaintenanceAction pulumi.StringPtrInput
+	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+	MaintenanceNotify pulumi.BoolPtrInput
+	// The time of maintenance. See the following `Block maintenanceTime`.
+	MaintenanceTime InstanceMaintenanceTimePtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -576,6 +596,12 @@ type instanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+	MaintenanceAction *string `pulumi:"maintenanceAction"`
+	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+	MaintenanceNotify *bool `pulumi:"maintenanceNotify"`
+	// The time of maintenance. See the following `Block maintenanceTime`.
+	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -722,6 +748,12 @@ type InstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionContext pulumi.MapInput
+	// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+	MaintenanceAction pulumi.StringPtrInput
+	// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+	MaintenanceNotify pulumi.BoolPtrInput
+	// The time of maintenance. See the following `Block maintenanceTime`.
+	MaintenanceTime InstanceMaintenanceTimePtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -825,7 +857,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -850,7 +882,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -1034,6 +1066,21 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+}
+
+// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+func (o InstanceOutput) MaintenanceAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenanceAction }).(pulumi.StringOutput)
+}
+
+// Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+func (o InstanceOutput) MaintenanceNotify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.MaintenanceNotify }).(pulumi.BoolPtrOutput)
+}
+
+// The time of maintenance. See the following `Block maintenanceTime`.
+func (o InstanceOutput) MaintenanceTime() InstanceMaintenanceTimePtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceTimePtrOutput { return v.MaintenanceTime }).(InstanceMaintenanceTimePtrOutput)
 }
 
 // The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.

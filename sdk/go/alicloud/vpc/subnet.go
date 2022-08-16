@@ -147,7 +147,7 @@ func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 // SubnetArrayInput is an input type that accepts SubnetArray and SubnetArrayOutput values.
 // You can construct a concrete instance of `SubnetArrayInput` via:
 //
-//          SubnetArray{ SubnetArgs{...} }
+//	SubnetArray{ SubnetArgs{...} }
 type SubnetArrayInput interface {
 	pulumi.Input
 
@@ -172,7 +172,7 @@ func (i SubnetArray) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetA
 // SubnetMapInput is an input type that accepts SubnetMap and SubnetMapOutput values.
 // You can construct a concrete instance of `SubnetMapInput` via:
 //
-//          SubnetMap{ "key": SubnetArgs{...} }
+//	SubnetMap{ "key": SubnetArgs{...} }
 type SubnetMapInput interface {
 	pulumi.Input
 

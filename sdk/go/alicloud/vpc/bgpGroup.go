@@ -19,51 +19,54 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
-// 			LocalGatewayIp:          pulumi.String("10.0.0.1"),
-// 			PeerGatewayIp:           pulumi.String("10.0.0.2"),
-// 			PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-// 			PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
-// 			VirtualBorderRouterName: pulumi.Any(_var.Name),
-// 			VlanId:                  pulumi.Int(120),
-// 			MinRxInterval:           pulumi.Int(1000),
-// 			MinTxInterval:           pulumi.Int(1000),
-// 			DetectMultiplier:        pulumi.Int(10),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewBgpGroup(ctx, "default", &vpc.BgpGroupArgs{
-// 			AuthKey:      pulumi.String("YourPassword+12345678"),
-// 			BgpGroupName: pulumi.String("example_value"),
-// 			Description:  pulumi.String("example_value"),
-// 			LocalAsn:     pulumi.Int(64512),
-// 			PeerAsn:      pulumi.Int(1111),
-// 			RouterId:     exampleVirtualBorderRouter.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.Any(_var.Name),
+//				VlanId:                  pulumi.Int(120),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewBgpGroup(ctx, "default", &vpc.BgpGroupArgs{
+//				AuthKey:      pulumi.String("YourPassword+12345678"),
+//				BgpGroupName: pulumi.String("example_value"),
+//				Description:  pulumi.String("example_value"),
+//				LocalAsn:     pulumi.Int(64512),
+//				PeerAsn:      pulumi.Int(1111),
+//				RouterId:     exampleVirtualBorderRouter.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -71,7 +74,9 @@ import (
 // VPC Bgp Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
+//
+//	$ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
+//
 // ```
 type BgpGroup struct {
 	pulumi.CustomResourceState
@@ -231,7 +236,7 @@ func (i *BgpGroup) ToBgpGroupOutputWithContext(ctx context.Context) BgpGroupOutp
 // BgpGroupArrayInput is an input type that accepts BgpGroupArray and BgpGroupArrayOutput values.
 // You can construct a concrete instance of `BgpGroupArrayInput` via:
 //
-//          BgpGroupArray{ BgpGroupArgs{...} }
+//	BgpGroupArray{ BgpGroupArgs{...} }
 type BgpGroupArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +261,7 @@ func (i BgpGroupArray) ToBgpGroupArrayOutputWithContext(ctx context.Context) Bgp
 // BgpGroupMapInput is an input type that accepts BgpGroupMap and BgpGroupMapOutput values.
 // You can construct a concrete instance of `BgpGroupMapInput` via:
 //
-//          BgpGroupMap{ "key": BgpGroupArgs{...} }
+//	BgpGroupMap{ "key": BgpGroupArgs{...} }
 type BgpGroupMapInput interface {
 	pulumi.Input
 

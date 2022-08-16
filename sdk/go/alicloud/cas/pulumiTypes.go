@@ -49,7 +49,7 @@ type GetCertificatesCertificate struct {
 // GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateInput` via:
 //
-//          GetCertificatesCertificateArgs{...}
+//	GetCertificatesCertificateArgs{...}
 type GetCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -108,7 +108,7 @@ func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithCo
 // GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
 //
-//          GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
+//	GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
 type GetCertificatesCertificateArrayInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ type GetServiceCertificatesCertificate struct {
 // GetServiceCertificatesCertificateInput is an input type that accepts GetServiceCertificatesCertificateArgs and GetServiceCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetServiceCertificatesCertificateInput` via:
 //
-//          GetServiceCertificatesCertificateArgs{...}
+//	GetServiceCertificatesCertificateArgs{...}
 type GetServiceCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -355,7 +355,7 @@ func (i GetServiceCertificatesCertificateArgs) ToGetServiceCertificatesCertifica
 // GetServiceCertificatesCertificateArrayInput is an input type that accepts GetServiceCertificatesCertificateArray and GetServiceCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetServiceCertificatesCertificateArrayInput` via:
 //
-//          GetServiceCertificatesCertificateArray{ GetServiceCertificatesCertificateArgs{...} }
+//	GetServiceCertificatesCertificateArray{ GetServiceCertificatesCertificateArgs{...} }
 type GetServiceCertificatesCertificateArrayInput interface {
 	pulumi.Input
 

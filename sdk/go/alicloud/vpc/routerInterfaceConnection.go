@@ -28,80 +28,83 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		region := "cn-hangzhou"
-// 		if param := cfg.Get("region"); param != "" {
-// 			region = param
-// 		}
-// 		name := "alicloudRouterInterfaceConnectionBasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		barNetwork, err := vpc.NewNetwork(ctx, "barNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		}, pulumi.Provider(alicloud))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		initiate, err := vpc.NewRouterInterface(ctx, "initiate", &vpc.RouterInterfaceArgs{
-// 			OppositeRegion:     pulumi.String(region),
-// 			RouterType:         pulumi.String("VRouter"),
-// 			RouterId:           fooNetwork.RouterId,
-// 			Role:               pulumi.String("InitiatingSide"),
-// 			Specification:      pulumi.String("Large.2"),
-// 			Description:        pulumi.String(name),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opposite, err := vpc.NewRouterInterface(ctx, "opposite", &vpc.RouterInterfaceArgs{
-// 			OppositeRegion: pulumi.String(region),
-// 			RouterType:     pulumi.String("VRouter"),
-// 			RouterId:       barNetwork.RouterId,
-// 			Role:           pulumi.String("AcceptingSide"),
-// 			Specification:  pulumi.String("Large.1"),
-// 			Description:    pulumi.String(fmt.Sprintf("%v-opposite", name)),
-// 		}, pulumi.Provider(alicloud))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		barRouterInterfaceConnection, err := vpc.NewRouterInterfaceConnection(ctx, "barRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
-// 			InterfaceId:         opposite.ID(),
-// 			OppositeInterfaceId: initiate.ID(),
-// 		}, pulumi.Provider(alicloud))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewRouterInterfaceConnection(ctx, "fooRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
-// 			InterfaceId:         initiate.ID(),
-// 			OppositeInterfaceId: opposite.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			barRouterInterfaceConnection,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			name := "alicloudRouterInterfaceConnectionBasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			barNetwork, err := vpc.NewNetwork(ctx, "barNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud))
+//			if err != nil {
+//				return err
+//			}
+//			initiate, err := vpc.NewRouterInterface(ctx, "initiate", &vpc.RouterInterfaceArgs{
+//				OppositeRegion:     pulumi.String(region),
+//				RouterType:         pulumi.String("VRouter"),
+//				RouterId:           fooNetwork.RouterId,
+//				Role:               pulumi.String("InitiatingSide"),
+//				Specification:      pulumi.String("Large.2"),
+//				Description:        pulumi.String(name),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			opposite, err := vpc.NewRouterInterface(ctx, "opposite", &vpc.RouterInterfaceArgs{
+//				OppositeRegion: pulumi.String(region),
+//				RouterType:     pulumi.String("VRouter"),
+//				RouterId:       barNetwork.RouterId,
+//				Role:           pulumi.String("AcceptingSide"),
+//				Specification:  pulumi.String("Large.1"),
+//				Description:    pulumi.String(fmt.Sprintf("%v-opposite", name)),
+//			}, pulumi.Provider(alicloud))
+//			if err != nil {
+//				return err
+//			}
+//			barRouterInterfaceConnection, err := vpc.NewRouterInterfaceConnection(ctx, "barRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
+//				InterfaceId:         opposite.ID(),
+//				OppositeInterfaceId: initiate.ID(),
+//			}, pulumi.Provider(alicloud))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouterInterfaceConnection(ctx, "fooRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
+//				InterfaceId:         initiate.ID(),
+//				OppositeInterfaceId: opposite.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				barRouterInterfaceConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -109,7 +112,9 @@ import (
 // The router interface connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
+//
+//	$ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
+//
 // ```
 type RouterInterfaceConnection struct {
 	pulumi.CustomResourceState
@@ -238,7 +243,7 @@ func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionOutputWithContext
 // RouterInterfaceConnectionArrayInput is an input type that accepts RouterInterfaceConnectionArray and RouterInterfaceConnectionArrayOutput values.
 // You can construct a concrete instance of `RouterInterfaceConnectionArrayInput` via:
 //
-//          RouterInterfaceConnectionArray{ RouterInterfaceConnectionArgs{...} }
+//	RouterInterfaceConnectionArray{ RouterInterfaceConnectionArgs{...} }
 type RouterInterfaceConnectionArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +268,7 @@ func (i RouterInterfaceConnectionArray) ToRouterInterfaceConnectionArrayOutputWi
 // RouterInterfaceConnectionMapInput is an input type that accepts RouterInterfaceConnectionMap and RouterInterfaceConnectionMapOutput values.
 // You can construct a concrete instance of `RouterInterfaceConnectionMapInput` via:
 //
-//          RouterInterfaceConnectionMap{ "key": RouterInterfaceConnectionArgs{...} }
+//	RouterInterfaceConnectionMap{ "key": RouterInterfaceConnectionArgs{...} }
 type RouterInterfaceConnectionMapInput interface {
 	pulumi.Input
 

@@ -16,385 +16,422 @@ import (
 //
 // ## Example Usage
 //
-// Private Bucket
+// # Private Bucket
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-acl"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-acl"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Static Website
+// # Static Website
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
-// 			Bucket: pulumi.String("bucket-170309-website"),
-// 			Website: &oss.BucketWebsiteArgs{
-// 				ErrorDocument: pulumi.String("error.html"),
-// 				IndexDocument: pulumi.String("index.html"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
+//				Bucket: pulumi.String("bucket-170309-website"),
+//				Website: &oss.BucketWebsiteArgs{
+//					ErrorDocument: pulumi.String("error.html"),
+//					IndexDocument: pulumi.String("index.html"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Enable Logging
+// # Enable Logging
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
-// 			Bucket: pulumi.String("bucket-170309-acl"),
-// 			Acl:    pulumi.String("public-read"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
-// 			Bucket: pulumi.String("bucket-170309-logging"),
-// 			Logging: &oss.BucketLoggingArgs{
-// 				TargetBucket: bucket_target.ID(),
-// 				TargetPrefix: pulumi.String("log/"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
+//				Bucket: pulumi.String("bucket-170309-acl"),
+//				Acl:    pulumi.String("public-read"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
+//				Bucket: pulumi.String("bucket-170309-logging"),
+//				Logging: &oss.BucketLoggingArgs{
+//					TargetBucket: bucket_target.ID(),
+//					TargetPrefix: pulumi.String("log/"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Referer configuration
+// # Referer configuration
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-referer"),
-// 			RefererConfig: &oss.BucketRefererConfigArgs{
-// 				AllowEmpty: pulumi.Bool(false),
-// 				Referers: pulumi.StringArray{
-// 					pulumi.String("http://www.aliyun.com"),
-// 					pulumi.String("https://www.aliyun.com"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-referer"),
+//				RefererConfig: &oss.BucketRefererConfigArgs{
+//					AllowEmpty: pulumi.Bool(false),
+//					Referers: pulumi.StringArray{
+//						pulumi.String("http://www.aliyun.com"),
+//						pulumi.String("https://www.aliyun.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set lifecycle rule
+// # Set lifecycle rule
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-lifecycle", &oss.BucketArgs{
-// 			Acl:    pulumi.String("public-read"),
-// 			Bucket: pulumi.String("bucket-170309-lifecycle"),
-// 			LifecycleRules: oss.BucketLifecycleRuleArray{
-// 				&oss.BucketLifecycleRuleArgs{
-// 					AbortMultipartUploads: oss.BucketLifecycleRuleAbortMultipartUploadArray{
-// 						&oss.BucketLifecycleRuleAbortMultipartUploadArgs{
-// 							Days: pulumi.Int(128),
-// 						},
-// 					},
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("rule-abort-multipart-upload"),
-// 					Prefix:  pulumi.String("path3/"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucket(ctx, "bucket-versioning-lifecycle", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-lifecycle"),
-// 			LifecycleRules: oss.BucketLifecycleRuleArray{
-// 				&oss.BucketLifecycleRuleArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Expirations: oss.BucketLifecycleRuleExpirationArray{
-// 						&oss.BucketLifecycleRuleExpirationArgs{
-// 							ExpiredObjectDeleteMarker: pulumi.Bool(true),
-// 						},
-// 					},
-// 					Id: pulumi.String("rule-versioning"),
-// 					NoncurrentVersionExpirations: oss.BucketLifecycleRuleNoncurrentVersionExpirationArray{
-// 						&oss.BucketLifecycleRuleNoncurrentVersionExpirationArgs{
-// 							Days: pulumi.Int(240),
-// 						},
-// 					},
-// 					NoncurrentVersionTransitions: oss.BucketLifecycleRuleNoncurrentVersionTransitionArray{
-// 						&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
-// 							Days:         pulumi.Int(180),
-// 							StorageClass: pulumi.String("Archive"),
-// 						},
-// 						&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
-// 							Days:         pulumi.Int(60),
-// 							StorageClass: pulumi.String("IA"),
-// 						},
-// 					},
-// 					Prefix: pulumi.String("path1/"),
-// 				},
-// 			},
-// 			Versioning: &oss.BucketVersioningArgs{
-// 				Status: pulumi.String("Enabled"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-lifecycle", &oss.BucketArgs{
+//				Acl:    pulumi.String("public-read"),
+//				Bucket: pulumi.String("bucket-170309-lifecycle"),
+//				LifecycleRules: oss.BucketLifecycleRuleArray{
+//					&oss.BucketLifecycleRuleArgs{
+//						AbortMultipartUploads: oss.BucketLifecycleRuleAbortMultipartUploadArray{
+//							&oss.BucketLifecycleRuleAbortMultipartUploadArgs{
+//								Days: pulumi.Int(128),
+//							},
+//						},
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("rule-abort-multipart-upload"),
+//						Prefix:  pulumi.String("path3/"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-versioning-lifecycle", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-lifecycle"),
+//				LifecycleRules: oss.BucketLifecycleRuleArray{
+//					&oss.BucketLifecycleRuleArgs{
+//						Enabled: pulumi.Bool(true),
+//						Expirations: oss.BucketLifecycleRuleExpirationArray{
+//							&oss.BucketLifecycleRuleExpirationArgs{
+//								ExpiredObjectDeleteMarker: pulumi.Bool(true),
+//							},
+//						},
+//						Id: pulumi.String("rule-versioning"),
+//						NoncurrentVersionExpirations: oss.BucketLifecycleRuleNoncurrentVersionExpirationArray{
+//							&oss.BucketLifecycleRuleNoncurrentVersionExpirationArgs{
+//								Days: pulumi.Int(240),
+//							},
+//						},
+//						NoncurrentVersionTransitions: oss.BucketLifecycleRuleNoncurrentVersionTransitionArray{
+//							&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+//								Days:         pulumi.Int(180),
+//								StorageClass: pulumi.String("Archive"),
+//							},
+//							&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+//								Days:         pulumi.Int(60),
+//								StorageClass: pulumi.String("IA"),
+//							},
+//						},
+//						Prefix: pulumi.String("path1/"),
+//					},
+//				},
+//				Versioning: &oss.BucketVersioningArgs{
+//					Status: pulumi.String("Enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set bucket policy
+// # Set bucket policy
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-policy"),
-// 			Policy: pulumi.String(fmt.Sprintf(`  {"Statement":
-//       [{"Action":
-//           ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
-//         "Effect":"Allow",
-//         "Resource":
-//             ["acs:oss:*:*:*"]}],
-//    "Version":"1"}
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-policy"),
+//				Policy: pulumi.String(fmt.Sprintf(`  {"Statement":
+//	      [{"Action":
+//	          ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
+//	        "Effect":"Allow",
+//	        "Resource":
+//	            ["acs:oss:*:*:*"]}],
+//	   "Version":"1"}
 //
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// IA Bucket
+// # IA Bucket
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-storageclass", &oss.BucketArgs{
-// 			Bucket:       pulumi.String("bucket-170309-storageclass"),
-// 			StorageClass: pulumi.String("IA"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-storageclass", &oss.BucketArgs{
+//				Bucket:       pulumi.String("bucket-170309-storageclass"),
+//				StorageClass: pulumi.String("IA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set bucket server-side encryption rule
+// # Set bucket server-side encryption rule
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-sserule", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-sserule"),
-// 			ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
-// 				KmsMasterKeyId: pulumi.String("your kms key id"),
-// 				SseAlgorithm:   pulumi.String("KMS"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-sserule", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-sserule"),
+//				ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
+//					KmsMasterKeyId: pulumi.String("your kms key id"),
+//					SseAlgorithm:   pulumi.String("KMS"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set bucket tags
+// # Set bucket tags
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-tags", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-tags"),
-// 			Tags: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-tags", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-tags"),
+//				Tags: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Enable bucket versioning
+// # Enable bucket versioning
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-versioning", &oss.BucketArgs{
-// 			Acl:    pulumi.String("private"),
-// 			Bucket: pulumi.String("bucket-170309-versioning"),
-// 			Versioning: &oss.BucketVersioningArgs{
-// 				Status: pulumi.String("Enabled"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-versioning", &oss.BucketArgs{
+//				Acl:    pulumi.String("private"),
+//				Bucket: pulumi.String("bucket-170309-versioning"),
+//				Versioning: &oss.BucketVersioningArgs{
+//					Status: pulumi.String("Enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set bucket redundancy type
+// # Set bucket redundancy type
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-redundancytype", &oss.BucketArgs{
-// 			Bucket:         pulumi.String("bucket_name"),
-// 			RedundancyType: pulumi.String("ZRS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-redundancytype", &oss.BucketArgs{
+//				Bucket:         pulumi.String("bucket_name"),
+//				RedundancyType: pulumi.String("ZRS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Set bucket accelerate configuration
+// # Set bucket accelerate configuration
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
-// 			Bucket: pulumi.String("bucket_name"),
-// 			TransferAcceleration: &oss.BucketTransferAccelerationArgs{
-// 				Enabled: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
+//				Bucket: pulumi.String("bucket_name"),
+//				TransferAcceleration: &oss.BucketTransferAccelerationArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -402,7 +439,9 @@ import (
 // OSS bucket can be imported using the bucket name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+//
+//	$ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+//
 // ```
 type Bucket struct {
 	pulumi.CustomResourceState
@@ -675,7 +714,7 @@ func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 // BucketArrayInput is an input type that accepts BucketArray and BucketArrayOutput values.
 // You can construct a concrete instance of `BucketArrayInput` via:
 //
-//          BucketArray{ BucketArgs{...} }
+//	BucketArray{ BucketArgs{...} }
 type BucketArrayInput interface {
 	pulumi.Input
 
@@ -700,7 +739,7 @@ func (i BucketArray) ToBucketArrayOutputWithContext(ctx context.Context) BucketA
 // BucketMapInput is an input type that accepts BucketMap and BucketMapOutput values.
 // You can construct a concrete instance of `BucketMapInput` via:
 //
-//          BucketMap{ "key": BucketArgs{...} }
+//	BucketMap{ "key": BucketArgs{...} }
 type BucketMapInput interface {
 	pulumi.Input
 

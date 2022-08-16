@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dfs.GetAccessRules(ctx, &dfs.GetAccessRulesArgs{
-// 			AccessGroupId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dfsAccessRuleId1", ids.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dfs.GetAccessRules(ctx, &dfs.GetAccessRulesArgs{
+//				AccessGroupId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dfsAccessRuleId1", ids.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
 	var rv GetAccessRulesResult

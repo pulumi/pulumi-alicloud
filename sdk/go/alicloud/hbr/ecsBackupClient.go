@@ -19,44 +19,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("ecs_instance_name"),
-// 			Status:    pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewEcsBackupClient(ctx, "example", &hbr.EcsBackupClientArgs{
-// 			InstanceId:       pulumi.String(_default.Instances[0].Id),
-// 			UseHttps:         pulumi.Bool(false),
-// 			DataNetworkType:  pulumi.String("PUBLIC"),
-// 			MaxCpuCore:       pulumi.String("2"),
-// 			MaxWorker:        pulumi.String("4"),
-// 			DataProxySetting: pulumi.String("USE_CONTROL_PROXY"),
-// 			ProxyHost:        pulumi.String("192.168.11.101"),
-// 			ProxyPort:        pulumi.String("80"),
-// 			ProxyUser:        pulumi.String("user"),
-// 			ProxyPassword:    pulumi.String("password"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("ecs_instance_name"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewEcsBackupClient(ctx, "example", &hbr.EcsBackupClientArgs{
+//				InstanceId:       pulumi.String(_default.Instances[0].Id),
+//				UseHttps:         pulumi.Bool(false),
+//				DataNetworkType:  pulumi.String("PUBLIC"),
+//				MaxCpuCore:       pulumi.String("2"),
+//				MaxWorker:        pulumi.String("4"),
+//				DataProxySetting: pulumi.String("USE_CONTROL_PROXY"),
+//				ProxyHost:        pulumi.String("192.168.11.101"),
+//				ProxyPort:        pulumi.String("80"),
+//				ProxyUser:        pulumi.String("user"),
+//				ProxyPassword:    pulumi.String("password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notice
 //
@@ -64,16 +67,18 @@ import (
 // 1. You cannot delete active clients that have received heartbeat packets within one hour.
 // 2. You can make the client inactive by change the status of client to `STOPPED`.
 // 3. The resources bound to the client will be deleted in cascade, including:
-//     - Backup plan
-//     - Backup task (Running in the background)
-//     - Snapshot
+//   - Backup plan
+//   - Backup task (Running in the background)
+//   - Snapshot
 //
 // ## Import
 //
 // Hybrid Backup Recovery (HBR) Ecs Backup Client can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example <id>
+//
+//	$ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example <id>
+//
 // ```
 type EcsBackupClient struct {
 	pulumi.CustomResourceState
@@ -264,7 +269,7 @@ func (i *EcsBackupClient) ToEcsBackupClientOutputWithContext(ctx context.Context
 // EcsBackupClientArrayInput is an input type that accepts EcsBackupClientArray and EcsBackupClientArrayOutput values.
 // You can construct a concrete instance of `EcsBackupClientArrayInput` via:
 //
-//          EcsBackupClientArray{ EcsBackupClientArgs{...} }
+//	EcsBackupClientArray{ EcsBackupClientArgs{...} }
 type EcsBackupClientArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +294,7 @@ func (i EcsBackupClientArray) ToEcsBackupClientArrayOutputWithContext(ctx contex
 // EcsBackupClientMapInput is an input type that accepts EcsBackupClientMap and EcsBackupClientMapOutput values.
 // You can construct a concrete instance of `EcsBackupClientMapInput` via:
 //
-//          EcsBackupClientMap{ "key": EcsBackupClientArgs{...} }
+//	EcsBackupClientMap{ "key": EcsBackupClientArgs{...} }
 type EcsBackupClientMapInput interface {
 	pulumi.Input
 

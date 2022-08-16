@@ -23,7 +23,9 @@ import (
 // Load balancer domain_extension can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+//
+//	$ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+//
 // ```
 type DomainExtension struct {
 	pulumi.CustomResourceState
@@ -163,7 +165,7 @@ func (i *DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context
 // DomainExtensionArrayInput is an input type that accepts DomainExtensionArray and DomainExtensionArrayOutput values.
 // You can construct a concrete instance of `DomainExtensionArrayInput` via:
 //
-//          DomainExtensionArray{ DomainExtensionArgs{...} }
+//	DomainExtensionArray{ DomainExtensionArgs{...} }
 type DomainExtensionArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +190,7 @@ func (i DomainExtensionArray) ToDomainExtensionArrayOutputWithContext(ctx contex
 // DomainExtensionMapInput is an input type that accepts DomainExtensionMap and DomainExtensionMapOutput values.
 // You can construct a concrete instance of `DomainExtensionMapInput` via:
 //
-//          DomainExtensionMap{ "key": DomainExtensionArgs{...} }
+//	DomainExtensionMap{ "key": DomainExtensionArgs{...} }
 type DomainExtensionMapInput interface {
 	pulumi.Input
 

@@ -20,7 +20,9 @@ import (
 // Bastion Host Host Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
+//
 // ```
 type HostAccountUserAttachment struct {
 	pulumi.CustomResourceState
@@ -150,7 +152,7 @@ func (i *HostAccountUserAttachment) ToHostAccountUserAttachmentOutputWithContext
 // HostAccountUserAttachmentArrayInput is an input type that accepts HostAccountUserAttachmentArray and HostAccountUserAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAccountUserAttachmentArrayInput` via:
 //
-//          HostAccountUserAttachmentArray{ HostAccountUserAttachmentArgs{...} }
+//	HostAccountUserAttachmentArray{ HostAccountUserAttachmentArgs{...} }
 type HostAccountUserAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +177,7 @@ func (i HostAccountUserAttachmentArray) ToHostAccountUserAttachmentArrayOutputWi
 // HostAccountUserAttachmentMapInput is an input type that accepts HostAccountUserAttachmentMap and HostAccountUserAttachmentMapOutput values.
 // You can construct a concrete instance of `HostAccountUserAttachmentMapInput` via:
 //
-//          HostAccountUserAttachmentMap{ "key": HostAccountUserAttachmentArgs{...} }
+//	HostAccountUserAttachmentMap{ "key": HostAccountUserAttachmentArgs{...} }
 type HostAccountUserAttachmentMapInput interface {
 	pulumi.Input
 

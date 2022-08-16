@@ -19,75 +19,78 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := cddc.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
-// 			DbType:      "mysql",
-// 			ZoneId:      defaultZones.Ids[0],
-// 			StorageType: "cloud_essd",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
-// 			Engine:                 pulumi.String("MySQL"),
-// 			VpcId:                  pulumi.String(defaultNetworks.Ids[0]),
-// 			CpuAllocationRatio:     pulumi.Int(101),
-// 			MemAllocationRatio:     pulumi.Int(50),
-// 			DiskAllocationRatio:    pulumi.Int(200),
-// 			AllocationPolicy:       pulumi.String("Evenly"),
-// 			HostReplacePolicy:      pulumi.String("Manual"),
-// 			DedicatedHostGroupDesc: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
-// 			HostName:             pulumi.String("example_value"),
-// 			DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-// 			HostClass:            pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
-// 			ZoneId:               pulumi.String(defaultZones.Ids[0]),
-// 			VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
-// 			PaymentType:          pulumi.String("Subscription"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("CDDC_DEDICATED"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := cddc.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
+//				DbType:      "mysql",
+//				ZoneId:      defaultZones.Ids[0],
+//				StorageType: "cloud_essd",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MySQL"),
+//				VpcId:                  pulumi.String(defaultNetworks.Ids[0]),
+//				CpuAllocationRatio:     pulumi.Int(101),
+//				MemAllocationRatio:     pulumi.Int(50),
+//				DiskAllocationRatio:    pulumi.Int(200),
+//				AllocationPolicy:       pulumi.String("Evenly"),
+//				HostReplacePolicy:      pulumi.String("Manual"),
+//				DedicatedHostGroupDesc: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
+//				HostName:             pulumi.String("example_value"),
+//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
+//				HostClass:            pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               pulumi.String(defaultZones.Ids[0]),
+//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("CDDC_DEDICATED"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -95,7 +98,9 @@ import (
 // ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example <dedicated_host_group_id>:<dedicated_host_id>
+//
+//	$ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example <dedicated_host_group_id>:<dedicated_host_id>
+//
 // ```
 type DedicatedHost struct {
 	pulumi.CustomResourceState
@@ -345,7 +350,7 @@ func (i *DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) De
 // DedicatedHostArrayInput is an input type that accepts DedicatedHostArray and DedicatedHostArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostArrayInput` via:
 //
-//          DedicatedHostArray{ DedicatedHostArgs{...} }
+//	DedicatedHostArray{ DedicatedHostArgs{...} }
 type DedicatedHostArrayInput interface {
 	pulumi.Input
 
@@ -370,7 +375,7 @@ func (i DedicatedHostArray) ToDedicatedHostArrayOutputWithContext(ctx context.Co
 // DedicatedHostMapInput is an input type that accepts DedicatedHostMap and DedicatedHostMapOutput values.
 // You can construct a concrete instance of `DedicatedHostMapInput` via:
 //
-//          DedicatedHostMap{ "key": DedicatedHostArgs{...} }
+//	DedicatedHostMap{ "key": DedicatedHostArgs{...} }
 type DedicatedHostMapInput interface {
 	pulumi.Input
 

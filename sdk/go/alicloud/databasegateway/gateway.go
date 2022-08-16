@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databasegateway.NewGateway(ctx, "example", &databasegateway.GatewayArgs{
-// 			GatewayName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databasegateway.NewGateway(ctx, "example", &databasegateway.GatewayArgs{
+//				GatewayName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Database Gateway Gateway can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
+//
+//	$ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
+//
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState
@@ -154,7 +159,7 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 // GatewayArrayInput is an input type that accepts GatewayArray and GatewayArrayOutput values.
 // You can construct a concrete instance of `GatewayArrayInput` via:
 //
-//          GatewayArray{ GatewayArgs{...} }
+//	GatewayArray{ GatewayArgs{...} }
 type GatewayArrayInput interface {
 	pulumi.Input
 
@@ -179,7 +184,7 @@ func (i GatewayArray) ToGatewayArrayOutputWithContext(ctx context.Context) Gatew
 // GatewayMapInput is an input type that accepts GatewayMap and GatewayMapOutput values.
 // You can construct a concrete instance of `GatewayMapInput` via:
 //
-//          GatewayMap{ "key": GatewayArgs{...} }
+//	GatewayMap{ "key": GatewayArgs{...} }
 type GatewayMapInput interface {
 	pulumi.Input
 

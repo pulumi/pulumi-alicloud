@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages an asynchronous invocation configuration for a FC Function or Alias.\
-//  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+//	Manages an asynchronous invocation configuration for a FC Function or Alias.\
+//	 For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
 //
 // > **NOTE:** Available in 1.100.0+
 //
@@ -25,30 +25,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-// 			ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
-// 			FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
-// 			DestinationConfig: &fc.FunctionAsyncInvokeConfigDestinationConfigArgs{
-// 				OnFailure: &fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{
-// 					Destination: pulumi.Any(the_example_mns_queue_arn),
-// 				},
-// 				OnSuccess: &fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{
-// 					Destination: pulumi.Any(the_example_mns_topic_arn),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
+//				ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
+//				FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
+//				DestinationConfig: &fc.FunctionAsyncInvokeConfigDestinationConfigArgs{
+//					OnFailure: &fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{
+//						Destination: pulumi.Any(the_example_mns_queue_arn),
+//					},
+//					OnSuccess: &fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{
+//						Destination: pulumi.Any(the_example_mns_topic_arn),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Error Handling Configuration
 //
@@ -56,24 +59,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-// 			ServiceName:              pulumi.Any(alicloud_fc_service.Example.Name),
-// 			FunctionName:             pulumi.Any(alicloud_fc_function.Example.Name),
-// 			MaximumEventAgeInSeconds: pulumi.Int(60),
-// 			MaximumRetryAttempts:     pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
+//				ServiceName:              pulumi.Any(alicloud_fc_service.Example.Name),
+//				FunctionName:             pulumi.Any(alicloud_fc_function.Example.Name),
+//				MaximumEventAgeInSeconds: pulumi.Int(60),
+//				MaximumRetryAttempts:     pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Async Job Configuration
 //
@@ -81,23 +87,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-// 			ServiceName:        pulumi.Any(alicloud_fc_service.Example.Name),
-// 			FunctionName:       pulumi.Any(alicloud_fc_function.Example.Name),
-// 			StatefulInvocation: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
+//				ServiceName:        pulumi.Any(alicloud_fc_service.Example.Name),
+//				FunctionName:       pulumi.Any(alicloud_fc_function.Example.Name),
+//				StatefulInvocation: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Configuration for Function Latest Unpublished Version
 //
@@ -105,23 +114,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-// 			ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
-// 			FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
-// 			Qualifier:    pulumi.String("LATEST"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
+//				ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
+//				FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
+//				Qualifier:    pulumi.String("LATEST"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -129,7 +141,9 @@ import (
 // Function Compute Function Async Invoke Configs can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+//
+//	$ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+//
 // ```
 type FunctionAsyncInvokeConfig struct {
 	pulumi.CustomResourceState
@@ -150,7 +164,7 @@ type FunctionAsyncInvokeConfig struct {
 	Qualifier pulumi.StringPtrOutput `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Function Compute async job configuration. valid values true or false, default `false`
+	// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 	StatefulInvocation pulumi.BoolPtrOutput `pulumi:"statefulInvocation"`
 }
 
@@ -205,7 +219,7 @@ type functionAsyncInvokeConfigState struct {
 	Qualifier *string `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName *string `pulumi:"serviceName"`
-	// Function Compute async job configuration. valid values true or false, default `false`
+	// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 	StatefulInvocation *bool `pulumi:"statefulInvocation"`
 }
 
@@ -226,7 +240,7 @@ type FunctionAsyncInvokeConfigState struct {
 	Qualifier pulumi.StringPtrInput
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringPtrInput
-	// Function Compute async job configuration. valid values true or false, default `false`
+	// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 	StatefulInvocation pulumi.BoolPtrInput
 }
 
@@ -247,7 +261,7 @@ type functionAsyncInvokeConfigArgs struct {
 	Qualifier *string `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName string `pulumi:"serviceName"`
-	// Function Compute async job configuration. valid values true or false, default `false`
+	// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 	StatefulInvocation *bool `pulumi:"statefulInvocation"`
 }
 
@@ -265,7 +279,7 @@ type FunctionAsyncInvokeConfigArgs struct {
 	Qualifier pulumi.StringPtrInput
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringInput
-	// Function Compute async job configuration. valid values true or false, default `false`
+	// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 	StatefulInvocation pulumi.BoolPtrInput
 }
 
@@ -295,7 +309,7 @@ func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext
 // FunctionAsyncInvokeConfigArrayInput is an input type that accepts FunctionAsyncInvokeConfigArray and FunctionAsyncInvokeConfigArrayOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigArrayInput` via:
 //
-//          FunctionAsyncInvokeConfigArray{ FunctionAsyncInvokeConfigArgs{...} }
+//	FunctionAsyncInvokeConfigArray{ FunctionAsyncInvokeConfigArgs{...} }
 type FunctionAsyncInvokeConfigArrayInput interface {
 	pulumi.Input
 
@@ -320,7 +334,7 @@ func (i FunctionAsyncInvokeConfigArray) ToFunctionAsyncInvokeConfigArrayOutputWi
 // FunctionAsyncInvokeConfigMapInput is an input type that accepts FunctionAsyncInvokeConfigMap and FunctionAsyncInvokeConfigMapOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigMapInput` via:
 //
-//          FunctionAsyncInvokeConfigMap{ "key": FunctionAsyncInvokeConfigArgs{...} }
+//	FunctionAsyncInvokeConfigMap{ "key": FunctionAsyncInvokeConfigArgs{...} }
 type FunctionAsyncInvokeConfigMapInput interface {
 	pulumi.Input
 
@@ -398,7 +412,7 @@ func (o FunctionAsyncInvokeConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Function Compute async job configuration. valid values true or false, default `false`
+// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
 func (o FunctionAsyncInvokeConfigOutput) StatefulInvocation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.BoolPtrOutput { return v.StatefulInvocation }).(pulumi.BoolPtrOutput)
 }

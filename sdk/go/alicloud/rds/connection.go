@@ -14,7 +14,8 @@ import (
 // Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
 //
 // > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
-//  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+//	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
 // ## Example Usage
 //
@@ -22,67 +23,70 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "dbconnectionbasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-// 			Engine:          pulumi.String("MySQL"),
-// 			EngineVersion:   pulumi.String("5.6"),
-// 			InstanceType:    pulumi.String("rds.mysql.t1.small"),
-// 			InstanceStorage: pulumi.Int(10),
-// 			VswitchId:       defaultSwitch.ID(),
-// 			InstanceName:    pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewConnection(ctx, "foo", &rds.ConnectionArgs{
-// 			InstanceId:       instance.ID(),
-// 			ConnectionPrefix: pulumi.String("testabc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "Rds"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "dbconnectionbasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+//				Engine:          pulumi.String("MySQL"),
+//				EngineVersion:   pulumi.String("5.6"),
+//				InstanceType:    pulumi.String("rds.mysql.t1.small"),
+//				InstanceStorage: pulumi.Int(10),
+//				VswitchId:       defaultSwitch.ID(),
+//				InstanceName:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewConnection(ctx, "foo", &rds.ConnectionArgs{
+//				InstanceId:       instance.ID(),
+//				ConnectionPrefix: pulumi.String("testabc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -90,7 +94,9 @@ import (
 // RDS connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/connection:Connection example abc12345678
+//
+//	$ pulumi import alicloud:rds/connection:Connection example abc12345678
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -223,7 +229,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -248,7 +254,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

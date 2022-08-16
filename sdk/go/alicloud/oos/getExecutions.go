@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := oos.GetExecutions(ctx, &oos.GetExecutionsArgs{
-// 			Ids: []string{
-// 				"execution_id",
-// 			},
-// 			Status:       pulumi.StringRef("Success"),
-// 			TemplateName: pulumi.StringRef("name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstExecutionId", example.Executions[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := oos.GetExecutions(ctx, &oos.GetExecutionsArgs{
+//				Ids: []string{
+//					"execution_id",
+//				},
+//				Status:       pulumi.StringRef("Success"),
+//				TemplateName: pulumi.StringRef("name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstExecutionId", example.Executions[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetExecutions(ctx *pulumi.Context, args *GetExecutionsArgs, opts ...pulumi.InvokeOption) (*GetExecutionsResult, error) {
 	var rv GetExecutionsResult

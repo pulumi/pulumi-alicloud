@@ -13,36 +13,39 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 			VpcName:   pulumi.String("vpc-example-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
-// 			VpcId:          fooNetwork.ID(),
-// 			RouteTableName: pulumi.String("route-table-example-name"),
-// 			Description:    pulumi.String("route-table-example-description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String("vpc-example-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
+//				VpcId:          fooNetwork.ID(),
+//				RouteTableName: pulumi.String("route-table-example-name"),
+//				Description:    pulumi.String("route-table-example-description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // The route table can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+//
+//	$ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+//
 // ```
 type RouteTable struct {
 	pulumi.CustomResourceState
@@ -197,7 +202,7 @@ func (i *RouteTable) ToRouteTableOutputWithContext(ctx context.Context) RouteTab
 // RouteTableArrayInput is an input type that accepts RouteTableArray and RouteTableArrayOutput values.
 // You can construct a concrete instance of `RouteTableArrayInput` via:
 //
-//          RouteTableArray{ RouteTableArgs{...} }
+//	RouteTableArray{ RouteTableArgs{...} }
 type RouteTableArrayInput interface {
 	pulumi.Input
 
@@ -222,7 +227,7 @@ func (i RouteTableArray) ToRouteTableArrayOutputWithContext(ctx context.Context)
 // RouteTableMapInput is an input type that accepts RouteTableMap and RouteTableMapOutput values.
 // You can construct a concrete instance of `RouteTableMapInput` via:
 //
-//          RouteTableMap{ "key": RouteTableArgs{...} }
+//	RouteTableMap{ "key": RouteTableArgs{...} }
 type RouteTableMapInput interface {
 	pulumi.Input
 

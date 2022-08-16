@@ -23,45 +23,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
-// 			ClusterType: pulumi.String("PhysicalCluster"),
-// 			Domain:      pulumi.String("www.aliyun.com"),
-// 			Http2Ports: pulumi.StringArray{
-// 				pulumi.String("443"),
-// 			},
-// 			HttpPorts: pulumi.StringArray{
-// 				pulumi.String("80"),
-// 			},
-// 			HttpToUserIp: pulumi.String("Off"),
-// 			HttpsPorts: pulumi.StringArray{
-// 				pulumi.String("443"),
-// 			},
-// 			HttpsRedirect:   pulumi.String("Off"),
-// 			InstanceId:      pulumi.String("waf-123455"),
-// 			IsAccessProduct: pulumi.String("On"),
-// 			LoadBalancing:   pulumi.String("IpHash"),
-// 			LogHeaders: waf.DomainLogHeaderArray{
-// 				&waf.DomainLogHeaderArgs{
-// 					Key:   pulumi.String("foo"),
-// 					Value: pulumi.String("http"),
-// 				},
-// 			},
-// 			SourceIps: pulumi.StringArray{
-// 				pulumi.String("1.1.1.1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
+//				ClusterType: pulumi.String("PhysicalCluster"),
+//				Domain:      pulumi.String("www.aliyun.com"),
+//				Http2Ports: pulumi.StringArray{
+//					pulumi.String("443"),
+//				},
+//				HttpPorts: pulumi.StringArray{
+//					pulumi.String("80"),
+//				},
+//				HttpToUserIp: pulumi.String("Off"),
+//				HttpsPorts: pulumi.StringArray{
+//					pulumi.String("443"),
+//				},
+//				HttpsRedirect:   pulumi.String("Off"),
+//				InstanceId:      pulumi.String("waf-123455"),
+//				IsAccessProduct: pulumi.String("On"),
+//				LoadBalancing:   pulumi.String("IpHash"),
+//				LogHeaders: waf.DomainLogHeaderArray{
+//					&waf.DomainLogHeaderArgs{
+//						Key:   pulumi.String("foo"),
+//						Value: pulumi.String("http"),
+//					},
+//				},
+//				SourceIps: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -69,7 +72,9 @@ import (
 // WAF domain can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+//
+//	$ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+//
 // ```
 type Domain struct {
 	pulumi.CustomResourceState
@@ -354,7 +359,7 @@ func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
 // You can construct a concrete instance of `DomainArrayInput` via:
 //
-//          DomainArray{ DomainArgs{...} }
+//	DomainArray{ DomainArgs{...} }
 type DomainArrayInput interface {
 	pulumi.Input
 
@@ -379,7 +384,7 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
-//          DomainMap{ "key": DomainArgs{...} }
+//	DomainMap{ "key": DomainArgs{...} }
 type DomainMapInput interface {
 	pulumi.Input
 

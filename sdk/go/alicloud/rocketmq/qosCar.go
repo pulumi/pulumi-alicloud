@@ -22,39 +22,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
-// 			QosId:               defaultQos.ID(),
-// 			Description:         pulumi.String("tf-testSagQosCarDescription"),
-// 			Priority:            pulumi.Int(1),
-// 			LimitType:           pulumi.String("Absolute"),
-// 			MinBandwidthAbs:     pulumi.Int(10),
-// 			MaxBandwidthAbs:     pulumi.Int(20),
-// 			MinBandwidthPercent: pulumi.Int(10),
-// 			MaxBandwidthPercent: pulumi.Int(20),
-// 			PercentSourceType:   pulumi.String("InternetUpBandwidth"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
+//				QosId:               defaultQos.ID(),
+//				Description:         pulumi.String("tf-testSagQosCarDescription"),
+//				Priority:            pulumi.Int(1),
+//				LimitType:           pulumi.String("Absolute"),
+//				MinBandwidthAbs:     pulumi.Int(10),
+//				MaxBandwidthAbs:     pulumi.Int(20),
+//				MinBandwidthPercent: pulumi.Int(10),
+//				MaxBandwidthPercent: pulumi.Int(20),
+//				PercentSourceType:   pulumi.String("InternetUpBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // The Sag Qos Car can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+//
 // ```
 type QosCar struct {
 	pulumi.CustomResourceState
@@ -249,7 +254,7 @@ func (i *QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 // QosCarArrayInput is an input type that accepts QosCarArray and QosCarArrayOutput values.
 // You can construct a concrete instance of `QosCarArrayInput` via:
 //
-//          QosCarArray{ QosCarArgs{...} }
+//	QosCarArray{ QosCarArgs{...} }
 type QosCarArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +279,7 @@ func (i QosCarArray) ToQosCarArrayOutputWithContext(ctx context.Context) QosCarA
 // QosCarMapInput is an input type that accepts QosCarMap and QosCarMapOutput values.
 // You can construct a concrete instance of `QosCarMapInput` via:
 //
-//          QosCarMap{ "key": QosCarArgs{...} }
+//	QosCarMap{ "key": QosCarArgs{...} }
 type QosCarMapInput interface {
 	pulumi.Input
 

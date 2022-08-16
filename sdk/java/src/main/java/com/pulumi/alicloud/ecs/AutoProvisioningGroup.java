@@ -299,14 +299,14 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotAllocationStrategy);
     }
     /**
-     * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      * 
      */
     @Export(name="spotInstanceInterruptionBehavior", type=String.class, parameters={})
     private Output</* @Nullable */ String> spotInstanceInterruptionBehavior;
 
     /**
-     * @return The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * @return The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      * 
      */
     public Output<Optional<String>> spotInstanceInterruptionBehavior() {

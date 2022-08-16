@@ -17,28 +17,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewInstanceClusterAttachment(ctx, "default", &edas.InstanceClusterAttachmentArgs{
-// 			ClusterId:   pulumi.Any(_var.Cluster_id),
-// 			InstanceIds: pulumi.Any(_var.Instance_ids),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewInstanceClusterAttachment(ctx, "default", &edas.InstanceClusterAttachmentArgs{
+//				ClusterId:   pulumi.Any(_var.Cluster_id),
+//				InstanceIds: pulumi.Any(_var.Instance_ids),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type InstanceClusterAttachment struct {
 	pulumi.CustomResourceState
@@ -160,7 +163,7 @@ func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext
 // InstanceClusterAttachmentArrayInput is an input type that accepts InstanceClusterAttachmentArray and InstanceClusterAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceClusterAttachmentArrayInput` via:
 //
-//          InstanceClusterAttachmentArray{ InstanceClusterAttachmentArgs{...} }
+//	InstanceClusterAttachmentArray{ InstanceClusterAttachmentArgs{...} }
 type InstanceClusterAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +188,7 @@ func (i InstanceClusterAttachmentArray) ToInstanceClusterAttachmentArrayOutputWi
 // InstanceClusterAttachmentMapInput is an input type that accepts InstanceClusterAttachmentMap and InstanceClusterAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceClusterAttachmentMapInput` via:
 //
-//          InstanceClusterAttachmentMap{ "key": InstanceClusterAttachmentArgs{...} }
+//	InstanceClusterAttachmentMap{ "key": InstanceClusterAttachmentArgs{...} }
 type InstanceClusterAttachmentMapInput interface {
 	pulumi.Input
 

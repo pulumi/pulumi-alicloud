@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
-// 			GatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayGatewayFileShareId1", ids.Shares[0].Id)
-// 		nameRegex, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
-// 			GatewayId: "example_value",
-// 			NameRegex: pulumi.StringRef("^my-GatewayFileShare"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayGatewayFileShareId2", nameRegex.Shares[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
+//				GatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayFileShareId1", ids.Shares[0].Id)
+//			nameRegex, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
+//				GatewayId: "example_value",
+//				NameRegex: pulumi.StringRef("^my-GatewayFileShare"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayFileShareId2", nameRegex.Shares[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGatewayFileShares(ctx *pulumi.Context, args *GetGatewayFileSharesArgs, opts ...pulumi.InvokeOption) (*GetGatewayFileSharesResult, error) {
 	var rv GetGatewayFileSharesResult

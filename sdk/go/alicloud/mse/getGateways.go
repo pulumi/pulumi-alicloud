@@ -16,44 +16,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mseGatewayId1", ids.Gateways[0].Id)
-// 		nameRegex, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
-// 			NameRegex: pulumi.StringRef("^my-Gateway"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mseGatewayId2", nameRegex.Gateways[0].Id)
-// 		status, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
-// 			Status: pulumi.StringRef("2"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mseGatewayId3", status.Gateways[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mseGatewayId1", ids.Gateways[0].Id)
+//			nameRegex, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
+//				NameRegex: pulumi.StringRef("^my-Gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mseGatewayId2", nameRegex.Gateways[0].Id)
+//			status, err := mse.GetGateways(ctx, &mse.GetGatewaysArgs{
+//				Status: pulumi.StringRef("2"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mseGatewayId3", status.Gateways[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	var rv GetGatewaysResult

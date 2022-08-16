@@ -13,43 +13,46 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-// 			Bandwidth:   pulumi.String("2"),
-// 			Description: pulumi.String("test_common_bandwidth_package"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
-// 			Bandwidth:          pulumi.String("2"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "fooCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
-// 			BandwidthPackageId: fooCommonBandwithPackage.ID(),
-// 			InstanceId:         fooEipAddress.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//				Bandwidth:   pulumi.String("2"),
+//				Description: pulumi.String("test_common_bandwidth_package"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
+//				Bandwidth:          pulumi.String("2"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "fooCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
+//				BandwidthPackageId: fooCommonBandwithPackage.ID(),
+//				InstanceId:         fooEipAddress.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // The common bandwidth package attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+//
+//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+//
 // ```
 type CommonBandwithPackageAttachment struct {
 	pulumi.CustomResourceState
@@ -161,7 +166,7 @@ func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutpu
 // CommonBandwithPackageAttachmentArrayInput is an input type that accepts CommonBandwithPackageAttachmentArray and CommonBandwithPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageAttachmentArrayInput` via:
 //
-//          CommonBandwithPackageAttachmentArray{ CommonBandwithPackageAttachmentArgs{...} }
+//	CommonBandwithPackageAttachmentArray{ CommonBandwithPackageAttachmentArgs{...} }
 type CommonBandwithPackageAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -186,7 +191,7 @@ func (i CommonBandwithPackageAttachmentArray) ToCommonBandwithPackageAttachmentA
 // CommonBandwithPackageAttachmentMapInput is an input type that accepts CommonBandwithPackageAttachmentMap and CommonBandwithPackageAttachmentMapOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageAttachmentMapInput` via:
 //
-//          CommonBandwithPackageAttachmentMap{ "key": CommonBandwithPackageAttachmentArgs{...} }
+//	CommonBandwithPackageAttachmentMap{ "key": CommonBandwithPackageAttachmentArgs{...} }
 type CommonBandwithPackageAttachmentMapInput interface {
 	pulumi.Input
 

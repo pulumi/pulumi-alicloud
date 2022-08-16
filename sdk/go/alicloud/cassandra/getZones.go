@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		zonesIds, err := cassandra.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cassandra.NewCluster(ctx, "cassandra", &cassandra.ClusterArgs{
-// 			ZoneId: pulumi.String(zonesIds.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			zonesIds, err := cassandra.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cassandra.NewCluster(ctx, "cassandra", &cassandra.ClusterArgs{
+//				ZoneId: pulumi.String(zonesIds.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult

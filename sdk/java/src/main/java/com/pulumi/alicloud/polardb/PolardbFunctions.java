@@ -12,6 +12,8 @@ import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetDatabasesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
 import com.pulumi.alicloud.polardb.inputs.GetEndpointsPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
@@ -20,6 +22,7 @@ import com.pulumi.alicloud.polardb.outputs.GetAccountsResult;
 import com.pulumi.alicloud.polardb.outputs.GetClustersResult;
 import com.pulumi.alicloud.polardb.outputs.GetDatabasesResult;
 import com.pulumi.alicloud.polardb.outputs.GetEndpointsResult;
+import com.pulumi.alicloud.polardb.outputs.GetGlobalDatabaseNetworksResult;
 import com.pulumi.alicloud.polardb.outputs.GetNodeClassesResult;
 import com.pulumi.alicloud.polardb.outputs.GetZonesResult;
 import com.pulumi.core.Output;
@@ -844,6 +847,288 @@ public final class PolardbFunctions {
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks() {
+        return getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain() {
+        return getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs args) {
+        return getGlobalDatabaseNetworks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs args) {
+        return getGlobalDatabaseNetworksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", TypeShape.of(GetGlobalDatabaseNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(&#34;example_description&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", TypeShape.of(GetGlobalDatabaseNetworksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.

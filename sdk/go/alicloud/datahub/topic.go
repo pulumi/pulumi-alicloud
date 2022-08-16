@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // - BLob Topic
 //
@@ -23,25 +23,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-// 			Comment:     pulumi.String("created by terraform"),
-// 			LifeCycle:   pulumi.Int(7),
-// 			ProjectName: pulumi.String("tf_datahub_project"),
-// 			RecordType:  pulumi.String("BLOB"),
-// 			ShardCount:  pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
+//				Comment:     pulumi.String("created by terraform"),
+//				LifeCycle:   pulumi.Int(7),
+//				ProjectName: pulumi.String("tf_datahub_project"),
+//				RecordType:  pulumi.String("BLOB"),
+//				ShardCount:  pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // - Tuple Topic
 //
@@ -49,32 +52,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
-// 			Comment:     pulumi.String("created by terraform"),
-// 			LifeCycle:   pulumi.Int(7),
-// 			ProjectName: pulumi.String("tf_datahub_project"),
-// 			RecordSchema: pulumi.AnyMap{
-// 				"bigint_field":    pulumi.Any("BIGINT"),
-// 				"boolean_field":   pulumi.Any("BOOLEAN"),
-// 				"double_field":    pulumi.Any("DOUBLE"),
-// 				"string_field":    pulumi.Any("STRING"),
-// 				"timestamp_field": pulumi.Any("TIMESTAMP"),
-// 			},
-// 			RecordType: pulumi.String("TUPLE"),
-// 			ShardCount: pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
+//				Comment:     pulumi.String("created by terraform"),
+//				LifeCycle:   pulumi.Int(7),
+//				ProjectName: pulumi.String("tf_datahub_project"),
+//				RecordSchema: pulumi.AnyMap{
+//					"bigint_field":    pulumi.Any("BIGINT"),
+//					"boolean_field":   pulumi.Any("BOOLEAN"),
+//					"double_field":    pulumi.Any("DOUBLE"),
+//					"string_field":    pulumi.Any("STRING"),
+//					"timestamp_field": pulumi.Any("TIMESTAMP"),
+//				},
+//				RecordType: pulumi.String("TUPLE"),
+//				ShardCount: pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +88,9 @@ import (
 // Datahub topic can be imported using the ID, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
+//
+//	$ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
+//
 // ```
 type Topic struct {
 	pulumi.CustomResourceState
@@ -270,7 +278,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +303,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 

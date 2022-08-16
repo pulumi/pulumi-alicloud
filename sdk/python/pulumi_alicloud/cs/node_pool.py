@@ -38,6 +38,7 @@ class NodePoolArgs:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kubelet_configuration: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
                  management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class NodePoolArgs:
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
@@ -93,7 +95,8 @@ class NodePoolArgs:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input['NodePoolKubeletConfigurationArgs'] kubelet_configuration: Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         :param pulumi.Input['NodePoolManagementArgs'] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -104,6 +107,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -121,8 +125,8 @@ class NodePoolArgs:
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
-        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         """
@@ -167,6 +171,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if kubelet_configuration is not None:
+            pulumi.set(__self__, "kubelet_configuration", kubelet_configuration)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if management is not None:
@@ -195,6 +201,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if rollout_policy is not None:
+            pulumi.set(__self__, "rollout_policy", rollout_policy)
         if runtime_name is not None:
             pulumi.set(__self__, "runtime_name", runtime_name)
         if runtime_version is not None:
@@ -504,10 +512,22 @@ class NodePoolArgs:
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
+    @pulumi.getter(name="kubeletConfiguration")
+    def kubelet_configuration(self) -> Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']]:
+        """
+        Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        """
+        return pulumi.get(self, "kubelet_configuration")
+
+    @kubelet_configuration.setter
+    def kubelet_configuration(self, value: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']]):
+        pulumi.set(self, "kubelet_configuration", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]:
         """
-        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         """
         return pulumi.get(self, "labels")
 
@@ -634,6 +654,18 @@ class NodePoolArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="rolloutPolicy")
+    def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
+        """
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rollout_policy")
+
+    @rollout_policy.setter
+    def rollout_policy(self, value: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]):
+        pulumi.set(self, "rollout_policy", value)
 
     @property
     @pulumi.getter(name="runtimeName")
@@ -832,7 +864,7 @@ class NodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+        A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
         """
         return pulumi.get(self, "tags")
 
@@ -844,7 +876,7 @@ class NodePoolArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]]:
         """
-        A List of Kubernetes taints to assign to the nodes.
+        A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         """
         return pulumi.get(self, "taints")
 
@@ -901,6 +933,7 @@ class _NodePoolState:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kubelet_configuration: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
                  management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -912,6 +945,7 @@ class _NodePoolState:
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
@@ -958,7 +992,8 @@ class _NodePoolState:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input['NodePoolKubeletConfigurationArgs'] kubelet_configuration: Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         :param pulumi.Input['NodePoolManagementArgs'] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -969,6 +1004,7 @@ class _NodePoolState:
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -987,8 +1023,8 @@ class _NodePoolState:
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
-        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] vpc_id: The VPC of the nodes in the node pool.
@@ -1036,6 +1072,8 @@ class _NodePoolState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if kubelet_configuration is not None:
+            pulumi.set(__self__, "kubelet_configuration", kubelet_configuration)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if management is not None:
@@ -1064,6 +1102,8 @@ class _NodePoolState:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if rollout_policy is not None:
+            pulumi.set(__self__, "rollout_policy", rollout_policy)
         if runtime_name is not None:
             pulumi.set(__self__, "runtime_name", runtime_name)
         if runtime_version is not None:
@@ -1367,10 +1407,22 @@ class _NodePoolState:
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
+    @pulumi.getter(name="kubeletConfiguration")
+    def kubelet_configuration(self) -> Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']]:
+        """
+        Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        """
+        return pulumi.get(self, "kubelet_configuration")
+
+    @kubelet_configuration.setter
+    def kubelet_configuration(self, value: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']]):
+        pulumi.set(self, "kubelet_configuration", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]:
         """
-        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         """
         return pulumi.get(self, "labels")
 
@@ -1497,6 +1549,18 @@ class _NodePoolState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="rolloutPolicy")
+    def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
+        """
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rollout_policy")
+
+    @rollout_policy.setter
+    def rollout_policy(self, value: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]):
+        pulumi.set(self, "rollout_policy", value)
 
     @property
     @pulumi.getter(name="runtimeName")
@@ -1707,7 +1771,7 @@ class _NodePoolState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+        A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
         """
         return pulumi.get(self, "tags")
 
@@ -1719,7 +1783,7 @@ class _NodePoolState:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]]:
         """
-        A List of Kubernetes taints to assign to the nodes.
+        A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         """
         return pulumi.get(self, "taints")
 
@@ -1802,6 +1866,7 @@ class NodePool(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kubelet_configuration: Optional[pulumi.Input[pulumi.InputType['NodePoolKubeletConfigurationArgs']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1813,6 +1878,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
@@ -2083,6 +2149,48 @@ class NodePool(pulumi.CustomResource):
             keep_instance_name=True)
         ```
 
+        Create a node pool with customized kubelet parameters
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size=3,
+            kubelet_configuration=alicloud.cs.NodePoolKubeletConfigurationArgs(
+                registry_pull_qps="0",
+                registry_burst="0",
+                event_record_qps="0",
+                event_burst="0",
+                eviction_hard={
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "1000",
+                    "imagefs.available": "10%",
+                    "imagefs.inodesFree": "1000",
+                    "allocatableMemory.available": "2048",
+                    "pid.available": "1000",
+                },
+                system_reserved={
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral_storage": "10Gi",
+                },
+                kube_reserved={
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+            ),
+            rollout_policy=alicloud.cs.NodePoolRolloutPolicyArgs(
+                max_unavailable=1,
+            ))
+        ```
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
@@ -2114,7 +2222,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input[pulumi.InputType['NodePoolKubeletConfigurationArgs']] kubelet_configuration: Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -2125,6 +2234,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -2142,8 +2252,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
-        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
@@ -2402,6 +2512,48 @@ class NodePool(pulumi.CustomResource):
             keep_instance_name=True)
         ```
 
+        Create a node pool with customized kubelet parameters
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size=3,
+            kubelet_configuration=alicloud.cs.NodePoolKubeletConfigurationArgs(
+                registry_pull_qps="0",
+                registry_burst="0",
+                event_record_qps="0",
+                event_burst="0",
+                eviction_hard={
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "1000",
+                    "imagefs.available": "10%",
+                    "imagefs.inodesFree": "1000",
+                    "allocatableMemory.available": "2048",
+                    "pid.available": "1000",
+                },
+                system_reserved={
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral_storage": "10Gi",
+                },
+                kube_reserved={
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+            ),
+            rollout_policy=alicloud.cs.NodePoolRolloutPolicyArgs(
+                max_unavailable=1,
+            ))
+        ```
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
@@ -2446,6 +2598,7 @@ class NodePool(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kubelet_configuration: Optional[pulumi.Input[pulumi.InputType['NodePoolKubeletConfigurationArgs']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2457,6 +2610,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
@@ -2512,6 +2666,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["kubelet_configuration"] = kubelet_configuration
             __props__.__dict__["labels"] = labels
             __props__.__dict__["management"] = management
             __props__.__dict__["name"] = name
@@ -2529,6 +2684,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["platform"] = platform
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["rollout_policy"] = rollout_policy
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["scaling_config"] = scaling_config
@@ -2588,6 +2744,7 @@ class NodePool(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kubelet_configuration: Optional[pulumi.Input[pulumi.InputType['NodePoolKubeletConfigurationArgs']]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
             management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -2599,6 +2756,7 @@ class NodePool(pulumi.CustomResource):
             platform: Optional[pulumi.Input[str]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
             runtime_name: Optional[pulumi.Input[str]] = None,
             runtime_version: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
@@ -2650,7 +2808,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input[pulumi.InputType['NodePoolKubeletConfigurationArgs']] kubelet_configuration: Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -2661,6 +2820,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -2679,8 +2839,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
-        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] vpc_id: The VPC of the nodes in the node pool.
@@ -2711,6 +2871,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["kubelet_configuration"] = kubelet_configuration
         __props__.__dict__["labels"] = labels
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
@@ -2722,6 +2883,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["platform"] = platform
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["rollout_policy"] = rollout_policy
         __props__.__dict__["runtime_name"] = runtime_name
         __props__.__dict__["runtime_version"] = runtime_version
         __props__.__dict__["scaling_config"] = scaling_config
@@ -2916,10 +3078,18 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "kms_encryption_context")
 
     @property
+    @pulumi.getter(name="kubeletConfiguration")
+    def kubelet_configuration(self) -> pulumi.Output[Optional['outputs.NodePoolKubeletConfiguration']]:
+        """
+        Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        """
+        return pulumi.get(self, "kubelet_configuration")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolLabel']]]:
         """
-        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
         """
         return pulumi.get(self, "labels")
 
@@ -3002,6 +3172,14 @@ class NodePool(pulumi.CustomResource):
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="rolloutPolicy")
+    def rollout_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRolloutPolicy']]:
+        """
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rollout_policy")
 
     @property
     @pulumi.getter(name="runtimeName")
@@ -3144,7 +3322,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+        A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
         """
         return pulumi.get(self, "tags")
 
@@ -3152,7 +3330,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolTaint']]]:
         """
-        A List of Kubernetes taints to assign to the nodes.
+        A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         """
         return pulumi.get(self, "taints")
 

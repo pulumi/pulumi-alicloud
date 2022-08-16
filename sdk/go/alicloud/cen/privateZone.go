@@ -21,56 +21,59 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("test_name"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            defaultInstance.ID(),
-// 			ChildInstanceId:       defaultNetwork.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			defaultInstance,
-// 			defaultNetwork,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewPrivateZone(ctx, "defaultPrivateZone", &cen.PrivateZoneArgs{
-// 			AccessRegionId: pulumi.String("cn-hangzhou"),
-// 			CenId:          defaultInstance.ID(),
-// 			HostRegionId:   pulumi.String("cn-hangzhou"),
-// 			HostVpcId:      defaultNetwork.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			defaultInstanceAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("test_name"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            defaultInstance.ID(),
+//				ChildInstanceId:       defaultNetwork.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultInstance,
+//				defaultNetwork,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewPrivateZone(ctx, "defaultPrivateZone", &cen.PrivateZoneArgs{
+//				AccessRegionId: pulumi.String("cn-hangzhou"),
+//				CenId:          defaultInstance.ID(),
+//				HostRegionId:   pulumi.String("cn-hangzhou"),
+//				HostVpcId:      defaultNetwork.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultInstanceAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // CEN Private Zone can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+//
+//	$ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+//
 // ```
 type PrivateZone struct {
 	pulumi.CustomResourceState
@@ -214,7 +219,7 @@ func (i *PrivateZone) ToPrivateZoneOutputWithContext(ctx context.Context) Privat
 // PrivateZoneArrayInput is an input type that accepts PrivateZoneArray and PrivateZoneArrayOutput values.
 // You can construct a concrete instance of `PrivateZoneArrayInput` via:
 //
-//          PrivateZoneArray{ PrivateZoneArgs{...} }
+//	PrivateZoneArray{ PrivateZoneArgs{...} }
 type PrivateZoneArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +244,7 @@ func (i PrivateZoneArray) ToPrivateZoneArrayOutputWithContext(ctx context.Contex
 // PrivateZoneMapInput is an input type that accepts PrivateZoneMap and PrivateZoneMapOutput values.
 // You can construct a concrete instance of `PrivateZoneMapInput` via:
 //
-//          PrivateZoneMap{ "key": PrivateZoneArgs{...} }
+//	PrivateZoneMap{ "key": PrivateZoneArgs{...} }
 type PrivateZoneMapInput interface {
 	pulumi.Input
 

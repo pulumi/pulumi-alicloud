@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cfg.GetDeliveries(ctx, &cfg.GetDeliveriesArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("configDeliveryId1", ids.Deliveries[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cfg.GetDeliveries(ctx, &cfg.GetDeliveriesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("configDeliveryId1", ids.Deliveries[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDeliveries(ctx *pulumi.Context, args *GetDeliveriesArgs, opts ...pulumi.InvokeOption) (*GetDeliveriesResult, error) {
 	var rv GetDeliveriesResult

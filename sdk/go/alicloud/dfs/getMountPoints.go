@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dfs.GetMountPoints(ctx, &dfs.GetMountPointsArgs{
-// 			FileSystemId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dfsMountPointId1", ids.Points[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dfs.GetMountPoints(ctx, &dfs.GetMountPointsArgs{
+//				FileSystemId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dfsMountPointId1", ids.Points[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetMountPoints(ctx *pulumi.Context, args *GetMountPointsArgs, opts ...pulumi.InvokeOption) (*GetMountPointsResult, error) {
 	var rv GetMountPointsResult

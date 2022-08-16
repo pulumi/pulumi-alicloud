@@ -192,14 +192,14 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
         return this.bypassCacheRead;
     }
     /**
-     * The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      * 
      */
     @Export(name="cacheMode", type=String.class, parameters={})
     private Output<String> cacheMode;
 
     /**
-     * @return The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * @return The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      * 
      */
     public Output<String> cacheMode() {

@@ -25,56 +25,59 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
-// 			Current: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-// 			Description: pulumi.String("tf actiontrail test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
-// 			TrailName: pulumi.String("example_value"),
-// 			SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = actiontrail.NewHistoryDeliveryJob(ctx, "exampleHistoryDeliveryJob", &actiontrail.HistoryDeliveryJobArgs{
-// 			TrailName: exampleTrail.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("tf actiontrail test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
+//				TrailName: pulumi.String("example_value"),
+//				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "exampleHistoryDeliveryJob", &actiontrail.HistoryDeliveryJobArgs{
+//				TrailName: exampleTrail.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // Actiontrail History Delivery Job can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
+//
+//	$ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
+//
 // ```
 type HistoryDeliveryJob struct {
 	pulumi.CustomResourceState
@@ -179,7 +184,7 @@ func (i *HistoryDeliveryJob) ToHistoryDeliveryJobOutputWithContext(ctx context.C
 // HistoryDeliveryJobArrayInput is an input type that accepts HistoryDeliveryJobArray and HistoryDeliveryJobArrayOutput values.
 // You can construct a concrete instance of `HistoryDeliveryJobArrayInput` via:
 //
-//          HistoryDeliveryJobArray{ HistoryDeliveryJobArgs{...} }
+//	HistoryDeliveryJobArray{ HistoryDeliveryJobArgs{...} }
 type HistoryDeliveryJobArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +209,7 @@ func (i HistoryDeliveryJobArray) ToHistoryDeliveryJobArrayOutputWithContext(ctx 
 // HistoryDeliveryJobMapInput is an input type that accepts HistoryDeliveryJobMap and HistoryDeliveryJobMapOutput values.
 // You can construct a concrete instance of `HistoryDeliveryJobMapInput` via:
 //
-//          HistoryDeliveryJobMap{ "key": HistoryDeliveryJobArgs{...} }
+//	HistoryDeliveryJobMap{ "key": HistoryDeliveryJobArgs{...} }
 type HistoryDeliveryJobMapInput interface {
 	pulumi.Input
 

@@ -36,7 +36,7 @@ type GetDeviceGroupsGroup struct {
 // GetDeviceGroupsGroupInput is an input type that accepts GetDeviceGroupsGroupArgs and GetDeviceGroupsGroupOutput values.
 // You can construct a concrete instance of `GetDeviceGroupsGroupInput` via:
 //
-//          GetDeviceGroupsGroupArgs{...}
+//	GetDeviceGroupsGroupArgs{...}
 type GetDeviceGroupsGroupInput interface {
 	pulumi.Input
 
@@ -82,7 +82,7 @@ func (i GetDeviceGroupsGroupArgs) ToGetDeviceGroupsGroupOutputWithContext(ctx co
 // GetDeviceGroupsGroupArrayInput is an input type that accepts GetDeviceGroupsGroupArray and GetDeviceGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDeviceGroupsGroupArrayInput` via:
 //
-//          GetDeviceGroupsGroupArray{ GetDeviceGroupsGroupArgs{...} }
+//	GetDeviceGroupsGroupArray{ GetDeviceGroupsGroupArgs{...} }
 type GetDeviceGroupsGroupArrayInput interface {
 	pulumi.Input
 

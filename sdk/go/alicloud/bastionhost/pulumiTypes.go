@@ -40,7 +40,7 @@ type InstanceAdAuthServer struct {
 // InstanceAdAuthServerInput is an input type that accepts InstanceAdAuthServerArgs and InstanceAdAuthServerOutput values.
 // You can construct a concrete instance of `InstanceAdAuthServerInput` via:
 //
-//          InstanceAdAuthServerArgs{...}
+//	InstanceAdAuthServerArgs{...}
 type InstanceAdAuthServerInput interface {
 	pulumi.Input
 
@@ -90,7 +90,7 @@ func (i InstanceAdAuthServerArgs) ToInstanceAdAuthServerOutputWithContext(ctx co
 // InstanceAdAuthServerArrayInput is an input type that accepts InstanceAdAuthServerArray and InstanceAdAuthServerArrayOutput values.
 // You can construct a concrete instance of `InstanceAdAuthServerArrayInput` via:
 //
-//          InstanceAdAuthServerArray{ InstanceAdAuthServerArgs{...} }
+//	InstanceAdAuthServerArray{ InstanceAdAuthServerArgs{...} }
 type InstanceAdAuthServerArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +236,7 @@ type InstanceLdapAuthServer struct {
 // InstanceLdapAuthServerInput is an input type that accepts InstanceLdapAuthServerArgs and InstanceLdapAuthServerOutput values.
 // You can construct a concrete instance of `InstanceLdapAuthServerInput` via:
 //
-//          InstanceLdapAuthServerArgs{...}
+//	InstanceLdapAuthServerArgs{...}
 type InstanceLdapAuthServerInput interface {
 	pulumi.Input
 
@@ -286,7 +286,7 @@ func (i InstanceLdapAuthServerArgs) ToInstanceLdapAuthServerOutputWithContext(ct
 // InstanceLdapAuthServerArrayInput is an input type that accepts InstanceLdapAuthServerArray and InstanceLdapAuthServerArrayOutput values.
 // You can construct a concrete instance of `InstanceLdapAuthServerArrayInput` via:
 //
-//          InstanceLdapAuthServerArray{ InstanceLdapAuthServerArgs{...} }
+//	InstanceLdapAuthServerArray{ InstanceLdapAuthServerArgs{...} }
 type InstanceLdapAuthServerArrayInput interface {
 	pulumi.Input
 
@@ -424,7 +424,7 @@ type GetHostAccountsAccount struct {
 // GetHostAccountsAccountInput is an input type that accepts GetHostAccountsAccountArgs and GetHostAccountsAccountOutput values.
 // You can construct a concrete instance of `GetHostAccountsAccountInput` via:
 //
-//          GetHostAccountsAccountArgs{...}
+//	GetHostAccountsAccountArgs{...}
 type GetHostAccountsAccountInput interface {
 	pulumi.Input
 
@@ -466,7 +466,7 @@ func (i GetHostAccountsAccountArgs) ToGetHostAccountsAccountOutputWithContext(ct
 // GetHostAccountsAccountArrayInput is an input type that accepts GetHostAccountsAccountArray and GetHostAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetHostAccountsAccountArrayInput` via:
 //
-//          GetHostAccountsAccountArray{ GetHostAccountsAccountArgs{...} }
+//	GetHostAccountsAccountArray{ GetHostAccountsAccountArgs{...} }
 type GetHostAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -578,7 +578,7 @@ type GetHostGroupsGroup struct {
 // GetHostGroupsGroupInput is an input type that accepts GetHostGroupsGroupArgs and GetHostGroupsGroupOutput values.
 // You can construct a concrete instance of `GetHostGroupsGroupInput` via:
 //
-//          GetHostGroupsGroupArgs{...}
+//	GetHostGroupsGroupArgs{...}
 type GetHostGroupsGroupInput interface {
 	pulumi.Input
 
@@ -614,7 +614,7 @@ func (i GetHostGroupsGroupArgs) ToGetHostGroupsGroupOutputWithContext(ctx contex
 // GetHostGroupsGroupArrayInput is an input type that accepts GetHostGroupsGroupArray and GetHostGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetHostGroupsGroupArrayInput` via:
 //
-//          GetHostGroupsGroupArray{ GetHostGroupsGroupArgs{...} }
+//	GetHostGroupsGroupArray{ GetHostGroupsGroupArgs{...} }
 type GetHostGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -711,7 +711,7 @@ type GetHostShareKeysKey struct {
 // GetHostShareKeysKeyInput is an input type that accepts GetHostShareKeysKeyArgs and GetHostShareKeysKeyOutput values.
 // You can construct a concrete instance of `GetHostShareKeysKeyInput` via:
 //
-//          GetHostShareKeysKeyArgs{...}
+//	GetHostShareKeysKeyArgs{...}
 type GetHostShareKeysKeyInput interface {
 	pulumi.Input
 
@@ -747,7 +747,7 @@ func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutputWithContext(ctx cont
 // GetHostShareKeysKeyArrayInput is an input type that accepts GetHostShareKeysKeyArray and GetHostShareKeysKeyArrayOutput values.
 // You can construct a concrete instance of `GetHostShareKeysKeyArrayInput` via:
 //
-//          GetHostShareKeysKeyArray{ GetHostShareKeysKeyArgs{...} }
+//	GetHostShareKeysKeyArray{ GetHostShareKeysKeyArgs{...} }
 type GetHostShareKeysKeyArrayInput interface {
 	pulumi.Input
 
@@ -858,7 +858,7 @@ type GetHostsHost struct {
 // GetHostsHostInput is an input type that accepts GetHostsHostArgs and GetHostsHostOutput values.
 // You can construct a concrete instance of `GetHostsHostInput` via:
 //
-//          GetHostsHostArgs{...}
+//	GetHostsHostArgs{...}
 type GetHostsHostInput interface {
 	pulumi.Input
 
@@ -908,7 +908,7 @@ func (i GetHostsHostArgs) ToGetHostsHostOutputWithContext(ctx context.Context) G
 // GetHostsHostArrayInput is an input type that accepts GetHostsHostArray and GetHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetHostsHostArrayInput` via:
 //
-//          GetHostsHostArray{ GetHostsHostArgs{...} }
+//	GetHostsHostArray{ GetHostsHostArgs{...} }
 type GetHostsHostArrayInput interface {
 	pulumi.Input
 
@@ -1036,7 +1036,7 @@ type GetHostsHostProtocol struct {
 // GetHostsHostProtocolInput is an input type that accepts GetHostsHostProtocolArgs and GetHostsHostProtocolOutput values.
 // You can construct a concrete instance of `GetHostsHostProtocolInput` via:
 //
-//          GetHostsHostProtocolArgs{...}
+//	GetHostsHostProtocolArgs{...}
 type GetHostsHostProtocolInput interface {
 	pulumi.Input
 
@@ -1068,7 +1068,7 @@ func (i GetHostsHostProtocolArgs) ToGetHostsHostProtocolOutputWithContext(ctx co
 // GetHostsHostProtocolArrayInput is an input type that accepts GetHostsHostProtocolArray and GetHostsHostProtocolArrayOutput values.
 // You can construct a concrete instance of `GetHostsHostProtocolArrayInput` via:
 //
-//          GetHostsHostProtocolArray{ GetHostsHostProtocolArgs{...} }
+//	GetHostsHostProtocolArray{ GetHostsHostProtocolArgs{...} }
 type GetHostsHostProtocolArrayInput interface {
 	pulumi.Input
 
@@ -1186,7 +1186,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -1253,7 +1253,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1333,23 +1333,26 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
@@ -1396,7 +1399,7 @@ type GetUserGroupsGroup struct {
 // GetUserGroupsGroupInput is an input type that accepts GetUserGroupsGroupArgs and GetUserGroupsGroupOutput values.
 // You can construct a concrete instance of `GetUserGroupsGroupInput` via:
 //
-//          GetUserGroupsGroupArgs{...}
+//	GetUserGroupsGroupArgs{...}
 type GetUserGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1432,7 +1435,7 @@ func (i GetUserGroupsGroupArgs) ToGetUserGroupsGroupOutputWithContext(ctx contex
 // GetUserGroupsGroupArrayInput is an input type that accepts GetUserGroupsGroupArray and GetUserGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetUserGroupsGroupArrayInput` via:
 //
-//          GetUserGroupsGroupArray{ GetUserGroupsGroupArgs{...} }
+//	GetUserGroupsGroupArray{ GetUserGroupsGroupArgs{...} }
 type GetUserGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1543,7 +1546,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//          GetUsersUserArgs{...}
+//	GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -1593,7 +1596,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//          GetUsersUserArray{ GetUsersUserArgs{...} }
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 

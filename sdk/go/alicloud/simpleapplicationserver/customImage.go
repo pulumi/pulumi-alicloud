@@ -22,7 +22,9 @@ import (
 // Simple Application Server Custom Image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
+//
+//	$ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
+//
 // ```
 type CustomImage struct {
 	pulumi.CustomResourceState
@@ -159,7 +161,7 @@ func (i *CustomImage) ToCustomImageOutputWithContext(ctx context.Context) Custom
 // CustomImageArrayInput is an input type that accepts CustomImageArray and CustomImageArrayOutput values.
 // You can construct a concrete instance of `CustomImageArrayInput` via:
 //
-//          CustomImageArray{ CustomImageArgs{...} }
+//	CustomImageArray{ CustomImageArgs{...} }
 type CustomImageArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +186,7 @@ func (i CustomImageArray) ToCustomImageArrayOutputWithContext(ctx context.Contex
 // CustomImageMapInput is an input type that accepts CustomImageMap and CustomImageMapOutput values.
 // You can construct a concrete instance of `CustomImageMapInput` via:
 //
-//          CustomImageMap{ "key": CustomImageArgs{...} }
+//	CustomImageMap{ "key": CustomImageArgs{...} }
 type CustomImageMapInput interface {
 	pulumi.Input
 

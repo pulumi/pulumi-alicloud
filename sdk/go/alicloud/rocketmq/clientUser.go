@@ -21,32 +21,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
-// 			Bandwidth: pulumi.Int(20),
-// 			ClientIp:  pulumi.String("192.1.10.0"),
-// 			Password:  pulumi.String("xxxxxxx"),
-// 			SagId:     pulumi.String("sag-xxxxx"),
-// 			UserMail:  pulumi.String("tftest-xxxxx@test.com"),
-// 			UserName:  pulumi.String("th-username-xxxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
+//				Bandwidth: pulumi.Int(20),
+//				ClientIp:  pulumi.String("192.1.10.0"),
+//				Password:  pulumi.String("xxxxxxx"),
+//				SagId:     pulumi.String("sag-xxxxx"),
+//				UserMail:  pulumi.String("tftest-xxxxx@test.com"),
+//				UserName:  pulumi.String("th-username-xxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // The Sag ClientUser can be imported using the name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
+//
 // ```
 type ClientUser struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUs
 // ClientUserArrayInput is an input type that accepts ClientUserArray and ClientUserArrayOutput values.
 // You can construct a concrete instance of `ClientUserArrayInput` via:
 //
-//          ClientUserArray{ ClientUserArgs{...} }
+//	ClientUserArray{ ClientUserArgs{...} }
 type ClientUserArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i ClientUserArray) ToClientUserArrayOutputWithContext(ctx context.Context)
 // ClientUserMapInput is an input type that accepts ClientUserMap and ClientUserMapOutput values.
 // You can construct a concrete instance of `ClientUserMapInput` via:
 //
-//          ClientUserMap{ "key": ClientUserArgs{...} }
+//	ClientUserMap{ "key": ClientUserArgs{...} }
 type ClientUserMapInput interface {
 	pulumi.Input
 

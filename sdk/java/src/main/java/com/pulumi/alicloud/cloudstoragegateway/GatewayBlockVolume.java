@@ -35,14 +35,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume")
 public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
     /**
-     * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     @Export(name="cacheMode", type=String.class, parameters={})
     private Output<String> cacheMode;
 
     /**
-     * @return The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * @return The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     public Output<String> cacheMode() {

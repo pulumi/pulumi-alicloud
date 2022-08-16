@@ -16,107 +16,110 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId1", ids.Sessions[0].Id)
-// 		nameRegex, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			NameRegex: pulumi.StringRef("^my-TrafficMirrorSession"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId2", nameRegex.Sessions[0].Id)
-// 		enabled, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Enabled: pulumi.BoolRef(false),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId3", enabled.Sessions[0].Id)
-// 		priority, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Priority: pulumi.IntRef(1),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId4", priority.Sessions[0].Id)
-// 		filterId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			TrafficMirrorFilterId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId5", filterId.Sessions[0].Id)
-// 		sessionName, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			TrafficMirrorSessionName: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId6", sessionName.Sessions[0].Id)
-// 		sourceId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			TrafficMirrorSourceId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId7", sourceId.Sessions[0].Id)
-// 		targetId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			TrafficMirrorTargetId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId8", targetId.Sessions[0].Id)
-// 		status, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Status: pulumi.StringRef("Created"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcTrafficMirrorSessionId9", status.Sessions[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId1", ids.Sessions[0].Id)
+//			nameRegex, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				NameRegex: pulumi.StringRef("^my-TrafficMirrorSession"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId2", nameRegex.Sessions[0].Id)
+//			enabled, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Enabled: pulumi.BoolRef(false),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId3", enabled.Sessions[0].Id)
+//			priority, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Priority: pulumi.IntRef(1),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId4", priority.Sessions[0].Id)
+//			filterId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TrafficMirrorFilterId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId5", filterId.Sessions[0].Id)
+//			sessionName, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TrafficMirrorSessionName: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId6", sessionName.Sessions[0].Id)
+//			sourceId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TrafficMirrorSourceId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId7", sourceId.Sessions[0].Id)
+//			targetId, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TrafficMirrorTargetId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId8", targetId.Sessions[0].Id)
+//			status, err := vpc.GetTrafficMirrorSessions(ctx, &vpc.GetTrafficMirrorSessionsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.StringRef("Created"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorSessionId9", status.Sessions[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTrafficMirrorSessions(ctx *pulumi.Context, args *GetTrafficMirrorSessionsArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorSessionsResult, error) {
 	var rv GetTrafficMirrorSessionsResult

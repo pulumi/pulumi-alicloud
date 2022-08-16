@@ -16,44 +16,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-// 			CidrBlock:         pulumi.String("172.16.0.0/12"),
-// 			DesktopAccessType: pulumi.String("Internet"),
-// 			OfficeSiteName:    pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworkPackage, err := eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
-// 			Bandwidth:    pulumi.Int(10),
-// 			OfficeSiteId: defaultSimpleOfficeSite.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworkPackages := eds.GetNetworkPackagesOutput(ctx, eds.GetNetworkPackagesOutputArgs{
-// 			Ids: pulumi.StringArray{
-// 				defaultNetworkPackage.ID(),
-// 			},
-// 		}, nil)
-// 		ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (string, error) {
-// 			return defaultNetworkPackages.Packages[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkPackage, err := eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
+//				Bandwidth:    pulumi.Int(10),
+//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkPackages := eds.GetNetworkPackagesOutput(ctx, eds.GetNetworkPackagesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultNetworkPackage.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (string, error) {
+//				return defaultNetworkPackages.Packages[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNetworkPackages(ctx *pulumi.Context, args *GetNetworkPackagesArgs, opts ...pulumi.InvokeOption) (*GetNetworkPackagesResult, error) {
 	var rv GetNetworkPackagesResult

@@ -17,31 +17,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kms.NewSecret(ctx, "default", &kms.SecretArgs{
-// 			Description:                pulumi.String("from terraform"),
-// 			ForceDeleteWithoutRecovery: pulumi.Bool(true),
-// 			SecretData:                 pulumi.String("Secret data."),
-// 			SecretName:                 pulumi.String("secret-foo"),
-// 			VersionId:                  pulumi.String("000000000001"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.NewSecret(ctx, "default", &kms.SecretArgs{
+//				Description:                pulumi.String("from terraform"),
+//				ForceDeleteWithoutRecovery: pulumi.Bool(true),
+//				SecretData:                 pulumi.String("Secret data."),
+//				SecretName:                 pulumi.String("secret-foo"),
+//				VersionId:                  pulumi.String("000000000001"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // KMS secret can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+//
+//	$ pulumi import alicloud:kms/secret:Secret default secret-foo
+//
 // ```
 type Secret struct {
 	pulumi.CustomResourceState
@@ -268,7 +273,7 @@ func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 // SecretArrayInput is an input type that accepts SecretArray and SecretArrayOutput values.
 // You can construct a concrete instance of `SecretArrayInput` via:
 //
-//          SecretArray{ SecretArgs{...} }
+//	SecretArray{ SecretArgs{...} }
 type SecretArrayInput interface {
 	pulumi.Input
 
@@ -293,7 +298,7 @@ func (i SecretArray) ToSecretArrayOutputWithContext(ctx context.Context) SecretA
 // SecretMapInput is an input type that accepts SecretMap and SecretMapOutput values.
 // You can construct a concrete instance of `SecretMapInput` via:
 //
-//          SecretMap{ "key": SecretArgs{...} }
+//	SecretMap{ "key": SecretArgs{...} }
 type SecretMapInput interface {
 	pulumi.Input
 

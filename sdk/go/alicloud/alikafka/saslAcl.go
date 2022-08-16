@@ -20,91 +20,94 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		username := "testusername"
-// 		if param := cfg.Get("username"); param != "" {
-// 			username = param
-// 		}
-// 		password := "testpassword"
-// 		if param := cfg.Get("password"); param != "" {
-// 			password = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota: pulumi.Int(50),
-// 			DiskType:   pulumi.Int(1),
-// 			DiskSize:   pulumi.Int(500),
-// 			DeployType: pulumi.Int(5),
-// 			IoMax:      pulumi.Int(20),
-// 			VswitchId:  defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultTopic, err := alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
-// 			InstanceId: defaultInstance.ID(),
-// 			Topic:      pulumi.String("test-topic"),
-// 			Remark:     pulumi.String("topic-remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSaslUser, err := alikafka.NewSaslUser(ctx, "defaultSaslUser", &alikafka.SaslUserArgs{
-// 			InstanceId: defaultInstance.ID(),
-// 			Username:   pulumi.String(username),
-// 			Password:   pulumi.String(password),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alikafka.NewSaslAcl(ctx, "defaultSaslAcl", &alikafka.SaslAclArgs{
-// 			InstanceId:             defaultInstance.ID(),
-// 			Username:               defaultSaslUser.Username,
-// 			AclResourceType:        pulumi.String("Topic"),
-// 			AclResourceName:        defaultTopic.Topic,
-// 			AclResourcePatternType: pulumi.String("LITERAL"),
-// 			AclOperationType:       pulumi.String("Write"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			username := "testusername"
+//			if param := cfg.Get("username"); param != "" {
+//				username = param
+//			}
+//			password := "testpassword"
+//			if param := cfg.Get("password"); param != "" {
+//				password = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				TopicQuota: pulumi.Int(50),
+//				DiskType:   pulumi.Int(1),
+//				DiskSize:   pulumi.Int(500),
+//				DeployType: pulumi.Int(5),
+//				IoMax:      pulumi.Int(20),
+//				VswitchId:  defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTopic, err := alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
+//				InstanceId: defaultInstance.ID(),
+//				Topic:      pulumi.String("test-topic"),
+//				Remark:     pulumi.String("topic-remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSaslUser, err := alikafka.NewSaslUser(ctx, "defaultSaslUser", &alikafka.SaslUserArgs{
+//				InstanceId: defaultInstance.ID(),
+//				Username:   pulumi.String(username),
+//				Password:   pulumi.String(password),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewSaslAcl(ctx, "defaultSaslAcl", &alikafka.SaslAclArgs{
+//				InstanceId:             defaultInstance.ID(),
+//				Username:               defaultSaslUser.Username,
+//				AclResourceType:        pulumi.String("Topic"),
+//				AclResourceName:        defaultTopic.Topic,
+//				AclResourcePatternType: pulumi.String("LITERAL"),
+//				AclOperationType:       pulumi.String("Write"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -112,7 +115,9 @@ import (
 // ALIKAFKA GROUP can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+//
+//	$ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+//
 // ```
 type SaslAcl struct {
 	pulumi.CustomResourceState
@@ -274,7 +279,7 @@ func (i *SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput 
 // SaslAclArrayInput is an input type that accepts SaslAclArray and SaslAclArrayOutput values.
 // You can construct a concrete instance of `SaslAclArrayInput` via:
 //
-//          SaslAclArray{ SaslAclArgs{...} }
+//	SaslAclArray{ SaslAclArgs{...} }
 type SaslAclArrayInput interface {
 	pulumi.Input
 
@@ -299,7 +304,7 @@ func (i SaslAclArray) ToSaslAclArrayOutputWithContext(ctx context.Context) SaslA
 // SaslAclMapInput is an input type that accepts SaslAclMap and SaslAclMapOutput values.
 // You can construct a concrete instance of `SaslAclMapInput` via:
 //
-//          SaslAclMap{ "key": SaslAclArgs{...} }
+//	SaslAclMap{ "key": SaslAclArgs{...} }
 type SaslAclMapInput interface {
 	pulumi.Input
 

@@ -19,62 +19,65 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccHBRNas"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-// 			VaultName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-// 			ProtocolType: pulumi.String("NFS"),
-// 			StorageType:  pulumi.String("Performance"),
-// 			Description:  pulumi.String(name),
-// 			EncryptType:  pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
-// 			NasBackupPlanName: pulumi.String(name),
-// 			FileSystemId:      defaultFileSystem.ID(),
-// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
-// 			BackupType:        pulumi.String("COMPLETE"),
-// 			VaultId:           defaultVault.ID(),
-// 			CreateTime: defaultFileSystems.ApplyT(func(defaultFileSystems nas.GetFileSystemsResult) (string, error) {
-// 				return defaultFileSystems.Systems[0].CreateTime, nil
-// 			}).(pulumi.StringOutput),
-// 			Retention: pulumi.String("2"),
-// 			Paths: pulumi.StringArray{
-// 				pulumi.String("/"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			pulumi.Resource("alicloud_nas_file_system.default"),
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccHBRNas"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.String(name),
+//				EncryptType:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
+//				NasBackupPlanName: pulumi.String(name),
+//				FileSystemId:      defaultFileSystem.ID(),
+//				Schedule:          pulumi.String("I|1602673264|PT2H"),
+//				BackupType:        pulumi.String("COMPLETE"),
+//				VaultId:           defaultVault.ID(),
+//				CreateTime: defaultFileSystems.ApplyT(func(defaultFileSystems nas.GetFileSystemsResult) (string, error) {
+//					return defaultFileSystems.Systems[0].CreateTime, nil
+//				}).(pulumi.StringOutput),
+//				Retention: pulumi.String("2"),
+//				Paths: pulumi.StringArray{
+//					pulumi.String("/"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("alicloud_nas_file_system.default"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // HBR Nas Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
+//
+//	$ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
+//
 // ```
 type NasBackupPlan struct {
 	pulumi.CustomResourceState
@@ -286,7 +291,7 @@ func (i *NasBackupPlan) ToNasBackupPlanOutputWithContext(ctx context.Context) Na
 // NasBackupPlanArrayInput is an input type that accepts NasBackupPlanArray and NasBackupPlanArrayOutput values.
 // You can construct a concrete instance of `NasBackupPlanArrayInput` via:
 //
-//          NasBackupPlanArray{ NasBackupPlanArgs{...} }
+//	NasBackupPlanArray{ NasBackupPlanArgs{...} }
 type NasBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +316,7 @@ func (i NasBackupPlanArray) ToNasBackupPlanArrayOutputWithContext(ctx context.Co
 // NasBackupPlanMapInput is an input type that accepts NasBackupPlanMap and NasBackupPlanMapOutput values.
 // You can construct a concrete instance of `NasBackupPlanMapInput` via:
 //
-//          NasBackupPlanMap{ "key": NasBackupPlanArgs{...} }
+//	NasBackupPlanMap{ "key": NasBackupPlanArgs{...} }
 type NasBackupPlanMapInput interface {
 	pulumi.Input
 

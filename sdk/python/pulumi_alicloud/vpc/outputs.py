@@ -31,6 +31,7 @@ __all__ = [
     'GetIpsecServersServerResult',
     'GetIpsecServersServerIkeConfigResult',
     'GetIpsecServersServerIpsecConfigResult',
+    'GetIpv4GatewaysGatewayResult',
     'GetIpv6AddressesAddressResult',
     'GetIpv6EgressRulesRuleResult',
     'GetIpv6GatewaysGatewayResult',
@@ -2055,6 +2056,112 @@ class GetIpsecServersServerIpsecConfigResult(dict):
         Diffie-Hellman key exchange algorithm.
         """
         return pulumi.get(self, "ipsec_pfs")
+
+
+@pulumi.output_type
+class GetIpv4GatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 enabled: bool,
+                 id: str,
+                 ipv4_gateway_description: str,
+                 ipv4_gateway_id: str,
+                 ipv4_gateway_name: str,
+                 ipv4_gateway_route_table_id: str,
+                 status: str,
+                 vpc_id: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param bool enabled: Indicates whether the IPv4 gateway is activated.
+        :param str id: The ID of the Ipv4 Gateway.
+        :param str ipv4_gateway_description: The description of the IPv4 gateway.
+        :param str ipv4_gateway_id: The resource attribute field that represents the resource level 1 ID.
+        :param str ipv4_gateway_name: The name of the IPv4 gateway.
+        :param str ipv4_gateway_route_table_id: ID of the route table associated with IPv4 Gateway.
+        :param str status: The status of the resource.
+        :param str vpc_id: The ID of the VPC associated with the IPv4 Gateway.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
+        pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
+        pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
+        pulumi.set(__self__, "ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether the IPv4 gateway is activated.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipv4 Gateway.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayDescription")
+    def ipv4_gateway_description(self) -> str:
+        """
+        The description of the IPv4 gateway.
+        """
+        return pulumi.get(self, "ipv4_gateway_description")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayId")
+    def ipv4_gateway_id(self) -> str:
+        """
+        The resource attribute field that represents the resource level 1 ID.
+        """
+        return pulumi.get(self, "ipv4_gateway_id")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayName")
+    def ipv4_gateway_name(self) -> str:
+        """
+        The name of the IPv4 gateway.
+        """
+        return pulumi.get(self, "ipv4_gateway_name")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayRouteTableId")
+    def ipv4_gateway_route_table_id(self) -> str:
+        """
+        ID of the route table associated with IPv4 Gateway.
+        """
+        return pulumi.get(self, "ipv4_gateway_route_table_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC associated with the IPv4 Gateway.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type

@@ -18,27 +18,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		scalingrulesDs, err := ess.GetScalingRules(ctx, &ess.GetScalingRulesArgs{
-// 			Ids: []string{
-// 				"scaling_rule_id1",
-// 				"scaling_rule_id2",
-// 			},
-// 			NameRegex:      pulumi.StringRef("scaling_rule_name"),
-// 			ScalingGroupId: pulumi.StringRef("scaling_group_id"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstScalingRule", scalingrulesDs.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scalingrulesDs, err := ess.GetScalingRules(ctx, &ess.GetScalingRulesArgs{
+//				Ids: []string{
+//					"scaling_rule_id1",
+//					"scaling_rule_id2",
+//				},
+//				NameRegex:      pulumi.StringRef("scaling_rule_name"),
+//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstScalingRule", scalingrulesDs.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetScalingRules(ctx *pulumi.Context, args *GetScalingRulesArgs, opts ...pulumi.InvokeOption) (*GetScalingRulesResult, error) {
 	var rv GetScalingRulesResult

@@ -19,53 +19,58 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": "sts:AssumeRole",
-//         "Effect": "Allow",
-//         "Principal": {
-//           "Service": [
-//             "fnf.aliyuncs.com"
-//           ]
-//         }
-//       }
-//     ],
-//     "Version": "1"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Document: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": "sts:AssumeRole",
+//	        "Effect": "Allow",
+//	        "Principal": {
+//	          "Service": [
+//	            "fnf.aliyuncs.com"
+//	          ]
+//	        }
+//	      }
+//	    ],
+//	    "Version": "1"
+//	  }
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
-// 			Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
-// 			RoleArn:     _default.Arn,
-// 			Description: pulumi.String("Test for terraform fnf_flow."),
-// 			Type:        pulumi.String("FDL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
+//				Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
+//				RoleArn:     _default.Arn,
+//				Description: pulumi.String("Test for terraform fnf_flow."),
+//				Type:        pulumi.String("FDL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -73,7 +78,9 @@ import (
 // Serverless Workflow Flow can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fnf/flow:Flow example <name>
+//
+//	$ pulumi import alicloud:fnf/flow:Flow example <name>
+//
 // ```
 type Flow struct {
 	pulumi.CustomResourceState
@@ -222,7 +229,7 @@ func (i *Flow) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 // FlowArrayInput is an input type that accepts FlowArray and FlowArrayOutput values.
 // You can construct a concrete instance of `FlowArrayInput` via:
 //
-//          FlowArray{ FlowArgs{...} }
+//	FlowArray{ FlowArgs{...} }
 type FlowArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +254,7 @@ func (i FlowArray) ToFlowArrayOutputWithContext(ctx context.Context) FlowArrayOu
 // FlowMapInput is an input type that accepts FlowMap and FlowMapOutput values.
 // You can construct a concrete instance of `FlowMapInput` via:
 //
-//          FlowMap{ "key": FlowArgs{...} }
+//	FlowMap{ "key": FlowArgs{...} }
 type FlowMapInput interface {
 	pulumi.Input
 

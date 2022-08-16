@@ -16,30 +16,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mongodb.GetShardingNetworkPublicAddresses(ctx, &mongodb.GetShardingNetworkPublicAddressesArgs{
-// 			DbInstanceId: "example_value",
-// 			NodeId:       pulumi.StringRef("example_value"),
-// 			Role:         pulumi.StringRef("Primary"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.Addresses[0].DbInstanceId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mongodb.GetShardingNetworkPublicAddresses(ctx, &mongodb.GetShardingNetworkPublicAddressesArgs{
+//				DbInstanceId: "example_value",
+//				NodeId:       pulumi.StringRef("example_value"),
+//				Role:         pulumi.StringRef("Primary"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.Addresses[0].DbInstanceId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetShardingNetworkPublicAddresses(ctx *pulumi.Context, args *GetShardingNetworkPublicAddressesArgs, opts ...pulumi.InvokeOption) (*GetShardingNetworkPublicAddressesResult, error) {
 	var rv GetShardingNetworkPublicAddressesResult

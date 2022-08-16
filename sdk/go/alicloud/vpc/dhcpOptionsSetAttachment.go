@@ -19,44 +19,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("test"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "exampleDhcpOptionsSet", &vpc.DhcpOptionsSetArgs{
-// 			DhcpOptionsSetName:        pulumi.String("example_value"),
-// 			DhcpOptionsSetDescription: pulumi.String("example_value"),
-// 			DomainName:                pulumi.String("example.com"),
-// 			DomainNameServers:         pulumi.String("100.100.2.136"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "exampleDhcpOptionsSetAttachment", &vpc.DhcpOptionsSetAttachmentArgs{
-// 			VpcId:            exampleNetwork.ID(),
-// 			DhcpOptionsSetId: exampleDhcpOptionsSet.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("test"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "exampleDhcpOptionsSet", &vpc.DhcpOptionsSetArgs{
+//				DhcpOptionsSetName:        pulumi.String("example_value"),
+//				DhcpOptionsSetDescription: pulumi.String("example_value"),
+//				DomainName:                pulumi.String("example.com"),
+//				DomainNameServers:         pulumi.String("100.100.2.136"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "exampleDhcpOptionsSetAttachment", &vpc.DhcpOptionsSetAttachmentArgs{
+//				VpcId:            exampleNetwork.ID(),
+//				DhcpOptionsSetId: exampleDhcpOptionsSet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,7 +67,9 @@ import (
 // VPC Dhcp Options Set Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
+//
+//	$ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
+//
 // ```
 type DhcpOptionsSetAttachment struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *DhcpOptionsSetAttachment) ToDhcpOptionsSetAttachmentOutputWithContext(c
 // DhcpOptionsSetAttachmentArrayInput is an input type that accepts DhcpOptionsSetAttachmentArray and DhcpOptionsSetAttachmentArrayOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetAttachmentArrayInput` via:
 //
-//          DhcpOptionsSetAttachmentArray{ DhcpOptionsSetAttachmentArgs{...} }
+//	DhcpOptionsSetAttachmentArray{ DhcpOptionsSetAttachmentArgs{...} }
 type DhcpOptionsSetAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i DhcpOptionsSetAttachmentArray) ToDhcpOptionsSetAttachmentArrayOutputWith
 // DhcpOptionsSetAttachmentMapInput is an input type that accepts DhcpOptionsSetAttachmentMap and DhcpOptionsSetAttachmentMapOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetAttachmentMapInput` via:
 //
-//          DhcpOptionsSetAttachmentMap{ "key": DhcpOptionsSetAttachmentArgs{...} }
+//	DhcpOptionsSetAttachmentMap{ "key": DhcpOptionsSetAttachmentArgs{...} }
 type DhcpOptionsSetAttachmentMapInput interface {
 	pulumi.Input
 

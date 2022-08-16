@@ -19,88 +19,91 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			NameRegex: pulumi.StringRef("default"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 			Owners:     pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			ImageId: pulumi.StringRef(defaultImages.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsImagePipeline(ctx, "defaultEcsImagePipeline", &ecs.EcsImagePipelineArgs{
-// 			AddAccounts: pulumi.StringArray{
-// 				pulumi.String("example_value"),
-// 			},
-// 			BaseImage:               pulumi.String(defaultImages.Ids[0]),
-// 			BaseImageType:           pulumi.String("IMAGE"),
-// 			BuildContent:            pulumi.String("RUN yum update -y"),
-// 			DeleteInstanceOnFailure: pulumi.Bool(false),
-// 			ImageName:               pulumi.String("example_value"),
-// 			Description:             pulumi.String("example_value"),
-// 			InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
-// 			ResourceGroupId:         pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			InternetMaxBandwidthOut: pulumi.Int(20),
-// 			SystemDiskSize:          pulumi.Int(40),
-// 			ToRegionIds: pulumi.StringArray{
-// 				pulumi.String("cn-qingdao"),
-// 				pulumi.String("cn-zhangjiakou"),
-// 			},
-// 			VswitchId: pulumi.String(defaultSwitches.Ids[0]),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Acceptance-test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				NameRegex: pulumi.StringRef("default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				ImageId: pulumi.StringRef(defaultImages.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsImagePipeline(ctx, "defaultEcsImagePipeline", &ecs.EcsImagePipelineArgs{
+//				AddAccounts: pulumi.StringArray{
+//					pulumi.String("example_value"),
+//				},
+//				BaseImage:               pulumi.String(defaultImages.Ids[0]),
+//				BaseImageType:           pulumi.String("IMAGE"),
+//				BuildContent:            pulumi.String("RUN yum update -y"),
+//				DeleteInstanceOnFailure: pulumi.Bool(false),
+//				ImageName:               pulumi.String("example_value"),
+//				Description:             pulumi.String("example_value"),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
+//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				InternetMaxBandwidthOut: pulumi.Int(20),
+//				SystemDiskSize:          pulumi.Int(40),
+//				ToRegionIds: pulumi.StringArray{
+//					pulumi.String("cn-qingdao"),
+//					pulumi.String("cn-zhangjiakou"),
+//				},
+//				VswitchId: pulumi.String(defaultSwitches.Ids[0]),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Acceptance-test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -108,7 +111,9 @@ import (
 // ECS Image Pipeline can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
+//
 // ```
 type EcsImagePipeline struct {
 	pulumi.CustomResourceState
@@ -352,7 +357,7 @@ func (i *EcsImagePipeline) ToEcsImagePipelineOutputWithContext(ctx context.Conte
 // EcsImagePipelineArrayInput is an input type that accepts EcsImagePipelineArray and EcsImagePipelineArrayOutput values.
 // You can construct a concrete instance of `EcsImagePipelineArrayInput` via:
 //
-//          EcsImagePipelineArray{ EcsImagePipelineArgs{...} }
+//	EcsImagePipelineArray{ EcsImagePipelineArgs{...} }
 type EcsImagePipelineArrayInput interface {
 	pulumi.Input
 
@@ -377,7 +382,7 @@ func (i EcsImagePipelineArray) ToEcsImagePipelineArrayOutputWithContext(ctx cont
 // EcsImagePipelineMapInput is an input type that accepts EcsImagePipelineMap and EcsImagePipelineMapOutput values.
 // You can construct a concrete instance of `EcsImagePipelineMapInput` via:
 //
-//          EcsImagePipelineMap{ "key": EcsImagePipelineArgs{...} }
+//	EcsImagePipelineMap{ "key": EcsImagePipelineArgs{...} }
 type EcsImagePipelineMapInput interface {
 	pulumi.Input
 

@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sag.NewSmartagFlowLog(ctx, "example", &sag.SmartagFlowLogArgs{
-// 			FlowLogName:       pulumi.String("example_value"),
-// 			LogstoreName:      pulumi.String("example_value"),
-// 			NetflowServerIp:   pulumi.String("example_value"),
-// 			NetflowServerPort: pulumi.Int(1),
-// 			OutputType:        pulumi.String("all"),
-// 			ProjectName:       pulumi.String("example_value"),
-// 			SlsRegionId:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sag.NewSmartagFlowLog(ctx, "example", &sag.SmartagFlowLogArgs{
+//				FlowLogName:       pulumi.String("example_value"),
+//				LogstoreName:      pulumi.String("example_value"),
+//				NetflowServerIp:   pulumi.String("example_value"),
+//				NetflowServerPort: pulumi.Int(1),
+//				OutputType:        pulumi.String("all"),
+//				ProjectName:       pulumi.String("example_value"),
+//				SlsRegionId:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Smartag Flow Log can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
+//
+//	$ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
+//
 // ```
 type SmartagFlowLog struct {
 	pulumi.CustomResourceState
@@ -269,7 +274,7 @@ func (i *SmartagFlowLog) ToSmartagFlowLogOutputWithContext(ctx context.Context) 
 // SmartagFlowLogArrayInput is an input type that accepts SmartagFlowLogArray and SmartagFlowLogArrayOutput values.
 // You can construct a concrete instance of `SmartagFlowLogArrayInput` via:
 //
-//          SmartagFlowLogArray{ SmartagFlowLogArgs{...} }
+//	SmartagFlowLogArray{ SmartagFlowLogArgs{...} }
 type SmartagFlowLogArrayInput interface {
 	pulumi.Input
 
@@ -294,7 +299,7 @@ func (i SmartagFlowLogArray) ToSmartagFlowLogArrayOutputWithContext(ctx context.
 // SmartagFlowLogMapInput is an input type that accepts SmartagFlowLogMap and SmartagFlowLogMapOutput values.
 // You can construct a concrete instance of `SmartagFlowLogMapInput` via:
 //
-//          SmartagFlowLogMap{ "key": SmartagFlowLogArgs{...} }
+//	SmartagFlowLogMap{ "key": SmartagFlowLogArgs{...} }
 type SmartagFlowLogMapInput interface {
 	pulumi.Input
 

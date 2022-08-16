@@ -18,28 +18,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewSecurityPreference(ctx, "example", &ram.SecurityPreferenceArgs{
-// 			AllowUserToChangePassword: pulumi.Bool(true),
-// 			EnableSaveMfaTicket:       pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewSecurityPreference(ctx, "example", &ram.SecurityPreferenceArgs{
+//				AllowUserToChangePassword: pulumi.Bool(true),
+//				EnableSaveMfaTicket:       pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // RAM Security Preference can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+//
+//	$ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+//
 // ```
 type SecurityPreference struct {
 	pulumi.CustomResourceState
@@ -210,7 +215,7 @@ func (i *SecurityPreference) ToSecurityPreferenceOutputWithContext(ctx context.C
 // SecurityPreferenceArrayInput is an input type that accepts SecurityPreferenceArray and SecurityPreferenceArrayOutput values.
 // You can construct a concrete instance of `SecurityPreferenceArrayInput` via:
 //
-//          SecurityPreferenceArray{ SecurityPreferenceArgs{...} }
+//	SecurityPreferenceArray{ SecurityPreferenceArgs{...} }
 type SecurityPreferenceArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +240,7 @@ func (i SecurityPreferenceArray) ToSecurityPreferenceArrayOutputWithContext(ctx 
 // SecurityPreferenceMapInput is an input type that accepts SecurityPreferenceMap and SecurityPreferenceMapOutput values.
 // You can construct a concrete instance of `SecurityPreferenceMapInput` via:
 //
-//          SecurityPreferenceMap{ "key": SecurityPreferenceArgs{...} }
+//	SecurityPreferenceMap{ "key": SecurityPreferenceArgs{...} }
 type SecurityPreferenceMapInput interface {
 	pulumi.Input
 

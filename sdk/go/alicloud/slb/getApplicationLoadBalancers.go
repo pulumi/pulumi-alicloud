@@ -20,26 +20,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := slb.GetApplicationLoadBalancers(ctx, &slb.GetApplicationLoadBalancersArgs{
-// 			NameRegex: pulumi.StringRef("sample_slb"),
-// 			Tags: map[string]interface{}{
-// 				"tagKey1": "tagValue1",
-// 				"tagKey2": "tagValue2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSlbId", example.Balancers[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := slb.GetApplicationLoadBalancers(ctx, &slb.GetApplicationLoadBalancersArgs{
+//				NameRegex: pulumi.StringRef("sample_slb"),
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSlbId", example.Balancers[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplicationLoadBalancers(ctx *pulumi.Context, args *GetApplicationLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetApplicationLoadBalancersResult, error) {
 	var rv GetApplicationLoadBalancersResult

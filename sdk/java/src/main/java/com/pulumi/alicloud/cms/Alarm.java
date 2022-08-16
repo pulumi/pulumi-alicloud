@@ -371,6 +371,20 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      * 
      * @deprecated

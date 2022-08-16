@@ -19,39 +19,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
-// 			AccessGroupName: pulumi.String("tf-NasConfigName"),
-// 			AccessGroupType: pulumi.String("Vpc"),
-// 			Description:     pulumi.String("tf-testAccNasConfig"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
-// 			AccessGroupName: fooAccessGroup.AccessGroupName,
-// 			SourceCidrIp:    pulumi.String("168.1.1.0/16"),
-// 			RwAccessType:    pulumi.String("RDWR"),
-// 			UserAccessType:  pulumi.String("no_squash"),
-// 			Priority:        pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
+//				AccessGroupName: pulumi.String("tf-NasConfigName"),
+//				AccessGroupType: pulumi.String("Vpc"),
+//				Description:     pulumi.String("tf-testAccNasConfig"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
+//				AccessGroupName: fooAccessGroup.AccessGroupName,
+//				SourceCidrIp:    pulumi.String("168.1.1.0/16"),
+//				RwAccessType:    pulumi.String("RDWR"),
+//				UserAccessType:  pulumi.String("no_squash"),
+//				Priority:        pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // Nas Access Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+//
+//	$ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+//
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
@@ -199,7 +204,7 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
 // You can construct a concrete instance of `AccessRuleArrayInput` via:
 //
-//          AccessRuleArray{ AccessRuleArgs{...} }
+//	AccessRuleArray{ AccessRuleArgs{...} }
 type AccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +229,7 @@ func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context)
 // AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
 // You can construct a concrete instance of `AccessRuleMapInput` via:
 //
-//          AccessRuleMap{ "key": AccessRuleArgs{...} }
+//	AccessRuleMap{ "key": AccessRuleArgs{...} }
 type AccessRuleMapInput interface {
 	pulumi.Input
 

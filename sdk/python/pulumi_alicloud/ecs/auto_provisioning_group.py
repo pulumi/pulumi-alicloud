@@ -51,7 +51,7 @@ class AutoProvisioningGroupArgs:
         :param pulumi.Input[str] pay_as_you_go_allocation_strategy: The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
-        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
@@ -257,7 +257,7 @@ class AutoProvisioningGroupArgs:
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
     def spot_instance_interruption_behavior(self) -> Optional[pulumi.Input[str]]:
         """
-        The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         """
         return pulumi.get(self, "spot_instance_interruption_behavior")
 
@@ -375,7 +375,7 @@ class _AutoProvisioningGroupState:
         :param pulumi.Input[str] pay_as_you_go_allocation_strategy: The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
-        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
@@ -573,7 +573,7 @@ class _AutoProvisioningGroupState:
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
     def spot_instance_interruption_behavior(self) -> Optional[pulumi.Input[str]]:
         """
-        The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         """
         return pulumi.get(self, "spot_instance_interruption_behavior")
 
@@ -768,7 +768,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] pay_as_you_go_allocation_strategy: The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
-        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
@@ -964,7 +964,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[str] pay_as_you_go_allocation_strategy: The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         :param pulumi.Input[str] pay_as_you_go_target_capacity: The target capacity of pay-as-you-go instances in the auto provisioning group.
         :param pulumi.Input[str] spot_allocation_strategy: The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
-        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        :param pulumi.Input[str] spot_instance_interruption_behavior: The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         :param pulumi.Input[int] spot_instance_pools_to_use_count: This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         :param pulumi.Input[str] spot_target_capacity: The target capacity of preemptible instances in the auto provisioning group.
         :param pulumi.Input[bool] terminate_instances: Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
@@ -1099,7 +1099,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
     def spot_instance_interruption_behavior(self) -> pulumi.Output[Optional[str]]:
         """
-        The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         """
         return pulumi.get(self, "spot_instance_interruption_behavior")
 

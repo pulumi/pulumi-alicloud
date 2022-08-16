@@ -18,27 +18,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
-// 			TrafficMirrorFilterName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
+//				TrafficMirrorFilterName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // VPC Traffic Mirror Filter can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
+//
+//	$ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
+//
 // ```
 type TrafficMirrorFilter struct {
 	pulumi.CustomResourceState
@@ -160,7 +165,7 @@ func (i *TrafficMirrorFilter) ToTrafficMirrorFilterOutputWithContext(ctx context
 // TrafficMirrorFilterArrayInput is an input type that accepts TrafficMirrorFilterArray and TrafficMirrorFilterArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorFilterArrayInput` via:
 //
-//          TrafficMirrorFilterArray{ TrafficMirrorFilterArgs{...} }
+//	TrafficMirrorFilterArray{ TrafficMirrorFilterArgs{...} }
 type TrafficMirrorFilterArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +190,7 @@ func (i TrafficMirrorFilterArray) ToTrafficMirrorFilterArrayOutputWithContext(ct
 // TrafficMirrorFilterMapInput is an input type that accepts TrafficMirrorFilterMap and TrafficMirrorFilterMapOutput values.
 // You can construct a concrete instance of `TrafficMirrorFilterMapInput` via:
 //
-//          TrafficMirrorFilterMap{ "key": TrafficMirrorFilterArgs{...} }
+//	TrafficMirrorFilterMap{ "key": TrafficMirrorFilterArgs{...} }
 type TrafficMirrorFilterMapInput interface {
 	pulumi.Input
 

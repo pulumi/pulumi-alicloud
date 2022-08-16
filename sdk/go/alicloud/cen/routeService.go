@@ -21,57 +21,60 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-test"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		exampleNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			IsDefault: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := cen.NewInstanceAttachment(ctx, "vpc", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            exampleInstance.ID(),
-// 			ChildInstanceId:       pulumi.String(exampleNetworks.Vpcs[0].Id),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewRouteService(ctx, "this", &cen.RouteServiceArgs{
-// 			AccessRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-// 			HostRegionId:   pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-// 			HostVpcId:      pulumi.String(exampleNetworks.Vpcs[0].Id),
-// 			CenId:          vpc.InstanceId,
-// 			Host:           pulumi.String("100.118.28.52/32"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-test"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				IsDefault: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := cen.NewInstanceAttachment(ctx, "vpc", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       pulumi.String(exampleNetworks.Vpcs[0].Id),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteService(ctx, "this", &cen.RouteServiceArgs{
+//				AccessRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//				HostRegionId:   pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//				HostVpcId:      pulumi.String(exampleNetworks.Vpcs[0].Id),
+//				CenId:          vpc.InstanceId,
+//				Host:           pulumi.String("100.118.28.52/32"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,7 +82,9 @@ import (
 // CEN Route Service can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
+//
+//	$ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
+//
 // ```
 type RouteService struct {
 	pulumi.CustomResourceState
@@ -238,7 +243,7 @@ func (i *RouteService) ToRouteServiceOutputWithContext(ctx context.Context) Rout
 // RouteServiceArrayInput is an input type that accepts RouteServiceArray and RouteServiceArrayOutput values.
 // You can construct a concrete instance of `RouteServiceArrayInput` via:
 //
-//          RouteServiceArray{ RouteServiceArgs{...} }
+//	RouteServiceArray{ RouteServiceArgs{...} }
 type RouteServiceArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +268,7 @@ func (i RouteServiceArray) ToRouteServiceArrayOutputWithContext(ctx context.Cont
 // RouteServiceMapInput is an input type that accepts RouteServiceMap and RouteServiceMapOutput values.
 // You can construct a concrete instance of `RouteServiceMapInput` via:
 //
-//          RouteServiceMap{ "key": RouteServiceArgs{...} }
+//	RouteServiceMap{ "key": RouteServiceArgs{...} }
 type RouteServiceMapInput interface {
 	pulumi.Input
 

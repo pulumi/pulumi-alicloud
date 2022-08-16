@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
-// 			Ids: []string{
-// 				"mse-cn-0d9xxxx",
-// 			},
-// 			Status: pulumi.StringRef("INIT_SUCCESS"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("clusterId", example.Clusters[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
+//				Ids: []string{
+//					"mse-cn-0d9xxxx",
+//				},
+//				Status: pulumi.StringRef("INIT_SUCCESS"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("clusterId", example.Clusters[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult

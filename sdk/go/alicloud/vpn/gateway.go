@@ -16,7 +16,9 @@ import (
 // VPN gateway can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+//
+//	$ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+//
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState
@@ -253,7 +255,7 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 // GatewayArrayInput is an input type that accepts GatewayArray and GatewayArrayOutput values.
 // You can construct a concrete instance of `GatewayArrayInput` via:
 //
-//          GatewayArray{ GatewayArgs{...} }
+//	GatewayArray{ GatewayArgs{...} }
 type GatewayArrayInput interface {
 	pulumi.Input
 
@@ -278,7 +280,7 @@ func (i GatewayArray) ToGatewayArrayOutputWithContext(ctx context.Context) Gatew
 // GatewayMapInput is an input type that accepts GatewayMap and GatewayMapOutput values.
 // You can construct a concrete instance of `GatewayMapInput` via:
 //
-//          GatewayMap{ "key": GatewayArgs{...} }
+//	GatewayMap{ "key": GatewayArgs{...} }
 type GatewayMapInput interface {
 	pulumi.Input
 

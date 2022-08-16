@@ -22,7 +22,7 @@ type GetMetaTagsTag struct {
 // GetMetaTagsTagInput is an input type that accepts GetMetaTagsTagArgs and GetMetaTagsTagOutput values.
 // You can construct a concrete instance of `GetMetaTagsTagInput` via:
 //
-//          GetMetaTagsTagArgs{...}
+//	GetMetaTagsTagArgs{...}
 type GetMetaTagsTagInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i GetMetaTagsTagArgs) ToGetMetaTagsTagOutputWithContext(ctx context.Contex
 // GetMetaTagsTagArrayInput is an input type that accepts GetMetaTagsTagArray and GetMetaTagsTagArrayOutput values.
 // You can construct a concrete instance of `GetMetaTagsTagArrayInput` via:
 //
-//          GetMetaTagsTagArray{ GetMetaTagsTagArgs{...} }
+//	GetMetaTagsTagArray{ GetMetaTagsTagArgs{...} }
 type GetMetaTagsTagArrayInput interface {
 	pulumi.Input
 

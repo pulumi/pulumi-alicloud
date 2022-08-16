@@ -18,31 +18,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
-// 			DeploymentSetName: pulumi.String("example_value"),
-// 			Description:       pulumi.String("example_value"),
-// 			Domain:            pulumi.String("Default"),
-// 			Granularity:       pulumi.String("Host"),
-// 			Strategy:          pulumi.String("Availability"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
+//				DeploymentSetName: pulumi.String("example_value"),
+//				Description:       pulumi.String("example_value"),
+//				Domain:            pulumi.String("Default"),
+//				Granularity:       pulumi.String("Host"),
+//				Strategy:          pulumi.String("Availability"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ECS Deployment Set can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
+//
 // ```
 type EcsDeploymentSet struct {
 	pulumi.CustomResourceState
@@ -188,7 +193,7 @@ func (i *EcsDeploymentSet) ToEcsDeploymentSetOutputWithContext(ctx context.Conte
 // EcsDeploymentSetArrayInput is an input type that accepts EcsDeploymentSetArray and EcsDeploymentSetArrayOutput values.
 // You can construct a concrete instance of `EcsDeploymentSetArrayInput` via:
 //
-//          EcsDeploymentSetArray{ EcsDeploymentSetArgs{...} }
+//	EcsDeploymentSetArray{ EcsDeploymentSetArgs{...} }
 type EcsDeploymentSetArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i EcsDeploymentSetArray) ToEcsDeploymentSetArrayOutputWithContext(ctx cont
 // EcsDeploymentSetMapInput is an input type that accepts EcsDeploymentSetMap and EcsDeploymentSetMapOutput values.
 // You can construct a concrete instance of `EcsDeploymentSetMapInput` via:
 //
-//          EcsDeploymentSetMap{ "key": EcsDeploymentSetArgs{...} }
+//	EcsDeploymentSetMap{ "key": EcsDeploymentSetArgs{...} }
 type EcsDeploymentSetMapInput interface {
 	pulumi.Input
 

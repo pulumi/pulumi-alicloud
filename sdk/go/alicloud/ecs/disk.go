@@ -16,29 +16,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
-// 			AvailabilityZone: pulumi.String("cn-beijing-b"),
-// 			Category:         pulumi.String("cloud_efficiency"),
-// 			Description:      pulumi.String("Hello ecs disk."),
-// 			Encrypted:        pulumi.Bool(true),
-// 			KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
-// 			Size:             pulumi.Int(30),
-// 			Tags: pulumi.AnyMap{
-// 				"Name": pulumi.Any("TerraformTest"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+//				AvailabilityZone: pulumi.String("cn-beijing-b"),
+//				Category:         pulumi.String("cloud_efficiency"),
+//				Description:      pulumi.String("Hello ecs disk."),
+//				Encrypted:        pulumi.Bool(true),
+//				KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
+//				Size:             pulumi.Int(30),
+//				Tags: pulumi.AnyMap{
+//					"Name": pulumi.Any("TerraformTest"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Cloud disk can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
+//
+//	$ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
+//
 // ```
 type Disk struct {
 	pulumi.CustomResourceState
@@ -89,7 +94,7 @@ type Disk struct {
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-	Size pulumi.IntPtrOutput `pulumi:"size"`
+	Size pulumi.IntOutput `pulumi:"size"`
 	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// The disk status.
@@ -365,7 +370,7 @@ func (i *Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
-//          DiskArray{ DiskArgs{...} }
+//	DiskArray{ DiskArgs{...} }
 type DiskArrayInput interface {
 	pulumi.Input
 
@@ -390,7 +395,7 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 // DiskMapInput is an input type that accepts DiskMap and DiskMapOutput values.
 // You can construct a concrete instance of `DiskMapInput` via:
 //
-//          DiskMap{ "key": DiskArgs{...} }
+//	DiskMap{ "key": DiskArgs{...} }
 type DiskMapInput interface {
 	pulumi.Input
 
@@ -518,8 +523,8 @@ func (o DiskOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-func (o DiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.Size }).(pulumi.IntPtrOutput)
+func (o DiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
 // A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.

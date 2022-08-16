@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         /// </summary>
         [Output("size")]
-        public Output<int?> Size { get; private set; } = null!;
+        public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
         /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.

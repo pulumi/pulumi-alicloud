@@ -16,40 +16,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := bastionhost.GetUserGroups(ctx, &bastionhost.GetUserGroupsArgs{
-// 			InstanceId: "bastionhost-cn-xxxx",
-// 			Ids: []string{
-// 				"1",
-// 				"2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostUserGroupId1", ids.Groups[0].Id)
-// 		nameRegex, err := bastionhost.GetUserGroups(ctx, &bastionhost.GetUserGroupsArgs{
-// 			InstanceId: "bastionhost-cn-xxxx",
-// 			NameRegex:  pulumi.StringRef("^my-UserGroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("bastionhostUserGroupId2", nameRegex.Groups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := bastionhost.GetUserGroups(ctx, &bastionhost.GetUserGroupsArgs{
+//				InstanceId: "bastionhost-cn-xxxx",
+//				Ids: []string{
+//					"1",
+//					"2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostUserGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := bastionhost.GetUserGroups(ctx, &bastionhost.GetUserGroupsArgs{
+//				InstanceId: "bastionhost-cn-xxxx",
+//				NameRegex:  pulumi.StringRef("^my-UserGroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostUserGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetUserGroups(ctx *pulumi.Context, args *GetUserGroupsArgs, opts ...pulumi.InvokeOption) (*GetUserGroupsResult, error) {
 	var rv GetUserGroupsResult

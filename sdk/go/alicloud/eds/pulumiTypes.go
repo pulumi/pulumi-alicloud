@@ -20,7 +20,7 @@ type CustomPropertyPropertyValue struct {
 // CustomPropertyPropertyValueInput is an input type that accepts CustomPropertyPropertyValueArgs and CustomPropertyPropertyValueOutput values.
 // You can construct a concrete instance of `CustomPropertyPropertyValueInput` via:
 //
-//          CustomPropertyPropertyValueArgs{...}
+//	CustomPropertyPropertyValueArgs{...}
 type CustomPropertyPropertyValueInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i CustomPropertyPropertyValueArgs) ToCustomPropertyPropertyValueOutputWith
 // CustomPropertyPropertyValueArrayInput is an input type that accepts CustomPropertyPropertyValueArray and CustomPropertyPropertyValueArrayOutput values.
 // You can construct a concrete instance of `CustomPropertyPropertyValueArrayInput` via:
 //
-//          CustomPropertyPropertyValueArray{ CustomPropertyPropertyValueArgs{...} }
+//	CustomPropertyPropertyValueArray{ CustomPropertyPropertyValueArgs{...} }
 type CustomPropertyPropertyValueArrayInput interface {
 	pulumi.Input
 
@@ -126,7 +126,7 @@ type EcdPolicyGroupAuthorizeAccessPolicyRule struct {
 // EcdPolicyGroupAuthorizeAccessPolicyRuleInput is an input type that accepts EcdPolicyGroupAuthorizeAccessPolicyRuleArgs and EcdPolicyGroupAuthorizeAccessPolicyRuleOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeAccessPolicyRuleInput` via:
 //
-//          EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{...}
+//	EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{...}
 type EcdPolicyGroupAuthorizeAccessPolicyRuleInput interface {
 	pulumi.Input
 
@@ -156,7 +156,7 @@ func (i EcdPolicyGroupAuthorizeAccessPolicyRuleArgs) ToEcdPolicyGroupAuthorizeAc
 // EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput is an input type that accepts EcdPolicyGroupAuthorizeAccessPolicyRuleArray and EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput` via:
 //
-//          EcdPolicyGroupAuthorizeAccessPolicyRuleArray{ EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{...} }
+//	EcdPolicyGroupAuthorizeAccessPolicyRuleArray{ EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{...} }
 type EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +242,7 @@ type EcdPolicyGroupAuthorizeSecurityPolicyRule struct {
 // EcdPolicyGroupAuthorizeSecurityPolicyRuleInput is an input type that accepts EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs and EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeSecurityPolicyRuleInput` via:
 //
-//          EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{...}
+//	EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{...}
 type EcdPolicyGroupAuthorizeSecurityPolicyRuleInput interface {
 	pulumi.Input
 
@@ -282,7 +282,7 @@ func (i EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs) ToEcdPolicyGroupAuthorize
 // EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput is an input type that accepts EcdPolicyGroupAuthorizeSecurityPolicyRuleArray and EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput` via:
 //
-//          EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{ EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{...} }
+//	EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{ EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{...} }
 type EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -417,7 +417,7 @@ type GetAdConnectorDirectoriesDirectory struct {
 // GetAdConnectorDirectoriesDirectoryInput is an input type that accepts GetAdConnectorDirectoriesDirectoryArgs and GetAdConnectorDirectoriesDirectoryOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryInput` via:
 //
-//          GetAdConnectorDirectoriesDirectoryArgs{...}
+//	GetAdConnectorDirectoriesDirectoryArgs{...}
 type GetAdConnectorDirectoriesDirectoryInput interface {
 	pulumi.Input
 
@@ -481,7 +481,7 @@ func (i GetAdConnectorDirectoriesDirectoryArgs) ToGetAdConnectorDirectoriesDirec
 // GetAdConnectorDirectoriesDirectoryArrayInput is an input type that accepts GetAdConnectorDirectoriesDirectoryArray and GetAdConnectorDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryArrayInput` via:
 //
-//          GetAdConnectorDirectoriesDirectoryArray{ GetAdConnectorDirectoriesDirectoryArgs{...} }
+//	GetAdConnectorDirectoriesDirectoryArray{ GetAdConnectorDirectoriesDirectoryArgs{...} }
 type GetAdConnectorDirectoriesDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -652,7 +652,7 @@ type GetAdConnectorDirectoriesDirectoryAdConnector struct {
 // GetAdConnectorDirectoriesDirectoryAdConnectorInput is an input type that accepts GetAdConnectorDirectoriesDirectoryAdConnectorArgs and GetAdConnectorDirectoriesDirectoryAdConnectorOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryAdConnectorInput` via:
 //
-//          GetAdConnectorDirectoriesDirectoryAdConnectorArgs{...}
+//	GetAdConnectorDirectoriesDirectoryAdConnectorArgs{...}
 type GetAdConnectorDirectoriesDirectoryAdConnectorInput interface {
 	pulumi.Input
 
@@ -690,7 +690,7 @@ func (i GetAdConnectorDirectoriesDirectoryAdConnectorArgs) ToGetAdConnectorDirec
 // GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput is an input type that accepts GetAdConnectorDirectoriesDirectoryAdConnectorArray and GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput` via:
 //
-//          GetAdConnectorDirectoriesDirectoryAdConnectorArray{ GetAdConnectorDirectoriesDirectoryAdConnectorArgs{...} }
+//	GetAdConnectorDirectoriesDirectoryAdConnectorArray{ GetAdConnectorDirectoriesDirectoryAdConnectorArgs{...} }
 type GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput interface {
 	pulumi.Input
 
@@ -842,7 +842,7 @@ type GetAdConnectorOfficeSitesSite struct {
 // GetAdConnectorOfficeSitesSiteInput is an input type that accepts GetAdConnectorOfficeSitesSiteArgs and GetAdConnectorOfficeSitesSiteOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteArgs{...}
+//	GetAdConnectorOfficeSitesSiteArgs{...}
 type GetAdConnectorOfficeSitesSiteInput interface {
 	pulumi.Input
 
@@ -928,7 +928,7 @@ func (i GetAdConnectorOfficeSitesSiteArgs) ToGetAdConnectorOfficeSitesSiteOutput
 // GetAdConnectorOfficeSitesSiteArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteArray and GetAdConnectorOfficeSitesSiteArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteArrayInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteArray{ GetAdConnectorOfficeSitesSiteArgs{...} }
+//	GetAdConnectorOfficeSitesSiteArray{ GetAdConnectorOfficeSitesSiteArgs{...} }
 type GetAdConnectorOfficeSitesSiteArrayInput interface {
 	pulumi.Input
 
@@ -1150,7 +1150,7 @@ type GetAdConnectorOfficeSitesSiteAdConnector struct {
 // GetAdConnectorOfficeSitesSiteAdConnectorInput is an input type that accepts GetAdConnectorOfficeSitesSiteAdConnectorArgs and GetAdConnectorOfficeSitesSiteAdConnectorOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteAdConnectorInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteAdConnectorArgs{...}
+//	GetAdConnectorOfficeSitesSiteAdConnectorArgs{...}
 type GetAdConnectorOfficeSitesSiteAdConnectorInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ func (i GetAdConnectorOfficeSitesSiteAdConnectorArgs) ToGetAdConnectorOfficeSite
 // GetAdConnectorOfficeSitesSiteAdConnectorArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteAdConnectorArray and GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteAdConnectorArrayInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteAdConnectorArray{ GetAdConnectorOfficeSitesSiteAdConnectorArgs{...} }
+//	GetAdConnectorOfficeSitesSiteAdConnectorArray{ GetAdConnectorOfficeSitesSiteAdConnectorArgs{...} }
 type GetAdConnectorOfficeSitesSiteAdConnectorArrayInput interface {
 	pulumi.Input
 
@@ -1274,7 +1274,7 @@ type GetAdConnectorOfficeSitesSiteLog struct {
 // GetAdConnectorOfficeSitesSiteLogInput is an input type that accepts GetAdConnectorOfficeSitesSiteLogArgs and GetAdConnectorOfficeSitesSiteLogOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteLogInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteLogArgs{...}
+//	GetAdConnectorOfficeSitesSiteLogArgs{...}
 type GetAdConnectorOfficeSitesSiteLogInput interface {
 	pulumi.Input
 
@@ -1308,7 +1308,7 @@ func (i GetAdConnectorOfficeSitesSiteLogArgs) ToGetAdConnectorOfficeSitesSiteLog
 // GetAdConnectorOfficeSitesSiteLogArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteLogArray and GetAdConnectorOfficeSitesSiteLogArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteLogArrayInput` via:
 //
-//          GetAdConnectorOfficeSitesSiteLogArray{ GetAdConnectorOfficeSitesSiteLogArgs{...} }
+//	GetAdConnectorOfficeSitesSiteLogArray{ GetAdConnectorOfficeSitesSiteLogArgs{...} }
 type GetAdConnectorOfficeSitesSiteLogArrayInput interface {
 	pulumi.Input
 
@@ -1410,7 +1410,7 @@ type GetBundlesBundle struct {
 // GetBundlesBundleInput is an input type that accepts GetBundlesBundleArgs and GetBundlesBundleOutput values.
 // You can construct a concrete instance of `GetBundlesBundleInput` via:
 //
-//          GetBundlesBundleArgs{...}
+//	GetBundlesBundleArgs{...}
 type GetBundlesBundleInput interface {
 	pulumi.Input
 
@@ -1456,7 +1456,7 @@ func (i GetBundlesBundleArgs) ToGetBundlesBundleOutputWithContext(ctx context.Co
 // GetBundlesBundleArrayInput is an input type that accepts GetBundlesBundleArray and GetBundlesBundleArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleArrayInput` via:
 //
-//          GetBundlesBundleArray{ GetBundlesBundleArgs{...} }
+//	GetBundlesBundleArray{ GetBundlesBundleArgs{...} }
 type GetBundlesBundleArrayInput interface {
 	pulumi.Input
 
@@ -1576,7 +1576,7 @@ type GetBundlesBundleDesktopTypeAttribute struct {
 // GetBundlesBundleDesktopTypeAttributeInput is an input type that accepts GetBundlesBundleDesktopTypeAttributeArgs and GetBundlesBundleDesktopTypeAttributeOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDesktopTypeAttributeInput` via:
 //
-//          GetBundlesBundleDesktopTypeAttributeArgs{...}
+//	GetBundlesBundleDesktopTypeAttributeArgs{...}
 type GetBundlesBundleDesktopTypeAttributeInput interface {
 	pulumi.Input
 
@@ -1610,7 +1610,7 @@ func (i GetBundlesBundleDesktopTypeAttributeArgs) ToGetBundlesBundleDesktopTypeA
 // GetBundlesBundleDesktopTypeAttributeArrayInput is an input type that accepts GetBundlesBundleDesktopTypeAttributeArray and GetBundlesBundleDesktopTypeAttributeArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDesktopTypeAttributeArrayInput` via:
 //
-//          GetBundlesBundleDesktopTypeAttributeArray{ GetBundlesBundleDesktopTypeAttributeArgs{...} }
+//	GetBundlesBundleDesktopTypeAttributeArray{ GetBundlesBundleDesktopTypeAttributeArgs{...} }
 type GetBundlesBundleDesktopTypeAttributeArrayInput interface {
 	pulumi.Input
 
@@ -1696,7 +1696,7 @@ type GetBundlesBundleDisk struct {
 // GetBundlesBundleDiskInput is an input type that accepts GetBundlesBundleDiskArgs and GetBundlesBundleDiskOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDiskInput` via:
 //
-//          GetBundlesBundleDiskArgs{...}
+//	GetBundlesBundleDiskArgs{...}
 type GetBundlesBundleDiskInput interface {
 	pulumi.Input
 
@@ -1726,7 +1726,7 @@ func (i GetBundlesBundleDiskArgs) ToGetBundlesBundleDiskOutputWithContext(ctx co
 // GetBundlesBundleDiskArrayInput is an input type that accepts GetBundlesBundleDiskArray and GetBundlesBundleDiskArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDiskArrayInput` via:
 //
-//          GetBundlesBundleDiskArray{ GetBundlesBundleDiskArgs{...} }
+//	GetBundlesBundleDiskArray{ GetBundlesBundleDiskArgs{...} }
 type GetBundlesBundleDiskArrayInput interface {
 	pulumi.Input
 
@@ -1812,7 +1812,7 @@ type GetCommandsCommand struct {
 // GetCommandsCommandInput is an input type that accepts GetCommandsCommandArgs and GetCommandsCommandOutput values.
 // You can construct a concrete instance of `GetCommandsCommandInput` via:
 //
-//          GetCommandsCommandArgs{...}
+//	GetCommandsCommandArgs{...}
 type GetCommandsCommandInput interface {
 	pulumi.Input
 
@@ -1852,7 +1852,7 @@ func (i GetCommandsCommandArgs) ToGetCommandsCommandOutputWithContext(ctx contex
 // GetCommandsCommandArrayInput is an input type that accepts GetCommandsCommandArray and GetCommandsCommandArrayOutput values.
 // You can construct a concrete instance of `GetCommandsCommandArrayInput` via:
 //
-//          GetCommandsCommandArray{ GetCommandsCommandArgs{...} }
+//	GetCommandsCommandArray{ GetCommandsCommandArgs{...} }
 type GetCommandsCommandArrayInput interface {
 	pulumi.Input
 
@@ -1971,7 +1971,7 @@ type GetCommandsCommandInvokeDesktop struct {
 // GetCommandsCommandInvokeDesktopInput is an input type that accepts GetCommandsCommandInvokeDesktopArgs and GetCommandsCommandInvokeDesktopOutput values.
 // You can construct a concrete instance of `GetCommandsCommandInvokeDesktopInput` via:
 //
-//          GetCommandsCommandInvokeDesktopArgs{...}
+//	GetCommandsCommandInvokeDesktopArgs{...}
 type GetCommandsCommandInvokeDesktopInput interface {
 	pulumi.Input
 
@@ -2019,7 +2019,7 @@ func (i GetCommandsCommandInvokeDesktopArgs) ToGetCommandsCommandInvokeDesktopOu
 // GetCommandsCommandInvokeDesktopArrayInput is an input type that accepts GetCommandsCommandInvokeDesktopArray and GetCommandsCommandInvokeDesktopArrayOutput values.
 // You can construct a concrete instance of `GetCommandsCommandInvokeDesktopArrayInput` via:
 //
-//          GetCommandsCommandInvokeDesktopArray{ GetCommandsCommandInvokeDesktopArgs{...} }
+//	GetCommandsCommandInvokeDesktopArray{ GetCommandsCommandInvokeDesktopArgs{...} }
 type GetCommandsCommandInvokeDesktopArrayInput interface {
 	pulumi.Input
 
@@ -2144,7 +2144,7 @@ type GetCustomPropertiesProperty struct {
 // GetCustomPropertiesPropertyInput is an input type that accepts GetCustomPropertiesPropertyArgs and GetCustomPropertiesPropertyOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyInput` via:
 //
-//          GetCustomPropertiesPropertyArgs{...}
+//	GetCustomPropertiesPropertyArgs{...}
 type GetCustomPropertiesPropertyInput interface {
 	pulumi.Input
 
@@ -2178,7 +2178,7 @@ func (i GetCustomPropertiesPropertyArgs) ToGetCustomPropertiesPropertyOutputWith
 // GetCustomPropertiesPropertyArrayInput is an input type that accepts GetCustomPropertiesPropertyArray and GetCustomPropertiesPropertyArrayOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyArrayInput` via:
 //
-//          GetCustomPropertiesPropertyArray{ GetCustomPropertiesPropertyArgs{...} }
+//	GetCustomPropertiesPropertyArray{ GetCustomPropertiesPropertyArgs{...} }
 type GetCustomPropertiesPropertyArrayInput interface {
 	pulumi.Input
 
@@ -2266,7 +2266,7 @@ type GetCustomPropertiesPropertyPropertyValue struct {
 // GetCustomPropertiesPropertyPropertyValueInput is an input type that accepts GetCustomPropertiesPropertyPropertyValueArgs and GetCustomPropertiesPropertyPropertyValueOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyPropertyValueInput` via:
 //
-//          GetCustomPropertiesPropertyPropertyValueArgs{...}
+//	GetCustomPropertiesPropertyPropertyValueArgs{...}
 type GetCustomPropertiesPropertyPropertyValueInput interface {
 	pulumi.Input
 
@@ -2296,7 +2296,7 @@ func (i GetCustomPropertiesPropertyPropertyValueArgs) ToGetCustomPropertiesPrope
 // GetCustomPropertiesPropertyPropertyValueArrayInput is an input type that accepts GetCustomPropertiesPropertyPropertyValueArray and GetCustomPropertiesPropertyPropertyValueArrayOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyPropertyValueArrayInput` via:
 //
-//          GetCustomPropertiesPropertyPropertyValueArray{ GetCustomPropertiesPropertyPropertyValueArgs{...} }
+//	GetCustomPropertiesPropertyPropertyValueArray{ GetCustomPropertiesPropertyPropertyValueArgs{...} }
 type GetCustomPropertiesPropertyPropertyValueArrayInput interface {
 	pulumi.Input
 
@@ -2388,7 +2388,7 @@ type GetDesktopTypesType struct {
 // GetDesktopTypesTypeInput is an input type that accepts GetDesktopTypesTypeArgs and GetDesktopTypesTypeOutput values.
 // You can construct a concrete instance of `GetDesktopTypesTypeInput` via:
 //
-//          GetDesktopTypesTypeArgs{...}
+//	GetDesktopTypesTypeArgs{...}
 type GetDesktopTypesTypeInput interface {
 	pulumi.Input
 
@@ -2434,7 +2434,7 @@ func (i GetDesktopTypesTypeArgs) ToGetDesktopTypesTypeOutputWithContext(ctx cont
 // GetDesktopTypesTypeArrayInput is an input type that accepts GetDesktopTypesTypeArray and GetDesktopTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetDesktopTypesTypeArrayInput` via:
 //
-//          GetDesktopTypesTypeArray{ GetDesktopTypesTypeArgs{...} }
+//	GetDesktopTypesTypeArray{ GetDesktopTypesTypeArgs{...} }
 type GetDesktopTypesTypeArrayInput interface {
 	pulumi.Input
 
@@ -2578,7 +2578,7 @@ type GetDesktopsDesktop struct {
 // GetDesktopsDesktopInput is an input type that accepts GetDesktopsDesktopArgs and GetDesktopsDesktopOutput values.
 // You can construct a concrete instance of `GetDesktopsDesktopInput` via:
 //
-//          GetDesktopsDesktopArgs{...}
+//	GetDesktopsDesktopArgs{...}
 type GetDesktopsDesktopInput interface {
 	pulumi.Input
 
@@ -2636,7 +2636,7 @@ func (i GetDesktopsDesktopArgs) ToGetDesktopsDesktopOutputWithContext(ctx contex
 // GetDesktopsDesktopArrayInput is an input type that accepts GetDesktopsDesktopArray and GetDesktopsDesktopArrayOutput values.
 // You can construct a concrete instance of `GetDesktopsDesktopArrayInput` via:
 //
-//          GetDesktopsDesktopArray{ GetDesktopsDesktopArgs{...} }
+//	GetDesktopsDesktopArray{ GetDesktopsDesktopArgs{...} }
 type GetDesktopsDesktopArrayInput interface {
 	pulumi.Input
 
@@ -2802,7 +2802,7 @@ type GetImagesImage struct {
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
 // You can construct a concrete instance of `GetImagesImageInput` via:
 //
-//          GetImagesImageArgs{...}
+//	GetImagesImageArgs{...}
 type GetImagesImageInput interface {
 	pulumi.Input
 
@@ -2852,7 +2852,7 @@ func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Contex
 // GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageArrayInput` via:
 //
-//          GetImagesImageArray{ GetImagesImageArgs{...} }
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
 type GetImagesImageArrayInput interface {
 	pulumi.Input
 
@@ -3006,7 +3006,7 @@ type GetNasFileSystemsSystem struct {
 // GetNasFileSystemsSystemInput is an input type that accepts GetNasFileSystemsSystemArgs and GetNasFileSystemsSystemOutput values.
 // You can construct a concrete instance of `GetNasFileSystemsSystemInput` via:
 //
-//          GetNasFileSystemsSystemArgs{...}
+//	GetNasFileSystemsSystemArgs{...}
 type GetNasFileSystemsSystemInput interface {
 	pulumi.Input
 
@@ -3064,7 +3064,7 @@ func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutputWithContext(
 // GetNasFileSystemsSystemArrayInput is an input type that accepts GetNasFileSystemsSystemArray and GetNasFileSystemsSystemArrayOutput values.
 // You can construct a concrete instance of `GetNasFileSystemsSystemArrayInput` via:
 //
-//          GetNasFileSystemsSystemArray{ GetNasFileSystemsSystemArgs{...} }
+//	GetNasFileSystemsSystemArray{ GetNasFileSystemsSystemArgs{...} }
 type GetNasFileSystemsSystemArrayInput interface {
 	pulumi.Input
 
@@ -3226,7 +3226,7 @@ type GetNetworkPackagesPackage struct {
 // GetNetworkPackagesPackageInput is an input type that accepts GetNetworkPackagesPackageArgs and GetNetworkPackagesPackageOutput values.
 // You can construct a concrete instance of `GetNetworkPackagesPackageInput` via:
 //
-//          GetNetworkPackagesPackageArgs{...}
+//	GetNetworkPackagesPackageArgs{...}
 type GetNetworkPackagesPackageInput interface {
 	pulumi.Input
 
@@ -3272,7 +3272,7 @@ func (i GetNetworkPackagesPackageArgs) ToGetNetworkPackagesPackageOutputWithCont
 // GetNetworkPackagesPackageArrayInput is an input type that accepts GetNetworkPackagesPackageArray and GetNetworkPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetNetworkPackagesPackageArrayInput` via:
 //
-//          GetNetworkPackagesPackageArray{ GetNetworkPackagesPackageArgs{...} }
+//	GetNetworkPackagesPackageArray{ GetNetworkPackagesPackageArgs{...} }
 type GetNetworkPackagesPackageArrayInput interface {
 	pulumi.Input
 
@@ -3430,7 +3430,7 @@ type GetPolicyGroupsGroup struct {
 // GetPolicyGroupsGroupInput is an input type that accepts GetPolicyGroupsGroupArgs and GetPolicyGroupsGroupOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupInput` via:
 //
-//          GetPolicyGroupsGroupArgs{...}
+//	GetPolicyGroupsGroupArgs{...}
 type GetPolicyGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3502,7 +3502,7 @@ func (i GetPolicyGroupsGroupArgs) ToGetPolicyGroupsGroupOutputWithContext(ctx co
 // GetPolicyGroupsGroupArrayInput is an input type that accepts GetPolicyGroupsGroupArray and GetPolicyGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupArrayInput` via:
 //
-//          GetPolicyGroupsGroupArray{ GetPolicyGroupsGroupArgs{...} }
+//	GetPolicyGroupsGroupArray{ GetPolicyGroupsGroupArgs{...} }
 type GetPolicyGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -3687,7 +3687,7 @@ type GetPolicyGroupsGroupAuthorizeAccessPolicyRule struct {
 // GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput is an input type that accepts GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs and GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput` via:
 //
-//          GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{...}
+//	GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{...}
 type GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput interface {
 	pulumi.Input
 
@@ -3717,7 +3717,7 @@ func (i GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs) ToGetPolicyGroupsGrou
 // GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput is an input type that accepts GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray and GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput` via:
 //
-//          GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray{ GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{...} }
+//	GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray{ GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{...} }
 type GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -3803,7 +3803,7 @@ type GetPolicyGroupsGroupAuthorizeSecurityPolicyRule struct {
 // GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleInput is an input type that accepts GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs and GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleInput` via:
 //
-//          GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs{...}
+//	GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs{...}
 type GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleInput interface {
 	pulumi.Input
 
@@ -3843,7 +3843,7 @@ func (i GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs) ToGetPolicyGroupsGr
 // GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput is an input type that accepts GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray and GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput` via:
 //
-//          GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray{ GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs{...} }
+//	GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray{ GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs{...} }
 type GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -3994,7 +3994,7 @@ type GetRamDirectoriesDirectory struct {
 // GetRamDirectoriesDirectoryInput is an input type that accepts GetRamDirectoriesDirectoryArgs and GetRamDirectoriesDirectoryOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryInput` via:
 //
-//          GetRamDirectoriesDirectoryArgs{...}
+//	GetRamDirectoriesDirectoryArgs{...}
 type GetRamDirectoriesDirectoryInput interface {
 	pulumi.Input
 
@@ -4074,7 +4074,7 @@ func (i GetRamDirectoriesDirectoryArgs) ToGetRamDirectoriesDirectoryOutputWithCo
 // GetRamDirectoriesDirectoryArrayInput is an input type that accepts GetRamDirectoriesDirectoryArray and GetRamDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryArrayInput` via:
 //
-//          GetRamDirectoriesDirectoryArray{ GetRamDirectoriesDirectoryArgs{...} }
+//	GetRamDirectoriesDirectoryArray{ GetRamDirectoriesDirectoryArgs{...} }
 type GetRamDirectoriesDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -4279,7 +4279,7 @@ type GetRamDirectoriesDirectoryAdConnector struct {
 // GetRamDirectoriesDirectoryAdConnectorInput is an input type that accepts GetRamDirectoriesDirectoryAdConnectorArgs and GetRamDirectoriesDirectoryAdConnectorOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryAdConnectorInput` via:
 //
-//          GetRamDirectoriesDirectoryAdConnectorArgs{...}
+//	GetRamDirectoriesDirectoryAdConnectorArgs{...}
 type GetRamDirectoriesDirectoryAdConnectorInput interface {
 	pulumi.Input
 
@@ -4313,7 +4313,7 @@ func (i GetRamDirectoriesDirectoryAdConnectorArgs) ToGetRamDirectoriesDirectoryA
 // GetRamDirectoriesDirectoryAdConnectorArrayInput is an input type that accepts GetRamDirectoriesDirectoryAdConnectorArray and GetRamDirectoriesDirectoryAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryAdConnectorArrayInput` via:
 //
-//          GetRamDirectoriesDirectoryAdConnectorArray{ GetRamDirectoriesDirectoryAdConnectorArgs{...} }
+//	GetRamDirectoriesDirectoryAdConnectorArray{ GetRamDirectoriesDirectoryAdConnectorArgs{...} }
 type GetRamDirectoriesDirectoryAdConnectorArrayInput interface {
 	pulumi.Input
 
@@ -4403,7 +4403,7 @@ type GetRamDirectoriesDirectoryLog struct {
 // GetRamDirectoriesDirectoryLogInput is an input type that accepts GetRamDirectoriesDirectoryLogArgs and GetRamDirectoriesDirectoryLogOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryLogInput` via:
 //
-//          GetRamDirectoriesDirectoryLogArgs{...}
+//	GetRamDirectoriesDirectoryLogArgs{...}
 type GetRamDirectoriesDirectoryLogInput interface {
 	pulumi.Input
 
@@ -4437,7 +4437,7 @@ func (i GetRamDirectoriesDirectoryLogArgs) ToGetRamDirectoriesDirectoryLogOutput
 // GetRamDirectoriesDirectoryLogArrayInput is an input type that accepts GetRamDirectoriesDirectoryLogArray and GetRamDirectoriesDirectoryLogArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryLogArrayInput` via:
 //
-//          GetRamDirectoriesDirectoryLogArray{ GetRamDirectoriesDirectoryLogArgs{...} }
+//	GetRamDirectoriesDirectoryLogArray{ GetRamDirectoriesDirectoryLogArgs{...} }
 type GetRamDirectoriesDirectoryLogArrayInput interface {
 	pulumi.Input
 
@@ -4583,7 +4583,7 @@ type GetSimpleOfficeSitesSite struct {
 // GetSimpleOfficeSitesSiteInput is an input type that accepts GetSimpleOfficeSitesSiteArgs and GetSimpleOfficeSitesSiteOutput values.
 // You can construct a concrete instance of `GetSimpleOfficeSitesSiteInput` via:
 //
-//          GetSimpleOfficeSitesSiteArgs{...}
+//	GetSimpleOfficeSitesSiteArgs{...}
 type GetSimpleOfficeSitesSiteInput interface {
 	pulumi.Input
 
@@ -4673,7 +4673,7 @@ func (i GetSimpleOfficeSitesSiteArgs) ToGetSimpleOfficeSitesSiteOutputWithContex
 // GetSimpleOfficeSitesSiteArrayInput is an input type that accepts GetSimpleOfficeSitesSiteArray and GetSimpleOfficeSitesSiteArrayOutput values.
 // You can construct a concrete instance of `GetSimpleOfficeSitesSiteArrayInput` via:
 //
-//          GetSimpleOfficeSitesSiteArray{ GetSimpleOfficeSitesSiteArgs{...} }
+//	GetSimpleOfficeSitesSiteArray{ GetSimpleOfficeSitesSiteArgs{...} }
 type GetSimpleOfficeSitesSiteArrayInput interface {
 	pulumi.Input
 
@@ -4913,7 +4913,7 @@ type GetSnapshotsSnapshot struct {
 // GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
 //
-//          GetSnapshotsSnapshotArgs{...}
+//	GetSnapshotsSnapshotArgs{...}
 type GetSnapshotsSnapshotInput interface {
 	pulumi.Input
 
@@ -4963,7 +4963,7 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
-//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+//	GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
 type GetSnapshotsSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -5095,7 +5095,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//          GetUsersUserArgs{...}
+//	GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -5131,7 +5131,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//          GetUsersUserArray{ GetUsersUserArgs{...} }
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -5220,7 +5220,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -5248,7 +5248,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 

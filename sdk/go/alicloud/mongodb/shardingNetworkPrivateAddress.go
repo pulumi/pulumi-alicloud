@@ -19,77 +19,80 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := mongodb.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
-// 			ZoneId:        pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
-// 			EngineVersion: pulumi.String("3.4"),
-// 			MongoLists: mongodb.ShardingInstanceMongoListArray{
-// 				&mongodb.ShardingInstanceMongoListArgs{
-// 					NodeClass: pulumi.String("dds.mongos.mid"),
-// 				},
-// 				&mongodb.ShardingInstanceMongoListArgs{
-// 					NodeClass: pulumi.String("dds.mongos.mid"),
-// 				},
-// 			},
-// 			ShardLists: mongodb.ShardingInstanceShardListArray{
-// 				&mongodb.ShardingInstanceShardListArgs{
-// 					NodeClass:   pulumi.String("dds.shard.mid"),
-// 					NodeStorage: pulumi.Int(10),
-// 				},
-// 				&mongodb.ShardingInstanceShardListArgs{
-// 					NodeClass:   pulumi.String("dds.shard.mid"),
-// 					NodeStorage: pulumi.Int(10),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "example", &mongodb.ShardingNetworkPrivateAddressArgs{
-// 			DbInstanceId: defaultShardingInstance.ID(),
-// 			NodeId: defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (string, error) {
-// 				return shardLists[0].NodeId, nil
-// 			}).(pulumi.StringOutput),
-// 			ZoneId:          defaultShardingInstance.ZoneId,
-// 			AccountName:     pulumi.String("example_value"),
-// 			AccountPassword: pulumi.String("YourPassword+12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
+//				ZoneId:        pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
+//				EngineVersion: pulumi.String("3.4"),
+//				MongoLists: mongodb.ShardingInstanceMongoListArray{
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//				},
+//				ShardLists: mongodb.ShardingInstanceShardListArray{
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:   pulumi.String("dds.shard.mid"),
+//						NodeStorage: pulumi.Int(10),
+//					},
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:   pulumi.String("dds.shard.mid"),
+//						NodeStorage: pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "example", &mongodb.ShardingNetworkPrivateAddressArgs{
+//				DbInstanceId: defaultShardingInstance.ID(),
+//				NodeId: defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (string, error) {
+//					return shardLists[0].NodeId, nil
+//				}).(pulumi.StringOutput),
+//				ZoneId:          defaultShardingInstance.ZoneId,
+//				AccountName:     pulumi.String("example_value"),
+//				AccountPassword: pulumi.String("YourPassword+12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -97,7 +100,9 @@ import (
 // MongoDB Sharding Network Private Address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
+//
+//	$ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
+//
 // ```
 type ShardingNetworkPrivateAddress struct {
 	pulumi.CustomResourceState
@@ -265,7 +270,7 @@ func (i *ShardingNetworkPrivateAddress) ToShardingNetworkPrivateAddressOutputWit
 // ShardingNetworkPrivateAddressArrayInput is an input type that accepts ShardingNetworkPrivateAddressArray and ShardingNetworkPrivateAddressArrayOutput values.
 // You can construct a concrete instance of `ShardingNetworkPrivateAddressArrayInput` via:
 //
-//          ShardingNetworkPrivateAddressArray{ ShardingNetworkPrivateAddressArgs{...} }
+//	ShardingNetworkPrivateAddressArray{ ShardingNetworkPrivateAddressArgs{...} }
 type ShardingNetworkPrivateAddressArrayInput interface {
 	pulumi.Input
 
@@ -290,7 +295,7 @@ func (i ShardingNetworkPrivateAddressArray) ToShardingNetworkPrivateAddressArray
 // ShardingNetworkPrivateAddressMapInput is an input type that accepts ShardingNetworkPrivateAddressMap and ShardingNetworkPrivateAddressMapOutput values.
 // You can construct a concrete instance of `ShardingNetworkPrivateAddressMapInput` via:
 //
-//          ShardingNetworkPrivateAddressMap{ "key": ShardingNetworkPrivateAddressArgs{...} }
+//	ShardingNetworkPrivateAddressMap{ "key": ShardingNetworkPrivateAddressArgs{...} }
 type ShardingNetworkPrivateAddressMapInput interface {
 	pulumi.Input
 

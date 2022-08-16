@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fs, err := nas.GetFileSystems(ctx, &nas.GetFileSystemsArgs{
-// 			DescriptionRegex: pulumi.StringRef(alicloud_nas_file_system.Foo.Description),
-// 			ProtocolType:     pulumi.StringRef("NFS"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("alicloudNasFileSystemsId", fs.Systems[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fs, err := nas.GetFileSystems(ctx, &nas.GetFileSystemsArgs{
+//				DescriptionRegex: pulumi.StringRef(alicloud_nas_file_system.Foo.Description),
+//				ProtocolType:     pulumi.StringRef("NFS"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudNasFileSystemsId", fs.Systems[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetFileSystems(ctx *pulumi.Context, args *GetFileSystemsArgs, opts ...pulumi.InvokeOption) (*GetFileSystemsResult, error) {
 	var rv GetFileSystemsResult

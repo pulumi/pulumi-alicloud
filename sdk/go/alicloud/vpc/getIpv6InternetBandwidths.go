@@ -16,51 +16,54 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6InternetBandwidthId1", ids.Bandwidths[0].Id)
-// 		ipv6InternetBandwidthId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Ipv6InternetBandwidthId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.Bandwidths[0].Id)
-// 		ipv6AddressId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Ipv6AddressId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6InternetBandwidthId3", ipv6AddressId.Bandwidths[0].Id)
-// 		status, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Status: pulumi.StringRef("Normal"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6InternetBandwidthId4", status.Bandwidths[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6InternetBandwidthId1", ids.Bandwidths[0].Id)
+//			ipv6InternetBandwidthId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
+//				Ipv6InternetBandwidthId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.Bandwidths[0].Id)
+//			ipv6AddressId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
+//				Ipv6AddressId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6InternetBandwidthId3", ipv6AddressId.Bandwidths[0].Id)
+//			status, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
+//				Status: pulumi.StringRef("Normal"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6InternetBandwidthId4", status.Bandwidths[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIpv6InternetBandwidths(ctx *pulumi.Context, args *GetIpv6InternetBandwidthsArgs, opts ...pulumi.InvokeOption) (*GetIpv6InternetBandwidthsResult, error) {
 	var rv GetIpv6InternetBandwidthsResult

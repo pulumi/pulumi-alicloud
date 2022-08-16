@@ -22,7 +22,7 @@ type GetFaceConfigsConfig struct {
 // GetFaceConfigsConfigInput is an input type that accepts GetFaceConfigsConfigArgs and GetFaceConfigsConfigOutput values.
 // You can construct a concrete instance of `GetFaceConfigsConfigInput` via:
 //
-//          GetFaceConfigsConfigArgs{...}
+//	GetFaceConfigsConfigArgs{...}
 type GetFaceConfigsConfigInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i GetFaceConfigsConfigArgs) ToGetFaceConfigsConfigOutputWithContext(ctx co
 // GetFaceConfigsConfigArrayInput is an input type that accepts GetFaceConfigsConfigArray and GetFaceConfigsConfigArrayOutput values.
 // You can construct a concrete instance of `GetFaceConfigsConfigArrayInput` via:
 //
-//          GetFaceConfigsConfigArray{ GetFaceConfigsConfigArgs{...} }
+//	GetFaceConfigsConfigArray{ GetFaceConfigsConfigArgs{...} }
 type GetFaceConfigsConfigArrayInput interface {
 	pulumi.Input
 

@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucketObject(ctx, "object-source", &oss.BucketObjectArgs{
-// 			Bucket: pulumi.String("your_bucket_name"),
-// 			Key:    pulumi.String("new_object_key"),
-// 			Source: pulumi.String("path/to/file"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oss.NewBucketObject(ctx, "object-source", &oss.BucketObjectArgs{
+//				Bucket: pulumi.String("your_bucket_name"),
+//				Key:    pulumi.String("new_object_key"),
+//				Source: pulumi.String("path/to/file"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Uploading a content to a bucket
 //
@@ -44,30 +47,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
-// 			Bucket: pulumi.String("your_bucket_name"),
-// 			Acl:    pulumi.String("public-read"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oss.NewBucketObject(ctx, "object-content", &oss.BucketObjectArgs{
-// 			Bucket:  example.Bucket,
-// 			Key:     pulumi.String("new_object_key"),
-// 			Content: pulumi.String("the content that you want to upload."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
+//				Bucket: pulumi.String("your_bucket_name"),
+//				Acl:    pulumi.String("public-read"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketObject(ctx, "object-content", &oss.BucketObjectArgs{
+//				Bucket:  example.Bucket,
+//				Key:     pulumi.String("new_object_key"),
+//				Content: pulumi.String("the content that you want to upload."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type BucketObject struct {
 	pulumi.CustomResourceState
@@ -299,7 +305,7 @@ func (i *BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) Buck
 // BucketObjectArrayInput is an input type that accepts BucketObjectArray and BucketObjectArrayOutput values.
 // You can construct a concrete instance of `BucketObjectArrayInput` via:
 //
-//          BucketObjectArray{ BucketObjectArgs{...} }
+//	BucketObjectArray{ BucketObjectArgs{...} }
 type BucketObjectArrayInput interface {
 	pulumi.Input
 
@@ -324,7 +330,7 @@ func (i BucketObjectArray) ToBucketObjectArrayOutputWithContext(ctx context.Cont
 // BucketObjectMapInput is an input type that accepts BucketObjectMap and BucketObjectMapOutput values.
 // You can construct a concrete instance of `BucketObjectMapInput` via:
 //
-//          BucketObjectMap{ "key": BucketObjectArgs{...} }
+//	BucketObjectMap{ "key": BucketObjectArgs{...} }
 type BucketObjectMapInput interface {
 	pulumi.Input
 

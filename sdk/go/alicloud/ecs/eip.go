@@ -15,7 +15,9 @@ import (
 // Elastic IP address can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+//
+//	$ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+//
 // ```
 //
 // Deprecated: This resource has been deprecated in favour of the EipAddress resource
@@ -267,7 +269,7 @@ func (i *Eip) ToEipOutputWithContext(ctx context.Context) EipOutput {
 // EipArrayInput is an input type that accepts EipArray and EipArrayOutput values.
 // You can construct a concrete instance of `EipArrayInput` via:
 //
-//          EipArray{ EipArgs{...} }
+//	EipArray{ EipArgs{...} }
 type EipArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +294,7 @@ func (i EipArray) ToEipArrayOutputWithContext(ctx context.Context) EipArrayOutpu
 // EipMapInput is an input type that accepts EipMap and EipMapOutput values.
 // You can construct a concrete instance of `EipMapInput` via:
 //
-//          EipMap{ "key": EipArgs{...} }
+//	EipMap{ "key": EipArgs{...} }
 type EipMapInput interface {
 	pulumi.Input
 

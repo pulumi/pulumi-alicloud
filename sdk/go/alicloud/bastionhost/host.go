@@ -19,32 +19,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewHost(ctx, "example", &bastionhost.HostArgs{
-// 			ActiveAddressType:  pulumi.String("Private"),
-// 			HostName:           pulumi.String("example_value"),
-// 			HostPrivateAddress: pulumi.String("172.16.0.10"),
-// 			InstanceId:         pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-// 			OsType:             pulumi.String("Linux"),
-// 			Source:             pulumi.String("Local"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewHost(ctx, "example", &bastionhost.HostArgs{
+//				ActiveAddressType:  pulumi.String("Private"),
+//				HostName:           pulumi.String("example_value"),
+//				HostPrivateAddress: pulumi.String("172.16.0.10"),
+//				InstanceId:         pulumi.String("bastionhost-cn-tl3xxxxxxx"),
+//				OsType:             pulumi.String("Linux"),
+//				Source:             pulumi.String("Local"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // Bastion Host Host can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
+//
+//	$ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
+//
 // ```
 type Host struct {
 	pulumi.CustomResourceState
@@ -266,7 +271,7 @@ func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 // HostArrayInput is an input type that accepts HostArray and HostArrayOutput values.
 // You can construct a concrete instance of `HostArrayInput` via:
 //
-//          HostArray{ HostArgs{...} }
+//	HostArray{ HostArgs{...} }
 type HostArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +296,7 @@ func (i HostArray) ToHostArrayOutputWithContext(ctx context.Context) HostArrayOu
 // HostMapInput is an input type that accepts HostMap and HostMapOutput values.
 // You can construct a concrete instance of `HostMapInput` via:
 //
-//          HostMap{ "key": HostArgs{...} }
+//	HostMap{ "key": HostArgs{...} }
 type HostMapInput interface {
 	pulumi.Input
 

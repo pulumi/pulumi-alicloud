@@ -22,7 +22,9 @@ import (
 // Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
+//
+//	$ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
+//
 // ```
 type GreyTagRoute struct {
 	pulumi.CustomResourceState
@@ -156,7 +158,7 @@ func (i *GreyTagRoute) ToGreyTagRouteOutputWithContext(ctx context.Context) Grey
 // GreyTagRouteArrayInput is an input type that accepts GreyTagRouteArray and GreyTagRouteArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteArrayInput` via:
 //
-//          GreyTagRouteArray{ GreyTagRouteArgs{...} }
+//	GreyTagRouteArray{ GreyTagRouteArgs{...} }
 type GreyTagRouteArrayInput interface {
 	pulumi.Input
 
@@ -181,7 +183,7 @@ func (i GreyTagRouteArray) ToGreyTagRouteArrayOutputWithContext(ctx context.Cont
 // GreyTagRouteMapInput is an input type that accepts GreyTagRouteMap and GreyTagRouteMapOutput values.
 // You can construct a concrete instance of `GreyTagRouteMapInput` via:
 //
-//          GreyTagRouteMap{ "key": GreyTagRouteArgs{...} }
+//	GreyTagRouteMap{ "key": GreyTagRouteArgs{...} }
 type GreyTagRouteMapInput interface {
 	pulumi.Input
 

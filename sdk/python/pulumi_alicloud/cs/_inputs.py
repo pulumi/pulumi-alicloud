@@ -37,8 +37,10 @@ __all__ = [
     'ManagedKubernetesWorkerDataDiskArgs',
     'ManagedKubernetesWorkerNodeArgs',
     'NodePoolDataDiskArgs',
+    'NodePoolKubeletConfigurationArgs',
     'NodePoolLabelArgs',
     'NodePoolManagementArgs',
+    'NodePoolRolloutPolicyArgs',
     'NodePoolScalingConfigArgs',
     'NodePoolSpotPriceLimitArgs',
     'NodePoolTaintArgs',
@@ -1840,6 +1842,221 @@ class NodePoolDataDiskArgs:
 
 
 @pulumi.input_type
+class NodePoolKubeletConfigurationArgs:
+    def __init__(__self__, *,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 event_burst: Optional[pulumi.Input[str]] = None,
+                 event_record_qps: Optional[pulumi.Input[str]] = None,
+                 eviction_hard: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 eviction_soft: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 eviction_soft_grace_period: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kube_api_burst: Optional[pulumi.Input[str]] = None,
+                 kube_api_qps: Optional[pulumi.Input[str]] = None,
+                 kube_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 registry_burst: Optional[pulumi.Input[str]] = None,
+                 registry_pull_qps: Optional[pulumi.Input[str]] = None,
+                 serialize_image_pulls: Optional[pulumi.Input[str]] = None,
+                 system_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[str] cpu_manager_policy: Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        :param pulumi.Input[str] event_burst: Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        :param pulumi.Input[str] event_record_qps: Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+        :param pulumi.Input[Mapping[str, Any]] eviction_hard: Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        :param pulumi.Input[Mapping[str, Any]] eviction_soft: Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        :param pulumi.Input[Mapping[str, Any]] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+        :param pulumi.Input[str] kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+        :param pulumi.Input[str] kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+        :param pulumi.Input[Mapping[str, Any]] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        :param pulumi.Input[str] registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        :param pulumi.Input[str] registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        :param pulumi.Input[str] serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        :param pulumi.Input[Mapping[str, Any]] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        """
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if event_burst is not None:
+            pulumi.set(__self__, "event_burst", event_burst)
+        if event_record_qps is not None:
+            pulumi.set(__self__, "event_record_qps", event_record_qps)
+        if eviction_hard is not None:
+            pulumi.set(__self__, "eviction_hard", eviction_hard)
+        if eviction_soft is not None:
+            pulumi.set(__self__, "eviction_soft", eviction_soft)
+        if eviction_soft_grace_period is not None:
+            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
+        if kube_api_burst is not None:
+            pulumi.set(__self__, "kube_api_burst", kube_api_burst)
+        if kube_api_qps is not None:
+            pulumi.set(__self__, "kube_api_qps", kube_api_qps)
+        if kube_reserved is not None:
+            pulumi.set(__self__, "kube_reserved", kube_reserved)
+        if registry_burst is not None:
+            pulumi.set(__self__, "registry_burst", registry_burst)
+        if registry_pull_qps is not None:
+            pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+        if serialize_image_pulls is not None:
+            pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
+        if system_reserved is not None:
+            pulumi.set(__self__, "system_reserved", system_reserved)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="eventBurst")
+    def event_burst(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "event_burst")
+
+    @event_burst.setter
+    def event_burst(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_burst", value)
+
+    @property
+    @pulumi.getter(name="eventRecordQps")
+    def event_record_qps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "event_record_qps")
+
+    @event_record_qps.setter
+    def event_record_qps(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_record_qps", value)
+
+    @property
+    @pulumi.getter(name="evictionHard")
+    def eviction_hard(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        """
+        return pulumi.get(self, "eviction_hard")
+
+    @eviction_hard.setter
+    def eviction_hard(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "eviction_hard", value)
+
+    @property
+    @pulumi.getter(name="evictionSoft")
+    def eviction_soft(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        """
+        return pulumi.get(self, "eviction_soft")
+
+    @eviction_soft.setter
+    def eviction_soft(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "eviction_soft", value)
+
+    @property
+    @pulumi.getter(name="evictionSoftGracePeriod")
+    def eviction_soft_grace_period(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+        """
+        return pulumi.get(self, "eviction_soft_grace_period")
+
+    @eviction_soft_grace_period.setter
+    def eviction_soft_grace_period(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "eviction_soft_grace_period", value)
+
+    @property
+    @pulumi.getter(name="kubeApiBurst")
+    def kube_api_burst(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "kube_api_burst")
+
+    @kube_api_burst.setter
+    def kube_api_burst(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kube_api_burst", value)
+
+    @property
+    @pulumi.getter(name="kubeApiQps")
+    def kube_api_qps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "kube_api_qps")
+
+    @kube_api_qps.setter
+    def kube_api_qps(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kube_api_qps", value)
+
+    @property
+    @pulumi.getter(name="kubeReserved")
+    def kube_reserved(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        """
+        return pulumi.get(self, "kube_reserved")
+
+    @kube_reserved.setter
+    def kube_reserved(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kube_reserved", value)
+
+    @property
+    @pulumi.getter(name="registryBurst")
+    def registry_burst(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "registry_burst")
+
+    @registry_burst.setter
+    def registry_burst(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_burst", value)
+
+    @property
+    @pulumi.getter(name="registryPullQps")
+    def registry_pull_qps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "registry_pull_qps")
+
+    @registry_pull_qps.setter
+    def registry_pull_qps(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_pull_qps", value)
+
+    @property
+    @pulumi.getter(name="serializeImagePulls")
+    def serialize_image_pulls(self) -> Optional[pulumi.Input[str]]:
+        """
+        Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        """
+        return pulumi.get(self, "serialize_image_pulls")
+
+    @serialize_image_pulls.setter
+    def serialize_image_pulls(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serialize_image_pulls", value)
+
+    @property
+    @pulumi.getter(name="systemReserved")
+    def system_reserved(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        """
+        return pulumi.get(self, "system_reserved")
+
+    @system_reserved.setter
+    def system_reserved(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "system_reserved", value)
+
+
+@pulumi.input_type
 class NodePoolLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
@@ -1961,6 +2178,29 @@ class NodePoolManagementArgs:
     @surge_percentage.setter
     def surge_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "surge_percentage", value)
+
+
+@pulumi.input_type
+class NodePoolRolloutPolicyArgs:
+    def __init__(__self__, *,
+                 max_unavailable: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_unavailable: Max number of unavailable nodes. Default to `1`.
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max number of unavailable nodes. Default to `1`.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_unavailable", value)
 
 
 @pulumi.input_type

@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := waf.GetCertificates(ctx, &waf.GetCertificatesArgs{
-// 			Ids: []string{
-// 				"your_certificate_id",
-// 			},
-// 			InstanceId: "your_instance_id",
-// 			Domain:     pulumi.StringRef("your_domain_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("wafCertificate", _default.Certificates[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := waf.GetCertificates(ctx, &waf.GetCertificatesArgs{
+//				Ids: []string{
+//					"your_certificate_id",
+//				},
+//				InstanceId: "your_instance_id",
+//				Domain:     pulumi.StringRef("your_domain_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("wafCertificate", _default.Certificates[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	var rv GetCertificatesResult

@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataworks.NewFolder(ctx, "default", &dataworks.FolderArgs{
-// 			ProjectId:  pulumi.String("xxxx"),
-// 			FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (string, error) {
-// 			return ids.Folders[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataworks.NewFolder(ctx, "default", &dataworks.FolderArgs{
+//				ProjectId:  pulumi.String("xxxx"),
+//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (string, error) {
+//				return ids.Folders[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
 	var rv GetFoldersResult

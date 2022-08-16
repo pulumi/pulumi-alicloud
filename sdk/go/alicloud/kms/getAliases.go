@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kms.GetAliases(ctx, &kms.GetAliasesArgs{
-// 			Ids: []string{
-// 				"d89e8a53-b708-41aa-8c67-6873axxx",
-// 			},
-// 			NameRegex: pulumi.StringRef("alias/tf-testKmsAlias_123"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstKeyId", data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.GetAliases(ctx, &kms.GetAliasesArgs{
+//				Ids: []string{
+//					"d89e8a53-b708-41aa-8c67-6873axxx",
+//				},
+//				NameRegex: pulumi.StringRef("alias/tf-testKmsAlias_123"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstKeyId", data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAliases(ctx *pulumi.Context, args *GetAliasesArgs, opts ...pulumi.InvokeOption) (*GetAliasesResult, error) {
 	var rv GetAliasesResult

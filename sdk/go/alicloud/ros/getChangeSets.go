@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ros.GetChangeSets(ctx, &ros.GetChangeSetsArgs{
-// 			StackId: "example_value",
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			NameRegex: pulumi.StringRef("the_resource_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstRosChangeSetId", example.Sets[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ros.GetChangeSets(ctx, &ros.GetChangeSetsArgs{
+//				StackId: "example_value",
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRosChangeSetId", example.Sets[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetChangeSets(ctx *pulumi.Context, args *GetChangeSetsArgs, opts ...pulumi.InvokeOption) (*GetChangeSetsResult, error) {
 	var rv GetChangeSetsResult

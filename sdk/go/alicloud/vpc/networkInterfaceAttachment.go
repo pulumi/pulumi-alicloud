@@ -16,7 +16,9 @@ import (
 // Network Interfaces Attachment resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
+//
+//	$ pulumi import alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment eni eni-abc123456789000:i-abc123456789000
+//
 // ```
 type NetworkInterfaceAttachment struct {
 	pulumi.CustomResourceState
@@ -130,7 +132,7 @@ func (i *NetworkInterfaceAttachment) ToNetworkInterfaceAttachmentOutputWithConte
 // NetworkInterfaceAttachmentArrayInput is an input type that accepts NetworkInterfaceAttachmentArray and NetworkInterfaceAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkInterfaceAttachmentArrayInput` via:
 //
-//          NetworkInterfaceAttachmentArray{ NetworkInterfaceAttachmentArgs{...} }
+//	NetworkInterfaceAttachmentArray{ NetworkInterfaceAttachmentArgs{...} }
 type NetworkInterfaceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -155,7 +157,7 @@ func (i NetworkInterfaceAttachmentArray) ToNetworkInterfaceAttachmentArrayOutput
 // NetworkInterfaceAttachmentMapInput is an input type that accepts NetworkInterfaceAttachmentMap and NetworkInterfaceAttachmentMapOutput values.
 // You can construct a concrete instance of `NetworkInterfaceAttachmentMapInput` via:
 //
-//          NetworkInterfaceAttachmentMap{ "key": NetworkInterfaceAttachmentArgs{...} }
+//	NetworkInterfaceAttachmentMap{ "key": NetworkInterfaceAttachmentArgs{...} }
 type NetworkInterfaceAttachmentMapInput interface {
 	pulumi.Input
 

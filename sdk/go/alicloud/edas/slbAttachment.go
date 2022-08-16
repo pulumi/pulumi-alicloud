@@ -17,32 +17,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewSlbAttachment(ctx, "default", &edas.SlbAttachmentArgs{
-// 			AppId:          pulumi.Any(_var.App_id),
-// 			SlbId:          pulumi.Any(_var.Slb_id),
-// 			SlbIp:          pulumi.Any(_var.Slb_ip),
-// 			Type:           pulumi.Any(_var.Type),
-// 			ListenerPort:   pulumi.Any(_var.Listener_port),
-// 			VserverGroupId: pulumi.Any(_var.Vserver_group_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewSlbAttachment(ctx, "default", &edas.SlbAttachmentArgs{
+//				AppId:          pulumi.Any(_var.App_id),
+//				SlbId:          pulumi.Any(_var.Slb_id),
+//				SlbIp:          pulumi.Any(_var.Slb_ip),
+//				Type:           pulumi.Any(_var.Type),
+//				ListenerPort:   pulumi.Any(_var.Listener_port),
+//				VserverGroupId: pulumi.Any(_var.Vserver_group_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type SlbAttachment struct {
 	pulumi.CustomResourceState
@@ -204,7 +207,7 @@ func (i *SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) Sl
 // SlbAttachmentArrayInput is an input type that accepts SlbAttachmentArray and SlbAttachmentArrayOutput values.
 // You can construct a concrete instance of `SlbAttachmentArrayInput` via:
 //
-//          SlbAttachmentArray{ SlbAttachmentArgs{...} }
+//	SlbAttachmentArray{ SlbAttachmentArgs{...} }
 type SlbAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +232,7 @@ func (i SlbAttachmentArray) ToSlbAttachmentArrayOutputWithContext(ctx context.Co
 // SlbAttachmentMapInput is an input type that accepts SlbAttachmentMap and SlbAttachmentMapOutput values.
 // You can construct a concrete instance of `SlbAttachmentMapInput` via:
 //
-//          SlbAttachmentMap{ "key": SlbAttachmentArgs{...} }
+//	SlbAttachmentMap{ "key": SlbAttachmentArgs{...} }
 type SlbAttachmentMapInput interface {
 	pulumi.Input
 

@@ -24,25 +24,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := actiontrail.NewTrail(ctx, "default", &actiontrail.TrailArgs{
-// 			EventRw:         pulumi.String("All"),
-// 			OssBucketName:   pulumi.String("bucket_name"),
-// 			OssWriteRoleArn: pulumi.String("acs:ram::1182725xxxxxxxxxxx"),
-// 			TrailName:       pulumi.String("action-trail"),
-// 			TrailRegion:     pulumi.String("cn-hangzhou"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := actiontrail.NewTrail(ctx, "default", &actiontrail.TrailArgs{
+//				EventRw:         pulumi.String("All"),
+//				OssBucketName:   pulumi.String("bucket_name"),
+//				OssWriteRoleArn: pulumi.String("acs:ram::1182725xxxxxxxxxxx"),
+//				TrailName:       pulumi.String("action-trail"),
+//				TrailRegion:     pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Action trail can be imported using the id or trail_name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+//
+//	$ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+//
 // ```
 type Trail struct {
 	pulumi.CustomResourceState
@@ -288,7 +293,7 @@ func (i *Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 // TrailArrayInput is an input type that accepts TrailArray and TrailArrayOutput values.
 // You can construct a concrete instance of `TrailArrayInput` via:
 //
-//          TrailArray{ TrailArgs{...} }
+//	TrailArray{ TrailArgs{...} }
 type TrailArrayInput interface {
 	pulumi.Input
 
@@ -313,7 +318,7 @@ func (i TrailArray) ToTrailArrayOutputWithContext(ctx context.Context) TrailArra
 // TrailMapInput is an input type that accepts TrailMap and TrailMapOutput values.
 // You can construct a concrete instance of `TrailMapInput` via:
 //
-//          TrailMap{ "key": TrailArgs{...} }
+//	TrailMap{ "key": TrailArgs{...} }
 type TrailMapInput interface {
 	pulumi.Input
 

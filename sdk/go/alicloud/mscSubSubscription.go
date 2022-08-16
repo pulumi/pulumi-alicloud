@@ -17,32 +17,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alicloud.NewMscSubSubscription(ctx, "example", &alicloud.MscSubSubscriptionArgs{
-// 			EmailStatus:   pulumi.Int(1),
-// 			ItemName:      pulumi.String("Notifications of Product Expiration"),
-// 			PmsgStatus:    pulumi.Int(1),
-// 			SmsStatus:     pulumi.Int(1),
-// 			TtsStatus:     pulumi.Int(1),
-// 			WebhookStatus: pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alicloud.NewMscSubSubscription(ctx, "example", &alicloud.MscSubSubscriptionArgs{
+//				EmailStatus:   pulumi.Int(1),
+//				ItemName:      pulumi.String("Notifications of Product Expiration"),
+//				PmsgStatus:    pulumi.Int(1),
+//				SmsStatus:     pulumi.Int(1),
+//				TtsStatus:     pulumi.Int(1),
+//				WebhookStatus: pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Msc Sub Subscription can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
+//
+//	$ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
+//
 // ```
 type MscSubSubscription struct {
 	pulumi.CustomResourceState
@@ -218,7 +223,7 @@ func (i *MscSubSubscription) ToMscSubSubscriptionOutputWithContext(ctx context.C
 // MscSubSubscriptionArrayInput is an input type that accepts MscSubSubscriptionArray and MscSubSubscriptionArrayOutput values.
 // You can construct a concrete instance of `MscSubSubscriptionArrayInput` via:
 //
-//          MscSubSubscriptionArray{ MscSubSubscriptionArgs{...} }
+//	MscSubSubscriptionArray{ MscSubSubscriptionArgs{...} }
 type MscSubSubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +248,7 @@ func (i MscSubSubscriptionArray) ToMscSubSubscriptionArrayOutputWithContext(ctx 
 // MscSubSubscriptionMapInput is an input type that accepts MscSubSubscriptionMap and MscSubSubscriptionMapOutput values.
 // You can construct a concrete instance of `MscSubSubscriptionMapInput` via:
 //
-//          MscSubSubscriptionMap{ "key": MscSubSubscriptionArgs{...} }
+//	MscSubSubscriptionMap{ "key": MscSubSubscriptionArgs{...} }
 type MscSubSubscriptionMapInput interface {
 	pulumi.Input
 

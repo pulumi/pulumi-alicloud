@@ -16,7 +16,9 @@ import (
 // Nat gateway can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+//
+//	$ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+//
 // ```
 type NatGateway struct {
 	pulumi.CustomResourceState
@@ -270,7 +272,7 @@ func (i *NatGateway) ToNatGatewayOutputWithContext(ctx context.Context) NatGatew
 // NatGatewayArrayInput is an input type that accepts NatGatewayArray and NatGatewayArrayOutput values.
 // You can construct a concrete instance of `NatGatewayArrayInput` via:
 //
-//          NatGatewayArray{ NatGatewayArgs{...} }
+//	NatGatewayArray{ NatGatewayArgs{...} }
 type NatGatewayArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +297,7 @@ func (i NatGatewayArray) ToNatGatewayArrayOutputWithContext(ctx context.Context)
 // NatGatewayMapInput is an input type that accepts NatGatewayMap and NatGatewayMapOutput values.
 // You can construct a concrete instance of `NatGatewayMapInput` via:
 //
-//          NatGatewayMap{ "key": NatGatewayArgs{...} }
+//	NatGatewayMap{ "key": NatGatewayArgs{...} }
 type NatGatewayMapInput interface {
 	pulumi.Input
 

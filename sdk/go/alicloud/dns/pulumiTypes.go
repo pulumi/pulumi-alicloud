@@ -20,7 +20,7 @@ type AccessStrategyDefaultAddrPool struct {
 // AccessStrategyDefaultAddrPoolInput is an input type that accepts AccessStrategyDefaultAddrPoolArgs and AccessStrategyDefaultAddrPoolOutput values.
 // You can construct a concrete instance of `AccessStrategyDefaultAddrPoolInput` via:
 //
-//          AccessStrategyDefaultAddrPoolArgs{...}
+//	AccessStrategyDefaultAddrPoolArgs{...}
 type AccessStrategyDefaultAddrPoolInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i AccessStrategyDefaultAddrPoolArgs) ToAccessStrategyDefaultAddrPoolOutput
 // AccessStrategyDefaultAddrPoolArrayInput is an input type that accepts AccessStrategyDefaultAddrPoolArray and AccessStrategyDefaultAddrPoolArrayOutput values.
 // You can construct a concrete instance of `AccessStrategyDefaultAddrPoolArrayInput` via:
 //
-//          AccessStrategyDefaultAddrPoolArray{ AccessStrategyDefaultAddrPoolArgs{...} }
+//	AccessStrategyDefaultAddrPoolArray{ AccessStrategyDefaultAddrPoolArgs{...} }
 type AccessStrategyDefaultAddrPoolArrayInput interface {
 	pulumi.Input
 
@@ -126,7 +126,7 @@ type AccessStrategyFailoverAddrPool struct {
 // AccessStrategyFailoverAddrPoolInput is an input type that accepts AccessStrategyFailoverAddrPoolArgs and AccessStrategyFailoverAddrPoolOutput values.
 // You can construct a concrete instance of `AccessStrategyFailoverAddrPoolInput` via:
 //
-//          AccessStrategyFailoverAddrPoolArgs{...}
+//	AccessStrategyFailoverAddrPoolArgs{...}
 type AccessStrategyFailoverAddrPoolInput interface {
 	pulumi.Input
 
@@ -156,7 +156,7 @@ func (i AccessStrategyFailoverAddrPoolArgs) ToAccessStrategyFailoverAddrPoolOutp
 // AccessStrategyFailoverAddrPoolArrayInput is an input type that accepts AccessStrategyFailoverAddrPoolArray and AccessStrategyFailoverAddrPoolArrayOutput values.
 // You can construct a concrete instance of `AccessStrategyFailoverAddrPoolArrayInput` via:
 //
-//          AccessStrategyFailoverAddrPoolArray{ AccessStrategyFailoverAddrPoolArgs{...} }
+//	AccessStrategyFailoverAddrPoolArray{ AccessStrategyFailoverAddrPoolArgs{...} }
 type AccessStrategyFailoverAddrPoolArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +230,7 @@ type AccessStrategyLine struct {
 // AccessStrategyLineInput is an input type that accepts AccessStrategyLineArgs and AccessStrategyLineOutput values.
 // You can construct a concrete instance of `AccessStrategyLineInput` via:
 //
-//          AccessStrategyLineArgs{...}
+//	AccessStrategyLineArgs{...}
 type AccessStrategyLineInput interface {
 	pulumi.Input
 
@@ -258,7 +258,7 @@ func (i AccessStrategyLineArgs) ToAccessStrategyLineOutputWithContext(ctx contex
 // AccessStrategyLineArrayInput is an input type that accepts AccessStrategyLineArray and AccessStrategyLineArrayOutput values.
 // You can construct a concrete instance of `AccessStrategyLineArrayInput` via:
 //
-//          AccessStrategyLineArray{ AccessStrategyLineArgs{...} }
+//	AccessStrategyLineArray{ AccessStrategyLineArgs{...} }
 type AccessStrategyLineArrayInput interface {
 	pulumi.Input
 
@@ -337,7 +337,7 @@ type AddressPoolAddress struct {
 // AddressPoolAddressInput is an input type that accepts AddressPoolAddressArgs and AddressPoolAddressOutput values.
 // You can construct a concrete instance of `AddressPoolAddressInput` via:
 //
-//          AddressPoolAddressArgs{...}
+//	AddressPoolAddressArgs{...}
 type AddressPoolAddressInput interface {
 	pulumi.Input
 
@@ -375,7 +375,7 @@ func (i AddressPoolAddressArgs) ToAddressPoolAddressOutputWithContext(ctx contex
 // AddressPoolAddressArrayInput is an input type that accepts AddressPoolAddressArray and AddressPoolAddressArrayOutput values.
 // You can construct a concrete instance of `AddressPoolAddressArrayInput` via:
 //
-//          AddressPoolAddressArray{ AddressPoolAddressArgs{...} }
+//	AddressPoolAddressArray{ AddressPoolAddressArgs{...} }
 type AddressPoolAddressArrayInput interface {
 	pulumi.Input
 
@@ -468,7 +468,7 @@ type CustomLineIpSegmentList struct {
 // CustomLineIpSegmentListInput is an input type that accepts CustomLineIpSegmentListArgs and CustomLineIpSegmentListOutput values.
 // You can construct a concrete instance of `CustomLineIpSegmentListInput` via:
 //
-//          CustomLineIpSegmentListArgs{...}
+//	CustomLineIpSegmentListArgs{...}
 type CustomLineIpSegmentListInput interface {
 	pulumi.Input
 
@@ -498,7 +498,7 @@ func (i CustomLineIpSegmentListArgs) ToCustomLineIpSegmentListOutputWithContext(
 // CustomLineIpSegmentListArrayInput is an input type that accepts CustomLineIpSegmentListArray and CustomLineIpSegmentListArrayOutput values.
 // You can construct a concrete instance of `CustomLineIpSegmentListArrayInput` via:
 //
-//          CustomLineIpSegmentListArray{ CustomLineIpSegmentListArgs{...} }
+//	CustomLineIpSegmentListArray{ CustomLineIpSegmentListArgs{...} }
 type CustomLineIpSegmentListArrayInput interface {
 	pulumi.Input
 
@@ -584,7 +584,7 @@ type GtmInstanceAlertConfig struct {
 // GtmInstanceAlertConfigInput is an input type that accepts GtmInstanceAlertConfigArgs and GtmInstanceAlertConfigOutput values.
 // You can construct a concrete instance of `GtmInstanceAlertConfigInput` via:
 //
-//          GtmInstanceAlertConfigArgs{...}
+//	GtmInstanceAlertConfigArgs{...}
 type GtmInstanceAlertConfigInput interface {
 	pulumi.Input
 
@@ -624,7 +624,7 @@ func (i GtmInstanceAlertConfigArgs) ToGtmInstanceAlertConfigOutputWithContext(ct
 // GtmInstanceAlertConfigArrayInput is an input type that accepts GtmInstanceAlertConfigArray and GtmInstanceAlertConfigArrayOutput values.
 // You can construct a concrete instance of `GtmInstanceAlertConfigArrayInput` via:
 //
-//          GtmInstanceAlertConfigArray{ GtmInstanceAlertConfigArgs{...} }
+//	GtmInstanceAlertConfigArray{ GtmInstanceAlertConfigArgs{...} }
 type GtmInstanceAlertConfigArrayInput interface {
 	pulumi.Input
 
@@ -716,7 +716,7 @@ type MonitorConfigIspCityNode struct {
 // MonitorConfigIspCityNodeInput is an input type that accepts MonitorConfigIspCityNodeArgs and MonitorConfigIspCityNodeOutput values.
 // You can construct a concrete instance of `MonitorConfigIspCityNodeInput` via:
 //
-//          MonitorConfigIspCityNodeArgs{...}
+//	MonitorConfigIspCityNodeArgs{...}
 type MonitorConfigIspCityNodeInput interface {
 	pulumi.Input
 
@@ -746,7 +746,7 @@ func (i MonitorConfigIspCityNodeArgs) ToMonitorConfigIspCityNodeOutputWithContex
 // MonitorConfigIspCityNodeArrayInput is an input type that accepts MonitorConfigIspCityNodeArray and MonitorConfigIspCityNodeArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigIspCityNodeArrayInput` via:
 //
-//          MonitorConfigIspCityNodeArray{ MonitorConfigIspCityNodeArgs{...} }
+//	MonitorConfigIspCityNodeArray{ MonitorConfigIspCityNodeArgs{...} }
 type MonitorConfigIspCityNodeArrayInput interface {
 	pulumi.Input
 
@@ -866,7 +866,7 @@ type GetAccessStrategiesStrategy struct {
 // GetAccessStrategiesStrategyInput is an input type that accepts GetAccessStrategiesStrategyArgs and GetAccessStrategiesStrategyOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyInput` via:
 //
-//          GetAccessStrategiesStrategyArgs{...}
+//	GetAccessStrategiesStrategyArgs{...}
 type GetAccessStrategiesStrategyInput interface {
 	pulumi.Input
 
@@ -940,7 +940,7 @@ func (i GetAccessStrategiesStrategyArgs) ToGetAccessStrategiesStrategyOutputWith
 // GetAccessStrategiesStrategyArrayInput is an input type that accepts GetAccessStrategiesStrategyArray and GetAccessStrategiesStrategyArrayOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyArrayInput` via:
 //
-//          GetAccessStrategiesStrategyArray{ GetAccessStrategiesStrategyArgs{...} }
+//	GetAccessStrategiesStrategyArray{ GetAccessStrategiesStrategyArgs{...} }
 type GetAccessStrategiesStrategyArrayInput interface {
 	pulumi.Input
 
@@ -1134,7 +1134,7 @@ type GetAccessStrategiesStrategyDefaultAddrPool struct {
 // GetAccessStrategiesStrategyDefaultAddrPoolInput is an input type that accepts GetAccessStrategiesStrategyDefaultAddrPoolArgs and GetAccessStrategiesStrategyDefaultAddrPoolOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyDefaultAddrPoolInput` via:
 //
-//          GetAccessStrategiesStrategyDefaultAddrPoolArgs{...}
+//	GetAccessStrategiesStrategyDefaultAddrPoolArgs{...}
 type GetAccessStrategiesStrategyDefaultAddrPoolInput interface {
 	pulumi.Input
 
@@ -1168,7 +1168,7 @@ func (i GetAccessStrategiesStrategyDefaultAddrPoolArgs) ToGetAccessStrategiesStr
 // GetAccessStrategiesStrategyDefaultAddrPoolArrayInput is an input type that accepts GetAccessStrategiesStrategyDefaultAddrPoolArray and GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyDefaultAddrPoolArrayInput` via:
 //
-//          GetAccessStrategiesStrategyDefaultAddrPoolArray{ GetAccessStrategiesStrategyDefaultAddrPoolArgs{...} }
+//	GetAccessStrategiesStrategyDefaultAddrPoolArray{ GetAccessStrategiesStrategyDefaultAddrPoolArgs{...} }
 type GetAccessStrategiesStrategyDefaultAddrPoolArrayInput interface {
 	pulumi.Input
 
@@ -1258,7 +1258,7 @@ type GetAccessStrategiesStrategyFailoverAddrPool struct {
 // GetAccessStrategiesStrategyFailoverAddrPoolInput is an input type that accepts GetAccessStrategiesStrategyFailoverAddrPoolArgs and GetAccessStrategiesStrategyFailoverAddrPoolOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyFailoverAddrPoolInput` via:
 //
-//          GetAccessStrategiesStrategyFailoverAddrPoolArgs{...}
+//	GetAccessStrategiesStrategyFailoverAddrPoolArgs{...}
 type GetAccessStrategiesStrategyFailoverAddrPoolInput interface {
 	pulumi.Input
 
@@ -1292,7 +1292,7 @@ func (i GetAccessStrategiesStrategyFailoverAddrPoolArgs) ToGetAccessStrategiesSt
 // GetAccessStrategiesStrategyFailoverAddrPoolArrayInput is an input type that accepts GetAccessStrategiesStrategyFailoverAddrPoolArray and GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyFailoverAddrPoolArrayInput` via:
 //
-//          GetAccessStrategiesStrategyFailoverAddrPoolArray{ GetAccessStrategiesStrategyFailoverAddrPoolArgs{...} }
+//	GetAccessStrategiesStrategyFailoverAddrPoolArray{ GetAccessStrategiesStrategyFailoverAddrPoolArgs{...} }
 type GetAccessStrategiesStrategyFailoverAddrPoolArrayInput interface {
 	pulumi.Input
 
@@ -1382,7 +1382,7 @@ type GetAccessStrategiesStrategyLine struct {
 // GetAccessStrategiesStrategyLineInput is an input type that accepts GetAccessStrategiesStrategyLineArgs and GetAccessStrategiesStrategyLineOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyLineInput` via:
 //
-//          GetAccessStrategiesStrategyLineArgs{...}
+//	GetAccessStrategiesStrategyLineArgs{...}
 type GetAccessStrategiesStrategyLineInput interface {
 	pulumi.Input
 
@@ -1416,7 +1416,7 @@ func (i GetAccessStrategiesStrategyLineArgs) ToGetAccessStrategiesStrategyLineOu
 // GetAccessStrategiesStrategyLineArrayInput is an input type that accepts GetAccessStrategiesStrategyLineArray and GetAccessStrategiesStrategyLineArrayOutput values.
 // You can construct a concrete instance of `GetAccessStrategiesStrategyLineArrayInput` via:
 //
-//          GetAccessStrategiesStrategyLineArray{ GetAccessStrategiesStrategyLineArgs{...} }
+//	GetAccessStrategiesStrategyLineArray{ GetAccessStrategiesStrategyLineArgs{...} }
 type GetAccessStrategiesStrategyLineArrayInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ type GetAddressPoolsPool struct {
 // GetAddressPoolsPoolInput is an input type that accepts GetAddressPoolsPoolArgs and GetAddressPoolsPoolOutput values.
 // You can construct a concrete instance of `GetAddressPoolsPoolInput` via:
 //
-//          GetAddressPoolsPoolArgs{...}
+//	GetAddressPoolsPoolArgs{...}
 type GetAddressPoolsPoolInput interface {
 	pulumi.Input
 
@@ -1576,7 +1576,7 @@ func (i GetAddressPoolsPoolArgs) ToGetAddressPoolsPoolOutputWithContext(ctx cont
 // GetAddressPoolsPoolArrayInput is an input type that accepts GetAddressPoolsPoolArray and GetAddressPoolsPoolArrayOutput values.
 // You can construct a concrete instance of `GetAddressPoolsPoolArrayInput` via:
 //
-//          GetAddressPoolsPoolArray{ GetAddressPoolsPoolArgs{...} }
+//	GetAddressPoolsPoolArray{ GetAddressPoolsPoolArgs{...} }
 type GetAddressPoolsPoolArrayInput interface {
 	pulumi.Input
 
@@ -1713,7 +1713,7 @@ type GetAddressPoolsPoolAddress struct {
 // GetAddressPoolsPoolAddressInput is an input type that accepts GetAddressPoolsPoolAddressArgs and GetAddressPoolsPoolAddressOutput values.
 // You can construct a concrete instance of `GetAddressPoolsPoolAddressInput` via:
 //
-//          GetAddressPoolsPoolAddressArgs{...}
+//	GetAddressPoolsPoolAddressArgs{...}
 type GetAddressPoolsPoolAddressInput interface {
 	pulumi.Input
 
@@ -1749,7 +1749,7 @@ func (i GetAddressPoolsPoolAddressArgs) ToGetAddressPoolsPoolAddressOutputWithCo
 // GetAddressPoolsPoolAddressArrayInput is an input type that accepts GetAddressPoolsPoolAddressArray and GetAddressPoolsPoolAddressArrayOutput values.
 // You can construct a concrete instance of `GetAddressPoolsPoolAddressArrayInput` via:
 //
-//          GetAddressPoolsPoolAddressArray{ GetAddressPoolsPoolAddressArgs{...} }
+//	GetAddressPoolsPoolAddressArray{ GetAddressPoolsPoolAddressArgs{...} }
 type GetAddressPoolsPoolAddressArrayInput interface {
 	pulumi.Input
 
@@ -1844,7 +1844,7 @@ type GetAlidnsDomainGroupsGroup struct {
 // GetAlidnsDomainGroupsGroupInput is an input type that accepts GetAlidnsDomainGroupsGroupArgs and GetAlidnsDomainGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainGroupsGroupInput` via:
 //
-//          GetAlidnsDomainGroupsGroupArgs{...}
+//	GetAlidnsDomainGroupsGroupArgs{...}
 type GetAlidnsDomainGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1878,7 +1878,7 @@ func (i GetAlidnsDomainGroupsGroupArgs) ToGetAlidnsDomainGroupsGroupOutputWithCo
 // GetAlidnsDomainGroupsGroupArrayInput is an input type that accepts GetAlidnsDomainGroupsGroupArray and GetAlidnsDomainGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainGroupsGroupArrayInput` via:
 //
-//          GetAlidnsDomainGroupsGroupArray{ GetAlidnsDomainGroupsGroupArgs{...} }
+//	GetAlidnsDomainGroupsGroupArray{ GetAlidnsDomainGroupsGroupArgs{...} }
 type GetAlidnsDomainGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -2004,7 +2004,7 @@ type GetAlidnsDomainsDomain struct {
 // GetAlidnsDomainsDomainInput is an input type that accepts GetAlidnsDomainsDomainArgs and GetAlidnsDomainsDomainOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainsDomainInput` via:
 //
-//          GetAlidnsDomainsDomainArgs{...}
+//	GetAlidnsDomainsDomainArgs{...}
 type GetAlidnsDomainsDomainInput interface {
 	pulumi.Input
 
@@ -2074,7 +2074,7 @@ func (i GetAlidnsDomainsDomainArgs) ToGetAlidnsDomainsDomainOutputWithContext(ct
 // GetAlidnsDomainsDomainArrayInput is an input type that accepts GetAlidnsDomainsDomainArray and GetAlidnsDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainsDomainArrayInput` via:
 //
-//          GetAlidnsDomainsDomainArray{ GetAlidnsDomainsDomainArgs{...} }
+//	GetAlidnsDomainsDomainArray{ GetAlidnsDomainsDomainArgs{...} }
 type GetAlidnsDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -2257,7 +2257,7 @@ type GetAlidnsDomainsDomainRecordLine struct {
 // GetAlidnsDomainsDomainRecordLineInput is an input type that accepts GetAlidnsDomainsDomainRecordLineArgs and GetAlidnsDomainsDomainRecordLineOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainsDomainRecordLineInput` via:
 //
-//          GetAlidnsDomainsDomainRecordLineArgs{...}
+//	GetAlidnsDomainsDomainRecordLineArgs{...}
 type GetAlidnsDomainsDomainRecordLineInput interface {
 	pulumi.Input
 
@@ -2291,7 +2291,7 @@ func (i GetAlidnsDomainsDomainRecordLineArgs) ToGetAlidnsDomainsDomainRecordLine
 // GetAlidnsDomainsDomainRecordLineArrayInput is an input type that accepts GetAlidnsDomainsDomainRecordLineArray and GetAlidnsDomainsDomainRecordLineArrayOutput values.
 // You can construct a concrete instance of `GetAlidnsDomainsDomainRecordLineArrayInput` via:
 //
-//          GetAlidnsDomainsDomainRecordLineArray{ GetAlidnsDomainsDomainRecordLineArgs{...} }
+//	GetAlidnsDomainsDomainRecordLineArray{ GetAlidnsDomainsDomainRecordLineArgs{...} }
 type GetAlidnsDomainsDomainRecordLineArrayInput interface {
 	pulumi.Input
 
@@ -2389,7 +2389,7 @@ type GetAlidnsInstancesInstance struct {
 // GetAlidnsInstancesInstanceInput is an input type that accepts GetAlidnsInstancesInstanceArgs and GetAlidnsInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetAlidnsInstancesInstanceInput` via:
 //
-//          GetAlidnsInstancesInstanceArgs{...}
+//	GetAlidnsInstancesInstanceArgs{...}
 type GetAlidnsInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -2431,7 +2431,7 @@ func (i GetAlidnsInstancesInstanceArgs) ToGetAlidnsInstancesInstanceOutputWithCo
 // GetAlidnsInstancesInstanceArrayInput is an input type that accepts GetAlidnsInstancesInstanceArray and GetAlidnsInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetAlidnsInstancesInstanceArrayInput` via:
 //
-//          GetAlidnsInstancesInstanceArray{ GetAlidnsInstancesInstanceArgs{...} }
+//	GetAlidnsInstancesInstanceArray{ GetAlidnsInstancesInstanceArgs{...} }
 type GetAlidnsInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -2557,7 +2557,7 @@ type GetAlidnsRecordsRecord struct {
 // GetAlidnsRecordsRecordInput is an input type that accepts GetAlidnsRecordsRecordArgs and GetAlidnsRecordsRecordOutput values.
 // You can construct a concrete instance of `GetAlidnsRecordsRecordInput` via:
 //
-//          GetAlidnsRecordsRecordArgs{...}
+//	GetAlidnsRecordsRecordArgs{...}
 type GetAlidnsRecordsRecordInput interface {
 	pulumi.Input
 
@@ -2607,7 +2607,7 @@ func (i GetAlidnsRecordsRecordArgs) ToGetAlidnsRecordsRecordOutputWithContext(ct
 // GetAlidnsRecordsRecordArrayInput is an input type that accepts GetAlidnsRecordsRecordArray and GetAlidnsRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetAlidnsRecordsRecordArrayInput` via:
 //
-//          GetAlidnsRecordsRecordArray{ GetAlidnsRecordsRecordArgs{...} }
+//	GetAlidnsRecordsRecordArray{ GetAlidnsRecordsRecordArgs{...} }
 type GetAlidnsRecordsRecordArrayInput interface {
 	pulumi.Input
 
@@ -2741,7 +2741,7 @@ type GetCustomLinesLine struct {
 // GetCustomLinesLineInput is an input type that accepts GetCustomLinesLineArgs and GetCustomLinesLineOutput values.
 // You can construct a concrete instance of `GetCustomLinesLineInput` via:
 //
-//          GetCustomLinesLineArgs{...}
+//	GetCustomLinesLineArgs{...}
 type GetCustomLinesLineInput interface {
 	pulumi.Input
 
@@ -2779,7 +2779,7 @@ func (i GetCustomLinesLineArgs) ToGetCustomLinesLineOutputWithContext(ctx contex
 // GetCustomLinesLineArrayInput is an input type that accepts GetCustomLinesLineArray and GetCustomLinesLineArrayOutput values.
 // You can construct a concrete instance of `GetCustomLinesLineArrayInput` via:
 //
-//          GetCustomLinesLineArray{ GetCustomLinesLineArgs{...} }
+//	GetCustomLinesLineArray{ GetCustomLinesLineArgs{...} }
 type GetCustomLinesLineArrayInput interface {
 	pulumi.Input
 
@@ -2875,7 +2875,7 @@ type GetCustomLinesLineIpSegmentList struct {
 // GetCustomLinesLineIpSegmentListInput is an input type that accepts GetCustomLinesLineIpSegmentListArgs and GetCustomLinesLineIpSegmentListOutput values.
 // You can construct a concrete instance of `GetCustomLinesLineIpSegmentListInput` via:
 //
-//          GetCustomLinesLineIpSegmentListArgs{...}
+//	GetCustomLinesLineIpSegmentListArgs{...}
 type GetCustomLinesLineIpSegmentListInput interface {
 	pulumi.Input
 
@@ -2905,7 +2905,7 @@ func (i GetCustomLinesLineIpSegmentListArgs) ToGetCustomLinesLineIpSegmentListOu
 // GetCustomLinesLineIpSegmentListArrayInput is an input type that accepts GetCustomLinesLineIpSegmentListArray and GetCustomLinesLineIpSegmentListArrayOutput values.
 // You can construct a concrete instance of `GetCustomLinesLineIpSegmentListArrayInput` via:
 //
-//          GetCustomLinesLineIpSegmentListArray{ GetCustomLinesLineIpSegmentListArgs{...} }
+//	GetCustomLinesLineIpSegmentListArray{ GetCustomLinesLineIpSegmentListArgs{...} }
 type GetCustomLinesLineIpSegmentListArrayInput interface {
 	pulumi.Input
 
@@ -2979,7 +2979,7 @@ type GetDomainGroupsGroup struct {
 // GetDomainGroupsGroupInput is an input type that accepts GetDomainGroupsGroupArgs and GetDomainGroupsGroupOutput values.
 // You can construct a concrete instance of `GetDomainGroupsGroupInput` via:
 //
-//          GetDomainGroupsGroupArgs{...}
+//	GetDomainGroupsGroupArgs{...}
 type GetDomainGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3007,7 +3007,7 @@ func (i GetDomainGroupsGroupArgs) ToGetDomainGroupsGroupOutputWithContext(ctx co
 // GetDomainGroupsGroupArrayInput is an input type that accepts GetDomainGroupsGroupArray and GetDomainGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetDomainGroupsGroupArrayInput` via:
 //
-//          GetDomainGroupsGroupArray{ GetDomainGroupsGroupArgs{...} }
+//	GetDomainGroupsGroupArray{ GetDomainGroupsGroupArgs{...} }
 type GetDomainGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -3087,7 +3087,7 @@ type GetDomainRecordsRecord struct {
 // GetDomainRecordsRecordInput is an input type that accepts GetDomainRecordsRecordArgs and GetDomainRecordsRecordOutput values.
 // You can construct a concrete instance of `GetDomainRecordsRecordInput` via:
 //
-//          GetDomainRecordsRecordArgs{...}
+//	GetDomainRecordsRecordArgs{...}
 type GetDomainRecordsRecordInput interface {
 	pulumi.Input
 
@@ -3123,7 +3123,7 @@ func (i GetDomainRecordsRecordArgs) ToGetDomainRecordsRecordOutputWithContext(ct
 // GetDomainRecordsRecordArrayInput is an input type that accepts GetDomainRecordsRecordArray and GetDomainRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetDomainRecordsRecordArrayInput` via:
 //
-//          GetDomainRecordsRecordArray{ GetDomainRecordsRecordArgs{...} }
+//	GetDomainRecordsRecordArray{ GetDomainRecordsRecordArgs{...} }
 type GetDomainRecordsRecordArrayInput interface {
 	pulumi.Input
 
@@ -3267,7 +3267,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -3335,7 +3335,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -3512,7 +3512,7 @@ type GetDomainsDomainRecordLine struct {
 // GetDomainsDomainRecordLineInput is an input type that accepts GetDomainsDomainRecordLineArgs and GetDomainsDomainRecordLineOutput values.
 // You can construct a concrete instance of `GetDomainsDomainRecordLineInput` via:
 //
-//          GetDomainsDomainRecordLineArgs{...}
+//	GetDomainsDomainRecordLineArgs{...}
 type GetDomainsDomainRecordLineInput interface {
 	pulumi.Input
 
@@ -3542,7 +3542,7 @@ func (i GetDomainsDomainRecordLineArgs) ToGetDomainsDomainRecordLineOutputWithCo
 // GetDomainsDomainRecordLineArrayInput is an input type that accepts GetDomainsDomainRecordLineArray and GetDomainsDomainRecordLineArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainRecordLineArrayInput` via:
 //
-//          GetDomainsDomainRecordLineArray{ GetDomainsDomainRecordLineArgs{...} }
+//	GetDomainsDomainRecordLineArray{ GetDomainsDomainRecordLineArgs{...} }
 type GetDomainsDomainRecordLineArrayInput interface {
 	pulumi.Input
 
@@ -3624,7 +3624,7 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+//	GetGroupsGroupArgs{...}
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -3654,7 +3654,7 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -3760,7 +3760,7 @@ type GetGtmInstancesInstance struct {
 // GetGtmInstancesInstanceInput is an input type that accepts GetGtmInstancesInstanceArgs and GetGtmInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetGtmInstancesInstanceInput` via:
 //
-//          GetGtmInstancesInstanceArgs{...}
+//	GetGtmInstancesInstanceArgs{...}
 type GetGtmInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -3820,7 +3820,7 @@ func (i GetGtmInstancesInstanceArgs) ToGetGtmInstancesInstanceOutputWithContext(
 // GetGtmInstancesInstanceArrayInput is an input type that accepts GetGtmInstancesInstanceArray and GetGtmInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetGtmInstancesInstanceArrayInput` via:
 //
-//          GetGtmInstancesInstanceArray{ GetGtmInstancesInstanceArgs{...} }
+//	GetGtmInstancesInstanceArray{ GetGtmInstancesInstanceArgs{...} }
 type GetGtmInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -3975,7 +3975,7 @@ type GetGtmInstancesInstanceAlertConfig struct {
 // GetGtmInstancesInstanceAlertConfigInput is an input type that accepts GetGtmInstancesInstanceAlertConfigArgs and GetGtmInstancesInstanceAlertConfigOutput values.
 // You can construct a concrete instance of `GetGtmInstancesInstanceAlertConfigInput` via:
 //
-//          GetGtmInstancesInstanceAlertConfigArgs{...}
+//	GetGtmInstancesInstanceAlertConfigArgs{...}
 type GetGtmInstancesInstanceAlertConfigInput interface {
 	pulumi.Input
 
@@ -4009,7 +4009,7 @@ func (i GetGtmInstancesInstanceAlertConfigArgs) ToGetGtmInstancesInstanceAlertCo
 // GetGtmInstancesInstanceAlertConfigArrayInput is an input type that accepts GetGtmInstancesInstanceAlertConfigArray and GetGtmInstancesInstanceAlertConfigArrayOutput values.
 // You can construct a concrete instance of `GetGtmInstancesInstanceAlertConfigArrayInput` via:
 //
-//          GetGtmInstancesInstanceAlertConfigArray{ GetGtmInstancesInstanceAlertConfigArgs{...} }
+//	GetGtmInstancesInstanceAlertConfigArray{ GetGtmInstancesInstanceAlertConfigArgs{...} }
 type GetGtmInstancesInstanceAlertConfigArrayInput interface {
 	pulumi.Input
 
@@ -4105,7 +4105,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -4145,7 +4145,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -4265,7 +4265,7 @@ type GetRecordsRecord struct {
 // GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
 // You can construct a concrete instance of `GetRecordsRecordInput` via:
 //
-//          GetRecordsRecordArgs{...}
+//	GetRecordsRecordArgs{...}
 type GetRecordsRecordInput interface {
 	pulumi.Input
 
@@ -4311,7 +4311,7 @@ func (i GetRecordsRecordArgs) ToGetRecordsRecordOutputWithContext(ctx context.Co
 // GetRecordsRecordArrayInput is an input type that accepts GetRecordsRecordArray and GetRecordsRecordArrayOutput values.
 // You can construct a concrete instance of `GetRecordsRecordArrayInput` via:
 //
-//          GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
+//	GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
 type GetRecordsRecordArrayInput interface {
 	pulumi.Input
 
@@ -4428,7 +4428,7 @@ type GetResolutionLinesLine struct {
 // GetResolutionLinesLineInput is an input type that accepts GetResolutionLinesLineArgs and GetResolutionLinesLineOutput values.
 // You can construct a concrete instance of `GetResolutionLinesLineInput` via:
 //
-//          GetResolutionLinesLineArgs{...}
+//	GetResolutionLinesLineArgs{...}
 type GetResolutionLinesLineInput interface {
 	pulumi.Input
 
@@ -4459,7 +4459,7 @@ func (i GetResolutionLinesLineArgs) ToGetResolutionLinesLineOutputWithContext(ct
 // GetResolutionLinesLineArrayInput is an input type that accepts GetResolutionLinesLineArray and GetResolutionLinesLineArrayOutput values.
 // You can construct a concrete instance of `GetResolutionLinesLineArrayInput` via:
 //
-//          GetResolutionLinesLineArray{ GetResolutionLinesLineArgs{...} }
+//	GetResolutionLinesLineArray{ GetResolutionLinesLineArgs{...} }
 type GetResolutionLinesLineArrayInput interface {
 	pulumi.Input
 

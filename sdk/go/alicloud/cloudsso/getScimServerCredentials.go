@@ -18,32 +18,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudsso.GetScimServerCredentials(ctx, &cloudsso.GetScimServerCredentialsArgs{
-// 			DirectoryId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudSsoScimServerCredentialId1", ids.Credentials[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetScimServerCredentials(ctx, &cloudsso.GetScimServerCredentialsArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoScimServerCredentialId1", ids.Credentials[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetScimServerCredentials(ctx *pulumi.Context, args *GetScimServerCredentialsArgs, opts ...pulumi.InvokeOption) (*GetScimServerCredentialsResult, error) {
 	var rv GetScimServerCredentialsResult

@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		groupsDs, err := dns.GetGroups(ctx, &dns.GetGroupsArgs{
-// 			NameRegex:  pulumi.StringRef("^y[A-Za-z]+"),
-// 			OutputFile: pulumi.StringRef("groups.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstGroupName", groupsDs.Groups[0].GroupName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			groupsDs, err := dns.GetGroups(ctx, &dns.GetGroupsArgs{
+//				NameRegex:  pulumi.StringRef("^y[A-Za-z]+"),
+//				OutputFile: pulumi.StringRef("groups.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstGroupName", groupsDs.Groups[0].GroupName)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult

@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex: pulumi.StringRef("^centos_6"),
-// 			Owners:    pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstImageId", imagesDs.Images[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^centos_6"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstImageId", imagesDs.Images[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult

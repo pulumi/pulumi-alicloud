@@ -116,7 +116,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslPub!: pulumi.Output<string>;
     /**
-     * The status of the domain name for CDN. Value values:
+     * The status of the domain name for CDN. Valid values:
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -240,7 +240,7 @@ export interface DomainState {
      */
     sslPub?: pulumi.Input<string>;
     /**
-     * The status of the domain name for CDN. Value values:
+     * The status of the domain name for CDN. Valid values:
      */
     status?: pulumi.Input<string>;
     /**

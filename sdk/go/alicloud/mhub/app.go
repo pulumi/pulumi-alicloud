@@ -21,36 +21,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_value"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
-// 			AppName:     pulumi.String(name),
-// 			ProductId:   pulumi.Any(alicloud_mhub_product.Default.Id),
-// 			PackageName: pulumi.String("com.test.android"),
-// 			Type:        pulumi.String("Android"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_value"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
+//				AppName:     pulumi.String(name),
+//				ProductId:   pulumi.Any(alicloud_mhub_product.Default.Id),
+//				PackageName: pulumi.String("com.test.android"),
+//				Type:        pulumi.String("Android"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // MHUB App can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
+//
+//	$ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
+//
 // ```
 type App struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 // AppArrayInput is an input type that accepts AppArray and AppArrayOutput values.
 // You can construct a concrete instance of `AppArrayInput` via:
 //
-//          AppArray{ AppArgs{...} }
+//	AppArray{ AppArgs{...} }
 type AppArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i AppArray) ToAppArrayOutputWithContext(ctx context.Context) AppArrayOutpu
 // AppMapInput is an input type that accepts AppMap and AppMapOutput values.
 // You can construct a concrete instance of `AppMapInput` via:
 //
-//          AppMap{ "key": AppArgs{...} }
+//	AppMap{ "key": AppArgs{...} }
 type AppMapInput interface {
 	pulumi.Input
 

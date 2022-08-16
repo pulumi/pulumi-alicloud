@@ -16,26 +16,29 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := dns.GetGtmInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("alidnsGtmInstanceId1", ids.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dns.GetGtmInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alidnsGtmInstanceId1", ids.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGtmInstances(ctx *pulumi.Context, args *GetGtmInstancesArgs, opts ...pulumi.InvokeOption) (*GetGtmInstancesResult, error) {
 	var rv GetGtmInstancesResult

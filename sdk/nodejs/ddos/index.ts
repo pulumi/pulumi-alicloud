@@ -6,10 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./basicDefenseThreshold";
+export * from "./bgpIp";
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
 export * from "./domainResource";
 export * from "./getDdosBgpInstances";
+export * from "./getDdosBgpIps";
 export * from "./getDdosCooDomainResources";
 export * from "./getDdosCooInstances";
 export * from "./getDdosCooPorts";
@@ -18,6 +20,7 @@ export * from "./schedulerRule";
 
 // Import resources to register:
 import { BasicDefenseThreshold } from "./basicDefenseThreshold";
+import { BgpIp } from "./bgpIp";
 import { DdosBgpInstance } from "./ddosBgpInstance";
 import { DdosCooInstance } from "./ddosCooInstance";
 import { DomainResource } from "./domainResource";
@@ -30,6 +33,8 @@ const _module = {
         switch (type) {
             case "alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold":
                 return new BasicDefenseThreshold(name, <any>undefined, { urn })
+            case "alicloud:ddos/bgpIp:BgpIp":
+                return new BgpIp(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
@@ -46,6 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ddos/basicDefenseThreshold", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/bgpIp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosCooInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/domainResource", _module)

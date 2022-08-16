@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/lindorm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/lindorm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := lindorm.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("lindormInstanceId1", ids.Instances[0].Id)
-// 		nameRegex, err := lindorm.GetInstances(ctx, &lindorm.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Instance"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("lindormInstanceId2", nameRegex.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := lindorm.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("lindormInstanceId1", ids.Instances[0].Id)
+//			nameRegex, err := lindorm.GetInstances(ctx, &lindorm.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("^my-Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("lindormInstanceId2", nameRegex.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

@@ -18,88 +18,91 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
-// 			DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
-// 				&ecs.EcsLaunchTemplateDataDiskArgs{
-// 					Category:           pulumi.String("cloud"),
-// 					DeleteWithInstance: pulumi.Bool(true),
-// 					Description:        pulumi.String("test1"),
-// 					Encrypted:          pulumi.Bool(false),
-// 					Name:               pulumi.String("disk1"),
-// 					PerformanceLevel:   pulumi.String("PL0"),
-// 					Size:               pulumi.Int(20),
-// 				},
-// 				&ecs.EcsLaunchTemplateDataDiskArgs{
-// 					Category:           pulumi.String("cloud"),
-// 					DeleteWithInstance: pulumi.Bool(true),
-// 					Description:        pulumi.String("test2"),
-// 					Encrypted:          pulumi.Bool(false),
-// 					Name:               pulumi.String("disk2"),
-// 					PerformanceLevel:   pulumi.String("PL0"),
-// 					Size:               pulumi.Int(20),
-// 				},
-// 			},
-// 			Description:             pulumi.String("Test For Terraform"),
-// 			HostName:                pulumi.String("host_name"),
-// 			ImageId:                 pulumi.String("m-bp1i3ucxxxxx"),
-// 			InstanceChargeType:      pulumi.String("PrePaid"),
-// 			InstanceName:            pulumi.String("instance_name"),
-// 			InstanceType:            pulumi.String("instance_type"),
-// 			InternetChargeType:      pulumi.String("PayByBandwidth"),
-// 			InternetMaxBandwidthIn:  pulumi.Int(5),
-// 			InternetMaxBandwidthOut: pulumi.Int(0),
-// 			IoOptimized:             pulumi.String("optimized"),
-// 			KeyPairName:             pulumi.String("key_pair_name"),
-// 			NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
-// 				Description:     pulumi.String("hello1"),
-// 				Name:            pulumi.String("eth0"),
-// 				PrimaryIp:       pulumi.String("10.0.0.2"),
-// 				SecurityGroupId: pulumi.String("sg-asdfnbgxxxxxxx"),
-// 				VswitchId:       pulumi.String("vw-zkdfjaxxxxxx"),
-// 			},
-// 			NetworkType:                 pulumi.String("vpc"),
-// 			RamRoleName:                 pulumi.String("ram_role_name"),
-// 			ResourceGroupId:             pulumi.String("rg-zkdfjaxxxxxx"),
-// 			SecurityEnhancementStrategy: pulumi.String("Active"),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String("sg-zkdfjaxxxxxx"),
-// 			},
-// 			SpotPriceLimit: pulumi.Float64(5),
-// 			SpotStrategy:   pulumi.String("SpotWithPriceLimit"),
-// 			SystemDisk: &ecs.EcsLaunchTemplateSystemDiskArgs{
-// 				Category:           pulumi.String("cloud_ssd"),
-// 				DeleteWithInstance: pulumi.Bool(false),
-// 				Description:        pulumi.String("Test For Terraform"),
-// 				Name:               pulumi.String("tf_test_name"),
-// 				Size:               pulumi.Int(40),
-// 			},
-// 			TemplateTags: pulumi.AnyMap{
-// 				"Create": pulumi.Any("Terraform"),
-// 				"For":    pulumi.Any("Test"),
-// 			},
-// 			UserData:  pulumi.String("xxxxxxx"),
-// 			VpcId:     pulumi.String("vpc-asdfnbgxxxxxxx"),
-// 			VswitchId: pulumi.String("vw-zwxscaxxxxxx"),
-// 			ZoneId:    pulumi.String("cn-hangzhou-i"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
+//				DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Category:           pulumi.String("cloud"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Description:        pulumi.String("test1"),
+//						Encrypted:          pulumi.Bool(false),
+//						Name:               pulumi.String("disk1"),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Category:           pulumi.String("cloud"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Description:        pulumi.String("test2"),
+//						Encrypted:          pulumi.Bool(false),
+//						Name:               pulumi.String("disk2"),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//				},
+//				Description:             pulumi.String("Test For Terraform"),
+//				HostName:                pulumi.String("host_name"),
+//				ImageId:                 pulumi.String("m-bp1i3ucxxxxx"),
+//				InstanceChargeType:      pulumi.String("PrePaid"),
+//				InstanceName:            pulumi.String("instance_name"),
+//				InstanceType:            pulumi.String("instance_type"),
+//				InternetChargeType:      pulumi.String("PayByBandwidth"),
+//				InternetMaxBandwidthIn:  pulumi.Int(5),
+//				InternetMaxBandwidthOut: pulumi.Int(0),
+//				IoOptimized:             pulumi.String("optimized"),
+//				KeyPairName:             pulumi.String("key_pair_name"),
+//				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
+//					Description:     pulumi.String("hello1"),
+//					Name:            pulumi.String("eth0"),
+//					PrimaryIp:       pulumi.String("10.0.0.2"),
+//					SecurityGroupId: pulumi.String("sg-asdfnbgxxxxxxx"),
+//					VswitchId:       pulumi.String("vw-zkdfjaxxxxxx"),
+//				},
+//				NetworkType:                 pulumi.String("vpc"),
+//				RamRoleName:                 pulumi.String("ram_role_name"),
+//				ResourceGroupId:             pulumi.String("rg-zkdfjaxxxxxx"),
+//				SecurityEnhancementStrategy: pulumi.String("Active"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("sg-zkdfjaxxxxxx"),
+//				},
+//				SpotPriceLimit: pulumi.Float64(5),
+//				SpotStrategy:   pulumi.String("SpotWithPriceLimit"),
+//				SystemDisk: &ecs.EcsLaunchTemplateSystemDiskArgs{
+//					Category:           pulumi.String("cloud_ssd"),
+//					DeleteWithInstance: pulumi.Bool(false),
+//					Description:        pulumi.String("Test For Terraform"),
+//					Name:               pulumi.String("tf_test_name"),
+//					Size:               pulumi.Int(40),
+//				},
+//				TemplateTags: pulumi.AnyMap{
+//					"Create": pulumi.Any("Terraform"),
+//					"For":    pulumi.Any("Test"),
+//				},
+//				UserData:  pulumi.String("xxxxxxx"),
+//				VpcId:     pulumi.String("vpc-asdfnbgxxxxxxx"),
+//				VswitchId: pulumi.String("vw-zwxscaxxxxxx"),
+//				ZoneId:    pulumi.String("cn-hangzhou-i"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -107,7 +110,9 @@ import (
 // ECS Launch Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
+//
 // ```
 type EcsLaunchTemplate struct {
 	pulumi.CustomResourceState
@@ -665,7 +670,7 @@ func (i *EcsLaunchTemplate) ToEcsLaunchTemplateOutputWithContext(ctx context.Con
 // EcsLaunchTemplateArrayInput is an input type that accepts EcsLaunchTemplateArray and EcsLaunchTemplateArrayOutput values.
 // You can construct a concrete instance of `EcsLaunchTemplateArrayInput` via:
 //
-//          EcsLaunchTemplateArray{ EcsLaunchTemplateArgs{...} }
+//	EcsLaunchTemplateArray{ EcsLaunchTemplateArgs{...} }
 type EcsLaunchTemplateArrayInput interface {
 	pulumi.Input
 
@@ -690,7 +695,7 @@ func (i EcsLaunchTemplateArray) ToEcsLaunchTemplateArrayOutputWithContext(ctx co
 // EcsLaunchTemplateMapInput is an input type that accepts EcsLaunchTemplateMap and EcsLaunchTemplateMapOutput values.
 // You can construct a concrete instance of `EcsLaunchTemplateMapInput` via:
 //
-//          EcsLaunchTemplateMap{ "key": EcsLaunchTemplateArgs{...} }
+//	EcsLaunchTemplateMap{ "key": EcsLaunchTemplateArgs{...} }
 type EcsLaunchTemplateMapInput interface {
 	pulumi.Input
 

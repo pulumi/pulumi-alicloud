@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myInstances, err := cs.GetRegistryEnterpriseInstances(ctx, &cs.GetRegistryEnterpriseInstancesArgs{
-// 			NameRegex:  pulumi.StringRef("my-instances"),
-// 			OutputFile: pulumi.StringRef("my-instances-json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("output", myInstances.Instances)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstances, err := cs.GetRegistryEnterpriseInstances(ctx, &cs.GetRegistryEnterpriseInstancesArgs{
+//				NameRegex:  pulumi.StringRef("my-instances"),
+//				OutputFile: pulumi.StringRef("my-instances-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", myInstances.Instances)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRegistryEnterpriseInstances(ctx *pulumi.Context, args *GetRegistryEnterpriseInstancesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseInstancesResult, error) {
 	var rv GetRegistryEnterpriseInstancesResult

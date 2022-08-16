@@ -20,7 +20,7 @@ type GetAclsAcl struct {
 // GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
 // You can construct a concrete instance of `GetAclsAclInput` via:
 //
-//          GetAclsAclArgs{...}
+//	GetAclsAclArgs{...}
 type GetAclsAclInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
-//          GetAclsAclArray{ GetAclsAclArgs{...} }
+//	GetAclsAclArray{ GetAclsAclArgs{...} }
 type GetAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -154,7 +154,7 @@ type GetSmartagFlowLogsLog struct {
 // GetSmartagFlowLogsLogInput is an input type that accepts GetSmartagFlowLogsLogArgs and GetSmartagFlowLogsLogOutput values.
 // You can construct a concrete instance of `GetSmartagFlowLogsLogInput` via:
 //
-//          GetSmartagFlowLogsLogArgs{...}
+//	GetSmartagFlowLogsLogArgs{...}
 type GetSmartagFlowLogsLogInput interface {
 	pulumi.Input
 
@@ -212,7 +212,7 @@ func (i GetSmartagFlowLogsLogArgs) ToGetSmartagFlowLogsLogOutputWithContext(ctx 
 // GetSmartagFlowLogsLogArrayInput is an input type that accepts GetSmartagFlowLogsLogArray and GetSmartagFlowLogsLogArrayOutput values.
 // You can construct a concrete instance of `GetSmartagFlowLogsLogArrayInput` via:
 //
-//          GetSmartagFlowLogsLogArray{ GetSmartagFlowLogsLogArgs{...} }
+//	GetSmartagFlowLogsLogArray{ GetSmartagFlowLogsLogArgs{...} }
 type GetSmartagFlowLogsLogArrayInput interface {
 	pulumi.Input
 

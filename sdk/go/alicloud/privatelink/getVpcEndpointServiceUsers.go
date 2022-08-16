@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := privatelink.GetVpcEndpointServiceUsers(ctx, &privatelink.GetVpcEndpointServiceUsersArgs{
-// 			ServiceId: "epsrv-gw81c6vxxxxxx",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstPrivatelinkVpcEndpointServiceUserId", example.Users[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := privatelink.GetVpcEndpointServiceUsers(ctx, &privatelink.GetVpcEndpointServiceUsersArgs{
+//				ServiceId: "epsrv-gw81c6vxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstPrivatelinkVpcEndpointServiceUserId", example.Users[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVpcEndpointServiceUsers(ctx *pulumi.Context, args *GetVpcEndpointServiceUsersArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointServiceUsersResult, error) {
 	var rv GetVpcEndpointServiceUsersResult

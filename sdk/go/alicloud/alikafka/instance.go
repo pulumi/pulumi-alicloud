@@ -24,68 +24,71 @@ import (
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		instanceName := "alikafkaInstanceName"
-// 		if param := cfg.Get("instanceName"); param != "" {
-// 			instanceName = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota:    pulumi.Int(50),
-// 			DiskType:      pulumi.Int(1),
-// 			DiskSize:      pulumi.Int(500),
-// 			DeployType:    pulumi.Int(4),
-// 			IoMax:         pulumi.Int(20),
-// 			VswitchId:     defaultSwitch.ID(),
-// 			SecurityGroup: defaultSecurityGroup.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			instanceName := "alikafkaInstanceName"
+//			if param := cfg.Get("instanceName"); param != "" {
+//				instanceName = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				TopicQuota:    pulumi.Int(50),
+//				DiskType:      pulumi.Int(1),
+//				DiskSize:      pulumi.Int(500),
+//				DeployType:    pulumi.Int(4),
+//				IoMax:         pulumi.Int(20),
+//				VswitchId:     defaultSwitch.ID(),
+//				SecurityGroup: defaultSecurityGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -93,12 +96,14 @@ import (
 // ALIKAFKA TOPIC can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+//
+//	$ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -114,16 +119,24 @@ type Instance struct {
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
-	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
-	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
+	// The status of the instance. Valid values:
+	// - 0: pending
+	// - 1: deploying
+	// - 5: running
+	// - 15: expired
+	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
@@ -183,7 +196,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config *string `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -199,16 +212,24 @@ type instanceState struct {
 	EndPoint *string `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
-	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
+	// The status of the instance. Valid values:
+	// - 0: pending
+	// - 1: deploying
+	// - 5: running
+	// - 15: expired
+	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
@@ -222,7 +243,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -238,16 +259,24 @@ type InstanceState struct {
 	EndPoint pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
-	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
-	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
+	// The status of the instance. Valid values:
+	// - 0: pending
+	// - 1: deploying
+	// - 5: running
+	// - 15: expired
+	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
@@ -265,7 +294,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config *string `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -279,13 +308,15 @@ type instanceArgs struct {
 	EipMax *int `pulumi:"eipMax"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax int `pulumi:"ioMax"`
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
-	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
@@ -299,7 +330,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -313,13 +344,15 @@ type InstanceArgs struct {
 	EipMax pulumi.IntPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntInput
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
-	// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
-	// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
@@ -357,7 +390,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -382,7 +415,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -418,7 +451,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
@@ -455,6 +488,11 @@ func (o InstanceOutput) IoMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IoMax }).(pulumi.IntOutput)
 }
 
+// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+func (o InstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
 // Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -465,12 +503,12 @@ func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
 }
 
-// （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+// The ID of security group for this instance. If the security group is empty, system will create a default one.
 func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
-// （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
 }
@@ -478,6 +516,15 @@ func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 // The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// The status of the instance. Valid values:
+// - 0: pending
+// - 1: deploying
+// - 5: running
+// - 15: expired
+func (o InstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
 // A mapping of tags to assign to the resource.

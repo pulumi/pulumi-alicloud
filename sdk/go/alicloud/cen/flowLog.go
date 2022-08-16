@@ -21,52 +21,55 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-// 			Description: pulumi.String("create by terraform"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-// 			Project:            defaultProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewFlowLog(ctx, "defaultFlowLog", &cen.FlowLogArgs{
-// 			FlowLogName:  pulumi.String("my-flowlog"),
-// 			CenId:        defaultInstance.ID(),
-// 			ProjectName:  defaultProject.Name,
-// 			LogStoreName: defaultStore.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				Description: pulumi.String("create by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project:            defaultProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewFlowLog(ctx, "defaultFlowLog", &cen.FlowLogArgs{
+//				FlowLogName:  pulumi.String("my-flowlog"),
+//				CenId:        defaultInstance.ID(),
+//				ProjectName:  defaultProject.Name,
+//				LogStoreName: defaultStore.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +77,9 @@ import (
 // CEN flowlog can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+//
+//	$ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+//
 // ```
 type FlowLog struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput 
 // FlowLogArrayInput is an input type that accepts FlowLogArray and FlowLogArrayOutput values.
 // You can construct a concrete instance of `FlowLogArrayInput` via:
 //
-//          FlowLogArray{ FlowLogArgs{...} }
+//	FlowLogArray{ FlowLogArgs{...} }
 type FlowLogArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i FlowLogArray) ToFlowLogArrayOutputWithContext(ctx context.Context) FlowL
 // FlowLogMapInput is an input type that accepts FlowLogMap and FlowLogMapOutput values.
 // You can construct a concrete instance of `FlowLogMapInput` via:
 //
-//          FlowLogMap{ "key": FlowLogArgs{...} }
+//	FlowLogMap{ "key": FlowLogArgs{...} }
 type FlowLogMapInput interface {
 	pulumi.Input
 

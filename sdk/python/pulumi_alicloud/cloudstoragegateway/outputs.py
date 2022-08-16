@@ -142,7 +142,7 @@ class GetGatewayBlockVolumesVolumeResult(dict):
                  volume_state: int):
         """
         :param str address: The IP ADDRESS.
-        :param str cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param str cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param bool chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param str chap_in_user: The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         :param int chunk_size: The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
@@ -206,7 +206,7 @@ class GetGatewayBlockVolumesVolumeResult(dict):
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> str:
         """
-        The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 

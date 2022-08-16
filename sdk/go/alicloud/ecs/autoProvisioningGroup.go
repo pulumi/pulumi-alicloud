@@ -21,85 +21,88 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "auto_provisioning_group"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 			Owners:     pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		template, err := ecs.NewEcsLaunchTemplate(ctx, "template", &ecs.EcsLaunchTemplateArgs{
-// 			ImageId:         pulumi.String(defaultImages.Images[0].Id),
-// 			InstanceType:    pulumi.String("ecs.n1.tiny"),
-// 			SecurityGroupId: defaultSecurityGroup.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewAutoProvisioningGroup(ctx, "defaultAutoProvisioningGroup", &ecs.AutoProvisioningGroupArgs{
-// 			LaunchTemplateId:         template.ID(),
-// 			TotalTargetCapacity:      pulumi.String("4"),
-// 			PayAsYouGoTargetCapacity: pulumi.String("1"),
-// 			SpotTargetCapacity:       pulumi.String("2"),
-// 			LaunchTemplateConfigs: ecs.AutoProvisioningGroupLaunchTemplateConfigArray{
-// 				&ecs.AutoProvisioningGroupLaunchTemplateConfigArgs{
-// 					InstanceType:     pulumi.String("ecs.n1.small"),
-// 					VswitchId:        defaultSwitch.ID(),
-// 					WeightedCapacity: pulumi.String("2"),
-// 					MaxPrice:         pulumi.String("2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "auto_provisioning_group"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			template, err := ecs.NewEcsLaunchTemplate(ctx, "template", &ecs.EcsLaunchTemplateArgs{
+//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:    pulumi.String("ecs.n1.tiny"),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewAutoProvisioningGroup(ctx, "defaultAutoProvisioningGroup", &ecs.AutoProvisioningGroupArgs{
+//				LaunchTemplateId:         template.ID(),
+//				TotalTargetCapacity:      pulumi.String("4"),
+//				PayAsYouGoTargetCapacity: pulumi.String("1"),
+//				SpotTargetCapacity:       pulumi.String("2"),
+//				LaunchTemplateConfigs: ecs.AutoProvisioningGroupLaunchTemplateConfigArray{
+//					&ecs.AutoProvisioningGroupLaunchTemplateConfigArgs{
+//						InstanceType:     pulumi.String("ecs.n1.small"),
+//						VswitchId:        defaultSwitch.ID(),
+//						WeightedCapacity: pulumi.String("2"),
+//						MaxPrice:         pulumi.String("2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Block config
 //
@@ -115,7 +118,9 @@ import (
 // ECS auto provisioning group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+//
+//	$ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+//
 // ```
 type AutoProvisioningGroup struct {
 	pulumi.CustomResourceState
@@ -144,7 +149,7 @@ type AutoProvisioningGroup struct {
 	PayAsYouGoTargetCapacity pulumi.StringPtrOutput `pulumi:"payAsYouGoTargetCapacity"`
 	// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
 	SpotAllocationStrategy pulumi.StringPtrOutput `pulumi:"spotAllocationStrategy"`
-	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+	// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior pulumi.StringPtrOutput `pulumi:"spotInstanceInterruptionBehavior"`
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
 	SpotInstancePoolsToUseCount pulumi.IntOutput `pulumi:"spotInstancePoolsToUseCount"`
@@ -224,7 +229,7 @@ type autoProvisioningGroupState struct {
 	PayAsYouGoTargetCapacity *string `pulumi:"payAsYouGoTargetCapacity"`
 	// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
-	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+	// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior *string `pulumi:"spotInstanceInterruptionBehavior"`
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
 	SpotInstancePoolsToUseCount *int `pulumi:"spotInstancePoolsToUseCount"`
@@ -267,7 +272,7 @@ type AutoProvisioningGroupState struct {
 	PayAsYouGoTargetCapacity pulumi.StringPtrInput
 	// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
 	SpotAllocationStrategy pulumi.StringPtrInput
-	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+	// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior pulumi.StringPtrInput
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
 	SpotInstancePoolsToUseCount pulumi.IntPtrInput
@@ -314,7 +319,7 @@ type autoProvisioningGroupArgs struct {
 	PayAsYouGoTargetCapacity *string `pulumi:"payAsYouGoTargetCapacity"`
 	// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
-	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+	// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior *string `pulumi:"spotInstanceInterruptionBehavior"`
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
 	SpotInstancePoolsToUseCount *int `pulumi:"spotInstancePoolsToUseCount"`
@@ -358,7 +363,7 @@ type AutoProvisioningGroupArgs struct {
 	PayAsYouGoTargetCapacity pulumi.StringPtrInput
 	// The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
 	SpotAllocationStrategy pulumi.StringPtrInput
-	// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+	// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 	SpotInstanceInterruptionBehavior pulumi.StringPtrInput
 	// This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
 	SpotInstancePoolsToUseCount pulumi.IntPtrInput
@@ -402,7 +407,7 @@ func (i *AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx con
 // AutoProvisioningGroupArrayInput is an input type that accepts AutoProvisioningGroupArray and AutoProvisioningGroupArrayOutput values.
 // You can construct a concrete instance of `AutoProvisioningGroupArrayInput` via:
 //
-//          AutoProvisioningGroupArray{ AutoProvisioningGroupArgs{...} }
+//	AutoProvisioningGroupArray{ AutoProvisioningGroupArgs{...} }
 type AutoProvisioningGroupArrayInput interface {
 	pulumi.Input
 
@@ -427,7 +432,7 @@ func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutputWithContex
 // AutoProvisioningGroupMapInput is an input type that accepts AutoProvisioningGroupMap and AutoProvisioningGroupMapOutput values.
 // You can construct a concrete instance of `AutoProvisioningGroupMapInput` via:
 //
-//          AutoProvisioningGroupMap{ "key": AutoProvisioningGroupArgs{...} }
+//	AutoProvisioningGroupMap{ "key": AutoProvisioningGroupArgs{...} }
 type AutoProvisioningGroupMapInput interface {
 	pulumi.Input
 
@@ -525,7 +530,7 @@ func (o AutoProvisioningGroupOutput) SpotAllocationStrategy() pulumi.StringPtrOu
 	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.SpotAllocationStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
 func (o AutoProvisioningGroupOutput) SpotInstanceInterruptionBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.SpotInstanceInterruptionBehavior }).(pulumi.StringPtrOutput)
 }

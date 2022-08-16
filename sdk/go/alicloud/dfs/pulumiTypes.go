@@ -32,7 +32,7 @@ type GetAccessGroupsGroup struct {
 // GetAccessGroupsGroupInput is an input type that accepts GetAccessGroupsGroupArgs and GetAccessGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAccessGroupsGroupInput` via:
 //
-//          GetAccessGroupsGroupArgs{...}
+//	GetAccessGroupsGroupArgs{...}
 type GetAccessGroupsGroupInput interface {
 	pulumi.Input
 
@@ -74,7 +74,7 @@ func (i GetAccessGroupsGroupArgs) ToGetAccessGroupsGroupOutputWithContext(ctx co
 // GetAccessGroupsGroupArrayInput is an input type that accepts GetAccessGroupsGroupArray and GetAccessGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAccessGroupsGroupArrayInput` via:
 //
-//          GetAccessGroupsGroupArray{ GetAccessGroupsGroupArgs{...} }
+//	GetAccessGroupsGroupArray{ GetAccessGroupsGroupArgs{...} }
 type GetAccessGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +192,7 @@ type GetAccessRulesRule struct {
 // GetAccessRulesRuleInput is an input type that accepts GetAccessRulesRuleArgs and GetAccessRulesRuleOutput values.
 // You can construct a concrete instance of `GetAccessRulesRuleInput` via:
 //
-//          GetAccessRulesRuleArgs{...}
+//	GetAccessRulesRuleArgs{...}
 type GetAccessRulesRuleInput interface {
 	pulumi.Input
 
@@ -234,7 +234,7 @@ func (i GetAccessRulesRuleArgs) ToGetAccessRulesRuleOutputWithContext(ctx contex
 // GetAccessRulesRuleArrayInput is an input type that accepts GetAccessRulesRuleArray and GetAccessRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetAccessRulesRuleArrayInput` via:
 //
-//          GetAccessRulesRuleArray{ GetAccessRulesRuleArgs{...} }
+//	GetAccessRulesRuleArray{ GetAccessRulesRuleArgs{...} }
 type GetAccessRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -368,7 +368,7 @@ type GetFileSystemsSystem struct {
 // GetFileSystemsSystemInput is an input type that accepts GetFileSystemsSystemArgs and GetFileSystemsSystemOutput values.
 // You can construct a concrete instance of `GetFileSystemsSystemInput` via:
 //
-//          GetFileSystemsSystemArgs{...}
+//	GetFileSystemsSystemArgs{...}
 type GetFileSystemsSystemInput interface {
 	pulumi.Input
 
@@ -426,7 +426,7 @@ func (i GetFileSystemsSystemArgs) ToGetFileSystemsSystemOutputWithContext(ctx co
 // GetFileSystemsSystemArrayInput is an input type that accepts GetFileSystemsSystemArray and GetFileSystemsSystemArrayOutput values.
 // You can construct a concrete instance of `GetFileSystemsSystemArrayInput` via:
 //
-//          GetFileSystemsSystemArray{ GetFileSystemsSystemArgs{...} }
+//	GetFileSystemsSystemArray{ GetFileSystemsSystemArgs{...} }
 type GetFileSystemsSystemArrayInput interface {
 	pulumi.Input
 
@@ -590,7 +590,7 @@ type GetMountPointsPoint struct {
 // GetMountPointsPointInput is an input type that accepts GetMountPointsPointArgs and GetMountPointsPointOutput values.
 // You can construct a concrete instance of `GetMountPointsPointInput` via:
 //
-//          GetMountPointsPointArgs{...}
+//	GetMountPointsPointArgs{...}
 type GetMountPointsPointInput interface {
 	pulumi.Input
 
@@ -638,7 +638,7 @@ func (i GetMountPointsPointArgs) ToGetMountPointsPointOutputWithContext(ctx cont
 // GetMountPointsPointArrayInput is an input type that accepts GetMountPointsPointArray and GetMountPointsPointArrayOutput values.
 // You can construct a concrete instance of `GetMountPointsPointArrayInput` via:
 //
-//          GetMountPointsPointArray{ GetMountPointsPointArgs{...} }
+//	GetMountPointsPointArray{ GetMountPointsPointArgs{...} }
 type GetMountPointsPointArrayInput interface {
 	pulumi.Input
 
@@ -759,7 +759,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -789,7 +789,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -865,7 +865,7 @@ type GetZonesZoneOption struct {
 // GetZonesZoneOptionInput is an input type that accepts GetZonesZoneOptionArgs and GetZonesZoneOptionOutput values.
 // You can construct a concrete instance of `GetZonesZoneOptionInput` via:
 //
-//          GetZonesZoneOptionArgs{...}
+//	GetZonesZoneOptionArgs{...}
 type GetZonesZoneOptionInput interface {
 	pulumi.Input
 
@@ -895,7 +895,7 @@ func (i GetZonesZoneOptionArgs) ToGetZonesZoneOptionOutputWithContext(ctx contex
 // GetZonesZoneOptionArrayInput is an input type that accepts GetZonesZoneOptionArray and GetZonesZoneOptionArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneOptionArrayInput` via:
 //
-//          GetZonesZoneOptionArray{ GetZonesZoneOptionArgs{...} }
+//	GetZonesZoneOptionArray{ GetZonesZoneOptionArgs{...} }
 type GetZonesZoneOptionArrayInput interface {
 	pulumi.Input
 

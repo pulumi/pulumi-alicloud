@@ -17,29 +17,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewHostAttachment(ctx, "example", &bastionhost.HostAttachmentArgs{
-// 			HostGroupId: pulumi.String("6"),
-// 			HostId:      pulumi.String("15"),
-// 			InstanceId:  pulumi.String("bastionhost-cn-tl32bh0no30"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewHostAttachment(ctx, "example", &bastionhost.HostAttachmentArgs{
+//				HostGroupId: pulumi.String("6"),
+//				HostId:      pulumi.String("15"),
+//				InstanceId:  pulumi.String("bastionhost-cn-tl32bh0no30"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Bastion Host Host Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
+//
 // ```
 type HostAttachment struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *HostAttachment) ToHostAttachmentOutputWithContext(ctx context.Context) 
 // HostAttachmentArrayInput is an input type that accepts HostAttachmentArray and HostAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAttachmentArrayInput` via:
 //
-//          HostAttachmentArray{ HostAttachmentArgs{...} }
+//	HostAttachmentArray{ HostAttachmentArgs{...} }
 type HostAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i HostAttachmentArray) ToHostAttachmentArrayOutputWithContext(ctx context.
 // HostAttachmentMapInput is an input type that accepts HostAttachmentMap and HostAttachmentMapOutput values.
 // You can construct a concrete instance of `HostAttachmentMapInput` via:
 //
-//          HostAttachmentMap{ "key": HostAttachmentArgs{...} }
+//	HostAttachmentMap{ "key": HostAttachmentArgs{...} }
 type HostAttachmentMapInput interface {
 	pulumi.Input
 

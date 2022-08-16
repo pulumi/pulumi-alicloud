@@ -19,54 +19,60 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-// 			Description: pulumi.String("test_AccessG"),
-// 			Type:        pulumi.String("Classic"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
+//				Description: pulumi.String("test_AccessG"),
+//				Type:        pulumi.String("Classic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Example after v1.92.0
+// # Example after v1.92.0
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-// 			AccessGroupName: pulumi.String("CreateAccessGroup"),
-// 			AccessGroupType: pulumi.String("Vpc"),
-// 			Description:     pulumi.String("test_AccessG"),
-// 			FileSystemType:  pulumi.String("extreme"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
+//				AccessGroupName: pulumi.String("CreateAccessGroup"),
+//				AccessGroupType: pulumi.String("Vpc"),
+//				Description:     pulumi.String("test_AccessG"),
+//				FileSystemType:  pulumi.String("extreme"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +80,9 @@ import (
 // NAS Access Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+//
+//	$ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+//
 // ```
 type AccessGroup struct {
 	pulumi.CustomResourceState
@@ -212,7 +220,7 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
 // You can construct a concrete instance of `AccessGroupArrayInput` via:
 //
-//          AccessGroupArray{ AccessGroupArgs{...} }
+//	AccessGroupArray{ AccessGroupArgs{...} }
 type AccessGroupArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +245,7 @@ func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Contex
 // AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
 // You can construct a concrete instance of `AccessGroupMapInput` via:
 //
-//          AccessGroupMap{ "key": AccessGroupArgs{...} }
+//	AccessGroupMap{ "key": AccessGroupArgs{...} }
 type AccessGroupMapInput interface {
 	pulumi.Input
 

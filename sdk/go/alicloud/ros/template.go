@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ros.NewTemplate(ctx, "example", &ros.TemplateArgs{
-// 			TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
-// 			TemplateName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewTemplate(ctx, "example", &ros.TemplateArgs{
+//				TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
+//				TemplateName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ROS Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/template:Template example <template_id>
+//
+//	$ pulumi import alicloud:ros/template:Template example <template_id>
+//
 // ```
 type Template struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutp
 // TemplateArrayInput is an input type that accepts TemplateArray and TemplateArrayOutput values.
 // You can construct a concrete instance of `TemplateArrayInput` via:
 //
-//          TemplateArray{ TemplateArgs{...} }
+//	TemplateArray{ TemplateArgs{...} }
 type TemplateArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i TemplateArray) ToTemplateArrayOutputWithContext(ctx context.Context) Tem
 // TemplateMapInput is an input type that accepts TemplateMap and TemplateMapOutput values.
 // You can construct a concrete instance of `TemplateMapInput` via:
 //
-//          TemplateMap{ "key": TemplateArgs{...} }
+//	TemplateMap{ "key": TemplateArgs{...} }
 type TemplateMapInput interface {
 	pulumi.Input
 

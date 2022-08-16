@@ -114,7 +114,7 @@ func (i *RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) 
 // RoleAttachmentArrayInput is an input type that accepts RoleAttachmentArray and RoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `RoleAttachmentArrayInput` via:
 //
-//          RoleAttachmentArray{ RoleAttachmentArgs{...} }
+//	RoleAttachmentArray{ RoleAttachmentArgs{...} }
 type RoleAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -139,7 +139,7 @@ func (i RoleAttachmentArray) ToRoleAttachmentArrayOutputWithContext(ctx context.
 // RoleAttachmentMapInput is an input type that accepts RoleAttachmentMap and RoleAttachmentMapOutput values.
 // You can construct a concrete instance of `RoleAttachmentMapInput` via:
 //
-//          RoleAttachmentMap{ "key": RoleAttachmentArgs{...} }
+//	RoleAttachmentMap{ "key": RoleAttachmentArgs{...} }
 type RoleAttachmentMapInput interface {
 	pulumi.Input
 

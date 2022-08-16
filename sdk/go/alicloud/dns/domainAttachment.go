@@ -17,25 +17,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewDomainAttachment(ctx, "dns", &dns.DomainAttachmentArgs{
-// 			DomainNames: pulumi.StringArray{
-// 				pulumi.String("test111.abc"),
-// 				pulumi.String("test222.abc"),
-// 			},
-// 			InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDomainAttachment(ctx, "dns", &dns.DomainAttachmentArgs{
+//				DomainNames: pulumi.StringArray{
+//					pulumi.String("test111.abc"),
+//					pulumi.String("test222.abc"),
+//				},
+//				InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // DNS domain attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+//
+//	$ pulumi import alicloud:dns/domainAttachment:DomainAttachment example dns-cn-v0h1ldjhxxx
+//
 // ```
 type DomainAttachment struct {
 	pulumi.CustomResourceState
@@ -147,7 +152,7 @@ func (i *DomainAttachment) ToDomainAttachmentOutputWithContext(ctx context.Conte
 // DomainAttachmentArrayInput is an input type that accepts DomainAttachmentArray and DomainAttachmentArrayOutput values.
 // You can construct a concrete instance of `DomainAttachmentArrayInput` via:
 //
-//          DomainAttachmentArray{ DomainAttachmentArgs{...} }
+//	DomainAttachmentArray{ DomainAttachmentArgs{...} }
 type DomainAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -172,7 +177,7 @@ func (i DomainAttachmentArray) ToDomainAttachmentArrayOutputWithContext(ctx cont
 // DomainAttachmentMapInput is an input type that accepts DomainAttachmentMap and DomainAttachmentMapOutput values.
 // You can construct a concrete instance of `DomainAttachmentMapInput` via:
 //
-//          DomainAttachmentMap{ "key": DomainAttachmentArgs{...} }
+//	DomainAttachmentMap{ "key": DomainAttachmentArgs{...} }
 type DomainAttachmentMapInput interface {
 	pulumi.Input
 

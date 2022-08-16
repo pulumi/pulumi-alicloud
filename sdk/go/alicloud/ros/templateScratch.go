@@ -19,45 +19,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ros.NewTemplateScratch(ctx, "example", &ros.TemplateScratchArgs{
-// 			Description:         pulumi.String("tf_testacc"),
-// 			TemplateScratchType: pulumi.String("ResourceImport"),
-// 			PreferenceParameters: ros.TemplateScratchPreferenceParameterArray{
-// 				&ros.TemplateScratchPreferenceParameterArgs{
-// 					ParameterKey:   pulumi.String("DeletionPolicy"),
-// 					ParameterValue: pulumi.String("Retain"),
-// 				},
-// 			},
-// 			SourceResourceGroup: &ros.TemplateScratchSourceResourceGroupArgs{
-// 				ResourceGroupId: pulumi.String(_default.Ids[0]),
-// 				ResourceTypeFilters: pulumi.StringArray{
-// 					pulumi.String("ALIYUN::ECS::VPC"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ros.NewTemplateScratch(ctx, "example", &ros.TemplateScratchArgs{
+//				Description:         pulumi.String("tf_testacc"),
+//				TemplateScratchType: pulumi.String("ResourceImport"),
+//				PreferenceParameters: ros.TemplateScratchPreferenceParameterArray{
+//					&ros.TemplateScratchPreferenceParameterArgs{
+//						ParameterKey:   pulumi.String("DeletionPolicy"),
+//						ParameterValue: pulumi.String("Retain"),
+//					},
+//				},
+//				SourceResourceGroup: &ros.TemplateScratchSourceResourceGroupArgs{
+//					ResourceGroupId: pulumi.String(_default.Ids[0]),
+//					ResourceTypeFilters: pulumi.StringArray{
+//						pulumi.String("ALIYUN::ECS::VPC"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // ROS Template Scratch can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
+//
+//	$ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
+//
 // ```
 type TemplateScratch struct {
 	pulumi.CustomResourceState
@@ -232,7 +237,7 @@ func (i *TemplateScratch) ToTemplateScratchOutputWithContext(ctx context.Context
 // TemplateScratchArrayInput is an input type that accepts TemplateScratchArray and TemplateScratchArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchArrayInput` via:
 //
-//          TemplateScratchArray{ TemplateScratchArgs{...} }
+//	TemplateScratchArray{ TemplateScratchArgs{...} }
 type TemplateScratchArrayInput interface {
 	pulumi.Input
 
@@ -257,7 +262,7 @@ func (i TemplateScratchArray) ToTemplateScratchArrayOutputWithContext(ctx contex
 // TemplateScratchMapInput is an input type that accepts TemplateScratchMap and TemplateScratchMapOutput values.
 // You can construct a concrete instance of `TemplateScratchMapInput` via:
 //
-//          TemplateScratchMap{ "key": TemplateScratchArgs{...} }
+//	TemplateScratchMap{ "key": TemplateScratchArgs{...} }
 type TemplateScratchMapInput interface {
 	pulumi.Input
 

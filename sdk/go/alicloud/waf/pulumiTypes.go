@@ -18,7 +18,7 @@ type DomainLogHeader struct {
 // DomainLogHeaderInput is an input type that accepts DomainLogHeaderArgs and DomainLogHeaderOutput values.
 // You can construct a concrete instance of `DomainLogHeaderInput` via:
 //
-//          DomainLogHeaderArgs{...}
+//	DomainLogHeaderArgs{...}
 type DomainLogHeaderInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i DomainLogHeaderArgs) ToDomainLogHeaderOutputWithContext(ctx context.Cont
 // DomainLogHeaderArrayInput is an input type that accepts DomainLogHeaderArray and DomainLogHeaderArrayOutput values.
 // You can construct a concrete instance of `DomainLogHeaderArrayInput` via:
 //
-//          DomainLogHeaderArray{ DomainLogHeaderArgs{...} }
+//	DomainLogHeaderArray{ DomainLogHeaderArgs{...} }
 type DomainLogHeaderArrayInput interface {
 	pulumi.Input
 
@@ -130,7 +130,7 @@ type GetCertificatesCertificate struct {
 // GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateInput` via:
 //
-//          GetCertificatesCertificateArgs{...}
+//	GetCertificatesCertificateArgs{...}
 type GetCertificatesCertificateInput interface {
 	pulumi.Input
 
@@ -170,7 +170,7 @@ func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithCo
 // GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
 //
-//          GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
+//	GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
 type GetCertificatesCertificateArrayInput interface {
 	pulumi.Input
 
@@ -310,7 +310,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -376,7 +376,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -537,7 +537,7 @@ type GetDomainsDomainLogHeader struct {
 // GetDomainsDomainLogHeaderInput is an input type that accepts GetDomainsDomainLogHeaderArgs and GetDomainsDomainLogHeaderOutput values.
 // You can construct a concrete instance of `GetDomainsDomainLogHeaderInput` via:
 //
-//          GetDomainsDomainLogHeaderArgs{...}
+//	GetDomainsDomainLogHeaderArgs{...}
 type GetDomainsDomainLogHeaderInput interface {
 	pulumi.Input
 
@@ -565,7 +565,7 @@ func (i GetDomainsDomainLogHeaderArgs) ToGetDomainsDomainLogHeaderOutputWithCont
 // GetDomainsDomainLogHeaderArrayInput is an input type that accepts GetDomainsDomainLogHeaderArray and GetDomainsDomainLogHeaderArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainLogHeaderArrayInput` via:
 //
-//          GetDomainsDomainLogHeaderArray{ GetDomainsDomainLogHeaderArgs{...} }
+//	GetDomainsDomainLogHeaderArray{ GetDomainsDomainLogHeaderArgs{...} }
 type GetDomainsDomainLogHeaderArrayInput interface {
 	pulumi.Input
 
@@ -650,7 +650,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -691,7 +691,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 

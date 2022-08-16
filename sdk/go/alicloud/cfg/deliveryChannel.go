@@ -16,7 +16,9 @@ import (
 // Alicloud Config Delivery Channel can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+//
+//	$ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+//
 // ```
 type DeliveryChannel struct {
 	pulumi.CustomResourceState
@@ -188,7 +190,7 @@ func (i *DeliveryChannel) ToDeliveryChannelOutputWithContext(ctx context.Context
 // DeliveryChannelArrayInput is an input type that accepts DeliveryChannelArray and DeliveryChannelArrayOutput values.
 // You can construct a concrete instance of `DeliveryChannelArrayInput` via:
 //
-//          DeliveryChannelArray{ DeliveryChannelArgs{...} }
+//	DeliveryChannelArray{ DeliveryChannelArgs{...} }
 type DeliveryChannelArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +215,7 @@ func (i DeliveryChannelArray) ToDeliveryChannelArrayOutputWithContext(ctx contex
 // DeliveryChannelMapInput is an input type that accepts DeliveryChannelMap and DeliveryChannelMapOutput values.
 // You can construct a concrete instance of `DeliveryChannelMapInput` via:
 //
-//          DeliveryChannelMap{ "key": DeliveryChannelArgs{...} }
+//	DeliveryChannelMap{ "key": DeliveryChannelArgs{...} }
 type DeliveryChannelMapInput interface {
 	pulumi.Input
 

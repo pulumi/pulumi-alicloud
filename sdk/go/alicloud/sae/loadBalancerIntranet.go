@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sae.NewLoadBalancerIntranet(ctx, "example", &sae.LoadBalancerIntranetArgs{
-// 			AppId: pulumi.String("your_application_id"),
-// 			Intranets: sae.LoadBalancerIntranetIntranetArray{
-// 				&sae.LoadBalancerIntranetIntranetArgs{
-// 					Port:       pulumi.Int(80),
-// 					Protocol:   pulumi.String("TCP"),
-// 					TargetPort: pulumi.Int(8080),
-// 				},
-// 			},
-// 			IntranetSlbId: pulumi.String("intranet_slb_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sae.NewLoadBalancerIntranet(ctx, "example", &sae.LoadBalancerIntranetArgs{
+//				AppId: pulumi.String("your_application_id"),
+//				Intranets: sae.LoadBalancerIntranetIntranetArray{
+//					&sae.LoadBalancerIntranetIntranetArgs{
+//						Port:       pulumi.Int(80),
+//						Protocol:   pulumi.String("TCP"),
+//						TargetPort: pulumi.Int(8080),
+//					},
+//				},
+//				IntranetSlbId: pulumi.String("intranet_slb_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // The resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet example <id>
+//
+//	$ pulumi import alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet example <id>
+//
 // ```
 type LoadBalancerIntranet struct {
 	pulumi.CustomResourceState
@@ -175,7 +180,7 @@ func (i *LoadBalancerIntranet) ToLoadBalancerIntranetOutputWithContext(ctx conte
 // LoadBalancerIntranetArrayInput is an input type that accepts LoadBalancerIntranetArray and LoadBalancerIntranetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetArrayInput` via:
 //
-//          LoadBalancerIntranetArray{ LoadBalancerIntranetArgs{...} }
+//	LoadBalancerIntranetArray{ LoadBalancerIntranetArgs{...} }
 type LoadBalancerIntranetArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +205,7 @@ func (i LoadBalancerIntranetArray) ToLoadBalancerIntranetArrayOutputWithContext(
 // LoadBalancerIntranetMapInput is an input type that accepts LoadBalancerIntranetMap and LoadBalancerIntranetMapOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetMapInput` via:
 //
-//          LoadBalancerIntranetMap{ "key": LoadBalancerIntranetArgs{...} }
+//	LoadBalancerIntranetMap{ "key": LoadBalancerIntranetArgs{...} }
 type LoadBalancerIntranetMapInput interface {
 	pulumi.Input
 

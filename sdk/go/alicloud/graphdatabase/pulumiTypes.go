@@ -22,7 +22,7 @@ type DbInstanceDbInstanceIpArray struct {
 // DbInstanceDbInstanceIpArrayInput is an input type that accepts DbInstanceDbInstanceIpArray and DbInstanceDbInstanceIpArrayOutput values.
 // You can construct a concrete instance of `DbInstanceDbInstanceIpArrayInput` via:
 //
-//          DbInstanceDbInstanceIpArray{ DbInstanceDbInstanceIpArgs{...} }
+//	DbInstanceDbInstanceIpArray{ DbInstanceDbInstanceIpArgs{...} }
 type DbInstanceDbInstanceIpArrayInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i DbInstanceDbInstanceIpArrayArgs) ToDbInstanceDbInstanceIpArrayOutputWith
 // DbInstanceDbInstanceIpArrayArrayInput is an input type that accepts DbInstanceDbInstanceIpArrayArray and DbInstanceDbInstanceIpArrayArrayOutput values.
 // You can construct a concrete instance of `DbInstanceDbInstanceIpArrayArrayInput` via:
 //
-//          DbInstanceDbInstanceIpArrayArray{ DbInstanceDbInstanceIpArrayArgs{...} }
+//	DbInstanceDbInstanceIpArrayArray{ DbInstanceDbInstanceIpArrayArgs{...} }
 type DbInstanceDbInstanceIpArrayArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type GetDbInstancesInstance struct {
 // GetDbInstancesInstanceInput is an input type that accepts GetDbInstancesInstanceArgs and GetDbInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceInput` via:
 //
-//          GetDbInstancesInstanceArgs{...}
+//	GetDbInstancesInstanceArgs{...}
 type GetDbInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -289,7 +289,7 @@ func (i GetDbInstancesInstanceArgs) ToGetDbInstancesInstanceOutputWithContext(ct
 // GetDbInstancesInstanceArrayInput is an input type that accepts GetDbInstancesInstanceArray and GetDbInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceArrayInput` via:
 //
-//          GetDbInstancesInstanceArray{ GetDbInstancesInstanceArgs{...} }
+//	GetDbInstancesInstanceArray{ GetDbInstancesInstanceArgs{...} }
 type GetDbInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -522,7 +522,7 @@ type GetDbInstancesInstanceDbInstanceIpArray struct {
 // GetDbInstancesInstanceDbInstanceIpArrayInput is an input type that accepts GetDbInstancesInstanceDbInstanceIpArray and GetDbInstancesInstanceDbInstanceIpArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceDbInstanceIpArrayInput` via:
 //
-//          GetDbInstancesInstanceDbInstanceIpArray{ GetDbInstancesInstanceDbInstanceIpArgs{...} }
+//	GetDbInstancesInstanceDbInstanceIpArray{ GetDbInstancesInstanceDbInstanceIpArgs{...} }
 type GetDbInstancesInstanceDbInstanceIpArrayInput interface {
 	pulumi.Input
 
@@ -554,7 +554,7 @@ func (i GetDbInstancesInstanceDbInstanceIpArrayArgs) ToGetDbInstancesInstanceDbI
 // GetDbInstancesInstanceDbInstanceIpArrayArrayInput is an input type that accepts GetDbInstancesInstanceDbInstanceIpArrayArray and GetDbInstancesInstanceDbInstanceIpArrayArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceDbInstanceIpArrayArrayInput` via:
 //
-//          GetDbInstancesInstanceDbInstanceIpArrayArray{ GetDbInstancesInstanceDbInstanceIpArrayArgs{...} }
+//	GetDbInstancesInstanceDbInstanceIpArrayArray{ GetDbInstancesInstanceDbInstanceIpArrayArgs{...} }
 type GetDbInstancesInstanceDbInstanceIpArrayArrayInput interface {
 	pulumi.Input
 

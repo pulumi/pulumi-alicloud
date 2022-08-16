@@ -19,37 +19,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
-// 			RepeatWeekdays: pulumi.StringArray{
-// 				pulumi.String("1"),
-// 				pulumi.String("2"),
-// 				pulumi.String("3"),
-// 			},
-// 			RetentionDays: -1,
-// 			TimePoints: pulumi.StringArray{
-// 				pulumi.String("1"),
-// 				pulumi.String("22"),
-// 				pulumi.String("23"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				RetentionDays: -1,
+//				TimePoints: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("22"),
+//					pulumi.String("23"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // ECS Auto Snapshot Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+//
+//	$ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+//
 // ```
 type AutoSnapshotPolicy struct {
 	pulumi.CustomResourceState
@@ -280,7 +285,7 @@ func (i *AutoSnapshotPolicy) ToAutoSnapshotPolicyOutputWithContext(ctx context.C
 // AutoSnapshotPolicyArrayInput is an input type that accepts AutoSnapshotPolicyArray and AutoSnapshotPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoSnapshotPolicyArrayInput` via:
 //
-//          AutoSnapshotPolicyArray{ AutoSnapshotPolicyArgs{...} }
+//	AutoSnapshotPolicyArray{ AutoSnapshotPolicyArgs{...} }
 type AutoSnapshotPolicyArrayInput interface {
 	pulumi.Input
 
@@ -305,7 +310,7 @@ func (i AutoSnapshotPolicyArray) ToAutoSnapshotPolicyArrayOutputWithContext(ctx 
 // AutoSnapshotPolicyMapInput is an input type that accepts AutoSnapshotPolicyMap and AutoSnapshotPolicyMapOutput values.
 // You can construct a concrete instance of `AutoSnapshotPolicyMapInput` via:
 //
-//          AutoSnapshotPolicyMap{ "key": AutoSnapshotPolicyArgs{...} }
+//	AutoSnapshotPolicyMap{ "key": AutoSnapshotPolicyArgs{...} }
 type AutoSnapshotPolicyMapInput interface {
 	pulumi.Input
 
@@ -342,9 +347,9 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 }
 
 // The retention period of the snapshot copied across regions.
-// - -1: The snapshot is permanently retained.
-// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-//   Default value: -1.
+//   - -1: The snapshot is permanently retained.
+//   - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+//     Default value: -1.
 func (o AutoSnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntPtrOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -367,9 +372,9 @@ func (o AutoSnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
 }
 
 // The snapshot retention time, and the unit of measurement is day. Optional values:
-// - -1: The automatic snapshots are retained permanently.
-// - [1, 65536]: The number of days retained.
-//   Default value: -1.
+//   - -1: The automatic snapshots are retained permanently.
+//   - [1, 65536]: The number of days retained.
+//     Default value: -1.
 func (o AutoSnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }

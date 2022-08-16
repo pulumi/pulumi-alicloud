@@ -35,7 +35,7 @@ type GetMongoInstancesInstance struct {
 // GetMongoInstancesInstanceInput is an input type that accepts GetMongoInstancesInstanceArgs and GetMongoInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceInput` via:
 //
-//          GetMongoInstancesInstanceArgs{...}
+//	GetMongoInstancesInstanceArgs{...}
 type GetMongoInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -80,7 +80,7 @@ func (i GetMongoInstancesInstanceArgs) ToGetMongoInstancesInstanceOutputWithCont
 // GetMongoInstancesInstanceArrayInput is an input type that accepts GetMongoInstancesInstanceArray and GetMongoInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceArrayInput` via:
 //
-//          GetMongoInstancesInstanceArray{ GetMongoInstancesInstanceArgs{...} }
+//	GetMongoInstancesInstanceArray{ GetMongoInstancesInstanceArgs{...} }
 type GetMongoInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +221,7 @@ type GetMongoInstancesInstanceMongo struct {
 // GetMongoInstancesInstanceMongoInput is an input type that accepts GetMongoInstancesInstanceMongoArgs and GetMongoInstancesInstanceMongoOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceMongoInput` via:
 //
-//          GetMongoInstancesInstanceMongoArgs{...}
+//	GetMongoInstancesInstanceMongoArgs{...}
 type GetMongoInstancesInstanceMongoInput interface {
 	pulumi.Input
 
@@ -250,7 +250,7 @@ func (i GetMongoInstancesInstanceMongoArgs) ToGetMongoInstancesInstanceMongoOutp
 // GetMongoInstancesInstanceMongoArrayInput is an input type that accepts GetMongoInstancesInstanceMongoArray and GetMongoInstancesInstanceMongoArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceMongoArrayInput` via:
 //
-//          GetMongoInstancesInstanceMongoArray{ GetMongoInstancesInstanceMongoArgs{...} }
+//	GetMongoInstancesInstanceMongoArray{ GetMongoInstancesInstanceMongoArgs{...} }
 type GetMongoInstancesInstanceMongoArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ type GetMongoInstancesInstanceShard struct {
 // GetMongoInstancesInstanceShardInput is an input type that accepts GetMongoInstancesInstanceShardArgs and GetMongoInstancesInstanceShardOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceShardInput` via:
 //
-//          GetMongoInstancesInstanceShardArgs{...}
+//	GetMongoInstancesInstanceShardArgs{...}
 type GetMongoInstancesInstanceShardInput interface {
 	pulumi.Input
 
@@ -358,7 +358,7 @@ func (i GetMongoInstancesInstanceShardArgs) ToGetMongoInstancesInstanceShardOutp
 // GetMongoInstancesInstanceShardArrayInput is an input type that accepts GetMongoInstancesInstanceShardArray and GetMongoInstancesInstanceShardArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceShardArrayInput` via:
 //
-//          GetMongoInstancesInstanceShardArray{ GetMongoInstancesInstanceShardArgs{...} }
+//	GetMongoInstancesInstanceShardArray{ GetMongoInstancesInstanceShardArgs{...} }
 type GetMongoInstancesInstanceShardArrayInput interface {
 	pulumi.Input
 

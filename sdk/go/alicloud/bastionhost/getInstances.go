@@ -22,26 +22,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-// 			DescriptionRegex: pulumi.StringRef("^bastionhost"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 []interface{}
-// 		for _, val0 := range alicloud_bastionhost_instances.Instance {
-// 			splat0 = append(splat0, val0.Id)
-// 		}
-// 		ctx.Export("instance", splat0)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
+//				DescriptionRegex: pulumi.StringRef("^bastionhost"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []interface{}
+//			for _, val0 := range alicloud_bastionhost_instances.Instance {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			ctx.Export("instance", splat0)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

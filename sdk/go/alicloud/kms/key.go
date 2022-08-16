@@ -16,29 +16,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
-// 			Description:         pulumi.String("Hello KMS"),
-// 			PendingWindowInDays: pulumi.Int(7),
-// 			Status:              pulumi.String("Enabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+//				Description:         pulumi.String("Hello KMS"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Alikms key can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:kms/key:Key example abc123456
+//
+//	$ pulumi import alicloud:kms/key:Key example abc123456
+//
 // ```
 type Key struct {
 	pulumi.CustomResourceState
@@ -452,7 +457,7 @@ func (i *Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 // KeyArrayInput is an input type that accepts KeyArray and KeyArrayOutput values.
 // You can construct a concrete instance of `KeyArrayInput` via:
 //
-//          KeyArray{ KeyArgs{...} }
+//	KeyArray{ KeyArgs{...} }
 type KeyArrayInput interface {
 	pulumi.Input
 
@@ -477,7 +482,7 @@ func (i KeyArray) ToKeyArrayOutputWithContext(ctx context.Context) KeyArrayOutpu
 // KeyMapInput is an input type that accepts KeyMap and KeyMapOutput values.
 // You can construct a concrete instance of `KeyMapInput` via:
 //
-//          KeyMap{ "key": KeyArgs{...} }
+//	KeyMap{ "key": KeyArgs{...} }
 type KeyMapInput interface {
 	pulumi.Input
 
@@ -522,9 +527,9 @@ func (o KeyOutput) Arn() pulumi.StringOutput {
 }
 
 // Specifies whether to enable automatic key rotation. Valid values:
-// - Enabled
-// - Disabled (default value)
-//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+//   - Enabled
+//   - Disabled (default value)
+//     **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 func (o KeyOutput) AutomaticRotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.AutomaticRotation }).(pulumi.StringPtrOutput)
 }
@@ -597,11 +602,11 @@ func (o KeyOutput) NextRotationDate() pulumi.StringOutput {
 }
 
 // The source of key material. Valid values:
-// - Aliyun_KMS (default value)
-// - EXTERNAL
-//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
-//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+//   - Aliyun_KMS (default value)
+//   - EXTERNAL
+//     **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+//     you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+//     For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 func (o KeyOutput) Origin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.Origin }).(pulumi.StringPtrOutput)
 }
@@ -619,11 +624,11 @@ func (o KeyOutput) PrimaryKeyVersion() pulumi.StringOutput {
 }
 
 // The protection level of the CMK. Valid values:
-// - SOFTWARE (default value)
-// - HSM
-//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+//   - SOFTWARE (default value)
+//   - HSM
+//     **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+//     If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+//     If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 func (o KeyOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }

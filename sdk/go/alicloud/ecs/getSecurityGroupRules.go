@@ -22,41 +22,44 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		securityGroupId := cfg.RequireObject("securityGroupId")
-// 		groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-// 			NameRegex: pulumi.StringRef("api"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ingressRulesDs, err := ecs.GetSecurityGroupRules(ctx, &ecs.GetSecurityGroupRulesArgs{
-// 			Direction:  pulumi.StringRef("ingress"),
-// 			GroupId:    groupsDs.Groups[0].Id,
-// 			IpProtocol: pulumi.StringRef("tcp"),
-// 			NicType:    pulumi.StringRef("internet"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewInstance(ctx, "backend", &ecs.InstanceArgs{
-// 			UserData: pulumi.String(fmt.Sprintf("config_service.sh --portrange=%v", ingressRulesDs.Rules[0].PortRange)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			securityGroupId := cfg.RequireObject("securityGroupId")
+//			groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+//				NameRegex: pulumi.StringRef("api"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ingressRulesDs, err := ecs.GetSecurityGroupRules(ctx, &ecs.GetSecurityGroupRulesArgs{
+//				Direction:  pulumi.StringRef("ingress"),
+//				GroupId:    groupsDs.Groups[0].Id,
+//				IpProtocol: pulumi.StringRef("tcp"),
+//				NicType:    pulumi.StringRef("internet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewInstance(ctx, "backend", &ecs.InstanceArgs{
+//				UserData: pulumi.String(fmt.Sprintf("config_service.sh --portrange=%v", ingressRulesDs.Rules[0].PortRange)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupRulesResult, error) {
 	var rv GetSecurityGroupRulesResult

@@ -22,7 +22,7 @@ type AppGroupOrder struct {
 // AppGroupOrderInput is an input type that accepts AppGroupOrderArgs and AppGroupOrderOutput values.
 // You can construct a concrete instance of `AppGroupOrderInput` via:
 //
-//          AppGroupOrderArgs{...}
+//	AppGroupOrderArgs{...}
 type AppGroupOrderInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i AppGroupOrderArgs) ToAppGroupOrderOutputWithContext(ctx context.Context)
 // AppGroupOrderArrayInput is an input type that accepts AppGroupOrderArray and AppGroupOrderArrayOutput values.
 // You can construct a concrete instance of `AppGroupOrderArrayInput` via:
 //
-//          AppGroupOrderArray{ AppGroupOrderArgs{...} }
+//	AppGroupOrderArray{ AppGroupOrderArgs{...} }
 type AppGroupOrderArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ type AppGroupQuota struct {
 // AppGroupQuotaInput is an input type that accepts AppGroupQuotaArgs and AppGroupQuotaOutput values.
 // You can construct a concrete instance of `AppGroupQuotaInput` via:
 //
-//          AppGroupQuotaArgs{...}
+//	AppGroupQuotaArgs{...}
 type AppGroupQuotaInput interface {
 	pulumi.Input
 
@@ -195,11 +195,11 @@ func (i AppGroupQuotaArgs) ToAppGroupQuotaPtrOutputWithContext(ctx context.Conte
 // AppGroupQuotaPtrInput is an input type that accepts AppGroupQuotaArgs, AppGroupQuotaPtr and AppGroupQuotaPtrOutput values.
 // You can construct a concrete instance of `AppGroupQuotaPtrInput` via:
 //
-//          AppGroupQuotaArgs{...}
+//	        AppGroupQuotaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppGroupQuotaPtrInput interface {
 	pulumi.Input
 
@@ -408,7 +408,7 @@ type GetAppGroupsGroup struct {
 // GetAppGroupsGroupInput is an input type that accepts GetAppGroupsGroupArgs and GetAppGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupInput` via:
 //
-//          GetAppGroupsGroupArgs{...}
+//	GetAppGroupsGroupArgs{...}
 type GetAppGroupsGroupInput interface {
 	pulumi.Input
 
@@ -489,7 +489,7 @@ func (i GetAppGroupsGroupArgs) ToGetAppGroupsGroupOutputWithContext(ctx context.
 // GetAppGroupsGroupArrayInput is an input type that accepts GetAppGroupsGroupArray and GetAppGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupArrayInput` via:
 //
-//          GetAppGroupsGroupArray{ GetAppGroupsGroupArgs{...} }
+//	GetAppGroupsGroupArray{ GetAppGroupsGroupArgs{...} }
 type GetAppGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -697,7 +697,7 @@ type GetAppGroupsGroupQuota struct {
 // GetAppGroupsGroupQuotaInput is an input type that accepts GetAppGroupsGroupQuotaArgs and GetAppGroupsGroupQuotaOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupQuotaInput` via:
 //
-//          GetAppGroupsGroupQuotaArgs{...}
+//	GetAppGroupsGroupQuotaArgs{...}
 type GetAppGroupsGroupQuotaInput interface {
 	pulumi.Input
 
@@ -736,7 +736,7 @@ func (i GetAppGroupsGroupQuotaArgs) ToGetAppGroupsGroupQuotaOutputWithContext(ct
 // GetAppGroupsGroupQuotaArrayInput is an input type that accepts GetAppGroupsGroupQuotaArray and GetAppGroupsGroupQuotaArrayOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupQuotaArrayInput` via:
 //
-//          GetAppGroupsGroupQuotaArray{ GetAppGroupsGroupQuotaArgs{...} }
+//	GetAppGroupsGroupQuotaArray{ GetAppGroupsGroupQuotaArgs{...} }
 type GetAppGroupsGroupQuotaArrayInput interface {
 	pulumi.Input
 

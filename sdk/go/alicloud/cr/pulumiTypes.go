@@ -20,7 +20,7 @@ type ChainChainConfig struct {
 // ChainChainConfigInput is an input type that accepts ChainChainConfigArgs and ChainChainConfigOutput values.
 // You can construct a concrete instance of `ChainChainConfigInput` via:
 //
-//          ChainChainConfigArgs{...}
+//	ChainChainConfigArgs{...}
 type ChainChainConfigInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i ChainChainConfigArgs) ToChainChainConfigOutputWithContext(ctx context.Co
 // ChainChainConfigArrayInput is an input type that accepts ChainChainConfigArray and ChainChainConfigArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigArrayInput` via:
 //
-//          ChainChainConfigArray{ ChainChainConfigArgs{...} }
+//	ChainChainConfigArray{ ChainChainConfigArgs{...} }
 type ChainChainConfigArrayInput interface {
 	pulumi.Input
 
@@ -128,7 +128,7 @@ type ChainChainConfigNode struct {
 // ChainChainConfigNodeInput is an input type that accepts ChainChainConfigNodeArgs and ChainChainConfigNodeOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeInput` via:
 //
-//          ChainChainConfigNodeArgs{...}
+//	ChainChainConfigNodeArgs{...}
 type ChainChainConfigNodeInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ func (i ChainChainConfigNodeArgs) ToChainChainConfigNodeOutputWithContext(ctx co
 // ChainChainConfigNodeArrayInput is an input type that accepts ChainChainConfigNodeArray and ChainChainConfigNodeArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeArrayInput` via:
 //
-//          ChainChainConfigNodeArray{ ChainChainConfigNodeArgs{...} }
+//	ChainChainConfigNodeArray{ ChainChainConfigNodeArgs{...} }
 type ChainChainConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +239,7 @@ type ChainChainConfigNodeNodeConfig struct {
 // ChainChainConfigNodeNodeConfigInput is an input type that accepts ChainChainConfigNodeNodeConfigArgs and ChainChainConfigNodeNodeConfigOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigInput` via:
 //
-//          ChainChainConfigNodeNodeConfigArgs{...}
+//	ChainChainConfigNodeNodeConfigArgs{...}
 type ChainChainConfigNodeNodeConfigInput interface {
 	pulumi.Input
 
@@ -267,7 +267,7 @@ func (i ChainChainConfigNodeNodeConfigArgs) ToChainChainConfigNodeNodeConfigOutp
 // ChainChainConfigNodeNodeConfigArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigArray and ChainChainConfigNodeNodeConfigArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigArrayInput` via:
 //
-//          ChainChainConfigNodeNodeConfigArray{ ChainChainConfigNodeNodeConfigArgs{...} }
+//	ChainChainConfigNodeNodeConfigArray{ ChainChainConfigNodeNodeConfigArgs{...} }
 type ChainChainConfigNodeNodeConfigArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +344,7 @@ type ChainChainConfigNodeNodeConfigDenyPolicy struct {
 // ChainChainConfigNodeNodeConfigDenyPolicyInput is an input type that accepts ChainChainConfigNodeNodeConfigDenyPolicyArgs and ChainChainConfigNodeNodeConfigDenyPolicyOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigDenyPolicyInput` via:
 //
-//          ChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
+//	ChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
 type ChainChainConfigNodeNodeConfigDenyPolicyInput interface {
 	pulumi.Input
 
@@ -378,7 +378,7 @@ func (i ChainChainConfigNodeNodeConfigDenyPolicyArgs) ToChainChainConfigNodeNode
 // ChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigDenyPolicyArray and ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
 //
-//          ChainChainConfigNodeNodeConfigDenyPolicyArray{ ChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
+//	ChainChainConfigNodeNodeConfigDenyPolicyArray{ ChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
 type ChainChainConfigNodeNodeConfigDenyPolicyArrayInput interface {
 	pulumi.Input
 
@@ -464,7 +464,7 @@ type ChainChainConfigRouter struct {
 // ChainChainConfigRouterInput is an input type that accepts ChainChainConfigRouterArgs and ChainChainConfigRouterOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterInput` via:
 //
-//          ChainChainConfigRouterArgs{...}
+//	ChainChainConfigRouterArgs{...}
 type ChainChainConfigRouterInput interface {
 	pulumi.Input
 
@@ -494,7 +494,7 @@ func (i ChainChainConfigRouterArgs) ToChainChainConfigRouterOutputWithContext(ct
 // ChainChainConfigRouterArrayInput is an input type that accepts ChainChainConfigRouterArray and ChainChainConfigRouterArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterArrayInput` via:
 //
-//          ChainChainConfigRouterArray{ ChainChainConfigRouterArgs{...} }
+//	ChainChainConfigRouterArray{ ChainChainConfigRouterArgs{...} }
 type ChainChainConfigRouterArrayInput interface {
 	pulumi.Input
 
@@ -568,7 +568,7 @@ type ChainChainConfigRouterFrom struct {
 // ChainChainConfigRouterFromInput is an input type that accepts ChainChainConfigRouterFromArgs and ChainChainConfigRouterFromOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterFromInput` via:
 //
-//          ChainChainConfigRouterFromArgs{...}
+//	ChainChainConfigRouterFromArgs{...}
 type ChainChainConfigRouterFromInput interface {
 	pulumi.Input
 
@@ -596,7 +596,7 @@ func (i ChainChainConfigRouterFromArgs) ToChainChainConfigRouterFromOutputWithCo
 // ChainChainConfigRouterFromArrayInput is an input type that accepts ChainChainConfigRouterFromArray and ChainChainConfigRouterFromArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterFromArrayInput` via:
 //
-//          ChainChainConfigRouterFromArray{ ChainChainConfigRouterFromArgs{...} }
+//	ChainChainConfigRouterFromArray{ ChainChainConfigRouterFromArgs{...} }
 type ChainChainConfigRouterFromArrayInput interface {
 	pulumi.Input
 
@@ -665,7 +665,7 @@ type ChainChainConfigRouterTo struct {
 // ChainChainConfigRouterToInput is an input type that accepts ChainChainConfigRouterToArgs and ChainChainConfigRouterToOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterToInput` via:
 //
-//          ChainChainConfigRouterToArgs{...}
+//	ChainChainConfigRouterToArgs{...}
 type ChainChainConfigRouterToInput interface {
 	pulumi.Input
 
@@ -693,7 +693,7 @@ func (i ChainChainConfigRouterToArgs) ToChainChainConfigRouterToOutputWithContex
 // ChainChainConfigRouterToArrayInput is an input type that accepts ChainChainConfigRouterToArray and ChainChainConfigRouterToArrayOutput values.
 // You can construct a concrete instance of `ChainChainConfigRouterToArrayInput` via:
 //
-//          ChainChainConfigRouterToArray{ ChainChainConfigRouterToArgs{...} }
+//	ChainChainConfigRouterToArray{ ChainChainConfigRouterToArgs{...} }
 type ChainChainConfigRouterToArrayInput interface {
 	pulumi.Input
 
@@ -766,7 +766,7 @@ type RepoDomainList struct {
 // RepoDomainListInput is an input type that accepts RepoDomainListArgs and RepoDomainListOutput values.
 // You can construct a concrete instance of `RepoDomainListInput` via:
 //
-//          RepoDomainListArgs{...}
+//	RepoDomainListArgs{...}
 type RepoDomainListInput interface {
 	pulumi.Input
 
@@ -806,11 +806,11 @@ func (i RepoDomainListArgs) ToRepoDomainListPtrOutputWithContext(ctx context.Con
 // RepoDomainListPtrInput is an input type that accepts RepoDomainListArgs, RepoDomainListPtr and RepoDomainListPtrOutput values.
 // You can construct a concrete instance of `RepoDomainListPtrInput` via:
 //
-//          RepoDomainListArgs{...}
+//	        RepoDomainListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RepoDomainListPtrInput interface {
 	pulumi.Input
 
@@ -955,7 +955,7 @@ type GetChainsChain struct {
 // GetChainsChainInput is an input type that accepts GetChainsChainArgs and GetChainsChainOutput values.
 // You can construct a concrete instance of `GetChainsChainInput` via:
 //
-//          GetChainsChainArgs{...}
+//	GetChainsChainArgs{...}
 type GetChainsChainInput interface {
 	pulumi.Input
 
@@ -1001,7 +1001,7 @@ func (i GetChainsChainArgs) ToGetChainsChainOutputWithContext(ctx context.Contex
 // GetChainsChainArrayInput is an input type that accepts GetChainsChainArray and GetChainsChainArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainArrayInput` via:
 //
-//          GetChainsChainArray{ GetChainsChainArgs{...} }
+//	GetChainsChainArray{ GetChainsChainArgs{...} }
 type GetChainsChainArrayInput interface {
 	pulumi.Input
 
@@ -1117,7 +1117,7 @@ type GetChainsChainChainConfig struct {
 // GetChainsChainChainConfigInput is an input type that accepts GetChainsChainChainConfigArgs and GetChainsChainChainConfigOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigInput` via:
 //
-//          GetChainsChainChainConfigArgs{...}
+//	GetChainsChainChainConfigArgs{...}
 type GetChainsChainChainConfigInput interface {
 	pulumi.Input
 
@@ -1147,7 +1147,7 @@ func (i GetChainsChainChainConfigArgs) ToGetChainsChainChainConfigOutputWithCont
 // GetChainsChainChainConfigArrayInput is an input type that accepts GetChainsChainChainConfigArray and GetChainsChainChainConfigArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigArrayInput` via:
 //
-//          GetChainsChainChainConfigArray{ GetChainsChainChainConfigArgs{...} }
+//	GetChainsChainChainConfigArray{ GetChainsChainChainConfigArgs{...} }
 type GetChainsChainChainConfigArrayInput interface {
 	pulumi.Input
 
@@ -1225,7 +1225,7 @@ type GetChainsChainChainConfigNode struct {
 // GetChainsChainChainConfigNodeInput is an input type that accepts GetChainsChainChainConfigNodeArgs and GetChainsChainChainConfigNodeOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeInput` via:
 //
-//          GetChainsChainChainConfigNodeArgs{...}
+//	GetChainsChainChainConfigNodeArgs{...}
 type GetChainsChainChainConfigNodeInput interface {
 	pulumi.Input
 
@@ -1257,7 +1257,7 @@ func (i GetChainsChainChainConfigNodeArgs) ToGetChainsChainChainConfigNodeOutput
 // GetChainsChainChainConfigNodeArrayInput is an input type that accepts GetChainsChainChainConfigNodeArray and GetChainsChainChainConfigNodeArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeArrayInput` via:
 //
-//          GetChainsChainChainConfigNodeArray{ GetChainsChainChainConfigNodeArgs{...} }
+//	GetChainsChainChainConfigNodeArray{ GetChainsChainChainConfigNodeArgs{...} }
 type GetChainsChainChainConfigNodeArrayInput interface {
 	pulumi.Input
 
@@ -1336,7 +1336,7 @@ type GetChainsChainChainConfigNodeNodeConfig struct {
 // GetChainsChainChainConfigNodeNodeConfigInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigArgs and GetChainsChainChainConfigNodeNodeConfigOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigInput` via:
 //
-//          GetChainsChainChainConfigNodeNodeConfigArgs{...}
+//	GetChainsChainChainConfigNodeNodeConfigArgs{...}
 type GetChainsChainChainConfigNodeNodeConfigInput interface {
 	pulumi.Input
 
@@ -1364,7 +1364,7 @@ func (i GetChainsChainChainConfigNodeNodeConfigArgs) ToGetChainsChainChainConfig
 // GetChainsChainChainConfigNodeNodeConfigArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigArray and GetChainsChainChainConfigNodeNodeConfigArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigArrayInput` via:
 //
-//          GetChainsChainChainConfigNodeNodeConfigArray{ GetChainsChainChainConfigNodeNodeConfigArgs{...} }
+//	GetChainsChainChainConfigNodeNodeConfigArray{ GetChainsChainChainConfigNodeNodeConfigArgs{...} }
 type GetChainsChainChainConfigNodeNodeConfigArrayInput interface {
 	pulumi.Input
 
@@ -1441,7 +1441,7 @@ type GetChainsChainChainConfigNodeNodeConfigDenyPolicy struct {
 // GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs and GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput` via:
 //
-//          GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
+//	GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
 type GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput interface {
 	pulumi.Input
 
@@ -1475,7 +1475,7 @@ func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ToGetChainsChainC
 // GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray and GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
 //
-//          GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray{ GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
+//	GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray{ GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
 type GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1561,7 +1561,7 @@ type GetChainsChainChainConfigRouter struct {
 // GetChainsChainChainConfigRouterInput is an input type that accepts GetChainsChainChainConfigRouterArgs and GetChainsChainChainConfigRouterOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterInput` via:
 //
-//          GetChainsChainChainConfigRouterArgs{...}
+//	GetChainsChainChainConfigRouterArgs{...}
 type GetChainsChainChainConfigRouterInput interface {
 	pulumi.Input
 
@@ -1591,7 +1591,7 @@ func (i GetChainsChainChainConfigRouterArgs) ToGetChainsChainChainConfigRouterOu
 // GetChainsChainChainConfigRouterArrayInput is an input type that accepts GetChainsChainChainConfigRouterArray and GetChainsChainChainConfigRouterArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterArrayInput` via:
 //
-//          GetChainsChainChainConfigRouterArray{ GetChainsChainChainConfigRouterArgs{...} }
+//	GetChainsChainChainConfigRouterArray{ GetChainsChainChainConfigRouterArgs{...} }
 type GetChainsChainChainConfigRouterArrayInput interface {
 	pulumi.Input
 
@@ -1665,7 +1665,7 @@ type GetChainsChainChainConfigRouterFrom struct {
 // GetChainsChainChainConfigRouterFromInput is an input type that accepts GetChainsChainChainConfigRouterFromArgs and GetChainsChainChainConfigRouterFromOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterFromInput` via:
 //
-//          GetChainsChainChainConfigRouterFromArgs{...}
+//	GetChainsChainChainConfigRouterFromArgs{...}
 type GetChainsChainChainConfigRouterFromInput interface {
 	pulumi.Input
 
@@ -1693,7 +1693,7 @@ func (i GetChainsChainChainConfigRouterFromArgs) ToGetChainsChainChainConfigRout
 // GetChainsChainChainConfigRouterFromArrayInput is an input type that accepts GetChainsChainChainConfigRouterFromArray and GetChainsChainChainConfigRouterFromArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterFromArrayInput` via:
 //
-//          GetChainsChainChainConfigRouterFromArray{ GetChainsChainChainConfigRouterFromArgs{...} }
+//	GetChainsChainChainConfigRouterFromArray{ GetChainsChainChainConfigRouterFromArgs{...} }
 type GetChainsChainChainConfigRouterFromArrayInput interface {
 	pulumi.Input
 
@@ -1762,7 +1762,7 @@ type GetChainsChainChainConfigRouterTo struct {
 // GetChainsChainChainConfigRouterToInput is an input type that accepts GetChainsChainChainConfigRouterToArgs and GetChainsChainChainConfigRouterToOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterToInput` via:
 //
-//          GetChainsChainChainConfigRouterToArgs{...}
+//	GetChainsChainChainConfigRouterToArgs{...}
 type GetChainsChainChainConfigRouterToInput interface {
 	pulumi.Input
 
@@ -1790,7 +1790,7 @@ func (i GetChainsChainChainConfigRouterToArgs) ToGetChainsChainChainConfigRouter
 // GetChainsChainChainConfigRouterToArrayInput is an input type that accepts GetChainsChainChainConfigRouterToArray and GetChainsChainChainConfigRouterToArrayOutput values.
 // You can construct a concrete instance of `GetChainsChainChainConfigRouterToArrayInput` via:
 //
-//          GetChainsChainChainConfigRouterToArray{ GetChainsChainChainConfigRouterToArgs{...} }
+//	GetChainsChainChainConfigRouterToArray{ GetChainsChainChainConfigRouterToArgs{...} }
 type GetChainsChainChainConfigRouterToArrayInput interface {
 	pulumi.Input
 
@@ -1869,7 +1869,7 @@ type GetChartNamespacesNamespace struct {
 // GetChartNamespacesNamespaceInput is an input type that accepts GetChartNamespacesNamespaceArgs and GetChartNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetChartNamespacesNamespaceInput` via:
 //
-//          GetChartNamespacesNamespaceArgs{...}
+//	GetChartNamespacesNamespaceArgs{...}
 type GetChartNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -1907,7 +1907,7 @@ func (i GetChartNamespacesNamespaceArgs) ToGetChartNamespacesNamespaceOutputWith
 // GetChartNamespacesNamespaceArrayInput is an input type that accepts GetChartNamespacesNamespaceArray and GetChartNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetChartNamespacesNamespaceArrayInput` via:
 //
-//          GetChartNamespacesNamespaceArray{ GetChartNamespacesNamespaceArgs{...} }
+//	GetChartNamespacesNamespaceArray{ GetChartNamespacesNamespaceArgs{...} }
 type GetChartNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -2015,7 +2015,7 @@ type GetChartRepositoriesRepository struct {
 // GetChartRepositoriesRepositoryInput is an input type that accepts GetChartRepositoriesRepositoryArgs and GetChartRepositoriesRepositoryOutput values.
 // You can construct a concrete instance of `GetChartRepositoriesRepositoryInput` via:
 //
-//          GetChartRepositoriesRepositoryArgs{...}
+//	GetChartRepositoriesRepositoryArgs{...}
 type GetChartRepositoriesRepositoryInput interface {
 	pulumi.Input
 
@@ -2057,7 +2057,7 @@ func (i GetChartRepositoriesRepositoryArgs) ToGetChartRepositoriesRepositoryOutp
 // GetChartRepositoriesRepositoryArrayInput is an input type that accepts GetChartRepositoriesRepositoryArray and GetChartRepositoriesRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetChartRepositoriesRepositoryArrayInput` via:
 //
-//          GetChartRepositoriesRepositoryArray{ GetChartRepositoriesRepositoryArgs{...} }
+//	GetChartRepositoriesRepositoryArray{ GetChartRepositoriesRepositoryArgs{...} }
 type GetChartRepositoriesRepositoryArrayInput interface {
 	pulumi.Input
 
@@ -2169,7 +2169,7 @@ type GetEndpointAclPoliciesPolicy struct {
 // GetEndpointAclPoliciesPolicyInput is an input type that accepts GetEndpointAclPoliciesPolicyArgs and GetEndpointAclPoliciesPolicyOutput values.
 // You can construct a concrete instance of `GetEndpointAclPoliciesPolicyInput` via:
 //
-//          GetEndpointAclPoliciesPolicyArgs{...}
+//	GetEndpointAclPoliciesPolicyArgs{...}
 type GetEndpointAclPoliciesPolicyInput interface {
 	pulumi.Input
 
@@ -2205,7 +2205,7 @@ func (i GetEndpointAclPoliciesPolicyArgs) ToGetEndpointAclPoliciesPolicyOutputWi
 // GetEndpointAclPoliciesPolicyArrayInput is an input type that accepts GetEndpointAclPoliciesPolicyArray and GetEndpointAclPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetEndpointAclPoliciesPolicyArrayInput` via:
 //
-//          GetEndpointAclPoliciesPolicyArray{ GetEndpointAclPoliciesPolicyArgs{...} }
+//	GetEndpointAclPoliciesPolicyArray{ GetEndpointAclPoliciesPolicyArgs{...} }
 type GetEndpointAclPoliciesPolicyArrayInput interface {
 	pulumi.Input
 
@@ -2298,7 +2298,7 @@ type GetNamespacesNamespace struct {
 // GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
 //
-//          GetNamespacesNamespaceArgs{...}
+//	GetNamespacesNamespaceArgs{...}
 type GetNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -2330,7 +2330,7 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
-//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
+//	GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
 type GetNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -2419,7 +2419,7 @@ type GetReposRepo struct {
 // GetReposRepoInput is an input type that accepts GetReposRepoArgs and GetReposRepoOutput values.
 // You can construct a concrete instance of `GetReposRepoInput` via:
 //
-//          GetReposRepoArgs{...}
+//	GetReposRepoArgs{...}
 type GetReposRepoInput interface {
 	pulumi.Input
 
@@ -2457,7 +2457,7 @@ func (i GetReposRepoArgs) ToGetReposRepoOutputWithContext(ctx context.Context) G
 // GetReposRepoArrayInput is an input type that accepts GetReposRepoArray and GetReposRepoArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoArrayInput` via:
 //
-//          GetReposRepoArray{ GetReposRepoArgs{...} }
+//	GetReposRepoArray{ GetReposRepoArgs{...} }
 type GetReposRepoArrayInput interface {
 	pulumi.Input
 
@@ -2555,7 +2555,7 @@ type GetReposRepoDomainList struct {
 // GetReposRepoDomainListInput is an input type that accepts GetReposRepoDomainListArgs and GetReposRepoDomainListOutput values.
 // You can construct a concrete instance of `GetReposRepoDomainListInput` via:
 //
-//          GetReposRepoDomainListArgs{...}
+//	GetReposRepoDomainListArgs{...}
 type GetReposRepoDomainListInput interface {
 	pulumi.Input
 
@@ -2633,7 +2633,7 @@ type GetReposRepoTag struct {
 // GetReposRepoTagInput is an input type that accepts GetReposRepoTagArgs and GetReposRepoTagOutput values.
 // You can construct a concrete instance of `GetReposRepoTagInput` via:
 //
-//          GetReposRepoTagArgs{...}
+//	GetReposRepoTagArgs{...}
 type GetReposRepoTagInput interface {
 	pulumi.Input
 
@@ -2673,7 +2673,7 @@ func (i GetReposRepoTagArgs) ToGetReposRepoTagOutputWithContext(ctx context.Cont
 // GetReposRepoTagArrayInput is an input type that accepts GetReposRepoTagArray and GetReposRepoTagArrayOutput values.
 // You can construct a concrete instance of `GetReposRepoTagArrayInput` via:
 //
-//          GetReposRepoTagArray{ GetReposRepoTagArgs{...} }
+//	GetReposRepoTagArray{ GetReposRepoTagArgs{...} }
 type GetReposRepoTagArrayInput interface {
 	pulumi.Input
 

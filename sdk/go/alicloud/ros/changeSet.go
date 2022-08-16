@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ros.NewChangeSet(ctx, "example", &ros.ChangeSetArgs{
-// 			ChangeSetName: pulumi.String("example_value"),
-// 			ChangeSetType: pulumi.String("CREATE"),
-// 			Description:   pulumi.String("Test From Terraform"),
-// 			StackName:     pulumi.String("tf-testacc"),
-// 			TemplateBody:  pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewChangeSet(ctx, "example", &ros.ChangeSetArgs{
+//				ChangeSetName: pulumi.String("example_value"),
+//				ChangeSetType: pulumi.String("CREATE"),
+//				Description:   pulumi.String("Test From Terraform"),
+//				StackName:     pulumi.String("tf-testacc"),
+//				TemplateBody:  pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // ROS Change Set can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
+//
+//	$ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
+//
 // ```
 type ChangeSet struct {
 	pulumi.CustomResourceState
@@ -318,7 +323,7 @@ func (i *ChangeSet) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetO
 // ChangeSetArrayInput is an input type that accepts ChangeSetArray and ChangeSetArrayOutput values.
 // You can construct a concrete instance of `ChangeSetArrayInput` via:
 //
-//          ChangeSetArray{ ChangeSetArgs{...} }
+//	ChangeSetArray{ ChangeSetArgs{...} }
 type ChangeSetArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +348,7 @@ func (i ChangeSetArray) ToChangeSetArrayOutputWithContext(ctx context.Context) C
 // ChangeSetMapInput is an input type that accepts ChangeSetMap and ChangeSetMapOutput values.
 // You can construct a concrete instance of `ChangeSetMapInput` via:
 //
-//          ChangeSetMap{ "key": ChangeSetArgs{...} }
+//	ChangeSetMap{ "key": ChangeSetArgs{...} }
 type ChangeSetMapInput interface {
 	pulumi.Input
 

@@ -16,59 +16,62 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		configMapName := "examplename"
-// 		if param := cfg.Get("configMapName"); param != "" {
-// 			configMapName = param
-// 		}
-// 		exampleNamespace, err := sae.NewNamespace(ctx, "exampleNamespace", &sae.NamespaceArgs{
-// 			NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
-// 			NamespaceName:        pulumi.String("example_value"),
-// 			NamespaceDescription: pulumi.String("your_description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"env.home":  "/root",
-// 			"env.shell": "/bin/sh",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = sae.NewConfigMap(ctx, "exampleConfigMap", &sae.ConfigMapArgs{
-// 			Data:        pulumi.String(json0),
-// 			NamespaceId: exampleNamespace.NamespaceId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		nameRegex := sae.GetConfigMapsOutput(ctx, sae.GetConfigMapsOutputArgs{
-// 			NamespaceId: exampleNamespace.NamespaceId,
-// 			NameRegex:   pulumi.String("^example"),
-// 		}, nil)
-// 		ctx.Export("saeConfigMapId", nameRegex.ApplyT(func(nameRegex sae.GetConfigMapsResult) (string, error) {
-// 			return nameRegex.Maps[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			configMapName := "examplename"
+//			if param := cfg.Get("configMapName"); param != "" {
+//				configMapName = param
+//			}
+//			exampleNamespace, err := sae.NewNamespace(ctx, "exampleNamespace", &sae.NamespaceArgs{
+//				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
+//				NamespaceName:        pulumi.String("example_value"),
+//				NamespaceDescription: pulumi.String("your_description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"env.home":  "/root",
+//				"env.shell": "/bin/sh",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sae.NewConfigMap(ctx, "exampleConfigMap", &sae.ConfigMapArgs{
+//				Data:        pulumi.String(json0),
+//				NamespaceId: exampleNamespace.NamespaceId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nameRegex := sae.GetConfigMapsOutput(ctx, sae.GetConfigMapsOutputArgs{
+//				NamespaceId: exampleNamespace.NamespaceId,
+//				NameRegex:   pulumi.String("^example"),
+//			}, nil)
+//			ctx.Export("saeConfigMapId", nameRegex.ApplyT(func(nameRegex sae.GetConfigMapsResult) (string, error) {
+//				return nameRegex.Maps[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetConfigMaps(ctx *pulumi.Context, args *GetConfigMapsArgs, opts ...pulumi.InvokeOption) (*GetConfigMapsResult, error) {
 	var rv GetConfigMapsResult

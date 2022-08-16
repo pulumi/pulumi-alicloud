@@ -20,20 +20,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := resourcemanager.GetHandshakes(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstHandshakeId", example.Handshakes[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := resourcemanager.GetHandshakes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstHandshakeId", example.Handshakes[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHandshakes(ctx *pulumi.Context, args *GetHandshakesArgs, opts ...pulumi.InvokeOption) (*GetHandshakesResult, error) {
 	var rv GetHandshakesResult

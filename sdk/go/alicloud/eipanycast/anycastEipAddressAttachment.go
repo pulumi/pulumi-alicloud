@@ -22,36 +22,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "exampleAnycastEipAddress", &eipanycast.AnycastEipAddressArgs{
-// 			ServiceLocation: pulumi.String("international"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "exampleAnycastEipAddressAttachment", &eipanycast.AnycastEipAddressAttachmentArgs{
-// 			AnycastId:            exampleAnycastEipAddress.ID(),
-// 			BindInstanceId:       pulumi.String("lb-j6chlcr8lffy7********"),
-// 			BindInstanceRegionId: pulumi.String("cn-hongkong"),
-// 			BindInstanceType:     pulumi.String("SlbInstance"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "exampleAnycastEipAddress", &eipanycast.AnycastEipAddressArgs{
+//				ServiceLocation: pulumi.String("international"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "exampleAnycastEipAddressAttachment", &eipanycast.AnycastEipAddressAttachmentArgs{
+//				AnycastId:            exampleAnycastEipAddress.ID(),
+//				BindInstanceId:       pulumi.String("lb-j6chlcr8lffy7********"),
+//				BindInstanceRegionId: pulumi.String("cn-hongkong"),
+//				BindInstanceType:     pulumi.String("SlbInstance"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example `anycast_id`:`bind_instance_id`:`bind_instance_region_id`:`bind_instance_type`
+//
+//	$ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example `anycast_id`:`bind_instance_id`:`bind_instance_region_id`:`bind_instance_type`
+//
 // ```
 type AnycastEipAddressAttachment struct {
 	pulumi.CustomResourceState
@@ -195,7 +200,7 @@ func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutputWithCon
 // AnycastEipAddressAttachmentArrayInput is an input type that accepts AnycastEipAddressAttachmentArray and AnycastEipAddressAttachmentArrayOutput values.
 // You can construct a concrete instance of `AnycastEipAddressAttachmentArrayInput` via:
 //
-//          AnycastEipAddressAttachmentArray{ AnycastEipAddressAttachmentArgs{...} }
+//	AnycastEipAddressAttachmentArray{ AnycastEipAddressAttachmentArgs{...} }
 type AnycastEipAddressAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i AnycastEipAddressAttachmentArray) ToAnycastEipAddressAttachmentArrayOutp
 // AnycastEipAddressAttachmentMapInput is an input type that accepts AnycastEipAddressAttachmentMap and AnycastEipAddressAttachmentMapOutput values.
 // You can construct a concrete instance of `AnycastEipAddressAttachmentMapInput` via:
 //
-//          AnycastEipAddressAttachmentMap{ "key": AnycastEipAddressAttachmentArgs{...} }
+//	AnycastEipAddressAttachmentMap{ "key": AnycastEipAddressAttachmentArgs{...} }
 type AnycastEipAddressAttachmentMapInput interface {
 	pulumi.Input
 

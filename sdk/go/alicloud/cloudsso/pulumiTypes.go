@@ -22,7 +22,7 @@ type AccessConfigurationPermissionPolicy struct {
 // AccessConfigurationPermissionPolicyInput is an input type that accepts AccessConfigurationPermissionPolicyArgs and AccessConfigurationPermissionPolicyOutput values.
 // You can construct a concrete instance of `AccessConfigurationPermissionPolicyInput` via:
 //
-//          AccessConfigurationPermissionPolicyArgs{...}
+//	AccessConfigurationPermissionPolicyArgs{...}
 type AccessConfigurationPermissionPolicyInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i AccessConfigurationPermissionPolicyArgs) ToAccessConfigurationPermission
 // AccessConfigurationPermissionPolicyArrayInput is an input type that accepts AccessConfigurationPermissionPolicyArray and AccessConfigurationPermissionPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationPermissionPolicyArrayInput` via:
 //
-//          AccessConfigurationPermissionPolicyArray{ AccessConfigurationPermissionPolicyArgs{...} }
+//	AccessConfigurationPermissionPolicyArray{ AccessConfigurationPermissionPolicyArgs{...} }
 type AccessConfigurationPermissionPolicyArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ type DirectorySamlIdentityProviderConfiguration struct {
 // DirectorySamlIdentityProviderConfigurationInput is an input type that accepts DirectorySamlIdentityProviderConfigurationArgs and DirectorySamlIdentityProviderConfigurationOutput values.
 // You can construct a concrete instance of `DirectorySamlIdentityProviderConfigurationInput` via:
 //
-//          DirectorySamlIdentityProviderConfigurationArgs{...}
+//	DirectorySamlIdentityProviderConfigurationArgs{...}
 type DirectorySamlIdentityProviderConfigurationInput interface {
 	pulumi.Input
 
@@ -173,11 +173,11 @@ func (i DirectorySamlIdentityProviderConfigurationArgs) ToDirectorySamlIdentityP
 // DirectorySamlIdentityProviderConfigurationPtrInput is an input type that accepts DirectorySamlIdentityProviderConfigurationArgs, DirectorySamlIdentityProviderConfigurationPtr and DirectorySamlIdentityProviderConfigurationPtrOutput values.
 // You can construct a concrete instance of `DirectorySamlIdentityProviderConfigurationPtrInput` via:
 //
-//          DirectorySamlIdentityProviderConfigurationArgs{...}
+//	        DirectorySamlIdentityProviderConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DirectorySamlIdentityProviderConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -307,7 +307,7 @@ type GetAccessConfigurationsConfiguration struct {
 // GetAccessConfigurationsConfigurationInput is an input type that accepts GetAccessConfigurationsConfigurationArgs and GetAccessConfigurationsConfigurationOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationInput` via:
 //
-//          GetAccessConfigurationsConfigurationArgs{...}
+//	GetAccessConfigurationsConfigurationArgs{...}
 type GetAccessConfigurationsConfigurationInput interface {
 	pulumi.Input
 
@@ -353,7 +353,7 @@ func (i GetAccessConfigurationsConfigurationArgs) ToGetAccessConfigurationsConfi
 // GetAccessConfigurationsConfigurationArrayInput is an input type that accepts GetAccessConfigurationsConfigurationArray and GetAccessConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationArrayInput` via:
 //
-//          GetAccessConfigurationsConfigurationArray{ GetAccessConfigurationsConfigurationArgs{...} }
+//	GetAccessConfigurationsConfigurationArray{ GetAccessConfigurationsConfigurationArgs{...} }
 type GetAccessConfigurationsConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -475,7 +475,7 @@ type GetAccessConfigurationsConfigurationPermissionPolicy struct {
 // GetAccessConfigurationsConfigurationPermissionPolicyInput is an input type that accepts GetAccessConfigurationsConfigurationPermissionPolicyArgs and GetAccessConfigurationsConfigurationPermissionPolicyOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationPermissionPolicyInput` via:
 //
-//          GetAccessConfigurationsConfigurationPermissionPolicyArgs{...}
+//	GetAccessConfigurationsConfigurationPermissionPolicyArgs{...}
 type GetAccessConfigurationsConfigurationPermissionPolicyInput interface {
 	pulumi.Input
 
@@ -509,7 +509,7 @@ func (i GetAccessConfigurationsConfigurationPermissionPolicyArgs) ToGetAccessCon
 // GetAccessConfigurationsConfigurationPermissionPolicyArrayInput is an input type that accepts GetAccessConfigurationsConfigurationPermissionPolicyArray and GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationPermissionPolicyArrayInput` via:
 //
-//          GetAccessConfigurationsConfigurationPermissionPolicyArray{ GetAccessConfigurationsConfigurationPermissionPolicyArgs{...} }
+//	GetAccessConfigurationsConfigurationPermissionPolicyArray{ GetAccessConfigurationsConfigurationPermissionPolicyArgs{...} }
 type GetAccessConfigurationsConfigurationPermissionPolicyArrayInput interface {
 	pulumi.Input
 
@@ -609,7 +609,7 @@ type GetDirectoriesDirectory struct {
 // GetDirectoriesDirectoryInput is an input type that accepts GetDirectoriesDirectoryArgs and GetDirectoriesDirectoryOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryInput` via:
 //
-//          GetDirectoriesDirectoryArgs{...}
+//	GetDirectoriesDirectoryArgs{...}
 type GetDirectoriesDirectoryInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (i GetDirectoriesDirectoryArgs) ToGetDirectoriesDirectoryOutputWithContext(
 // GetDirectoriesDirectoryArrayInput is an input type that accepts GetDirectoriesDirectoryArray and GetDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryArrayInput` via:
 //
-//          GetDirectoriesDirectoryArray{ GetDirectoriesDirectoryArgs{...} }
+//	GetDirectoriesDirectoryArray{ GetDirectoriesDirectoryArgs{...} }
 type GetDirectoriesDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -772,7 +772,7 @@ type GetDirectoriesDirectorySamlIdentityProviderConfiguration struct {
 // GetDirectoriesDirectorySamlIdentityProviderConfigurationInput is an input type that accepts GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs and GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectorySamlIdentityProviderConfigurationInput` via:
 //
-//          GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs{...}
+//	GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs{...}
 type GetDirectoriesDirectorySamlIdentityProviderConfigurationInput interface {
 	pulumi.Input
 
@@ -808,7 +808,7 @@ func (i GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs) ToGetDirec
 // GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput is an input type that accepts GetDirectoriesDirectorySamlIdentityProviderConfigurationArray and GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput` via:
 //
-//          GetDirectoriesDirectorySamlIdentityProviderConfigurationArray{ GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs{...} }
+//	GetDirectoriesDirectorySamlIdentityProviderConfigurationArray{ GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs{...} }
 type GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -927,7 +927,7 @@ type GetDirectoriesDirectoryTask struct {
 // GetDirectoriesDirectoryTaskInput is an input type that accepts GetDirectoriesDirectoryTaskArgs and GetDirectoriesDirectoryTaskOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryTaskInput` via:
 //
-//          GetDirectoriesDirectoryTaskArgs{...}
+//	GetDirectoriesDirectoryTaskArgs{...}
 type GetDirectoriesDirectoryTaskInput interface {
 	pulumi.Input
 
@@ -983,7 +983,7 @@ func (i GetDirectoriesDirectoryTaskArgs) ToGetDirectoriesDirectoryTaskOutputWith
 // GetDirectoriesDirectoryTaskArrayInput is an input type that accepts GetDirectoriesDirectoryTaskArray and GetDirectoriesDirectoryTaskArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryTaskArrayInput` via:
 //
-//          GetDirectoriesDirectoryTaskArray{ GetDirectoriesDirectoryTaskArgs{...} }
+//	GetDirectoriesDirectoryTaskArray{ GetDirectoriesDirectoryTaskArgs{...} }
 type GetDirectoriesDirectoryTaskArrayInput interface {
 	pulumi.Input
 
@@ -1134,7 +1134,7 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+//	GetGroupsGroupArgs{...}
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1174,7 +1174,7 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1287,7 +1287,7 @@ type GetScimServerCredentialsCredential struct {
 // GetScimServerCredentialsCredentialInput is an input type that accepts GetScimServerCredentialsCredentialArgs and GetScimServerCredentialsCredentialOutput values.
 // You can construct a concrete instance of `GetScimServerCredentialsCredentialInput` via:
 //
-//          GetScimServerCredentialsCredentialArgs{...}
+//	GetScimServerCredentialsCredentialArgs{...}
 type GetScimServerCredentialsCredentialInput interface {
 	pulumi.Input
 
@@ -1329,7 +1329,7 @@ func (i GetScimServerCredentialsCredentialArgs) ToGetScimServerCredentialsCreden
 // GetScimServerCredentialsCredentialArrayInput is an input type that accepts GetScimServerCredentialsCredentialArray and GetScimServerCredentialsCredentialArrayOutput values.
 // You can construct a concrete instance of `GetScimServerCredentialsCredentialArrayInput` via:
 //
-//          GetScimServerCredentialsCredentialArray{ GetScimServerCredentialsCredentialArgs{...} }
+//	GetScimServerCredentialsCredentialArray{ GetScimServerCredentialsCredentialArgs{...} }
 type GetScimServerCredentialsCredentialArrayInput interface {
 	pulumi.Input
 
@@ -1457,7 +1457,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//          GetUsersUserArgs{...}
+//	GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -1509,7 +1509,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//          GetUsersUserArray{ GetUsersUserArgs{...} }
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -1644,7 +1644,7 @@ type GetUsersUserMfaDevice struct {
 // GetUsersUserMfaDeviceInput is an input type that accepts GetUsersUserMfaDeviceArgs and GetUsersUserMfaDeviceOutput values.
 // You can construct a concrete instance of `GetUsersUserMfaDeviceInput` via:
 //
-//          GetUsersUserMfaDeviceArgs{...}
+//	GetUsersUserMfaDeviceArgs{...}
 type GetUsersUserMfaDeviceInput interface {
 	pulumi.Input
 
@@ -1678,7 +1678,7 @@ func (i GetUsersUserMfaDeviceArgs) ToGetUsersUserMfaDeviceOutputWithContext(ctx 
 // GetUsersUserMfaDeviceArrayInput is an input type that accepts GetUsersUserMfaDeviceArray and GetUsersUserMfaDeviceArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserMfaDeviceArrayInput` via:
 //
-//          GetUsersUserMfaDeviceArray{ GetUsersUserMfaDeviceArgs{...} }
+//	GetUsersUserMfaDeviceArray{ GetUsersUserMfaDeviceArgs{...} }
 type GetUsersUserMfaDeviceArrayInput interface {
 	pulumi.Input
 

@@ -20,7 +20,9 @@ import (
 // RDS account privilege can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+//
+//	$ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+//
 // ```
 type AccountPrivilege struct {
 	pulumi.CustomResourceState
@@ -172,7 +174,7 @@ func (i *AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Conte
 // AccountPrivilegeArrayInput is an input type that accepts AccountPrivilegeArray and AccountPrivilegeArrayOutput values.
 // You can construct a concrete instance of `AccountPrivilegeArrayInput` via:
 //
-//          AccountPrivilegeArray{ AccountPrivilegeArgs{...} }
+//	AccountPrivilegeArray{ AccountPrivilegeArgs{...} }
 type AccountPrivilegeArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +199,7 @@ func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutputWithContext(ctx cont
 // AccountPrivilegeMapInput is an input type that accepts AccountPrivilegeMap and AccountPrivilegeMapOutput values.
 // You can construct a concrete instance of `AccountPrivilegeMapInput` via:
 //
-//          AccountPrivilegeMap{ "key": AccountPrivilegeArgs{...} }
+//	AccountPrivilegeMap{ "key": AccountPrivilegeArgs{...} }
 type AccountPrivilegeMapInput interface {
 	pulumi.Input
 

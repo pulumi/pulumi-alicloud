@@ -22,7 +22,9 @@ import (
 // CR Endpoint Acl Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
+//
+//	$ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
+//
 // ```
 type EndpointAclPolicy struct {
 	pulumi.CustomResourceState
@@ -159,7 +161,7 @@ func (i *EndpointAclPolicy) ToEndpointAclPolicyOutputWithContext(ctx context.Con
 // EndpointAclPolicyArrayInput is an input type that accepts EndpointAclPolicyArray and EndpointAclPolicyArrayOutput values.
 // You can construct a concrete instance of `EndpointAclPolicyArrayInput` via:
 //
-//          EndpointAclPolicyArray{ EndpointAclPolicyArgs{...} }
+//	EndpointAclPolicyArray{ EndpointAclPolicyArgs{...} }
 type EndpointAclPolicyArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +186,7 @@ func (i EndpointAclPolicyArray) ToEndpointAclPolicyArrayOutputWithContext(ctx co
 // EndpointAclPolicyMapInput is an input type that accepts EndpointAclPolicyMap and EndpointAclPolicyMapOutput values.
 // You can construct a concrete instance of `EndpointAclPolicyMapInput` via:
 //
-//          EndpointAclPolicyMap{ "key": EndpointAclPolicyArgs{...} }
+//	EndpointAclPolicyMap{ "key": EndpointAclPolicyArgs{...} }
 type EndpointAclPolicyMapInput interface {
 	pulumi.Input
 

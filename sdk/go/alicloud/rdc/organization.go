@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rdc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rdc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rdc.NewOrganization(ctx, "example", &rdc.OrganizationArgs{
-// 			OrganizationName: pulumi.String("example_value"),
-// 			Source:           pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rdc.NewOrganization(ctx, "example", &rdc.OrganizationArgs{
+//				OrganizationName: pulumi.String("example_value"),
+//				Source:           pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // RDC Organization can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rdc/organization:Organization example <id>
+//
+//	$ pulumi import alicloud:rdc/organization:Organization example <id>
+//
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) Orga
 // OrganizationArrayInput is an input type that accepts OrganizationArray and OrganizationArrayOutput values.
 // You can construct a concrete instance of `OrganizationArrayInput` via:
 //
-//          OrganizationArray{ OrganizationArgs{...} }
+//	OrganizationArray{ OrganizationArgs{...} }
 type OrganizationArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i OrganizationArray) ToOrganizationArrayOutputWithContext(ctx context.Cont
 // OrganizationMapInput is an input type that accepts OrganizationMap and OrganizationMapOutput values.
 // You can construct a concrete instance of `OrganizationMapInput` via:
 //
-//          OrganizationMap{ "key": OrganizationArgs{...} }
+//	OrganizationMap{ "key": OrganizationArgs{...} }
 type OrganizationMapInput interface {
 	pulumi.Input
 

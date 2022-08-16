@@ -13,64 +13,67 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		apiGroup, err := apigateway.NewGroup(ctx, "apiGroup", &apigateway.GroupArgs{
-// 			Description: pulumi.String("description of the api group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = apigateway.NewApi(ctx, "apiGatewayApi", &apigateway.ApiArgs{
-// 			GroupId:         apiGroup.ID(),
-// 			Description:     pulumi.String("your description"),
-// 			AuthType:        pulumi.String("APP"),
-// 			ForceNonceCheck: pulumi.Bool(false),
-// 			RequestConfig: &apigateway.ApiRequestConfigArgs{
-// 				Protocol: pulumi.String("HTTP"),
-// 				Method:   pulumi.String("GET"),
-// 				Path:     pulumi.String("/test/path1"),
-// 				Mode:     pulumi.String("MAPPING"),
-// 			},
-// 			ServiceType: pulumi.String("HTTP"),
-// 			HttpServiceConfig: &apigateway.ApiHttpServiceConfigArgs{
-// 				Address:  pulumi.String("http://apigateway-backend.alicloudapi.com:8080"),
-// 				Method:   pulumi.String("GET"),
-// 				Path:     pulumi.String("/web/cloudapi"),
-// 				Timeout:  pulumi.Int(12),
-// 				AoneName: pulumi.String("cloudapi-openapi"),
-// 			},
-// 			RequestParameters: apigateway.ApiRequestParameterArray{
-// 				&apigateway.ApiRequestParameterArgs{
-// 					Name:        pulumi.String("aaa"),
-// 					Type:        pulumi.String("STRING"),
-// 					Required:    pulumi.String("OPTIONAL"),
-// 					In:          pulumi.String("QUERY"),
-// 					InService:   pulumi.String("QUERY"),
-// 					NameService: pulumi.String("testparams"),
-// 				},
-// 			},
-// 			StageNames: pulumi.StringArray{
-// 				pulumi.String("RELEASE"),
-// 				pulumi.String("TEST"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			apiGroup, err := apigateway.NewGroup(ctx, "apiGroup", &apigateway.GroupArgs{
+//				Description: pulumi.String("description of the api group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewApi(ctx, "apiGatewayApi", &apigateway.ApiArgs{
+//				GroupId:         apiGroup.ID(),
+//				Description:     pulumi.String("your description"),
+//				AuthType:        pulumi.String("APP"),
+//				ForceNonceCheck: pulumi.Bool(false),
+//				RequestConfig: &apigateway.ApiRequestConfigArgs{
+//					Protocol: pulumi.String("HTTP"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/test/path1"),
+//					Mode:     pulumi.String("MAPPING"),
+//				},
+//				ServiceType: pulumi.String("HTTP"),
+//				HttpServiceConfig: &apigateway.ApiHttpServiceConfigArgs{
+//					Address:  pulumi.String("http://apigateway-backend.alicloudapi.com:8080"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/web/cloudapi"),
+//					Timeout:  pulumi.Int(12),
+//					AoneName: pulumi.String("cloudapi-openapi"),
+//				},
+//				RequestParameters: apigateway.ApiRequestParameterArray{
+//					&apigateway.ApiRequestParameterArgs{
+//						Name:        pulumi.String("aaa"),
+//						Type:        pulumi.String("STRING"),
+//						Required:    pulumi.String("OPTIONAL"),
+//						In:          pulumi.String("QUERY"),
+//						InService:   pulumi.String("QUERY"),
+//						NameService: pulumi.String("testparams"),
+//					},
+//				},
+//				StageNames: pulumi.StringArray{
+//					pulumi.String("RELEASE"),
+//					pulumi.String("TEST"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
+//
+//	$ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
+//
 // ```
 type Api struct {
 	pulumi.CustomResourceState
@@ -327,7 +332,7 @@ func (i *Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 // ApiArrayInput is an input type that accepts ApiArray and ApiArrayOutput values.
 // You can construct a concrete instance of `ApiArrayInput` via:
 //
-//          ApiArray{ ApiArgs{...} }
+//	ApiArray{ ApiArgs{...} }
 type ApiArrayInput interface {
 	pulumi.Input
 
@@ -352,7 +357,7 @@ func (i ApiArray) ToApiArrayOutputWithContext(ctx context.Context) ApiArrayOutpu
 // ApiMapInput is an input type that accepts ApiMap and ApiMapOutput values.
 // You can construct a concrete instance of `ApiMapInput` via:
 //
-//          ApiMap{ "key": ApiArgs{...} }
+//	ApiMap{ "key": ApiArgs{...} }
 type ApiMapInput interface {
 	pulumi.Input
 

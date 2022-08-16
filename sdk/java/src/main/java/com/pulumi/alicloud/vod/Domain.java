@@ -234,14 +234,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.sslPub;
     }
     /**
-     * The status of the domain name for CDN. Value values:
+     * The status of the domain name for CDN. Valid values:
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the domain name for CDN. Value values:
+     * @return The status of the domain name for CDN. Valid values:
      * 
      */
     public Output<String> status() {

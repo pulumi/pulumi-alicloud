@@ -17,29 +17,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
-// 			Description: pulumi.String("example key"),
-// 			IsEnabled:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
-// 			KeyId:     key.ID(),
-// 			Plaintext: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+//				Description: pulumi.String("example key"),
+//				IsEnabled:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
+//				KeyId:     key.ID(),
+//				Plaintext: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Ciphertext struct {
 	pulumi.CustomResourceState
@@ -164,7 +167,7 @@ func (i *Ciphertext) ToCiphertextOutputWithContext(ctx context.Context) Cipherte
 // CiphertextArrayInput is an input type that accepts CiphertextArray and CiphertextArrayOutput values.
 // You can construct a concrete instance of `CiphertextArrayInput` via:
 //
-//          CiphertextArray{ CiphertextArgs{...} }
+//	CiphertextArray{ CiphertextArgs{...} }
 type CiphertextArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +192,7 @@ func (i CiphertextArray) ToCiphertextArrayOutputWithContext(ctx context.Context)
 // CiphertextMapInput is an input type that accepts CiphertextMap and CiphertextMapOutput values.
 // You can construct a concrete instance of `CiphertextMapInput` via:
 //
-//          CiphertextMap{ "key": CiphertextArgs{...} }
+//	CiphertextMap{ "key": CiphertextArgs{...} }
 type CiphertextMapInput interface {
 	pulumi.Input
 

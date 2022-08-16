@@ -22,7 +22,9 @@ import (
 // Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
+//
+//	$ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
+//
 // ```
 type ListenerAdditionalCertificateAttachment struct {
 	pulumi.CustomResourceState
@@ -138,7 +140,7 @@ func (i *ListenerAdditionalCertificateAttachment) ToListenerAdditionalCertificat
 // ListenerAdditionalCertificateAttachmentArrayInput is an input type that accepts ListenerAdditionalCertificateAttachmentArray and ListenerAdditionalCertificateAttachmentArrayOutput values.
 // You can construct a concrete instance of `ListenerAdditionalCertificateAttachmentArrayInput` via:
 //
-//          ListenerAdditionalCertificateAttachmentArray{ ListenerAdditionalCertificateAttachmentArgs{...} }
+//	ListenerAdditionalCertificateAttachmentArray{ ListenerAdditionalCertificateAttachmentArgs{...} }
 type ListenerAdditionalCertificateAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -163,7 +165,7 @@ func (i ListenerAdditionalCertificateAttachmentArray) ToListenerAdditionalCertif
 // ListenerAdditionalCertificateAttachmentMapInput is an input type that accepts ListenerAdditionalCertificateAttachmentMap and ListenerAdditionalCertificateAttachmentMapOutput values.
 // You can construct a concrete instance of `ListenerAdditionalCertificateAttachmentMapInput` via:
 //
-//          ListenerAdditionalCertificateAttachmentMap{ "key": ListenerAdditionalCertificateAttachmentArgs{...} }
+//	ListenerAdditionalCertificateAttachmentMap{ "key": ListenerAdditionalCertificateAttachmentArgs{...} }
 type ListenerAdditionalCertificateAttachmentMapInput interface {
 	pulumi.Input
 

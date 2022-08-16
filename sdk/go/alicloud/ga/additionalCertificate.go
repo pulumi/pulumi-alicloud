@@ -22,7 +22,9 @@ import (
 // Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
+//
+//	$ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
+//
 // ```
 type AdditionalCertificate struct {
 	pulumi.CustomResourceState
@@ -152,7 +154,7 @@ func (i *AdditionalCertificate) ToAdditionalCertificateOutputWithContext(ctx con
 // AdditionalCertificateArrayInput is an input type that accepts AdditionalCertificateArray and AdditionalCertificateArrayOutput values.
 // You can construct a concrete instance of `AdditionalCertificateArrayInput` via:
 //
-//          AdditionalCertificateArray{ AdditionalCertificateArgs{...} }
+//	AdditionalCertificateArray{ AdditionalCertificateArgs{...} }
 type AdditionalCertificateArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +179,7 @@ func (i AdditionalCertificateArray) ToAdditionalCertificateArrayOutputWithContex
 // AdditionalCertificateMapInput is an input type that accepts AdditionalCertificateMap and AdditionalCertificateMapOutput values.
 // You can construct a concrete instance of `AdditionalCertificateMapInput` via:
 //
-//          AdditionalCertificateMap{ "key": AdditionalCertificateArgs{...} }
+//	AdditionalCertificateMap{ "key": AdditionalCertificateArgs{...} }
 type AdditionalCertificateMapInput interface {
 	pulumi.Input
 

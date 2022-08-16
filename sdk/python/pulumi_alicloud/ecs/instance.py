@@ -43,6 +43,9 @@ class InstanceArgs:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 maintenance_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_notify: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -111,6 +114,9 @@ class InstanceArgs:
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -214,6 +220,12 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if maintenance_action is not None:
+            pulumi.set(__self__, "maintenance_action", maintenance_action)
+        if maintenance_notify is not None:
+            pulumi.set(__self__, "maintenance_notify", maintenance_notify)
+        if maintenance_time is not None:
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
         if operator_type is not None:
             pulumi.set(__self__, "operator_type", operator_type)
         if password is not None:
@@ -608,6 +620,42 @@ class InstanceArgs:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="maintenanceAction")
+    def maintenance_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        """
+        return pulumi.get(self, "maintenance_action")
+
+    @maintenance_action.setter
+    def maintenance_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_action", value)
+
+    @property
+    @pulumi.getter(name="maintenanceNotify")
+    def maintenance_notify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        """
+        return pulumi.get(self, "maintenance_notify")
+
+    @maintenance_notify.setter
+    def maintenance_notify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "maintenance_notify", value)
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> Optional[pulumi.Input['InstanceMaintenanceTimeArgs']]:
+        """
+        The time of maintenance. See the following `Block maintenance_time`.
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @maintenance_time.setter
+    def maintenance_time(self, value: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']]):
+        pulumi.set(self, "maintenance_time", value)
 
     @property
     @pulumi.getter(name="operatorType")
@@ -1008,6 +1056,9 @@ class _InstanceState:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 maintenance_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_notify: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -1078,6 +1129,9 @@ class _InstanceState:
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -1186,6 +1240,12 @@ class _InstanceState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if maintenance_action is not None:
+            pulumi.set(__self__, "maintenance_action", maintenance_action)
+        if maintenance_notify is not None:
+            pulumi.set(__self__, "maintenance_notify", maintenance_notify)
+        if maintenance_time is not None:
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
         if operator_type is not None:
             pulumi.set(__self__, "operator_type", operator_type)
         if password is not None:
@@ -1584,6 +1644,42 @@ class _InstanceState:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="maintenanceAction")
+    def maintenance_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        """
+        return pulumi.get(self, "maintenance_action")
+
+    @maintenance_action.setter
+    def maintenance_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_action", value)
+
+    @property
+    @pulumi.getter(name="maintenanceNotify")
+    def maintenance_notify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        """
+        return pulumi.get(self, "maintenance_notify")
+
+    @maintenance_notify.setter
+    def maintenance_notify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "maintenance_notify", value)
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> Optional[pulumi.Input['InstanceMaintenanceTimeArgs']]:
+        """
+        The time of maintenance. See the following `Block maintenance_time`.
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @maintenance_time.setter
+    def maintenance_time(self, value: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']]):
+        pulumi.set(self, "maintenance_time", value)
 
     @property
     @pulumi.getter(name="operatorType")
@@ -2009,6 +2105,9 @@ class Instance(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 maintenance_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_notify: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -2087,6 +2186,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -2187,6 +2289,9 @@ class Instance(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 maintenance_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_notify: Optional[pulumi.Input[bool]] = None,
+                 maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -2266,6 +2371,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["maintenance_action"] = maintenance_action
+            __props__.__dict__["maintenance_notify"] = maintenance_notify
+            __props__.__dict__["maintenance_time"] = maintenance_time
             __props__.__dict__["operator_type"] = operator_type
             __props__.__dict__["password"] = password
             __props__.__dict__["period"] = period
@@ -2341,6 +2449,9 @@ class Instance(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            maintenance_action: Optional[pulumi.Input[str]] = None,
+            maintenance_notify: Optional[pulumi.Input[bool]] = None,
+            maintenance_time: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']]] = None,
             operator_type: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
@@ -2416,6 +2527,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -2492,6 +2606,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["maintenance_action"] = maintenance_action
+        __props__.__dict__["maintenance_notify"] = maintenance_notify
+        __props__.__dict__["maintenance_time"] = maintenance_time
         __props__.__dict__["operator_type"] = operator_type
         __props__.__dict__["password"] = password
         __props__.__dict__["period"] = period
@@ -2748,6 +2865,30 @@ class Instance(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter(name="maintenanceAction")
+    def maintenance_action(self) -> pulumi.Output[str]:
+        """
+        The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        """
+        return pulumi.get(self, "maintenance_action")
+
+    @property
+    @pulumi.getter(name="maintenanceNotify")
+    def maintenance_notify(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+        """
+        return pulumi.get(self, "maintenance_notify")
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> pulumi.Output[Optional['outputs.InstanceMaintenanceTime']]:
+        """
+        The time of maintenance. See the following `Block maintenance_time`.
+        """
+        return pulumi.get(self, "maintenance_time")
 
     @property
     @pulumi.getter(name="operatorType")

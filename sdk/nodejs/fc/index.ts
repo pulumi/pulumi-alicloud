@@ -15,6 +15,7 @@ export * from "./getService";
 export * from "./getServices";
 export * from "./getTriggers";
 export * from "./getZones";
+export * from "./layerVersion";
 export * from "./service";
 export * from "./trigger";
 
@@ -23,6 +24,7 @@ import { Alias } from "./alias";
 import { CustomDomain } from "./customDomain";
 import { Function } from "./function";
 import { FunctionAsyncInvokeConfig } from "./functionAsyncInvokeConfig";
+import { LayerVersion } from "./layerVersion";
 import { Service } from "./service";
 import { Trigger } from "./trigger";
 
@@ -38,6 +40,8 @@ const _module = {
                 return new Function(name, <any>undefined, { urn })
             case "alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig":
                 return new FunctionAsyncInvokeConfig(name, <any>undefined, { urn })
+            case "alicloud:fc/layerVersion:LayerVersion":
+                return new LayerVersion(name, <any>undefined, { urn })
             case "alicloud:fc/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "alicloud:fc/trigger:Trigger":
@@ -51,5 +55,6 @@ pulumi.runtime.registerResourceModule("alicloud", "fc/alias", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/customDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/function", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/functionAsyncInvokeConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/layerVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/trigger", _module)

@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/videosurveillance"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/videosurveillance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := videosurveillance.NewSystemGroup(ctx, "default", &videosurveillance.SystemGroupArgs{
-// 			GroupName:   pulumi.String("your_group_name"),
-// 			InProtocol:  pulumi.String("rtmp"),
-// 			OutProtocol: pulumi.String("flv"),
-// 			PlayDomain:  pulumi.String("your_plan_domain"),
-// 			PushDomain:  pulumi.String("your_push_domain"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := videosurveillance.NewSystemGroup(ctx, "default", &videosurveillance.SystemGroupArgs{
+//				GroupName:   pulumi.String("your_group_name"),
+//				InProtocol:  pulumi.String("rtmp"),
+//				OutProtocol: pulumi.String("flv"),
+//				PlayDomain:  pulumi.String("your_plan_domain"),
+//				PushDomain:  pulumi.String("your_push_domain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Video Surveillance System Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
+//
+//	$ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
+//
 // ```
 type SystemGroup struct {
 	pulumi.CustomResourceState
@@ -266,7 +271,7 @@ func (i *SystemGroup) ToSystemGroupOutputWithContext(ctx context.Context) System
 // SystemGroupArrayInput is an input type that accepts SystemGroupArray and SystemGroupArrayOutput values.
 // You can construct a concrete instance of `SystemGroupArrayInput` via:
 //
-//          SystemGroupArray{ SystemGroupArgs{...} }
+//	SystemGroupArray{ SystemGroupArgs{...} }
 type SystemGroupArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +296,7 @@ func (i SystemGroupArray) ToSystemGroupArrayOutputWithContext(ctx context.Contex
 // SystemGroupMapInput is an input type that accepts SystemGroupMap and SystemGroupMapOutput values.
 // You can construct a concrete instance of `SystemGroupMapInput` via:
 //
-//          SystemGroupMap{ "key": SystemGroupArgs{...} }
+//	SystemGroupMap{ "key": SystemGroupArgs{...} }
 type SystemGroupMapInput interface {
 	pulumi.Input
 

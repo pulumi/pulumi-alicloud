@@ -22,7 +22,9 @@ import (
 // Ga Forwarding Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+//
+//	$ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+//
 // ```
 type ForwardingRule struct {
 	pulumi.CustomResourceState
@@ -184,7 +186,7 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 // ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleArrayInput` via:
 //
-//          ForwardingRuleArray{ ForwardingRuleArgs{...} }
+//	ForwardingRuleArray{ ForwardingRuleArgs{...} }
 type ForwardingRuleArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +211,7 @@ func (i ForwardingRuleArray) ToForwardingRuleArrayOutputWithContext(ctx context.
 // ForwardingRuleMapInput is an input type that accepts ForwardingRuleMap and ForwardingRuleMapOutput values.
 // You can construct a concrete instance of `ForwardingRuleMapInput` via:
 //
-//          ForwardingRuleMap{ "key": ForwardingRuleArgs{...} }
+//	ForwardingRuleMap{ "key": ForwardingRuleArgs{...} }
 type ForwardingRuleMapInput interface {
 	pulumi.Input
 

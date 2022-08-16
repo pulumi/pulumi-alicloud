@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewAlarmContactGroup(ctx, "example", &cms.AlarmContactGroupArgs{
-// 			AlarmContactGroupName: pulumi.String("tf-test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarmContactGroup(ctx, "example", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String("tf-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // CMS Alarm Contact Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+//
+//	$ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+//
 // ```
 type AlarmContactGroup struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *AlarmContactGroup) ToAlarmContactGroupOutputWithContext(ctx context.Con
 // AlarmContactGroupArrayInput is an input type that accepts AlarmContactGroupArray and AlarmContactGroupArrayOutput values.
 // You can construct a concrete instance of `AlarmContactGroupArrayInput` via:
 //
-//          AlarmContactGroupArray{ AlarmContactGroupArgs{...} }
+//	AlarmContactGroupArray{ AlarmContactGroupArgs{...} }
 type AlarmContactGroupArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i AlarmContactGroupArray) ToAlarmContactGroupArrayOutputWithContext(ctx co
 // AlarmContactGroupMapInput is an input type that accepts AlarmContactGroupMap and AlarmContactGroupMapOutput values.
 // You can construct a concrete instance of `AlarmContactGroupMapInput` via:
 //
-//          AlarmContactGroupMap{ "key": AlarmContactGroupArgs{...} }
+//	AlarmContactGroupMap{ "key": AlarmContactGroupArgs{...} }
 type AlarmContactGroupMapInput interface {
 	pulumi.Input
 

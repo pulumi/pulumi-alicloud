@@ -19,75 +19,78 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("example_value"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-// 			VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
-// 			VswitchName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
-// 			VpcId:              exampleNetwork.ID(),
-// 			InternetChargeType: pulumi.String("PayByLcu"),
-// 			NatGatewayName:     pulumi.String("example_value"),
-// 			Description:        pulumi.String("example_value"),
-// 			NatType:            pulumi.String("Enhanced"),
-// 			VswitchId:          exampleSwitch.ID(),
-// 			NetworkType:        pulumi.String("intranet"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNatIpCidr, err := vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
-// 			NatIpCidr:            pulumi.String("192.168.0.0/16"),
-// 			NatGatewayId:         exampleNatGateway.ID(),
-// 			NatIpCidrDescription: pulumi.String("example_value"),
-// 			NatIpCidrName:        pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNatIp(ctx, "exampleNatIp", &vpc.NatIpArgs{
-// 			NatIp:            pulumi.String("192.168.0.37"),
-// 			NatGatewayId:     exampleNatGateway.ID(),
-// 			NatIpDescription: pulumi.String("example_value"),
-// 			NatIpName:        pulumi.String("example_value"),
-// 			NatIpCidr:        exampleNatIpCidr.NatIpCidr,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("example_value"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				VswitchName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:              exampleNetwork.ID(),
+//				InternetChargeType: pulumi.String("PayByLcu"),
+//				NatGatewayName:     pulumi.String("example_value"),
+//				Description:        pulumi.String("example_value"),
+//				NatType:            pulumi.String("Enhanced"),
+//				VswitchId:          exampleSwitch.ID(),
+//				NetworkType:        pulumi.String("intranet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNatIpCidr, err := vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
+//				NatIpCidr:            pulumi.String("192.168.0.0/16"),
+//				NatGatewayId:         exampleNatGateway.ID(),
+//				NatIpCidrDescription: pulumi.String("example_value"),
+//				NatIpCidrName:        pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNatIp(ctx, "exampleNatIp", &vpc.NatIpArgs{
+//				NatIp:            pulumi.String("192.168.0.37"),
+//				NatGatewayId:     exampleNatGateway.ID(),
+//				NatIpDescription: pulumi.String("example_value"),
+//				NatIpName:        pulumi.String("example_value"),
+//				NatIpCidr:        exampleNatIpCidr.NatIpCidr,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -95,7 +98,9 @@ import (
 // VPC Nat Ip can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
+//
+//	$ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
+//
 // ```
 type NatIp struct {
 	pulumi.CustomResourceState
@@ -105,14 +110,15 @@ type NatIp struct {
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
 	// The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-	NatIp pulumi.StringPtrOutput `pulumi:"natIp"`
+	NatIp pulumi.StringOutput `pulumi:"natIp"`
 	// NAT IP ADDRESS of the address segment.
 	NatIpCidr pulumi.StringPtrOutput `pulumi:"natIpCidr"`
 	// The ID of the CIDR block to which the NAT IP address belongs.
 	NatIpCidrId pulumi.StringPtrOutput `pulumi:"natIpCidrId"`
 	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
 	NatIpDescription pulumi.StringPtrOutput `pulumi:"natIpDescription"`
-	NatIpId          pulumi.StringOutput    `pulumi:"natIpId"`
+	// Ihe ID of the Nat Ip.
+	NatIpId pulumi.StringOutput `pulumi:"natIpId"`
 	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpName pulumi.StringPtrOutput `pulumi:"natIpName"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
@@ -163,7 +169,8 @@ type natIpState struct {
 	NatIpCidrId *string `pulumi:"natIpCidrId"`
 	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
 	NatIpDescription *string `pulumi:"natIpDescription"`
-	NatIpId          *string `pulumi:"natIpId"`
+	// Ihe ID of the Nat Ip.
+	NatIpId *string `pulumi:"natIpId"`
 	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpName *string `pulumi:"natIpName"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
@@ -183,7 +190,8 @@ type NatIpState struct {
 	NatIpCidrId pulumi.StringPtrInput
 	// NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
 	NatIpDescription pulumi.StringPtrInput
-	NatIpId          pulumi.StringPtrInput
+	// Ihe ID of the Nat Ip.
+	NatIpId pulumi.StringPtrInput
 	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpName pulumi.StringPtrInput
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
@@ -255,7 +263,7 @@ func (i *NatIp) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 // NatIpArrayInput is an input type that accepts NatIpArray and NatIpArrayOutput values.
 // You can construct a concrete instance of `NatIpArrayInput` via:
 //
-//          NatIpArray{ NatIpArgs{...} }
+//	NatIpArray{ NatIpArgs{...} }
 type NatIpArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +288,7 @@ func (i NatIpArray) ToNatIpArrayOutputWithContext(ctx context.Context) NatIpArra
 // NatIpMapInput is an input type that accepts NatIpMap and NatIpMapOutput values.
 // You can construct a concrete instance of `NatIpMapInput` via:
 //
-//          NatIpMap{ "key": NatIpArgs{...} }
+//	NatIpMap{ "key": NatIpArgs{...} }
 type NatIpMapInput interface {
 	pulumi.Input
 
@@ -327,8 +335,8 @@ func (o NatIpOutput) NatGatewayId() pulumi.StringOutput {
 }
 
 // The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
-func (o NatIpOutput) NatIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIp }).(pulumi.StringPtrOutput)
+func (o NatIpOutput) NatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIp }).(pulumi.StringOutput)
 }
 
 // NAT IP ADDRESS of the address segment.
@@ -346,6 +354,7 @@ func (o NatIpOutput) NatIpDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringPtrOutput { return v.NatIpDescription }).(pulumi.StringPtrOutput)
 }
 
+// Ihe ID of the Nat Ip.
 func (o NatIpOutput) NatIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatIp) pulumi.StringOutput { return v.NatIpId }).(pulumi.StringOutput)
 }

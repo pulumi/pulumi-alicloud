@@ -69,7 +69,9 @@ import (
 // Load balancer listener can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:tcp:22"
+//
+//	$ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:tcp:22"
+//
 // ```
 type Listener struct {
 	pulumi.CustomResourceState
@@ -611,7 +613,7 @@ func (i *Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutp
 // ListenerArrayInput is an input type that accepts ListenerArray and ListenerArrayOutput values.
 // You can construct a concrete instance of `ListenerArrayInput` via:
 //
-//          ListenerArray{ ListenerArgs{...} }
+//	ListenerArray{ ListenerArgs{...} }
 type ListenerArrayInput interface {
 	pulumi.Input
 
@@ -636,7 +638,7 @@ func (i ListenerArray) ToListenerArrayOutputWithContext(ctx context.Context) Lis
 // ListenerMapInput is an input type that accepts ListenerMap and ListenerMapOutput values.
 // You can construct a concrete instance of `ListenerMapInput` via:
 //
-//          ListenerMap{ "key": ListenerArgs{...} }
+//	ListenerMap{ "key": ListenerArgs{...} }
 type ListenerMapInput interface {
 	pulumi.Input
 

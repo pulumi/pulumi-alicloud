@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         /// </summary>
         public readonly string CacheMode;
         /// <summary>

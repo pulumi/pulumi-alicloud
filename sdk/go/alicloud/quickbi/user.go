@@ -19,31 +19,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quickbi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quickbi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := quickbi.NewUser(ctx, "example", &quickbi.UserArgs{
-// 			AccountName:   pulumi.String("example_value"),
-// 			AdminUser:     pulumi.Bool(false),
-// 			AuthAdminUser: pulumi.Bool(false),
-// 			NickName:      pulumi.String("example_value"),
-// 			UserType:      pulumi.String("Analyst"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := quickbi.NewUser(ctx, "example", &quickbi.UserArgs{
+//				AccountName:   pulumi.String("example_value"),
+//				AdminUser:     pulumi.Bool(false),
+//				AuthAdminUser: pulumi.Bool(false),
+//				NickName:      pulumi.String("example_value"),
+//				UserType:      pulumi.String("Analyst"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Quick BI User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:quickbi/user:User example <id>
+//
+//	$ pulumi import alicloud:quickbi/user:User example <id>
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -204,7 +209,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +234,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

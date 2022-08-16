@@ -18,79 +18,84 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-// 			Description: pulumi.String("created by terraform"),
-// 			Tags: pulumi.AnyMap{
-// 				"test": pulumi.Any("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-// 			Project:            exampleProject.Name,
-// 			RetentionPeriod:    pulumi.Int(3650),
-// 			ShardCount:         pulumi.Int(3),
-// 			AutoSplit:          pulumi.Bool(true),
-// 			MaxSplitShardCount: pulumi.Int(60),
-// 			AppendMeta:         pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.NewIngestion(ctx, "exampleIngestion", &log.IngestionArgs{
-// 			Project:        exampleProject.Name,
-// 			Logstore:       exampleStore.Name,
-// 			IngestionName:  pulumi.String("ingestion_name"),
-// 			DisplayName:    pulumi.String("display_name"),
-// 			Description:    pulumi.String("oss2sls"),
-// 			Interval:       pulumi.String("30m"),
-// 			RunImmediately: pulumi.Bool(true),
-// 			TimeZone:       pulumi.String("+0800"),
-// 			Source: pulumi.String(fmt.Sprintf(`        {
-//           "bucket": "bucket_name",
-//           "compressionCodec": "none",
-//           "encoding": "UTF-8",
-//           "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-//           "format": {
-//             "escapeChar": "\\",
-//             "fieldDelimiter": ",",
-//             "fieldNames": [],
-//             "firstRowAsHeader": true,
-//             "maxLines": 1,
-//             "quoteChar": "\"",
-//             "skipLeadingRows": 0,
-//             "timeField": "",
-//             "type": "DelimitedText"
-//           },
-//           "pattern": "",
-//           "prefix": "test-prefix/",
-//           "restoreObjectEnabled": false,
-//           "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
-//           "type": "AliyunOSS"
-//         }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//				Tags: pulumi.AnyMap{
+//					"test": pulumi.Any("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewIngestion(ctx, "exampleIngestion", &log.IngestionArgs{
+//				Project:        exampleProject.Name,
+//				Logstore:       exampleStore.Name,
+//				IngestionName:  pulumi.String("ingestion_name"),
+//				DisplayName:    pulumi.String("display_name"),
+//				Description:    pulumi.String("oss2sls"),
+//				Interval:       pulumi.String("30m"),
+//				RunImmediately: pulumi.Bool(true),
+//				TimeZone:       pulumi.String("+0800"),
+//				Source: pulumi.String(fmt.Sprintf(`        {
+//	          "bucket": "bucket_name",
+//	          "compressionCodec": "none",
+//	          "encoding": "UTF-8",
+//	          "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+//	          "format": {
+//	            "escapeChar": "\\",
+//	            "fieldDelimiter": ",",
+//	            "fieldNames": [],
+//	            "firstRowAsHeader": true,
+//	            "maxLines": 1,
+//	            "quoteChar": "\"",
+//	            "skipLeadingRows": 0,
+//	            "timeField": "",
+//	            "type": "DelimitedText"
+//	          },
+//	          "pattern": "",
+//	          "prefix": "test-prefix/",
+//	          "restoreObjectEnabled": false,
+//	          "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+//	          "type": "AliyunOSS"
+//	        }
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,7 +103,9 @@ import (
 // Log ingestion can be imported using the id or name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
+//
+//	$ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
+//
 // ```
 type Ingestion struct {
 	pulumi.CustomResourceState
@@ -287,7 +294,7 @@ func (i *Ingestion) ToIngestionOutputWithContext(ctx context.Context) IngestionO
 // IngestionArrayInput is an input type that accepts IngestionArray and IngestionArrayOutput values.
 // You can construct a concrete instance of `IngestionArrayInput` via:
 //
-//          IngestionArray{ IngestionArgs{...} }
+//	IngestionArray{ IngestionArgs{...} }
 type IngestionArrayInput interface {
 	pulumi.Input
 
@@ -312,7 +319,7 @@ func (i IngestionArray) ToIngestionArrayOutputWithContext(ctx context.Context) I
 // IngestionMapInput is an input type that accepts IngestionMap and IngestionMapOutput values.
 // You can construct a concrete instance of `IngestionMapInput` via:
 //
-//          IngestionMap{ "key": IngestionArgs{...} }
+//	IngestionMap{ "key": IngestionArgs{...} }
 type IngestionMapInput interface {
 	pulumi.Input
 

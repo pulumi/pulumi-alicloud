@@ -16,44 +16,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("rosTemplateScratchId1", ids.Scratches[0].Id)
-// 		status, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
-// 			Status: pulumi.StringRef("GENERATE_COMPLETE"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("rosTemplateScratchId2", status.Scratches[0].Id)
-// 		templateScratchType, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
-// 			TemplateScratchType: pulumi.StringRef("ResourceImport"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("rosTemplateScratchId3", templateScratchType.Scratches[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rosTemplateScratchId1", ids.Scratches[0].Id)
+//			status, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
+//				Status: pulumi.StringRef("GENERATE_COMPLETE"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rosTemplateScratchId2", status.Scratches[0].Id)
+//			templateScratchType, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
+//				TemplateScratchType: pulumi.StringRef("ResourceImport"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rosTemplateScratchId3", templateScratchType.Scratches[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTemplateScratches(ctx *pulumi.Context, args *GetTemplateScratchesArgs, opts ...pulumi.InvokeOption) (*GetTemplateScratchesResult, error) {
 	var rv GetTemplateScratchesResult

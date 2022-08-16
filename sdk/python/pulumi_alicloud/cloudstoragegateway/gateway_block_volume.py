@@ -36,7 +36,7 @@ class GatewayBlockVolumeArgs:
         :param pulumi.Input[str] oss_bucket_name: The name of the OSS Bucket.
         :param pulumi.Input[str] oss_endpoint: The endpoint of the OSS Bucket.
         :param pulumi.Input[str] protocol: The Protocol. Valid values: `iSCSI`.
-        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param pulumi.Input[bool] chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param pulumi.Input[str] chap_in_password: The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         :param pulumi.Input[str] chap_in_user: The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
@@ -137,7 +137,7 @@ class GatewayBlockVolumeArgs:
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -276,7 +276,7 @@ class _GatewayBlockVolumeState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayBlockVolume resources.
-        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param pulumi.Input[bool] chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param pulumi.Input[str] chap_in_password: The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         :param pulumi.Input[str] chap_in_user: The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
@@ -342,7 +342,7 @@ class _GatewayBlockVolumeState:
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -590,7 +590,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param pulumi.Input[bool] chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param pulumi.Input[str] chap_in_password: The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         :param pulumi.Input[str] chap_in_user: The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
@@ -727,7 +727,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param pulumi.Input[str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param pulumi.Input[bool] chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param pulumi.Input[str] chap_in_password: The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         :param pulumi.Input[str] chap_in_user: The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
@@ -781,7 +781,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> pulumi.Output[str]:
         """
-        The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 

@@ -22,25 +22,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cfg.GetRules(ctx, &cfg.GetRulesArgs{
-// 			Ids: []string{
-// 				"cr-ed4bad756057********",
-// 			},
-// 			NameRegex: pulumi.StringRef("tftest"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstConfigRuleId", example.Rules[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cfg.GetRules(ctx, &cfg.GetRulesArgs{
+//				Ids: []string{
+//					"cr-ed4bad756057********",
+//				},
+//				NameRegex: pulumi.StringRef("tftest"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstConfigRuleId", example.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	var rv GetRulesResult

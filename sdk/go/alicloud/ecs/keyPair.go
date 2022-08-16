@@ -12,40 +12,43 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewKeyPair(ctx, "basic", &ecs.KeyPairArgs{
-// 			KeyName: pulumi.String("terraform-test-key-pair"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "prefix", &ecs.KeyPairArgs{
-// 			KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "publickey", &ecs.KeyPairArgs{
-// 			KeyName:   pulumi.String("my_public_key"),
-// 			PublicKey: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewKeyPair(ctx, "basic", &ecs.KeyPairArgs{
+//				KeyName: pulumi.String("terraform-test-key-pair"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewKeyPair(ctx, "prefix", &ecs.KeyPairArgs{
+//				KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewKeyPair(ctx, "publickey", &ecs.KeyPairArgs{
+//				KeyName:   pulumi.String("my_public_key"),
+//				PublicKey: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Key pair can be imported using the name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+//
+//	$ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+//
 // ```
 type KeyPair struct {
 	pulumi.CustomResourceState
@@ -199,7 +204,7 @@ func (i *KeyPair) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput 
 // KeyPairArrayInput is an input type that accepts KeyPairArray and KeyPairArrayOutput values.
 // You can construct a concrete instance of `KeyPairArrayInput` via:
 //
-//          KeyPairArray{ KeyPairArgs{...} }
+//	KeyPairArray{ KeyPairArgs{...} }
 type KeyPairArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +229,7 @@ func (i KeyPairArray) ToKeyPairArrayOutputWithContext(ctx context.Context) KeyPa
 // KeyPairMapInput is an input type that accepts KeyPairMap and KeyPairMapOutput values.
 // You can construct a concrete instance of `KeyPairMapInput` via:
 //
-//          KeyPairMap{ "key": KeyPairArgs{...} }
+//	KeyPairMap{ "key": KeyPairArgs{...} }
 type KeyPairMapInput interface {
 	pulumi.Input
 

@@ -8,10 +8,12 @@ import * as utilities from "../utilities";
 export * from "./account";
 export * from "./controlPolicy";
 export * from "./controlPolicyAttachment";
+export * from "./delegatedAdministrator";
 export * from "./folder";
 export * from "./getAccounts";
 export * from "./getControlPolicies";
 export * from "./getControlPolicyAttachments";
+export * from "./getDelegatedAdministrators";
 export * from "./getFolders";
 export * from "./getHandshakes";
 export * from "./getPolicies";
@@ -39,6 +41,7 @@ export * from "./sharedTarget";
 import { Account } from "./account";
 import { ControlPolicy } from "./controlPolicy";
 import { ControlPolicyAttachment } from "./controlPolicyAttachment";
+import { DelegatedAdministrator } from "./delegatedAdministrator";
 import { Folder } from "./folder";
 import { Handshake } from "./handshake";
 import { Policy } from "./policy";
@@ -62,6 +65,8 @@ const _module = {
                 return new ControlPolicy(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
                 return new ControlPolicyAttachment(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator":
+                return new DelegatedAdministrator(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/handshake:Handshake":
@@ -94,6 +99,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/delegatedAdministrator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshake", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _module)

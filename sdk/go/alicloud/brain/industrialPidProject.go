@@ -17,28 +17,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := brain.NewIndustrialPidProject(ctx, "example", &brain.IndustrialPidProjectArgs{
-// 			PidOrganizationId: pulumi.String("3e74e684-cbb5-xxxx"),
-// 			PidProjectName:    pulumi.String("tf-testAcc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := brain.NewIndustrialPidProject(ctx, "example", &brain.IndustrialPidProjectArgs{
+//				PidOrganizationId: pulumi.String("3e74e684-cbb5-xxxx"),
+//				PidProjectName:    pulumi.String("tf-testAcc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Brain Industrial Pid Project can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
+//
+//	$ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
+//
 // ```
 type IndustrialPidProject struct {
 	pulumi.CustomResourceState
@@ -160,7 +165,7 @@ func (i *IndustrialPidProject) ToIndustrialPidProjectOutputWithContext(ctx conte
 // IndustrialPidProjectArrayInput is an input type that accepts IndustrialPidProjectArray and IndustrialPidProjectArrayOutput values.
 // You can construct a concrete instance of `IndustrialPidProjectArrayInput` via:
 //
-//          IndustrialPidProjectArray{ IndustrialPidProjectArgs{...} }
+//	IndustrialPidProjectArray{ IndustrialPidProjectArgs{...} }
 type IndustrialPidProjectArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +190,7 @@ func (i IndustrialPidProjectArray) ToIndustrialPidProjectArrayOutputWithContext(
 // IndustrialPidProjectMapInput is an input type that accepts IndustrialPidProjectMap and IndustrialPidProjectMapOutput values.
 // You can construct a concrete instance of `IndustrialPidProjectMapInput` via:
 //
-//          IndustrialPidProjectMap{ "key": IndustrialPidProjectArgs{...} }
+//	IndustrialPidProjectMap{ "key": IndustrialPidProjectArgs{...} }
 type IndustrialPidProjectMapInput interface {
 	pulumi.Input
 

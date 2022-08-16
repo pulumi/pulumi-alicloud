@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewHybridMonitorFcTask(ctx, "example", &cms.HybridMonitorFcTaskArgs{
-// 			Namespace:    pulumi.String("example_value"),
-// 			TargetUserId: pulumi.String("example_value"),
-// 			YarmConfig:   pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewHybridMonitorFcTask(ctx, "example", &cms.HybridMonitorFcTaskArgs{
+//				Namespace:    pulumi.String("example_value"),
+//				TargetUserId: pulumi.String("example_value"),
+//				YarmConfig:   pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
+//
+//	$ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
+//
 // ```
 type HybridMonitorFcTask struct {
 	pulumi.CustomResourceState
@@ -179,7 +184,7 @@ func (i *HybridMonitorFcTask) ToHybridMonitorFcTaskOutputWithContext(ctx context
 // HybridMonitorFcTaskArrayInput is an input type that accepts HybridMonitorFcTaskArray and HybridMonitorFcTaskArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorFcTaskArrayInput` via:
 //
-//          HybridMonitorFcTaskArray{ HybridMonitorFcTaskArgs{...} }
+//	HybridMonitorFcTaskArray{ HybridMonitorFcTaskArgs{...} }
 type HybridMonitorFcTaskArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +209,7 @@ func (i HybridMonitorFcTaskArray) ToHybridMonitorFcTaskArrayOutputWithContext(ct
 // HybridMonitorFcTaskMapInput is an input type that accepts HybridMonitorFcTaskMap and HybridMonitorFcTaskMapOutput values.
 // You can construct a concrete instance of `HybridMonitorFcTaskMapInput` via:
 //
-//          HybridMonitorFcTaskMap{ "key": HybridMonitorFcTaskArgs{...} }
+//	HybridMonitorFcTaskMap{ "key": HybridMonitorFcTaskArgs{...} }
 type HybridMonitorFcTaskMapInput interface {
 	pulumi.Input
 

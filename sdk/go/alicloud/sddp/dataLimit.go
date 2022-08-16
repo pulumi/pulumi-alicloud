@@ -22,7 +22,9 @@ import (
 // Data Security Center Data Limit can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
+//
+//	$ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
+//
 // ```
 type DataLimit struct {
 	pulumi.CustomResourceState
@@ -203,7 +205,7 @@ func (i *DataLimit) ToDataLimitOutputWithContext(ctx context.Context) DataLimitO
 // DataLimitArrayInput is an input type that accepts DataLimitArray and DataLimitArrayOutput values.
 // You can construct a concrete instance of `DataLimitArrayInput` via:
 //
-//          DataLimitArray{ DataLimitArgs{...} }
+//	DataLimitArray{ DataLimitArgs{...} }
 type DataLimitArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +230,7 @@ func (i DataLimitArray) ToDataLimitArrayOutputWithContext(ctx context.Context) D
 // DataLimitMapInput is an input type that accepts DataLimitMap and DataLimitMapOutput values.
 // You can construct a concrete instance of `DataLimitMapInput` via:
 //
-//          DataLimitMap{ "key": DataLimitArgs{...} }
+//	DataLimitMap{ "key": DataLimitArgs{...} }
 type DataLimitMapInput interface {
 	pulumi.Input
 

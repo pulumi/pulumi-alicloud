@@ -16,26 +16,29 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := sae.GetInstanceSpecifications(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("saeInstanceSpecificationId1", ids.Specifications[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := sae.GetInstanceSpecifications(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("saeInstanceSpecificationId1", ids.Specifications[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceSpecifications(ctx *pulumi.Context, args *GetInstanceSpecificationsArgs, opts ...pulumi.InvokeOption) (*GetInstanceSpecificationsResult, error) {
 	var rv GetInstanceSpecificationsResult

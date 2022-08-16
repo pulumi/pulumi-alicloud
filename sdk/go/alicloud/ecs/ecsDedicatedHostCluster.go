@@ -19,38 +19,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZones, err := alicloud.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsDedicatedHostCluster(ctx, "exampleEcsDedicatedHostCluster", &ecs.EcsDedicatedHostClusterArgs{
-// 			DedicatedHostClusterName: pulumi.String("example_value"),
-// 			Description:              pulumi.String("example_value"),
-// 			ZoneId:                   pulumi.String(exampleZones.Zones[0].Id),
-// 			Tags: pulumi.AnyMap{
-// 				"Create": pulumi.Any("TF"),
-// 				"For":    pulumi.Any("DDH_Cluster_Test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := alicloud.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsDedicatedHostCluster(ctx, "exampleEcsDedicatedHostCluster", &ecs.EcsDedicatedHostClusterArgs{
+//				DedicatedHostClusterName: pulumi.String("example_value"),
+//				Description:              pulumi.String("example_value"),
+//				ZoneId:                   pulumi.String(exampleZones.Zones[0].Id),
+//				Tags: pulumi.AnyMap{
+//					"Create": pulumi.Any("TF"),
+//					"For":    pulumi.Any("DDH_Cluster_Test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // ECS Dedicated Host Cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
+//
 // ```
 type EcsDedicatedHostCluster struct {
 	pulumi.CustomResourceState
@@ -189,7 +194,7 @@ func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterOutputWithContext(ctx
 // EcsDedicatedHostClusterArrayInput is an input type that accepts EcsDedicatedHostClusterArray and EcsDedicatedHostClusterArrayOutput values.
 // You can construct a concrete instance of `EcsDedicatedHostClusterArrayInput` via:
 //
-//          EcsDedicatedHostClusterArray{ EcsDedicatedHostClusterArgs{...} }
+//	EcsDedicatedHostClusterArray{ EcsDedicatedHostClusterArgs{...} }
 type EcsDedicatedHostClusterArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +219,7 @@ func (i EcsDedicatedHostClusterArray) ToEcsDedicatedHostClusterArrayOutputWithCo
 // EcsDedicatedHostClusterMapInput is an input type that accepts EcsDedicatedHostClusterMap and EcsDedicatedHostClusterMapOutput values.
 // You can construct a concrete instance of `EcsDedicatedHostClusterMapInput` via:
 //
-//          EcsDedicatedHostClusterMap{ "key": EcsDedicatedHostClusterArgs{...} }
+//	EcsDedicatedHostClusterMap{ "key": EcsDedicatedHostClusterArgs{...} }
 type EcsDedicatedHostClusterMapInput interface {
 	pulumi.Input
 

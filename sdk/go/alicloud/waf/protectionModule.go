@@ -19,65 +19,68 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultInstances, err := waf.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultDomain, err := waf.NewDomain(ctx, "defaultDomain", &waf.DomainArgs{
-// 			DomainName:      pulumi.String("you domain"),
-// 			InstanceId:      pulumi.String(defaultInstances.Ids[0]),
-// 			IsAccessProduct: pulumi.String("On"),
-// 			SourceIps: pulumi.StringArray{
-// 				pulumi.String("1.1.1.1"),
-// 			},
-// 			ClusterType: pulumi.String("PhysicalCluster"),
-// 			Http2Ports: pulumi.StringArray{
-// 				pulumi.String("443"),
-// 			},
-// 			HttpPorts: pulumi.StringArray{
-// 				pulumi.String("80"),
-// 			},
-// 			HttpsPorts: pulumi.StringArray{
-// 				pulumi.String("443"),
-// 			},
-// 			HttpToUserIp:  pulumi.String("Off"),
-// 			HttpsRedirect: pulumi.String("Off"),
-// 			LoadBalancing: pulumi.String("IpHash"),
-// 			LogHeaders: waf.DomainLogHeaderArray{
-// 				&waf.DomainLogHeaderArgs{
-// 					Key:   pulumi.String("foo"),
-// 					Value: pulumi.String("http"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = waf.NewProtectionModule(ctx, "defaultProtectionModule", &waf.ProtectionModuleArgs{
-// 			InstanceId:  pulumi.String(defaultInstances.Ids[0]),
-// 			Domain:      defaultDomain.DomainName,
-// 			DefenseType: pulumi.String("ac_cc"),
-// 			Mode:        pulumi.Int(0),
-// 			Status:      pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstances, err := waf.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDomain, err := waf.NewDomain(ctx, "defaultDomain", &waf.DomainArgs{
+//				DomainName:      pulumi.String("you domain"),
+//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
+//				IsAccessProduct: pulumi.String("On"),
+//				SourceIps: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
+//				},
+//				ClusterType: pulumi.String("PhysicalCluster"),
+//				Http2Ports: pulumi.StringArray{
+//					pulumi.String("443"),
+//				},
+//				HttpPorts: pulumi.StringArray{
+//					pulumi.String("80"),
+//				},
+//				HttpsPorts: pulumi.StringArray{
+//					pulumi.String("443"),
+//				},
+//				HttpToUserIp:  pulumi.String("Off"),
+//				HttpsRedirect: pulumi.String("Off"),
+//				LoadBalancing: pulumi.String("IpHash"),
+//				LogHeaders: waf.DomainLogHeaderArray{
+//					&waf.DomainLogHeaderArgs{
+//						Key:   pulumi.String("foo"),
+//						Value: pulumi.String("http"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = waf.NewProtectionModule(ctx, "defaultProtectionModule", &waf.ProtectionModuleArgs{
+//				InstanceId:  pulumi.String(defaultInstances.Ids[0]),
+//				Domain:      defaultDomain.DomainName,
+//				DefenseType: pulumi.String("ac_cc"),
+//				Mode:        pulumi.Int(0),
+//				Status:      pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,7 +88,9 @@ import (
 // Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
+//
+//	$ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
+//
 // ```
 type ProtectionModule struct {
 	pulumi.CustomResourceState
@@ -285,7 +290,7 @@ func (i *ProtectionModule) ToProtectionModuleOutputWithContext(ctx context.Conte
 // ProtectionModuleArrayInput is an input type that accepts ProtectionModuleArray and ProtectionModuleArrayOutput values.
 // You can construct a concrete instance of `ProtectionModuleArrayInput` via:
 //
-//          ProtectionModuleArray{ ProtectionModuleArgs{...} }
+//	ProtectionModuleArray{ ProtectionModuleArgs{...} }
 type ProtectionModuleArrayInput interface {
 	pulumi.Input
 
@@ -310,7 +315,7 @@ func (i ProtectionModuleArray) ToProtectionModuleArrayOutputWithContext(ctx cont
 // ProtectionModuleMapInput is an input type that accepts ProtectionModuleMap and ProtectionModuleMapOutput values.
 // You can construct a concrete instance of `ProtectionModuleMapInput` via:
 //
-//          ProtectionModuleMap{ "key": ProtectionModuleArgs{...} }
+//	ProtectionModuleMap{ "key": ProtectionModuleArgs{...} }
 type ProtectionModuleMapInput interface {
 	pulumi.Input
 

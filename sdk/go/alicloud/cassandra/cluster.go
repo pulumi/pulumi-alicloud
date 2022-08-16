@@ -29,33 +29,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
-// 			AutoRenew:         pulumi.Bool(false),
-// 			ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
-// 			DataCenterName:    pulumi.String("dc-1"),
-// 			DiskSize:          pulumi.Int(160),
-// 			DiskType:          pulumi.String("cloud_ssd"),
-// 			InstanceType:      pulumi.String("cassandra.c.large"),
-// 			IpWhite:           pulumi.String("127.0.0.1"),
-// 			MaintainEndTime:   pulumi.String("20:00Z"),
-// 			MaintainStartTime: pulumi.String("18:00Z"),
-// 			MajorVersion:      pulumi.String("3.11"),
-// 			NodeCount:         pulumi.Int(2),
-// 			PayType:           pulumi.String("PayAsYouGo"),
-// 			VswitchId:         pulumi.String("vsw-xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
+//				AutoRenew:         pulumi.Bool(false),
+//				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
+//				DataCenterName:    pulumi.String("dc-1"),
+//				DiskSize:          pulumi.Int(160),
+//				DiskType:          pulumi.String("cloud_ssd"),
+//				InstanceType:      pulumi.String("cassandra.c.large"),
+//				IpWhite:           pulumi.String("127.0.0.1"),
+//				MaintainEndTime:   pulumi.String("20:00Z"),
+//				MaintainStartTime: pulumi.String("18:00Z"),
+//				MajorVersion:      pulumi.String("3.11"),
+//				NodeCount:         pulumi.Int(2),
+//				PayType:           pulumi.String("PayAsYouGo"),
+//				VswitchId:         pulumi.String("vsw-xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
@@ -65,7 +68,9 @@ import (
 // Cassandra cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+//
+//	$ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -364,7 +369,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -389,7 +394,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

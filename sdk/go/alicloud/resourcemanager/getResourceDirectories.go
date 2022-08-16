@@ -20,20 +20,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("resourceDirectoryId", _default.Directories[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("resourceDirectoryId", _default.Directories[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetResourceDirectories(ctx *pulumi.Context, args *GetResourceDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetResourceDirectoriesResult, error) {
 	var rv GetResourceDirectoriesResult

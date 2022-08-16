@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "exampleDdosCooInstance", &ddos.DdosCooInstanceArgs{
-// 			Bandwidth:        pulumi.String("30"),
-// 			BaseBandwidth:    pulumi.String("30"),
-// 			ServiceBandwidth: pulumi.String("100"),
-// 			PortCount:        pulumi.String("50"),
-// 			DomainCount:      pulumi.String("50"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ddos.NewPort(ctx, "examplePort", &ddos.PortArgs{
-// 			InstanceId:       exampleDdosCooInstance.ID(),
-// 			FrontendPort:     pulumi.String("7001"),
-// 			FrontendProtocol: pulumi.String("tcp"),
-// 			RealServers: pulumi.StringArray{
-// 				pulumi.String("1.1.1.1"),
-// 				pulumi.String("2.2.2.2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "exampleDdosCooInstance", &ddos.DdosCooInstanceArgs{
+//				Bandwidth:        pulumi.String("30"),
+//				BaseBandwidth:    pulumi.String("30"),
+//				ServiceBandwidth: pulumi.String("100"),
+//				PortCount:        pulumi.String("50"),
+//				DomainCount:      pulumi.String("50"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ddos.NewPort(ctx, "examplePort", &ddos.PortArgs{
+//				InstanceId:       exampleDdosCooInstance.ID(),
+//				FrontendPort:     pulumi.String("7001"),
+//				FrontendProtocol: pulumi.String("tcp"),
+//				RealServers: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
+//					pulumi.String("2.2.2.2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Anti-DDoS Pro Port can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
+//
+//	$ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
+//
 // ```
 type Port struct {
 	pulumi.CustomResourceState
@@ -203,7 +208,7 @@ func (i *Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
 // PortArrayInput is an input type that accepts PortArray and PortArrayOutput values.
 // You can construct a concrete instance of `PortArrayInput` via:
 //
-//          PortArray{ PortArgs{...} }
+//	PortArray{ PortArgs{...} }
 type PortArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +233,7 @@ func (i PortArray) ToPortArrayOutputWithContext(ctx context.Context) PortArrayOu
 // PortMapInput is an input type that accepts PortMap and PortMapOutput values.
 // You can construct a concrete instance of `PortMapInput` via:
 //
-//          PortMap{ "key": PortArgs{...} }
+//	PortMap{ "key": PortArgs{...} }
 type PortMapInput interface {
 	pulumi.Input
 

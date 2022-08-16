@@ -150,6 +150,7 @@ class _NatIpState:
         :param pulumi.Input[str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
         :param pulumi.Input[str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
         :param pulumi.Input[str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param pulumi.Input[str] nat_ip_id: Ihe ID of the Nat Ip.
         :param pulumi.Input[str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param pulumi.Input[str] status: The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
         """
@@ -247,6 +248,9 @@ class _NatIpState:
     @property
     @pulumi.getter(name="natIpId")
     def nat_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ihe ID of the Nat Ip.
+        """
         return pulumi.get(self, "nat_ip_id")
 
     @nat_ip_id.setter
@@ -487,6 +491,7 @@ class NatIp(pulumi.CustomResource):
         :param pulumi.Input[str] nat_ip_cidr: NAT IP ADDRESS of the address segment.
         :param pulumi.Input[str] nat_ip_cidr_id: The ID of the CIDR block to which the NAT IP address belongs.
         :param pulumi.Input[str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param pulumi.Input[str] nat_ip_id: Ihe ID of the Nat Ip.
         :param pulumi.Input[str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param pulumi.Input[str] status: The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
         """
@@ -523,7 +528,7 @@ class NatIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natIp")
-    def nat_ip(self) -> pulumi.Output[Optional[str]]:
+    def nat_ip(self) -> pulumi.Output[str]:
         """
         The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
         """
@@ -556,6 +561,9 @@ class NatIp(pulumi.CustomResource):
     @property
     @pulumi.getter(name="natIpId")
     def nat_ip_id(self) -> pulumi.Output[str]:
+        """
+        Ihe ID of the Nat Ip.
+        """
         return pulumi.get(self, "nat_ip_id")
 
     @property

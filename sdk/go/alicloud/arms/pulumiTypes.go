@@ -25,7 +25,7 @@ type DispatchRuleGroupRule struct {
 // DispatchRuleGroupRuleInput is an input type that accepts DispatchRuleGroupRuleArgs and DispatchRuleGroupRuleOutput values.
 // You can construct a concrete instance of `DispatchRuleGroupRuleInput` via:
 //
-//          DispatchRuleGroupRuleArgs{...}
+//	DispatchRuleGroupRuleArgs{...}
 type DispatchRuleGroupRuleInput interface {
 	pulumi.Input
 
@@ -60,7 +60,7 @@ func (i DispatchRuleGroupRuleArgs) ToDispatchRuleGroupRuleOutputWithContext(ctx 
 // DispatchRuleGroupRuleArrayInput is an input type that accepts DispatchRuleGroupRuleArray and DispatchRuleGroupRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleGroupRuleArrayInput` via:
 //
-//          DispatchRuleGroupRuleArray{ DispatchRuleGroupRuleArgs{...} }
+//	DispatchRuleGroupRuleArray{ DispatchRuleGroupRuleArgs{...} }
 type DispatchRuleGroupRuleArrayInput interface {
 	pulumi.Input
 
@@ -148,7 +148,7 @@ type DispatchRuleLabelMatchExpressionGrid struct {
 // DispatchRuleLabelMatchExpressionGridInput is an input type that accepts DispatchRuleLabelMatchExpressionGridArgs and DispatchRuleLabelMatchExpressionGridOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridArgs{...}
+//	DispatchRuleLabelMatchExpressionGridArgs{...}
 type DispatchRuleLabelMatchExpressionGridInput interface {
 	pulumi.Input
 
@@ -176,7 +176,7 @@ func (i DispatchRuleLabelMatchExpressionGridArgs) ToDispatchRuleLabelMatchExpres
 // DispatchRuleLabelMatchExpressionGridArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridArray and DispatchRuleLabelMatchExpressionGridArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridArrayInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridArray{ DispatchRuleLabelMatchExpressionGridArgs{...} }
+//	DispatchRuleLabelMatchExpressionGridArray{ DispatchRuleLabelMatchExpressionGridArgs{...} }
 type DispatchRuleLabelMatchExpressionGridArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +247,7 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup struct {
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
+//	DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interface {
 	pulumi.Input
 
@@ -275,7 +275,7 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs) ToDis
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
+//	DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput interface {
 	pulumi.Input
 
@@ -360,7 +360,7 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpr
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
+//	DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput interface {
 	pulumi.Input
 
@@ -402,7 +402,7 @@ func (i DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
 //
-//          DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
+//	DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput interface {
 	pulumi.Input
 
@@ -499,7 +499,7 @@ type DispatchRuleNotifyRule struct {
 // DispatchRuleNotifyRuleInput is an input type that accepts DispatchRuleNotifyRuleArgs and DispatchRuleNotifyRuleOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleInput` via:
 //
-//          DispatchRuleNotifyRuleArgs{...}
+//	DispatchRuleNotifyRuleArgs{...}
 type DispatchRuleNotifyRuleInput interface {
 	pulumi.Input
 
@@ -529,7 +529,7 @@ func (i DispatchRuleNotifyRuleArgs) ToDispatchRuleNotifyRuleOutputWithContext(ct
 // DispatchRuleNotifyRuleArrayInput is an input type that accepts DispatchRuleNotifyRuleArray and DispatchRuleNotifyRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleArrayInput` via:
 //
-//          DispatchRuleNotifyRuleArray{ DispatchRuleNotifyRuleArgs{...} }
+//	DispatchRuleNotifyRuleArray{ DispatchRuleNotifyRuleArgs{...} }
 type DispatchRuleNotifyRuleArrayInput interface {
 	pulumi.Input
 
@@ -607,7 +607,7 @@ type DispatchRuleNotifyRuleNotifyObject struct {
 // DispatchRuleNotifyRuleNotifyObjectInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArgs and DispatchRuleNotifyRuleNotifyObjectOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleNotifyObjectInput` via:
 //
-//          DispatchRuleNotifyRuleNotifyObjectArgs{...}
+//	DispatchRuleNotifyRuleNotifyObjectArgs{...}
 type DispatchRuleNotifyRuleNotifyObjectInput interface {
 	pulumi.Input
 
@@ -639,7 +639,7 @@ func (i DispatchRuleNotifyRuleNotifyObjectArgs) ToDispatchRuleNotifyRuleNotifyOb
 // DispatchRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArray and DispatchRuleNotifyRuleNotifyObjectArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleNotifyRuleNotifyObjectArrayInput` via:
 //
-//          DispatchRuleNotifyRuleNotifyObjectArray{ DispatchRuleNotifyRuleNotifyObjectArgs{...} }
+//	DispatchRuleNotifyRuleNotifyObjectArray{ DispatchRuleNotifyRuleNotifyObjectArgs{...} }
 type DispatchRuleNotifyRuleNotifyObjectArrayInput interface {
 	pulumi.Input
 
@@ -720,7 +720,7 @@ type PrometheusAlertRuleAnnotation struct {
 // PrometheusAlertRuleAnnotationInput is an input type that accepts PrometheusAlertRuleAnnotationArgs and PrometheusAlertRuleAnnotationOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleAnnotationInput` via:
 //
-//          PrometheusAlertRuleAnnotationArgs{...}
+//	PrometheusAlertRuleAnnotationArgs{...}
 type PrometheusAlertRuleAnnotationInput interface {
 	pulumi.Input
 
@@ -750,7 +750,7 @@ func (i PrometheusAlertRuleAnnotationArgs) ToPrometheusAlertRuleAnnotationOutput
 // PrometheusAlertRuleAnnotationArrayInput is an input type that accepts PrometheusAlertRuleAnnotationArray and PrometheusAlertRuleAnnotationArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleAnnotationArrayInput` via:
 //
-//          PrometheusAlertRuleAnnotationArray{ PrometheusAlertRuleAnnotationArgs{...} }
+//	PrometheusAlertRuleAnnotationArray{ PrometheusAlertRuleAnnotationArgs{...} }
 type PrometheusAlertRuleAnnotationArrayInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ type PrometheusAlertRuleLabel struct {
 // PrometheusAlertRuleLabelInput is an input type that accepts PrometheusAlertRuleLabelArgs and PrometheusAlertRuleLabelOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleLabelInput` via:
 //
-//          PrometheusAlertRuleLabelArgs{...}
+//	PrometheusAlertRuleLabelArgs{...}
 type PrometheusAlertRuleLabelInput interface {
 	pulumi.Input
 
@@ -856,7 +856,7 @@ func (i PrometheusAlertRuleLabelArgs) ToPrometheusAlertRuleLabelOutputWithContex
 // PrometheusAlertRuleLabelArrayInput is an input type that accepts PrometheusAlertRuleLabelArray and PrometheusAlertRuleLabelArrayOutput values.
 // You can construct a concrete instance of `PrometheusAlertRuleLabelArrayInput` via:
 //
-//          PrometheusAlertRuleLabelArray{ PrometheusAlertRuleLabelArgs{...} }
+//	PrometheusAlertRuleLabelArray{ PrometheusAlertRuleLabelArgs{...} }
 type PrometheusAlertRuleLabelArrayInput interface {
 	pulumi.Input
 
@@ -938,7 +938,7 @@ type GetAlertContactGroupsGroup struct {
 // GetAlertContactGroupsGroupInput is an input type that accepts GetAlertContactGroupsGroupArgs and GetAlertContactGroupsGroupOutput values.
 // You can construct a concrete instance of `GetAlertContactGroupsGroupInput` via:
 //
-//          GetAlertContactGroupsGroupArgs{...}
+//	GetAlertContactGroupsGroupArgs{...}
 type GetAlertContactGroupsGroupInput interface {
 	pulumi.Input
 
@@ -974,7 +974,7 @@ func (i GetAlertContactGroupsGroupArgs) ToGetAlertContactGroupsGroupOutputWithCo
 // GetAlertContactGroupsGroupArrayInput is an input type that accepts GetAlertContactGroupsGroupArray and GetAlertContactGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAlertContactGroupsGroupArrayInput` via:
 //
-//          GetAlertContactGroupsGroupArray{ GetAlertContactGroupsGroupArgs{...} }
+//	GetAlertContactGroupsGroupArray{ GetAlertContactGroupsGroupArgs{...} }
 type GetAlertContactGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1079,7 +1079,7 @@ type GetAlertContactsContact struct {
 // GetAlertContactsContactInput is an input type that accepts GetAlertContactsContactArgs and GetAlertContactsContactOutput values.
 // You can construct a concrete instance of `GetAlertContactsContactInput` via:
 //
-//          GetAlertContactsContactArgs{...}
+//	GetAlertContactsContactArgs{...}
 type GetAlertContactsContactInput interface {
 	pulumi.Input
 
@@ -1123,7 +1123,7 @@ func (i GetAlertContactsContactArgs) ToGetAlertContactsContactOutputWithContext(
 // GetAlertContactsContactArrayInput is an input type that accepts GetAlertContactsContactArray and GetAlertContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetAlertContactsContactArrayInput` via:
 //
-//          GetAlertContactsContactArray{ GetAlertContactsContactArgs{...} }
+//	GetAlertContactsContactArray{ GetAlertContactsContactArgs{...} }
 type GetAlertContactsContactArrayInput interface {
 	pulumi.Input
 
@@ -1245,7 +1245,7 @@ type GetDispatchRulesRule struct {
 // GetDispatchRulesRuleInput is an input type that accepts GetDispatchRulesRuleArgs and GetDispatchRulesRuleOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleInput` via:
 //
-//          GetDispatchRulesRuleArgs{...}
+//	GetDispatchRulesRuleArgs{...}
 type GetDispatchRulesRuleInput interface {
 	pulumi.Input
 
@@ -1286,7 +1286,7 @@ func (i GetDispatchRulesRuleArgs) ToGetDispatchRulesRuleOutputWithContext(ctx co
 // GetDispatchRulesRuleArrayInput is an input type that accepts GetDispatchRulesRuleArray and GetDispatchRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleArrayInput` via:
 //
-//          GetDispatchRulesRuleArray{ GetDispatchRulesRuleArgs{...} }
+//	GetDispatchRulesRuleArray{ GetDispatchRulesRuleArgs{...} }
 type GetDispatchRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -1398,7 +1398,7 @@ type GetDispatchRulesRuleGroupRule struct {
 // GetDispatchRulesRuleGroupRuleInput is an input type that accepts GetDispatchRulesRuleGroupRuleArgs and GetDispatchRulesRuleGroupRuleOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleGroupRuleInput` via:
 //
-//          GetDispatchRulesRuleGroupRuleArgs{...}
+//	GetDispatchRulesRuleGroupRuleArgs{...}
 type GetDispatchRulesRuleGroupRuleInput interface {
 	pulumi.Input
 
@@ -1433,7 +1433,7 @@ func (i GetDispatchRulesRuleGroupRuleArgs) ToGetDispatchRulesRuleGroupRuleOutput
 // GetDispatchRulesRuleGroupRuleArrayInput is an input type that accepts GetDispatchRulesRuleGroupRuleArray and GetDispatchRulesRuleGroupRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleGroupRuleArrayInput` via:
 //
-//          GetDispatchRulesRuleGroupRuleArray{ GetDispatchRulesRuleGroupRuleArgs{...} }
+//	GetDispatchRulesRuleGroupRuleArray{ GetDispatchRulesRuleGroupRuleArgs{...} }
 type GetDispatchRulesRuleGroupRuleArrayInput interface {
 	pulumi.Input
 
@@ -1521,7 +1521,7 @@ type GetDispatchRulesRuleLabelMatchExpressionGrid struct {
 // GetDispatchRulesRuleLabelMatchExpressionGridInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridArgs and GetDispatchRulesRuleLabelMatchExpressionGridOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridArgs{...}
+//	GetDispatchRulesRuleLabelMatchExpressionGridArgs{...}
 type GetDispatchRulesRuleLabelMatchExpressionGridInput interface {
 	pulumi.Input
 
@@ -1549,7 +1549,7 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridArgs) ToGetDispatchRulesRule
 // GetDispatchRulesRuleLabelMatchExpressionGridArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridArray and GetDispatchRulesRuleLabelMatchExpressionGridArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridArrayInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridArray{ GetDispatchRulesRuleLabelMatchExpressionGridArgs{...} }
+//	GetDispatchRulesRuleLabelMatchExpressionGridArray{ GetDispatchRulesRuleLabelMatchExpressionGridArgs{...} }
 type GetDispatchRulesRuleLabelMatchExpressionGridArrayInput interface {
 	pulumi.Input
 
@@ -1620,7 +1620,7 @@ type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup struc
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
+//	GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...}
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interface {
 	pulumi.Input
 
@@ -1648,7 +1648,7 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArg
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
+//	GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{...} }
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayInput interface {
 	pulumi.Input
 
@@ -1723,7 +1723,7 @@ type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelM
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
+//	GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...}
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput interface {
 	pulumi.Input
 
@@ -1755,7 +1755,7 @@ func (i GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 // GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput is an input type that accepts GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray and GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput` via:
 //
-//          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
+//	GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{ GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{...} }
 type GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput interface {
 	pulumi.Input
 
@@ -1842,7 +1842,7 @@ type GetDispatchRulesRuleNotifyRule struct {
 // GetDispatchRulesRuleNotifyRuleInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArgs and GetDispatchRulesRuleNotifyRuleOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleInput` via:
 //
-//          GetDispatchRulesRuleNotifyRuleArgs{...}
+//	GetDispatchRulesRuleNotifyRuleArgs{...}
 type GetDispatchRulesRuleNotifyRuleInput interface {
 	pulumi.Input
 
@@ -1872,7 +1872,7 @@ func (i GetDispatchRulesRuleNotifyRuleArgs) ToGetDispatchRulesRuleNotifyRuleOutp
 // GetDispatchRulesRuleNotifyRuleArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArray and GetDispatchRulesRuleNotifyRuleArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleArrayInput` via:
 //
-//          GetDispatchRulesRuleNotifyRuleArray{ GetDispatchRulesRuleNotifyRuleArgs{...} }
+//	GetDispatchRulesRuleNotifyRuleArray{ GetDispatchRulesRuleNotifyRuleArgs{...} }
 type GetDispatchRulesRuleNotifyRuleArrayInput interface {
 	pulumi.Input
 
@@ -1952,7 +1952,7 @@ type GetDispatchRulesRuleNotifyRuleNotifyObject struct {
 // GetDispatchRulesRuleNotifyRuleNotifyObjectInput is an input type that accepts GetDispatchRulesRuleNotifyRuleNotifyObjectArgs and GetDispatchRulesRuleNotifyRuleNotifyObjectOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleNotifyObjectInput` via:
 //
-//          GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...}
+//	GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...}
 type GetDispatchRulesRuleNotifyRuleNotifyObjectInput interface {
 	pulumi.Input
 
@@ -1984,7 +1984,7 @@ func (i GetDispatchRulesRuleNotifyRuleNotifyObjectArgs) ToGetDispatchRulesRuleNo
 // GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput is an input type that accepts GetDispatchRulesRuleNotifyRuleNotifyObjectArray and GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput values.
 // You can construct a concrete instance of `GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput` via:
 //
-//          GetDispatchRulesRuleNotifyRuleNotifyObjectArray{ GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...} }
+//	GetDispatchRulesRuleNotifyRuleNotifyObjectArray{ GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{...} }
 type GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput interface {
 	pulumi.Input
 
@@ -2089,7 +2089,7 @@ type GetPrometheusAlertRulesRule struct {
 // GetPrometheusAlertRulesRuleInput is an input type that accepts GetPrometheusAlertRulesRuleArgs and GetPrometheusAlertRulesRuleOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleInput` via:
 //
-//          GetPrometheusAlertRulesRuleArgs{...}
+//	GetPrometheusAlertRulesRuleArgs{...}
 type GetPrometheusAlertRulesRuleInput interface {
 	pulumi.Input
 
@@ -2143,7 +2143,7 @@ func (i GetPrometheusAlertRulesRuleArgs) ToGetPrometheusAlertRulesRuleOutputWith
 // GetPrometheusAlertRulesRuleArrayInput is an input type that accepts GetPrometheusAlertRulesRuleArray and GetPrometheusAlertRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleArrayInput` via:
 //
-//          GetPrometheusAlertRulesRuleArray{ GetPrometheusAlertRulesRuleArgs{...} }
+//	GetPrometheusAlertRulesRuleArray{ GetPrometheusAlertRulesRuleArgs{...} }
 type GetPrometheusAlertRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -2276,7 +2276,7 @@ type GetPrometheusAlertRulesRuleAnnotation struct {
 // GetPrometheusAlertRulesRuleAnnotationInput is an input type that accepts GetPrometheusAlertRulesRuleAnnotationArgs and GetPrometheusAlertRulesRuleAnnotationOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleAnnotationInput` via:
 //
-//          GetPrometheusAlertRulesRuleAnnotationArgs{...}
+//	GetPrometheusAlertRulesRuleAnnotationArgs{...}
 type GetPrometheusAlertRulesRuleAnnotationInput interface {
 	pulumi.Input
 
@@ -2306,7 +2306,7 @@ func (i GetPrometheusAlertRulesRuleAnnotationArgs) ToGetPrometheusAlertRulesRule
 // GetPrometheusAlertRulesRuleAnnotationArrayInput is an input type that accepts GetPrometheusAlertRulesRuleAnnotationArray and GetPrometheusAlertRulesRuleAnnotationArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleAnnotationArrayInput` via:
 //
-//          GetPrometheusAlertRulesRuleAnnotationArray{ GetPrometheusAlertRulesRuleAnnotationArgs{...} }
+//	GetPrometheusAlertRulesRuleAnnotationArray{ GetPrometheusAlertRulesRuleAnnotationArgs{...} }
 type GetPrometheusAlertRulesRuleAnnotationArrayInput interface {
 	pulumi.Input
 
@@ -2382,7 +2382,7 @@ type GetPrometheusAlertRulesRuleLabel struct {
 // GetPrometheusAlertRulesRuleLabelInput is an input type that accepts GetPrometheusAlertRulesRuleLabelArgs and GetPrometheusAlertRulesRuleLabelOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleLabelInput` via:
 //
-//          GetPrometheusAlertRulesRuleLabelArgs{...}
+//	GetPrometheusAlertRulesRuleLabelArgs{...}
 type GetPrometheusAlertRulesRuleLabelInput interface {
 	pulumi.Input
 
@@ -2412,7 +2412,7 @@ func (i GetPrometheusAlertRulesRuleLabelArgs) ToGetPrometheusAlertRulesRuleLabel
 // GetPrometheusAlertRulesRuleLabelArrayInput is an input type that accepts GetPrometheusAlertRulesRuleLabelArray and GetPrometheusAlertRulesRuleLabelArrayOutput values.
 // You can construct a concrete instance of `GetPrometheusAlertRulesRuleLabelArrayInput` via:
 //
-//          GetPrometheusAlertRulesRuleLabelArray{ GetPrometheusAlertRulesRuleLabelArgs{...} }
+//	GetPrometheusAlertRulesRuleLabelArray{ GetPrometheusAlertRulesRuleLabelArgs{...} }
 type GetPrometheusAlertRulesRuleLabelArrayInput interface {
 	pulumi.Input
 

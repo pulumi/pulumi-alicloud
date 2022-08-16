@@ -17,49 +17,52 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccCenInstanceAttachmentBasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-// 			Description: pulumi.String("terraform01"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            cen.ID(),
-// 			ChildInstanceId:       vpc.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-beijing"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccCenInstanceAttachmentBasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				Description: pulumi.String("terraform01"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewInstanceAttachment(ctx, "foo", &cen.InstanceAttachmentArgs{
+//				InstanceId:            cen.ID(),
+//				ChildInstanceId:       vpc.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-beijing"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
+//
+//	$ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
+//
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
@@ -223,7 +228,7 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 // InstanceAttachmentArrayInput is an input type that accepts InstanceAttachmentArray and InstanceAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAttachmentArrayInput` via:
 //
-//          InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
+//	InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
 type InstanceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -248,7 +253,7 @@ func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutputWithContext(ctx 
 // InstanceAttachmentMapInput is an input type that accepts InstanceAttachmentMap and InstanceAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceAttachmentMapInput` via:
 //
-//          InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
+//	InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
 type InstanceAttachmentMapInput interface {
 	pulumi.Input
 

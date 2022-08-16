@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := privatelink.NewVpcEndpointServiceUser(ctx, "example", &privatelink.VpcEndpointServiceUserArgs{
-// 			ServiceId: pulumi.String("epsrv-gw81c6xxxxxx"),
-// 			UserId:    pulumi.String("YourRamUserId"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := privatelink.NewVpcEndpointServiceUser(ctx, "example", &privatelink.VpcEndpointServiceUserArgs{
+//				ServiceId: pulumi.String("epsrv-gw81c6xxxxxx"),
+//				UserId:    pulumi.String("YourRamUserId"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Private Link Vpc Endpoint Service User can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
+//
+//	$ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
+//
 // ```
 type VpcEndpointServiceUser struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserOutputWithContext(ctx c
 // VpcEndpointServiceUserArrayInput is an input type that accepts VpcEndpointServiceUserArray and VpcEndpointServiceUserArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceUserArrayInput` via:
 //
-//          VpcEndpointServiceUserArray{ VpcEndpointServiceUserArgs{...} }
+//	VpcEndpointServiceUserArray{ VpcEndpointServiceUserArgs{...} }
 type VpcEndpointServiceUserArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i VpcEndpointServiceUserArray) ToVpcEndpointServiceUserArrayOutputWithCont
 // VpcEndpointServiceUserMapInput is an input type that accepts VpcEndpointServiceUserMap and VpcEndpointServiceUserMapOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceUserMapInput` via:
 //
-//          VpcEndpointServiceUserMap{ "key": VpcEndpointServiceUserArgs{...} }
+//	VpcEndpointServiceUserMap{ "key": VpcEndpointServiceUserArgs{...} }
 type VpcEndpointServiceUserMapInput interface {
 	pulumi.Input
 

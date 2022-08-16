@@ -19,69 +19,72 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tfacc_host_account_share_key_attachment"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultInstances, err := bastionhost.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
-// 			HostShareKeyName: pulumi.String("example_name"),
-// 			InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
-// 			PassPhrase:       pulumi.String("example_value"),
-// 			PrivateKey:       pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-// 			InstanceId:         pulumi.String(defaultInstances.Ids[0]),
-// 			HostName:           pulumi.String(name),
-// 			ActiveAddressType:  pulumi.String("Private"),
-// 			HostPrivateAddress: pulumi.String("172.16.0.10"),
-// 			OsType:             pulumi.String("Linux"),
-// 			Source:             pulumi.String("Local"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
-// 			InstanceId:      pulumi.String(defaultInstances.Ids[0]),
-// 			HostAccountName: pulumi.String(name),
-// 			HostId:          defaultHost.HostId,
-// 			ProtocolName:    pulumi.String("SSH"),
-// 			Password:        pulumi.String("YourPassword12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bastionhost.NewHostAccountShareKeyAttachment(ctx, "defaultHostAccountShareKeyAttachment", &bastionhost.HostAccountShareKeyAttachmentArgs{
-// 			InstanceId:     pulumi.String(defaultInstances.Instances[0].Id),
-// 			HostShareKeyId: defaultHostShareKey.HostShareKeyId,
-// 			HostAccountId:  defaultHostAccount.HostAccountId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfacc_host_account_share_key_attachment"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInstances, err := bastionhost.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
+//				HostShareKeyName: pulumi.String("example_name"),
+//				InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
+//				PassPhrase:       pulumi.String("example_value"),
+//				PrivateKey:       pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
+//				InstanceId:         pulumi.String(defaultInstances.Ids[0]),
+//				HostName:           pulumi.String(name),
+//				ActiveAddressType:  pulumi.String("Private"),
+//				HostPrivateAddress: pulumi.String("172.16.0.10"),
+//				OsType:             pulumi.String("Linux"),
+//				Source:             pulumi.String("Local"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
+//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
+//				HostAccountName: pulumi.String(name),
+//				HostId:          defaultHost.HostId,
+//				ProtocolName:    pulumi.String("SSH"),
+//				Password:        pulumi.String("YourPassword12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewHostAccountShareKeyAttachment(ctx, "defaultHostAccountShareKeyAttachment", &bastionhost.HostAccountShareKeyAttachmentArgs{
+//				InstanceId:     pulumi.String(defaultInstances.Instances[0].Id),
+//				HostShareKeyId: defaultHostShareKey.HostShareKeyId,
+//				HostAccountId:  defaultHostAccount.HostAccountId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -89,7 +92,9 @@ import (
 // Bastion Host Account Share Key Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example <instance_id>:<host_share_key_id>:<host_account_id>
+//
+//	$ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example <instance_id>:<host_share_key_id>:<host_account_id>
+//
 // ```
 type HostAccountShareKeyAttachment struct {
 	pulumi.CustomResourceState
@@ -206,7 +211,7 @@ func (i *HostAccountShareKeyAttachment) ToHostAccountShareKeyAttachmentOutputWit
 // HostAccountShareKeyAttachmentArrayInput is an input type that accepts HostAccountShareKeyAttachmentArray and HostAccountShareKeyAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAccountShareKeyAttachmentArrayInput` via:
 //
-//          HostAccountShareKeyAttachmentArray{ HostAccountShareKeyAttachmentArgs{...} }
+//	HostAccountShareKeyAttachmentArray{ HostAccountShareKeyAttachmentArgs{...} }
 type HostAccountShareKeyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +236,7 @@ func (i HostAccountShareKeyAttachmentArray) ToHostAccountShareKeyAttachmentArray
 // HostAccountShareKeyAttachmentMapInput is an input type that accepts HostAccountShareKeyAttachmentMap and HostAccountShareKeyAttachmentMapOutput values.
 // You can construct a concrete instance of `HostAccountShareKeyAttachmentMapInput` via:
 //
-//          HostAccountShareKeyAttachmentMap{ "key": HostAccountShareKeyAttachmentArgs{...} }
+//	HostAccountShareKeyAttachmentMap{ "key": HostAccountShareKeyAttachmentArgs{...} }
 type HostAccountShareKeyAttachmentMapInput interface {
 	pulumi.Input
 

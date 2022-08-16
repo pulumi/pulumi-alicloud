@@ -19,73 +19,80 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testacc-fnfflow"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": "sts:AssumeRole",
-//         "Effect": "Allow",
-//         "Principal": {
-//           "Service": [
-//             "fnf.aliyuncs.com"
-//           ]
-//         }
-//       }
-//     ],
-//     "Version": "1"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-fnfflow"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": "sts:AssumeRole",
+//	        "Effect": "Allow",
+//	        "Principal": {
+//	          "Service": [
+//	            "fnf.aliyuncs.com"
+//	          ]
+//	        }
+//	      }
+//	    ],
+//	    "Version": "1"
+//	  }
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultFlow, err := fnf.NewFlow(ctx, "defaultFlow", &fnf.FlowArgs{
-// 			Definition: pulumi.String(fmt.Sprintf(`  version: v1beta1
-//   type: flow
-//   steps:
-//     - type: wait
-//       name: custom_wait
-//       duration: $.wait
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFlow, err := fnf.NewFlow(ctx, "defaultFlow", &fnf.FlowArgs{
+//				Definition: pulumi.String(fmt.Sprintf(`  version: v1beta1
+//	  type: flow
+//	  steps:
+//	    - type: wait
+//	      name: custom_wait
+//	      duration: $.wait
+//
 // `)),
-// 			RoleArn:     defaultRole.Arn,
-// 			Description: pulumi.String("Test for terraform fnf_flow."),
-// 			Type:        pulumi.String("FDL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = fnf.NewExecution(ctx, "defaultExecution", &fnf.ExecutionArgs{
-// 			ExecutionName: pulumi.String(name),
-// 			FlowName:      defaultFlow.Name,
-// 			Input:         pulumi.String("{\"wait\": 600}"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				RoleArn:     defaultRole.Arn,
+//				Description: pulumi.String("Test for terraform fnf_flow."),
+//				Type:        pulumi.String("FDL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fnf.NewExecution(ctx, "defaultExecution", &fnf.ExecutionArgs{
+//				ExecutionName: pulumi.String(name),
+//				FlowName:      defaultFlow.Name,
+//				Input:         pulumi.String("{\"wait\": 600}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -93,7 +100,9 @@ import (
 // Serverless Workflow Execution can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:fnf/execution:Execution example <flow_name>:<execution_name>
+//
+//	$ pulumi import alicloud:fnf/execution:Execution example <flow_name>:<execution_name>
+//
 // ```
 type Execution struct {
 	pulumi.CustomResourceState
@@ -217,7 +226,7 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 // ExecutionArrayInput is an input type that accepts ExecutionArray and ExecutionArrayOutput values.
 // You can construct a concrete instance of `ExecutionArrayInput` via:
 //
-//          ExecutionArray{ ExecutionArgs{...} }
+//	ExecutionArray{ ExecutionArgs{...} }
 type ExecutionArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +251,7 @@ func (i ExecutionArray) ToExecutionArrayOutputWithContext(ctx context.Context) E
 // ExecutionMapInput is an input type that accepts ExecutionMap and ExecutionMapOutput values.
 // You can construct a concrete instance of `ExecutionMapInput` via:
 //
-//          ExecutionMap{ "key": ExecutionArgs{...} }
+//	ExecutionMap{ "key": ExecutionArgs{...} }
 type ExecutionMapInput interface {
 	pulumi.Input
 

@@ -19,53 +19,58 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imm"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imm"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": "sts:AssumeRole",
-//         "Effect": "Allow",
-//         "Principal": {
-//           "Service": [
-//             "imm.aliyuncs.com"
-//           ]
-//         }
-//       }
-//     ],
-//     "Version": "1"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Document: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": "sts:AssumeRole",
+//	        "Effect": "Allow",
+//	        "Principal": {
+//	          "Service": [
+//	            "imm.aliyuncs.com"
+//	          ]
+//	        }
+//	      }
+//	    ],
+//	    "Version": "1"
+//	  }
+//
 // `)),
-// 			Description: pulumi.String("this is a role test."),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = imm.NewProject(ctx, "example", &imm.ProjectArgs{
-// 			Project:     pulumi.String("example_name"),
-// 			ServiceRole: role.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Description: pulumi.String("this is a role test."),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = imm.NewProject(ctx, "example", &imm.ProjectArgs{
+//				Project:     pulumi.String("example_name"),
+//				ServiceRole: role.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -73,7 +78,9 @@ import (
 // Intelligent Media Management Project can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:imm/project:Project example <project>
+//
+//	$ pulumi import alicloud:imm/project:Project example <project>
+//
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -174,7 +181,7 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
-//          ProjectArray{ ProjectArgs{...} }
+//	ProjectArray{ ProjectArgs{...} }
 type ProjectArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +206,7 @@ func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) Proje
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
 // You can construct a concrete instance of `ProjectMapInput` via:
 //
-//          ProjectMap{ "key": ProjectArgs{...} }
+//	ProjectMap{ "key": ProjectArgs{...} }
 type ProjectMapInput interface {
 	pulumi.Input
 

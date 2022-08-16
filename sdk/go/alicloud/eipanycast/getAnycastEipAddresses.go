@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := eipanycast.GetAnycastEipAddresses(ctx, &eipanycast.GetAnycastEipAddressesArgs{
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			NameRegex: pulumi.StringRef("the_resource_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstEipanycastAnycastEipAddressId", example.Addresses[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := eipanycast.GetAnycastEipAddresses(ctx, &eipanycast.GetAnycastEipAddressesArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEipanycastAnycastEipAddressId", example.Addresses[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAnycastEipAddresses(ctx *pulumi.Context, args *GetAnycastEipAddressesArgs, opts ...pulumi.InvokeOption) (*GetAnycastEipAddressesResult, error) {
 	var rv GetAnycastEipAddressesResult

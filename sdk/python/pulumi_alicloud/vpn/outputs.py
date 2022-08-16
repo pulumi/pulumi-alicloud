@@ -15,12 +15,21 @@ __all__ = [
     'ConnectionHealthCheckConfig',
     'ConnectionIkeConfig',
     'ConnectionIpsecConfig',
+    'GatewayVpnAttachmentBgpConfig',
+    'GatewayVpnAttachmentHealthCheckConfig',
+    'GatewayVpnAttachmentIkeConfig',
+    'GatewayVpnAttachmentIpsecConfig',
     'IpsecServerIkeConfig',
     'IpsecServerIpsecConfig',
     'GetConnectionsConnectionResult',
     'GetConnectionsConnectionIkeConfigResult',
     'GetConnectionsConnectionIpsecConfigResult',
     'GetCustomerGatewaysGatewayResult',
+    'GetGatewayVpnAttachmentsAttachmentResult',
+    'GetGatewayVpnAttachmentsAttachmentBgpConfigResult',
+    'GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult',
+    'GetGatewayVpnAttachmentsAttachmentIkeConfigResult',
+    'GetGatewayVpnAttachmentsAttachmentIpsecConfigResult',
     'GetGatewaysGatewayResult',
 ]
 
@@ -336,6 +345,385 @@ class ConnectionIpsecConfig(dict):
 
     def get(self, key: str, default = None) -> Any:
         ConnectionIpsecConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipsec_auth_alg: Optional[str] = None,
+                 ipsec_enc_alg: Optional[str] = None,
+                 ipsec_lifetime: Optional[int] = None,
+                 ipsec_pfs: Optional[str] = None):
+        """
+        :param str ipsec_auth_alg: The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        :param str ipsec_enc_alg: The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        """
+        if ipsec_auth_alg is not None:
+            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+        if ipsec_enc_alg is not None:
+            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+        if ipsec_lifetime is not None:
+            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+        if ipsec_pfs is not None:
+            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+
+    @property
+    @pulumi.getter(name="ipsecAuthAlg")
+    def ipsec_auth_alg(self) -> Optional[str]:
+        """
+        The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        """
+        return pulumi.get(self, "ipsec_auth_alg")
+
+    @property
+    @pulumi.getter(name="ipsecEncAlg")
+    def ipsec_enc_alg(self) -> Optional[str]:
+        """
+        The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        """
+        return pulumi.get(self, "ipsec_enc_alg")
+
+    @property
+    @pulumi.getter(name="ipsecLifetime")
+    def ipsec_lifetime(self) -> Optional[int]:
+        """
+        The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        """
+        return pulumi.get(self, "ipsec_lifetime")
+
+    @property
+    @pulumi.getter(name="ipsecPfs")
+    def ipsec_pfs(self) -> Optional[str]:
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        """
+        return pulumi.get(self, "ipsec_pfs")
+
+
+@pulumi.output_type
+class GatewayVpnAttachmentBgpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localAsn":
+            suggest = "local_asn"
+        elif key == "localBgpIp":
+            suggest = "local_bgp_ip"
+        elif key == "tunnelCidr":
+            suggest = "tunnel_cidr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayVpnAttachmentBgpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayVpnAttachmentBgpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayVpnAttachmentBgpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 local_asn: Optional[int] = None,
+                 local_bgp_ip: Optional[str] = None,
+                 tunnel_cidr: Optional[str] = None):
+        """
+        :param bool enable: Whether to enable BGP.
+        :param int local_asn: The ASN on the Alibaba Cloud side.
+        :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
+        :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if local_asn is not None:
+            pulumi.set(__self__, "local_asn", local_asn)
+        if local_bgp_ip is not None:
+            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+        if tunnel_cidr is not None:
+            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Whether to enable BGP.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> Optional[int]:
+        """
+        The ASN on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="localBgpIp")
+    def local_bgp_ip(self) -> Optional[str]:
+        """
+        The BGP IP address on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_bgp_ip")
+
+    @property
+    @pulumi.getter(name="tunnelCidr")
+    def tunnel_cidr(self) -> Optional[str]:
+        """
+        The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        return pulumi.get(self, "tunnel_cidr")
+
+
+@pulumi.output_type
+class GatewayVpnAttachmentHealthCheckConfig(dict):
+    def __init__(__self__, *,
+                 dip: Optional[str] = None,
+                 enable: Optional[bool] = None,
+                 interval: Optional[int] = None,
+                 policy: Optional[str] = None,
+                 retry: Optional[int] = None,
+                 sip: Optional[str] = None):
+        """
+        :param str dip: The destination IP address that is used for health checks.
+        :param bool enable: Whether to enable BGP.
+        :param int interval: The interval between two consecutive health checks. Unit: seconds.
+        :param str policy: Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        :param int retry: The maximum number of health check retries.
+        :param str sip: The source IP address that is used for health checks.
+        """
+        if dip is not None:
+            pulumi.set(__self__, "dip", dip)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if sip is not None:
+            pulumi.set(__self__, "sip", sip)
+
+    @property
+    @pulumi.getter
+    def dip(self) -> Optional[str]:
+        """
+        The destination IP address that is used for health checks.
+        """
+        return pulumi.get(self, "dip")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Whether to enable BGP.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[int]:
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def retry(self) -> Optional[int]:
+        """
+        The maximum number of health check retries.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def sip(self) -> Optional[str]:
+        """
+        The source IP address that is used for health checks.
+        """
+        return pulumi.get(self, "sip")
+
+
+@pulumi.output_type
+class GatewayVpnAttachmentIkeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ikeAuthAlg":
+            suggest = "ike_auth_alg"
+        elif key == "ikeEncAlg":
+            suggest = "ike_enc_alg"
+        elif key == "ikeLifetime":
+            suggest = "ike_lifetime"
+        elif key == "ikeMode":
+            suggest = "ike_mode"
+        elif key == "ikePfs":
+            suggest = "ike_pfs"
+        elif key == "ikeVersion":
+            suggest = "ike_version"
+        elif key == "localId":
+            suggest = "local_id"
+        elif key == "remoteId":
+            suggest = "remote_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayVpnAttachmentIkeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayVpnAttachmentIkeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayVpnAttachmentIkeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ike_auth_alg: Optional[str] = None,
+                 ike_enc_alg: Optional[str] = None,
+                 ike_lifetime: Optional[int] = None,
+                 ike_mode: Optional[str] = None,
+                 ike_pfs: Optional[str] = None,
+                 ike_version: Optional[str] = None,
+                 local_id: Optional[str] = None,
+                 psk: Optional[str] = None,
+                 remote_id: Optional[str] = None):
+        """
+        :param str ike_auth_alg: IKE authentication algorithm supports sha1 and MD5.
+        :param str ike_enc_alg: The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        :param int ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        :param str ike_mode: The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        :param str ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        :param str ike_version: The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        :param str local_id: The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        :param str psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
+        :param str remote_id: The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        """
+        if ike_auth_alg is not None:
+            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+        if ike_enc_alg is not None:
+            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+        if ike_lifetime is not None:
+            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+        if ike_mode is not None:
+            pulumi.set(__self__, "ike_mode", ike_mode)
+        if ike_pfs is not None:
+            pulumi.set(__self__, "ike_pfs", ike_pfs)
+        if ike_version is not None:
+            pulumi.set(__self__, "ike_version", ike_version)
+        if local_id is not None:
+            pulumi.set(__self__, "local_id", local_id)
+        if psk is not None:
+            pulumi.set(__self__, "psk", psk)
+        if remote_id is not None:
+            pulumi.set(__self__, "remote_id", remote_id)
+
+    @property
+    @pulumi.getter(name="ikeAuthAlg")
+    def ike_auth_alg(self) -> Optional[str]:
+        """
+        IKE authentication algorithm supports sha1 and MD5.
+        """
+        return pulumi.get(self, "ike_auth_alg")
+
+    @property
+    @pulumi.getter(name="ikeEncAlg")
+    def ike_enc_alg(self) -> Optional[str]:
+        """
+        The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        """
+        return pulumi.get(self, "ike_enc_alg")
+
+    @property
+    @pulumi.getter(name="ikeLifetime")
+    def ike_lifetime(self) -> Optional[int]:
+        """
+        The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        """
+        return pulumi.get(self, "ike_lifetime")
+
+    @property
+    @pulumi.getter(name="ikeMode")
+    def ike_mode(self) -> Optional[str]:
+        """
+        The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        """
+        return pulumi.get(self, "ike_mode")
+
+    @property
+    @pulumi.getter(name="ikePfs")
+    def ike_pfs(self) -> Optional[str]:
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        """
+        return pulumi.get(self, "ike_pfs")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> Optional[str]:
+        """
+        The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter(name="localId")
+    def local_id(self) -> Optional[str]:
+        """
+        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        """
+        return pulumi.get(self, "local_id")
+
+    @property
+    @pulumi.getter
+    def psk(self) -> Optional[str]:
+        """
+        Used for authentication between the IPsec VPN gateway and the customer gateway.
+        """
+        return pulumi.get(self, "psk")
+
+    @property
+    @pulumi.getter(name="remoteId")
+    def remote_id(self) -> Optional[str]:
+        """
+        The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        """
+        return pulumi.get(self, "remote_id")
+
+
+@pulumi.output_type
+class GatewayVpnAttachmentIpsecConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipsecAuthAlg":
+            suggest = "ipsec_auth_alg"
+        elif key == "ipsecEncAlg":
+            suggest = "ipsec_enc_alg"
+        elif key == "ipsecLifetime":
+            suggest = "ipsec_lifetime"
+        elif key == "ipsecPfs":
+            suggest = "ipsec_pfs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayVpnAttachmentIpsecConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayVpnAttachmentIpsecConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayVpnAttachmentIpsecConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -955,6 +1343,466 @@ class GetCustomerGatewaysGatewayResult(dict):
         The name of the VPN customer gateway.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGatewayVpnAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 bgp_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult'],
+                 connection_status: str,
+                 create_time: str,
+                 customer_gateway_id: str,
+                 effect_immediately: bool,
+                 health_check_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult'],
+                 id: str,
+                 ike_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult'],
+                 ipsec_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult'],
+                 local_subnet: str,
+                 network_type: str,
+                 remote_subnet: str,
+                 status: str,
+                 vpn_attachment_name: str,
+                 vpn_connection_id: str):
+        """
+        :param Sequence['GetGatewayVpnAttachmentsAttachmentBgpConfigArgs'] bgp_configs: The configurations of the BGP routing protocol.
+        :param str connection_status: The status of the IPsec-VPN connection.
+        :param str create_time: The creation time of the resource.
+        :param str customer_gateway_id: The ID of the customer gateway.
+        :param bool effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+        :param Sequence['GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs'] health_check_configs: The health check configurations.
+        :param str id: The ID of the Vpn Attachment.
+        :param Sequence['GetGatewayVpnAttachmentsAttachmentIkeConfigArgs'] ike_configs: Configuration negotiated in the second stage.
+        :param Sequence['GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs'] ipsec_configs: The configuration of Phase 2 negotiations.
+        :param str local_subnet: The CIDR block of the virtual private cloud (VPC).
+        :param str network_type: The network type.
+        :param str remote_subnet: The CIDR block of the on-premises data center.
+        :param str status: The status of the resource.
+        :param str vpn_attachment_name: The name of the IPsec-VPN connection.
+        :param str vpn_connection_id: The first ID of the resource.
+        """
+        pulumi.set(__self__, "bgp_configs", bgp_configs)
+        pulumi.set(__self__, "connection_status", connection_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
+        pulumi.set(__self__, "effect_immediately", effect_immediately)
+        pulumi.set(__self__, "health_check_configs", health_check_configs)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ike_configs", ike_configs)
+        pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        pulumi.set(__self__, "local_subnet", local_subnet)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "remote_subnet", remote_subnet)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpn_attachment_name", vpn_attachment_name)
+        pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
+
+    @property
+    @pulumi.getter(name="bgpConfigs")
+    def bgp_configs(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult']:
+        """
+        The configurations of the BGP routing protocol.
+        """
+        return pulumi.get(self, "bgp_configs")
+
+    @property
+    @pulumi.getter(name="connectionStatus")
+    def connection_status(self) -> str:
+        """
+        The status of the IPsec-VPN connection.
+        """
+        return pulumi.get(self, "connection_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customerGatewayId")
+    def customer_gateway_id(self) -> str:
+        """
+        The ID of the customer gateway.
+        """
+        return pulumi.get(self, "customer_gateway_id")
+
+    @property
+    @pulumi.getter(name="effectImmediately")
+    def effect_immediately(self) -> bool:
+        """
+        Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+        """
+        return pulumi.get(self, "effect_immediately")
+
+    @property
+    @pulumi.getter(name="healthCheckConfigs")
+    def health_check_configs(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult']:
+        """
+        The health check configurations.
+        """
+        return pulumi.get(self, "health_check_configs")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpn Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ikeConfigs")
+    def ike_configs(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult']:
+        """
+        Configuration negotiated in the second stage.
+        """
+        return pulumi.get(self, "ike_configs")
+
+    @property
+    @pulumi.getter(name="ipsecConfigs")
+    def ipsec_configs(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult']:
+        """
+        The configuration of Phase 2 negotiations.
+        """
+        return pulumi.get(self, "ipsec_configs")
+
+    @property
+    @pulumi.getter(name="localSubnet")
+    def local_subnet(self) -> str:
+        """
+        The CIDR block of the virtual private cloud (VPC).
+        """
+        return pulumi.get(self, "local_subnet")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The network type.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="remoteSubnet")
+    def remote_subnet(self) -> str:
+        """
+        The CIDR block of the on-premises data center.
+        """
+        return pulumi.get(self, "remote_subnet")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpnAttachmentName")
+    def vpn_attachment_name(self) -> str:
+        """
+        The name of the IPsec-VPN connection.
+        """
+        return pulumi.get(self, "vpn_attachment_name")
+
+    @property
+    @pulumi.getter(name="vpnConnectionId")
+    def vpn_connection_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "vpn_connection_id")
+
+
+@pulumi.output_type
+class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
+    def __init__(__self__, *,
+                 local_asn: str,
+                 local_bgp_ip: str,
+                 status: str,
+                 tunnel_cidr: str):
+        """
+        :param str local_asn: The ASN on the Alibaba Cloud side.
+        :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
+        :param str status: The status of the resource.
+        :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        pulumi.set(__self__, "local_asn", local_asn)
+        pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> str:
+        """
+        The ASN on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="localBgpIp")
+    def local_bgp_ip(self) -> str:
+        """
+        The BGP IP address on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_bgp_ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tunnelCidr")
+    def tunnel_cidr(self) -> str:
+        """
+        The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+        return pulumi.get(self, "tunnel_cidr")
+
+
+@pulumi.output_type
+class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
+    def __init__(__self__, *,
+                 dip: str,
+                 enable: bool,
+                 interval: int,
+                 policy: str,
+                 retry: int,
+                 sip: str,
+                 status: str):
+        """
+        :param str dip: The destination IP address.
+        :param int interval: The interval between two consecutive health checks. Unit: seconds.
+        :param str policy: Whether to revoke the published route when the health check fails.
+        :param int retry: The maximum number of health check retries.
+        :param str sip: The source IP address.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "dip", dip)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "retry", retry)
+        pulumi.set(__self__, "sip", sip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def dip(self) -> str:
+        """
+        The destination IP address.
+        """
+        return pulumi.get(self, "dip")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> int:
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        Whether to revoke the published route when the health check fails.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def retry(self) -> int:
+        """
+        The maximum number of health check retries.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def sip(self) -> str:
+        """
+        The source IP address.
+        """
+        return pulumi.get(self, "sip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
+    def __init__(__self__, *,
+                 ike_auth_alg: str,
+                 ike_enc_alg: str,
+                 ike_lifetime: str,
+                 ike_mode: str,
+                 ike_pfs: str,
+                 ike_version: str,
+                 local_id: str,
+                 psk: str,
+                 remote_id: str):
+        """
+        :param str ike_auth_alg: The IKE authentication algorithm.
+        :param str ike_enc_alg: The IKE encryption algorithm.
+        :param str ike_lifetime: The IKE lifetime. Unit: seconds.
+        :param str ike_mode: The IKE negotiation mode.
+        :param str ike_pfs: The DH group.
+        :param str ike_version: The version of the IKE protocol.
+        :param str local_id: The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        :param str psk: The pre-shared key.
+        :param str remote_id: The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+        """
+        pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+        pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+        pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+        pulumi.set(__self__, "ike_mode", ike_mode)
+        pulumi.set(__self__, "ike_pfs", ike_pfs)
+        pulumi.set(__self__, "ike_version", ike_version)
+        pulumi.set(__self__, "local_id", local_id)
+        pulumi.set(__self__, "psk", psk)
+        pulumi.set(__self__, "remote_id", remote_id)
+
+    @property
+    @pulumi.getter(name="ikeAuthAlg")
+    def ike_auth_alg(self) -> str:
+        """
+        The IKE authentication algorithm.
+        """
+        return pulumi.get(self, "ike_auth_alg")
+
+    @property
+    @pulumi.getter(name="ikeEncAlg")
+    def ike_enc_alg(self) -> str:
+        """
+        The IKE encryption algorithm.
+        """
+        return pulumi.get(self, "ike_enc_alg")
+
+    @property
+    @pulumi.getter(name="ikeLifetime")
+    def ike_lifetime(self) -> str:
+        """
+        The IKE lifetime. Unit: seconds.
+        """
+        return pulumi.get(self, "ike_lifetime")
+
+    @property
+    @pulumi.getter(name="ikeMode")
+    def ike_mode(self) -> str:
+        """
+        The IKE negotiation mode.
+        """
+        return pulumi.get(self, "ike_mode")
+
+    @property
+    @pulumi.getter(name="ikePfs")
+    def ike_pfs(self) -> str:
+        """
+        The DH group.
+        """
+        return pulumi.get(self, "ike_pfs")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> str:
+        """
+        The version of the IKE protocol.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter(name="localId")
+    def local_id(self) -> str:
+        """
+        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        """
+        return pulumi.get(self, "local_id")
+
+    @property
+    @pulumi.getter
+    def psk(self) -> str:
+        """
+        The pre-shared key.
+        """
+        return pulumi.get(self, "psk")
+
+    @property
+    @pulumi.getter(name="remoteId")
+    def remote_id(self) -> str:
+        """
+        The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+        """
+        return pulumi.get(self, "remote_id")
+
+
+@pulumi.output_type
+class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult(dict):
+    def __init__(__self__, *,
+                 ipsec_auth_alg: str,
+                 ipsec_enc_alg: str,
+                 ipsec_lifetime: str,
+                 ipsec_pfs: str):
+        """
+        :param str ipsec_auth_alg: The IPsec authentication algorithm.
+        :param str ipsec_enc_alg: The IPsec encryption algorithm.
+        :param str ipsec_lifetime: The IPsec lifetime. Unit: seconds.
+        :param str ipsec_pfs: The DH group.
+        """
+        pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+        pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+        pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+        pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+
+    @property
+    @pulumi.getter(name="ipsecAuthAlg")
+    def ipsec_auth_alg(self) -> str:
+        """
+        The IPsec authentication algorithm.
+        """
+        return pulumi.get(self, "ipsec_auth_alg")
+
+    @property
+    @pulumi.getter(name="ipsecEncAlg")
+    def ipsec_enc_alg(self) -> str:
+        """
+        The IPsec encryption algorithm.
+        """
+        return pulumi.get(self, "ipsec_enc_alg")
+
+    @property
+    @pulumi.getter(name="ipsecLifetime")
+    def ipsec_lifetime(self) -> str:
+        """
+        The IPsec lifetime. Unit: seconds.
+        """
+        return pulumi.get(self, "ipsec_lifetime")
+
+    @property
+    @pulumi.getter(name="ipsecPfs")
+    def ipsec_pfs(self) -> str:
+        """
+        The DH group.
+        """
+        return pulumi.get(self, "ipsec_pfs")
 
 
 @pulumi.output_type

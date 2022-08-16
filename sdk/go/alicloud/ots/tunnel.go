@@ -23,65 +23,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "terraformtest"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
-// 			Description: pulumi.String(name),
-// 			AccessedBy:  pulumi.String("Any"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("acceptance test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooTable, err := ots.NewTable(ctx, "fooTable", &ots.TableArgs{
-// 			InstanceName: fooInstance.Name,
-// 			TableName:    pulumi.String(name),
-// 			PrimaryKeys: ots.TablePrimaryKeyArray{
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk1"),
-// 					Type: pulumi.String("Integer"),
-// 				},
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk2"),
-// 					Type: pulumi.String("String"),
-// 				},
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk3"),
-// 					Type: pulumi.String("Binary"),
-// 				},
-// 			},
-// 			TimeToLive:                -1,
-// 			MaxVersion:                pulumi.Int(1),
-// 			DeviationCellVersionInSec: pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ots.NewTunnel(ctx, "fooTunnel", &ots.TunnelArgs{
-// 			InstanceName: fooInstance.Name,
-// 			TableName:    fooTable.TableName,
-// 			TunnelName:   pulumi.String(name),
-// 			TunnelType:   pulumi.String("BaseAndStream"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraformtest"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooInstance, err := ots.NewInstance(ctx, "fooInstance", &ots.InstanceArgs{
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooTable, err := ots.NewTable(ctx, "fooTable", &ots.TableArgs{
+//				InstanceName: fooInstance.Name,
+//				TableName:    pulumi.String(name),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk2"),
+//						Type: pulumi.String("String"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk3"),
+//						Type: pulumi.String("Binary"),
+//					},
+//				},
+//				TimeToLive:                -1,
+//				MaxVersion:                pulumi.Int(1),
+//				DeviationCellVersionInSec: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewTunnel(ctx, "fooTunnel", &ots.TunnelArgs{
+//				InstanceName: fooInstance.Name,
+//				TableName:    fooTable.TableName,
+//				TunnelName:   pulumi.String(name),
+//				TunnelType:   pulumi.String("BaseAndStream"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -89,7 +92,9 @@ import (
 // OTS tunnel can be imported using id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ots/tunnel:Tunnel foo "<instance_name>:<table_name>:<tunnel_name>"
+//
+//	$ pulumi import alicloud:ots/tunnel:Tunnel foo "<instance_name>:<table_name>:<tunnel_name>"
+//
 // ```
 type Tunnel struct {
 	pulumi.CustomResourceState
@@ -255,7 +260,7 @@ func (i *Tunnel) ToTunnelOutputWithContext(ctx context.Context) TunnelOutput {
 // TunnelArrayInput is an input type that accepts TunnelArray and TunnelArrayOutput values.
 // You can construct a concrete instance of `TunnelArrayInput` via:
 //
-//          TunnelArray{ TunnelArgs{...} }
+//	TunnelArray{ TunnelArgs{...} }
 type TunnelArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +285,7 @@ func (i TunnelArray) ToTunnelArrayOutputWithContext(ctx context.Context) TunnelA
 // TunnelMapInput is an input type that accepts TunnelMap and TunnelMapOutput values.
 // You can construct a concrete instance of `TunnelMapInput` via:
 //
-//          TunnelMap{ "key": TunnelArgs{...} }
+//	TunnelMap{ "key": TunnelArgs{...} }
 type TunnelMapInput interface {
 	pulumi.Input
 

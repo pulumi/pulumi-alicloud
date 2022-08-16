@@ -7,8 +7,10 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.NodePoolArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolState;
 import com.pulumi.alicloud.cs.outputs.NodePoolDataDisk;
+import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfiguration;
 import com.pulumi.alicloud.cs.outputs.NodePoolLabel;
 import com.pulumi.alicloud.cs.outputs.NodePoolManagement;
+import com.pulumi.alicloud.cs.outputs.NodePoolRolloutPolicy;
 import com.pulumi.alicloud.cs.outputs.NodePoolScalingConfig;
 import com.pulumi.alicloud.cs.outputs.NodePoolSpotPriceLimit;
 import com.pulumi.alicloud.cs.outputs.NodePoolTaint;
@@ -529,6 +531,71 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * Create a node pool with customized kubelet parameters
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolRolloutPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new NodePool(&#34;default&#34;, NodePoolArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .vswitchIds(alicloud_vswitch.default().id())
+ *             .instanceTypes(data.alicloud_instance_types().default().instance_types()[0].id())
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskSize(40)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .desiredSize(3)
+ *             .kubeletConfiguration(NodePoolKubeletConfigurationArgs.builder()
+ *                 .registryPullQps(0)
+ *                 .registryBurst(0)
+ *                 .eventRecordQps(0)
+ *                 .eventBurst(0)
+ *                 .evictionHard(Map.ofEntries(
+ *                     Map.entry(&#34;memory.available&#34;, &#34;1024Mi&#34;),
+ *                     Map.entry(&#34;nodefs.available&#34;, &#34;10%&#34;),
+ *                     Map.entry(&#34;nodefs.inodesFree&#34;, &#34;1000&#34;),
+ *                     Map.entry(&#34;imagefs.available&#34;, &#34;10%&#34;),
+ *                     Map.entry(&#34;imagefs.inodesFree&#34;, &#34;1000&#34;),
+ *                     Map.entry(&#34;allocatableMemory.available&#34;, &#34;2048&#34;),
+ *                     Map.entry(&#34;pid.available&#34;, &#34;1000&#34;)
+ *                 ))
+ *                 .systemReserved(Map.ofEntries(
+ *                     Map.entry(&#34;cpu&#34;, &#34;1&#34;),
+ *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;),
+ *                     Map.entry(&#34;ephemeral_storage&#34;, &#34;10Gi&#34;)
+ *                 ))
+ *                 .kubeReserved(Map.ofEntries(
+ *                     Map.entry(&#34;cpu&#34;, &#34;500m&#34;),
+ *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;)
+ *                 ))
+ *                 .build())
+ *             .rolloutPolicy(NodePoolRolloutPolicyArgs.builder()
+ *                 .maxUnavailable(1)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
@@ -835,14 +902,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * 
+     */
+    @Export(name="kubeletConfiguration", type=NodePoolKubeletConfiguration.class, parameters={})
+    private Output</* @Nullable */ NodePoolKubeletConfiguration> kubeletConfiguration;
+
+    /**
+     * @return Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * 
+     */
+    public Output<Optional<NodePoolKubeletConfiguration>> kubeletConfiguration() {
+        return Codegen.optional(this.kubeletConfiguration);
+    }
+    /**
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      * 
      */
     @Export(name="labels", type=List.class, parameters={NodePoolLabel.class})
     private Output</* @Nullable */ List<NodePoolLabel>> labels;
 
     /**
-     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      * 
      */
     public Output<Optional<List<NodePoolLabel>>> labels() {
@@ -995,6 +1076,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    @Export(name="rolloutPolicy", type=NodePoolRolloutPolicy.class, parameters={})
+    private Output</* @Nullable */ NodePoolRolloutPolicy> rolloutPolicy;
+
+    /**
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    public Output<Optional<NodePoolRolloutPolicy>> rolloutPolicy() {
+        return Codegen.optional(this.rolloutPolicy);
     }
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -1241,28 +1336,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskSnapshotPolicyId);
     }
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * @return A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * A List of Kubernetes taints to assign to the nodes.
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     @Export(name="taints", type=List.class, parameters={NodePoolTaint.class})
     private Output</* @Nullable */ List<NodePoolTaint>> taints;
 
     /**
-     * @return A List of Kubernetes taints to assign to the nodes.
+     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     public Output<Optional<List<NodePoolTaint>>> taints() {

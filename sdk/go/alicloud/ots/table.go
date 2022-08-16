@@ -22,58 +22,61 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "terraformtest"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
-// 			Description: pulumi.String(name),
-// 			AccessedBy:  pulumi.String("Any"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("acceptance test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ots.NewTable(ctx, "basic", &ots.TableArgs{
-// 			InstanceName: foo.Name,
-// 			TableName:    pulumi.String(name),
-// 			PrimaryKeys: ots.TablePrimaryKeyArray{
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk1"),
-// 					Type: pulumi.String("Integer"),
-// 				},
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk2"),
-// 					Type: pulumi.String("String"),
-// 				},
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk3"),
-// 					Type: pulumi.String("Binary"),
-// 				},
-// 			},
-// 			TimeToLive:                -1,
-// 			MaxVersion:                pulumi.Int(1),
-// 			DeviationCellVersionInSec: pulumi.String("1"),
-// 			EnableSse:                 pulumi.Bool(true),
-// 			SseKeyType:                pulumi.String("SSE_KMS_SERVICE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraformtest"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewTable(ctx, "basic", &ots.TableArgs{
+//				InstanceName: foo.Name,
+//				TableName:    pulumi.String(name),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk2"),
+//						Type: pulumi.String("String"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk3"),
+//						Type: pulumi.String("Binary"),
+//					},
+//				},
+//				TimeToLive:                -1,
+//				MaxVersion:                pulumi.Int(1),
+//				DeviationCellVersionInSec: pulumi.String("1"),
+//				EnableSse:                 pulumi.Bool(true),
+//				SseKeyType:                pulumi.String("SSE_KMS_SERVICE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +84,9 @@ import (
 // OTS table can be imported using id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+//
+//	$ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+//
 // ```
 type Table struct {
 	pulumi.CustomResourceState
@@ -254,7 +259,7 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
-//          TableArray{ TableArgs{...} }
+//	TableArray{ TableArgs{...} }
 type TableArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +284,7 @@ func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArra
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
 // You can construct a concrete instance of `TableMapInput` via:
 //
-//          TableMap{ "key": TableArgs{...} }
+//	TableMap{ "key": TableArgs{...} }
 type TableMapInput interface {
 	pulumi.Input
 

@@ -31,7 +31,7 @@ type GetExpressSyncsSync struct {
 // GetExpressSyncsSyncInput is an input type that accepts GetExpressSyncsSyncArgs and GetExpressSyncsSyncOutput values.
 // You can construct a concrete instance of `GetExpressSyncsSyncInput` via:
 //
-//          GetExpressSyncsSyncArgs{...}
+//	GetExpressSyncsSyncArgs{...}
 type GetExpressSyncsSyncInput interface {
 	pulumi.Input
 
@@ -72,7 +72,7 @@ func (i GetExpressSyncsSyncArgs) ToGetExpressSyncsSyncOutputWithContext(ctx cont
 // GetExpressSyncsSyncArrayInput is an input type that accepts GetExpressSyncsSyncArray and GetExpressSyncsSyncArrayOutput values.
 // You can construct a concrete instance of `GetExpressSyncsSyncArrayInput` via:
 //
-//          GetExpressSyncsSyncArray{ GetExpressSyncsSyncArgs{...} }
+//	GetExpressSyncsSyncArray{ GetExpressSyncsSyncArgs{...} }
 type GetExpressSyncsSyncArrayInput interface {
 	pulumi.Input
 
@@ -170,7 +170,7 @@ func (o GetExpressSyncsSyncArrayOutput) Index(i pulumi.IntInput) GetExpressSyncs
 type GetGatewayBlockVolumesVolume struct {
 	// The IP ADDRESS.
 	Address string `pulumi:"address"`
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode string `pulumi:"cacheMode"`
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled bool `pulumi:"chapEnabled"`
@@ -224,7 +224,7 @@ type GetGatewayBlockVolumesVolume struct {
 // GetGatewayBlockVolumesVolumeInput is an input type that accepts GetGatewayBlockVolumesVolumeArgs and GetGatewayBlockVolumesVolumeOutput values.
 // You can construct a concrete instance of `GetGatewayBlockVolumesVolumeInput` via:
 //
-//          GetGatewayBlockVolumesVolumeArgs{...}
+//	GetGatewayBlockVolumesVolumeArgs{...}
 type GetGatewayBlockVolumesVolumeInput interface {
 	pulumi.Input
 
@@ -235,7 +235,7 @@ type GetGatewayBlockVolumesVolumeInput interface {
 type GetGatewayBlockVolumesVolumeArgs struct {
 	// The IP ADDRESS.
 	Address pulumi.StringInput `pulumi:"address"`
-	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
 	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
 	ChapEnabled pulumi.BoolInput `pulumi:"chapEnabled"`
@@ -301,7 +301,7 @@ func (i GetGatewayBlockVolumesVolumeArgs) ToGetGatewayBlockVolumesVolumeOutputWi
 // GetGatewayBlockVolumesVolumeArrayInput is an input type that accepts GetGatewayBlockVolumesVolumeArray and GetGatewayBlockVolumesVolumeArrayOutput values.
 // You can construct a concrete instance of `GetGatewayBlockVolumesVolumeArrayInput` via:
 //
-//          GetGatewayBlockVolumesVolumeArray{ GetGatewayBlockVolumesVolumeArgs{...} }
+//	GetGatewayBlockVolumesVolumeArray{ GetGatewayBlockVolumesVolumeArgs{...} }
 type GetGatewayBlockVolumesVolumeArrayInput interface {
 	pulumi.Input
 
@@ -342,7 +342,7 @@ func (o GetGatewayBlockVolumesVolumeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 func (o GetGatewayBlockVolumesVolumeOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.CacheMode }).(pulumi.StringOutput)
 }
@@ -514,7 +514,7 @@ type GetGatewayCacheDisksDisk struct {
 // GetGatewayCacheDisksDiskInput is an input type that accepts GetGatewayCacheDisksDiskArgs and GetGatewayCacheDisksDiskOutput values.
 // You can construct a concrete instance of `GetGatewayCacheDisksDiskInput` via:
 //
-//          GetGatewayCacheDisksDiskArgs{...}
+//	GetGatewayCacheDisksDiskArgs{...}
 type GetGatewayCacheDisksDiskInput interface {
 	pulumi.Input
 
@@ -562,7 +562,7 @@ func (i GetGatewayCacheDisksDiskArgs) ToGetGatewayCacheDisksDiskOutputWithContex
 // GetGatewayCacheDisksDiskArrayInput is an input type that accepts GetGatewayCacheDisksDiskArray and GetGatewayCacheDisksDiskArrayOutput values.
 // You can construct a concrete instance of `GetGatewayCacheDisksDiskArrayInput` via:
 //
-//          GetGatewayCacheDisksDiskArray{ GetGatewayCacheDisksDiskArgs{...} }
+//	GetGatewayCacheDisksDiskArray{ GetGatewayCacheDisksDiskArgs{...} }
 type GetGatewayCacheDisksDiskArrayInput interface {
 	pulumi.Input
 
@@ -803,7 +803,7 @@ type GetGatewayFileSharesShare struct {
 // GetGatewayFileSharesShareInput is an input type that accepts GetGatewayFileSharesShareArgs and GetGatewayFileSharesShareOutput values.
 // You can construct a concrete instance of `GetGatewayFileSharesShareInput` via:
 //
-//          GetGatewayFileSharesShareArgs{...}
+//	GetGatewayFileSharesShareArgs{...}
 type GetGatewayFileSharesShareInput interface {
 	pulumi.Input
 
@@ -953,7 +953,7 @@ func (i GetGatewayFileSharesShareArgs) ToGetGatewayFileSharesShareOutputWithCont
 // GetGatewayFileSharesShareArrayInput is an input type that accepts GetGatewayFileSharesShareArray and GetGatewayFileSharesShareArrayOutput values.
 // You can construct a concrete instance of `GetGatewayFileSharesShareArrayInput` via:
 //
-//          GetGatewayFileSharesShareArray{ GetGatewayFileSharesShareArgs{...} }
+//	GetGatewayFileSharesShareArray{ GetGatewayFileSharesShareArgs{...} }
 type GetGatewayFileSharesShareArrayInput interface {
 	pulumi.Input
 
@@ -1331,7 +1331,7 @@ type GetGatewaySmbUsersUser struct {
 // GetGatewaySmbUsersUserInput is an input type that accepts GetGatewaySmbUsersUserArgs and GetGatewaySmbUsersUserOutput values.
 // You can construct a concrete instance of `GetGatewaySmbUsersUserInput` via:
 //
-//          GetGatewaySmbUsersUserArgs{...}
+//	GetGatewaySmbUsersUserArgs{...}
 type GetGatewaySmbUsersUserInput interface {
 	pulumi.Input
 
@@ -1363,7 +1363,7 @@ func (i GetGatewaySmbUsersUserArgs) ToGetGatewaySmbUsersUserOutputWithContext(ct
 // GetGatewaySmbUsersUserArrayInput is an input type that accepts GetGatewaySmbUsersUserArray and GetGatewaySmbUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetGatewaySmbUsersUserArrayInput` via:
 //
-//          GetGatewaySmbUsersUserArray{ GetGatewaySmbUsersUserArgs{...} }
+//	GetGatewaySmbUsersUserArray{ GetGatewaySmbUsersUserArgs{...} }
 type GetGatewaySmbUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -1490,7 +1490,7 @@ type GetGatewaysGateway struct {
 // GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayInput` via:
 //
-//          GetGatewaysGatewayArgs{...}
+//	GetGatewaysGatewayArgs{...}
 type GetGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -1566,7 +1566,7 @@ func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx contex
 // GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
 //
-//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+//	GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
 type GetGatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -1760,7 +1760,7 @@ type GetStocksStock struct {
 // GetStocksStockInput is an input type that accepts GetStocksStockArgs and GetStocksStockOutput values.
 // You can construct a concrete instance of `GetStocksStockInput` via:
 //
-//          GetStocksStockArgs{...}
+//	GetStocksStockArgs{...}
 type GetStocksStockInput interface {
 	pulumi.Input
 
@@ -1790,7 +1790,7 @@ func (i GetStocksStockArgs) ToGetStocksStockOutputWithContext(ctx context.Contex
 // GetStocksStockArrayInput is an input type that accepts GetStocksStockArray and GetStocksStockArrayOutput values.
 // You can construct a concrete instance of `GetStocksStockArrayInput` via:
 //
-//          GetStocksStockArray{ GetStocksStockArgs{...} }
+//	GetStocksStockArray{ GetStocksStockArgs{...} }
 type GetStocksStockArrayInput interface {
 	pulumi.Input
 
@@ -1868,7 +1868,7 @@ type GetStorageBundlesBundle struct {
 // GetStorageBundlesBundleInput is an input type that accepts GetStorageBundlesBundleArgs and GetStorageBundlesBundleOutput values.
 // You can construct a concrete instance of `GetStorageBundlesBundleInput` via:
 //
-//          GetStorageBundlesBundleArgs{...}
+//	GetStorageBundlesBundleArgs{...}
 type GetStorageBundlesBundleInput interface {
 	pulumi.Input
 
@@ -1900,7 +1900,7 @@ func (i GetStorageBundlesBundleArgs) ToGetStorageBundlesBundleOutputWithContext(
 // GetStorageBundlesBundleArrayInput is an input type that accepts GetStorageBundlesBundleArray and GetStorageBundlesBundleArrayOutput values.
 // You can construct a concrete instance of `GetStorageBundlesBundleArrayInput` via:
 //
-//          GetStorageBundlesBundleArray{ GetStorageBundlesBundleArgs{...} }
+//	GetStorageBundlesBundleArray{ GetStorageBundlesBundleArgs{...} }
 type GetStorageBundlesBundleArrayInput interface {
 	pulumi.Input
 

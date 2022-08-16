@@ -279,6 +279,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_api_gateway_app":            {Tok: resource(apiGatewayMod, "App")},
 			"alicloud_api_gateway_app_attachment": {Tok: resource(apiGatewayMod, "AppAttachment")},
 			"alicloud_api_gateway_vpc_access":     {Tok: resource(apiGatewayMod, "VpcAccess")},
+			"alicloud_api_gateway_backend":        {Tok: resource(apiGatewayMod, "Backend")},
 
 			// Arms
 			"alicloud_arms_alert_contact":         {Tok: resource(armsMod, "AlertContact")},
@@ -543,6 +544,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ddoscoo_domain_resource":      {Tok: resource(ddosMod, "DomainResource")},
 			"alicloud_ddoscoo_port":                 {Tok: resource(ddosMod, "Port")},
 			"alicloud_ddos_basic_defense_threshold": {Tok: resource(ddosMod, "BasicDefenseThreshold")},
+			"alicloud_ddosbgp_ip":                   {Tok: resource(ddosMod, "BgpIp")},
 
 			// Dfs
 			"alicloud_dfs_access_group": {Tok: resource(dfsMod, "AccessGroup")},
@@ -768,6 +770,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_custom_domain":                {Tok: resource(fcMod, "CustomDomain")},
 			"alicloud_fc_function_async_invoke_config": {Tok: resource(fcMod, "FunctionAsyncInvokeConfig")},
 			"alicloud_fc_alias":                        {Tok: resource(fcMod, "Alias")},
+			"alicloud_fc_layer_version":                {Tok: resource(fcMod, "LayerVersion")},
 
 			// FNF
 			"alicloud_fnf_schedule":  {Tok: resource(fnfMod, "Schedule")},
@@ -966,11 +969,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"alicloud_polardb_backup_policy":    {Tok: resource(polarDbMod, "BackupPolicy")},
-			"alicloud_polardb_cluster":          {Tok: resource(polarDbMod, "Cluster")},
-			"alicloud_polardb_database":         {Tok: resource(polarDbMod, "Database")},
-			"alicloud_polardb_endpoint_address": {Tok: resource(polarDbMod, "EndpointAddress")},
-			"alicloud_polardb_endpoint":         {Tok: resource(polarDbMod, "Endpoint")},
+			"alicloud_polardb_backup_policy":           {Tok: resource(polarDbMod, "BackupPolicy")},
+			"alicloud_polardb_cluster":                 {Tok: resource(polarDbMod, "Cluster")},
+			"alicloud_polardb_database":                {Tok: resource(polarDbMod, "Database")},
+			"alicloud_polardb_endpoint_address":        {Tok: resource(polarDbMod, "EndpointAddress")},
+			"alicloud_polardb_endpoint":                {Tok: resource(polarDbMod, "Endpoint")},
+			"alicloud_polardb_global_database_network": {Tok: resource(polarDbMod, "GlobalDatabaseNetwork")},
 
 			// Pvtz
 			"alicloud_pvtz_zone":                   {Tok: resource(pvtzMod, "Zone")},
@@ -1039,7 +1043,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_control_policy_attachment": {
 				Tok: resource(resourceManagerMod, "ControlPolicyAttachment"),
 			},
-			"alicloud_resource_manager_service_linked_role": {Tok: resource(resourceManagerMod, "ServiceLinkedRole")},
+			"alicloud_resource_manager_service_linked_role":     {Tok: resource(resourceManagerMod, "ServiceLinkedRole")},
+			"alicloud_resource_manager_delegated_administrator": {Tok: resource(resourceManagerMod, "DelegatedAdministrator")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
@@ -1212,19 +1217,21 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_bgp_peer":                           {Tok: resource(vpcMod, "BgpPeer")},
 			"alicloud_vpc_bgp_network":                        {Tok: resource(vpcMod, "BgpNetwork")},
 			"alicloud_vpc_bgp_group":                          {Tok: resource(vpcMod, "BgpGroup")},
+			"alicloud_vpc_ipv4_gateway":                       {Tok: resource(vpcMod, "Ipv4Gateway")},
 
 			// Vod
 			"alicloud_vod_domain": {Tok: resource(vodMod, "Domain")},
 
 			// VPN
-			"alicloud_ssl_vpn_client_cert":  {Tok: resource(vpnMod, "SslVpnClientCert")},
-			"alicloud_ssl_vpn_server":       {Tok: resource(vpnMod, "SslVpnServer")},
-			"alicloud_vpn_connection":       {Tok: resource(vpnMod, "Connection")},
-			"alicloud_vpn_customer_gateway": {Tok: resource(vpnMod, "CustomerGateway")},
-			"alicloud_vpn_gateway":          {Tok: resource(vpnMod, "Gateway")},
-			"alicloud_vpn_route_entry":      {Tok: resource(vpnMod, "RouteEntry")},
-			"alicloud_vpn_ipsec_server":     {Tok: resource(vpnMod, "IpsecServer")},
-			"alicloud_vpn_pbr_route_entry":  {Tok: resource(vpnMod, "PbrRouteEntry")},
+			"alicloud_ssl_vpn_client_cert":        {Tok: resource(vpnMod, "SslVpnClientCert")},
+			"alicloud_ssl_vpn_server":             {Tok: resource(vpnMod, "SslVpnServer")},
+			"alicloud_vpn_connection":             {Tok: resource(vpnMod, "Connection")},
+			"alicloud_vpn_customer_gateway":       {Tok: resource(vpnMod, "CustomerGateway")},
+			"alicloud_vpn_gateway":                {Tok: resource(vpnMod, "Gateway")},
+			"alicloud_vpn_route_entry":            {Tok: resource(vpnMod, "RouteEntry")},
+			"alicloud_vpn_ipsec_server":           {Tok: resource(vpnMod, "IpsecServer")},
+			"alicloud_vpn_pbr_route_entry":        {Tok: resource(vpnMod, "PbrRouteEntry")},
+			"alicloud_vpn_gateway_vpn_attachment": {Tok: resource(vpnMod, "GatewayVpnAttachment")},
 
 			// Vs
 			"alicloud_video_surveillance_system_group": {Tok: resource(vsMod, "SystemGroup")},
@@ -1302,10 +1309,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_amqp_bindings":      {Tok: dataSource(amqpMod, "getBindings")},
 
 			// ApiGateway
-			"alicloud_api_gateway_groups":  {Tok: dataSource(apiGatewayMod, "getGroups")},
-			"alicloud_api_gateway_apis":    {Tok: dataSource(apiGatewayMod, "getApis")},
-			"alicloud_api_gateway_apps":    {Tok: dataSource(apiGatewayMod, "getApps")},
-			"alicloud_api_gateway_service": {Tok: dataSource(apiGatewayMod, "getService")},
+			"alicloud_api_gateway_groups":   {Tok: dataSource(apiGatewayMod, "getGroups")},
+			"alicloud_api_gateway_apis":     {Tok: dataSource(apiGatewayMod, "getApis")},
+			"alicloud_api_gateway_apps":     {Tok: dataSource(apiGatewayMod, "getApps")},
+			"alicloud_api_gateway_service":  {Tok: dataSource(apiGatewayMod, "getService")},
+			"alicloud_api_gateway_backends": {Tok: dataSource(apiGatewayMod, "getBackends")},
 
 			// Arms
 			"alicloud_arms_alert_contacts":         {Tok: dataSource(armsMod, "getAlertContacts")},
@@ -1511,6 +1519,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ddosbgp_instances":        {Tok: dataSource(ddosMod, "getDdosBgpInstances")},
 			"alicloud_ddoscoo_domain_resources": {Tok: dataSource(ddosMod, "getDdosCooDomainResources")},
 			"alicloud_ddoscoo_ports":            {Tok: dataSource(ddosMod, "getDdosCooPorts")},
+			"alicloud_ddosbgp_ips":              {Tok: dataSource(ddosMod, "getDdosBgpIps")},
 
 			// Dfs
 			"alicloud_dfs_access_groups": {Tok: dataSource(dfsMod, "getAccessGroups")},
@@ -1859,12 +1868,13 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// PolarDb
-			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},
-			"alicloud_polardb_endpoints":    {Tok: dataSource(polarDbMod, "getEndpoints")},
-			"alicloud_polardb_accounts":     {Tok: dataSource(polarDbMod, "getAccounts")},
-			"alicloud_polardb_databases":    {Tok: dataSource(polarDbMod, "getDatabases")},
-			"alicloud_polardb_zones":        {Tok: dataSource(polarDbMod, "getZones")},
-			"alicloud_polardb_node_classes": {Tok: dataSource(polarDbMod, "getNodeClasses")},
+			"alicloud_polardb_clusters":                 {Tok: dataSource(polarDbMod, "getClusters")},
+			"alicloud_polardb_endpoints":                {Tok: dataSource(polarDbMod, "getEndpoints")},
+			"alicloud_polardb_accounts":                 {Tok: dataSource(polarDbMod, "getAccounts")},
+			"alicloud_polardb_databases":                {Tok: dataSource(polarDbMod, "getDatabases")},
+			"alicloud_polardb_zones":                    {Tok: dataSource(polarDbMod, "getZones")},
+			"alicloud_polardb_node_classes":             {Tok: dataSource(polarDbMod, "getNodeClasses")},
+			"alicloud_polardb_global_database_networks": {Tok: dataSource(polarDbMod, "getGlobalDatabaseNetworks")},
 
 			// Pvtr
 			"alicloud_pvtz_zone_records":   {Tok: dataSource(pvtzMod, "getZoneRecords")},
@@ -1940,6 +1950,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"alicloud_resource_manager_policy_attachments": {
 				Tok: dataSource(resourceManagerMod, "getPolicyAttachments"),
+			},
+			"alicloud_resource_manager_delegated_administrators": {
+				Tok: dataSource(resourceManagerMod, "getDelegatedAdministrators"),
 			},
 
 			// RocketMq
@@ -2059,6 +2072,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_bgp_groups":               {Tok: dataSource(vpcMod, "getBgpGroups")},
 			"alicloud_vpc_bgp_networks":             {Tok: dataSource(vpcMod, "getBgpNetworks")},
 			"alicloud_vpc_bgp_peers":                {Tok: dataSource(vpcMod, "getBgpPeers")},
+			"alicloud_vpc_ipv4_gateways":            {Tok: dataSource(vpcMod, "getIpv4Gateways")},
 
 			// Vod
 			"alicloud_vod_domains": {Tok: dataSource(vodMod, "getDomains")},
@@ -2068,14 +2082,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_video_surveillance_system_groups": {Tok: dataSource(vsMod, "getSystemGroups")},
 
 			// Vpn
-			"alicloud_vpn_connections":       {Tok: dataSource(vpnMod, "getConnections")},
-			"alicloud_vpn_customer_gateways": {Tok: dataSource(vpnMod, "getCustomerGateways")},
-			"alicloud_vpn_gateways":          {Tok: dataSource(vpnMod, "getGateways")},
-			"alicloud_vswitches":             {Tok: dataSource(vpcMod, "getSwitches")},
-			"alicloud_ssl_vpn_client_certs":  {Tok: dataSource(vpcMod, "getSslVpnClientCerts")},
-			"alicloud_ssl_vpn_servers":       {Tok: dataSource(vpcMod, "getSslVpnServers")},
-			"alicloud_vpn_ipsec_servers":     {Tok: dataSource(vpcMod, "getIpsecServers")},
-			"alicloud_vpn_pbr_route_entries": {Tok: dataSource(vpcMod, "getPbrRouteEntries")},
+			"alicloud_vpn_connections":             {Tok: dataSource(vpnMod, "getConnections")},
+			"alicloud_vpn_customer_gateways":       {Tok: dataSource(vpnMod, "getCustomerGateways")},
+			"alicloud_vpn_gateways":                {Tok: dataSource(vpnMod, "getGateways")},
+			"alicloud_vswitches":                   {Tok: dataSource(vpcMod, "getSwitches")},
+			"alicloud_ssl_vpn_client_certs":        {Tok: dataSource(vpcMod, "getSslVpnClientCerts")},
+			"alicloud_ssl_vpn_servers":             {Tok: dataSource(vpcMod, "getSslVpnServers")},
+			"alicloud_vpn_ipsec_servers":           {Tok: dataSource(vpcMod, "getIpsecServers")},
+			"alicloud_vpn_pbr_route_entries":       {Tok: dataSource(vpcMod, "getPbrRouteEntries")},
+			"alicloud_vpn_gateway_vpn_attachments": {Tok: dataSource(vpnMod, "getGatewayVpnAttachments")},
 
 			// Yundun
 			"alicloud_yundun_bastionhost_instances": {

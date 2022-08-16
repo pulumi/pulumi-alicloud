@@ -23,139 +23,142 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "essattachmentconfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-// 			CpuCoreCount:     pulumi.IntRef(2),
-// 			MemorySize:       pulumi.Float64Ref(4),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-// 			MostRecent: pulumi.BoolRef(true),
-// 			Owners:     pulumi.StringRef("system"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
-// 			Type:            pulumi.String("ingress"),
-// 			IpProtocol:      pulumi.String("tcp"),
-// 			NicType:         pulumi.String("intranet"),
-// 			Policy:          pulumi.String("accept"),
-// 			PortRange:       pulumi.String("22/22"),
-// 			Priority:        pulumi.Int(1),
-// 			SecurityGroupId: defaultSecurityGroup.ID(),
-// 			CidrIp:          pulumi.String("172.16.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
-// 			MinSize:          pulumi.Int(0),
-// 			MaxSize:          pulumi.Int(2),
-// 			ScalingGroupName: pulumi.String(name),
-// 			RemovalPolicies: pulumi.StringArray{
-// 				pulumi.String("OldestInstance"),
-// 				pulumi.String("NewestInstance"),
-// 			},
-// 			VswitchIds: pulumi.StringArray{
-// 				defaultSwitch.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
-// 			ScalingGroupId:  defaultScalingGroup.ID(),
-// 			ImageId:         pulumi.String(defaultImages.Images[0].Id),
-// 			InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 			SecurityGroupId: defaultSecurityGroup.ID(),
-// 			ForceDelete:     pulumi.Bool(true),
-// 			Active:          pulumi.Bool(true),
-// 			Enable:          pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var defaultInstance []*ecs.Instance
-// 		for key0, _ := range 2 {
-// 			__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
-// 				ImageId:      pulumi.String(defaultImages.Images[0].Id),
-// 				InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// 				SecurityGroups: pulumi.StringArray{
-// 					defaultSecurityGroup.ID(),
-// 				},
-// 				InternetChargeType:      pulumi.String("PayByTraffic"),
-// 				InternetMaxBandwidthOut: pulumi.Int(10),
-// 				InstanceChargeType:      pulumi.String("PostPaid"),
-// 				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-// 				VswitchId:               defaultSwitch.ID(),
-// 				InstanceName:            pulumi.String(name),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			defaultInstance = append(defaultInstance, __res)
-// 		}
-// 		_, err = ess.NewAttachment(ctx, "defaultAttachment", &ess.AttachmentArgs{
-// 			ScalingGroupId: defaultScalingGroup.ID(),
-// 			InstanceIds: pulumi.StringArray{
-// 				defaultInstance[0].ID(),
-// 				defaultInstance[1].ID(),
-// 			},
-// 			Force: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "essattachmentconfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(2),
+//				MemorySize:       pulumi.Float64Ref(4),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//				Type:            pulumi.String("ingress"),
+//				IpProtocol:      pulumi.String("tcp"),
+//				NicType:         pulumi.String("intranet"),
+//				Policy:          pulumi.String("accept"),
+//				PortRange:       pulumi.String("22/22"),
+//				Priority:        pulumi.Int(1),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				CidrIp:          pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(0),
+//				MaxSize:          pulumi.Int(2),
+//				ScalingGroupName: pulumi.String(name),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
+//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				ForceDelete:     pulumi.Bool(true),
+//				Active:          pulumi.Bool(true),
+//				Enable:          pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultInstance []*ecs.Instance
+//			for key0, _ := range 2 {
+//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
+//					ImageId:      pulumi.String(defaultImages.Images[0].Id),
+//					InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					SecurityGroups: pulumi.StringArray{
+//						defaultSecurityGroup.ID(),
+//					},
+//					InternetChargeType:      pulumi.String("PayByTraffic"),
+//					InternetMaxBandwidthOut: pulumi.Int(10),
+//					InstanceChargeType:      pulumi.String("PostPaid"),
+//					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//					VswitchId:               defaultSwitch.ID(),
+//					InstanceName:            pulumi.String(name),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultInstance = append(defaultInstance, __res)
+//			}
+//			_, err = ess.NewAttachment(ctx, "defaultAttachment", &ess.AttachmentArgs{
+//				ScalingGroupId: defaultScalingGroup.ID(),
+//				InstanceIds: pulumi.StringArray{
+//					defaultInstance[0].ID(),
+//					defaultInstance[1].ID(),
+//				},
+//				Force: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -163,7 +166,9 @@ import (
 // ESS attachment can be imported using the id or scaling group id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+//
+//	$ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+//
 // ```
 type Attachment struct {
 	pulumi.CustomResourceState
@@ -277,7 +282,7 @@ func (i *Attachment) ToAttachmentOutputWithContext(ctx context.Context) Attachme
 // AttachmentArrayInput is an input type that accepts AttachmentArray and AttachmentArrayOutput values.
 // You can construct a concrete instance of `AttachmentArrayInput` via:
 //
-//          AttachmentArray{ AttachmentArgs{...} }
+//	AttachmentArray{ AttachmentArgs{...} }
 type AttachmentArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +307,7 @@ func (i AttachmentArray) ToAttachmentArrayOutputWithContext(ctx context.Context)
 // AttachmentMapInput is an input type that accepts AttachmentMap and AttachmentMapOutput values.
 // You can construct a concrete instance of `AttachmentMapInput` via:
 //
-//          AttachmentMap{ "key": AttachmentArgs{...} }
+//	AttachmentMap{ "key": AttachmentArgs{...} }
 type AttachmentMapInput interface {
 	pulumi.Input
 

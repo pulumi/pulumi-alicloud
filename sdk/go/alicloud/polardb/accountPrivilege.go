@@ -21,85 +21,88 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "PolarDB"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "dbaccountprivilegebasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-// 			DbType:      pulumi.String("MySQL"),
-// 			DbVersion:   pulumi.String("8.0"),
-// 			PayType:     pulumi.String("PostPaid"),
-// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
-// 			VswitchId:   defaultSwitch.ID(),
-// 			Description: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		db, err := polardb.NewDatabase(ctx, "db", &polardb.DatabaseArgs{
-// 			DbClusterId: cluster.ID(),
-// 			DbName:      pulumi.String("tftestdatabase"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
-// 			DbClusterId:        cluster.ID(),
-// 			AccountName:        pulumi.String("tftestnormal"),
-// 			AccountPassword:    pulumi.String("Test12345"),
-// 			AccountDescription: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = polardb.NewAccountPrivilege(ctx, "privilege", &polardb.AccountPrivilegeArgs{
-// 			DbClusterId:      cluster.ID(),
-// 			AccountName:      account.AccountName,
-// 			AccountPrivilege: pulumi.String("ReadOnly"),
-// 			DbNames: pulumi.StringArray{
-// 				db.DbName,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "PolarDB"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "dbaccountprivilegebasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := polardb.NewDatabase(ctx, "db", &polardb.DatabaseArgs{
+//				DbClusterId: cluster.ID(),
+//				DbName:      pulumi.String("tftestdatabase"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
+//				DbClusterId:        cluster.ID(),
+//				AccountName:        pulumi.String("tftestnormal"),
+//				AccountPassword:    pulumi.String("Test12345"),
+//				AccountDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewAccountPrivilege(ctx, "privilege", &polardb.AccountPrivilegeArgs{
+//				DbClusterId:      cluster.ID(),
+//				AccountName:      account.AccountName,
+//				AccountPrivilege: pulumi.String("ReadOnly"),
+//				DbNames: pulumi.StringArray{
+//					db.DbName,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -107,7 +110,9 @@ import (
 // PolarDB account privilege can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
+//
+//	$ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
+//
 // ```
 type AccountPrivilege struct {
 	pulumi.CustomResourceState
@@ -234,7 +239,7 @@ func (i *AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Conte
 // AccountPrivilegeArrayInput is an input type that accepts AccountPrivilegeArray and AccountPrivilegeArrayOutput values.
 // You can construct a concrete instance of `AccountPrivilegeArrayInput` via:
 //
-//          AccountPrivilegeArray{ AccountPrivilegeArgs{...} }
+//	AccountPrivilegeArray{ AccountPrivilegeArgs{...} }
 type AccountPrivilegeArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +264,7 @@ func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutputWithContext(ctx cont
 // AccountPrivilegeMapInput is an input type that accepts AccountPrivilegeMap and AccountPrivilegeMapOutput values.
 // You can construct a concrete instance of `AccountPrivilegeMapInput` via:
 //
-//          AccountPrivilegeMap{ "key": AccountPrivilegeArgs{...} }
+//	AccountPrivilegeMap{ "key": AccountPrivilegeArgs{...} }
 type AccountPrivilegeMapInput interface {
 	pulumi.Input
 

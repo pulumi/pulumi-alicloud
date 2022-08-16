@@ -16,57 +16,60 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6GatewayId1", ids.Gateways[0].Id)
-// 		nameRegex, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
-// 			NameRegex: pulumi.StringRef("^my-Ipv6Gateway"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6GatewayId2", nameRegex.Gateways[0].Id)
-// 		vpcId, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			VpcId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6GatewayId3", vpcId.Gateways[0].Id)
-// 		status, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 			Status: pulumi.StringRef("Available"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpcIpv6GatewayId4", status.Gateways[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6GatewayId1", ids.Gateways[0].Id)
+//			nameRegex, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
+//				NameRegex: pulumi.StringRef("^my-Ipv6Gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6GatewayId2", nameRegex.Gateways[0].Id)
+//			vpcId, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				VpcId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6GatewayId3", vpcId.Gateways[0].Id)
+//			status, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv6GatewayId4", status.Gateways[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIpv6Gateways(ctx *pulumi.Context, args *GetIpv6GatewaysArgs, opts ...pulumi.InvokeOption) (*GetIpv6GatewaysResult, error) {
 	var rv GetIpv6GatewaysResult

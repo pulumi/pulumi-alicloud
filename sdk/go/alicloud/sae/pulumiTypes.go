@@ -26,7 +26,7 @@ type ApplicationScalingRuleScalingRuleMetric struct {
 // ApplicationScalingRuleScalingRuleMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArgs and ApplicationScalingRuleScalingRuleMetricOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricArgs{...}
+//	ApplicationScalingRuleScalingRuleMetricArgs{...}
 type ApplicationScalingRuleScalingRuleMetricInput interface {
 	pulumi.Input
 
@@ -70,11 +70,11 @@ func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleSca
 // ApplicationScalingRuleScalingRuleMetricPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArgs, ApplicationScalingRuleScalingRuleMetricPtr and ApplicationScalingRuleScalingRuleMetricPtrOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricArgs{...}
+//	        ApplicationScalingRuleScalingRuleMetricArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationScalingRuleScalingRuleMetricPtrInput interface {
 	pulumi.Input
 
@@ -244,7 +244,7 @@ type ApplicationScalingRuleScalingRuleMetricMetric struct {
 // ApplicationScalingRuleScalingRuleMetricMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArgs and ApplicationScalingRuleScalingRuleMetricMetricOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricMetricInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricMetricArgs{...}
+//	ApplicationScalingRuleScalingRuleMetricMetricArgs{...}
 type ApplicationScalingRuleScalingRuleMetricMetricInput interface {
 	pulumi.Input
 
@@ -279,7 +279,7 @@ func (i ApplicationScalingRuleScalingRuleMetricMetricArgs) ToApplicationScalingR
 // ApplicationScalingRuleScalingRuleMetricMetricArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArray and ApplicationScalingRuleScalingRuleMetricMetricArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricMetricArrayInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricMetricArray{ ApplicationScalingRuleScalingRuleMetricMetricArgs{...} }
+//	ApplicationScalingRuleScalingRuleMetricMetricArray{ ApplicationScalingRuleScalingRuleMetricMetricArgs{...} }
 type ApplicationScalingRuleScalingRuleMetricMetricArrayInput interface {
 	pulumi.Input
 
@@ -362,7 +362,7 @@ type ApplicationScalingRuleScalingRuleMetricScaleDownRules struct {
 // ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
+//	ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
 type ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput interface {
 	pulumi.Input
 
@@ -402,11 +402,11 @@ func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplication
 // ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs, ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtr and ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
+//	        ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput interface {
 	pulumi.Input
 
@@ -539,7 +539,7 @@ type ApplicationScalingRuleScalingRuleMetricScaleUpRules struct {
 // ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
+//	ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
 type ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput interface {
 	pulumi.Input
 
@@ -579,11 +579,11 @@ func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationSc
 // ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs, ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtr and ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
+//	        ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput interface {
 	pulumi.Input
 
@@ -716,7 +716,7 @@ type ApplicationScalingRuleScalingRuleTimer struct {
 // ApplicationScalingRuleScalingRuleTimerInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArgs and ApplicationScalingRuleScalingRuleTimerOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerInput` via:
 //
-//          ApplicationScalingRuleScalingRuleTimerArgs{...}
+//	ApplicationScalingRuleScalingRuleTimerArgs{...}
 type ApplicationScalingRuleScalingRuleTimerInput interface {
 	pulumi.Input
 
@@ -758,11 +758,11 @@ func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScal
 // ApplicationScalingRuleScalingRuleTimerPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArgs, ApplicationScalingRuleScalingRuleTimerPtr and ApplicationScalingRuleScalingRuleTimerPtrOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleTimerArgs{...}
+//	        ApplicationScalingRuleScalingRuleTimerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationScalingRuleScalingRuleTimerPtrInput interface {
 	pulumi.Input
 
@@ -912,7 +912,7 @@ type ApplicationScalingRuleScalingRuleTimerSchedule struct {
 // ApplicationScalingRuleScalingRuleTimerScheduleInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArgs and ApplicationScalingRuleScalingRuleTimerScheduleOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerScheduleInput` via:
 //
-//          ApplicationScalingRuleScalingRuleTimerScheduleArgs{...}
+//	ApplicationScalingRuleScalingRuleTimerScheduleArgs{...}
 type ApplicationScalingRuleScalingRuleTimerScheduleInput interface {
 	pulumi.Input
 
@@ -946,7 +946,7 @@ func (i ApplicationScalingRuleScalingRuleTimerScheduleArgs) ToApplicationScaling
 // ApplicationScalingRuleScalingRuleTimerScheduleArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArray and ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerScheduleArrayInput` via:
 //
-//          ApplicationScalingRuleScalingRuleTimerScheduleArray{ ApplicationScalingRuleScalingRuleTimerScheduleArgs{...} }
+//	ApplicationScalingRuleScalingRuleTimerScheduleArray{ ApplicationScalingRuleScalingRuleTimerScheduleArgs{...} }
 type ApplicationScalingRuleScalingRuleTimerScheduleArrayInput interface {
 	pulumi.Input
 
@@ -1040,7 +1040,7 @@ type GreyTagRouteDubboRule struct {
 // GreyTagRouteDubboRuleInput is an input type that accepts GreyTagRouteDubboRuleArgs and GreyTagRouteDubboRuleOutput values.
 // You can construct a concrete instance of `GreyTagRouteDubboRuleInput` via:
 //
-//          GreyTagRouteDubboRuleArgs{...}
+//	GreyTagRouteDubboRuleArgs{...}
 type GreyTagRouteDubboRuleInput interface {
 	pulumi.Input
 
@@ -1078,7 +1078,7 @@ func (i GreyTagRouteDubboRuleArgs) ToGreyTagRouteDubboRuleOutputWithContext(ctx 
 // GreyTagRouteDubboRuleArrayInput is an input type that accepts GreyTagRouteDubboRuleArray and GreyTagRouteDubboRuleArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteDubboRuleArrayInput` via:
 //
-//          GreyTagRouteDubboRuleArray{ GreyTagRouteDubboRuleArgs{...} }
+//	GreyTagRouteDubboRuleArray{ GreyTagRouteDubboRuleArgs{...} }
 type GreyTagRouteDubboRuleArrayInput interface {
 	pulumi.Input
 
@@ -1180,7 +1180,7 @@ type GreyTagRouteDubboRuleItem struct {
 // GreyTagRouteDubboRuleItemInput is an input type that accepts GreyTagRouteDubboRuleItemArgs and GreyTagRouteDubboRuleItemOutput values.
 // You can construct a concrete instance of `GreyTagRouteDubboRuleItemInput` via:
 //
-//          GreyTagRouteDubboRuleItemArgs{...}
+//	GreyTagRouteDubboRuleItemArgs{...}
 type GreyTagRouteDubboRuleItemInput interface {
 	pulumi.Input
 
@@ -1216,7 +1216,7 @@ func (i GreyTagRouteDubboRuleItemArgs) ToGreyTagRouteDubboRuleItemOutputWithCont
 // GreyTagRouteDubboRuleItemArrayInput is an input type that accepts GreyTagRouteDubboRuleItemArray and GreyTagRouteDubboRuleItemArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteDubboRuleItemArrayInput` via:
 //
-//          GreyTagRouteDubboRuleItemArray{ GreyTagRouteDubboRuleItemArgs{...} }
+//	GreyTagRouteDubboRuleItemArray{ GreyTagRouteDubboRuleItemArgs{...} }
 type GreyTagRouteDubboRuleItemArrayInput interface {
 	pulumi.Input
 
@@ -1309,7 +1309,7 @@ type GreyTagRouteScRule struct {
 // GreyTagRouteScRuleInput is an input type that accepts GreyTagRouteScRuleArgs and GreyTagRouteScRuleOutput values.
 // You can construct a concrete instance of `GreyTagRouteScRuleInput` via:
 //
-//          GreyTagRouteScRuleArgs{...}
+//	GreyTagRouteScRuleArgs{...}
 type GreyTagRouteScRuleInput interface {
 	pulumi.Input
 
@@ -1341,7 +1341,7 @@ func (i GreyTagRouteScRuleArgs) ToGreyTagRouteScRuleOutputWithContext(ctx contex
 // GreyTagRouteScRuleArrayInput is an input type that accepts GreyTagRouteScRuleArray and GreyTagRouteScRuleArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteScRuleArrayInput` via:
 //
-//          GreyTagRouteScRuleArray{ GreyTagRouteScRuleArgs{...} }
+//	GreyTagRouteScRuleArray{ GreyTagRouteScRuleArgs{...} }
 type GreyTagRouteScRuleArrayInput interface {
 	pulumi.Input
 
@@ -1428,7 +1428,7 @@ type GreyTagRouteScRuleItem struct {
 // GreyTagRouteScRuleItemInput is an input type that accepts GreyTagRouteScRuleItemArgs and GreyTagRouteScRuleItemOutput values.
 // You can construct a concrete instance of `GreyTagRouteScRuleItemInput` via:
 //
-//          GreyTagRouteScRuleItemArgs{...}
+//	GreyTagRouteScRuleItemArgs{...}
 type GreyTagRouteScRuleItemInput interface {
 	pulumi.Input
 
@@ -1464,7 +1464,7 @@ func (i GreyTagRouteScRuleItemArgs) ToGreyTagRouteScRuleItemOutputWithContext(ct
 // GreyTagRouteScRuleItemArrayInput is an input type that accepts GreyTagRouteScRuleItemArray and GreyTagRouteScRuleItemArrayOutput values.
 // You can construct a concrete instance of `GreyTagRouteScRuleItemArrayInput` via:
 //
-//          GreyTagRouteScRuleItemArray{ GreyTagRouteScRuleItemArgs{...} }
+//	GreyTagRouteScRuleItemArray{ GreyTagRouteScRuleItemArgs{...} }
 type GreyTagRouteScRuleItemArrayInput interface {
 	pulumi.Input
 
@@ -1557,7 +1557,7 @@ type IngressDefaultRule struct {
 // IngressDefaultRuleInput is an input type that accepts IngressDefaultRuleArgs and IngressDefaultRuleOutput values.
 // You can construct a concrete instance of `IngressDefaultRuleInput` via:
 //
-//          IngressDefaultRuleArgs{...}
+//	IngressDefaultRuleArgs{...}
 type IngressDefaultRuleInput interface {
 	pulumi.Input
 
@@ -1597,11 +1597,11 @@ func (i IngressDefaultRuleArgs) ToIngressDefaultRulePtrOutputWithContext(ctx con
 // IngressDefaultRulePtrInput is an input type that accepts IngressDefaultRuleArgs, IngressDefaultRulePtr and IngressDefaultRulePtrOutput values.
 // You can construct a concrete instance of `IngressDefaultRulePtrInput` via:
 //
-//          IngressDefaultRuleArgs{...}
+//	        IngressDefaultRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IngressDefaultRulePtrInput interface {
 	pulumi.Input
 
@@ -1736,7 +1736,7 @@ type IngressRule struct {
 // IngressRuleInput is an input type that accepts IngressRuleArgs and IngressRuleOutput values.
 // You can construct a concrete instance of `IngressRuleInput` via:
 //
-//          IngressRuleArgs{...}
+//	IngressRuleArgs{...}
 type IngressRuleInput interface {
 	pulumi.Input
 
@@ -1772,7 +1772,7 @@ func (i IngressRuleArgs) ToIngressRuleOutputWithContext(ctx context.Context) Ing
 // IngressRuleArrayInput is an input type that accepts IngressRuleArray and IngressRuleArrayOutput values.
 // You can construct a concrete instance of `IngressRuleArrayInput` via:
 //
-//          IngressRuleArray{ IngressRuleArgs{...} }
+//	IngressRuleArray{ IngressRuleArgs{...} }
 type IngressRuleArrayInput interface {
 	pulumi.Input
 
@@ -1867,7 +1867,7 @@ type LoadBalancerInternetInternet struct {
 // LoadBalancerInternetInternetInput is an input type that accepts LoadBalancerInternetInternetArgs and LoadBalancerInternetInternetOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetInternetInput` via:
 //
-//          LoadBalancerInternetInternetArgs{...}
+//	LoadBalancerInternetInternetArgs{...}
 type LoadBalancerInternetInternetInput interface {
 	pulumi.Input
 
@@ -1901,7 +1901,7 @@ func (i LoadBalancerInternetInternetArgs) ToLoadBalancerInternetInternetOutputWi
 // LoadBalancerInternetInternetArrayInput is an input type that accepts LoadBalancerInternetInternetArray and LoadBalancerInternetInternetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerInternetInternetArrayInput` via:
 //
-//          LoadBalancerInternetInternetArray{ LoadBalancerInternetInternetArgs{...} }
+//	LoadBalancerInternetInternetArray{ LoadBalancerInternetInternetArgs{...} }
 type LoadBalancerInternetInternetArrayInput interface {
 	pulumi.Input
 
@@ -1991,7 +1991,7 @@ type LoadBalancerIntranetIntranet struct {
 // LoadBalancerIntranetIntranetInput is an input type that accepts LoadBalancerIntranetIntranetArgs and LoadBalancerIntranetIntranetOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetIntranetInput` via:
 //
-//          LoadBalancerIntranetIntranetArgs{...}
+//	LoadBalancerIntranetIntranetArgs{...}
 type LoadBalancerIntranetIntranetInput interface {
 	pulumi.Input
 
@@ -2025,7 +2025,7 @@ func (i LoadBalancerIntranetIntranetArgs) ToLoadBalancerIntranetIntranetOutputWi
 // LoadBalancerIntranetIntranetArrayInput is an input type that accepts LoadBalancerIntranetIntranetArray and LoadBalancerIntranetIntranetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetIntranetArrayInput` via:
 //
-//          LoadBalancerIntranetIntranetArray{ LoadBalancerIntranetIntranetArgs{...} }
+//	LoadBalancerIntranetIntranetArray{ LoadBalancerIntranetIntranetArgs{...} }
 type LoadBalancerIntranetIntranetArrayInput interface {
 	pulumi.Input
 
@@ -2123,7 +2123,7 @@ type GetApplicationScalingRulesRule struct {
 // GetApplicationScalingRulesRuleInput is an input type that accepts GetApplicationScalingRulesRuleArgs and GetApplicationScalingRulesRuleOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleInput` via:
 //
-//          GetApplicationScalingRulesRuleArgs{...}
+//	GetApplicationScalingRulesRuleArgs{...}
 type GetApplicationScalingRulesRuleInput interface {
 	pulumi.Input
 
@@ -2165,7 +2165,7 @@ func (i GetApplicationScalingRulesRuleArgs) ToGetApplicationScalingRulesRuleOutp
 // GetApplicationScalingRulesRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleArray and GetApplicationScalingRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleArray{ GetApplicationScalingRulesRuleArgs{...} }
+//	GetApplicationScalingRulesRuleArray{ GetApplicationScalingRulesRuleArgs{...} }
 type GetApplicationScalingRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -2283,7 +2283,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetric struct {
 // GetApplicationScalingRulesRuleScalingRuleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricInput interface {
 	pulumi.Input
 
@@ -2321,7 +2321,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricArgs) ToGetApplicationSca
 // GetApplicationScalingRulesRuleScalingRuleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricArrayInput interface {
 	pulumi.Input
 
@@ -2425,7 +2425,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetric struct {
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricInput interface {
 	pulumi.Input
 
@@ -2455,7 +2455,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ToGetApplicat
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput interface {
 	pulumi.Input
 
@@ -2545,7 +2545,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus struct {
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput interface {
 	pulumi.Input
 
@@ -2587,7 +2587,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ToGetA
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput interface {
 	pulumi.Input
 
@@ -2699,7 +2699,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric s
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput interface {
 	pulumi.Input
 
@@ -2731,7 +2731,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput interface {
 	pulumi.Input
 
@@ -2820,7 +2820,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput interface {
 	pulumi.Input
 
@@ -2852,7 +2852,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput interface {
 	pulumi.Input
 
@@ -2941,7 +2941,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule struct {
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput interface {
 	pulumi.Input
 
@@ -2973,7 +2973,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ToGetA
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput interface {
 	pulumi.Input
 
@@ -3058,7 +3058,7 @@ type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule struct {
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput interface {
 	pulumi.Input
 
@@ -3090,7 +3090,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ToGetApp
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput interface {
 	pulumi.Input
 
@@ -3177,7 +3177,7 @@ type GetApplicationScalingRulesRuleScalingRuleTimer struct {
 // GetApplicationScalingRulesRuleScalingRuleTimerInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerArgs and GetApplicationScalingRulesRuleScalingRuleTimerOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleTimerArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleTimerArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleTimerInput interface {
 	pulumi.Input
 
@@ -3211,7 +3211,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerArgs) ToGetApplicationScal
 // GetApplicationScalingRulesRuleScalingRuleTimerArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerArray and GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleTimerArray{ GetApplicationScalingRulesRuleScalingRuleTimerArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleTimerArray{ GetApplicationScalingRulesRuleScalingRuleTimerArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleTimerArrayInput interface {
 	pulumi.Input
 
@@ -3303,7 +3303,7 @@ type GetApplicationScalingRulesRuleScalingRuleTimerSchedule struct {
 // GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs and GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...}
+//	GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...}
 type GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput interface {
 	pulumi.Input
 
@@ -3337,7 +3337,7 @@ func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ToGetApplica
 // GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray and GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput` via:
 //
-//          GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{ GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...} }
+//	GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{ GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...} }
 type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput interface {
 	pulumi.Input
 
@@ -3521,7 +3521,7 @@ type GetApplicationsApplication struct {
 // GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationInput` via:
 //
-//          GetApplicationsApplicationArgs{...}
+//	GetApplicationsApplicationArgs{...}
 type GetApplicationsApplicationInput interface {
 	pulumi.Input
 
@@ -3649,7 +3649,7 @@ func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithCo
 // GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
 //
-//          GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
+//	GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
 type GetApplicationsApplicationArrayInput interface {
 	pulumi.Input
 
@@ -3978,7 +3978,7 @@ type GetApplicationsApplicationMountDesc struct {
 // GetApplicationsApplicationMountDescInput is an input type that accepts GetApplicationsApplicationMountDescArgs and GetApplicationsApplicationMountDescOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationMountDescInput` via:
 //
-//          GetApplicationsApplicationMountDescArgs{...}
+//	GetApplicationsApplicationMountDescArgs{...}
 type GetApplicationsApplicationMountDescInput interface {
 	pulumi.Input
 
@@ -4008,7 +4008,7 @@ func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMou
 // GetApplicationsApplicationMountDescArrayInput is an input type that accepts GetApplicationsApplicationMountDescArray and GetApplicationsApplicationMountDescArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationMountDescArrayInput` via:
 //
-//          GetApplicationsApplicationMountDescArray{ GetApplicationsApplicationMountDescArgs{...} }
+//	GetApplicationsApplicationMountDescArray{ GetApplicationsApplicationMountDescArgs{...} }
 type GetApplicationsApplicationMountDescArrayInput interface {
 	pulumi.Input
 
@@ -4088,7 +4088,7 @@ type GetApplicationsApplicationOssMountDetail struct {
 // GetApplicationsApplicationOssMountDetailInput is an input type that accepts GetApplicationsApplicationOssMountDetailArgs and GetApplicationsApplicationOssMountDetailOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationOssMountDetailInput` via:
 //
-//          GetApplicationsApplicationOssMountDetailArgs{...}
+//	GetApplicationsApplicationOssMountDetailArgs{...}
 type GetApplicationsApplicationOssMountDetailInput interface {
 	pulumi.Input
 
@@ -4122,7 +4122,7 @@ func (i GetApplicationsApplicationOssMountDetailArgs) ToGetApplicationsApplicati
 // GetApplicationsApplicationOssMountDetailArrayInput is an input type that accepts GetApplicationsApplicationOssMountDetailArray and GetApplicationsApplicationOssMountDetailArrayOutput values.
 // You can construct a concrete instance of `GetApplicationsApplicationOssMountDetailArrayInput` via:
 //
-//          GetApplicationsApplicationOssMountDetailArray{ GetApplicationsApplicationOssMountDetailArgs{...} }
+//	GetApplicationsApplicationOssMountDetailArray{ GetApplicationsApplicationOssMountDetailArgs{...} }
 type GetApplicationsApplicationOssMountDetailArrayInput interface {
 	pulumi.Input
 
@@ -4218,7 +4218,7 @@ type GetConfigMapsMap struct {
 // GetConfigMapsMapInput is an input type that accepts GetConfigMapsMap and GetConfigMapsMapOutput values.
 // You can construct a concrete instance of `GetConfigMapsMapInput` via:
 //
-//          GetConfigMapsMap{ "key": GetConfigMapsArgs{...} }
+//	GetConfigMapsMap{ "key": GetConfigMapsArgs{...} }
 type GetConfigMapsMapInput interface {
 	pulumi.Input
 
@@ -4258,7 +4258,7 @@ func (i GetConfigMapsMapArgs) ToGetConfigMapsMapOutputWithContext(ctx context.Co
 // GetConfigMapsMapArrayInput is an input type that accepts GetConfigMapsMapArray and GetConfigMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetConfigMapsMapArrayInput` via:
 //
-//          GetConfigMapsMapArray{ GetConfigMapsMapArgs{...} }
+//	GetConfigMapsMapArray{ GetConfigMapsMapArgs{...} }
 type GetConfigMapsMapArrayInput interface {
 	pulumi.Input
 
@@ -4365,7 +4365,7 @@ type GetGreyTagRoutesRoute struct {
 // GetGreyTagRoutesRouteInput is an input type that accepts GetGreyTagRoutesRouteArgs and GetGreyTagRoutesRouteOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteInput` via:
 //
-//          GetGreyTagRoutesRouteArgs{...}
+//	GetGreyTagRoutesRouteArgs{...}
 type GetGreyTagRoutesRouteInput interface {
 	pulumi.Input
 
@@ -4401,7 +4401,7 @@ func (i GetGreyTagRoutesRouteArgs) ToGetGreyTagRoutesRouteOutputWithContext(ctx 
 // GetGreyTagRoutesRouteArrayInput is an input type that accepts GetGreyTagRoutesRouteArray and GetGreyTagRoutesRouteArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteArrayInput` via:
 //
-//          GetGreyTagRoutesRouteArray{ GetGreyTagRoutesRouteArgs{...} }
+//	GetGreyTagRoutesRouteArray{ GetGreyTagRoutesRouteArgs{...} }
 type GetGreyTagRoutesRouteArrayInput interface {
 	pulumi.Input
 
@@ -4500,7 +4500,7 @@ type GetGreyTagRoutesRouteDubboRule struct {
 // GetGreyTagRoutesRouteDubboRuleInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArgs and GetGreyTagRoutesRouteDubboRuleOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleInput` via:
 //
-//          GetGreyTagRoutesRouteDubboRuleArgs{...}
+//	GetGreyTagRoutesRouteDubboRuleArgs{...}
 type GetGreyTagRoutesRouteDubboRuleInput interface {
 	pulumi.Input
 
@@ -4538,7 +4538,7 @@ func (i GetGreyTagRoutesRouteDubboRuleArgs) ToGetGreyTagRoutesRouteDubboRuleOutp
 // GetGreyTagRoutesRouteDubboRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArray and GetGreyTagRoutesRouteDubboRuleArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleArrayInput` via:
 //
-//          GetGreyTagRoutesRouteDubboRuleArray{ GetGreyTagRoutesRouteDubboRuleArgs{...} }
+//	GetGreyTagRoutesRouteDubboRuleArray{ GetGreyTagRoutesRouteDubboRuleArgs{...} }
 type GetGreyTagRoutesRouteDubboRuleArrayInput interface {
 	pulumi.Input
 
@@ -4640,7 +4640,7 @@ type GetGreyTagRoutesRouteDubboRuleItem struct {
 // GetGreyTagRoutesRouteDubboRuleItemInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArgs and GetGreyTagRoutesRouteDubboRuleItemOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleItemInput` via:
 //
-//          GetGreyTagRoutesRouteDubboRuleItemArgs{...}
+//	GetGreyTagRoutesRouteDubboRuleItemArgs{...}
 type GetGreyTagRoutesRouteDubboRuleItemInput interface {
 	pulumi.Input
 
@@ -4676,7 +4676,7 @@ func (i GetGreyTagRoutesRouteDubboRuleItemArgs) ToGetGreyTagRoutesRouteDubboRule
 // GetGreyTagRoutesRouteDubboRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArray and GetGreyTagRoutesRouteDubboRuleItemArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleItemArrayInput` via:
 //
-//          GetGreyTagRoutesRouteDubboRuleItemArray{ GetGreyTagRoutesRouteDubboRuleItemArgs{...} }
+//	GetGreyTagRoutesRouteDubboRuleItemArray{ GetGreyTagRoutesRouteDubboRuleItemArgs{...} }
 type GetGreyTagRoutesRouteDubboRuleItemArrayInput interface {
 	pulumi.Input
 
@@ -4769,7 +4769,7 @@ type GetGreyTagRoutesRouteScRule struct {
 // GetGreyTagRoutesRouteScRuleInput is an input type that accepts GetGreyTagRoutesRouteScRuleArgs and GetGreyTagRoutesRouteScRuleOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleInput` via:
 //
-//          GetGreyTagRoutesRouteScRuleArgs{...}
+//	GetGreyTagRoutesRouteScRuleArgs{...}
 type GetGreyTagRoutesRouteScRuleInput interface {
 	pulumi.Input
 
@@ -4801,7 +4801,7 @@ func (i GetGreyTagRoutesRouteScRuleArgs) ToGetGreyTagRoutesRouteScRuleOutputWith
 // GetGreyTagRoutesRouteScRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleArray and GetGreyTagRoutesRouteScRuleArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleArrayInput` via:
 //
-//          GetGreyTagRoutesRouteScRuleArray{ GetGreyTagRoutesRouteScRuleArgs{...} }
+//	GetGreyTagRoutesRouteScRuleArray{ GetGreyTagRoutesRouteScRuleArgs{...} }
 type GetGreyTagRoutesRouteScRuleArrayInput interface {
 	pulumi.Input
 
@@ -4888,7 +4888,7 @@ type GetGreyTagRoutesRouteScRuleItem struct {
 // GetGreyTagRoutesRouteScRuleItemInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArgs and GetGreyTagRoutesRouteScRuleItemOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleItemInput` via:
 //
-//          GetGreyTagRoutesRouteScRuleItemArgs{...}
+//	GetGreyTagRoutesRouteScRuleItemArgs{...}
 type GetGreyTagRoutesRouteScRuleItemInput interface {
 	pulumi.Input
 
@@ -4924,7 +4924,7 @@ func (i GetGreyTagRoutesRouteScRuleItemArgs) ToGetGreyTagRoutesRouteScRuleItemOu
 // GetGreyTagRoutesRouteScRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArray and GetGreyTagRoutesRouteScRuleItemArrayOutput values.
 // You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleItemArrayInput` via:
 //
-//          GetGreyTagRoutesRouteScRuleItemArray{ GetGreyTagRoutesRouteScRuleItemArgs{...} }
+//	GetGreyTagRoutesRouteScRuleItemArray{ GetGreyTagRoutesRouteScRuleItemArgs{...} }
 type GetGreyTagRoutesRouteScRuleItemArrayInput interface {
 	pulumi.Input
 
@@ -5027,7 +5027,7 @@ type GetIngressesIngress struct {
 // GetIngressesIngressInput is an input type that accepts GetIngressesIngressArgs and GetIngressesIngressOutput values.
 // You can construct a concrete instance of `GetIngressesIngressInput` via:
 //
-//          GetIngressesIngressArgs{...}
+//	GetIngressesIngressArgs{...}
 type GetIngressesIngressInput interface {
 	pulumi.Input
 
@@ -5069,7 +5069,7 @@ func (i GetIngressesIngressArgs) ToGetIngressesIngressOutputWithContext(ctx cont
 // GetIngressesIngressArrayInput is an input type that accepts GetIngressesIngressArray and GetIngressesIngressArrayOutput values.
 // You can construct a concrete instance of `GetIngressesIngressArrayInput` via:
 //
-//          GetIngressesIngressArray{ GetIngressesIngressArgs{...} }
+//	GetIngressesIngressArray{ GetIngressesIngressArgs{...} }
 type GetIngressesIngressArrayInput interface {
 	pulumi.Input
 
@@ -5185,7 +5185,7 @@ type GetInstanceSpecificationsSpecification struct {
 // GetInstanceSpecificationsSpecificationInput is an input type that accepts GetInstanceSpecificationsSpecificationArgs and GetInstanceSpecificationsSpecificationOutput values.
 // You can construct a concrete instance of `GetInstanceSpecificationsSpecificationInput` via:
 //
-//          GetInstanceSpecificationsSpecificationArgs{...}
+//	GetInstanceSpecificationsSpecificationArgs{...}
 type GetInstanceSpecificationsSpecificationInput interface {
 	pulumi.Input
 
@@ -5225,7 +5225,7 @@ func (i GetInstanceSpecificationsSpecificationArgs) ToGetInstanceSpecificationsS
 // GetInstanceSpecificationsSpecificationArrayInput is an input type that accepts GetInstanceSpecificationsSpecificationArray and GetInstanceSpecificationsSpecificationArrayOutput values.
 // You can construct a concrete instance of `GetInstanceSpecificationsSpecificationArrayInput` via:
 //
-//          GetInstanceSpecificationsSpecificationArray{ GetInstanceSpecificationsSpecificationArgs{...} }
+//	GetInstanceSpecificationsSpecificationArray{ GetInstanceSpecificationsSpecificationArgs{...} }
 type GetInstanceSpecificationsSpecificationArrayInput interface {
 	pulumi.Input
 
@@ -5330,7 +5330,7 @@ type GetNamespacesNamespace struct {
 // GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
 //
-//          GetNamespacesNamespaceArgs{...}
+//	GetNamespacesNamespaceArgs{...}
 type GetNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -5364,7 +5364,7 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
-//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
+//	GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
 type GetNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 

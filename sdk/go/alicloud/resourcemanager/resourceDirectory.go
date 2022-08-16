@@ -24,27 +24,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := resourcemanager.NewResourceDirectory(ctx, "example", &resourcemanager.ResourceDirectoryArgs{
-// 			Status: pulumi.String("Enabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewResourceDirectory(ctx, "example", &resourcemanager.ResourceDirectoryArgs{
+//				Status: pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,7 +55,9 @@ import (
 // Resource Manager Resource Directory can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+//
+//	$ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+//
 // ```
 type ResourceDirectory struct {
 	pulumi.CustomResourceState
@@ -158,7 +163,7 @@ func (i *ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Con
 // ResourceDirectoryArrayInput is an input type that accepts ResourceDirectoryArray and ResourceDirectoryArrayOutput values.
 // You can construct a concrete instance of `ResourceDirectoryArrayInput` via:
 //
-//          ResourceDirectoryArray{ ResourceDirectoryArgs{...} }
+//	ResourceDirectoryArray{ ResourceDirectoryArgs{...} }
 type ResourceDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +188,7 @@ func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutputWithContext(ctx co
 // ResourceDirectoryMapInput is an input type that accepts ResourceDirectoryMap and ResourceDirectoryMapOutput values.
 // You can construct a concrete instance of `ResourceDirectoryMapInput` via:
 //
-//          ResourceDirectoryMap{ "key": ResourceDirectoryArgs{...} }
+//	ResourceDirectoryMap{ "key": ResourceDirectoryArgs{...} }
 type ResourceDirectoryMapInput interface {
 	pulumi.Input
 

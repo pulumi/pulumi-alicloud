@@ -16,37 +16,40 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := vpc.GetIpsecServers(ctx, &vpc.GetIpsecServersArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpnIpsecServerId1", ids.Servers[0].Id)
-// 		nameRegex, err := vpc.GetIpsecServers(ctx, &vpc.GetIpsecServersArgs{
-// 			NameRegex: pulumi.StringRef("^my-IpsecServer"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("vpnIpsecServerId2", nameRegex.Servers[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetIpsecServers(ctx, &vpc.GetIpsecServersArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpnIpsecServerId1", ids.Servers[0].Id)
+//			nameRegex, err := vpc.GetIpsecServers(ctx, &vpc.GetIpsecServersArgs{
+//				NameRegex: pulumi.StringRef("^my-IpsecServer"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpnIpsecServerId2", nameRegex.Servers[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetIpsecServers(ctx *pulumi.Context, args *GetIpsecServersArgs, opts ...pulumi.InvokeOption) (*GetIpsecServersResult, error) {
 	var rv GetIpsecServersResult

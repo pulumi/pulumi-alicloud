@@ -24,7 +24,7 @@ type GetVpcEndpointConnectionsConnection struct {
 // GetVpcEndpointConnectionsConnectionInput is an input type that accepts GetVpcEndpointConnectionsConnectionArgs and GetVpcEndpointConnectionsConnectionOutput values.
 // You can construct a concrete instance of `GetVpcEndpointConnectionsConnectionInput` via:
 //
-//          GetVpcEndpointConnectionsConnectionArgs{...}
+//	GetVpcEndpointConnectionsConnectionArgs{...}
 type GetVpcEndpointConnectionsConnectionInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i GetVpcEndpointConnectionsConnectionArgs) ToGetVpcEndpointConnectionsConn
 // GetVpcEndpointConnectionsConnectionArrayInput is an input type that accepts GetVpcEndpointConnectionsConnectionArray and GetVpcEndpointConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointConnectionsConnectionArrayInput` via:
 //
-//          GetVpcEndpointConnectionsConnectionArray{ GetVpcEndpointConnectionsConnectionArgs{...} }
+//	GetVpcEndpointConnectionsConnectionArray{ GetVpcEndpointConnectionsConnectionArgs{...} }
 type GetVpcEndpointConnectionsConnectionArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ type GetVpcEndpointServiceResourcesResource struct {
 // GetVpcEndpointServiceResourcesResourceInput is an input type that accepts GetVpcEndpointServiceResourcesResourceArgs and GetVpcEndpointServiceResourcesResourceOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceResourcesResourceInput` via:
 //
-//          GetVpcEndpointServiceResourcesResourceArgs{...}
+//	GetVpcEndpointServiceResourcesResourceArgs{...}
 type GetVpcEndpointServiceResourcesResourceInput interface {
 	pulumi.Input
 
@@ -178,7 +178,7 @@ func (i GetVpcEndpointServiceResourcesResourceArgs) ToGetVpcEndpointServiceResou
 // GetVpcEndpointServiceResourcesResourceArrayInput is an input type that accepts GetVpcEndpointServiceResourcesResourceArray and GetVpcEndpointServiceResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceResourcesResourceArrayInput` via:
 //
-//          GetVpcEndpointServiceResourcesResourceArray{ GetVpcEndpointServiceResourcesResourceArgs{...} }
+//	GetVpcEndpointServiceResourcesResourceArray{ GetVpcEndpointServiceResourcesResourceArgs{...} }
 type GetVpcEndpointServiceResourcesResourceArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +259,7 @@ type GetVpcEndpointServiceUsersUser struct {
 // GetVpcEndpointServiceUsersUserInput is an input type that accepts GetVpcEndpointServiceUsersUserArgs and GetVpcEndpointServiceUsersUserOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceUsersUserInput` via:
 //
-//          GetVpcEndpointServiceUsersUserArgs{...}
+//	GetVpcEndpointServiceUsersUserArgs{...}
 type GetVpcEndpointServiceUsersUserInput interface {
 	pulumi.Input
 
@@ -289,7 +289,7 @@ func (i GetVpcEndpointServiceUsersUserArgs) ToGetVpcEndpointServiceUsersUserOutp
 // GetVpcEndpointServiceUsersUserArrayInput is an input type that accepts GetVpcEndpointServiceUsersUserArray and GetVpcEndpointServiceUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceUsersUserArrayInput` via:
 //
-//          GetVpcEndpointServiceUsersUserArray{ GetVpcEndpointServiceUsersUserArgs{...} }
+//	GetVpcEndpointServiceUsersUserArray{ GetVpcEndpointServiceUsersUserArgs{...} }
 type GetVpcEndpointServiceUsersUserArrayInput interface {
 	pulumi.Input
 
@@ -379,7 +379,7 @@ type GetVpcEndpointServicesService struct {
 // GetVpcEndpointServicesServiceInput is an input type that accepts GetVpcEndpointServicesServiceArgs and GetVpcEndpointServicesServiceOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServicesServiceInput` via:
 //
-//          GetVpcEndpointServicesServiceArgs{...}
+//	GetVpcEndpointServicesServiceArgs{...}
 type GetVpcEndpointServicesServiceInput interface {
 	pulumi.Input
 
@@ -423,7 +423,7 @@ func (i GetVpcEndpointServicesServiceArgs) ToGetVpcEndpointServicesServiceOutput
 // GetVpcEndpointServicesServiceArrayInput is an input type that accepts GetVpcEndpointServicesServiceArray and GetVpcEndpointServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServicesServiceArrayInput` via:
 //
-//          GetVpcEndpointServicesServiceArray{ GetVpcEndpointServicesServiceArgs{...} }
+//	GetVpcEndpointServicesServiceArray{ GetVpcEndpointServicesServiceArgs{...} }
 type GetVpcEndpointServicesServiceArrayInput interface {
 	pulumi.Input
 
@@ -544,7 +544,7 @@ type GetVpcEndpointZonesZone struct {
 // GetVpcEndpointZonesZoneInput is an input type that accepts GetVpcEndpointZonesZoneArgs and GetVpcEndpointZonesZoneOutput values.
 // You can construct a concrete instance of `GetVpcEndpointZonesZoneInput` via:
 //
-//          GetVpcEndpointZonesZoneArgs{...}
+//	GetVpcEndpointZonesZoneArgs{...}
 type GetVpcEndpointZonesZoneInput interface {
 	pulumi.Input
 
@@ -584,7 +584,7 @@ func (i GetVpcEndpointZonesZoneArgs) ToGetVpcEndpointZonesZoneOutputWithContext(
 // GetVpcEndpointZonesZoneArrayInput is an input type that accepts GetVpcEndpointZonesZoneArray and GetVpcEndpointZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointZonesZoneArrayInput` via:
 //
-//          GetVpcEndpointZonesZoneArray{ GetVpcEndpointZonesZoneArgs{...} }
+//	GetVpcEndpointZonesZoneArray{ GetVpcEndpointZonesZoneArgs{...} }
 type GetVpcEndpointZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -707,7 +707,7 @@ type GetVpcEndpointsEndpoint struct {
 // GetVpcEndpointsEndpointInput is an input type that accepts GetVpcEndpointsEndpointArgs and GetVpcEndpointsEndpointOutput values.
 // You can construct a concrete instance of `GetVpcEndpointsEndpointInput` via:
 //
-//          GetVpcEndpointsEndpointArgs{...}
+//	GetVpcEndpointsEndpointArgs{...}
 type GetVpcEndpointsEndpointInput interface {
 	pulumi.Input
 
@@ -759,7 +759,7 @@ func (i GetVpcEndpointsEndpointArgs) ToGetVpcEndpointsEndpointOutputWithContext(
 // GetVpcEndpointsEndpointArrayInput is an input type that accepts GetVpcEndpointsEndpointArray and GetVpcEndpointsEndpointArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointsEndpointArrayInput` via:
 //
-//          GetVpcEndpointsEndpointArray{ GetVpcEndpointsEndpointArgs{...} }
+//	GetVpcEndpointsEndpointArray{ GetVpcEndpointsEndpointArgs{...} }
 type GetVpcEndpointsEndpointArrayInput interface {
 	pulumi.Input
 

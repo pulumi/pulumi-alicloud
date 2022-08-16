@@ -20,7 +20,7 @@ type DhcpOptionsSetAssociateVpc struct {
 // DhcpOptionsSetAssociateVpcInput is an input type that accepts DhcpOptionsSetAssociateVpcArgs and DhcpOptionsSetAssociateVpcOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetAssociateVpcInput` via:
 //
-//          DhcpOptionsSetAssociateVpcArgs{...}
+//	DhcpOptionsSetAssociateVpcArgs{...}
 type DhcpOptionsSetAssociateVpcInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i DhcpOptionsSetAssociateVpcArgs) ToDhcpOptionsSetAssociateVpcOutputWithCo
 // DhcpOptionsSetAssociateVpcArrayInput is an input type that accepts DhcpOptionsSetAssociateVpcArray and DhcpOptionsSetAssociateVpcArrayOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetAssociateVpcArrayInput` via:
 //
-//          DhcpOptionsSetAssociateVpcArray{ DhcpOptionsSetAssociateVpcArgs{...} }
+//	DhcpOptionsSetAssociateVpcArray{ DhcpOptionsSetAssociateVpcArgs{...} }
 type DhcpOptionsSetAssociateVpcArrayInput interface {
 	pulumi.Input
 
@@ -126,7 +126,7 @@ type NetworkAclAttachmentResource struct {
 // NetworkAclAttachmentResourceInput is an input type that accepts NetworkAclAttachmentResourceArgs and NetworkAclAttachmentResourceOutput values.
 // You can construct a concrete instance of `NetworkAclAttachmentResourceInput` via:
 //
-//          NetworkAclAttachmentResourceArgs{...}
+//	NetworkAclAttachmentResourceArgs{...}
 type NetworkAclAttachmentResourceInput interface {
 	pulumi.Input
 
@@ -156,7 +156,7 @@ func (i NetworkAclAttachmentResourceArgs) ToNetworkAclAttachmentResourceOutputWi
 // NetworkAclAttachmentResourceArrayInput is an input type that accepts NetworkAclAttachmentResourceArray and NetworkAclAttachmentResourceArrayOutput values.
 // You can construct a concrete instance of `NetworkAclAttachmentResourceArrayInput` via:
 //
-//          NetworkAclAttachmentResourceArray{ NetworkAclAttachmentResourceArgs{...} }
+//	NetworkAclAttachmentResourceArray{ NetworkAclAttachmentResourceArgs{...} }
 type NetworkAclAttachmentResourceArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +240,7 @@ type NetworkAclEgressAclEntry struct {
 // NetworkAclEgressAclEntryInput is an input type that accepts NetworkAclEgressAclEntryArgs and NetworkAclEgressAclEntryOutput values.
 // You can construct a concrete instance of `NetworkAclEgressAclEntryInput` via:
 //
-//          NetworkAclEgressAclEntryArgs{...}
+//	NetworkAclEgressAclEntryArgs{...}
 type NetworkAclEgressAclEntryInput interface {
 	pulumi.Input
 
@@ -278,7 +278,7 @@ func (i NetworkAclEgressAclEntryArgs) ToNetworkAclEgressAclEntryOutputWithContex
 // NetworkAclEgressAclEntryArrayInput is an input type that accepts NetworkAclEgressAclEntryArray and NetworkAclEgressAclEntryArrayOutput values.
 // You can construct a concrete instance of `NetworkAclEgressAclEntryArrayInput` via:
 //
-//          NetworkAclEgressAclEntryArray{ NetworkAclEgressAclEntryArgs{...} }
+//	NetworkAclEgressAclEntryArray{ NetworkAclEgressAclEntryArgs{...} }
 type NetworkAclEgressAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +384,7 @@ type NetworkAclEntriesEgress struct {
 // NetworkAclEntriesEgressInput is an input type that accepts NetworkAclEntriesEgressArgs and NetworkAclEntriesEgressOutput values.
 // You can construct a concrete instance of `NetworkAclEntriesEgressInput` via:
 //
-//          NetworkAclEntriesEgressArgs{...}
+//	NetworkAclEntriesEgressArgs{...}
 type NetworkAclEntriesEgressInput interface {
 	pulumi.Input
 
@@ -424,7 +424,7 @@ func (i NetworkAclEntriesEgressArgs) ToNetworkAclEntriesEgressOutputWithContext(
 // NetworkAclEntriesEgressArrayInput is an input type that accepts NetworkAclEntriesEgressArray and NetworkAclEntriesEgressArrayOutput values.
 // You can construct a concrete instance of `NetworkAclEntriesEgressArrayInput` via:
 //
-//          NetworkAclEntriesEgressArray{ NetworkAclEntriesEgressArgs{...} }
+//	NetworkAclEntriesEgressArray{ NetworkAclEntriesEgressArgs{...} }
 type NetworkAclEntriesEgressArrayInput interface {
 	pulumi.Input
 
@@ -535,7 +535,7 @@ type NetworkAclEntriesIngress struct {
 // NetworkAclEntriesIngressInput is an input type that accepts NetworkAclEntriesIngressArgs and NetworkAclEntriesIngressOutput values.
 // You can construct a concrete instance of `NetworkAclEntriesIngressInput` via:
 //
-//          NetworkAclEntriesIngressArgs{...}
+//	NetworkAclEntriesIngressArgs{...}
 type NetworkAclEntriesIngressInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ func (i NetworkAclEntriesIngressArgs) ToNetworkAclEntriesIngressOutputWithContex
 // NetworkAclEntriesIngressArrayInput is an input type that accepts NetworkAclEntriesIngressArray and NetworkAclEntriesIngressArrayOutput values.
 // You can construct a concrete instance of `NetworkAclEntriesIngressArrayInput` via:
 //
-//          NetworkAclEntriesIngressArray{ NetworkAclEntriesIngressArgs{...} }
+//	NetworkAclEntriesIngressArray{ NetworkAclEntriesIngressArgs{...} }
 type NetworkAclEntriesIngressArrayInput interface {
 	pulumi.Input
 
@@ -684,7 +684,7 @@ type NetworkAclIngressAclEntry struct {
 // NetworkAclIngressAclEntryInput is an input type that accepts NetworkAclIngressAclEntryArgs and NetworkAclIngressAclEntryOutput values.
 // You can construct a concrete instance of `NetworkAclIngressAclEntryInput` via:
 //
-//          NetworkAclIngressAclEntryArgs{...}
+//	NetworkAclIngressAclEntryArgs{...}
 type NetworkAclIngressAclEntryInput interface {
 	pulumi.Input
 
@@ -722,7 +722,7 @@ func (i NetworkAclIngressAclEntryArgs) ToNetworkAclIngressAclEntryOutputWithCont
 // NetworkAclIngressAclEntryArrayInput is an input type that accepts NetworkAclIngressAclEntryArray and NetworkAclIngressAclEntryArrayOutput values.
 // You can construct a concrete instance of `NetworkAclIngressAclEntryArrayInput` via:
 //
-//          NetworkAclIngressAclEntryArray{ NetworkAclIngressAclEntryArgs{...} }
+//	NetworkAclIngressAclEntryArray{ NetworkAclIngressAclEntryArgs{...} }
 type NetworkAclIngressAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -818,7 +818,7 @@ type NetworkAclResource struct {
 // NetworkAclResourceInput is an input type that accepts NetworkAclResourceArgs and NetworkAclResourceOutput values.
 // You can construct a concrete instance of `NetworkAclResourceInput` via:
 //
-//          NetworkAclResourceArgs{...}
+//	NetworkAclResourceArgs{...}
 type NetworkAclResourceInput interface {
 	pulumi.Input
 
@@ -848,7 +848,7 @@ func (i NetworkAclResourceArgs) ToNetworkAclResourceOutputWithContext(ctx contex
 // NetworkAclResourceArrayInput is an input type that accepts NetworkAclResourceArray and NetworkAclResourceArrayOutput values.
 // You can construct a concrete instance of `NetworkAclResourceArrayInput` via:
 //
-//          NetworkAclResourceArray{ NetworkAclResourceArgs{...} }
+//	NetworkAclResourceArray{ NetworkAclResourceArgs{...} }
 type NetworkAclResourceArrayInput interface {
 	pulumi.Input
 
@@ -946,7 +946,7 @@ type GetBgpGroupsGroup struct {
 // GetBgpGroupsGroupInput is an input type that accepts GetBgpGroupsGroupArgs and GetBgpGroupsGroupOutput values.
 // You can construct a concrete instance of `GetBgpGroupsGroupInput` via:
 //
-//          GetBgpGroupsGroupArgs{...}
+//	GetBgpGroupsGroupArgs{...}
 type GetBgpGroupsGroupInput interface {
 	pulumi.Input
 
@@ -998,7 +998,7 @@ func (i GetBgpGroupsGroupArgs) ToGetBgpGroupsGroupOutputWithContext(ctx context.
 // GetBgpGroupsGroupArrayInput is an input type that accepts GetBgpGroupsGroupArray and GetBgpGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetBgpGroupsGroupArrayInput` via:
 //
-//          GetBgpGroupsGroupArray{ GetBgpGroupsGroupArgs{...} }
+//	GetBgpGroupsGroupArray{ GetBgpGroupsGroupArgs{...} }
 type GetBgpGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1133,7 +1133,7 @@ type GetBgpNetworksNetwork struct {
 // GetBgpNetworksNetworkInput is an input type that accepts GetBgpNetworksNetworkArgs and GetBgpNetworksNetworkOutput values.
 // You can construct a concrete instance of `GetBgpNetworksNetworkInput` via:
 //
-//          GetBgpNetworksNetworkArgs{...}
+//	GetBgpNetworksNetworkArgs{...}
 type GetBgpNetworksNetworkInput interface {
 	pulumi.Input
 
@@ -1167,7 +1167,7 @@ func (i GetBgpNetworksNetworkArgs) ToGetBgpNetworksNetworkOutputWithContext(ctx 
 // GetBgpNetworksNetworkArrayInput is an input type that accepts GetBgpNetworksNetworkArray and GetBgpNetworksNetworkArrayOutput values.
 // You can construct a concrete instance of `GetBgpNetworksNetworkArrayInput` via:
 //
-//          GetBgpNetworksNetworkArray{ GetBgpNetworksNetworkArgs{...} }
+//	GetBgpNetworksNetworkArray{ GetBgpNetworksNetworkArgs{...} }
 type GetBgpNetworksNetworkArrayInput interface {
 	pulumi.Input
 
@@ -1287,7 +1287,7 @@ type GetBgpPeersPeer struct {
 // GetBgpPeersPeerInput is an input type that accepts GetBgpPeersPeerArgs and GetBgpPeersPeerOutput values.
 // You can construct a concrete instance of `GetBgpPeersPeerInput` via:
 //
-//          GetBgpPeersPeerArgs{...}
+//	GetBgpPeersPeerArgs{...}
 type GetBgpPeersPeerInput interface {
 	pulumi.Input
 
@@ -1351,7 +1351,7 @@ func (i GetBgpPeersPeerArgs) ToGetBgpPeersPeerOutputWithContext(ctx context.Cont
 // GetBgpPeersPeerArrayInput is an input type that accepts GetBgpPeersPeerArray and GetBgpPeersPeerArrayOutput values.
 // You can construct a concrete instance of `GetBgpPeersPeerArrayInput` via:
 //
-//          GetBgpPeersPeerArray{ GetBgpPeersPeerArgs{...} }
+//	GetBgpPeersPeerArray{ GetBgpPeersPeerArgs{...} }
 type GetBgpPeersPeerArrayInput interface {
 	pulumi.Input
 
@@ -1552,7 +1552,7 @@ type GetCommonBandwidthPackagesPackage struct {
 // GetCommonBandwidthPackagesPackageInput is an input type that accepts GetCommonBandwidthPackagesPackageArgs and GetCommonBandwidthPackagesPackageOutput values.
 // You can construct a concrete instance of `GetCommonBandwidthPackagesPackageInput` via:
 //
-//          GetCommonBandwidthPackagesPackageArgs{...}
+//	GetCommonBandwidthPackagesPackageArgs{...}
 type GetCommonBandwidthPackagesPackageInput interface {
 	pulumi.Input
 
@@ -1622,7 +1622,7 @@ func (i GetCommonBandwidthPackagesPackageArgs) ToGetCommonBandwidthPackagesPacka
 // GetCommonBandwidthPackagesPackageArrayInput is an input type that accepts GetCommonBandwidthPackagesPackageArray and GetCommonBandwidthPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetCommonBandwidthPackagesPackageArrayInput` via:
 //
-//          GetCommonBandwidthPackagesPackageArray{ GetCommonBandwidthPackagesPackageArgs{...} }
+//	GetCommonBandwidthPackagesPackageArray{ GetCommonBandwidthPackagesPackageArgs{...} }
 type GetCommonBandwidthPackagesPackageArrayInput interface {
 	pulumi.Input
 
@@ -1799,7 +1799,7 @@ type GetCommonBandwidthPackagesPackagePublicIpAddress struct {
 // GetCommonBandwidthPackagesPackagePublicIpAddressInput is an input type that accepts GetCommonBandwidthPackagesPackagePublicIpAddressArgs and GetCommonBandwidthPackagesPackagePublicIpAddressOutput values.
 // You can construct a concrete instance of `GetCommonBandwidthPackagesPackagePublicIpAddressInput` via:
 //
-//          GetCommonBandwidthPackagesPackagePublicIpAddressArgs{...}
+//	GetCommonBandwidthPackagesPackagePublicIpAddressArgs{...}
 type GetCommonBandwidthPackagesPackagePublicIpAddressInput interface {
 	pulumi.Input
 
@@ -1828,7 +1828,7 @@ func (i GetCommonBandwidthPackagesPackagePublicIpAddressArgs) ToGetCommonBandwid
 // GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput is an input type that accepts GetCommonBandwidthPackagesPackagePublicIpAddressArray and GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput values.
 // You can construct a concrete instance of `GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput` via:
 //
-//          GetCommonBandwidthPackagesPackagePublicIpAddressArray{ GetCommonBandwidthPackagesPackagePublicIpAddressArgs{...} }
+//	GetCommonBandwidthPackagesPackagePublicIpAddressArray{ GetCommonBandwidthPackagesPackagePublicIpAddressArgs{...} }
 type GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput interface {
 	pulumi.Input
 
@@ -1926,7 +1926,7 @@ type GetDhcpOptionsSetsSet struct {
 // GetDhcpOptionsSetsSetInput is an input type that accepts GetDhcpOptionsSetsSetArgs and GetDhcpOptionsSetsSetOutput values.
 // You can construct a concrete instance of `GetDhcpOptionsSetsSetInput` via:
 //
-//          GetDhcpOptionsSetsSetArgs{...}
+//	GetDhcpOptionsSetsSetArgs{...}
 type GetDhcpOptionsSetsSetInput interface {
 	pulumi.Input
 
@@ -1974,7 +1974,7 @@ func (i GetDhcpOptionsSetsSetArgs) ToGetDhcpOptionsSetsSetOutputWithContext(ctx 
 // GetDhcpOptionsSetsSetArrayInput is an input type that accepts GetDhcpOptionsSetsSetArray and GetDhcpOptionsSetsSetArrayOutput values.
 // You can construct a concrete instance of `GetDhcpOptionsSetsSetArrayInput` via:
 //
-//          GetDhcpOptionsSetsSetArray{ GetDhcpOptionsSetsSetArgs{...} }
+//	GetDhcpOptionsSetsSetArray{ GetDhcpOptionsSetsSetArgs{...} }
 type GetDhcpOptionsSetsSetArrayInput interface {
 	pulumi.Input
 
@@ -2089,7 +2089,7 @@ type GetDhcpOptionsSetsSetAssociateVpc struct {
 // GetDhcpOptionsSetsSetAssociateVpcInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArgs and GetDhcpOptionsSetsSetAssociateVpcOutput values.
 // You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcInput` via:
 //
-//          GetDhcpOptionsSetsSetAssociateVpcArgs{...}
+//	GetDhcpOptionsSetsSetAssociateVpcArgs{...}
 type GetDhcpOptionsSetsSetAssociateVpcInput interface {
 	pulumi.Input
 
@@ -2119,7 +2119,7 @@ func (i GetDhcpOptionsSetsSetAssociateVpcArgs) ToGetDhcpOptionsSetsSetAssociateV
 // GetDhcpOptionsSetsSetAssociateVpcArrayInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArray and GetDhcpOptionsSetsSetAssociateVpcArrayOutput values.
 // You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcArrayInput` via:
 //
-//          GetDhcpOptionsSetsSetAssociateVpcArray{ GetDhcpOptionsSetsSetAssociateVpcArgs{...} }
+//	GetDhcpOptionsSetsSetAssociateVpcArray{ GetDhcpOptionsSetsSetAssociateVpcArgs{...} }
 type GetDhcpOptionsSetsSetAssociateVpcArrayInput interface {
 	pulumi.Input
 
@@ -2193,7 +2193,7 @@ type GetEnhancedNatAvailableZonesZone struct {
 // GetEnhancedNatAvailableZonesZoneInput is an input type that accepts GetEnhancedNatAvailableZonesZoneArgs and GetEnhancedNatAvailableZonesZoneOutput values.
 // You can construct a concrete instance of `GetEnhancedNatAvailableZonesZoneInput` via:
 //
-//          GetEnhancedNatAvailableZonesZoneArgs{...}
+//	GetEnhancedNatAvailableZonesZoneArgs{...}
 type GetEnhancedNatAvailableZonesZoneInput interface {
 	pulumi.Input
 
@@ -2221,7 +2221,7 @@ func (i GetEnhancedNatAvailableZonesZoneArgs) ToGetEnhancedNatAvailableZonesZone
 // GetEnhancedNatAvailableZonesZoneArrayInput is an input type that accepts GetEnhancedNatAvailableZonesZoneArray and GetEnhancedNatAvailableZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetEnhancedNatAvailableZonesZoneArrayInput` via:
 //
-//          GetEnhancedNatAvailableZonesZoneArray{ GetEnhancedNatAvailableZonesZoneArgs{...} }
+//	GetEnhancedNatAvailableZonesZoneArray{ GetEnhancedNatAvailableZonesZoneArgs{...} }
 type GetEnhancedNatAvailableZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -2311,7 +2311,7 @@ type GetForwardEntriesEntry struct {
 // GetForwardEntriesEntryInput is an input type that accepts GetForwardEntriesEntryArgs and GetForwardEntriesEntryOutput values.
 // You can construct a concrete instance of `GetForwardEntriesEntryInput` via:
 //
-//          GetForwardEntriesEntryArgs{...}
+//	GetForwardEntriesEntryArgs{...}
 type GetForwardEntriesEntryInput interface {
 	pulumi.Input
 
@@ -2357,7 +2357,7 @@ func (i GetForwardEntriesEntryArgs) ToGetForwardEntriesEntryOutputWithContext(ct
 // GetForwardEntriesEntryArrayInput is an input type that accepts GetForwardEntriesEntryArray and GetForwardEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetForwardEntriesEntryArrayInput` via:
 //
-//          GetForwardEntriesEntryArray{ GetForwardEntriesEntryArgs{...} }
+//	GetForwardEntriesEntryArray{ GetForwardEntriesEntryArgs{...} }
 type GetForwardEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -2491,7 +2491,7 @@ type GetHavipsHavip struct {
 // GetHavipsHavipInput is an input type that accepts GetHavipsHavipArgs and GetHavipsHavipOutput values.
 // You can construct a concrete instance of `GetHavipsHavipInput` via:
 //
-//          GetHavipsHavipArgs{...}
+//	GetHavipsHavipArgs{...}
 type GetHavipsHavipInput interface {
 	pulumi.Input
 
@@ -2539,7 +2539,7 @@ func (i GetHavipsHavipArgs) ToGetHavipsHavipOutputWithContext(ctx context.Contex
 // GetHavipsHavipArrayInput is an input type that accepts GetHavipsHavipArray and GetHavipsHavipArrayOutput values.
 // You can construct a concrete instance of `GetHavipsHavipArrayInput` via:
 //
-//          GetHavipsHavipArray{ GetHavipsHavipArgs{...} }
+//	GetHavipsHavipArray{ GetHavipsHavipArgs{...} }
 type GetHavipsHavipArrayInput interface {
 	pulumi.Input
 
@@ -2690,7 +2690,7 @@ type GetIpsecServersServer struct {
 // GetIpsecServersServerInput is an input type that accepts GetIpsecServersServerArgs and GetIpsecServersServerOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerInput` via:
 //
-//          GetIpsecServersServerArgs{...}
+//	GetIpsecServersServerArgs{...}
 type GetIpsecServersServerInput interface {
 	pulumi.Input
 
@@ -2750,7 +2750,7 @@ func (i GetIpsecServersServerArgs) ToGetIpsecServersServerOutputWithContext(ctx 
 // GetIpsecServersServerArrayInput is an input type that accepts GetIpsecServersServerArray and GetIpsecServersServerArrayOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerArrayInput` via:
 //
-//          GetIpsecServersServerArray{ GetIpsecServersServerArgs{...} }
+//	GetIpsecServersServerArray{ GetIpsecServersServerArgs{...} }
 type GetIpsecServersServerArrayInput interface {
 	pulumi.Input
 
@@ -2913,7 +2913,7 @@ type GetIpsecServersServerIkeConfig struct {
 // GetIpsecServersServerIkeConfigInput is an input type that accepts GetIpsecServersServerIkeConfigArgs and GetIpsecServersServerIkeConfigOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerIkeConfigInput` via:
 //
-//          GetIpsecServersServerIkeConfigArgs{...}
+//	GetIpsecServersServerIkeConfigArgs{...}
 type GetIpsecServersServerIkeConfigInput interface {
 	pulumi.Input
 
@@ -2955,7 +2955,7 @@ func (i GetIpsecServersServerIkeConfigArgs) ToGetIpsecServersServerIkeConfigOutp
 // GetIpsecServersServerIkeConfigArrayInput is an input type that accepts GetIpsecServersServerIkeConfigArray and GetIpsecServersServerIkeConfigArrayOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerIkeConfigArrayInput` via:
 //
-//          GetIpsecServersServerIkeConfigArray{ GetIpsecServersServerIkeConfigArgs{...} }
+//	GetIpsecServersServerIkeConfigArray{ GetIpsecServersServerIkeConfigArgs{...} }
 type GetIpsecServersServerIkeConfigArrayInput interface {
 	pulumi.Input
 
@@ -3065,7 +3065,7 @@ type GetIpsecServersServerIpsecConfig struct {
 // GetIpsecServersServerIpsecConfigInput is an input type that accepts GetIpsecServersServerIpsecConfigArgs and GetIpsecServersServerIpsecConfigOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerIpsecConfigInput` via:
 //
-//          GetIpsecServersServerIpsecConfigArgs{...}
+//	GetIpsecServersServerIpsecConfigArgs{...}
 type GetIpsecServersServerIpsecConfigInput interface {
 	pulumi.Input
 
@@ -3099,7 +3099,7 @@ func (i GetIpsecServersServerIpsecConfigArgs) ToGetIpsecServersServerIpsecConfig
 // GetIpsecServersServerIpsecConfigArrayInput is an input type that accepts GetIpsecServersServerIpsecConfigArray and GetIpsecServersServerIpsecConfigArrayOutput values.
 // You can construct a concrete instance of `GetIpsecServersServerIpsecConfigArrayInput` via:
 //
-//          GetIpsecServersServerIpsecConfigArray{ GetIpsecServersServerIpsecConfigArgs{...} }
+//	GetIpsecServersServerIpsecConfigArray{ GetIpsecServersServerIpsecConfigArgs{...} }
 type GetIpsecServersServerIpsecConfigArrayInput interface {
 	pulumi.Input
 
@@ -3175,6 +3175,175 @@ func (o GetIpsecServersServerIpsecConfigArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetIpsecServersServerIpsecConfigOutput)
 }
 
+type GetIpv4GatewaysGateway struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// Indicates whether the IPv4 gateway is activated.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the Ipv4 Gateway.
+	Id string `pulumi:"id"`
+	// The description of the IPv4 gateway.
+	Ipv4GatewayDescription string `pulumi:"ipv4GatewayDescription"`
+	// The resource attribute field that represents the resource level 1 ID.
+	Ipv4GatewayId string `pulumi:"ipv4GatewayId"`
+	// The name of the IPv4 gateway.
+	Ipv4GatewayName string `pulumi:"ipv4GatewayName"`
+	// ID of the route table associated with IPv4 Gateway.
+	Ipv4GatewayRouteTableId string `pulumi:"ipv4GatewayRouteTableId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the VPC associated with the IPv4 Gateway.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetIpv4GatewaysGatewayInput is an input type that accepts GetIpv4GatewaysGatewayArgs and GetIpv4GatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetIpv4GatewaysGatewayInput` via:
+//
+//	GetIpv4GatewaysGatewayArgs{...}
+type GetIpv4GatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetIpv4GatewaysGatewayOutput() GetIpv4GatewaysGatewayOutput
+	ToGetIpv4GatewaysGatewayOutputWithContext(context.Context) GetIpv4GatewaysGatewayOutput
+}
+
+type GetIpv4GatewaysGatewayArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Indicates whether the IPv4 gateway is activated.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the Ipv4 Gateway.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The description of the IPv4 gateway.
+	Ipv4GatewayDescription pulumi.StringInput `pulumi:"ipv4GatewayDescription"`
+	// The resource attribute field that represents the resource level 1 ID.
+	Ipv4GatewayId pulumi.StringInput `pulumi:"ipv4GatewayId"`
+	// The name of the IPv4 gateway.
+	Ipv4GatewayName pulumi.StringInput `pulumi:"ipv4GatewayName"`
+	// ID of the route table associated with IPv4 Gateway.
+	Ipv4GatewayRouteTableId pulumi.StringInput `pulumi:"ipv4GatewayRouteTableId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC associated with the IPv4 Gateway.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetIpv4GatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv4GatewaysGateway)(nil)).Elem()
+}
+
+func (i GetIpv4GatewaysGatewayArgs) ToGetIpv4GatewaysGatewayOutput() GetIpv4GatewaysGatewayOutput {
+	return i.ToGetIpv4GatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetIpv4GatewaysGatewayArgs) ToGetIpv4GatewaysGatewayOutputWithContext(ctx context.Context) GetIpv4GatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv4GatewaysGatewayOutput)
+}
+
+// GetIpv4GatewaysGatewayArrayInput is an input type that accepts GetIpv4GatewaysGatewayArray and GetIpv4GatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetIpv4GatewaysGatewayArrayInput` via:
+//
+//	GetIpv4GatewaysGatewayArray{ GetIpv4GatewaysGatewayArgs{...} }
+type GetIpv4GatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv4GatewaysGatewayArrayOutput() GetIpv4GatewaysGatewayArrayOutput
+	ToGetIpv4GatewaysGatewayArrayOutputWithContext(context.Context) GetIpv4GatewaysGatewayArrayOutput
+}
+
+type GetIpv4GatewaysGatewayArray []GetIpv4GatewaysGatewayInput
+
+func (GetIpv4GatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv4GatewaysGateway)(nil)).Elem()
+}
+
+func (i GetIpv4GatewaysGatewayArray) ToGetIpv4GatewaysGatewayArrayOutput() GetIpv4GatewaysGatewayArrayOutput {
+	return i.ToGetIpv4GatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv4GatewaysGatewayArray) ToGetIpv4GatewaysGatewayArrayOutputWithContext(ctx context.Context) GetIpv4GatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv4GatewaysGatewayArrayOutput)
+}
+
+type GetIpv4GatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv4GatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv4GatewaysGateway)(nil)).Elem()
+}
+
+func (o GetIpv4GatewaysGatewayOutput) ToGetIpv4GatewaysGatewayOutput() GetIpv4GatewaysGatewayOutput {
+	return o
+}
+
+func (o GetIpv4GatewaysGatewayOutput) ToGetIpv4GatewaysGatewayOutputWithContext(ctx context.Context) GetIpv4GatewaysGatewayOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetIpv4GatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the IPv4 gateway is activated.
+func (o GetIpv4GatewaysGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the Ipv4 Gateway.
+func (o GetIpv4GatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The description of the IPv4 gateway.
+func (o GetIpv4GatewaysGatewayOutput) Ipv4GatewayDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Ipv4GatewayDescription }).(pulumi.StringOutput)
+}
+
+// The resource attribute field that represents the resource level 1 ID.
+func (o GetIpv4GatewaysGatewayOutput) Ipv4GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Ipv4GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the IPv4 gateway.
+func (o GetIpv4GatewaysGatewayOutput) Ipv4GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Ipv4GatewayName }).(pulumi.StringOutput)
+}
+
+// ID of the route table associated with IPv4 Gateway.
+func (o GetIpv4GatewaysGatewayOutput) Ipv4GatewayRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Ipv4GatewayRouteTableId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetIpv4GatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC associated with the IPv4 Gateway.
+func (o GetIpv4GatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv4GatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetIpv4GatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv4GatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv4GatewaysGateway)(nil)).Elem()
+}
+
+func (o GetIpv4GatewaysGatewayArrayOutput) ToGetIpv4GatewaysGatewayArrayOutput() GetIpv4GatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetIpv4GatewaysGatewayArrayOutput) ToGetIpv4GatewaysGatewayArrayOutputWithContext(ctx context.Context) GetIpv4GatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetIpv4GatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetIpv4GatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv4GatewaysGateway {
+		return vs[0].([]GetIpv4GatewaysGateway)[vs[1].(int)]
+	}).(GetIpv4GatewaysGatewayOutput)
+}
+
 type GetIpv6AddressesAddress struct {
 	// The ID of the instance that is assigned the IPv6 address.
 	AssociatedInstanceId string `pulumi:"associatedInstanceId"`
@@ -3205,7 +3374,7 @@ type GetIpv6AddressesAddress struct {
 // GetIpv6AddressesAddressInput is an input type that accepts GetIpv6AddressesAddressArgs and GetIpv6AddressesAddressOutput values.
 // You can construct a concrete instance of `GetIpv6AddressesAddressInput` via:
 //
-//          GetIpv6AddressesAddressArgs{...}
+//	GetIpv6AddressesAddressArgs{...}
 type GetIpv6AddressesAddressInput interface {
 	pulumi.Input
 
@@ -3255,7 +3424,7 @@ func (i GetIpv6AddressesAddressArgs) ToGetIpv6AddressesAddressOutputWithContext(
 // GetIpv6AddressesAddressArrayInput is an input type that accepts GetIpv6AddressesAddressArray and GetIpv6AddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetIpv6AddressesAddressArrayInput` via:
 //
-//          GetIpv6AddressesAddressArray{ GetIpv6AddressesAddressArgs{...} }
+//	GetIpv6AddressesAddressArray{ GetIpv6AddressesAddressArgs{...} }
 type GetIpv6AddressesAddressArrayInput interface {
 	pulumi.Input
 
@@ -3393,7 +3562,7 @@ type GetIpv6EgressRulesRule struct {
 // GetIpv6EgressRulesRuleInput is an input type that accepts GetIpv6EgressRulesRuleArgs and GetIpv6EgressRulesRuleOutput values.
 // You can construct a concrete instance of `GetIpv6EgressRulesRuleInput` via:
 //
-//          GetIpv6EgressRulesRuleArgs{...}
+//	GetIpv6EgressRulesRuleArgs{...}
 type GetIpv6EgressRulesRuleInput interface {
 	pulumi.Input
 
@@ -3435,7 +3604,7 @@ func (i GetIpv6EgressRulesRuleArgs) ToGetIpv6EgressRulesRuleOutputWithContext(ct
 // GetIpv6EgressRulesRuleArrayInput is an input type that accepts GetIpv6EgressRulesRuleArray and GetIpv6EgressRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetIpv6EgressRulesRuleArrayInput` via:
 //
-//          GetIpv6EgressRulesRuleArray{ GetIpv6EgressRulesRuleArgs{...} }
+//	GetIpv6EgressRulesRuleArray{ GetIpv6EgressRulesRuleArgs{...} }
 type GetIpv6EgressRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -3559,7 +3728,7 @@ type GetIpv6GatewaysGateway struct {
 // GetIpv6GatewaysGatewayInput is an input type that accepts GetIpv6GatewaysGatewayArgs and GetIpv6GatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetIpv6GatewaysGatewayInput` via:
 //
-//          GetIpv6GatewaysGatewayArgs{...}
+//	GetIpv6GatewaysGatewayArgs{...}
 type GetIpv6GatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -3607,7 +3776,7 @@ func (i GetIpv6GatewaysGatewayArgs) ToGetIpv6GatewaysGatewayOutputWithContext(ct
 // GetIpv6GatewaysGatewayArrayInput is an input type that accepts GetIpv6GatewaysGatewayArray and GetIpv6GatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetIpv6GatewaysGatewayArrayInput` via:
 //
-//          GetIpv6GatewaysGatewayArray{ GetIpv6GatewaysGatewayArgs{...} }
+//	GetIpv6GatewaysGatewayArray{ GetIpv6GatewaysGatewayArgs{...} }
 type GetIpv6GatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -3740,7 +3909,7 @@ type GetIpv6InternetBandwidthsBandwidth struct {
 // GetIpv6InternetBandwidthsBandwidthInput is an input type that accepts GetIpv6InternetBandwidthsBandwidthArgs and GetIpv6InternetBandwidthsBandwidthOutput values.
 // You can construct a concrete instance of `GetIpv6InternetBandwidthsBandwidthInput` via:
 //
-//          GetIpv6InternetBandwidthsBandwidthArgs{...}
+//	GetIpv6InternetBandwidthsBandwidthArgs{...}
 type GetIpv6InternetBandwidthsBandwidthInput interface {
 	pulumi.Input
 
@@ -3782,7 +3951,7 @@ func (i GetIpv6InternetBandwidthsBandwidthArgs) ToGetIpv6InternetBandwidthsBandw
 // GetIpv6InternetBandwidthsBandwidthArrayInput is an input type that accepts GetIpv6InternetBandwidthsBandwidthArray and GetIpv6InternetBandwidthsBandwidthArrayOutput values.
 // You can construct a concrete instance of `GetIpv6InternetBandwidthsBandwidthArrayInput` via:
 //
-//          GetIpv6InternetBandwidthsBandwidthArray{ GetIpv6InternetBandwidthsBandwidthArgs{...} }
+//	GetIpv6InternetBandwidthsBandwidthArray{ GetIpv6InternetBandwidthsBandwidthArgs{...} }
 type GetIpv6InternetBandwidthsBandwidthArrayInput interface {
 	pulumi.Input
 
@@ -3930,7 +4099,7 @@ type GetNatGatewaysGateway struct {
 // GetNatGatewaysGatewayInput is an input type that accepts GetNatGatewaysGatewayArgs and GetNatGatewaysGatewayOutput values.
 // You can construct a concrete instance of `GetNatGatewaysGatewayInput` via:
 //
-//          GetNatGatewaysGatewayArgs{...}
+//	GetNatGatewaysGatewayArgs{...}
 type GetNatGatewaysGatewayInput interface {
 	pulumi.Input
 
@@ -4002,7 +4171,7 @@ func (i GetNatGatewaysGatewayArgs) ToGetNatGatewaysGatewayOutputWithContext(ctx 
 // GetNatGatewaysGatewayArrayInput is an input type that accepts GetNatGatewaysGatewayArray and GetNatGatewaysGatewayArrayOutput values.
 // You can construct a concrete instance of `GetNatGatewaysGatewayArrayInput` via:
 //
-//          GetNatGatewaysGatewayArray{ GetNatGatewaysGatewayArgs{...} }
+//	GetNatGatewaysGatewayArray{ GetNatGatewaysGatewayArgs{...} }
 type GetNatGatewaysGatewayArrayInput interface {
 	pulumi.Input
 
@@ -4197,7 +4366,7 @@ type GetNatIpCidrsCidr struct {
 // GetNatIpCidrsCidrInput is an input type that accepts GetNatIpCidrsCidrArgs and GetNatIpCidrsCidrOutput values.
 // You can construct a concrete instance of `GetNatIpCidrsCidrInput` via:
 //
-//          GetNatIpCidrsCidrArgs{...}
+//	GetNatIpCidrsCidrArgs{...}
 type GetNatIpCidrsCidrInput interface {
 	pulumi.Input
 
@@ -4241,7 +4410,7 @@ func (i GetNatIpCidrsCidrArgs) ToGetNatIpCidrsCidrOutputWithContext(ctx context.
 // GetNatIpCidrsCidrArrayInput is an input type that accepts GetNatIpCidrsCidrArray and GetNatIpCidrsCidrArrayOutput values.
 // You can construct a concrete instance of `GetNatIpCidrsCidrArrayInput` via:
 //
-//          GetNatIpCidrsCidrArray{ GetNatIpCidrsCidrArgs{...} }
+//	GetNatIpCidrsCidrArray{ GetNatIpCidrsCidrArgs{...} }
 type GetNatIpCidrsCidrArrayInput interface {
 	pulumi.Input
 
@@ -4366,7 +4535,7 @@ type GetNatIpsIp struct {
 // GetNatIpsIpInput is an input type that accepts GetNatIpsIpArgs and GetNatIpsIpOutput values.
 // You can construct a concrete instance of `GetNatIpsIpInput` via:
 //
-//          GetNatIpsIpArgs{...}
+//	GetNatIpsIpArgs{...}
 type GetNatIpsIpInput interface {
 	pulumi.Input
 
@@ -4410,7 +4579,7 @@ func (i GetNatIpsIpArgs) ToGetNatIpsIpOutputWithContext(ctx context.Context) Get
 // GetNatIpsIpArrayInput is an input type that accepts GetNatIpsIpArray and GetNatIpsIpArrayOutput values.
 // You can construct a concrete instance of `GetNatIpsIpArrayInput` via:
 //
-//          GetNatIpsIpArray{ GetNatIpsIpArgs{...} }
+//	GetNatIpsIpArray{ GetNatIpsIpArgs{...} }
 type GetNatIpsIpArrayInput interface {
 	pulumi.Input
 
@@ -4535,7 +4704,7 @@ type GetNetworkAclsAcl struct {
 // GetNetworkAclsAclInput is an input type that accepts GetNetworkAclsAclArgs and GetNetworkAclsAclOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclInput` via:
 //
-//          GetNetworkAclsAclArgs{...}
+//	GetNetworkAclsAclArgs{...}
 type GetNetworkAclsAclInput interface {
 	pulumi.Input
 
@@ -4579,7 +4748,7 @@ func (i GetNetworkAclsAclArgs) ToGetNetworkAclsAclOutputWithContext(ctx context.
 // GetNetworkAclsAclArrayInput is an input type that accepts GetNetworkAclsAclArray and GetNetworkAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclArrayInput` via:
 //
-//          GetNetworkAclsAclArray{ GetNetworkAclsAclArgs{...} }
+//	GetNetworkAclsAclArray{ GetNetworkAclsAclArgs{...} }
 type GetNetworkAclsAclArrayInput interface {
 	pulumi.Input
 
@@ -4698,7 +4867,7 @@ type GetNetworkAclsAclEgressAclEntry struct {
 // GetNetworkAclsAclEgressAclEntryInput is an input type that accepts GetNetworkAclsAclEgressAclEntryArgs and GetNetworkAclsAclEgressAclEntryOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclEgressAclEntryInput` via:
 //
-//          GetNetworkAclsAclEgressAclEntryArgs{...}
+//	GetNetworkAclsAclEgressAclEntryArgs{...}
 type GetNetworkAclsAclEgressAclEntryInput interface {
 	pulumi.Input
 
@@ -4736,7 +4905,7 @@ func (i GetNetworkAclsAclEgressAclEntryArgs) ToGetNetworkAclsAclEgressAclEntryOu
 // GetNetworkAclsAclEgressAclEntryArrayInput is an input type that accepts GetNetworkAclsAclEgressAclEntryArray and GetNetworkAclsAclEgressAclEntryArrayOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclEgressAclEntryArrayInput` via:
 //
-//          GetNetworkAclsAclEgressAclEntryArray{ GetNetworkAclsAclEgressAclEntryArgs{...} }
+//	GetNetworkAclsAclEgressAclEntryArray{ GetNetworkAclsAclEgressAclEntryArgs{...} }
 type GetNetworkAclsAclEgressAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -4840,7 +5009,7 @@ type GetNetworkAclsAclIngressAclEntry struct {
 // GetNetworkAclsAclIngressAclEntryInput is an input type that accepts GetNetworkAclsAclIngressAclEntryArgs and GetNetworkAclsAclIngressAclEntryOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclIngressAclEntryInput` via:
 //
-//          GetNetworkAclsAclIngressAclEntryArgs{...}
+//	GetNetworkAclsAclIngressAclEntryArgs{...}
 type GetNetworkAclsAclIngressAclEntryInput interface {
 	pulumi.Input
 
@@ -4878,7 +5047,7 @@ func (i GetNetworkAclsAclIngressAclEntryArgs) ToGetNetworkAclsAclIngressAclEntry
 // GetNetworkAclsAclIngressAclEntryArrayInput is an input type that accepts GetNetworkAclsAclIngressAclEntryArray and GetNetworkAclsAclIngressAclEntryArrayOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclIngressAclEntryArrayInput` via:
 //
-//          GetNetworkAclsAclIngressAclEntryArray{ GetNetworkAclsAclIngressAclEntryArgs{...} }
+//	GetNetworkAclsAclIngressAclEntryArray{ GetNetworkAclsAclIngressAclEntryArgs{...} }
 type GetNetworkAclsAclIngressAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -4976,7 +5145,7 @@ type GetNetworkAclsAclResource struct {
 // GetNetworkAclsAclResourceInput is an input type that accepts GetNetworkAclsAclResourceArgs and GetNetworkAclsAclResourceOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclResourceInput` via:
 //
-//          GetNetworkAclsAclResourceArgs{...}
+//	GetNetworkAclsAclResourceArgs{...}
 type GetNetworkAclsAclResourceInput interface {
 	pulumi.Input
 
@@ -5008,7 +5177,7 @@ func (i GetNetworkAclsAclResourceArgs) ToGetNetworkAclsAclResourceOutputWithCont
 // GetNetworkAclsAclResourceArrayInput is an input type that accepts GetNetworkAclsAclResourceArray and GetNetworkAclsAclResourceArrayOutput values.
 // You can construct a concrete instance of `GetNetworkAclsAclResourceArrayInput` via:
 //
-//          GetNetworkAclsAclResourceArray{ GetNetworkAclsAclResourceArgs{...} }
+//	GetNetworkAclsAclResourceArray{ GetNetworkAclsAclResourceArgs{...} }
 type GetNetworkAclsAclResourceArrayInput interface {
 	pulumi.Input
 
@@ -5121,7 +5290,7 @@ type GetNetworksVpc struct {
 // GetNetworksVpcInput is an input type that accepts GetNetworksVpcArgs and GetNetworksVpcOutput values.
 // You can construct a concrete instance of `GetNetworksVpcInput` via:
 //
-//          GetNetworksVpcArgs{...}
+//	GetNetworksVpcArgs{...}
 type GetNetworksVpcInput interface {
 	pulumi.Input
 
@@ -5183,7 +5352,7 @@ func (i GetNetworksVpcArgs) ToGetNetworksVpcOutputWithContext(ctx context.Contex
 // GetNetworksVpcArrayInput is an input type that accepts GetNetworksVpcArray and GetNetworksVpcArrayOutput values.
 // You can construct a concrete instance of `GetNetworksVpcArrayInput` via:
 //
-//          GetNetworksVpcArray{ GetNetworksVpcArgs{...} }
+//	GetNetworksVpcArray{ GetNetworksVpcArgs{...} }
 type GetNetworksVpcArrayInput interface {
 	pulumi.Input
 
@@ -5351,7 +5520,7 @@ type GetPbrRouteEntriesEntry struct {
 // GetPbrRouteEntriesEntryInput is an input type that accepts GetPbrRouteEntriesEntryArgs and GetPbrRouteEntriesEntryOutput values.
 // You can construct a concrete instance of `GetPbrRouteEntriesEntryInput` via:
 //
-//          GetPbrRouteEntriesEntryArgs{...}
+//	GetPbrRouteEntriesEntryArgs{...}
 type GetPbrRouteEntriesEntryInput interface {
 	pulumi.Input
 
@@ -5393,7 +5562,7 @@ func (i GetPbrRouteEntriesEntryArgs) ToGetPbrRouteEntriesEntryOutputWithContext(
 // GetPbrRouteEntriesEntryArrayInput is an input type that accepts GetPbrRouteEntriesEntryArray and GetPbrRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetPbrRouteEntriesEntryArrayInput` via:
 //
-//          GetPbrRouteEntriesEntryArray{ GetPbrRouteEntriesEntryArgs{...} }
+//	GetPbrRouteEntriesEntryArray{ GetPbrRouteEntriesEntryArgs{...} }
 type GetPbrRouteEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -5507,7 +5676,7 @@ type GetRouteEntriesEntry struct {
 // GetRouteEntriesEntryInput is an input type that accepts GetRouteEntriesEntryArgs and GetRouteEntriesEntryOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryInput` via:
 //
-//          GetRouteEntriesEntryArgs{...}
+//	GetRouteEntriesEntryArgs{...}
 type GetRouteEntriesEntryInput interface {
 	pulumi.Input
 
@@ -5545,7 +5714,7 @@ func (i GetRouteEntriesEntryArgs) ToGetRouteEntriesEntryOutputWithContext(ctx co
 // GetRouteEntriesEntryArrayInput is an input type that accepts GetRouteEntriesEntryArray and GetRouteEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetRouteEntriesEntryArrayInput` via:
 //
-//          GetRouteEntriesEntryArray{ GetRouteEntriesEntryArgs{...} }
+//	GetRouteEntriesEntryArray{ GetRouteEntriesEntryArgs{...} }
 type GetRouteEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -5663,7 +5832,7 @@ type GetRouteTablesTable struct {
 // GetRouteTablesTableInput is an input type that accepts GetRouteTablesTableArgs and GetRouteTablesTableOutput values.
 // You can construct a concrete instance of `GetRouteTablesTableInput` via:
 //
-//          GetRouteTablesTableArgs{...}
+//	GetRouteTablesTableArgs{...}
 type GetRouteTablesTableInput interface {
 	pulumi.Input
 
@@ -5715,7 +5884,7 @@ func (i GetRouteTablesTableArgs) ToGetRouteTablesTableOutputWithContext(ctx cont
 // GetRouteTablesTableArrayInput is an input type that accepts GetRouteTablesTableArray and GetRouteTablesTableArrayOutput values.
 // You can construct a concrete instance of `GetRouteTablesTableArrayInput` via:
 //
-//          GetRouteTablesTableArray{ GetRouteTablesTableArgs{...} }
+//	GetRouteTablesTableArray{ GetRouteTablesTableArgs{...} }
 type GetRouteTablesTableArrayInput interface {
 	pulumi.Input
 
@@ -5879,7 +6048,7 @@ type GetRouterInterfacesInterface struct {
 // GetRouterInterfacesInterfaceInput is an input type that accepts GetRouterInterfacesInterfaceArgs and GetRouterInterfacesInterfaceOutput values.
 // You can construct a concrete instance of `GetRouterInterfacesInterfaceInput` via:
 //
-//          GetRouterInterfacesInterfaceArgs{...}
+//	GetRouterInterfacesInterfaceArgs{...}
 type GetRouterInterfacesInterfaceInput interface {
 	pulumi.Input
 
@@ -5942,7 +6111,7 @@ func (i GetRouterInterfacesInterfaceArgs) ToGetRouterInterfacesInterfaceOutputWi
 // GetRouterInterfacesInterfaceArrayInput is an input type that accepts GetRouterInterfacesInterfaceArray and GetRouterInterfacesInterfaceArrayOutput values.
 // You can construct a concrete instance of `GetRouterInterfacesInterfaceArrayInput` via:
 //
-//          GetRouterInterfacesInterfaceArray{ GetRouterInterfacesInterfaceArgs{...} }
+//	GetRouterInterfacesInterfaceArray{ GetRouterInterfacesInterfaceArgs{...} }
 type GetRouterInterfacesInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -6109,7 +6278,7 @@ type GetSnatEntriesEntry struct {
 // GetSnatEntriesEntryInput is an input type that accepts GetSnatEntriesEntryArgs and GetSnatEntriesEntryOutput values.
 // You can construct a concrete instance of `GetSnatEntriesEntryInput` via:
 //
-//          GetSnatEntriesEntryArgs{...}
+//	GetSnatEntriesEntryArgs{...}
 type GetSnatEntriesEntryInput interface {
 	pulumi.Input
 
@@ -6149,7 +6318,7 @@ func (i GetSnatEntriesEntryArgs) ToGetSnatEntriesEntryOutputWithContext(ctx cont
 // GetSnatEntriesEntryArrayInput is an input type that accepts GetSnatEntriesEntryArray and GetSnatEntriesEntryArrayOutput values.
 // You can construct a concrete instance of `GetSnatEntriesEntryArrayInput` via:
 //
-//          GetSnatEntriesEntryArray{ GetSnatEntriesEntryArgs{...} }
+//	GetSnatEntriesEntryArray{ GetSnatEntriesEntryArgs{...} }
 type GetSnatEntriesEntryArrayInput interface {
 	pulumi.Input
 
@@ -6258,7 +6427,7 @@ type GetSslVpnClientCertsCert struct {
 // GetSslVpnClientCertsCertInput is an input type that accepts GetSslVpnClientCertsCertArgs and GetSslVpnClientCertsCertOutput values.
 // You can construct a concrete instance of `GetSslVpnClientCertsCertInput` via:
 //
-//          GetSslVpnClientCertsCertArgs{...}
+//	GetSslVpnClientCertsCertArgs{...}
 type GetSslVpnClientCertsCertInput interface {
 	pulumi.Input
 
@@ -6296,7 +6465,7 @@ func (i GetSslVpnClientCertsCertArgs) ToGetSslVpnClientCertsCertOutputWithContex
 // GetSslVpnClientCertsCertArrayInput is an input type that accepts GetSslVpnClientCertsCertArray and GetSslVpnClientCertsCertArrayOutput values.
 // You can construct a concrete instance of `GetSslVpnClientCertsCertArrayInput` via:
 //
-//          GetSslVpnClientCertsCertArray{ GetSslVpnClientCertsCertArgs{...} }
+//	GetSslVpnClientCertsCertArray{ GetSslVpnClientCertsCertArgs{...} }
 type GetSslVpnClientCertsCertArrayInput interface {
 	pulumi.Input
 
@@ -6414,7 +6583,7 @@ type GetSslVpnServersServer struct {
 // GetSslVpnServersServerInput is an input type that accepts GetSslVpnServersServerArgs and GetSslVpnServersServerOutput values.
 // You can construct a concrete instance of `GetSslVpnServersServerInput` via:
 //
-//          GetSslVpnServersServerArgs{...}
+//	GetSslVpnServersServerArgs{...}
 type GetSslVpnServersServerInput interface {
 	pulumi.Input
 
@@ -6466,7 +6635,7 @@ func (i GetSslVpnServersServerArgs) ToGetSslVpnServersServerOutputWithContext(ct
 // GetSslVpnServersServerArrayInput is an input type that accepts GetSslVpnServersServerArray and GetSslVpnServersServerArrayOutput values.
 // You can construct a concrete instance of `GetSslVpnServersServerArrayInput` via:
 //
-//          GetSslVpnServersServerArray{ GetSslVpnServersServerArgs{...} }
+//	GetSslVpnServersServerArray{ GetSslVpnServersServerArgs{...} }
 type GetSslVpnServersServerArrayInput interface {
 	pulumi.Input
 
@@ -6623,7 +6792,7 @@ type GetSwitchesVswitch struct {
 // GetSwitchesVswitchInput is an input type that accepts GetSwitchesVswitchArgs and GetSwitchesVswitchOutput values.
 // You can construct a concrete instance of `GetSwitchesVswitchInput` via:
 //
-//          GetSwitchesVswitchArgs{...}
+//	GetSwitchesVswitchArgs{...}
 type GetSwitchesVswitchInput interface {
 	pulumi.Input
 
@@ -6679,7 +6848,7 @@ func (i GetSwitchesVswitchArgs) ToGetSwitchesVswitchOutputWithContext(ctx contex
 // GetSwitchesVswitchArrayInput is an input type that accepts GetSwitchesVswitchArray and GetSwitchesVswitchArrayOutput values.
 // You can construct a concrete instance of `GetSwitchesVswitchArrayInput` via:
 //
-//          GetSwitchesVswitchArray{ GetSwitchesVswitchArgs{...} }
+//	GetSwitchesVswitchArray{ GetSwitchesVswitchArgs{...} }
 type GetSwitchesVswitchArrayInput interface {
 	pulumi.Input
 
@@ -6838,7 +7007,7 @@ type GetTrafficMirrorFilterEgressRulesRule struct {
 // GetTrafficMirrorFilterEgressRulesRuleInput is an input type that accepts GetTrafficMirrorFilterEgressRulesRuleArgs and GetTrafficMirrorFilterEgressRulesRuleOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFilterEgressRulesRuleInput` via:
 //
-//          GetTrafficMirrorFilterEgressRulesRuleArgs{...}
+//	GetTrafficMirrorFilterEgressRulesRuleArgs{...}
 type GetTrafficMirrorFilterEgressRulesRuleInput interface {
 	pulumi.Input
 
@@ -6886,7 +7055,7 @@ func (i GetTrafficMirrorFilterEgressRulesRuleArgs) ToGetTrafficMirrorFilterEgres
 // GetTrafficMirrorFilterEgressRulesRuleArrayInput is an input type that accepts GetTrafficMirrorFilterEgressRulesRuleArray and GetTrafficMirrorFilterEgressRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFilterEgressRulesRuleArrayInput` via:
 //
-//          GetTrafficMirrorFilterEgressRulesRuleArray{ GetTrafficMirrorFilterEgressRulesRuleArgs{...} }
+//	GetTrafficMirrorFilterEgressRulesRuleArray{ GetTrafficMirrorFilterEgressRulesRuleArgs{...} }
 type GetTrafficMirrorFilterEgressRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -7025,7 +7194,7 @@ type GetTrafficMirrorFilterIngressRulesRule struct {
 // GetTrafficMirrorFilterIngressRulesRuleInput is an input type that accepts GetTrafficMirrorFilterIngressRulesRuleArgs and GetTrafficMirrorFilterIngressRulesRuleOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFilterIngressRulesRuleInput` via:
 //
-//          GetTrafficMirrorFilterIngressRulesRuleArgs{...}
+//	GetTrafficMirrorFilterIngressRulesRuleArgs{...}
 type GetTrafficMirrorFilterIngressRulesRuleInput interface {
 	pulumi.Input
 
@@ -7073,7 +7242,7 @@ func (i GetTrafficMirrorFilterIngressRulesRuleArgs) ToGetTrafficMirrorFilterIngr
 // GetTrafficMirrorFilterIngressRulesRuleArrayInput is an input type that accepts GetTrafficMirrorFilterIngressRulesRuleArray and GetTrafficMirrorFilterIngressRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFilterIngressRulesRuleArrayInput` via:
 //
-//          GetTrafficMirrorFilterIngressRulesRuleArray{ GetTrafficMirrorFilterIngressRulesRuleArgs{...} }
+//	GetTrafficMirrorFilterIngressRulesRuleArray{ GetTrafficMirrorFilterIngressRulesRuleArgs{...} }
 type GetTrafficMirrorFilterIngressRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -7200,7 +7369,7 @@ type GetTrafficMirrorFiltersFilter struct {
 // GetTrafficMirrorFiltersFilterInput is an input type that accepts GetTrafficMirrorFiltersFilterArgs and GetTrafficMirrorFiltersFilterOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFiltersFilterInput` via:
 //
-//          GetTrafficMirrorFiltersFilterArgs{...}
+//	GetTrafficMirrorFiltersFilterArgs{...}
 type GetTrafficMirrorFiltersFilterInput interface {
 	pulumi.Input
 
@@ -7236,7 +7405,7 @@ func (i GetTrafficMirrorFiltersFilterArgs) ToGetTrafficMirrorFiltersFilterOutput
 // GetTrafficMirrorFiltersFilterArrayInput is an input type that accepts GetTrafficMirrorFiltersFilterArray and GetTrafficMirrorFiltersFilterArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorFiltersFilterArrayInput` via:
 //
-//          GetTrafficMirrorFiltersFilterArray{ GetTrafficMirrorFiltersFilterArgs{...} }
+//	GetTrafficMirrorFiltersFilterArray{ GetTrafficMirrorFiltersFilterArgs{...} }
 type GetTrafficMirrorFiltersFilterArrayInput interface {
 	pulumi.Input
 
@@ -7351,7 +7520,7 @@ type GetTrafficMirrorSessionsSession struct {
 // GetTrafficMirrorSessionsSessionInput is an input type that accepts GetTrafficMirrorSessionsSessionArgs and GetTrafficMirrorSessionsSessionOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorSessionsSessionInput` via:
 //
-//          GetTrafficMirrorSessionsSessionArgs{...}
+//	GetTrafficMirrorSessionsSessionArgs{...}
 type GetTrafficMirrorSessionsSessionInput interface {
 	pulumi.Input
 
@@ -7405,7 +7574,7 @@ func (i GetTrafficMirrorSessionsSessionArgs) ToGetTrafficMirrorSessionsSessionOu
 // GetTrafficMirrorSessionsSessionArrayInput is an input type that accepts GetTrafficMirrorSessionsSessionArray and GetTrafficMirrorSessionsSessionArrayOutput values.
 // You can construct a concrete instance of `GetTrafficMirrorSessionsSessionArrayInput` via:
 //
-//          GetTrafficMirrorSessionsSessionArray{ GetTrafficMirrorSessionsSessionArgs{...} }
+//	GetTrafficMirrorSessionsSessionArray{ GetTrafficMirrorSessionsSessionArgs{...} }
 type GetTrafficMirrorSessionsSessionArrayInput interface {
 	pulumi.Input
 
@@ -7557,7 +7726,7 @@ type GetVpcFlowLogsLog struct {
 // GetVpcFlowLogsLogInput is an input type that accepts GetVpcFlowLogsLogArgs and GetVpcFlowLogsLogOutput values.
 // You can construct a concrete instance of `GetVpcFlowLogsLogInput` via:
 //
-//          GetVpcFlowLogsLogArgs{...}
+//	GetVpcFlowLogsLogArgs{...}
 type GetVpcFlowLogsLogInput interface {
 	pulumi.Input
 
@@ -7603,7 +7772,7 @@ func (i GetVpcFlowLogsLogArgs) ToGetVpcFlowLogsLogOutputWithContext(ctx context.
 // GetVpcFlowLogsLogArrayInput is an input type that accepts GetVpcFlowLogsLogArray and GetVpcFlowLogsLogArrayOutput values.
 // You can construct a concrete instance of `GetVpcFlowLogsLogArrayInput` via:
 //
-//          GetVpcFlowLogsLogArray{ GetVpcFlowLogsLogArgs{...} }
+//	GetVpcFlowLogsLogArray{ GetVpcFlowLogsLogArgs{...} }
 type GetVpcFlowLogsLogArrayInput interface {
 	pulumi.Input
 
@@ -7750,6 +7919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIkeConfigArrayInput)(nil)).Elem(), GetIpsecServersServerIkeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIpsecConfigInput)(nil)).Elem(), GetIpsecServersServerIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIpsecConfigArrayInput)(nil)).Elem(), GetIpsecServersServerIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv4GatewaysGatewayInput)(nil)).Elem(), GetIpv4GatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv4GatewaysGatewayArrayInput)(nil)).Elem(), GetIpv4GatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressInput)(nil)).Elem(), GetIpv6AddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressArrayInput)(nil)).Elem(), GetIpv6AddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleInput)(nil)).Elem(), GetIpv6EgressRulesRuleArgs{})
@@ -7840,6 +8011,8 @@ func init() {
 	pulumi.RegisterOutputType(GetIpsecServersServerIkeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetIpsecServersServerIpsecConfigOutput{})
 	pulumi.RegisterOutputType(GetIpsecServersServerIpsecConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv4GatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetIpv4GatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleOutput{})

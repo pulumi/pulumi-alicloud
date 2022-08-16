@@ -85,7 +85,7 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
@@ -440,7 +440,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -817,7 +817,7 @@ class _EcsInstanceSetState:
         :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[str] instance_type: The type of instance to start.
         :param pulumi.Input[str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
@@ -1178,7 +1178,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -1617,7 +1617,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[str] instance_type: The type of instance to start.
         :param pulumi.Input[str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
@@ -1910,7 +1910,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[str] instance_type: The type of instance to start.
         :param pulumi.Input[str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
@@ -2155,7 +2155,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[int]:
         """
-        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+        The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 

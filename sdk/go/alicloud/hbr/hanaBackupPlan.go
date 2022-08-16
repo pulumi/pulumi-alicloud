@@ -19,63 +19,66 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-// 			VaultName: pulumi.Any(_var.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: pulumi.StringRef("OK"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHanaInstance, err := hbr.NewHanaInstance(ctx, "defaultHanaInstance", &hbr.HanaInstanceArgs{
-// 			AlertSetting:        pulumi.String("INHERITED"),
-// 			HanaName:            pulumi.Any(_var.Name),
-// 			Host:                pulumi.String("1.1.1.1"),
-// 			InstanceNumber:      pulumi.Int(1),
-// 			Password:            pulumi.String("YouPassword123"),
-// 			ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			Sid:                 pulumi.String("HXE"),
-// 			UseSsl:              pulumi.Bool(false),
-// 			UserName:            pulumi.String("admin"),
-// 			ValidateCertificate: pulumi.Bool(false),
-// 			VaultId:             defaultVault.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewHanaBackupPlan(ctx, "defaultHanaBackupPlan", &hbr.HanaBackupPlanArgs{
-// 			BackupPrefix:    pulumi.String("DIFF_DATA_BACKUP"),
-// 			BackupType:      pulumi.String("COMPLETE"),
-// 			ClusterId:       defaultHanaInstance.HanaInstanceId,
-// 			DatabaseName:    pulumi.String("SYSTEMDB"),
-// 			PlanName:        pulumi.Any(_var.Name),
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			Schedule:        pulumi.String("I|1602673264|P1D"),
-// 			VaultId:         defaultHanaInstance.VaultId,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultHanaInstance, err := hbr.NewHanaInstance(ctx, "defaultHanaInstance", &hbr.HanaInstanceArgs{
+//				AlertSetting:        pulumi.String("INHERITED"),
+//				HanaName:            pulumi.Any(_var.Name),
+//				Host:                pulumi.String("1.1.1.1"),
+//				InstanceNumber:      pulumi.Int(1),
+//				Password:            pulumi.String("YouPassword123"),
+//				ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				Sid:                 pulumi.String("HXE"),
+//				UseSsl:              pulumi.Bool(false),
+//				UserName:            pulumi.String("admin"),
+//				ValidateCertificate: pulumi.Bool(false),
+//				VaultId:             defaultVault.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewHanaBackupPlan(ctx, "defaultHanaBackupPlan", &hbr.HanaBackupPlanArgs{
+//				BackupPrefix:    pulumi.String("DIFF_DATA_BACKUP"),
+//				BackupType:      pulumi.String("COMPLETE"),
+//				ClusterId:       defaultHanaInstance.HanaInstanceId,
+//				DatabaseName:    pulumi.String("SYSTEMDB"),
+//				PlanName:        pulumi.Any(_var.Name),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				Schedule:        pulumi.String("I|1602673264|P1D"),
+//				VaultId:         defaultHanaInstance.VaultId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -83,7 +86,9 @@ import (
 // Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
+//
+//	$ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
+//
 // ```
 type HanaBackupPlan struct {
 	pulumi.CustomResourceState
@@ -290,7 +295,7 @@ func (i *HanaBackupPlan) ToHanaBackupPlanOutputWithContext(ctx context.Context) 
 // HanaBackupPlanArrayInput is an input type that accepts HanaBackupPlanArray and HanaBackupPlanArrayOutput values.
 // You can construct a concrete instance of `HanaBackupPlanArrayInput` via:
 //
-//          HanaBackupPlanArray{ HanaBackupPlanArgs{...} }
+//	HanaBackupPlanArray{ HanaBackupPlanArgs{...} }
 type HanaBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +320,7 @@ func (i HanaBackupPlanArray) ToHanaBackupPlanArrayOutputWithContext(ctx context.
 // HanaBackupPlanMapInput is an input type that accepts HanaBackupPlanMap and HanaBackupPlanMapOutput values.
 // You can construct a concrete instance of `HanaBackupPlanMapInput` via:
 //
-//          HanaBackupPlanMap{ "key": HanaBackupPlanArgs{...} }
+//	HanaBackupPlanMap{ "key": HanaBackupPlanArgs{...} }
 type HanaBackupPlanMapInput interface {
 	pulumi.Input
 

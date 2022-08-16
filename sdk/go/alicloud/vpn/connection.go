@@ -13,71 +13,74 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-// 			VpcId:              pulumi.String("vpc-fake-id"),
-// 			Bandwidth:          pulumi.Int(10),
-// 			EnableSsl:          pulumi.Bool(true),
-// 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			Description:        pulumi.String("test_create_description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
-// 			IpAddress:   pulumi.String("42.104.22.228"),
-// 			Description: pulumi.String("testAccVpnCgwDesc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpn.NewConnection(ctx, "fooConnection", &vpn.ConnectionArgs{
-// 			VpnGatewayId:      fooGateway.ID(),
-// 			CustomerGatewayId: fooCustomerGateway.ID(),
-// 			LocalSubnets: pulumi.StringArray{
-// 				pulumi.String("172.16.0.0/24"),
-// 				pulumi.String("172.16.1.0/24"),
-// 			},
-// 			RemoteSubnets: pulumi.StringArray{
-// 				pulumi.String("10.0.0.0/24"),
-// 				pulumi.String("10.0.1.0/24"),
-// 			},
-// 			EffectImmediately: pulumi.Bool(true),
-// 			IkeConfig: &vpn.ConnectionIkeConfigArgs{
-// 				IkeAuthAlg:  pulumi.String("md5"),
-// 				IkeEncAlg:   pulumi.String("des"),
-// 				IkeVersion:  pulumi.String("ikev1"),
-// 				IkeMode:     pulumi.String("main"),
-// 				IkeLifetime: pulumi.Int(86400),
-// 				Psk:         pulumi.String("tf-testvpn2"),
-// 				IkePfs:      pulumi.String("group1"),
-// 				IkeRemoteId: pulumi.String("testbob2"),
-// 				IkeLocalId:  pulumi.String("testalice2"),
-// 			},
-// 			IpsecConfig: &vpn.ConnectionIpsecConfigArgs{
-// 				IpsecPfs:      pulumi.String("group5"),
-// 				IpsecEncAlg:   pulumi.String("des"),
-// 				IpsecAuthAlg:  pulumi.String("md5"),
-// 				IpsecLifetime: pulumi.Int(8640),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
+//				VpcId:              pulumi.String("vpc-fake-id"),
+//				Bandwidth:          pulumi.Int(10),
+//				EnableSsl:          pulumi.Bool(true),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				Description:        pulumi.String("test_create_description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
+//				IpAddress:   pulumi.String("42.104.22.228"),
+//				Description: pulumi.String("testAccVpnCgwDesc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewConnection(ctx, "fooConnection", &vpn.ConnectionArgs{
+//				VpnGatewayId:      fooGateway.ID(),
+//				CustomerGatewayId: fooCustomerGateway.ID(),
+//				LocalSubnets: pulumi.StringArray{
+//					pulumi.String("172.16.0.0/24"),
+//					pulumi.String("172.16.1.0/24"),
+//				},
+//				RemoteSubnets: pulumi.StringArray{
+//					pulumi.String("10.0.0.0/24"),
+//					pulumi.String("10.0.1.0/24"),
+//				},
+//				EffectImmediately: pulumi.Bool(true),
+//				IkeConfig: &vpn.ConnectionIkeConfigArgs{
+//					IkeAuthAlg:  pulumi.String("md5"),
+//					IkeEncAlg:   pulumi.String("des"),
+//					IkeVersion:  pulumi.String("ikev1"),
+//					IkeMode:     pulumi.String("main"),
+//					IkeLifetime: pulumi.Int(86400),
+//					Psk:         pulumi.String("tf-testvpn2"),
+//					IkePfs:      pulumi.String("group1"),
+//					IkeRemoteId: pulumi.String("testbob2"),
+//					IkeLocalId:  pulumi.String("testalice2"),
+//				},
+//				IpsecConfig: &vpn.ConnectionIpsecConfigArgs{
+//					IpsecPfs:      pulumi.String("group5"),
+//					IpsecEncAlg:   pulumi.String("des"),
+//					IpsecAuthAlg:  pulumi.String("md5"),
+//					IpsecLifetime: pulumi.Int(8640),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,7 +88,9 @@ import (
 // VPN connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+//
+//	$ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -301,7 +306,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +331,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

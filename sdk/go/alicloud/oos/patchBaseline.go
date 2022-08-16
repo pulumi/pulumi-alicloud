@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oos.NewPatchBaseline(ctx, "example", &oos.PatchBaselineArgs{
-// 			ApprovalRules:     pulumi.String("example_value"),
-// 			OperationSystem:   pulumi.String("Windows"),
-// 			PatchBaselineName: pulumi.String("my-PatchBaseline"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oos.NewPatchBaseline(ctx, "example", &oos.PatchBaselineArgs{
+//				ApprovalRules:     pulumi.String("example_value"),
+//				OperationSystem:   pulumi.String("Windows"),
+//				PatchBaselineName: pulumi.String("my-PatchBaseline"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // OOS Patch Baseline can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
+//
+//	$ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <patch_baseline_name>
+//
 // ```
 type PatchBaseline struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *PatchBaseline) ToPatchBaselineOutputWithContext(ctx context.Context) Pa
 // PatchBaselineArrayInput is an input type that accepts PatchBaselineArray and PatchBaselineArrayOutput values.
 // You can construct a concrete instance of `PatchBaselineArrayInput` via:
 //
-//          PatchBaselineArray{ PatchBaselineArgs{...} }
+//	PatchBaselineArray{ PatchBaselineArgs{...} }
 type PatchBaselineArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i PatchBaselineArray) ToPatchBaselineArrayOutputWithContext(ctx context.Co
 // PatchBaselineMapInput is an input type that accepts PatchBaselineMap and PatchBaselineMapOutput values.
 // You can construct a concrete instance of `PatchBaselineMapInput` via:
 //
-//          PatchBaselineMap{ "key": PatchBaselineArgs{...} }
+//	PatchBaselineMap{ "key": PatchBaselineArgs{...} }
 type PatchBaselineMapInput interface {
 	pulumi.Input
 

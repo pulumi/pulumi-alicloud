@@ -20,63 +20,66 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		instanceName := "alikafkaInstanceName"
-// 		if param := cfg.Get("instanceName"); param != "" {
-// 			instanceName = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			VpcId:            defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			DeployType: pulumi.Int(4),
-// 			DiskSize:   pulumi.Int(500),
-// 			DiskType:   pulumi.Int(1),
-// 			IoMax:      pulumi.Int(20),
-// 			TopicQuota: pulumi.Int(50),
-// 			VswitchId:  defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instancesDs, err := actiontrail.GetInstances(ctx, &actiontrail.GetInstancesArgs{
-// 			NameRegex:  pulumi.StringRef("alikafkaInstanceName"),
-// 			OutputFile: pulumi.StringRef("instances.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstInstanceName", instancesDs.Instances[0].Name)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			instanceName := "alikafkaInstanceName"
+//			if param := cfg.Get("instanceName"); param != "" {
+//				instanceName = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+//				CidrBlock:        pulumi.String("172.16.0.0/24"),
+//				VpcId:            defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				DeployType: pulumi.Int(4),
+//				DiskSize:   pulumi.Int(500),
+//				DiskType:   pulumi.Int(1),
+//				IoMax:      pulumi.Int(20),
+//				TopicQuota: pulumi.Int(50),
+//				VswitchId:  defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instancesDs, err := actiontrail.GetInstances(ctx, &actiontrail.GetInstancesArgs{
+//				NameRegex:  pulumi.StringRef("alikafkaInstanceName"),
+//				OutputFile: pulumi.StringRef("instances.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstInstanceName", instancesDs.Instances[0].Name)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

@@ -19,80 +19,83 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "testAcc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
-// 			VaultName: pulumi.String(name),
-// 			VaultType: pulumi.String("OTS_BACKUP"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
-// 			Description: pulumi.String(name),
-// 			AccessedBy:  pulumi.String("Any"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("acceptance test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		basic, err := ots.NewTable(ctx, "basic", &ots.TableArgs{
-// 			InstanceName: foo.Name,
-// 			TableName:    pulumi.String(name),
-// 			PrimaryKeys: ots.TablePrimaryKeyArray{
-// 				&ots.TablePrimaryKeyArgs{
-// 					Name: pulumi.String("pk1"),
-// 					Type: pulumi.String("Integer"),
-// 				},
-// 			},
-// 			TimeToLive:                -1,
-// 			MaxVersion:                pulumi.Int(1),
-// 			DeviationCellVersionInSec: pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewOtsBackupPlan(ctx, "example", &hbr.OtsBackupPlanArgs{
-// 			OtsBackupPlanName: pulumi.String(name),
-// 			VaultId:           _default.ID(),
-// 			BackupType:        pulumi.String("COMPLETE"),
-// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
-// 			Retention:         pulumi.String("2"),
-// 			InstanceName:      foo.Name,
-// 			OtsDetails: hbr.OtsBackupPlanOtsDetailArray{
-// 				&hbr.OtsBackupPlanOtsDetailArgs{
-// 					TableNames: pulumi.StringArray{
-// 						basic.TableName,
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "testAcc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
+//				VaultName: pulumi.String(name),
+//				VaultType: pulumi.String("OTS_BACKUP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basic, err := ots.NewTable(ctx, "basic", &ots.TableArgs{
+//				InstanceName: foo.Name,
+//				TableName:    pulumi.String(name),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//				},
+//				TimeToLive:                -1,
+//				MaxVersion:                pulumi.Int(1),
+//				DeviationCellVersionInSec: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewOtsBackupPlan(ctx, "example", &hbr.OtsBackupPlanArgs{
+//				OtsBackupPlanName: pulumi.String(name),
+//				VaultId:           _default.ID(),
+//				BackupType:        pulumi.String("COMPLETE"),
+//				Schedule:          pulumi.String("I|1602673264|PT2H"),
+//				Retention:         pulumi.String("2"),
+//				InstanceName:      foo.Name,
+//				OtsDetails: hbr.OtsBackupPlanOtsDetailArray{
+//					&hbr.OtsBackupPlanOtsDetailArgs{
+//						TableNames: pulumi.StringArray{
+//							basic.TableName,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -100,7 +103,9 @@ import (
 // HBR Ots Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example <id>
+//
+//	$ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example <id>
+//
 // ```
 type OtsBackupPlan struct {
 	pulumi.CustomResourceState
@@ -287,7 +292,7 @@ func (i *OtsBackupPlan) ToOtsBackupPlanOutputWithContext(ctx context.Context) Ot
 // OtsBackupPlanArrayInput is an input type that accepts OtsBackupPlanArray and OtsBackupPlanArrayOutput values.
 // You can construct a concrete instance of `OtsBackupPlanArrayInput` via:
 //
-//          OtsBackupPlanArray{ OtsBackupPlanArgs{...} }
+//	OtsBackupPlanArray{ OtsBackupPlanArgs{...} }
 type OtsBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -312,7 +317,7 @@ func (i OtsBackupPlanArray) ToOtsBackupPlanArrayOutputWithContext(ctx context.Co
 // OtsBackupPlanMapInput is an input type that accepts OtsBackupPlanMap and OtsBackupPlanMapOutput values.
 // You can construct a concrete instance of `OtsBackupPlanMapInput` via:
 //
-//          OtsBackupPlanMap{ "key": OtsBackupPlanArgs{...} }
+//	OtsBackupPlanMap{ "key": OtsBackupPlanArgs{...} }
 type OtsBackupPlanMapInput interface {
 	pulumi.Input
 

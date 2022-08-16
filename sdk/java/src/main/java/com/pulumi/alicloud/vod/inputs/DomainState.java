@@ -185,14 +185,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the domain name for CDN. Value values:
+     * The status of the domain name for CDN. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the domain name for CDN. Value values:
+     * @return The status of the domain name for CDN. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -528,7 +528,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the domain name for CDN. Value values:
+         * @param status The status of the domain name for CDN. Valid values:
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the domain name for CDN. Value values:
+         * @param status The status of the domain name for CDN. Valid values:
          * 
          * @return builder
          * 

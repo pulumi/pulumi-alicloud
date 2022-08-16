@@ -24,75 +24,78 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testaccdbinstance"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-// 			VpcId:     exampleNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
-// 			Engine:             pulumi.String("PostgreSQL"),
-// 			EngineVersion:      pulumi.String("12.0"),
-// 			InstanceType:       pulumi.String("pg.n2.small.2c"),
-// 			InstanceStorage:    pulumi.Int(20),
-// 			InstanceChargeType: pulumi.String("Postpaid"),
-// 			InstanceName:       pulumi.String(name),
-// 			VswitchId:          exampleSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewRdsUpgradeDbInstance(ctx, "exampleRdsUpgradeDbInstance", &rds.RdsUpgradeDbInstanceArgs{
-// 			SourceDbInstanceId:    exampleInstance.ID(),
-// 			TargetMajorVersion:    pulumi.String("13.0"),
-// 			DbInstanceClass:       pulumi.String("pg.n2.small.2c"),
-// 			DbInstanceStorage:     pulumi.Int(20),
-// 			InstanceNetworkType:   pulumi.String("VPC"),
-// 			DbInstanceStorageType: pulumi.String("cloud_ssd"),
-// 			CollectStatMode:       pulumi.String("After"),
-// 			SwitchOver:            pulumi.String("false"),
-// 			PaymentType:           pulumi.String("PayAsYouGo"),
-// 			DbInstanceDescription: pulumi.String(name),
-// 			VswitchId:             exampleSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccdbinstance"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			creation := "Rds"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:     exampleNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:             pulumi.String("PostgreSQL"),
+//				EngineVersion:      pulumi.String("12.0"),
+//				InstanceType:       pulumi.String("pg.n2.small.2c"),
+//				InstanceStorage:    pulumi.Int(20),
+//				InstanceChargeType: pulumi.String("Postpaid"),
+//				InstanceName:       pulumi.String(name),
+//				VswitchId:          exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewRdsUpgradeDbInstance(ctx, "exampleRdsUpgradeDbInstance", &rds.RdsUpgradeDbInstanceArgs{
+//				SourceDbInstanceId:    exampleInstance.ID(),
+//				TargetMajorVersion:    pulumi.String("13.0"),
+//				DbInstanceClass:       pulumi.String("pg.n2.small.2c"),
+//				DbInstanceStorage:     pulumi.Int(20),
+//				InstanceNetworkType:   pulumi.String("VPC"),
+//				DbInstanceStorageType: pulumi.String("cloud_ssd"),
+//				CollectStatMode:       pulumi.String("After"),
+//				SwitchOver:            pulumi.String("false"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//				DbInstanceDescription: pulumi.String(name),
+//				VswitchId:             exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -100,7 +103,9 @@ import (
 // RDS Upgrade DB Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
+//
+//	$ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
+//
 // ```
 type RdsUpgradeDbInstance struct {
 	pulumi.CustomResourceState
@@ -941,7 +946,7 @@ func (i *RdsUpgradeDbInstance) ToRdsUpgradeDbInstanceOutputWithContext(ctx conte
 // RdsUpgradeDbInstanceArrayInput is an input type that accepts RdsUpgradeDbInstanceArray and RdsUpgradeDbInstanceArrayOutput values.
 // You can construct a concrete instance of `RdsUpgradeDbInstanceArrayInput` via:
 //
-//          RdsUpgradeDbInstanceArray{ RdsUpgradeDbInstanceArgs{...} }
+//	RdsUpgradeDbInstanceArray{ RdsUpgradeDbInstanceArgs{...} }
 type RdsUpgradeDbInstanceArrayInput interface {
 	pulumi.Input
 
@@ -966,7 +971,7 @@ func (i RdsUpgradeDbInstanceArray) ToRdsUpgradeDbInstanceArrayOutputWithContext(
 // RdsUpgradeDbInstanceMapInput is an input type that accepts RdsUpgradeDbInstanceMap and RdsUpgradeDbInstanceMapOutput values.
 // You can construct a concrete instance of `RdsUpgradeDbInstanceMapInput` via:
 //
-//          RdsUpgradeDbInstanceMap{ "key": RdsUpgradeDbInstanceArgs{...} }
+//	RdsUpgradeDbInstanceMap{ "key": RdsUpgradeDbInstanceArgs{...} }
 type RdsUpgradeDbInstanceMapInput interface {
 	pulumi.Input
 

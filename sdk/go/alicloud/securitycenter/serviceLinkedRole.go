@@ -18,25 +18,28 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/securitycenter"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := securitycenter.NewServiceLinkedRole(ctx, "serviceLinkedRole", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := securitycenter.NewServiceLinkedRole(ctx, "serviceLinkedRole", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
+//
+//	$ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
+//
 // ```
 type ServiceLinkedRole struct {
 	pulumi.CustomResourceState
@@ -128,7 +133,7 @@ func (i *ServiceLinkedRole) ToServiceLinkedRoleOutputWithContext(ctx context.Con
 // ServiceLinkedRoleArrayInput is an input type that accepts ServiceLinkedRoleArray and ServiceLinkedRoleArrayOutput values.
 // You can construct a concrete instance of `ServiceLinkedRoleArrayInput` via:
 //
-//          ServiceLinkedRoleArray{ ServiceLinkedRoleArgs{...} }
+//	ServiceLinkedRoleArray{ ServiceLinkedRoleArgs{...} }
 type ServiceLinkedRoleArrayInput interface {
 	pulumi.Input
 
@@ -153,7 +158,7 @@ func (i ServiceLinkedRoleArray) ToServiceLinkedRoleArrayOutputWithContext(ctx co
 // ServiceLinkedRoleMapInput is an input type that accepts ServiceLinkedRoleMap and ServiceLinkedRoleMapOutput values.
 // You can construct a concrete instance of `ServiceLinkedRoleMapInput` via:
 //
-//          ServiceLinkedRoleMap{ "key": ServiceLinkedRoleArgs{...} }
+//	ServiceLinkedRoleMap{ "key": ServiceLinkedRoleArgs{...} }
 type ServiceLinkedRoleMapInput interface {
 	pulumi.Input
 

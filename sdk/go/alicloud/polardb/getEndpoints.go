@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
-// 			DescriptionRegex: pulumi.StringRef("pc-\\w+"),
-// 			Status:           pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_default, err := polardb.GetEndpoints(ctx, &polardb.GetEndpointsArgs{
-// 			DbClusterId: polardbClustersDs.Clusters[0].Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("endpoint", _default.Endpoints[0].DbEndpointId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
+//				DescriptionRegex: pulumi.StringRef("pc-\\w+"),
+//				Status:           pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := polardb.GetEndpoints(ctx, &polardb.GetEndpointsArgs{
+//				DbClusterId: polardbClustersDs.Clusters[0].Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("endpoint", _default.Endpoints[0].DbEndpointId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.InvokeOption) (*GetEndpointsResult, error) {
 	var rv GetEndpointsResult

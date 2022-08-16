@@ -23,26 +23,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewAlidnsDomain(ctx, "dns", &dns.AlidnsDomainArgs{
-// 			DomainName: pulumi.String("starmove.com"),
-// 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created":     pulumi.Any("Terraform"),
-// 				"Environment": pulumi.Any("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewAlidnsDomain(ctx, "dns", &dns.AlidnsDomainArgs{
+//				DomainName: pulumi.String("starmove.com"),
+//				GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
+//				Tags: pulumi.AnyMap{
+//					"Created":     pulumi.Any("Terraform"),
+//					"Environment": pulumi.Any("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Alidns domain can be imported using the id or domain name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
+//
+//	$ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
+//
 // ```
 type AlidnsDomain struct {
 	pulumi.CustomResourceState
@@ -225,7 +230,7 @@ func (i *AlidnsDomain) ToAlidnsDomainOutputWithContext(ctx context.Context) Alid
 // AlidnsDomainArrayInput is an input type that accepts AlidnsDomainArray and AlidnsDomainArrayOutput values.
 // You can construct a concrete instance of `AlidnsDomainArrayInput` via:
 //
-//          AlidnsDomainArray{ AlidnsDomainArgs{...} }
+//	AlidnsDomainArray{ AlidnsDomainArgs{...} }
 type AlidnsDomainArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +255,7 @@ func (i AlidnsDomainArray) ToAlidnsDomainArrayOutputWithContext(ctx context.Cont
 // AlidnsDomainMapInput is an input type that accepts AlidnsDomainMap and AlidnsDomainMapOutput values.
 // You can construct a concrete instance of `AlidnsDomainMapInput` via:
 //
-//          AlidnsDomainMap{ "key": AlidnsDomainArgs{...} }
+//	AlidnsDomainMap{ "key": AlidnsDomainArgs{...} }
 type AlidnsDomainMapInput interface {
 	pulumi.Input
 

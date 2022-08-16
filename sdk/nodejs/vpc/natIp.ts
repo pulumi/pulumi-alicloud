@@ -103,7 +103,7 @@ export class NatIp extends pulumi.CustomResource {
     /**
      * The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
      */
-    public readonly natIp!: pulumi.Output<string | undefined>;
+    public readonly natIp!: pulumi.Output<string>;
     /**
      * NAT IP ADDRESS of the address segment.
      */
@@ -116,6 +116,9 @@ export class NatIp extends pulumi.CustomResource {
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
      */
     public readonly natIpDescription!: pulumi.Output<string | undefined>;
+    /**
+     * Ihe ID of the Nat Ip.
+     */
     public /*out*/ readonly natIpId!: pulumi.Output<string>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
@@ -196,6 +199,9 @@ export interface NatIpState {
      * NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
      */
     natIpDescription?: pulumi.Input<string>;
+    /**
+     * Ihe ID of the Nat Ip.
+     */
     natIpId?: pulumi.Input<string>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.

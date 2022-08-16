@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewReservedInstance(ctx, "default", &ecs.ReservedInstanceArgs{
-// 			InstanceType:   pulumi.String("ecs.g6.large"),
-// 			InstanceAmount: pulumi.Int(1),
-// 			PeriodUnit:     pulumi.String("Year"),
-// 			OfferingType:   pulumi.String("All Upfront"),
-// 			Description:    pulumi.String("ReservedInstance"),
-// 			ZoneId:         pulumi.String("cn-hangzhou-h"),
-// 			Scope:          pulumi.String("Zone"),
-// 			Period:         pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewReservedInstance(ctx, "default", &ecs.ReservedInstanceArgs{
+//				InstanceType:   pulumi.String("ecs.g6.large"),
+//				InstanceAmount: pulumi.Int(1),
+//				PeriodUnit:     pulumi.String("Year"),
+//				OfferingType:   pulumi.String("All Upfront"),
+//				Description:    pulumi.String("ReservedInstance"),
+//				ZoneId:         pulumi.String("cn-hangzhou-h"),
+//				Scope:          pulumi.String("Zone"),
+//				Period:         pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // reservedInstance can be imported using id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+//
+//	$ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+//
 // ```
 type ReservedInstance struct {
 	pulumi.CustomResourceState
@@ -236,7 +241,7 @@ func (i *ReservedInstance) ToReservedInstanceOutputWithContext(ctx context.Conte
 // ReservedInstanceArrayInput is an input type that accepts ReservedInstanceArray and ReservedInstanceArrayOutput values.
 // You can construct a concrete instance of `ReservedInstanceArrayInput` via:
 //
-//          ReservedInstanceArray{ ReservedInstanceArgs{...} }
+//	ReservedInstanceArray{ ReservedInstanceArgs{...} }
 type ReservedInstanceArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +266,7 @@ func (i ReservedInstanceArray) ToReservedInstanceArrayOutputWithContext(ctx cont
 // ReservedInstanceMapInput is an input type that accepts ReservedInstanceMap and ReservedInstanceMapOutput values.
 // You can construct a concrete instance of `ReservedInstanceMapInput` via:
 //
-//          ReservedInstanceMap{ "key": ReservedInstanceArgs{...} }
+//	ReservedInstanceMap{ "key": ReservedInstanceArgs{...} }
 type ReservedInstanceMapInput interface {
 	pulumi.Input
 

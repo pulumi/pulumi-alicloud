@@ -24,7 +24,9 @@ import (
 // The Sag Acl Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+//
 // ```
 type AclRule struct {
 	pulumi.CustomResourceState
@@ -226,7 +228,7 @@ func (i *AclRule) ToAclRuleOutputWithContext(ctx context.Context) AclRuleOutput 
 // AclRuleArrayInput is an input type that accepts AclRuleArray and AclRuleArrayOutput values.
 // You can construct a concrete instance of `AclRuleArrayInput` via:
 //
-//          AclRuleArray{ AclRuleArgs{...} }
+//	AclRuleArray{ AclRuleArgs{...} }
 type AclRuleArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +253,7 @@ func (i AclRuleArray) ToAclRuleArrayOutputWithContext(ctx context.Context) AclRu
 // AclRuleMapInput is an input type that accepts AclRuleMap and AclRuleMapOutput values.
 // You can construct a concrete instance of `AclRuleMapInput` via:
 //
-//          AclRuleMap{ "key": AclRuleArgs{...} }
+//	AclRuleMap{ "key": AclRuleArgs{...} }
 type AclRuleMapInput interface {
 	pulumi.Input
 

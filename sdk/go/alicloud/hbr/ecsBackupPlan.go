@@ -19,59 +19,62 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "valut-name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-// 			VaultName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-backup-plan"),
-// 			Status:    pulumi.StringRef("Running"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = hbr.NewEcsBackupPlan(ctx, "example", &hbr.EcsBackupPlanArgs{
-// 			EcsBackupPlanName: pulumi.String("example_value"),
-// 			InstanceId:        pulumi.String(defaultInstances.Instances[0].Id),
-// 			VaultId:           defaultVault.ID(),
-// 			Retention:         pulumi.String("1"),
-// 			Schedule:          pulumi.String("I|1602673264|PT2H"),
-// 			BackupType:        pulumi.String("COMPLETE"),
-// 			SpeedLimit:        pulumi.String("0:24:5120"),
-// 			Paths: pulumi.StringArray{
-// 				pulumi.String("/home"),
-// 				pulumi.String("/var"),
-// 			},
-// 			Exclude: pulumi.String("  [\"/home/exclude\"]\n"),
-// 			Include: pulumi.String("  [\"/home/include\"]\n"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "valut-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-backup-plan"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewEcsBackupPlan(ctx, "example", &hbr.EcsBackupPlanArgs{
+//				EcsBackupPlanName: pulumi.String("example_value"),
+//				InstanceId:        pulumi.String(defaultInstances.Instances[0].Id),
+//				VaultId:           defaultVault.ID(),
+//				Retention:         pulumi.String("1"),
+//				Schedule:          pulumi.String("I|1602673264|PT2H"),
+//				BackupType:        pulumi.String("COMPLETE"),
+//				SpeedLimit:        pulumi.String("0:24:5120"),
+//				Paths: pulumi.StringArray{
+//					pulumi.String("/home"),
+//					pulumi.String("/var"),
+//				},
+//				Exclude: pulumi.String("  [\"/home/exclude\"]\n"),
+//				Include: pulumi.String("  [\"/home/include\"]\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notice
 //
@@ -96,7 +99,9 @@ import (
 // HBR Ecs Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
+//
+//	$ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
+//
 // ```
 type EcsBackupPlan struct {
 	pulumi.CustomResourceState
@@ -342,7 +347,7 @@ func (i *EcsBackupPlan) ToEcsBackupPlanOutputWithContext(ctx context.Context) Ec
 // EcsBackupPlanArrayInput is an input type that accepts EcsBackupPlanArray and EcsBackupPlanArrayOutput values.
 // You can construct a concrete instance of `EcsBackupPlanArrayInput` via:
 //
-//          EcsBackupPlanArray{ EcsBackupPlanArgs{...} }
+//	EcsBackupPlanArray{ EcsBackupPlanArgs{...} }
 type EcsBackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -367,7 +372,7 @@ func (i EcsBackupPlanArray) ToEcsBackupPlanArrayOutputWithContext(ctx context.Co
 // EcsBackupPlanMapInput is an input type that accepts EcsBackupPlanMap and EcsBackupPlanMapOutput values.
 // You can construct a concrete instance of `EcsBackupPlanMapInput` via:
 //
-//          EcsBackupPlanMap{ "key": EcsBackupPlanArgs{...} }
+//	EcsBackupPlanMap{ "key": EcsBackupPlanArgs{...} }
 type EcsBackupPlanMapInput interface {
 	pulumi.Input
 

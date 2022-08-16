@@ -16,58 +16,61 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			Ids: []string{
-// 				"example_id",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerDiskId1", ids.Disks[0].Id)
-// 		nameRegex, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			NameRegex: pulumi.StringRef("^my-Disk"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerDiskId2", nameRegex.Disks[0].Id)
-// 		status, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			Status: pulumi.StringRef("In_use"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerDiskId3", status.Disks[0].Id)
-// 		instanceId, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			InstanceId: pulumi.StringRef("example_value"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerDiskId4", instanceId.Disks[0].Id)
-// 		diskType, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			DiskType: pulumi.StringRef("System"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("simpleApplicationServerDiskId5", diskType.Disks[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerDiskId1", ids.Disks[0].Id)
+//			nameRegex, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
+//				NameRegex: pulumi.StringRef("^my-Disk"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerDiskId2", nameRegex.Disks[0].Id)
+//			status, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
+//				Status: pulumi.StringRef("In_use"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerDiskId3", status.Disks[0].Id)
+//			instanceId, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
+//				InstanceId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerDiskId4", instanceId.Disks[0].Id)
+//			diskType, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
+//				DiskType: pulumi.StringRef("System"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerDiskId5", diskType.Disks[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetServerDisks(ctx *pulumi.Context, args *GetServerDisksArgs, opts ...pulumi.InvokeOption) (*GetServerDisksResult, error) {
 	var rv GetServerDisksResult

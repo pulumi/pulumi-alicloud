@@ -18,41 +18,44 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cms.NewMonitorGroup(ctx, "example", &cms.MonitorGroupArgs{
-// 			MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cms.NewMonitorGroup(ctx, "default2", &cms.MonitorGroupArgs{
-// 			ContactGroups: pulumi.StringArray{
-// 				pulumi.String("your_contact_groups"),
-// 			},
-// 			ResourceGroupId:   pulumi.String("your_resource_group_id"),
-// 			ResourceGroupName: pulumi.String("resource_group_name"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Acceptance-test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewMonitorGroup(ctx, "example", &cms.MonitorGroupArgs{
+//				MonitorGroupName: pulumi.String("tf-testaccmonitorgroup"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewMonitorGroup(ctx, "default2", &cms.MonitorGroupArgs{
+//				ContactGroups: pulumi.StringArray{
+//					pulumi.String("your_contact_groups"),
+//				},
+//				ResourceGroupId:   pulumi.String("your_resource_group_id"),
+//				ResourceGroupName: pulumi.String("resource_group_name"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Acceptance-test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // Cloud Monitor Service Monitor Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
+//
+//	$ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
+//
 // ```
 type MonitorGroup struct {
 	pulumi.CustomResourceState
@@ -188,7 +193,7 @@ func (i *MonitorGroup) ToMonitorGroupOutputWithContext(ctx context.Context) Moni
 // MonitorGroupArrayInput is an input type that accepts MonitorGroupArray and MonitorGroupArrayOutput values.
 // You can construct a concrete instance of `MonitorGroupArrayInput` via:
 //
-//          MonitorGroupArray{ MonitorGroupArgs{...} }
+//	MonitorGroupArray{ MonitorGroupArgs{...} }
 type MonitorGroupArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i MonitorGroupArray) ToMonitorGroupArrayOutputWithContext(ctx context.Cont
 // MonitorGroupMapInput is an input type that accepts MonitorGroupMap and MonitorGroupMapOutput values.
 // You can construct a concrete instance of `MonitorGroupMapInput` via:
 //
-//          MonitorGroupMap{ "key": MonitorGroupArgs{...} }
+//	MonitorGroupMap{ "key": MonitorGroupArgs{...} }
 type MonitorGroupMapInput interface {
 	pulumi.Input
 

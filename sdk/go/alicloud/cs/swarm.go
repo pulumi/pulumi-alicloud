@@ -189,7 +189,7 @@ func (i *Swarm) ToSwarmOutputWithContext(ctx context.Context) SwarmOutput {
 // SwarmArrayInput is an input type that accepts SwarmArray and SwarmArrayOutput values.
 // You can construct a concrete instance of `SwarmArrayInput` via:
 //
-//          SwarmArray{ SwarmArgs{...} }
+//	SwarmArray{ SwarmArgs{...} }
 type SwarmArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i SwarmArray) ToSwarmArrayOutputWithContext(ctx context.Context) SwarmArra
 // SwarmMapInput is an input type that accepts SwarmMap and SwarmMapOutput values.
 // You can construct a concrete instance of `SwarmMapInput` via:
 //
-//          SwarmMap{ "key": SwarmArgs{...} }
+//	SwarmMap{ "key": SwarmArgs{...} }
 type SwarmMapInput interface {
 	pulumi.Input
 

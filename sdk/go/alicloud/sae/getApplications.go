@@ -16,82 +16,85 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testacc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String("tf_testacc"),
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-// 			VpcId:       vpc.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
-// 			NamespaceDescription: pulumi.String(name),
-// 			NamespaceId:          pulumi.String("cn-hangzhou:tfacctest"),
-// 			NamespaceName:        pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
-// 			AppDescription: pulumi.String("tf-testaccDescription"),
-// 			AppName:        pulumi.String("tf-testaccAppName131"),
-// 			NamespaceId:    defaultNamespace.ID(),
-// 			ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
-// 			PackageType:    pulumi.String("Image"),
-// 			VswitchId:      vsw.ID(),
-// 			Timezone:       pulumi.String("Asia/Beijing"),
-// 			Replicas:       pulumi.Int(5),
-// 			Cpu:            pulumi.Int(500),
-// 			Memory:         pulumi.Int(2048),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
-// 			Ids: pulumi.StringArray{
-// 				defaultApplication.ID(),
-// 			},
-// 		}, nil)
-// 		ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (string, error) {
-// 			return defaultApplications.Applications[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_testacc"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceDescription: pulumi.String(name),
+//				NamespaceId:          pulumi.String("cn-hangzhou:tfacctest"),
+//				NamespaceName:        pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
+//				AppDescription: pulumi.String("tf-testaccDescription"),
+//				AppName:        pulumi.String("tf-testaccAppName131"),
+//				NamespaceId:    defaultNamespace.ID(),
+//				ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
+//				PackageType:    pulumi.String("Image"),
+//				VswitchId:      vsw.ID(),
+//				Timezone:       pulumi.String("Asia/Beijing"),
+//				Replicas:       pulumi.Int(5),
+//				Cpu:            pulumi.Int(500),
+//				Memory:         pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultApplication.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (string, error) {
+//				return defaultApplications.Applications[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplications(ctx *pulumi.Context, args *GetApplicationsArgs, opts ...pulumi.InvokeOption) (*GetApplicationsResult, error) {
 	var rv GetApplicationsResult

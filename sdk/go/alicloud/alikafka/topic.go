@@ -20,71 +20,74 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota: pulumi.Int(50),
-// 			DiskType:   pulumi.Int(1),
-// 			DiskSize:   pulumi.Int(500),
-// 			DeployType: pulumi.Int(5),
-// 			IoMax:      pulumi.Int(20),
-// 			VswitchId:  defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cfg := config.New(ctx, "")
-// 		topic := "alikafkaTopicName"
-// 		if param := cfg.Get("topic"); param != "" {
-// 			topic = param
-// 		}
-// 		_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
-// 			InstanceId:   defaultInstance.ID(),
-// 			Topic:        pulumi.String(topic),
-// 			LocalTopic:   pulumi.Bool(false),
-// 			CompactTopic: pulumi.Bool(false),
-// 			PartitionNum: pulumi.Int(12),
-// 			Remark:       pulumi.String("dafault_kafka_topic_remark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				TopicQuota: pulumi.Int(50),
+//				DiskType:   pulumi.Int(1),
+//				DiskSize:   pulumi.Int(500),
+//				DeployType: pulumi.Int(5),
+//				IoMax:      pulumi.Int(20),
+//				VswitchId:  defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			topic := "alikafkaTopicName"
+//			if param := cfg.Get("topic"); param != "" {
+//				topic = param
+//			}
+//			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
+//				InstanceId:   defaultInstance.ID(),
+//				Topic:        pulumi.String(topic),
+//				LocalTopic:   pulumi.Bool(false),
+//				CompactTopic: pulumi.Bool(false),
+//				PartitionNum: pulumi.Int(12),
+//				Remark:       pulumi.String("dafault_kafka_topic_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -245,7 +248,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +273,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 

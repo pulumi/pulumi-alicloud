@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/opensearch"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/opensearch"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := opensearch.NewAppGroup(ctx, "default", &opensearch.AppGroupArgs{
-// 			AppGroupName: pulumi.String(name),
-// 			PaymentType:  pulumi.String("PayAsYouGo"),
-// 			Type:         pulumi.String("standard"),
-// 			Quota: &opensearch.AppGroupQuotaArgs{
-// 				DocSize:         pulumi.Int(1),
-// 				ComputeResource: pulumi.Int(20),
-// 				Spec:            pulumi.String("opensearch.share.common"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := opensearch.NewAppGroup(ctx, "default", &opensearch.AppGroupArgs{
+//				AppGroupName: pulumi.String(name),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//				Type:         pulumi.String("standard"),
+//				Quota: &opensearch.AppGroupQuotaArgs{
+//					DocSize:         pulumi.Int(1),
+//					ComputeResource: pulumi.Int(20),
+//					Spec:            pulumi.String("opensearch.share.common"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // Open Search App Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
+//
+//	$ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
+//
 // ```
 type AppGroup struct {
 	pulumi.CustomResourceState
@@ -252,7 +257,7 @@ func (i *AppGroup) ToAppGroupOutputWithContext(ctx context.Context) AppGroupOutp
 // AppGroupArrayInput is an input type that accepts AppGroupArray and AppGroupArrayOutput values.
 // You can construct a concrete instance of `AppGroupArrayInput` via:
 //
-//          AppGroupArray{ AppGroupArgs{...} }
+//	AppGroupArray{ AppGroupArgs{...} }
 type AppGroupArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +282,7 @@ func (i AppGroupArray) ToAppGroupArrayOutputWithContext(ctx context.Context) App
 // AppGroupMapInput is an input type that accepts AppGroupMap and AppGroupMapOutput values.
 // You can construct a concrete instance of `AppGroupMapInput` via:
 //
-//          AppGroupMap{ "key": AppGroupArgs{...} }
+//	AppGroupMap{ "key": AppGroupArgs{...} }
 type AppGroupMapInput interface {
 	pulumi.Input
 

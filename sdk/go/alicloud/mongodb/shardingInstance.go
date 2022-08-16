@@ -16,7 +16,9 @@ import (
 // MongoDB can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+//
+//	$ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+//
 // ```
 type ShardingInstance struct {
 	pulumi.CustomResourceState
@@ -375,7 +377,7 @@ func (i *ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Conte
 // ShardingInstanceArrayInput is an input type that accepts ShardingInstanceArray and ShardingInstanceArrayOutput values.
 // You can construct a concrete instance of `ShardingInstanceArrayInput` via:
 //
-//          ShardingInstanceArray{ ShardingInstanceArgs{...} }
+//	ShardingInstanceArray{ ShardingInstanceArgs{...} }
 type ShardingInstanceArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +402,7 @@ func (i ShardingInstanceArray) ToShardingInstanceArrayOutputWithContext(ctx cont
 // ShardingInstanceMapInput is an input type that accepts ShardingInstanceMap and ShardingInstanceMapOutput values.
 // You can construct a concrete instance of `ShardingInstanceMapInput` via:
 //
-//          ShardingInstanceMap{ "key": ShardingInstanceArgs{...} }
+//	ShardingInstanceMap{ "key": ShardingInstanceArgs{...} }
 type ShardingInstanceMapInput interface {
 	pulumi.Input
 
@@ -497,9 +499,9 @@ func (o ShardingInstanceOutput) NetworkType() pulumi.StringOutput {
 }
 
 // The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-// * UPGRADE: The specifications are upgraded.
-// * DOWNGRADE: The specifications are downgraded.
-//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+//   - UPGRADE: The specifications are upgraded.
+//   - DOWNGRADE: The specifications are downgraded.
+//     Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 func (o ShardingInstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }

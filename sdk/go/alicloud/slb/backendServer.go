@@ -29,7 +29,9 @@ import (
 // Load balancer backend server can be imported using the load balancer id.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
+//
+//	$ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
+//
 // ```
 type BackendServer struct {
 	pulumi.CustomResourceState
@@ -140,7 +142,7 @@ func (i *BackendServer) ToBackendServerOutputWithContext(ctx context.Context) Ba
 // BackendServerArrayInput is an input type that accepts BackendServerArray and BackendServerArrayOutput values.
 // You can construct a concrete instance of `BackendServerArrayInput` via:
 //
-//          BackendServerArray{ BackendServerArgs{...} }
+//	BackendServerArray{ BackendServerArgs{...} }
 type BackendServerArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +167,7 @@ func (i BackendServerArray) ToBackendServerArrayOutputWithContext(ctx context.Co
 // BackendServerMapInput is an input type that accepts BackendServerMap and BackendServerMapOutput values.
 // You can construct a concrete instance of `BackendServerMapInput` via:
 //
-//          BackendServerMap{ "key": BackendServerArgs{...} }
+//	BackendServerMap{ "key": BackendServerArgs{...} }
 type BackendServerMapInput interface {
 	pulumi.Input
 

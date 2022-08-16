@@ -18,33 +18,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-// 			NameRegex:  pulumi.StringRef("^web-"),
-// 			OutputFile: pulumi.StringRef("web_access.json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		primaryVpcDs, err := vpc.NewNetwork(ctx, "primaryVpcDs", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		primarySecGroupsDs := ecs.GetSecurityGroupsOutput(ctx, ecs.GetSecurityGroupsOutputArgs{
-// 			VpcId: primaryVpcDs.ID(),
-// 		}, nil)
-// 		ctx.Export("firstGroupId", primarySecGroupsDs.ApplyT(func(primarySecGroupsDs ecs.GetSecurityGroupsResult) (string, error) {
-// 			return primarySecGroupsDs.Groups[0].Id, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+//				NameRegex:  pulumi.StringRef("^web-"),
+//				OutputFile: pulumi.StringRef("web_access.json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			primaryVpcDs, err := vpc.NewNetwork(ctx, "primaryVpcDs", nil)
+//			if err != nil {
+//				return err
+//			}
+//			primarySecGroupsDs := ecs.GetSecurityGroupsOutput(ctx, ecs.GetSecurityGroupsOutputArgs{
+//				VpcId: primaryVpcDs.ID(),
+//			}, nil)
+//			ctx.Export("firstGroupId", primarySecGroupsDs.ApplyT(func(primarySecGroupsDs ecs.GetSecurityGroupsResult) (string, error) {
+//				return primarySecGroupsDs.Groups[0].Id, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupsResult, error) {
 	var rv GetSecurityGroupsResult

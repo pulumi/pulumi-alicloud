@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dfs.NewAccessGroup(ctx, "example", &dfs.AccessGroupArgs{
-// 			AccessGroupName: pulumi.String("example_value"),
-// 			NetworkType:     pulumi.String("VPC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dfs.NewAccessGroup(ctx, "example", &dfs.AccessGroupArgs{
+//				AccessGroupName: pulumi.String("example_value"),
+//				NetworkType:     pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // DFS Access Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
+//
+//	$ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
+//
 // ```
 type AccessGroup struct {
 	pulumi.CustomResourceState
@@ -162,7 +167,7 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
 // You can construct a concrete instance of `AccessGroupArrayInput` via:
 //
-//          AccessGroupArray{ AccessGroupArgs{...} }
+//	AccessGroupArray{ AccessGroupArgs{...} }
 type AccessGroupArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +192,7 @@ func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Contex
 // AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
 // You can construct a concrete instance of `AccessGroupMapInput` via:
 //
-//          AccessGroupMap{ "key": AccessGroupArgs{...} }
+//	AccessGroupMap{ "key": AccessGroupArgs{...} }
 type AccessGroupMapInput interface {
 	pulumi.Input
 

@@ -18,40 +18,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudsso.GetAccessConfigurations(ctx, &cloudsso.GetAccessConfigurationsArgs{
-// 			DirectoryId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudSsoAccessConfigurationId1", ids.Configurations[0].Id)
-// 		nameRegex, err := cloudsso.GetAccessConfigurations(ctx, &cloudsso.GetAccessConfigurationsArgs{
-// 			DirectoryId: "example_value",
-// 			NameRegex:   pulumi.StringRef("^my-AccessConfiguration"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudSsoAccessConfigurationId2", nameRegex.Configurations[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetAccessConfigurations(ctx, &cloudsso.GetAccessConfigurationsArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoAccessConfigurationId1", ids.Configurations[0].Id)
+//			nameRegex, err := cloudsso.GetAccessConfigurations(ctx, &cloudsso.GetAccessConfigurationsArgs{
+//				DirectoryId: "example_value",
+//				NameRegex:   pulumi.StringRef("^my-AccessConfiguration"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoAccessConfigurationId2", nameRegex.Configurations[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccessConfigurations(ctx *pulumi.Context, args *GetAccessConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetAccessConfigurationsResult, error) {
 	var rv GetAccessConfigurationsResult

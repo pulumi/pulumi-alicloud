@@ -30,7 +30,7 @@ type GetConsumerChannelsChannel struct {
 // GetConsumerChannelsChannelInput is an input type that accepts GetConsumerChannelsChannelArgs and GetConsumerChannelsChannelOutput values.
 // You can construct a concrete instance of `GetConsumerChannelsChannelInput` via:
 //
-//          GetConsumerChannelsChannelArgs{...}
+//	GetConsumerChannelsChannelArgs{...}
 type GetConsumerChannelsChannelInput interface {
 	pulumi.Input
 
@@ -70,7 +70,7 @@ func (i GetConsumerChannelsChannelArgs) ToGetConsumerChannelsChannelOutputWithCo
 // GetConsumerChannelsChannelArrayInput is an input type that accepts GetConsumerChannelsChannelArray and GetConsumerChannelsChannelArrayOutput values.
 // You can construct a concrete instance of `GetConsumerChannelsChannelArrayInput` via:
 //
-//          GetConsumerChannelsChannelArray{ GetConsumerChannelsChannelArgs{...} }
+//	GetConsumerChannelsChannelArray{ GetConsumerChannelsChannelArgs{...} }
 type GetConsumerChannelsChannelArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +227,7 @@ type GetMigrationJobsJob struct {
 // GetMigrationJobsJobInput is an input type that accepts GetMigrationJobsJobArgs and GetMigrationJobsJobOutput values.
 // You can construct a concrete instance of `GetMigrationJobsJobInput` via:
 //
-//          GetMigrationJobsJobArgs{...}
+//	GetMigrationJobsJobArgs{...}
 type GetMigrationJobsJobInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (i GetMigrationJobsJobArgs) ToGetMigrationJobsJobOutputWithContext(ctx cont
 // GetMigrationJobsJobArrayInput is an input type that accepts GetMigrationJobsJobArray and GetMigrationJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetMigrationJobsJobArrayInput` via:
 //
-//          GetMigrationJobsJobArray{ GetMigrationJobsJobArgs{...} }
+//	GetMigrationJobsJobArray{ GetMigrationJobsJobArgs{...} }
 type GetMigrationJobsJobArrayInput interface {
 	pulumi.Input
 
@@ -581,7 +581,7 @@ type GetSubscriptionJobsJob struct {
 // GetSubscriptionJobsJobInput is an input type that accepts GetSubscriptionJobsJobArgs and GetSubscriptionJobsJobOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobInput` via:
 //
-//          GetSubscriptionJobsJobArgs{...}
+//	GetSubscriptionJobsJobArgs{...}
 type GetSubscriptionJobsJobInput interface {
 	pulumi.Input
 
@@ -663,7 +663,7 @@ func (i GetSubscriptionJobsJobArgs) ToGetSubscriptionJobsJobOutputWithContext(ct
 // GetSubscriptionJobsJobArrayInput is an input type that accepts GetSubscriptionJobsJobArray and GetSubscriptionJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobArrayInput` via:
 //
-//          GetSubscriptionJobsJobArray{ GetSubscriptionJobsJobArgs{...} }
+//	GetSubscriptionJobsJobArray{ GetSubscriptionJobsJobArgs{...} }
 type GetSubscriptionJobsJobArrayInput interface {
 	pulumi.Input
 
@@ -871,7 +871,7 @@ type GetSubscriptionJobsJobSubscriptionHost struct {
 // GetSubscriptionJobsJobSubscriptionHostInput is an input type that accepts GetSubscriptionJobsJobSubscriptionHostArgs and GetSubscriptionJobsJobSubscriptionHostOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobSubscriptionHostInput` via:
 //
-//          GetSubscriptionJobsJobSubscriptionHostArgs{...}
+//	GetSubscriptionJobsJobSubscriptionHostArgs{...}
 type GetSubscriptionJobsJobSubscriptionHostInput interface {
 	pulumi.Input
 
@@ -903,7 +903,7 @@ func (i GetSubscriptionJobsJobSubscriptionHostArgs) ToGetSubscriptionJobsJobSubs
 // GetSubscriptionJobsJobSubscriptionHostArrayInput is an input type that accepts GetSubscriptionJobsJobSubscriptionHostArray and GetSubscriptionJobsJobSubscriptionHostArrayOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobSubscriptionHostArrayInput` via:
 //
-//          GetSubscriptionJobsJobSubscriptionHostArray{ GetSubscriptionJobsJobSubscriptionHostArgs{...} }
+//	GetSubscriptionJobsJobSubscriptionHostArray{ GetSubscriptionJobsJobSubscriptionHostArgs{...} }
 type GetSubscriptionJobsJobSubscriptionHostArrayInput interface {
 	pulumi.Input
 
@@ -1042,7 +1042,7 @@ type GetSynchronizationJobsJob struct {
 // GetSynchronizationJobsJobInput is an input type that accepts GetSynchronizationJobsJobArgs and GetSynchronizationJobsJobOutput values.
 // You can construct a concrete instance of `GetSynchronizationJobsJobInput` via:
 //
-//          GetSynchronizationJobsJobArgs{...}
+//	GetSynchronizationJobsJobArgs{...}
 type GetSynchronizationJobsJobInput interface {
 	pulumi.Input
 
@@ -1130,7 +1130,7 @@ func (i GetSynchronizationJobsJobArgs) ToGetSynchronizationJobsJobOutputWithCont
 // GetSynchronizationJobsJobArrayInput is an input type that accepts GetSynchronizationJobsJobArray and GetSynchronizationJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetSynchronizationJobsJobArrayInput` via:
 //
-//          GetSynchronizationJobsJobArray{ GetSynchronizationJobsJobArgs{...} }
+//	GetSynchronizationJobsJobArray{ GetSynchronizationJobsJobArgs{...} }
 type GetSynchronizationJobsJobArrayInput interface {
 	pulumi.Input
 

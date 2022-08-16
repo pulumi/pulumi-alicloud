@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotAllocationStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         /// </summary>
         [Output("spotInstanceInterruptionBehavior")]
         public Output<string?> SpotInstanceInterruptionBehavior { get; private set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         /// </summary>
         [Input("spotInstanceInterruptionBehavior")]
         public Input<string>? SpotInstanceInterruptionBehavior { get; set; }
@@ -478,7 +478,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
-        /// The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+        /// The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         /// </summary>
         [Input("spotInstanceInterruptionBehavior")]
         public Input<string>? SpotInstanceInterruptionBehavior { get; set; }

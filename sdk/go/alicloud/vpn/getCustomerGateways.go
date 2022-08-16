@@ -18,26 +18,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpn.GetCustomerGateways(ctx, &vpn.GetCustomerGatewaysArgs{
-// 			Ids: []string{
-// 				"fake-id1",
-// 				"fake-id2",
-// 			},
-// 			NameRegex:  pulumi.StringRef("testAcc*"),
-// 			OutputFile: pulumi.StringRef("/tmp/cgws"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpn.GetCustomerGateways(ctx, &vpn.GetCustomerGatewaysArgs{
+//				Ids: []string{
+//					"fake-id1",
+//					"fake-id2",
+//				},
+//				NameRegex:  pulumi.StringRef("testAcc*"),
+//				OutputFile: pulumi.StringRef("/tmp/cgws"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCustomerGateways(ctx *pulumi.Context, args *GetCustomerGatewaysArgs, opts ...pulumi.InvokeOption) (*GetCustomerGatewaysResult, error) {
 	var rv GetCustomerGatewaysResult

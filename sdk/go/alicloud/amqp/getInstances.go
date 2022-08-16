@@ -16,38 +16,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
-// 			Ids: []string{
-// 				"amqp-abc12345",
-// 				"amqp-abc34567",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpInstanceId1", ids.Instances[0].Id)
-// 		nameRegex, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
-// 			NameRegex: pulumi.StringRef("^my-Instance"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("amqpInstanceId2", nameRegex.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
+//				Ids: []string{
+//					"amqp-abc12345",
+//					"amqp-abc34567",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpInstanceId1", ids.Instances[0].Id)
+//			nameRegex, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("^my-Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpInstanceId2", nameRegex.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

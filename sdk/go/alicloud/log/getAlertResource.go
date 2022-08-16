@@ -22,29 +22,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
-// 			Lang: pulumi.StringRef("cn"),
-// 			Type: "user",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
-// 			Project: pulumi.StringRef("test-alert-tf"),
-// 			Type:    "project",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
+//				Lang: pulumi.StringRef("cn"),
+//				Type: "user",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
+//				Project: pulumi.StringRef("test-alert-tf"),
+//				Type:    "project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...pulumi.InvokeOption) (*GetAlertResourceResult, error) {
 	var rv GetAlertResourceResult

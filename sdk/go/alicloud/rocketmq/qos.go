@@ -20,25 +20,28 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewQos(ctx, "default", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rocketmq.NewQos(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // The Sag Qos can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
+//
+//	$ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
+//
 // ```
 type Qos struct {
 	pulumi.CustomResourceState
@@ -134,7 +139,7 @@ func (i *Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
 // QosArrayInput is an input type that accepts QosArray and QosArrayOutput values.
 // You can construct a concrete instance of `QosArrayInput` via:
 //
-//          QosArray{ QosArgs{...} }
+//	QosArray{ QosArgs{...} }
 type QosArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +164,7 @@ func (i QosArray) ToQosArrayOutputWithContext(ctx context.Context) QosArrayOutpu
 // QosMapInput is an input type that accepts QosMap and QosMapOutput values.
 // You can construct a concrete instance of `QosMapInput` via:
 //
-//          QosMap{ "key": QosArgs{...} }
+//	QosMap{ "key": QosArgs{...} }
 type QosMapInput interface {
 	pulumi.Input
 

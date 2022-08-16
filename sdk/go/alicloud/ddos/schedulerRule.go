@@ -17,44 +17,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-// 			RuleName: pulumi.String("tf-testacc7929727"),
-// 			RuleType: pulumi.Int(3),
-// 			Rules: ddos.SchedulerRuleRuleArray{
-// 				&ddos.SchedulerRuleRuleArgs{
-// 					Priority:  pulumi.Int(100),
-// 					RegionId:  pulumi.String("cn-hangzhou"),
-// 					Type:      pulumi.String("A"),
-// 					Value:     pulumi.String("127.0.0.1"),
-// 					ValueType: pulumi.Int(3),
-// 				},
-// 				&ddos.SchedulerRuleRuleArgs{
-// 					Priority:  pulumi.Int(50),
-// 					RegionId:  pulumi.String("cn-hangzhou"),
-// 					Type:      pulumi.String("A"),
-// 					Value:     pulumi.String("127.0.0.0"),
-// 					ValueType: pulumi.Int(1),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
+//				RuleName: pulumi.String("tf-testacc7929727"),
+//				RuleType: pulumi.Int(3),
+//				Rules: ddos.SchedulerRuleRuleArray{
+//					&ddos.SchedulerRuleRuleArgs{
+//						Priority:  pulumi.Int(100),
+//						RegionId:  pulumi.String("cn-hangzhou"),
+//						Type:      pulumi.String("A"),
+//						Value:     pulumi.String("127.0.0.1"),
+//						ValueType: pulumi.Int(3),
+//					},
+//					&ddos.SchedulerRuleRuleArgs{
+//						Priority:  pulumi.Int(50),
+//						RegionId:  pulumi.String("cn-hangzhou"),
+//						Type:      pulumi.String("A"),
+//						Value:     pulumi.String("127.0.0.0"),
+//						ValueType: pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+//
+//	$ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+//
 // ```
 type SchedulerRule struct {
 	pulumi.CustomResourceState
@@ -220,7 +225,7 @@ func (i *SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) Sc
 // SchedulerRuleArrayInput is an input type that accepts SchedulerRuleArray and SchedulerRuleArrayOutput values.
 // You can construct a concrete instance of `SchedulerRuleArrayInput` via:
 //
-//          SchedulerRuleArray{ SchedulerRuleArgs{...} }
+//	SchedulerRuleArray{ SchedulerRuleArgs{...} }
 type SchedulerRuleArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +250,7 @@ func (i SchedulerRuleArray) ToSchedulerRuleArrayOutputWithContext(ctx context.Co
 // SchedulerRuleMapInput is an input type that accepts SchedulerRuleMap and SchedulerRuleMapOutput values.
 // You can construct a concrete instance of `SchedulerRuleMapInput` via:
 //
-//          SchedulerRuleMap{ "key": SchedulerRuleArgs{...} }
+//	SchedulerRuleMap{ "key": SchedulerRuleArgs{...} }
 type SchedulerRuleMapInput interface {
 	pulumi.Input
 

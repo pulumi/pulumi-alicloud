@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataworks.NewFolder(ctx, "example", &dataworks.FolderArgs{
-// 			FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi/tftest1"),
-// 			ProjectId:  pulumi.String("320687"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataworks.NewFolder(ctx, "example", &dataworks.FolderArgs{
+//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi/tftest1"),
+//				ProjectId:  pulumi.String("320687"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Data Works Folder can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
+//
+//	$ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
+//
 // ```
 type Folder struct {
 	pulumi.CustomResourceState
@@ -157,7 +162,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 // FolderArrayInput is an input type that accepts FolderArray and FolderArrayOutput values.
 // You can construct a concrete instance of `FolderArrayInput` via:
 //
-//          FolderArray{ FolderArgs{...} }
+//	FolderArray{ FolderArgs{...} }
 type FolderArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +187,7 @@ func (i FolderArray) ToFolderArrayOutputWithContext(ctx context.Context) FolderA
 // FolderMapInput is an input type that accepts FolderMap and FolderMapOutput values.
 // You can construct a concrete instance of `FolderMapInput` via:
 //
-//          FolderMap{ "key": FolderArgs{...} }
+//	FolderMap{ "key": FolderArgs{...} }
 type FolderMapInput interface {
 	pulumi.Input
 

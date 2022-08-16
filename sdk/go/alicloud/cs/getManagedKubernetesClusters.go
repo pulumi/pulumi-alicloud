@@ -22,24 +22,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		k8sClusters, err := cs.GetManagedKubernetesClusters(ctx, &cs.GetManagedKubernetesClustersArgs{
-// 			KubeConfigFilePrefix: pulumi.StringRef("~/.kube/managed"),
-// 			NameRegex:            pulumi.StringRef("my-first-k8s"),
-// 			OutputFile:           pulumi.StringRef("my-first-k8s-json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("output", k8sClusters.Clusters)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			k8sClusters, err := cs.GetManagedKubernetesClusters(ctx, &cs.GetManagedKubernetesClustersArgs{
+//				KubeConfigFilePrefix: pulumi.StringRef("~/.kube/managed"),
+//				NameRegex:            pulumi.StringRef("my-first-k8s"),
+//				OutputFile:           pulumi.StringRef("my-first-k8s-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", k8sClusters.Clusters)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetManagedKubernetesClusters(ctx *pulumi.Context, args *GetManagedKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetManagedKubernetesClustersResult, error) {
 	var rv GetManagedKubernetesClustersResult

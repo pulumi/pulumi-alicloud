@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ecs.GetCommands(ctx, &ecs.GetCommandsArgs{
-// 			Ids: []string{
-// 				"E2RY53-xxxx",
-// 			},
-// 			NameRegex: pulumi.StringRef("tf-testAcc"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstEcsCommandId", example.Commands[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetCommands(ctx, &ecs.GetCommandsArgs{
+//				Ids: []string{
+//					"E2RY53-xxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEcsCommandId", example.Commands[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCommands(ctx *pulumi.Context, args *GetCommandsArgs, opts ...pulumi.InvokeOption) (*GetCommandsResult, error) {
 	var rv GetCommandsResult

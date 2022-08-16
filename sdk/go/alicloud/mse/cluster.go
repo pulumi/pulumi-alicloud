@@ -21,31 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
-// 			AclEntryLists: pulumi.StringArray{
-// 				pulumi.String("127.0.0.1/32"),
-// 			},
-// 			ClusterAliasName:     pulumi.String("tf-testAccMseCluster"),
-// 			ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
-// 			ClusterType:          pulumi.String("Nacos-Ans"),
-// 			ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
-// 			InstanceCount:        pulumi.Int(1),
-// 			NetType:              pulumi.String("privatenet"),
-// 			PubNetworkFlow:       pulumi.String("1"),
-// 			VswitchId:            pulumi.String("vsw-123456"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
+//				AclEntryLists: pulumi.StringArray{
+//					pulumi.String("127.0.0.1/32"),
+//				},
+//				ClusterAliasName:     pulumi.String("tf-testAccMseCluster"),
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
+//				ClusterType:          pulumi.String("Nacos-Ans"),
+//				ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
+//				InstanceCount:        pulumi.Int(1),
+//				NetType:              pulumi.String("privatenet"),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				VswitchId:            pulumi.String("vsw-123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // MSE Cluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+//
+//	$ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -311,7 +316,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -336,7 +341,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

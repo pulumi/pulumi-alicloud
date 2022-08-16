@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		saslUsersDs, err := actiontrail.GetSaslUsers(ctx, &actiontrail.GetSaslUsersArgs{
-// 			InstanceId: "xxx",
-// 			NameRegex:  pulumi.StringRef("username"),
-// 			OutputFile: pulumi.StringRef("saslUsers.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSaslUsername", saslUsersDs.Users[0].Username)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			saslUsersDs, err := actiontrail.GetSaslUsers(ctx, &actiontrail.GetSaslUsersArgs{
+//				InstanceId: "xxx",
+//				NameRegex:  pulumi.StringRef("username"),
+//				OutputFile: pulumi.StringRef("saslUsers.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSaslUsername", saslUsersDs.Users[0].Username)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSaslUsers(ctx *pulumi.Context, args *GetSaslUsersArgs, opts ...pulumi.InvokeOption) (*GetSaslUsersResult, error) {
 	var rv GetSaslUsersResult

@@ -5,7 +5,9 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,6 +77,21 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.payerAccountId);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private AccountArgs() {}
 
     private AccountArgs(AccountArgs $) {
@@ -82,6 +99,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.folderId = $.folderId;
         this.payerAccountId = $.payerAccountId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -184,6 +202,27 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder payerAccountId(String payerAccountId) {
             return payerAccountId(Output.of(payerAccountId));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public AccountArgs build() {

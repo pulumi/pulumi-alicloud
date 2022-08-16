@@ -16,7 +16,9 @@ import (
 // Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
 //
 // ```sh
-//  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+//
+//	$ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+//
 // ```
 type EdgeKubernetes struct {
 	pulumi.CustomResourceState
@@ -474,7 +476,7 @@ func (i *EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) 
 // EdgeKubernetesArrayInput is an input type that accepts EdgeKubernetesArray and EdgeKubernetesArrayOutput values.
 // You can construct a concrete instance of `EdgeKubernetesArrayInput` via:
 //
-//          EdgeKubernetesArray{ EdgeKubernetesArgs{...} }
+//	EdgeKubernetesArray{ EdgeKubernetesArgs{...} }
 type EdgeKubernetesArrayInput interface {
 	pulumi.Input
 
@@ -499,7 +501,7 @@ func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutputWithContext(ctx context.
 // EdgeKubernetesMapInput is an input type that accepts EdgeKubernetesMap and EdgeKubernetesMapOutput values.
 // You can construct a concrete instance of `EdgeKubernetesMapInput` via:
 //
-//          EdgeKubernetesMap{ "key": EdgeKubernetesArgs{...} }
+//	EdgeKubernetesMap{ "key": EdgeKubernetesArgs{...} }
 type EdgeKubernetesMapInput interface {
 	pulumi.Input
 

@@ -16,32 +16,35 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := ga.GetAcceleratorSpareIpAttachments(ctx, &ga.GetAcceleratorSpareIpAttachmentsArgs{
-// 			AcceleratorId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("gaAcceleratorSpareIpAttachmentId1", ids.Attachments[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ga.GetAcceleratorSpareIpAttachments(ctx, &ga.GetAcceleratorSpareIpAttachmentsArgs{
+//				AcceleratorId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gaAcceleratorSpareIpAttachmentId1", ids.Attachments[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAcceleratorSpareIpAttachments(ctx *pulumi.Context, args *GetAcceleratorSpareIpAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAcceleratorSpareIpAttachmentsResult, error) {
 	var rv GetAcceleratorSpareIpAttachmentsResult

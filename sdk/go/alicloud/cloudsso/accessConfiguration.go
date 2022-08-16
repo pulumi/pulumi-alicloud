@@ -24,7 +24,9 @@ import (
 // Cloud SSO Access Configuration can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
+//
+//	$ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
+//
 // ```
 type AccessConfiguration struct {
 	pulumi.CustomResourceState
@@ -184,7 +186,7 @@ func (i *AccessConfiguration) ToAccessConfigurationOutputWithContext(ctx context
 // AccessConfigurationArrayInput is an input type that accepts AccessConfigurationArray and AccessConfigurationArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationArrayInput` via:
 //
-//          AccessConfigurationArray{ AccessConfigurationArgs{...} }
+//	AccessConfigurationArray{ AccessConfigurationArgs{...} }
 type AccessConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +211,7 @@ func (i AccessConfigurationArray) ToAccessConfigurationArrayOutputWithContext(ct
 // AccessConfigurationMapInput is an input type that accepts AccessConfigurationMap and AccessConfigurationMapOutput values.
 // You can construct a concrete instance of `AccessConfigurationMapInput` via:
 //
-//          AccessConfigurationMap{ "key": AccessConfigurationArgs{...} }
+//	AccessConfigurationMap{ "key": AccessConfigurationArgs{...} }
 type AccessConfigurationMapInput interface {
 	pulumi.Input
 

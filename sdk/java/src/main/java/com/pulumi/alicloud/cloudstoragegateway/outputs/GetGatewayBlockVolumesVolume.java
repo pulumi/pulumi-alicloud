@@ -17,7 +17,7 @@ public final class GetGatewayBlockVolumesVolume {
      */
     private final String address;
     /**
-     * @return The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * @return The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     private final String cacheMode;
@@ -202,7 +202,7 @@ public final class GetGatewayBlockVolumesVolume {
         return this.address;
     }
     /**
-     * @return The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * @return The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
     public String cacheMode() {

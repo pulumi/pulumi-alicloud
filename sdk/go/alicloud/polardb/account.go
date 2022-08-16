@@ -21,69 +21,72 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "PolarDB"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "polardbaccountmysql"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-// 			DbType:      pulumi.String("MySQL"),
-// 			DbVersion:   pulumi.String("8.0"),
-// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
-// 			PayType:     pulumi.String("PostPaid"),
-// 			VswitchId:   defaultSwitch.ID(),
-// 			Description: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
-// 			DbClusterId:        cluster.ID(),
-// 			AccountName:        pulumi.String("tftestnormal"),
-// 			AccountPassword:    pulumi.String("Test12345"),
-// 			AccountDescription: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "PolarDB"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "polardbaccountmysql"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+//				PayType:     pulumi.String("PostPaid"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
+//				DbClusterId:        cluster.ID(),
+//				AccountName:        pulumi.String("tftestnormal"),
+//				AccountPassword:    pulumi.String("Test12345"),
+//				AccountDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -91,7 +94,9 @@ import (
 // PolarDB account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+//
+//	$ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+//
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -248,7 +253,7 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
-//          AccountArray{ AccountArgs{...} }
+//	AccountArray{ AccountArgs{...} }
 type AccountArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +278,7 @@ func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) Accou
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
 // You can construct a concrete instance of `AccountMapInput` via:
 //
-//          AccountMap{ "key": AccountArgs{...} }
+//	AccountMap{ "key": AccountArgs{...} }
 type AccountMapInput interface {
 	pulumi.Input
 

@@ -48,7 +48,7 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
     }
 
     /**
-     * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
     public readonly cacheMode!: pulumi.Output<string>;
     /**
@@ -200,7 +200,7 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
  */
 export interface GatewayBlockVolumeState {
     /**
-     * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
     cacheMode?: pulumi.Input<string>;
     /**
@@ -283,7 +283,7 @@ export interface GatewayBlockVolumeState {
  */
 export interface GatewayBlockVolumeArgs {
     /**
-     * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+     * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
     cacheMode?: pulumi.Input<string>;
     /**

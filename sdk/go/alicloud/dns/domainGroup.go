@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewDomainGroup(ctx, "example", &dns.DomainGroupArgs{
-// 			DomainGroupName: pulumi.String("tf-testDG"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDomainGroup(ctx, "example", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-testDG"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // Alidns domain group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+//
+//	$ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+//
 // ```
 type DomainGroup struct {
 	pulumi.CustomResourceState
@@ -160,7 +165,7 @@ func (i *DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) Domain
 // DomainGroupArrayInput is an input type that accepts DomainGroupArray and DomainGroupArrayOutput values.
 // You can construct a concrete instance of `DomainGroupArrayInput` via:
 //
-//          DomainGroupArray{ DomainGroupArgs{...} }
+//	DomainGroupArray{ DomainGroupArgs{...} }
 type DomainGroupArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +190,7 @@ func (i DomainGroupArray) ToDomainGroupArrayOutputWithContext(ctx context.Contex
 // DomainGroupMapInput is an input type that accepts DomainGroupMap and DomainGroupMapOutput values.
 // You can construct a concrete instance of `DomainGroupMapInput` via:
 //
-//          DomainGroupMap{ "key": DomainGroupArgs{...} }
+//	DomainGroupMap{ "key": DomainGroupArgs{...} }
 type DomainGroupMapInput interface {
 	pulumi.Input
 

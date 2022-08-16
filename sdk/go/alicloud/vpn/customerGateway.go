@@ -13,28 +13,31 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpn.NewCustomerGateway(ctx, "foo", &vpn.CustomerGatewayArgs{
-// 			Description: pulumi.String("vpnCgwDescriptionExample"),
-// 			IpAddress:   pulumi.String("43.104.22.228"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpn.NewCustomerGateway(ctx, "foo", &vpn.CustomerGatewayArgs{
+//				Description: pulumi.String("vpnCgwDescriptionExample"),
+//				IpAddress:   pulumi.String("43.104.22.228"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // VPN customer gateway can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+//
+//	$ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+//
 // ```
 type CustomerGateway struct {
 	pulumi.CustomResourceState
@@ -163,7 +168,7 @@ func (i *CustomerGateway) ToCustomerGatewayOutputWithContext(ctx context.Context
 // CustomerGatewayArrayInput is an input type that accepts CustomerGatewayArray and CustomerGatewayArrayOutput values.
 // You can construct a concrete instance of `CustomerGatewayArrayInput` via:
 //
-//          CustomerGatewayArray{ CustomerGatewayArgs{...} }
+//	CustomerGatewayArray{ CustomerGatewayArgs{...} }
 type CustomerGatewayArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +193,7 @@ func (i CustomerGatewayArray) ToCustomerGatewayArrayOutputWithContext(ctx contex
 // CustomerGatewayMapInput is an input type that accepts CustomerGatewayMap and CustomerGatewayMapOutput values.
 // You can construct a concrete instance of `CustomerGatewayMapInput` via:
 //
-//          CustomerGatewayMap{ "key": CustomerGatewayArgs{...} }
+//	CustomerGatewayMap{ "key": CustomerGatewayArgs{...} }
 type CustomerGatewayMapInput interface {
 	pulumi.Input
 

@@ -24,7 +24,9 @@ import (
 // Application Load Balancer (ALB) Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/rule:Rule example <id>
+//
+//	$ pulumi import alicloud:alb/rule:Rule example <id>
+//
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -183,7 +185,7 @@ func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +210,7 @@ func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOu
 // RuleMapInput is an input type that accepts RuleMap and RuleMapOutput values.
 // You can construct a concrete instance of `RuleMapInput` via:
 //
-//          RuleMap{ "key": RuleArgs{...} }
+//	RuleMap{ "key": RuleArgs{...} }
 type RuleMapInput interface {
 	pulumi.Input
 

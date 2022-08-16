@@ -16,7 +16,9 @@ import (
 // ESS scaling configuration can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
+//
+//	$ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
+//
 // ```
 type ScalingConfiguration struct {
 	pulumi.CustomResourceState
@@ -537,7 +539,7 @@ func (i *ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx conte
 // ScalingConfigurationArrayInput is an input type that accepts ScalingConfigurationArray and ScalingConfigurationArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationArrayInput` via:
 //
-//          ScalingConfigurationArray{ ScalingConfigurationArgs{...} }
+//	ScalingConfigurationArray{ ScalingConfigurationArgs{...} }
 type ScalingConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -562,7 +564,7 @@ func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutputWithContext(
 // ScalingConfigurationMapInput is an input type that accepts ScalingConfigurationMap and ScalingConfigurationMapOutput values.
 // You can construct a concrete instance of `ScalingConfigurationMapInput` via:
 //
-//          ScalingConfigurationMap{ "key": ScalingConfigurationArgs{...} }
+//	ScalingConfigurationMap{ "key": ScalingConfigurationArgs{...} }
 type ScalingConfigurationMapInput interface {
 	pulumi.Input
 

@@ -19,61 +19,64 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
-// 			LocalGatewayIp:          pulumi.String("10.0.0.1"),
-// 			PeerGatewayIp:           pulumi.String("10.0.0.2"),
-// 			PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-// 			PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
-// 			VirtualBorderRouterName: pulumi.String("example_value"),
-// 			VlanId:                  pulumi.Int(120),
-// 			MinRxInterval:           pulumi.Int(1000),
-// 			MinTxInterval:           pulumi.Int(1000),
-// 			DetectMultiplier:        pulumi.Int(10),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBgpGroup, err := vpc.NewBgpGroup(ctx, "defaultBgpGroup", &vpc.BgpGroupArgs{
-// 			AuthKey:      pulumi.String("YourPassword+12345678"),
-// 			BgpGroupName: pulumi.String("example_value"),
-// 			Description:  pulumi.String("example_value"),
-// 			LocalAsn:     pulumi.Int(64512),
-// 			PeerAsn:      pulumi.Int(1111),
-// 			RouterId:     defaultVirtualBorderRouter.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewBgpPeer(ctx, "defaultBgpPeer", &vpc.BgpPeerArgs{
-// 			BfdMultiHop:   pulumi.Int(10),
-// 			BgpGroupId:    defaultBgpGroup.ID(),
-// 			EnableBfd:     pulumi.Bool(true),
-// 			IpVersion:     pulumi.String("IPV4"),
-// 			PeerIpAddress: pulumi.String("1.1.1.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String("example_value"),
+//				VlanId:                  pulumi.Int(120),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBgpGroup, err := vpc.NewBgpGroup(ctx, "defaultBgpGroup", &vpc.BgpGroupArgs{
+//				AuthKey:      pulumi.String("YourPassword+12345678"),
+//				BgpGroupName: pulumi.String("example_value"),
+//				Description:  pulumi.String("example_value"),
+//				LocalAsn:     pulumi.Int(64512),
+//				PeerAsn:      pulumi.Int(1111),
+//				RouterId:     defaultVirtualBorderRouter.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewBgpPeer(ctx, "defaultBgpPeer", &vpc.BgpPeerArgs{
+//				BfdMultiHop:   pulumi.Int(10),
+//				BgpGroupId:    defaultBgpGroup.ID(),
+//				EnableBfd:     pulumi.Bool(true),
+//				IpVersion:     pulumi.String("IPV4"),
+//				PeerIpAddress: pulumi.String("1.1.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +84,9 @@ import (
 // VPC Bgp Peer can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
+//
+//	$ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
+//
 // ```
 type BgpPeer struct {
 	pulumi.CustomResourceState
@@ -218,7 +223,7 @@ func (i *BgpPeer) ToBgpPeerOutputWithContext(ctx context.Context) BgpPeerOutput 
 // BgpPeerArrayInput is an input type that accepts BgpPeerArray and BgpPeerArrayOutput values.
 // You can construct a concrete instance of `BgpPeerArrayInput` via:
 //
-//          BgpPeerArray{ BgpPeerArgs{...} }
+//	BgpPeerArray{ BgpPeerArgs{...} }
 type BgpPeerArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +248,7 @@ func (i BgpPeerArray) ToBgpPeerArrayOutputWithContext(ctx context.Context) BgpPe
 // BgpPeerMapInput is an input type that accepts BgpPeerMap and BgpPeerMapOutput values.
 // You can construct a concrete instance of `BgpPeerMapInput` via:
 //
-//          BgpPeerMap{ "key": BgpPeerArgs{...} }
+//	BgpPeerMap{ "key": BgpPeerArgs{...} }
 type BgpPeerMapInput interface {
 	pulumi.Input
 

@@ -20,7 +20,7 @@ type DomainResourceProxyType struct {
 // DomainResourceProxyTypeInput is an input type that accepts DomainResourceProxyTypeArgs and DomainResourceProxyTypeOutput values.
 // You can construct a concrete instance of `DomainResourceProxyTypeInput` via:
 //
-//          DomainResourceProxyTypeArgs{...}
+//	DomainResourceProxyTypeArgs{...}
 type DomainResourceProxyTypeInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i DomainResourceProxyTypeArgs) ToDomainResourceProxyTypeOutputWithContext(
 // DomainResourceProxyTypeArrayInput is an input type that accepts DomainResourceProxyTypeArray and DomainResourceProxyTypeArrayOutput values.
 // You can construct a concrete instance of `DomainResourceProxyTypeArrayInput` via:
 //
-//          DomainResourceProxyTypeArray{ DomainResourceProxyTypeArgs{...} }
+//	DomainResourceProxyTypeArray{ DomainResourceProxyTypeArgs{...} }
 type DomainResourceProxyTypeArrayInput interface {
 	pulumi.Input
 
@@ -140,7 +140,7 @@ type SchedulerRuleRule struct {
 // SchedulerRuleRuleInput is an input type that accepts SchedulerRuleRuleArgs and SchedulerRuleRuleOutput values.
 // You can construct a concrete instance of `SchedulerRuleRuleInput` via:
 //
-//          SchedulerRuleRuleArgs{...}
+//	SchedulerRuleRuleArgs{...}
 type SchedulerRuleRuleInput interface {
 	pulumi.Input
 
@@ -184,7 +184,7 @@ func (i SchedulerRuleRuleArgs) ToSchedulerRuleRuleOutputWithContext(ctx context.
 // SchedulerRuleRuleArrayInput is an input type that accepts SchedulerRuleRuleArray and SchedulerRuleRuleArrayOutput values.
 // You can construct a concrete instance of `SchedulerRuleRuleArrayInput` via:
 //
-//          SchedulerRuleRuleArray{ SchedulerRuleRuleArgs{...} }
+//	SchedulerRuleRuleArray{ SchedulerRuleRuleArgs{...} }
 type SchedulerRuleRuleArrayInput interface {
 	pulumi.Input
 
@@ -298,7 +298,7 @@ type GetDdosBgpInstancesInstance struct {
 // GetDdosBgpInstancesInstanceInput is an input type that accepts GetDdosBgpInstancesInstanceArgs and GetDdosBgpInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetDdosBgpInstancesInstanceInput` via:
 //
-//          GetDdosBgpInstancesInstanceArgs{...}
+//	GetDdosBgpInstancesInstanceArgs{...}
 type GetDdosBgpInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -340,7 +340,7 @@ func (i GetDdosBgpInstancesInstanceArgs) ToGetDdosBgpInstancesInstanceOutputWith
 // GetDdosBgpInstancesInstanceArrayInput is an input type that accepts GetDdosBgpInstancesInstanceArray and GetDdosBgpInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosBgpInstancesInstanceArrayInput` via:
 //
-//          GetDdosBgpInstancesInstanceArray{ GetDdosBgpInstancesInstanceArgs{...} }
+//	GetDdosBgpInstancesInstanceArray{ GetDdosBgpInstancesInstanceArgs{...} }
 type GetDdosBgpInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -436,6 +436,139 @@ func (o GetDdosBgpInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdos
 	}).(GetDdosBgpInstancesInstanceOutput)
 }
 
+type GetDdosBgpIpsIp struct {
+	// The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+	Id string `pulumi:"id"`
+	// The ID of the native protection enterprise instance to be operated.
+	InstanceId string `pulumi:"instanceId"`
+	// The IP address.
+	Ip string `pulumi:"ip"`
+	// The type of cloud asset to which the IP address belongs.
+	Product string `pulumi:"product"`
+	// The current state of the IP address.
+	Status string `pulumi:"status"`
+}
+
+// GetDdosBgpIpsIpInput is an input type that accepts GetDdosBgpIpsIpArgs and GetDdosBgpIpsIpOutput values.
+// You can construct a concrete instance of `GetDdosBgpIpsIpInput` via:
+//
+//	GetDdosBgpIpsIpArgs{...}
+type GetDdosBgpIpsIpInput interface {
+	pulumi.Input
+
+	ToGetDdosBgpIpsIpOutput() GetDdosBgpIpsIpOutput
+	ToGetDdosBgpIpsIpOutputWithContext(context.Context) GetDdosBgpIpsIpOutput
+}
+
+type GetDdosBgpIpsIpArgs struct {
+	// The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the native protection enterprise instance to be operated.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The type of cloud asset to which the IP address belongs.
+	Product pulumi.StringInput `pulumi:"product"`
+	// The current state of the IP address.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDdosBgpIpsIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosBgpIpsIp)(nil)).Elem()
+}
+
+func (i GetDdosBgpIpsIpArgs) ToGetDdosBgpIpsIpOutput() GetDdosBgpIpsIpOutput {
+	return i.ToGetDdosBgpIpsIpOutputWithContext(context.Background())
+}
+
+func (i GetDdosBgpIpsIpArgs) ToGetDdosBgpIpsIpOutputWithContext(ctx context.Context) GetDdosBgpIpsIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpIpsIpOutput)
+}
+
+// GetDdosBgpIpsIpArrayInput is an input type that accepts GetDdosBgpIpsIpArray and GetDdosBgpIpsIpArrayOutput values.
+// You can construct a concrete instance of `GetDdosBgpIpsIpArrayInput` via:
+//
+//	GetDdosBgpIpsIpArray{ GetDdosBgpIpsIpArgs{...} }
+type GetDdosBgpIpsIpArrayInput interface {
+	pulumi.Input
+
+	ToGetDdosBgpIpsIpArrayOutput() GetDdosBgpIpsIpArrayOutput
+	ToGetDdosBgpIpsIpArrayOutputWithContext(context.Context) GetDdosBgpIpsIpArrayOutput
+}
+
+type GetDdosBgpIpsIpArray []GetDdosBgpIpsIpInput
+
+func (GetDdosBgpIpsIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosBgpIpsIp)(nil)).Elem()
+}
+
+func (i GetDdosBgpIpsIpArray) ToGetDdosBgpIpsIpArrayOutput() GetDdosBgpIpsIpArrayOutput {
+	return i.ToGetDdosBgpIpsIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetDdosBgpIpsIpArray) ToGetDdosBgpIpsIpArrayOutputWithContext(ctx context.Context) GetDdosBgpIpsIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpIpsIpArrayOutput)
+}
+
+type GetDdosBgpIpsIpOutput struct{ *pulumi.OutputState }
+
+func (GetDdosBgpIpsIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosBgpIpsIp)(nil)).Elem()
+}
+
+func (o GetDdosBgpIpsIpOutput) ToGetDdosBgpIpsIpOutput() GetDdosBgpIpsIpOutput {
+	return o
+}
+
+func (o GetDdosBgpIpsIpOutput) ToGetDdosBgpIpsIpOutputWithContext(ctx context.Context) GetDdosBgpIpsIpOutput {
+	return o
+}
+
+// The ID of the Ip. The value formats as `<instance_id>:<ip>`.
+func (o GetDdosBgpIpsIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the native protection enterprise instance to be operated.
+func (o GetDdosBgpIpsIpOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The IP address.
+func (o GetDdosBgpIpsIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The type of cloud asset to which the IP address belongs.
+func (o GetDdosBgpIpsIpOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// The current state of the IP address.
+func (o GetDdosBgpIpsIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpIpsIp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDdosBgpIpsIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDdosBgpIpsIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosBgpIpsIp)(nil)).Elem()
+}
+
+func (o GetDdosBgpIpsIpArrayOutput) ToGetDdosBgpIpsIpArrayOutput() GetDdosBgpIpsIpArrayOutput {
+	return o
+}
+
+func (o GetDdosBgpIpsIpArrayOutput) ToGetDdosBgpIpsIpArrayOutputWithContext(ctx context.Context) GetDdosBgpIpsIpArrayOutput {
+	return o
+}
+
+func (o GetDdosBgpIpsIpArrayOutput) Index(i pulumi.IntInput) GetDdosBgpIpsIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosBgpIpsIp {
+		return vs[0].([]GetDdosBgpIpsIp)[vs[1].(int)]
+	}).(GetDdosBgpIpsIpOutput)
+}
+
 type GetDdosCooDomainResourcesResource struct {
 	// The IP addresses in the blacklist for the domain name.
 	BlackLists []string `pulumi:"blackLists"`
@@ -478,7 +611,7 @@ type GetDdosCooDomainResourcesResource struct {
 // GetDdosCooDomainResourcesResourceInput is an input type that accepts GetDdosCooDomainResourcesResourceArgs and GetDdosCooDomainResourcesResourceOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceInput` via:
 //
-//          GetDdosCooDomainResourcesResourceArgs{...}
+//	GetDdosCooDomainResourcesResourceArgs{...}
 type GetDdosCooDomainResourcesResourceInput interface {
 	pulumi.Input
 
@@ -540,7 +673,7 @@ func (i GetDdosCooDomainResourcesResourceArgs) ToGetDdosCooDomainResourcesResour
 // GetDdosCooDomainResourcesResourceArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceArray and GetDdosCooDomainResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceArrayInput` via:
 //
-//          GetDdosCooDomainResourcesResourceArray{ GetDdosCooDomainResourcesResourceArgs{...} }
+//	GetDdosCooDomainResourcesResourceArray{ GetDdosCooDomainResourcesResourceArgs{...} }
 type GetDdosCooDomainResourcesResourceArrayInput interface {
 	pulumi.Input
 
@@ -698,7 +831,7 @@ type GetDdosCooDomainResourcesResourceProxyType struct {
 // GetDdosCooDomainResourcesResourceProxyTypeInput is an input type that accepts GetDdosCooDomainResourcesResourceProxyTypeArgs and GetDdosCooDomainResourcesResourceProxyTypeOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceProxyTypeInput` via:
 //
-//          GetDdosCooDomainResourcesResourceProxyTypeArgs{...}
+//	GetDdosCooDomainResourcesResourceProxyTypeArgs{...}
 type GetDdosCooDomainResourcesResourceProxyTypeInput interface {
 	pulumi.Input
 
@@ -728,7 +861,7 @@ func (i GetDdosCooDomainResourcesResourceProxyTypeArgs) ToGetDdosCooDomainResour
 // GetDdosCooDomainResourcesResourceProxyTypeArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceProxyTypeArray and GetDdosCooDomainResourcesResourceProxyTypeArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceProxyTypeArrayInput` via:
 //
-//          GetDdosCooDomainResourcesResourceProxyTypeArray{ GetDdosCooDomainResourcesResourceProxyTypeArgs{...} }
+//	GetDdosCooDomainResourcesResourceProxyTypeArray{ GetDdosCooDomainResourcesResourceProxyTypeArgs{...} }
 type GetDdosCooDomainResourcesResourceProxyTypeArrayInput interface {
 	pulumi.Input
 
@@ -832,7 +965,7 @@ type GetDdosCooInstancesInstance struct {
 // GetDdosCooInstancesInstanceInput is an input type that accepts GetDdosCooInstancesInstanceArgs and GetDdosCooInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetDdosCooInstancesInstanceInput` via:
 //
-//          GetDdosCooInstancesInstanceArgs{...}
+//	GetDdosCooInstancesInstanceArgs{...}
 type GetDdosCooInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -890,7 +1023,7 @@ func (i GetDdosCooInstancesInstanceArgs) ToGetDdosCooInstancesInstanceOutputWith
 // GetDdosCooInstancesInstanceArrayInput is an input type that accepts GetDdosCooInstancesInstanceArray and GetDdosCooInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooInstancesInstanceArrayInput` via:
 //
-//          GetDdosCooInstancesInstanceArray{ GetDdosCooInstancesInstanceArgs{...} }
+//	GetDdosCooInstancesInstanceArray{ GetDdosCooInstancesInstanceArgs{...} }
 type GetDdosCooInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1044,7 +1177,7 @@ type GetDdosCooPortsPort struct {
 // GetDdosCooPortsPortInput is an input type that accepts GetDdosCooPortsPortArgs and GetDdosCooPortsPortOutput values.
 // You can construct a concrete instance of `GetDdosCooPortsPortInput` via:
 //
-//          GetDdosCooPortsPortArgs{...}
+//	GetDdosCooPortsPortArgs{...}
 type GetDdosCooPortsPortInput interface {
 	pulumi.Input
 
@@ -1082,7 +1215,7 @@ func (i GetDdosCooPortsPortArgs) ToGetDdosCooPortsPortOutputWithContext(ctx cont
 // GetDdosCooPortsPortArrayInput is an input type that accepts GetDdosCooPortsPortArray and GetDdosCooPortsPortArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooPortsPortArrayInput` via:
 //
-//          GetDdosCooPortsPortArray{ GetDdosCooPortsPortArgs{...} }
+//	GetDdosCooPortsPortArray{ GetDdosCooPortsPortArgs{...} }
 type GetDdosCooPortsPortArrayInput interface {
 	pulumi.Input
 
@@ -1175,6 +1308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleArrayInput)(nil)).Elem(), SchedulerRuleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpInstancesInstanceInput)(nil)).Elem(), GetDdosBgpInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpInstancesInstanceArrayInput)(nil)).Elem(), GetDdosBgpInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpIpsIpInput)(nil)).Elem(), GetDdosBgpIpsIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpIpsIpArrayInput)(nil)).Elem(), GetDdosBgpIpsIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceArrayInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceProxyTypeInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceProxyTypeArgs{})
@@ -1189,6 +1324,8 @@ func init() {
 	pulumi.RegisterOutputType(SchedulerRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDdosBgpIpsIpOutput{})
+	pulumi.RegisterOutputType(GetDdosBgpIpsIpArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceOutput{})
 	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceProxyTypeOutput{})

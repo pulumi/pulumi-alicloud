@@ -22,7 +22,9 @@ import (
 // Cassandra Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
+//
+//	$ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
+//
 // ```
 type BackupPlan struct {
 	pulumi.CustomResourceState
@@ -169,7 +171,7 @@ func (i *BackupPlan) ToBackupPlanOutputWithContext(ctx context.Context) BackupPl
 // BackupPlanArrayInput is an input type that accepts BackupPlanArray and BackupPlanArrayOutput values.
 // You can construct a concrete instance of `BackupPlanArrayInput` via:
 //
-//          BackupPlanArray{ BackupPlanArgs{...} }
+//	BackupPlanArray{ BackupPlanArgs{...} }
 type BackupPlanArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +196,7 @@ func (i BackupPlanArray) ToBackupPlanArrayOutputWithContext(ctx context.Context)
 // BackupPlanMapInput is an input type that accepts BackupPlanMap and BackupPlanMapOutput values.
 // You can construct a concrete instance of `BackupPlanMapInput` via:
 //
-//          BackupPlanMap{ "key": BackupPlanArgs{...} }
+//	BackupPlanMap{ "key": BackupPlanArgs{...} }
 type BackupPlanMapInput interface {
 	pulumi.Input
 

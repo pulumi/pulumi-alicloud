@@ -24,7 +24,7 @@ type ClusterDbClusterIpArray struct {
 // ClusterDbClusterIpArrayInput is an input type that accepts ClusterDbClusterIpArray and ClusterDbClusterIpArrayOutput values.
 // You can construct a concrete instance of `ClusterDbClusterIpArrayInput` via:
 //
-//          ClusterDbClusterIpArray{ ClusterDbClusterIpArgs{...} }
+//	ClusterDbClusterIpArray{ ClusterDbClusterIpArgs{...} }
 type ClusterDbClusterIpArrayInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i ClusterDbClusterIpArrayArgs) ToClusterDbClusterIpArrayOutputWithContext(
 // ClusterDbClusterIpArrayArrayInput is an input type that accepts ClusterDbClusterIpArrayArray and ClusterDbClusterIpArrayArrayOutput values.
 // You can construct a concrete instance of `ClusterDbClusterIpArrayArrayInput` via:
 //
-//          ClusterDbClusterIpArrayArray{ ClusterDbClusterIpArrayArgs{...} }
+//	ClusterDbClusterIpArrayArray{ ClusterDbClusterIpArrayArgs{...} }
 type ClusterDbClusterIpArrayArrayInput interface {
 	pulumi.Input
 
@@ -139,7 +139,7 @@ type ClusterParameter struct {
 // ClusterParameterInput is an input type that accepts ClusterParameterArgs and ClusterParameterOutput values.
 // You can construct a concrete instance of `ClusterParameterInput` via:
 //
-//          ClusterParameterArgs{...}
+//	ClusterParameterArgs{...}
 type ClusterParameterInput interface {
 	pulumi.Input
 
@@ -167,7 +167,7 @@ func (i ClusterParameterArgs) ToClusterParameterOutputWithContext(ctx context.Co
 // ClusterParameterArrayInput is an input type that accepts ClusterParameterArray and ClusterParameterArrayOutput values.
 // You can construct a concrete instance of `ClusterParameterArrayInput` via:
 //
-//          ClusterParameterArray{ ClusterParameterArgs{...} }
+//	ClusterParameterArray{ ClusterParameterArgs{...} }
 type ClusterParameterArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +249,7 @@ type GetAccountsAccount struct {
 // GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
 // You can construct a concrete instance of `GetAccountsAccountInput` via:
 //
-//          GetAccountsAccountArgs{...}
+//	GetAccountsAccountArgs{...}
 type GetAccountsAccountInput interface {
 	pulumi.Input
 
@@ -287,7 +287,7 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
-//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
 type GetAccountsAccountArrayInput interface {
 	pulumi.Input
 
@@ -383,7 +383,7 @@ type GetAccountsAccountDatabasePrivilege struct {
 // GetAccountsAccountDatabasePrivilegeInput is an input type that accepts GetAccountsAccountDatabasePrivilegeArgs and GetAccountsAccountDatabasePrivilegeOutput values.
 // You can construct a concrete instance of `GetAccountsAccountDatabasePrivilegeInput` via:
 //
-//          GetAccountsAccountDatabasePrivilegeArgs{...}
+//	GetAccountsAccountDatabasePrivilegeArgs{...}
 type GetAccountsAccountDatabasePrivilegeInput interface {
 	pulumi.Input
 
@@ -413,7 +413,7 @@ func (i GetAccountsAccountDatabasePrivilegeArgs) ToGetAccountsAccountDatabasePri
 // GetAccountsAccountDatabasePrivilegeArrayInput is an input type that accepts GetAccountsAccountDatabasePrivilegeArray and GetAccountsAccountDatabasePrivilegeArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountDatabasePrivilegeArrayInput` via:
 //
-//          GetAccountsAccountDatabasePrivilegeArray{ GetAccountsAccountDatabasePrivilegeArgs{...} }
+//	GetAccountsAccountDatabasePrivilegeArray{ GetAccountsAccountDatabasePrivilegeArgs{...} }
 type GetAccountsAccountDatabasePrivilegeArrayInput interface {
 	pulumi.Input
 
@@ -525,7 +525,7 @@ type GetClustersCluster struct {
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
 // You can construct a concrete instance of `GetClustersClusterInput` via:
 //
-//          GetClustersClusterArgs{...}
+//	GetClustersClusterArgs{...}
 type GetClustersClusterInput interface {
 	pulumi.Input
 
@@ -591,7 +591,7 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
-//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+//	GetClustersClusterArray{ GetClustersClusterArgs{...} }
 type GetClustersClusterArrayInput interface {
 	pulumi.Input
 
@@ -771,7 +771,7 @@ type GetClustersClusterDbNode struct {
 // GetClustersClusterDbNodeInput is an input type that accepts GetClustersClusterDbNodeArgs and GetClustersClusterDbNodeOutput values.
 // You can construct a concrete instance of `GetClustersClusterDbNodeInput` via:
 //
-//          GetClustersClusterDbNodeArgs{...}
+//	GetClustersClusterDbNodeArgs{...}
 type GetClustersClusterDbNodeInput interface {
 	pulumi.Input
 
@@ -815,7 +815,7 @@ func (i GetClustersClusterDbNodeArgs) ToGetClustersClusterDbNodeOutputWithContex
 // GetClustersClusterDbNodeArrayInput is an input type that accepts GetClustersClusterDbNodeArray and GetClustersClusterDbNodeArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterDbNodeArrayInput` via:
 //
-//          GetClustersClusterDbNodeArray{ GetClustersClusterDbNodeArgs{...} }
+//	GetClustersClusterDbNodeArray{ GetClustersClusterDbNodeArgs{...} }
 type GetClustersClusterDbNodeArrayInput interface {
 	pulumi.Input
 
@@ -934,7 +934,7 @@ type GetDatabasesDatabase struct {
 // GetDatabasesDatabaseInput is an input type that accepts GetDatabasesDatabaseArgs and GetDatabasesDatabaseOutput values.
 // You can construct a concrete instance of `GetDatabasesDatabaseInput` via:
 //
-//          GetDatabasesDatabaseArgs{...}
+//	GetDatabasesDatabaseArgs{...}
 type GetDatabasesDatabaseInput interface {
 	pulumi.Input
 
@@ -972,7 +972,7 @@ func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutputWithContext(ctx co
 // GetDatabasesDatabaseArrayInput is an input type that accepts GetDatabasesDatabaseArray and GetDatabasesDatabaseArrayOutput values.
 // You can construct a concrete instance of `GetDatabasesDatabaseArrayInput` via:
 //
-//          GetDatabasesDatabaseArray{ GetDatabasesDatabaseArgs{...} }
+//	GetDatabasesDatabaseArray{ GetDatabasesDatabaseArgs{...} }
 type GetDatabasesDatabaseArrayInput interface {
 	pulumi.Input
 
@@ -1070,7 +1070,7 @@ type GetDatabasesDatabaseAccount struct {
 // GetDatabasesDatabaseAccountInput is an input type that accepts GetDatabasesDatabaseAccountArgs and GetDatabasesDatabaseAccountOutput values.
 // You can construct a concrete instance of `GetDatabasesDatabaseAccountInput` via:
 //
-//          GetDatabasesDatabaseAccountArgs{...}
+//	GetDatabasesDatabaseAccountArgs{...}
 type GetDatabasesDatabaseAccountInput interface {
 	pulumi.Input
 
@@ -1102,7 +1102,7 @@ func (i GetDatabasesDatabaseAccountArgs) ToGetDatabasesDatabaseAccountOutputWith
 // GetDatabasesDatabaseAccountArrayInput is an input type that accepts GetDatabasesDatabaseAccountArray and GetDatabasesDatabaseAccountArrayOutput values.
 // You can construct a concrete instance of `GetDatabasesDatabaseAccountArrayInput` via:
 //
-//          GetDatabasesDatabaseAccountArray{ GetDatabasesDatabaseAccountArgs{...} }
+//	GetDatabasesDatabaseAccountArray{ GetDatabasesDatabaseAccountArgs{...} }
 type GetDatabasesDatabaseAccountArrayInput interface {
 	pulumi.Input
 
@@ -1193,7 +1193,7 @@ type GetEndpointsEndpoint struct {
 // GetEndpointsEndpointInput is an input type that accepts GetEndpointsEndpointArgs and GetEndpointsEndpointOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointInput` via:
 //
-//          GetEndpointsEndpointArgs{...}
+//	GetEndpointsEndpointArgs{...}
 type GetEndpointsEndpointInput interface {
 	pulumi.Input
 
@@ -1233,7 +1233,7 @@ func (i GetEndpointsEndpointArgs) ToGetEndpointsEndpointOutputWithContext(ctx co
 // GetEndpointsEndpointArrayInput is an input type that accepts GetEndpointsEndpointArray and GetEndpointsEndpointArrayOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointArrayInput` via:
 //
-//          GetEndpointsEndpointArray{ GetEndpointsEndpointArgs{...} }
+//	GetEndpointsEndpointArray{ GetEndpointsEndpointArgs{...} }
 type GetEndpointsEndpointArrayInput interface {
 	pulumi.Input
 
@@ -1342,7 +1342,7 @@ type GetEndpointsEndpointAddressItem struct {
 // GetEndpointsEndpointAddressItemInput is an input type that accepts GetEndpointsEndpointAddressItemArgs and GetEndpointsEndpointAddressItemOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointAddressItemInput` via:
 //
-//          GetEndpointsEndpointAddressItemArgs{...}
+//	GetEndpointsEndpointAddressItemArgs{...}
 type GetEndpointsEndpointAddressItemInput interface {
 	pulumi.Input
 
@@ -1380,7 +1380,7 @@ func (i GetEndpointsEndpointAddressItemArgs) ToGetEndpointsEndpointAddressItemOu
 // GetEndpointsEndpointAddressItemArrayInput is an input type that accepts GetEndpointsEndpointAddressItemArray and GetEndpointsEndpointAddressItemArrayOutput values.
 // You can construct a concrete instance of `GetEndpointsEndpointAddressItemArrayInput` via:
 //
-//          GetEndpointsEndpointAddressItemArray{ GetEndpointsEndpointAddressItemArgs{...} }
+//	GetEndpointsEndpointAddressItemArray{ GetEndpointsEndpointAddressItemArgs{...} }
 type GetEndpointsEndpointAddressItemArrayInput interface {
 	pulumi.Input
 
@@ -1466,6 +1466,283 @@ func (o GetEndpointsEndpointAddressItemArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetEndpointsEndpointAddressItemOutput)
 }
 
+type GetGlobalDatabaseNetworksNetwork struct {
+	// The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime string `pulumi:"createTime"`
+	// The details of each cluster in the Global Database Network.
+	DbClusters []GetGlobalDatabaseNetworksNetworkDbCluster `pulumi:"dbClusters"`
+	// The type of the database engine. Only MySQL is supported.
+	DbType string `pulumi:"dbType"`
+	// The version number of the database engine. Only the 8.0 version is supported.
+	DbVersion string `pulumi:"dbVersion"`
+	// The description of the Global Database Network.
+	Description string `pulumi:"description"`
+	// The ID of the Global Database Network.
+	GdnId string `pulumi:"gdnId"`
+	// The ID of the Global Database Network.
+	Id string `pulumi:"id"`
+	// The status of the Global Database Network.
+	Status string `pulumi:"status"`
+}
+
+// GetGlobalDatabaseNetworksNetworkInput is an input type that accepts GetGlobalDatabaseNetworksNetworkArgs and GetGlobalDatabaseNetworksNetworkOutput values.
+// You can construct a concrete instance of `GetGlobalDatabaseNetworksNetworkInput` via:
+//
+//	GetGlobalDatabaseNetworksNetworkArgs{...}
+type GetGlobalDatabaseNetworksNetworkInput interface {
+	pulumi.Input
+
+	ToGetGlobalDatabaseNetworksNetworkOutput() GetGlobalDatabaseNetworksNetworkOutput
+	ToGetGlobalDatabaseNetworksNetworkOutputWithContext(context.Context) GetGlobalDatabaseNetworksNetworkOutput
+}
+
+type GetGlobalDatabaseNetworksNetworkArgs struct {
+	// The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The details of each cluster in the Global Database Network.
+	DbClusters GetGlobalDatabaseNetworksNetworkDbClusterArrayInput `pulumi:"dbClusters"`
+	// The type of the database engine. Only MySQL is supported.
+	DbType pulumi.StringInput `pulumi:"dbType"`
+	// The version number of the database engine. Only the 8.0 version is supported.
+	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
+	// The description of the Global Database Network.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Global Database Network.
+	GdnId pulumi.StringInput `pulumi:"gdnId"`
+	// The ID of the Global Database Network.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the Global Database Network.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetGlobalDatabaseNetworksNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDatabaseNetworksNetwork)(nil)).Elem()
+}
+
+func (i GetGlobalDatabaseNetworksNetworkArgs) ToGetGlobalDatabaseNetworksNetworkOutput() GetGlobalDatabaseNetworksNetworkOutput {
+	return i.ToGetGlobalDatabaseNetworksNetworkOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDatabaseNetworksNetworkArgs) ToGetGlobalDatabaseNetworksNetworkOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDatabaseNetworksNetworkOutput)
+}
+
+// GetGlobalDatabaseNetworksNetworkArrayInput is an input type that accepts GetGlobalDatabaseNetworksNetworkArray and GetGlobalDatabaseNetworksNetworkArrayOutput values.
+// You can construct a concrete instance of `GetGlobalDatabaseNetworksNetworkArrayInput` via:
+//
+//	GetGlobalDatabaseNetworksNetworkArray{ GetGlobalDatabaseNetworksNetworkArgs{...} }
+type GetGlobalDatabaseNetworksNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalDatabaseNetworksNetworkArrayOutput() GetGlobalDatabaseNetworksNetworkArrayOutput
+	ToGetGlobalDatabaseNetworksNetworkArrayOutputWithContext(context.Context) GetGlobalDatabaseNetworksNetworkArrayOutput
+}
+
+type GetGlobalDatabaseNetworksNetworkArray []GetGlobalDatabaseNetworksNetworkInput
+
+func (GetGlobalDatabaseNetworksNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalDatabaseNetworksNetwork)(nil)).Elem()
+}
+
+func (i GetGlobalDatabaseNetworksNetworkArray) ToGetGlobalDatabaseNetworksNetworkArrayOutput() GetGlobalDatabaseNetworksNetworkArrayOutput {
+	return i.ToGetGlobalDatabaseNetworksNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDatabaseNetworksNetworkArray) ToGetGlobalDatabaseNetworksNetworkArrayOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDatabaseNetworksNetworkArrayOutput)
+}
+
+type GetGlobalDatabaseNetworksNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDatabaseNetworksNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDatabaseNetworksNetwork)(nil)).Elem()
+}
+
+func (o GetGlobalDatabaseNetworksNetworkOutput) ToGetGlobalDatabaseNetworksNetworkOutput() GetGlobalDatabaseNetworksNetworkOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkOutput) ToGetGlobalDatabaseNetworksNetworkOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkOutput {
+	return o
+}
+
+// The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+func (o GetGlobalDatabaseNetworksNetworkOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The details of each cluster in the Global Database Network.
+func (o GetGlobalDatabaseNetworksNetworkOutput) DbClusters() GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) []GetGlobalDatabaseNetworksNetworkDbCluster {
+		return v.DbClusters
+	}).(GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput)
+}
+
+// The type of the database engine. Only MySQL is supported.
+func (o GetGlobalDatabaseNetworksNetworkOutput) DbType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.DbType }).(pulumi.StringOutput)
+}
+
+// The version number of the database engine. Only the 8.0 version is supported.
+func (o GetGlobalDatabaseNetworksNetworkOutput) DbVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// The description of the Global Database Network.
+func (o GetGlobalDatabaseNetworksNetworkOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Global Database Network.
+func (o GetGlobalDatabaseNetworksNetworkOutput) GdnId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.GdnId }).(pulumi.StringOutput)
+}
+
+// The ID of the Global Database Network.
+func (o GetGlobalDatabaseNetworksNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the Global Database Network.
+func (o GetGlobalDatabaseNetworksNetworkOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetwork) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetGlobalDatabaseNetworksNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDatabaseNetworksNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalDatabaseNetworksNetwork)(nil)).Elem()
+}
+
+func (o GetGlobalDatabaseNetworksNetworkArrayOutput) ToGetGlobalDatabaseNetworksNetworkArrayOutput() GetGlobalDatabaseNetworksNetworkArrayOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkArrayOutput) ToGetGlobalDatabaseNetworksNetworkArrayOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkArrayOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkArrayOutput) Index(i pulumi.IntInput) GetGlobalDatabaseNetworksNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalDatabaseNetworksNetwork {
+		return vs[0].([]GetGlobalDatabaseNetworksNetwork)[vs[1].(int)]
+	}).(GetGlobalDatabaseNetworksNetworkOutput)
+}
+
+type GetGlobalDatabaseNetworksNetworkDbCluster struct {
+	// The ID of the PolarDB cluster.
+	DbClusterId string `pulumi:"dbClusterId"`
+	// The region ID of the cluster.
+	RegionId string `pulumi:"regionId"`
+	// The role of the cluster.
+	Role string `pulumi:"role"`
+}
+
+// GetGlobalDatabaseNetworksNetworkDbClusterInput is an input type that accepts GetGlobalDatabaseNetworksNetworkDbClusterArgs and GetGlobalDatabaseNetworksNetworkDbClusterOutput values.
+// You can construct a concrete instance of `GetGlobalDatabaseNetworksNetworkDbClusterInput` via:
+//
+//	GetGlobalDatabaseNetworksNetworkDbClusterArgs{...}
+type GetGlobalDatabaseNetworksNetworkDbClusterInput interface {
+	pulumi.Input
+
+	ToGetGlobalDatabaseNetworksNetworkDbClusterOutput() GetGlobalDatabaseNetworksNetworkDbClusterOutput
+	ToGetGlobalDatabaseNetworksNetworkDbClusterOutputWithContext(context.Context) GetGlobalDatabaseNetworksNetworkDbClusterOutput
+}
+
+type GetGlobalDatabaseNetworksNetworkDbClusterArgs struct {
+	// The ID of the PolarDB cluster.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// The region ID of the cluster.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The role of the cluster.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetGlobalDatabaseNetworksNetworkDbClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkDbCluster)(nil)).Elem()
+}
+
+func (i GetGlobalDatabaseNetworksNetworkDbClusterArgs) ToGetGlobalDatabaseNetworksNetworkDbClusterOutput() GetGlobalDatabaseNetworksNetworkDbClusterOutput {
+	return i.ToGetGlobalDatabaseNetworksNetworkDbClusterOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDatabaseNetworksNetworkDbClusterArgs) ToGetGlobalDatabaseNetworksNetworkDbClusterOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkDbClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDatabaseNetworksNetworkDbClusterOutput)
+}
+
+// GetGlobalDatabaseNetworksNetworkDbClusterArrayInput is an input type that accepts GetGlobalDatabaseNetworksNetworkDbClusterArray and GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput values.
+// You can construct a concrete instance of `GetGlobalDatabaseNetworksNetworkDbClusterArrayInput` via:
+//
+//	GetGlobalDatabaseNetworksNetworkDbClusterArray{ GetGlobalDatabaseNetworksNetworkDbClusterArgs{...} }
+type GetGlobalDatabaseNetworksNetworkDbClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutput() GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput
+	ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutputWithContext(context.Context) GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput
+}
+
+type GetGlobalDatabaseNetworksNetworkDbClusterArray []GetGlobalDatabaseNetworksNetworkDbClusterInput
+
+func (GetGlobalDatabaseNetworksNetworkDbClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalDatabaseNetworksNetworkDbCluster)(nil)).Elem()
+}
+
+func (i GetGlobalDatabaseNetworksNetworkDbClusterArray) ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutput() GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput {
+	return i.ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalDatabaseNetworksNetworkDbClusterArray) ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput)
+}
+
+type GetGlobalDatabaseNetworksNetworkDbClusterOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDatabaseNetworksNetworkDbClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkDbCluster)(nil)).Elem()
+}
+
+func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) ToGetGlobalDatabaseNetworksNetworkDbClusterOutput() GetGlobalDatabaseNetworksNetworkDbClusterOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) ToGetGlobalDatabaseNetworksNetworkDbClusterOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkDbClusterOutput {
+	return o
+}
+
+// The ID of the PolarDB cluster.
+func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetworkDbCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The region ID of the cluster.
+func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetworkDbCluster) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The role of the cluster.
+func (o GetGlobalDatabaseNetworksNetworkDbClusterOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalDatabaseNetworksNetworkDbCluster) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalDatabaseNetworksNetworkDbCluster)(nil)).Elem()
+}
+
+func (o GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput) ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutput() GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput) ToGetGlobalDatabaseNetworksNetworkDbClusterArrayOutputWithContext(ctx context.Context) GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput {
+	return o
+}
+
+func (o GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput) Index(i pulumi.IntInput) GetGlobalDatabaseNetworksNetworkDbClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalDatabaseNetworksNetworkDbCluster {
+		return vs[0].([]GetGlobalDatabaseNetworksNetworkDbCluster)[vs[1].(int)]
+	}).(GetGlobalDatabaseNetworksNetworkDbClusterOutput)
+}
+
 type GetNodeClassesClass struct {
 	// A list of PolarDB node classes in the zone.
 	SupportedEngines []GetNodeClassesClassSupportedEngine `pulumi:"supportedEngines"`
@@ -1476,7 +1753,7 @@ type GetNodeClassesClass struct {
 // GetNodeClassesClassInput is an input type that accepts GetNodeClassesClassArgs and GetNodeClassesClassOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassInput` via:
 //
-//          GetNodeClassesClassArgs{...}
+//	GetNodeClassesClassArgs{...}
 type GetNodeClassesClassInput interface {
 	pulumi.Input
 
@@ -1506,7 +1783,7 @@ func (i GetNodeClassesClassArgs) ToGetNodeClassesClassOutputWithContext(ctx cont
 // GetNodeClassesClassArrayInput is an input type that accepts GetNodeClassesClassArray and GetNodeClassesClassArrayOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassArrayInput` via:
 //
-//          GetNodeClassesClassArray{ GetNodeClassesClassArgs{...} }
+//	GetNodeClassesClassArray{ GetNodeClassesClassArgs{...} }
 type GetNodeClassesClassArrayInput interface {
 	pulumi.Input
 
@@ -1582,7 +1859,7 @@ type GetNodeClassesClassSupportedEngine struct {
 // GetNodeClassesClassSupportedEngineInput is an input type that accepts GetNodeClassesClassSupportedEngineArgs and GetNodeClassesClassSupportedEngineOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassSupportedEngineInput` via:
 //
-//          GetNodeClassesClassSupportedEngineArgs{...}
+//	GetNodeClassesClassSupportedEngineArgs{...}
 type GetNodeClassesClassSupportedEngineInput interface {
 	pulumi.Input
 
@@ -1612,7 +1889,7 @@ func (i GetNodeClassesClassSupportedEngineArgs) ToGetNodeClassesClassSupportedEn
 // GetNodeClassesClassSupportedEngineArrayInput is an input type that accepts GetNodeClassesClassSupportedEngineArray and GetNodeClassesClassSupportedEngineArrayOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassSupportedEngineArrayInput` via:
 //
-//          GetNodeClassesClassSupportedEngineArray{ GetNodeClassesClassSupportedEngineArgs{...} }
+//	GetNodeClassesClassSupportedEngineArray{ GetNodeClassesClassSupportedEngineArgs{...} }
 type GetNodeClassesClassSupportedEngineArrayInput interface {
 	pulumi.Input
 
@@ -1688,7 +1965,7 @@ type GetNodeClassesClassSupportedEngineAvailableResource struct {
 // GetNodeClassesClassSupportedEngineAvailableResourceInput is an input type that accepts GetNodeClassesClassSupportedEngineAvailableResourceArgs and GetNodeClassesClassSupportedEngineAvailableResourceOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassSupportedEngineAvailableResourceInput` via:
 //
-//          GetNodeClassesClassSupportedEngineAvailableResourceArgs{...}
+//	GetNodeClassesClassSupportedEngineAvailableResourceArgs{...}
 type GetNodeClassesClassSupportedEngineAvailableResourceInput interface {
 	pulumi.Input
 
@@ -1716,7 +1993,7 @@ func (i GetNodeClassesClassSupportedEngineAvailableResourceArgs) ToGetNodeClasse
 // GetNodeClassesClassSupportedEngineAvailableResourceArrayInput is an input type that accepts GetNodeClassesClassSupportedEngineAvailableResourceArray and GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput values.
 // You can construct a concrete instance of `GetNodeClassesClassSupportedEngineAvailableResourceArrayInput` via:
 //
-//          GetNodeClassesClassSupportedEngineAvailableResourceArray{ GetNodeClassesClassSupportedEngineAvailableResourceArgs{...} }
+//	GetNodeClassesClassSupportedEngineAvailableResourceArray{ GetNodeClassesClassSupportedEngineAvailableResourceArgs{...} }
 type GetNodeClassesClassSupportedEngineAvailableResourceArrayInput interface {
 	pulumi.Input
 
@@ -1787,7 +2064,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -1817,7 +2094,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -1904,6 +2181,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointArrayInput)(nil)).Elem(), GetEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointAddressItemInput)(nil)).Elem(), GetEndpointsEndpointAddressItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointAddressItemArrayInput)(nil)).Elem(), GetEndpointsEndpointAddressItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkArrayInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkDbClusterInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkDbClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkDbClusterArrayInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkDbClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassInput)(nil)).Elem(), GetNodeClassesClassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassArrayInput)(nil)).Elem(), GetNodeClassesClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassSupportedEngineInput)(nil)).Elem(), GetNodeClassesClassSupportedEngineArgs{})
@@ -1932,6 +2213,10 @@ func init() {
 	pulumi.RegisterOutputType(GetEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkOutput{})
+	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkDbClusterOutput{})
+	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkDbClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeClassesClassOutput{})
 	pulumi.RegisterOutputType(GetNodeClassesClassArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineOutput{})

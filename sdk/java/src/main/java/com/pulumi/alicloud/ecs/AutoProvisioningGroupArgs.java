@@ -201,14 +201,14 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      * 
      */
     @Import(name="spotInstanceInterruptionBehavior")
     private @Nullable Output<String> spotInstanceInterruptionBehavior;
 
     /**
-     * @return The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+     * @return The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      * 
      */
     public Optional<Output<String>> spotInstanceInterruptionBehavior() {
@@ -626,7 +626,7 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param spotInstanceInterruptionBehavior The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+         * @param spotInstanceInterruptionBehavior The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param spotInstanceInterruptionBehavior The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
+         * @param spotInstanceInterruptionBehavior The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
          * 
          * @return builder
          * 

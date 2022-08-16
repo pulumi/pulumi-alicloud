@@ -19,104 +19,107 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testacc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		domainName := "your_domain_name"
-// 		if param := cfg.Get("domainName"); param != "" {
-// 			domainName = param
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
-// 			AlarmContactGroupName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGtmInstance, err := dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
-// 			InstanceName:         pulumi.String(name),
-// 			PaymentType:          pulumi.String("Subscription"),
-// 			Period:               pulumi.Int(1),
-// 			RenewalStatus:        pulumi.String("ManualRenewal"),
-// 			PackageEdition:       pulumi.String("ultimate"),
-// 			HealthCheckTaskCount: pulumi.Int(100),
-// 			SmsNotificationCount: pulumi.Int(1000),
-// 			PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
-// 			Ttl:                  pulumi.Int(60),
-// 			CnameType:            pulumi.String("PUBLIC"),
-// 			ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			AlertGroups: pulumi.StringArray{
-// 				defaultAlarmContactGroup.AlarmContactGroupName,
-// 			},
-// 			PublicUserDomainName: pulumi.String(domainName),
-// 			AlertConfigs: dns.GtmInstanceAlertConfigArray{
-// 				&dns.GtmInstanceAlertConfigArgs{
-// 					SmsNotice:      pulumi.Bool(true),
-// 					NoticeType:     pulumi.String("ADDR_ALERT"),
-// 					EmailNotice:    pulumi.Bool(true),
-// 					DingtalkNotice: pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAddressPool, err := dns.NewAddressPool(ctx, "defaultAddressPool", &dns.AddressPoolArgs{
-// 			AddressPoolName: pulumi.String(name),
-// 			InstanceId:      defaultGtmInstance.ID(),
-// 			LbaStrategy:     pulumi.String("RATIO"),
-// 			Type:            pulumi.String("IPV4"),
-// 			Addresses: dns.AddressPoolAddressArray{
-// 				&dns.AddressPoolAddressArgs{
-// 					AttributeInfo: pulumi.String("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}"),
-// 					Remark:        pulumi.String("address_remark"),
-// 					Address:       pulumi.String("1.1.1.1"),
-// 					Mode:          pulumi.String("SMART"),
-// 					LbaWeight:     pulumi.Int(1),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewMonitorConfig(ctx, "defaultMonitorConfig", &dns.MonitorConfigArgs{
-// 			AddrPoolId:        defaultAddressPool.ID(),
-// 			EvaluationCount:   pulumi.Int(1),
-// 			Interval:          pulumi.Int(60),
-// 			Timeout:           pulumi.Int(5000),
-// 			ProtocolType:      pulumi.String("TCP"),
-// 			MonitorExtendInfo: pulumi.String("{\"failureRate\"=50,\"port\"=80}"),
-// 			IspCityNodes: dns.MonitorConfigIspCityNodeArray{
-// 				CityCode: "503",
-// 				IspCode:  "465",
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domainName := "your_domain_name"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
+//				InstanceName:         pulumi.String(name),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Period:               pulumi.Int(1),
+//				RenewalStatus:        pulumi.String("ManualRenewal"),
+//				PackageEdition:       pulumi.String("ultimate"),
+//				HealthCheckTaskCount: pulumi.Int(100),
+//				SmsNotificationCount: pulumi.Int(1000),
+//				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
+//				Ttl:                  pulumi.Int(60),
+//				CnameType:            pulumi.String("PUBLIC"),
+//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				AlertGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				PublicUserDomainName: pulumi.String(domainName),
+//				AlertConfigs: dns.GtmInstanceAlertConfigArray{
+//					&dns.GtmInstanceAlertConfigArgs{
+//						SmsNotice:      pulumi.Bool(true),
+//						NoticeType:     pulumi.String("ADDR_ALERT"),
+//						EmailNotice:    pulumi.Bool(true),
+//						DingtalkNotice: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAddressPool, err := dns.NewAddressPool(ctx, "defaultAddressPool", &dns.AddressPoolArgs{
+//				AddressPoolName: pulumi.String(name),
+//				InstanceId:      defaultGtmInstance.ID(),
+//				LbaStrategy:     pulumi.String("RATIO"),
+//				Type:            pulumi.String("IPV4"),
+//				Addresses: dns.AddressPoolAddressArray{
+//					&dns.AddressPoolAddressArgs{
+//						AttributeInfo: pulumi.String("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}"),
+//						Remark:        pulumi.String("address_remark"),
+//						Address:       pulumi.String("1.1.1.1"),
+//						Mode:          pulumi.String("SMART"),
+//						LbaWeight:     pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewMonitorConfig(ctx, "defaultMonitorConfig", &dns.MonitorConfigArgs{
+//				AddrPoolId:        defaultAddressPool.ID(),
+//				EvaluationCount:   pulumi.Int(1),
+//				Interval:          pulumi.Int(60),
+//				Timeout:           pulumi.Int(5000),
+//				ProtocolType:      pulumi.String("TCP"),
+//				MonitorExtendInfo: pulumi.String("{\"failureRate\"=50,\"port\"=80}"),
+//				IspCityNodes: dns.MonitorConfigIspCityNodeArray{
+//					CityCode: "503",
+//					IspCode:  "465",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -124,7 +127,9 @@ import (
 // DNS Monitor Config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
+//
+//	$ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
+//
 // ```
 type MonitorConfig struct {
 	pulumi.CustomResourceState
@@ -303,7 +308,7 @@ func (i *MonitorConfig) ToMonitorConfigOutputWithContext(ctx context.Context) Mo
 // MonitorConfigArrayInput is an input type that accepts MonitorConfigArray and MonitorConfigArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigArrayInput` via:
 //
-//          MonitorConfigArray{ MonitorConfigArgs{...} }
+//	MonitorConfigArray{ MonitorConfigArgs{...} }
 type MonitorConfigArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +333,7 @@ func (i MonitorConfigArray) ToMonitorConfigArrayOutputWithContext(ctx context.Co
 // MonitorConfigMapInput is an input type that accepts MonitorConfigMap and MonitorConfigMapOutput values.
 // You can construct a concrete instance of `MonitorConfigMapInput` via:
 //
-//          MonitorConfigMap{ "key": MonitorConfigArgs{...} }
+//	MonitorConfigMap{ "key": MonitorConfigArgs{...} }
 type MonitorConfigMapInput interface {
 	pulumi.Input
 

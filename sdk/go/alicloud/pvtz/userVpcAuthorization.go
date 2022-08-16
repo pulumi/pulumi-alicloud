@@ -17,29 +17,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pvtz.NewUserVpcAuthorization(ctx, "example", &pvtz.UserVpcAuthorizationArgs{
-// 			AuthChannel:      pulumi.String("RESOURCE_DIRECTORY"),
-// 			AuthType:         pulumi.String("NORMAL"),
-// 			AuthorizedUserId: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pvtz.NewUserVpcAuthorization(ctx, "example", &pvtz.UserVpcAuthorizationArgs{
+//				AuthChannel:      pulumi.String("RESOURCE_DIRECTORY"),
+//				AuthType:         pulumi.String("NORMAL"),
+//				AuthorizedUserId: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Private Zone User Vpc Authorization can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
+//
+//	$ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
+//
 // ```
 type UserVpcAuthorization struct {
 	pulumi.CustomResourceState
@@ -158,7 +163,7 @@ func (i *UserVpcAuthorization) ToUserVpcAuthorizationOutputWithContext(ctx conte
 // UserVpcAuthorizationArrayInput is an input type that accepts UserVpcAuthorizationArray and UserVpcAuthorizationArrayOutput values.
 // You can construct a concrete instance of `UserVpcAuthorizationArrayInput` via:
 //
-//          UserVpcAuthorizationArray{ UserVpcAuthorizationArgs{...} }
+//	UserVpcAuthorizationArray{ UserVpcAuthorizationArgs{...} }
 type UserVpcAuthorizationArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +188,7 @@ func (i UserVpcAuthorizationArray) ToUserVpcAuthorizationArrayOutputWithContext(
 // UserVpcAuthorizationMapInput is an input type that accepts UserVpcAuthorizationMap and UserVpcAuthorizationMapOutput values.
 // You can construct a concrete instance of `UserVpcAuthorizationMapInput` via:
 //
-//          UserVpcAuthorizationMap{ "key": UserVpcAuthorizationArgs{...} }
+//	UserVpcAuthorizationMap{ "key": UserVpcAuthorizationArgs{...} }
 type UserVpcAuthorizationMapInput interface {
 	pulumi.Input
 

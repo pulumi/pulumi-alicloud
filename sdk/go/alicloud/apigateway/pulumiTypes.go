@@ -24,7 +24,7 @@ type ApiConstantParameter struct {
 // ApiConstantParameterInput is an input type that accepts ApiConstantParameterArgs and ApiConstantParameterOutput values.
 // You can construct a concrete instance of `ApiConstantParameterInput` via:
 //
-//          ApiConstantParameterArgs{...}
+//	ApiConstantParameterArgs{...}
 type ApiConstantParameterInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i ApiConstantParameterArgs) ToApiConstantParameterOutputWithContext(ctx co
 // ApiConstantParameterArrayInput is an input type that accepts ApiConstantParameterArray and ApiConstantParameterArrayOutput values.
 // You can construct a concrete instance of `ApiConstantParameterArrayInput` via:
 //
-//          ApiConstantParameterArray{ ApiConstantParameterArgs{...} }
+//	ApiConstantParameterArray{ ApiConstantParameterArgs{...} }
 type ApiConstantParameterArrayInput interface {
 	pulumi.Input
 
@@ -150,7 +150,7 @@ type ApiFcServiceConfig struct {
 // ApiFcServiceConfigInput is an input type that accepts ApiFcServiceConfigArgs and ApiFcServiceConfigOutput values.
 // You can construct a concrete instance of `ApiFcServiceConfigInput` via:
 //
-//          ApiFcServiceConfigArgs{...}
+//	ApiFcServiceConfigArgs{...}
 type ApiFcServiceConfigInput interface {
 	pulumi.Input
 
@@ -194,11 +194,11 @@ func (i ApiFcServiceConfigArgs) ToApiFcServiceConfigPtrOutputWithContext(ctx con
 // ApiFcServiceConfigPtrInput is an input type that accepts ApiFcServiceConfigArgs, ApiFcServiceConfigPtr and ApiFcServiceConfigPtrOutput values.
 // You can construct a concrete instance of `ApiFcServiceConfigPtrInput` via:
 //
-//          ApiFcServiceConfigArgs{...}
+//	        ApiFcServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiFcServiceConfigPtrInput interface {
 	pulumi.Input
 
@@ -362,7 +362,7 @@ type ApiHttpServiceConfig struct {
 // ApiHttpServiceConfigInput is an input type that accepts ApiHttpServiceConfigArgs and ApiHttpServiceConfigOutput values.
 // You can construct a concrete instance of `ApiHttpServiceConfigInput` via:
 //
-//          ApiHttpServiceConfigArgs{...}
+//	ApiHttpServiceConfigArgs{...}
 type ApiHttpServiceConfigInput interface {
 	pulumi.Input
 
@@ -405,11 +405,11 @@ func (i ApiHttpServiceConfigArgs) ToApiHttpServiceConfigPtrOutputWithContext(ctx
 // ApiHttpServiceConfigPtrInput is an input type that accepts ApiHttpServiceConfigArgs, ApiHttpServiceConfigPtr and ApiHttpServiceConfigPtrOutput values.
 // You can construct a concrete instance of `ApiHttpServiceConfigPtrInput` via:
 //
-//          ApiHttpServiceConfigArgs{...}
+//	        ApiHttpServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiHttpServiceConfigPtrInput interface {
 	pulumi.Input
 
@@ -571,7 +571,7 @@ type ApiHttpVpcServiceConfig struct {
 // ApiHttpVpcServiceConfigInput is an input type that accepts ApiHttpVpcServiceConfigArgs and ApiHttpVpcServiceConfigOutput values.
 // You can construct a concrete instance of `ApiHttpVpcServiceConfigInput` via:
 //
-//          ApiHttpVpcServiceConfigArgs{...}
+//	ApiHttpVpcServiceConfigArgs{...}
 type ApiHttpVpcServiceConfigInput interface {
 	pulumi.Input
 
@@ -614,11 +614,11 @@ func (i ApiHttpVpcServiceConfigArgs) ToApiHttpVpcServiceConfigPtrOutputWithConte
 // ApiHttpVpcServiceConfigPtrInput is an input type that accepts ApiHttpVpcServiceConfigArgs, ApiHttpVpcServiceConfigPtr and ApiHttpVpcServiceConfigPtrOutput values.
 // You can construct a concrete instance of `ApiHttpVpcServiceConfigPtrInput` via:
 //
-//          ApiHttpVpcServiceConfigArgs{...}
+//	        ApiHttpVpcServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiHttpVpcServiceConfigPtrInput interface {
 	pulumi.Input
 
@@ -774,7 +774,7 @@ type ApiMockServiceConfig struct {
 // ApiMockServiceConfigInput is an input type that accepts ApiMockServiceConfigArgs and ApiMockServiceConfigOutput values.
 // You can construct a concrete instance of `ApiMockServiceConfigInput` via:
 //
-//          ApiMockServiceConfigArgs{...}
+//	ApiMockServiceConfigArgs{...}
 type ApiMockServiceConfigInput interface {
 	pulumi.Input
 
@@ -811,11 +811,11 @@ func (i ApiMockServiceConfigArgs) ToApiMockServiceConfigPtrOutputWithContext(ctx
 // ApiMockServiceConfigPtrInput is an input type that accepts ApiMockServiceConfigArgs, ApiMockServiceConfigPtr and ApiMockServiceConfigPtrOutput values.
 // You can construct a concrete instance of `ApiMockServiceConfigPtrInput` via:
 //
-//          ApiMockServiceConfigArgs{...}
+//	        ApiMockServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiMockServiceConfigPtrInput interface {
 	pulumi.Input
 
@@ -933,7 +933,7 @@ type ApiRequestConfig struct {
 // ApiRequestConfigInput is an input type that accepts ApiRequestConfigArgs and ApiRequestConfigOutput values.
 // You can construct a concrete instance of `ApiRequestConfigInput` via:
 //
-//          ApiRequestConfigArgs{...}
+//	ApiRequestConfigArgs{...}
 type ApiRequestConfigInput interface {
 	pulumi.Input
 
@@ -977,11 +977,11 @@ func (i ApiRequestConfigArgs) ToApiRequestConfigPtrOutputWithContext(ctx context
 // ApiRequestConfigPtrInput is an input type that accepts ApiRequestConfigArgs, ApiRequestConfigPtr and ApiRequestConfigPtrOutput values.
 // You can construct a concrete instance of `ApiRequestConfigPtrInput` via:
 //
-//          ApiRequestConfigArgs{...}
+//	        ApiRequestConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiRequestConfigPtrInput interface {
 	pulumi.Input
 
@@ -1152,7 +1152,7 @@ type ApiRequestParameter struct {
 // ApiRequestParameterInput is an input type that accepts ApiRequestParameterArgs and ApiRequestParameterOutput values.
 // You can construct a concrete instance of `ApiRequestParameterInput` via:
 //
-//          ApiRequestParameterArgs{...}
+//	ApiRequestParameterArgs{...}
 type ApiRequestParameterInput interface {
 	pulumi.Input
 
@@ -1194,7 +1194,7 @@ func (i ApiRequestParameterArgs) ToApiRequestParameterOutputWithContext(ctx cont
 // ApiRequestParameterArrayInput is an input type that accepts ApiRequestParameterArray and ApiRequestParameterArrayOutput values.
 // You can construct a concrete instance of `ApiRequestParameterArrayInput` via:
 //
-//          ApiRequestParameterArray{ ApiRequestParameterArgs{...} }
+//	ApiRequestParameterArray{ ApiRequestParameterArgs{...} }
 type ApiRequestParameterArrayInput interface {
 	pulumi.Input
 
@@ -1302,7 +1302,7 @@ type ApiSystemParameter struct {
 // ApiSystemParameterInput is an input type that accepts ApiSystemParameterArgs and ApiSystemParameterOutput values.
 // You can construct a concrete instance of `ApiSystemParameterInput` via:
 //
-//          ApiSystemParameterArgs{...}
+//	ApiSystemParameterArgs{...}
 type ApiSystemParameterInput interface {
 	pulumi.Input
 
@@ -1334,7 +1334,7 @@ func (i ApiSystemParameterArgs) ToApiSystemParameterOutputWithContext(ctx contex
 // ApiSystemParameterArrayInput is an input type that accepts ApiSystemParameterArray and ApiSystemParameterArrayOutput values.
 // You can construct a concrete instance of `ApiSystemParameterArrayInput` via:
 //
-//          ApiSystemParameterArray{ ApiSystemParameterArgs{...} }
+//	ApiSystemParameterArray{ ApiSystemParameterArgs{...} }
 type ApiSystemParameterArrayInput interface {
 	pulumi.Input
 
@@ -1423,7 +1423,7 @@ type GetApisApi struct {
 // GetApisApiInput is an input type that accepts GetApisApiArgs and GetApisApiOutput values.
 // You can construct a concrete instance of `GetApisApiInput` via:
 //
-//          GetApisApiArgs{...}
+//	GetApisApiArgs{...}
 type GetApisApiInput interface {
 	pulumi.Input
 
@@ -1461,7 +1461,7 @@ func (i GetApisApiArgs) ToGetApisApiOutputWithContext(ctx context.Context) GetAp
 // GetApisApiArrayInput is an input type that accepts GetApisApiArray and GetApisApiArrayOutput values.
 // You can construct a concrete instance of `GetApisApiArrayInput` via:
 //
-//          GetApisApiArray{ GetApisApiArgs{...} }
+//	GetApisApiArray{ GetApisApiArgs{...} }
 type GetApisApiArrayInput interface {
 	pulumi.Input
 
@@ -1565,7 +1565,7 @@ type GetAppsApp struct {
 // GetAppsAppInput is an input type that accepts GetAppsAppArgs and GetAppsAppOutput values.
 // You can construct a concrete instance of `GetAppsAppInput` via:
 //
-//          GetAppsAppArgs{...}
+//	GetAppsAppArgs{...}
 type GetAppsAppInput interface {
 	pulumi.Input
 
@@ -1603,7 +1603,7 @@ func (i GetAppsAppArgs) ToGetAppsAppOutputWithContext(ctx context.Context) GetAp
 // GetAppsAppArrayInput is an input type that accepts GetAppsAppArray and GetAppsAppArrayOutput values.
 // You can construct a concrete instance of `GetAppsAppArrayInput` via:
 //
-//          GetAppsAppArray{ GetAppsAppArgs{...} }
+//	GetAppsAppArray{ GetAppsAppArgs{...} }
 type GetAppsAppArrayInput interface {
 	pulumi.Input
 
@@ -1689,6 +1689,154 @@ func (o GetAppsAppArrayOutput) Index(i pulumi.IntInput) GetAppsAppOutput {
 	}).(GetAppsAppOutput)
 }
 
+type GetBackendsBackend struct {
+	// The id of the Backend.
+	BackendId string `pulumi:"backendId"`
+	// The name of the Backend.
+	BackendName string `pulumi:"backendName"`
+	// The type of the Backend.
+	BackendType string `pulumi:"backendType"`
+	// The created time of the Backend.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Backend.
+	Description string `pulumi:"description"`
+	Id          string `pulumi:"id"`
+	// The modified time of the Backend.
+	ModifiedTime string `pulumi:"modifiedTime"`
+}
+
+// GetBackendsBackendInput is an input type that accepts GetBackendsBackendArgs and GetBackendsBackendOutput values.
+// You can construct a concrete instance of `GetBackendsBackendInput` via:
+//
+//	GetBackendsBackendArgs{...}
+type GetBackendsBackendInput interface {
+	pulumi.Input
+
+	ToGetBackendsBackendOutput() GetBackendsBackendOutput
+	ToGetBackendsBackendOutputWithContext(context.Context) GetBackendsBackendOutput
+}
+
+type GetBackendsBackendArgs struct {
+	// The id of the Backend.
+	BackendId pulumi.StringInput `pulumi:"backendId"`
+	// The name of the Backend.
+	BackendName pulumi.StringInput `pulumi:"backendName"`
+	// The type of the Backend.
+	BackendType pulumi.StringInput `pulumi:"backendType"`
+	// The created time of the Backend.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Backend.
+	Description pulumi.StringInput `pulumi:"description"`
+	Id          pulumi.StringInput `pulumi:"id"`
+	// The modified time of the Backend.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+}
+
+func (GetBackendsBackendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendsBackend)(nil)).Elem()
+}
+
+func (i GetBackendsBackendArgs) ToGetBackendsBackendOutput() GetBackendsBackendOutput {
+	return i.ToGetBackendsBackendOutputWithContext(context.Background())
+}
+
+func (i GetBackendsBackendArgs) ToGetBackendsBackendOutputWithContext(ctx context.Context) GetBackendsBackendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendsBackendOutput)
+}
+
+// GetBackendsBackendArrayInput is an input type that accepts GetBackendsBackendArray and GetBackendsBackendArrayOutput values.
+// You can construct a concrete instance of `GetBackendsBackendArrayInput` via:
+//
+//	GetBackendsBackendArray{ GetBackendsBackendArgs{...} }
+type GetBackendsBackendArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendsBackendArrayOutput() GetBackendsBackendArrayOutput
+	ToGetBackendsBackendArrayOutputWithContext(context.Context) GetBackendsBackendArrayOutput
+}
+
+type GetBackendsBackendArray []GetBackendsBackendInput
+
+func (GetBackendsBackendArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendsBackend)(nil)).Elem()
+}
+
+func (i GetBackendsBackendArray) ToGetBackendsBackendArrayOutput() GetBackendsBackendArrayOutput {
+	return i.ToGetBackendsBackendArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendsBackendArray) ToGetBackendsBackendArrayOutputWithContext(ctx context.Context) GetBackendsBackendArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendsBackendArrayOutput)
+}
+
+type GetBackendsBackendOutput struct{ *pulumi.OutputState }
+
+func (GetBackendsBackendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendsBackend)(nil)).Elem()
+}
+
+func (o GetBackendsBackendOutput) ToGetBackendsBackendOutput() GetBackendsBackendOutput {
+	return o
+}
+
+func (o GetBackendsBackendOutput) ToGetBackendsBackendOutputWithContext(ctx context.Context) GetBackendsBackendOutput {
+	return o
+}
+
+// The id of the Backend.
+func (o GetBackendsBackendOutput) BackendId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.BackendId }).(pulumi.StringOutput)
+}
+
+// The name of the Backend.
+func (o GetBackendsBackendOutput) BackendName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.BackendName }).(pulumi.StringOutput)
+}
+
+// The type of the Backend.
+func (o GetBackendsBackendOutput) BackendType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.BackendType }).(pulumi.StringOutput)
+}
+
+// The created time of the Backend.
+func (o GetBackendsBackendOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Backend.
+func (o GetBackendsBackendOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetBackendsBackendOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The modified time of the Backend.
+func (o GetBackendsBackendOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendsBackend) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+type GetBackendsBackendArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendsBackendArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendsBackend)(nil)).Elem()
+}
+
+func (o GetBackendsBackendArrayOutput) ToGetBackendsBackendArrayOutput() GetBackendsBackendArrayOutput {
+	return o
+}
+
+func (o GetBackendsBackendArrayOutput) ToGetBackendsBackendArrayOutputWithContext(ctx context.Context) GetBackendsBackendArrayOutput {
+	return o
+}
+
+func (o GetBackendsBackendArrayOutput) Index(i pulumi.IntInput) GetBackendsBackendOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendsBackend {
+		return vs[0].([]GetBackendsBackend)[vs[1].(int)]
+	}).(GetBackendsBackendOutput)
+}
+
 type GetGroupsGroup struct {
 	// Billing status.
 	// - NORMAL: The API group is normal.
@@ -1719,7 +1867,7 @@ type GetGroupsGroup struct {
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
 // You can construct a concrete instance of `GetGroupsGroupInput` via:
 //
-//          GetGroupsGroupArgs{...}
+//	GetGroupsGroupArgs{...}
 type GetGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1769,7 +1917,7 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
-//          GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
 type GetGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1900,6 +2048,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiArrayInput)(nil)).Elem(), GetApisApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppInput)(nil)).Elem(), GetAppsAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppArrayInput)(nil)).Elem(), GetAppsAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendsBackendInput)(nil)).Elem(), GetBackendsBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendsBackendArrayInput)(nil)).Elem(), GetBackendsBackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterOutputType(ApiConstantParameterOutput{})
@@ -1922,6 +2072,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApisApiArrayOutput{})
 	pulumi.RegisterOutputType(GetAppsAppOutput{})
 	pulumi.RegisterOutputType(GetAppsAppArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendsBackendOutput{})
+	pulumi.RegisterOutputType(GetBackendsBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 }

@@ -32,7 +32,7 @@ type GetBindingsBinding struct {
 // GetBindingsBindingInput is an input type that accepts GetBindingsBindingArgs and GetBindingsBindingOutput values.
 // You can construct a concrete instance of `GetBindingsBindingInput` via:
 //
-//          GetBindingsBindingArgs{...}
+//	GetBindingsBindingArgs{...}
 type GetBindingsBindingInput interface {
 	pulumi.Input
 
@@ -74,7 +74,7 @@ func (i GetBindingsBindingArgs) ToGetBindingsBindingOutputWithContext(ctx contex
 // GetBindingsBindingArrayInput is an input type that accepts GetBindingsBindingArray and GetBindingsBindingArrayOutput values.
 // You can construct a concrete instance of `GetBindingsBindingArrayInput` via:
 //
-//          GetBindingsBindingArray{ GetBindingsBindingArgs{...} }
+//	GetBindingsBindingArray{ GetBindingsBindingArgs{...} }
 type GetBindingsBindingArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +192,7 @@ type GetExchangesExchange struct {
 // GetExchangesExchangeInput is an input type that accepts GetExchangesExchangeArgs and GetExchangesExchangeOutput values.
 // You can construct a concrete instance of `GetExchangesExchangeInput` via:
 //
-//          GetExchangesExchangeArgs{...}
+//	GetExchangesExchangeArgs{...}
 type GetExchangesExchangeInput interface {
 	pulumi.Input
 
@@ -234,7 +234,7 @@ func (i GetExchangesExchangeArgs) ToGetExchangesExchangeOutputWithContext(ctx co
 // GetExchangesExchangeArrayInput is an input type that accepts GetExchangesExchangeArray and GetExchangesExchangeArrayOutput values.
 // You can construct a concrete instance of `GetExchangesExchangeArrayInput` via:
 //
-//          GetExchangesExchangeArray{ GetExchangesExchangeArgs{...} }
+//	GetExchangesExchangeArray{ GetExchangesExchangeArgs{...} }
 type GetExchangesExchangeArrayInput interface {
 	pulumi.Input
 
@@ -364,7 +364,7 @@ type GetInstancesInstance struct {
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceInput` via:
 //
-//          GetInstancesInstanceArgs{...}
+//	GetInstancesInstanceArgs{...}
 type GetInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -418,7 +418,7 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
-//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
 type GetInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -568,7 +568,7 @@ type GetQueuesQueue struct {
 // GetQueuesQueueInput is an input type that accepts GetQueuesQueueArgs and GetQueuesQueueOutput values.
 // You can construct a concrete instance of `GetQueuesQueueInput` via:
 //
-//          GetQueuesQueueArgs{...}
+//	GetQueuesQueueArgs{...}
 type GetQueuesQueueInput interface {
 	pulumi.Input
 
@@ -612,7 +612,7 @@ func (i GetQueuesQueueArgs) ToGetQueuesQueueOutputWithContext(ctx context.Contex
 // GetQueuesQueueArrayInput is an input type that accepts GetQueuesQueueArray and GetQueuesQueueArrayOutput values.
 // You can construct a concrete instance of `GetQueuesQueueArrayInput` via:
 //
-//          GetQueuesQueueArray{ GetQueuesQueueArgs{...} }
+//	GetQueuesQueueArray{ GetQueuesQueueArgs{...} }
 type GetQueuesQueueArrayInput interface {
 	pulumi.Input
 
@@ -725,7 +725,7 @@ type GetVirtualHostsHost struct {
 // GetVirtualHostsHostInput is an input type that accepts GetVirtualHostsHostArgs and GetVirtualHostsHostOutput values.
 // You can construct a concrete instance of `GetVirtualHostsHostInput` via:
 //
-//          GetVirtualHostsHostArgs{...}
+//	GetVirtualHostsHostArgs{...}
 type GetVirtualHostsHostInput interface {
 	pulumi.Input
 
@@ -757,7 +757,7 @@ func (i GetVirtualHostsHostArgs) ToGetVirtualHostsHostOutputWithContext(ctx cont
 // GetVirtualHostsHostArrayInput is an input type that accepts GetVirtualHostsHostArray and GetVirtualHostsHostArrayOutput values.
 // You can construct a concrete instance of `GetVirtualHostsHostArrayInput` via:
 //
-//          GetVirtualHostsHostArray{ GetVirtualHostsHostArgs{...} }
+//	GetVirtualHostsHostArray{ GetVirtualHostsHostArgs{...} }
 type GetVirtualHostsHostArrayInput interface {
 	pulumi.Input
 

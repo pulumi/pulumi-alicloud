@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		resources, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-// 			Engine:             pulumi.StringRef("MySQL"),
-// 			EngineVersion:      pulumi.StringRef("5.6"),
-// 			InstanceChargeType: pulumi.StringRef("PostPaid"),
-// 			OutputFile:         pulumi.StringRef("./classes.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDbInstanceClass", resources.InstanceClasses[0].InstanceClass)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resources, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				Engine:             pulumi.StringRef("MySQL"),
+//				EngineVersion:      pulumi.StringRef("5.6"),
+//				InstanceChargeType: pulumi.StringRef("PostPaid"),
+//				OutputFile:         pulumi.StringRef("./classes.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDbInstanceClass", resources.InstanceClasses[0].InstanceClass)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts ...pulumi.InvokeOption) (*GetInstanceClassesResult, error) {
 	var rv GetInstanceClassesResult

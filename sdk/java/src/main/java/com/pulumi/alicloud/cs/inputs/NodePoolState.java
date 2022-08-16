@@ -4,8 +4,10 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolRolloutPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolTaintArgs;
@@ -342,14 +344,29 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * 
+     */
+    @Import(name="kubeletConfiguration")
+    private @Nullable Output<NodePoolKubeletConfigurationArgs> kubeletConfiguration;
+
+    /**
+     * @return Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * 
+     */
+    public Optional<Output<NodePoolKubeletConfigurationArgs>> kubeletConfiguration() {
+        return Optional.ofNullable(this.kubeletConfiguration);
+    }
+
+    /**
+     * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      * 
      */
     @Import(name="labels")
     private @Nullable Output<List<NodePoolLabelArgs>> labels;
 
     /**
-     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * @return A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
      * 
      */
     public Optional<Output<List<NodePoolLabelArgs>>> labels() {
@@ -520,6 +537,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    @Import(name="rolloutPolicy")
+    private @Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy;
+
+    /**
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    public Optional<Output<NodePoolRolloutPolicyArgs>> rolloutPolicy() {
+        return Optional.ofNullable(this.rolloutPolicy);
     }
 
     /**
@@ -788,14 +820,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+     * @return A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -803,14 +835,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A List of Kubernetes taints to assign to the nodes.
+     * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<NodePoolTaintArgs>> taints;
 
     /**
-     * @return A List of Kubernetes taints to assign to the nodes.
+     * @return A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     public Optional<Output<List<NodePoolTaintArgs>>> taints() {
@@ -901,6 +933,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.kubeletConfiguration = $.kubeletConfiguration;
         this.labels = $.labels;
         this.management = $.management;
         this.name = $.name;
@@ -912,6 +945,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.platform = $.platform;
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
+        this.rolloutPolicy = $.rolloutPolicy;
         this.runtimeName = $.runtimeName;
         this.runtimeVersion = $.runtimeVersion;
         this.scalingConfig = $.scalingConfig;
@@ -1427,7 +1461,28 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeletConfiguration(@Nullable Output<NodePoolKubeletConfigurationArgs> kubeletConfiguration) {
+            $.kubeletConfiguration = kubeletConfiguration;
+            return this;
+        }
+
+        /**
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. Detailed below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeletConfiguration(NodePoolKubeletConfigurationArgs kubeletConfiguration) {
+            return kubeletConfiguration(Output.of(kubeletConfiguration));
+        }
+
+        /**
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
          * 
          * @return builder
          * 
@@ -1438,7 +1493,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
          * 
          * @return builder
          * 
@@ -1448,7 +1503,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+         * @param labels A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
          * 
          * @return builder
          * 
@@ -1691,6 +1746,27 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rolloutPolicy(@Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy) {
+            $.rolloutPolicy = rolloutPolicy;
+            return this;
+        }
+
+        /**
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rolloutPolicy(NodePoolRolloutPolicyArgs rolloutPolicy) {
+            return rolloutPolicy(Output.of(rolloutPolicy));
         }
 
         /**
@@ -2081,7 +2157,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
          * 
          * @return builder
          * 
@@ -2092,7 +2168,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
          * 
          * @return builder
          * 
@@ -2102,7 +2178,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes.
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
          * 
          * @return builder
          * 
@@ -2113,7 +2189,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes.
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
          * 
          * @return builder
          * 
@@ -2123,7 +2199,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints A List of Kubernetes taints to assign to the nodes.
+         * @param taints A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
          * 
          * @return builder
          * 

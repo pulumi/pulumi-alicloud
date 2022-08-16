@@ -19,110 +19,113 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAccCenBandwidthLimitConfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := providers.Newalicloud(ctx, "fra", &providers.alicloudArgs{
-// 			Region: "eu-central-1",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "sh", &providers.alicloudArgs{
-// 			Region: "cn-shanghai",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.168.0.0/16"),
-// 		}, pulumi.Provider(alicloud.Fra))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		}, pulumi.Provider(alicloud.Sh))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-// 			Description: pulumi.String("tf-testAccCenBandwidthLimitConfigDescription"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
-// 			Bandwidth: pulumi.Int(5),
-// 			GeographicRegionIds: pulumi.StringArray{
-// 				pulumi.String("Europe"),
-// 				pulumi.String("China"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bwpAttach, err := cen.NewBandwidthPackageAttachment(ctx, "bwpAttach", &cen.BandwidthPackageAttachmentArgs{
-// 			InstanceId:         cen.ID(),
-// 			BandwidthPackageId: bwp.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpcAttach1, err := cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            cen.ID(),
-// 			ChildInstanceId:       vpc1.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("eu-central-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpcAttach2, err := cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
-// 			InstanceId:            cen.ID(),
-// 			ChildInstanceId:       vpc2.ID(),
-// 			ChildInstanceType:     pulumi.String("VPC"),
-// 			ChildInstanceRegionId: pulumi.String("cn-shanghai"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewBandwidthLimit(ctx, "foo", &cen.BandwidthLimitArgs{
-// 			InstanceId: cen.ID(),
-// 			RegionIds: pulumi.StringArray{
-// 				pulumi.String("eu-central-1"),
-// 				pulumi.String("cn-shanghai"),
-// 			},
-// 			BandwidthLimit: pulumi.Int(4),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			bwpAttach,
-// 			vpcAttach1,
-// 			vpcAttach2,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccCenBandwidthLimitConfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := providers.Newalicloud(ctx, "fra", &providers.alicloudArgs{
+//				Region: "eu-central-1",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "sh", &providers.alicloudArgs{
+//				Region: "cn-shanghai",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Fra))
+//			if err != nil {
+//				return err
+//			}
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			}, pulumi.Provider(alicloud.Sh))
+//			if err != nil {
+//				return err
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				Description: pulumi.String("tf-testAccCenBandwidthLimitConfigDescription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
+//				Bandwidth: pulumi.Int(5),
+//				GeographicRegionIds: pulumi.StringArray{
+//					pulumi.String("Europe"),
+//					pulumi.String("China"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bwpAttach, err := cen.NewBandwidthPackageAttachment(ctx, "bwpAttach", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         cen.ID(),
+//				BandwidthPackageId: bwp.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcAttach1, err := cen.NewInstanceAttachment(ctx, "vpcAttach1", &cen.InstanceAttachmentArgs{
+//				InstanceId:            cen.ID(),
+//				ChildInstanceId:       vpc1.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("eu-central-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcAttach2, err := cen.NewInstanceAttachment(ctx, "vpcAttach2", &cen.InstanceAttachmentArgs{
+//				InstanceId:            cen.ID(),
+//				ChildInstanceId:       vpc2.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String("cn-shanghai"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewBandwidthLimit(ctx, "foo", &cen.BandwidthLimitArgs{
+//				InstanceId: cen.ID(),
+//				RegionIds: pulumi.StringArray{
+//					pulumi.String("eu-central-1"),
+//					pulumi.String("cn-shanghai"),
+//				},
+//				BandwidthLimit: pulumi.Int(4),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bwpAttach,
+//				vpcAttach1,
+//				vpcAttach2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -130,7 +133,9 @@ import (
 // CEN bandwidth limit can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
+//
+//	$ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
+//
 // ```
 type BandwidthLimit struct {
 	pulumi.CustomResourceState
@@ -247,7 +252,7 @@ func (i *BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) 
 // BandwidthLimitArrayInput is an input type that accepts BandwidthLimitArray and BandwidthLimitArrayOutput values.
 // You can construct a concrete instance of `BandwidthLimitArrayInput` via:
 //
-//          BandwidthLimitArray{ BandwidthLimitArgs{...} }
+//	BandwidthLimitArray{ BandwidthLimitArgs{...} }
 type BandwidthLimitArrayInput interface {
 	pulumi.Input
 
@@ -272,7 +277,7 @@ func (i BandwidthLimitArray) ToBandwidthLimitArrayOutputWithContext(ctx context.
 // BandwidthLimitMapInput is an input type that accepts BandwidthLimitMap and BandwidthLimitMapOutput values.
 // You can construct a concrete instance of `BandwidthLimitMapInput` via:
 //
-//          BandwidthLimitMap{ "key": BandwidthLimitArgs{...} }
+//	BandwidthLimitMap{ "key": BandwidthLimitArgs{...} }
 type BandwidthLimitMapInput interface {
 	pulumi.Input
 

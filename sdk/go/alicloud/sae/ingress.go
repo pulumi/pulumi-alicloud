@@ -19,102 +19,105 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_value"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
-// 			Specification: pulumi.String("slb.s2.small"),
-// 			VswitchId:     pulumi.Any(data.Alicloud_vswitches.Default.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		namespaceId := "cn-hangzhou:yourname"
-// 		if param := cfg.Get("namespaceId"); param != "" {
-// 			namespaceId = param
-// 		}
-// 		defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
-// 			NamespaceId:          pulumi.String(namespaceId),
-// 			NamespaceName:        pulumi.String(name),
-// 			NamespaceDescription: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
-// 			AppDescription: pulumi.String("your_app_description"),
-// 			AppName:        pulumi.String("your_app_name"),
-// 			NamespaceId:    pulumi.String("your_namespace_id"),
-// 			PackageUrl:     pulumi.String("your_package_url"),
-// 			PackageType:    pulumi.String("your_package_url"),
-// 			Jdk:            pulumi.String("jdk_specifications"),
-// 			VswitchId:      pulumi.Any(data.Alicloud_vswitches.Default.Ids[0]),
-// 			Replicas:       pulumi.Int("your_replicas"),
-// 			Cpu:            pulumi.Int("cpu_specifications"),
-// 			Memory:         pulumi.Int("memory_specifications"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sae.NewIngress(ctx, "defaultIngress", &sae.IngressArgs{
-// 			SlbId:        defaultLoadBalancer.ID(),
-// 			NamespaceId:  defaultNamespace.ID(),
-// 			ListenerPort: pulumi.Int("your_listener_port"),
-// 			Rules: sae.IngressRuleArray{
-// 				&sae.IngressRuleArgs{
-// 					AppId:         defaultApplication.ID(),
-// 					ContainerPort: pulumi.Int("your_container_port"),
-// 					Domain:        pulumi.String("your_domain"),
-// 					AppName:       pulumi.String("your_name"),
-// 					Path:          pulumi.String("your_path"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_value"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
+//				Specification: pulumi.String("slb.s2.small"),
+//				VswitchId:     pulumi.Any(data.Alicloud_vswitches.Default.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			namespaceId := "cn-hangzhou:yourname"
+//			if param := cfg.Get("namespaceId"); param != "" {
+//				namespaceId = param
+//			}
+//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//				NamespaceId:          pulumi.String(namespaceId),
+//				NamespaceName:        pulumi.String(name),
+//				NamespaceDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
+//				AppDescription: pulumi.String("your_app_description"),
+//				AppName:        pulumi.String("your_app_name"),
+//				NamespaceId:    pulumi.String("your_namespace_id"),
+//				PackageUrl:     pulumi.String("your_package_url"),
+//				PackageType:    pulumi.String("your_package_url"),
+//				Jdk:            pulumi.String("jdk_specifications"),
+//				VswitchId:      pulumi.Any(data.Alicloud_vswitches.Default.Ids[0]),
+//				Replicas:       pulumi.Int("your_replicas"),
+//				Cpu:            pulumi.Int("cpu_specifications"),
+//				Memory:         pulumi.Int("memory_specifications"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sae.NewIngress(ctx, "defaultIngress", &sae.IngressArgs{
+//				SlbId:        defaultLoadBalancer.ID(),
+//				NamespaceId:  defaultNamespace.ID(),
+//				ListenerPort: pulumi.Int("your_listener_port"),
+//				Rules: sae.IngressRuleArray{
+//					&sae.IngressRuleArgs{
+//						AppId:         defaultApplication.ID(),
+//						ContainerPort: pulumi.Int("your_container_port"),
+//						Domain:        pulumi.String("your_domain"),
+//						AppName:       pulumi.String("your_name"),
+//						Path:          pulumi.String("your_path"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -122,7 +125,9 @@ import (
 // Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:sae/ingress:Ingress example <id>
+//
+//	$ pulumi import alicloud:sae/ingress:Ingress example <id>
+//
 // ```
 type Ingress struct {
 	pulumi.CustomResourceState
@@ -282,7 +287,7 @@ func (i *Ingress) ToIngressOutputWithContext(ctx context.Context) IngressOutput 
 // IngressArrayInput is an input type that accepts IngressArray and IngressArrayOutput values.
 // You can construct a concrete instance of `IngressArrayInput` via:
 //
-//          IngressArray{ IngressArgs{...} }
+//	IngressArray{ IngressArgs{...} }
 type IngressArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +312,7 @@ func (i IngressArray) ToIngressArrayOutputWithContext(ctx context.Context) Ingre
 // IngressMapInput is an input type that accepts IngressMap and IngressMapOutput values.
 // You can construct a concrete instance of `IngressMapInput` via:
 //
-//          IngressMap{ "key": IngressArgs{...} }
+//	IngressMap{ "key": IngressArgs{...} }
 type IngressMapInput interface {
 	pulumi.Input
 

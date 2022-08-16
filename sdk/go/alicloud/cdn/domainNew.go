@@ -19,38 +19,41 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-// 			CdnType:    pulumi.String("web"),
-// 			DomainName: pulumi.String("terraform.test.com"),
-// 			Scope:      pulumi.String("overseas"),
-// 			Sources: cdn.DomainNewSourceArray{
-// 				&cdn.DomainNewSourceArgs{
-// 					Content:  pulumi.String("1.1.1.1"),
-// 					Port:     pulumi.Int(80),
-// 					Priority: pulumi.Int(20),
-// 					Type:     pulumi.String("ipaddr"),
-// 					Weight:   pulumi.Int(10),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
+//				CdnType:    pulumi.String("web"),
+//				DomainName: pulumi.String("terraform.test.com"),
+//				Scope:      pulumi.String("overseas"),
+//				Sources: cdn.DomainNewSourceArray{
+//					&cdn.DomainNewSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Port:     pulumi.Int(80),
+//						Priority: pulumi.Int(20),
+//						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // CDN domain can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+//
+//	$ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+//
 // ```
 type DomainNew struct {
 	pulumi.CustomResourceState
@@ -221,7 +226,7 @@ func (i *DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewO
 // DomainNewArrayInput is an input type that accepts DomainNewArray and DomainNewArrayOutput values.
 // You can construct a concrete instance of `DomainNewArrayInput` via:
 //
-//          DomainNewArray{ DomainNewArgs{...} }
+//	DomainNewArray{ DomainNewArgs{...} }
 type DomainNewArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +251,7 @@ func (i DomainNewArray) ToDomainNewArrayOutputWithContext(ctx context.Context) D
 // DomainNewMapInput is an input type that accepts DomainNewMap and DomainNewMapOutput values.
 // You can construct a concrete instance of `DomainNewMapInput` via:
 //
-//          DomainNewMap{ "key": DomainNewArgs{...} }
+//	DomainNewMap{ "key": DomainNewArgs{...} }
 type DomainNewMapInput interface {
 	pulumi.Input
 

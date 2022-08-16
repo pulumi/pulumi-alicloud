@@ -21,29 +21,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
-// 			CidrBlock:   pulumi.String("192.168.0.0/24"),
-// 			Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
-// 			IsDefault:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
+//				IsDefault:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // The cloud connect network instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
+//
+//	$ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
+//
 // ```
 type Network struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 // NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkArrayInput` via:
 //
-//          NetworkArray{ NetworkArgs{...} }
+//	NetworkArray{ NetworkArgs{...} }
 type NetworkArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) Netwo
 // NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
 // You can construct a concrete instance of `NetworkMapInput` via:
 //
-//          NetworkMap{ "key": NetworkArgs{...} }
+//	NetworkMap{ "key": NetworkArgs{...} }
 type NetworkMapInput interface {
 	pulumi.Input
 

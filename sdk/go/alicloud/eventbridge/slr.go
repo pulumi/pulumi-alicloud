@@ -95,7 +95,7 @@ func (i *Slr) ToSlrOutputWithContext(ctx context.Context) SlrOutput {
 // SlrArrayInput is an input type that accepts SlrArray and SlrArrayOutput values.
 // You can construct a concrete instance of `SlrArrayInput` via:
 //
-//          SlrArray{ SlrArgs{...} }
+//	SlrArray{ SlrArgs{...} }
 type SlrArrayInput interface {
 	pulumi.Input
 
@@ -120,7 +120,7 @@ func (i SlrArray) ToSlrArrayOutputWithContext(ctx context.Context) SlrArrayOutpu
 // SlrMapInput is an input type that accepts SlrMap and SlrMapOutput values.
 // You can construct a concrete instance of `SlrMapInput` via:
 //
-//          SlrMap{ "key": SlrArgs{...} }
+//	SlrMap{ "key": SlrArgs{...} }
 type SlrMapInput interface {
 	pulumi.Input
 

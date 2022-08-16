@@ -20,7 +20,7 @@ type ChangeSetParameter struct {
 // ChangeSetParameterInput is an input type that accepts ChangeSetParameterArgs and ChangeSetParameterOutput values.
 // You can construct a concrete instance of `ChangeSetParameterInput` via:
 //
-//          ChangeSetParameterArgs{...}
+//	ChangeSetParameterArgs{...}
 type ChangeSetParameterInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i ChangeSetParameterArgs) ToChangeSetParameterOutputWithContext(ctx contex
 // ChangeSetParameterArrayInput is an input type that accepts ChangeSetParameterArray and ChangeSetParameterArrayOutput values.
 // You can construct a concrete instance of `ChangeSetParameterArrayInput` via:
 //
-//          ChangeSetParameterArray{ ChangeSetParameterArgs{...} }
+//	ChangeSetParameterArray{ ChangeSetParameterArgs{...} }
 type ChangeSetParameterArrayInput interface {
 	pulumi.Input
 
@@ -126,7 +126,7 @@ type StackGroupParameter struct {
 // StackGroupParameterInput is an input type that accepts StackGroupParameterArgs and StackGroupParameterOutput values.
 // You can construct a concrete instance of `StackGroupParameterInput` via:
 //
-//          StackGroupParameterArgs{...}
+//	StackGroupParameterArgs{...}
 type StackGroupParameterInput interface {
 	pulumi.Input
 
@@ -156,7 +156,7 @@ func (i StackGroupParameterArgs) ToStackGroupParameterOutputWithContext(ctx cont
 // StackGroupParameterArrayInput is an input type that accepts StackGroupParameterArray and StackGroupParameterArrayOutput values.
 // You can construct a concrete instance of `StackGroupParameterArrayInput` via:
 //
-//          StackGroupParameterArray{ StackGroupParameterArgs{...} }
+//	StackGroupParameterArray{ StackGroupParameterArgs{...} }
 type StackGroupParameterArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +232,7 @@ type StackInstanceParameterOverride struct {
 // StackInstanceParameterOverrideInput is an input type that accepts StackInstanceParameterOverrideArgs and StackInstanceParameterOverrideOutput values.
 // You can construct a concrete instance of `StackInstanceParameterOverrideInput` via:
 //
-//          StackInstanceParameterOverrideArgs{...}
+//	StackInstanceParameterOverrideArgs{...}
 type StackInstanceParameterOverrideInput interface {
 	pulumi.Input
 
@@ -262,7 +262,7 @@ func (i StackInstanceParameterOverrideArgs) ToStackInstanceParameterOverrideOutp
 // StackInstanceParameterOverrideArrayInput is an input type that accepts StackInstanceParameterOverrideArray and StackInstanceParameterOverrideArrayOutput values.
 // You can construct a concrete instance of `StackInstanceParameterOverrideArrayInput` via:
 //
-//          StackInstanceParameterOverrideArray{ StackInstanceParameterOverrideArgs{...} }
+//	StackInstanceParameterOverrideArray{ StackInstanceParameterOverrideArgs{...} }
 type StackInstanceParameterOverrideArrayInput interface {
 	pulumi.Input
 
@@ -338,7 +338,7 @@ type StackParameter struct {
 // StackParameterInput is an input type that accepts StackParameterArgs and StackParameterOutput values.
 // You can construct a concrete instance of `StackParameterInput` via:
 //
-//          StackParameterArgs{...}
+//	StackParameterArgs{...}
 type StackParameterInput interface {
 	pulumi.Input
 
@@ -368,7 +368,7 @@ func (i StackParameterArgs) ToStackParameterOutputWithContext(ctx context.Contex
 // StackParameterArrayInput is an input type that accepts StackParameterArray and StackParameterArrayOutput values.
 // You can construct a concrete instance of `StackParameterArrayInput` via:
 //
-//          StackParameterArray{ StackParameterArgs{...} }
+//	StackParameterArray{ StackParameterArgs{...} }
 type StackParameterArrayInput interface {
 	pulumi.Input
 
@@ -444,7 +444,7 @@ type TemplateScratchPreferenceParameter struct {
 // TemplateScratchPreferenceParameterInput is an input type that accepts TemplateScratchPreferenceParameterArgs and TemplateScratchPreferenceParameterOutput values.
 // You can construct a concrete instance of `TemplateScratchPreferenceParameterInput` via:
 //
-//          TemplateScratchPreferenceParameterArgs{...}
+//	TemplateScratchPreferenceParameterArgs{...}
 type TemplateScratchPreferenceParameterInput interface {
 	pulumi.Input
 
@@ -474,7 +474,7 @@ func (i TemplateScratchPreferenceParameterArgs) ToTemplateScratchPreferenceParam
 // TemplateScratchPreferenceParameterArrayInput is an input type that accepts TemplateScratchPreferenceParameterArray and TemplateScratchPreferenceParameterArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchPreferenceParameterArrayInput` via:
 //
-//          TemplateScratchPreferenceParameterArray{ TemplateScratchPreferenceParameterArgs{...} }
+//	TemplateScratchPreferenceParameterArray{ TemplateScratchPreferenceParameterArgs{...} }
 type TemplateScratchPreferenceParameterArrayInput interface {
 	pulumi.Input
 
@@ -550,7 +550,7 @@ type TemplateScratchSourceResource struct {
 // TemplateScratchSourceResourceInput is an input type that accepts TemplateScratchSourceResourceArgs and TemplateScratchSourceResourceOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceResourceInput` via:
 //
-//          TemplateScratchSourceResourceArgs{...}
+//	TemplateScratchSourceResourceArgs{...}
 type TemplateScratchSourceResourceInput interface {
 	pulumi.Input
 
@@ -580,7 +580,7 @@ func (i TemplateScratchSourceResourceArgs) ToTemplateScratchSourceResourceOutput
 // TemplateScratchSourceResourceArrayInput is an input type that accepts TemplateScratchSourceResourceArray and TemplateScratchSourceResourceArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceResourceArrayInput` via:
 //
-//          TemplateScratchSourceResourceArray{ TemplateScratchSourceResourceArgs{...} }
+//	TemplateScratchSourceResourceArray{ TemplateScratchSourceResourceArgs{...} }
 type TemplateScratchSourceResourceArrayInput interface {
 	pulumi.Input
 
@@ -656,7 +656,7 @@ type TemplateScratchSourceResourceGroup struct {
 // TemplateScratchSourceResourceGroupInput is an input type that accepts TemplateScratchSourceResourceGroupArgs and TemplateScratchSourceResourceGroupOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceResourceGroupInput` via:
 //
-//          TemplateScratchSourceResourceGroupArgs{...}
+//	TemplateScratchSourceResourceGroupArgs{...}
 type TemplateScratchSourceResourceGroupInput interface {
 	pulumi.Input
 
@@ -694,11 +694,11 @@ func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceG
 // TemplateScratchSourceResourceGroupPtrInput is an input type that accepts TemplateScratchSourceResourceGroupArgs, TemplateScratchSourceResourceGroupPtr and TemplateScratchSourceResourceGroupPtrOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceResourceGroupPtrInput` via:
 //
-//          TemplateScratchSourceResourceGroupArgs{...}
+//	        TemplateScratchSourceResourceGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TemplateScratchSourceResourceGroupPtrInput interface {
 	pulumi.Input
 
@@ -812,7 +812,7 @@ type TemplateScratchSourceTag struct {
 // TemplateScratchSourceTagInput is an input type that accepts TemplateScratchSourceTagArgs and TemplateScratchSourceTagOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceTagInput` via:
 //
-//          TemplateScratchSourceTagArgs{...}
+//	TemplateScratchSourceTagArgs{...}
 type TemplateScratchSourceTagInput interface {
 	pulumi.Input
 
@@ -850,11 +850,11 @@ func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagPtrOutputWithCon
 // TemplateScratchSourceTagPtrInput is an input type that accepts TemplateScratchSourceTagArgs, TemplateScratchSourceTagPtr and TemplateScratchSourceTagPtrOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceTagPtrInput` via:
 //
-//          TemplateScratchSourceTagArgs{...}
+//	        TemplateScratchSourceTagArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TemplateScratchSourceTagPtrInput interface {
 	pulumi.Input
 
@@ -990,7 +990,7 @@ type GetChangeSetsSet struct {
 // GetChangeSetsSetInput is an input type that accepts GetChangeSetsSetArgs and GetChangeSetsSetOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetInput` via:
 //
-//          GetChangeSetsSetArgs{...}
+//	GetChangeSetsSetArgs{...}
 type GetChangeSetsSetInput interface {
 	pulumi.Input
 
@@ -1042,7 +1042,7 @@ func (i GetChangeSetsSetArgs) ToGetChangeSetsSetOutputWithContext(ctx context.Co
 // GetChangeSetsSetArrayInput is an input type that accepts GetChangeSetsSetArray and GetChangeSetsSetArrayOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetArrayInput` via:
 //
-//          GetChangeSetsSetArray{ GetChangeSetsSetArgs{...} }
+//	GetChangeSetsSetArray{ GetChangeSetsSetArgs{...} }
 type GetChangeSetsSetArrayInput interface {
 	pulumi.Input
 
@@ -1173,7 +1173,7 @@ type GetChangeSetsSetParameter struct {
 // GetChangeSetsSetParameterInput is an input type that accepts GetChangeSetsSetParameterArgs and GetChangeSetsSetParameterOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetParameterInput` via:
 //
-//          GetChangeSetsSetParameterArgs{...}
+//	GetChangeSetsSetParameterArgs{...}
 type GetChangeSetsSetParameterInput interface {
 	pulumi.Input
 
@@ -1203,7 +1203,7 @@ func (i GetChangeSetsSetParameterArgs) ToGetChangeSetsSetParameterOutputWithCont
 // GetChangeSetsSetParameterArrayInput is an input type that accepts GetChangeSetsSetParameterArray and GetChangeSetsSetParameterArrayOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetParameterArrayInput` via:
 //
-//          GetChangeSetsSetParameterArray{ GetChangeSetsSetParameterArgs{...} }
+//	GetChangeSetsSetParameterArray{ GetChangeSetsSetParameterArgs{...} }
 type GetChangeSetsSetParameterArrayInput interface {
 	pulumi.Input
 
@@ -1281,7 +1281,7 @@ type GetRegionsRegion struct {
 // GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
 // You can construct a concrete instance of `GetRegionsRegionInput` via:
 //
-//          GetRegionsRegionArgs{...}
+//	GetRegionsRegionArgs{...}
 type GetRegionsRegionInput interface {
 	pulumi.Input
 
@@ -1313,7 +1313,7 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
-//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
 type GetRegionsRegionArrayInput interface {
 	pulumi.Input
 
@@ -1408,7 +1408,7 @@ type GetStackGroupsGroup struct {
 // GetStackGroupsGroupInput is an input type that accepts GetStackGroupsGroupArgs and GetStackGroupsGroupOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupInput` via:
 //
-//          GetStackGroupsGroupArgs{...}
+//	GetStackGroupsGroupArgs{...}
 type GetStackGroupsGroupInput interface {
 	pulumi.Input
 
@@ -1452,7 +1452,7 @@ func (i GetStackGroupsGroupArgs) ToGetStackGroupsGroupOutputWithContext(ctx cont
 // GetStackGroupsGroupArrayInput is an input type that accepts GetStackGroupsGroupArray and GetStackGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupArrayInput` via:
 //
-//          GetStackGroupsGroupArray{ GetStackGroupsGroupArgs{...} }
+//	GetStackGroupsGroupArray{ GetStackGroupsGroupArgs{...} }
 type GetStackGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -1563,7 +1563,7 @@ type GetStackGroupsGroupParameter struct {
 // GetStackGroupsGroupParameterInput is an input type that accepts GetStackGroupsGroupParameterArgs and GetStackGroupsGroupParameterOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupParameterInput` via:
 //
-//          GetStackGroupsGroupParameterArgs{...}
+//	GetStackGroupsGroupParameterArgs{...}
 type GetStackGroupsGroupParameterInput interface {
 	pulumi.Input
 
@@ -1593,7 +1593,7 @@ func (i GetStackGroupsGroupParameterArgs) ToGetStackGroupsGroupParameterOutputWi
 // GetStackGroupsGroupParameterArrayInput is an input type that accepts GetStackGroupsGroupParameterArray and GetStackGroupsGroupParameterArrayOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupParameterArrayInput` via:
 //
-//          GetStackGroupsGroupParameterArray{ GetStackGroupsGroupParameterArgs{...} }
+//	GetStackGroupsGroupParameterArray{ GetStackGroupsGroupParameterArgs{...} }
 type GetStackGroupsGroupParameterArrayInput interface {
 	pulumi.Input
 
@@ -1688,7 +1688,7 @@ type GetStackInstancesInstance struct {
 // GetStackInstancesInstanceInput is an input type that accepts GetStackInstancesInstanceArgs and GetStackInstancesInstanceOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceInput` via:
 //
-//          GetStackInstancesInstanceArgs{...}
+//	GetStackInstancesInstanceArgs{...}
 type GetStackInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -1737,7 +1737,7 @@ func (i GetStackInstancesInstanceArgs) ToGetStackInstancesInstanceOutputWithCont
 // GetStackInstancesInstanceArrayInput is an input type that accepts GetStackInstancesInstanceArray and GetStackInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceArrayInput` via:
 //
-//          GetStackInstancesInstanceArray{ GetStackInstancesInstanceArgs{...} }
+//	GetStackInstancesInstanceArray{ GetStackInstancesInstanceArgs{...} }
 type GetStackInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1855,7 +1855,7 @@ type GetStackInstancesInstanceParameterOverride struct {
 // GetStackInstancesInstanceParameterOverrideInput is an input type that accepts GetStackInstancesInstanceParameterOverrideArgs and GetStackInstancesInstanceParameterOverrideOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceParameterOverrideInput` via:
 //
-//          GetStackInstancesInstanceParameterOverrideArgs{...}
+//	GetStackInstancesInstanceParameterOverrideArgs{...}
 type GetStackInstancesInstanceParameterOverrideInput interface {
 	pulumi.Input
 
@@ -1885,7 +1885,7 @@ func (i GetStackInstancesInstanceParameterOverrideArgs) ToGetStackInstancesInsta
 // GetStackInstancesInstanceParameterOverrideArrayInput is an input type that accepts GetStackInstancesInstanceParameterOverrideArray and GetStackInstancesInstanceParameterOverrideArrayOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceParameterOverrideArrayInput` via:
 //
-//          GetStackInstancesInstanceParameterOverrideArray{ GetStackInstancesInstanceParameterOverrideArgs{...} }
+//	GetStackInstancesInstanceParameterOverrideArray{ GetStackInstancesInstanceParameterOverrideArgs{...} }
 type GetStackInstancesInstanceParameterOverrideArrayInput interface {
 	pulumi.Input
 
@@ -1993,7 +1993,7 @@ type GetStacksStack struct {
 // GetStacksStackInput is an input type that accepts GetStacksStackArgs and GetStacksStackOutput values.
 // You can construct a concrete instance of `GetStacksStackInput` via:
 //
-//          GetStacksStackArgs{...}
+//	GetStacksStackArgs{...}
 type GetStacksStackInput interface {
 	pulumi.Input
 
@@ -2055,7 +2055,7 @@ func (i GetStacksStackArgs) ToGetStacksStackOutputWithContext(ctx context.Contex
 // GetStacksStackArrayInput is an input type that accepts GetStacksStackArray and GetStacksStackArrayOutput values.
 // You can construct a concrete instance of `GetStacksStackArrayInput` via:
 //
-//          GetStacksStackArray{ GetStacksStackArgs{...} }
+//	GetStacksStackArray{ GetStacksStackArgs{...} }
 type GetStacksStackArrayInput interface {
 	pulumi.Input
 
@@ -2211,7 +2211,7 @@ type GetStacksStackParameter struct {
 // GetStacksStackParameterInput is an input type that accepts GetStacksStackParameterArgs and GetStacksStackParameterOutput values.
 // You can construct a concrete instance of `GetStacksStackParameterInput` via:
 //
-//          GetStacksStackParameterArgs{...}
+//	GetStacksStackParameterArgs{...}
 type GetStacksStackParameterInput interface {
 	pulumi.Input
 
@@ -2241,7 +2241,7 @@ func (i GetStacksStackParameterArgs) ToGetStacksStackParameterOutputWithContext(
 // GetStacksStackParameterArrayInput is an input type that accepts GetStacksStackParameterArray and GetStacksStackParameterArrayOutput values.
 // You can construct a concrete instance of `GetStacksStackParameterArrayInput` via:
 //
-//          GetStacksStackParameterArray{ GetStacksStackParameterArgs{...} }
+//	GetStacksStackParameterArray{ GetStacksStackParameterArgs{...} }
 type GetStacksStackParameterArrayInput interface {
 	pulumi.Input
 
@@ -2337,7 +2337,7 @@ type GetTemplateScratchesScratch struct {
 // GetTemplateScratchesScratchInput is an input type that accepts GetTemplateScratchesScratchArgs and GetTemplateScratchesScratchOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchInput` via:
 //
-//          GetTemplateScratchesScratchArgs{...}
+//	GetTemplateScratchesScratchArgs{...}
 type GetTemplateScratchesScratchInput interface {
 	pulumi.Input
 
@@ -2387,7 +2387,7 @@ func (i GetTemplateScratchesScratchArgs) ToGetTemplateScratchesScratchOutputWith
 // GetTemplateScratchesScratchArrayInput is an input type that accepts GetTemplateScratchesScratchArray and GetTemplateScratchesScratchArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchArrayInput` via:
 //
-//          GetTemplateScratchesScratchArray{ GetTemplateScratchesScratchArgs{...} }
+//	GetTemplateScratchesScratchArray{ GetTemplateScratchesScratchArgs{...} }
 type GetTemplateScratchesScratchArrayInput interface {
 	pulumi.Input
 
@@ -2519,7 +2519,7 @@ type GetTemplateScratchesScratchPreferenceParameter struct {
 // GetTemplateScratchesScratchPreferenceParameterInput is an input type that accepts GetTemplateScratchesScratchPreferenceParameterArgs and GetTemplateScratchesScratchPreferenceParameterOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchPreferenceParameterInput` via:
 //
-//          GetTemplateScratchesScratchPreferenceParameterArgs{...}
+//	GetTemplateScratchesScratchPreferenceParameterArgs{...}
 type GetTemplateScratchesScratchPreferenceParameterInput interface {
 	pulumi.Input
 
@@ -2549,7 +2549,7 @@ func (i GetTemplateScratchesScratchPreferenceParameterArgs) ToGetTemplateScratch
 // GetTemplateScratchesScratchPreferenceParameterArrayInput is an input type that accepts GetTemplateScratchesScratchPreferenceParameterArray and GetTemplateScratchesScratchPreferenceParameterArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchPreferenceParameterArrayInput` via:
 //
-//          GetTemplateScratchesScratchPreferenceParameterArray{ GetTemplateScratchesScratchPreferenceParameterArgs{...} }
+//	GetTemplateScratchesScratchPreferenceParameterArray{ GetTemplateScratchesScratchPreferenceParameterArgs{...} }
 type GetTemplateScratchesScratchPreferenceParameterArrayInput interface {
 	pulumi.Input
 
@@ -2625,7 +2625,7 @@ type GetTemplateScratchesScratchSourceResource struct {
 // GetTemplateScratchesScratchSourceResourceInput is an input type that accepts GetTemplateScratchesScratchSourceResourceArgs and GetTemplateScratchesScratchSourceResourceOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceInput` via:
 //
-//          GetTemplateScratchesScratchSourceResourceArgs{...}
+//	GetTemplateScratchesScratchSourceResourceArgs{...}
 type GetTemplateScratchesScratchSourceResourceInput interface {
 	pulumi.Input
 
@@ -2655,7 +2655,7 @@ func (i GetTemplateScratchesScratchSourceResourceArgs) ToGetTemplateScratchesScr
 // GetTemplateScratchesScratchSourceResourceArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceArray and GetTemplateScratchesScratchSourceResourceArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceArrayInput` via:
 //
-//          GetTemplateScratchesScratchSourceResourceArray{ GetTemplateScratchesScratchSourceResourceArgs{...} }
+//	GetTemplateScratchesScratchSourceResourceArray{ GetTemplateScratchesScratchSourceResourceArgs{...} }
 type GetTemplateScratchesScratchSourceResourceArrayInput interface {
 	pulumi.Input
 
@@ -2731,7 +2731,7 @@ type GetTemplateScratchesScratchSourceResourceGroup struct {
 // GetTemplateScratchesScratchSourceResourceGroupInput is an input type that accepts GetTemplateScratchesScratchSourceResourceGroupArgs and GetTemplateScratchesScratchSourceResourceGroupOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceGroupInput` via:
 //
-//          GetTemplateScratchesScratchSourceResourceGroupArgs{...}
+//	GetTemplateScratchesScratchSourceResourceGroupArgs{...}
 type GetTemplateScratchesScratchSourceResourceGroupInput interface {
 	pulumi.Input
 
@@ -2761,7 +2761,7 @@ func (i GetTemplateScratchesScratchSourceResourceGroupArgs) ToGetTemplateScratch
 // GetTemplateScratchesScratchSourceResourceGroupArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceGroupArray and GetTemplateScratchesScratchSourceResourceGroupArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceGroupArrayInput` via:
 //
-//          GetTemplateScratchesScratchSourceResourceGroupArray{ GetTemplateScratchesScratchSourceResourceGroupArgs{...} }
+//	GetTemplateScratchesScratchSourceResourceGroupArray{ GetTemplateScratchesScratchSourceResourceGroupArgs{...} }
 type GetTemplateScratchesScratchSourceResourceGroupArrayInput interface {
 	pulumi.Input
 
@@ -2837,7 +2837,7 @@ type GetTemplateScratchesScratchSourceTag struct {
 // GetTemplateScratchesScratchSourceTagInput is an input type that accepts GetTemplateScratchesScratchSourceTagArgs and GetTemplateScratchesScratchSourceTagOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceTagInput` via:
 //
-//          GetTemplateScratchesScratchSourceTagArgs{...}
+//	GetTemplateScratchesScratchSourceTagArgs{...}
 type GetTemplateScratchesScratchSourceTagInput interface {
 	pulumi.Input
 
@@ -2867,7 +2867,7 @@ func (i GetTemplateScratchesScratchSourceTagArgs) ToGetTemplateScratchesScratchS
 // GetTemplateScratchesScratchSourceTagArrayInput is an input type that accepts GetTemplateScratchesScratchSourceTagArray and GetTemplateScratchesScratchSourceTagArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceTagArrayInput` via:
 //
-//          GetTemplateScratchesScratchSourceTagArray{ GetTemplateScratchesScratchSourceTagArgs{...} }
+//	GetTemplateScratchesScratchSourceTagArray{ GetTemplateScratchesScratchSourceTagArgs{...} }
 type GetTemplateScratchesScratchSourceTagArrayInput interface {
 	pulumi.Input
 
@@ -2941,7 +2941,7 @@ type GetTemplateScratchesScratchStack struct {
 // GetTemplateScratchesScratchStackInput is an input type that accepts GetTemplateScratchesScratchStackArgs and GetTemplateScratchesScratchStackOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchStackInput` via:
 //
-//          GetTemplateScratchesScratchStackArgs{...}
+//	GetTemplateScratchesScratchStackArgs{...}
 type GetTemplateScratchesScratchStackInput interface {
 	pulumi.Input
 
@@ -2969,7 +2969,7 @@ func (i GetTemplateScratchesScratchStackArgs) ToGetTemplateScratchesScratchStack
 // GetTemplateScratchesScratchStackArrayInput is an input type that accepts GetTemplateScratchesScratchStackArray and GetTemplateScratchesScratchStackArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchStackArrayInput` via:
 //
-//          GetTemplateScratchesScratchStackArray{ GetTemplateScratchesScratchStackArgs{...} }
+//	GetTemplateScratchesScratchStackArray{ GetTemplateScratchesScratchStackArgs{...} }
 type GetTemplateScratchesScratchStackArrayInput interface {
 	pulumi.Input
 
@@ -3058,7 +3058,7 @@ type GetTemplatesTemplate struct {
 // GetTemplatesTemplateInput is an input type that accepts GetTemplatesTemplateArgs and GetTemplatesTemplateOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateInput` via:
 //
-//          GetTemplatesTemplateArgs{...}
+//	GetTemplatesTemplateArgs{...}
 type GetTemplatesTemplateInput interface {
 	pulumi.Input
 
@@ -3106,7 +3106,7 @@ func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutputWithContext(ctx co
 // GetTemplatesTemplateArrayInput is an input type that accepts GetTemplatesTemplateArray and GetTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateArrayInput` via:
 //
-//          GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
+//	GetTemplatesTemplateArray{ GetTemplatesTemplateArgs{...} }
 type GetTemplatesTemplateArrayInput interface {
 	pulumi.Input
 

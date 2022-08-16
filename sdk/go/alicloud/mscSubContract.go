@@ -17,30 +17,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alicloud.NewMscSubContract(ctx, "default", &alicloud.MscSubContractArgs{
-// 			ContactName: pulumi.Any(example_value),
-// 			Position:    pulumi.String("CEO"),
-// 			Email:       pulumi.String("123@163.com"),
-// 			Mobile:      pulumi.String("153xxxxx906"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alicloud.NewMscSubContract(ctx, "default", &alicloud.MscSubContractArgs{
+//				ContactName: pulumi.Any(example_value),
+//				Position:    pulumi.String("CEO"),
+//				Email:       pulumi.String("123@163.com"),
+//				Mobile:      pulumi.String("153xxxxx906"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Msc Sub Contact can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
+//
+//	$ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
+//
 // ```
 type MscSubContract struct {
 	pulumi.CustomResourceState
@@ -178,7 +183,7 @@ func (i *MscSubContract) ToMscSubContractOutputWithContext(ctx context.Context) 
 // MscSubContractArrayInput is an input type that accepts MscSubContractArray and MscSubContractArrayOutput values.
 // You can construct a concrete instance of `MscSubContractArrayInput` via:
 //
-//          MscSubContractArray{ MscSubContractArgs{...} }
+//	MscSubContractArray{ MscSubContractArgs{...} }
 type MscSubContractArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +208,7 @@ func (i MscSubContractArray) ToMscSubContractArrayOutputWithContext(ctx context.
 // MscSubContractMapInput is an input type that accepts MscSubContractMap and MscSubContractMapOutput values.
 // You can construct a concrete instance of `MscSubContractMapInput` via:
 //
-//          MscSubContractMap{ "key": MscSubContractArgs{...} }
+//	MscSubContractMap{ "key": MscSubContractArgs{...} }
 type MscSubContractMapInput interface {
 	pulumi.Input
 

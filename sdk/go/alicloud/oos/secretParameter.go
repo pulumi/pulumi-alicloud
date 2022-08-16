@@ -22,7 +22,9 @@ import (
 // OOS Secret Parameter can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+//
+//	$ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+//
 // ```
 type SecretParameter struct {
 	pulumi.CustomResourceState
@@ -206,7 +208,7 @@ func (i *SecretParameter) ToSecretParameterOutputWithContext(ctx context.Context
 // SecretParameterArrayInput is an input type that accepts SecretParameterArray and SecretParameterArrayOutput values.
 // You can construct a concrete instance of `SecretParameterArrayInput` via:
 //
-//          SecretParameterArray{ SecretParameterArgs{...} }
+//	SecretParameterArray{ SecretParameterArgs{...} }
 type SecretParameterArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +233,7 @@ func (i SecretParameterArray) ToSecretParameterArrayOutputWithContext(ctx contex
 // SecretParameterMapInput is an input type that accepts SecretParameterMap and SecretParameterMapOutput values.
 // You can construct a concrete instance of `SecretParameterMapInput` via:
 //
-//          SecretParameterMap{ "key": SecretParameterArgs{...} }
+//	SecretParameterMap{ "key": SecretParameterArgs{...} }
 type SecretParameterMapInput interface {
 	pulumi.Input
 

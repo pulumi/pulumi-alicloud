@@ -19,35 +19,38 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudfirewall.NewControlPolicy(ctx, "example", &cloudfirewall.ControlPolicyArgs{
-// 			AclAction:       pulumi.String("accept"),
-// 			ApplicationName: pulumi.String("ANY"),
-// 			Description:     pulumi.String("example"),
-// 			Destination:     pulumi.String("100.1.1.0/24"),
-// 			DestinationType: pulumi.String("net"),
-// 			Direction:       pulumi.String("out"),
-// 			Proto:           pulumi.String("ANY"),
-// 			Source:          pulumi.String("1.2.3.0/24"),
-// 			SourceType:      pulumi.String("net"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfirewall.NewControlPolicy(ctx, "example", &cloudfirewall.ControlPolicyArgs{
+//				AclAction:       pulumi.String("accept"),
+//				ApplicationName: pulumi.String("ANY"),
+//				Description:     pulumi.String("example"),
+//				Destination:     pulumi.String("100.1.1.0/24"),
+//				DestinationType: pulumi.String("net"),
+//				Direction:       pulumi.String("out"),
+//				Proto:           pulumi.String("ANY"),
+//				Source:          pulumi.String("1.2.3.0/24"),
+//				SourceType:      pulumi.String("net"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Cloud Firewall Control Policy can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
+//
+//	$ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
+//
 // ```
 type ControlPolicy struct {
 	pulumi.CustomResourceState
@@ -326,7 +331,7 @@ func (i *ControlPolicy) ToControlPolicyOutputWithContext(ctx context.Context) Co
 // ControlPolicyArrayInput is an input type that accepts ControlPolicyArray and ControlPolicyArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyArrayInput` via:
 //
-//          ControlPolicyArray{ ControlPolicyArgs{...} }
+//	ControlPolicyArray{ ControlPolicyArgs{...} }
 type ControlPolicyArrayInput interface {
 	pulumi.Input
 
@@ -351,7 +356,7 @@ func (i ControlPolicyArray) ToControlPolicyArrayOutputWithContext(ctx context.Co
 // ControlPolicyMapInput is an input type that accepts ControlPolicyMap and ControlPolicyMapOutput values.
 // You can construct a concrete instance of `ControlPolicyMapInput` via:
 //
-//          ControlPolicyMap{ "key": ControlPolicyArgs{...} }
+//	ControlPolicyMap{ "key": ControlPolicyArgs{...} }
 type ControlPolicyMapInput interface {
 	pulumi.Input
 

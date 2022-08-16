@@ -24,7 +24,7 @@ type GetNamespacesNamespace struct {
 // GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
 //
-//          GetNamespacesNamespaceArgs{...}
+//	GetNamespacesNamespaceArgs{...}
 type GetNamespacesNamespaceInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
-//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
+//	GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
 type GetNamespacesNamespaceArrayInput interface {
 	pulumi.Input
 

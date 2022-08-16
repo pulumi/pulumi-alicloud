@@ -13,7 +13,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.179.0
+	github.com/aliyun/terraform-provider-alicloud v1.181.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.26.1
 	github.com/pulumi/pulumi/sdk/v3 v3.36.0
@@ -49,7 +49,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
-	github.com/alibabacloud-go/cs-20151215/v3 v3.0.13-0.20220507113239-654e91033291 // indirect
+	github.com/alibabacloud-go/cs-20151215/v3 v3.0.14 // indirect
 	github.com/alibabacloud-go/darabonba-openapi v0.1.19-0.20220507083948-2c7e1f6567c1 // indirect
 	github.com/alibabacloud-go/debug v0.0.0-20190504072949-9472017b5c68 // indirect
 	github.com/alibabacloud-go/endpoint-util v1.1.0 // indirect
@@ -59,7 +59,7 @@ require (
 	github.com/alibabacloud-go/tea-roa-utils v1.1.5 // indirect
 	github.com/alibabacloud-go/tea-rpc v1.2.0 // indirect
 	github.com/alibabacloud-go/tea-rpc-utils v1.1.2 // indirect
-	github.com/alibabacloud-go/tea-utils v1.4.3 // indirect
+	github.com/alibabacloud-go/tea-utils v1.4.5 // indirect
 	github.com/alibabacloud-go/tea-xml v1.1.2 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.1538 // indirect
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
@@ -90,10 +90,10 @@ require (
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/clbanning/mxj/v2 v2.5.5 // indirect
+	github.com/clbanning/mxj/v2 v2.5.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
-	github.com/denverdino/aliyungo v0.0.0-20220714084452-7034e8b75db5 // indirect
+	github.com/denverdino/aliyungo v0.0.0-20220805063645-076d420db039 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect

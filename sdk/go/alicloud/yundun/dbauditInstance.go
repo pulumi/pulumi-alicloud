@@ -16,7 +16,9 @@ import (
 // Yundun_dbaudit instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+//
+//	$ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+//
 // ```
 type DBAuditInstance struct {
 	pulumi.CustomResourceState
@@ -161,7 +163,7 @@ func (i *DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context
 // DBAuditInstanceArrayInput is an input type that accepts DBAuditInstanceArray and DBAuditInstanceArrayOutput values.
 // You can construct a concrete instance of `DBAuditInstanceArrayInput` via:
 //
-//          DBAuditInstanceArray{ DBAuditInstanceArgs{...} }
+//	DBAuditInstanceArray{ DBAuditInstanceArgs{...} }
 type DBAuditInstanceArrayInput interface {
 	pulumi.Input
 
@@ -186,7 +188,7 @@ func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutputWithContext(ctx contex
 // DBAuditInstanceMapInput is an input type that accepts DBAuditInstanceMap and DBAuditInstanceMapOutput values.
 // You can construct a concrete instance of `DBAuditInstanceMapInput` via:
 //
-//          DBAuditInstanceMap{ "key": DBAuditInstanceArgs{...} }
+//	DBAuditInstanceMap{ "key": DBAuditInstanceArgs{...} }
 type DBAuditInstanceMapInput interface {
 	pulumi.Input
 

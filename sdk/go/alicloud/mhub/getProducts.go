@@ -16,45 +16,48 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_value"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := mhub.NewProduct(ctx, "default", &mhub.ProductArgs{
-// 			ProductName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ids, err := mhub.GetProducts(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mhubProductId1", ids.Products[0].Id)
-// 		nameRegex, err := mhub.GetProducts(ctx, &mhub.GetProductsArgs{
-// 			NameRegex: pulumi.StringRef("^my-Product"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mhubProductId2", nameRegex.Products[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_value"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := mhub.NewProduct(ctx, "default", &mhub.ProductArgs{
+//				ProductName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := mhub.GetProducts(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mhubProductId1", ids.Products[0].Id)
+//			nameRegex, err := mhub.GetProducts(ctx, &mhub.GetProductsArgs{
+//				NameRegex: pulumi.StringRef("^my-Product"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mhubProductId2", nameRegex.Products[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.InvokeOption) (*GetProductsResult, error) {
 	var rv GetProductsResult

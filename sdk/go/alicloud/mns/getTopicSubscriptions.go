@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		subscriptions, err := mns.GetTopicSubscriptions(ctx, &mns.GetTopicSubscriptionsArgs{
-// 			NamePrefix: pulumi.StringRef("tf-"),
-// 			TopicName:  "topic_name",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstTopicSubscriptionId", subscriptions.Subscriptions[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			subscriptions, err := mns.GetTopicSubscriptions(ctx, &mns.GetTopicSubscriptionsArgs{
+//				NamePrefix: pulumi.StringRef("tf-"),
+//				TopicName:  "topic_name",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTopicSubscriptionId", subscriptions.Subscriptions[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetTopicSubscriptionsResult, error) {
 	var rv GetTopicSubscriptionsResult

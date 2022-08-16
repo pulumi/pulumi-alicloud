@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewStorageCapacityUnit(ctx, "default", &ecs.StorageCapacityUnitArgs{
-// 			Capacity:                pulumi.Int(20),
-// 			Description:             pulumi.String("tftestdescription"),
-// 			StorageCapacityUnitName: pulumi.String("tftestname"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewStorageCapacityUnit(ctx, "default", &ecs.StorageCapacityUnitArgs{
+//				Capacity:                pulumi.Int(20),
+//				Description:             pulumi.String("tftestdescription"),
+//				StorageCapacityUnitName: pulumi.String("tftestname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // ECS Storage Capacity Unit can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
+//
+//	$ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
+//
 // ```
 type StorageCapacityUnit struct {
 	pulumi.CustomResourceState
@@ -206,7 +211,7 @@ func (i *StorageCapacityUnit) ToStorageCapacityUnitOutputWithContext(ctx context
 // StorageCapacityUnitArrayInput is an input type that accepts StorageCapacityUnitArray and StorageCapacityUnitArrayOutput values.
 // You can construct a concrete instance of `StorageCapacityUnitArrayInput` via:
 //
-//          StorageCapacityUnitArray{ StorageCapacityUnitArgs{...} }
+//	StorageCapacityUnitArray{ StorageCapacityUnitArgs{...} }
 type StorageCapacityUnitArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +236,7 @@ func (i StorageCapacityUnitArray) ToStorageCapacityUnitArrayOutputWithContext(ct
 // StorageCapacityUnitMapInput is an input type that accepts StorageCapacityUnitMap and StorageCapacityUnitMapOutput values.
 // You can construct a concrete instance of `StorageCapacityUnitMapInput` via:
 //
-//          StorageCapacityUnitMap{ "key": StorageCapacityUnitArgs{...} }
+//	StorageCapacityUnitMap{ "key": StorageCapacityUnitArgs{...} }
 type StorageCapacityUnitMapInput interface {
 	pulumi.Input
 

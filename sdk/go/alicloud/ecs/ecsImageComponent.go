@@ -19,42 +19,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			NameRegex: pulumi.StringRef("default"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsImageComponent(ctx, "example", &ecs.EcsImageComponentArgs{
-// 			ComponentType:      pulumi.String("Build"),
-// 			Content:            pulumi.String("RUN yum update -y"),
-// 			Description:        pulumi.String("example_value"),
-// 			ImageComponentName: pulumi.String("example_value"),
-// 			ResourceGroupId:    pulumi.String(_default.Groups[0].Id),
-// 			SystemType:         pulumi.String("Linux"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				NameRegex: pulumi.StringRef("default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsImageComponent(ctx, "example", &ecs.EcsImageComponentArgs{
+//				ComponentType:      pulumi.String("Build"),
+//				Content:            pulumi.String("RUN yum update -y"),
+//				Description:        pulumi.String("example_value"),
+//				ImageComponentName: pulumi.String("example_value"),
+//				ResourceGroupId:    pulumi.String(_default.Groups[0].Id),
+//				SystemType:         pulumi.String("Linux"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // ECS Image Component can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
+//
+//	$ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
+//
 // ```
 type EcsImageComponent struct {
 	pulumi.CustomResourceState
@@ -213,7 +218,7 @@ func (i *EcsImageComponent) ToEcsImageComponentOutputWithContext(ctx context.Con
 // EcsImageComponentArrayInput is an input type that accepts EcsImageComponentArray and EcsImageComponentArrayOutput values.
 // You can construct a concrete instance of `EcsImageComponentArrayInput` via:
 //
-//          EcsImageComponentArray{ EcsImageComponentArgs{...} }
+//	EcsImageComponentArray{ EcsImageComponentArgs{...} }
 type EcsImageComponentArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +243,7 @@ func (i EcsImageComponentArray) ToEcsImageComponentArrayOutputWithContext(ctx co
 // EcsImageComponentMapInput is an input type that accepts EcsImageComponentMap and EcsImageComponentMapOutput values.
 // You can construct a concrete instance of `EcsImageComponentMapInput` via:
 //
-//          EcsImageComponentMap{ "key": EcsImageComponentArgs{...} }
+//	EcsImageComponentMap{ "key": EcsImageComponentArgs{...} }
 type EcsImageComponentMapInput interface {
 	pulumi.Input
 

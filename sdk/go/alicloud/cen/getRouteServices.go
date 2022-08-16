@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cen.GetRouteServices(ctx, &cen.GetRouteServicesArgs{
-// 			CenId: "cen-7qthudw0ll6jmc****",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstCenRouteServiceId", example.Services[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cen.GetRouteServices(ctx, &cen.GetRouteServicesArgs{
+//				CenId: "cen-7qthudw0ll6jmc****",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstCenRouteServiceId", example.Services[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRouteServices(ctx *pulumi.Context, args *GetRouteServicesArgs, opts ...pulumi.InvokeOption) (*GetRouteServicesResult, error) {
 	var rv GetRouteServicesResult

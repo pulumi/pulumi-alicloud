@@ -43,7 +43,9 @@ import (
 // Load balancer master slave server group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+//
+//	$ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+//
 // ```
 type MasterSlaveServerGroup struct {
 	pulumi.CustomResourceState
@@ -164,7 +166,7 @@ func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx c
 // MasterSlaveServerGroupArrayInput is an input type that accepts MasterSlaveServerGroupArray and MasterSlaveServerGroupArrayOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupArrayInput` via:
 //
-//          MasterSlaveServerGroupArray{ MasterSlaveServerGroupArgs{...} }
+//	MasterSlaveServerGroupArray{ MasterSlaveServerGroupArgs{...} }
 type MasterSlaveServerGroupArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +191,7 @@ func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutputWithCont
 // MasterSlaveServerGroupMapInput is an input type that accepts MasterSlaveServerGroupMap and MasterSlaveServerGroupMapOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupMapInput` via:
 //
-//          MasterSlaveServerGroupMap{ "key": MasterSlaveServerGroupArgs{...} }
+//	MasterSlaveServerGroupMap{ "key": MasterSlaveServerGroupArgs{...} }
 type MasterSlaveServerGroupMapInput interface {
 	pulumi.Input
 

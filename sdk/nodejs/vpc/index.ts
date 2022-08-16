@@ -23,6 +23,7 @@ export * from "./getEnhancedNatAvailableZones";
 export * from "./getForwardEntries";
 export * from "./getHavips";
 export * from "./getIpsecServers";
+export * from "./getIpv4Gateways";
 export * from "./getIpv6Addresses";
 export * from "./getIpv6EgressRules";
 export * from "./getIpv6Gateways";
@@ -48,6 +49,7 @@ export * from "./getTrafficMirrorSessions";
 export * from "./getVpcFlowLogs";
 export * from "./havip";
 export * from "./havipAttachment";
+export * from "./ipv4Gateway";
 export * from "./ipv6EgressRule";
 export * from "./ipv6Gateway";
 export * from "./ipv6InternetBandwidth";
@@ -86,6 +88,7 @@ import { FlowLog } from "./flowLog";
 import { ForwardEntry } from "./forwardEntry";
 import { HAVip } from "./havip";
 import { HAVipAttachment } from "./havipAttachment";
+import { Ipv4Gateway } from "./ipv4Gateway";
 import { Ipv6EgressRule } from "./ipv6EgressRule";
 import { Ipv6Gateway } from "./ipv6Gateway";
 import { Ipv6InternetBandwidth } from "./ipv6InternetBandwidth";
@@ -138,6 +141,8 @@ const _module = {
                 return new HAVip(name, <any>undefined, { urn })
             case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
                 return new HAVipAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
+                return new Ipv4Gateway(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
                 return new Ipv6EgressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
@@ -204,6 +209,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6EgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6InternetBandwidth", _module)

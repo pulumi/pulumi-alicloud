@@ -22,35 +22,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dms.NewEnterpriseInstance(ctx, "default", &dms.EnterpriseInstanceArgs{
-// 			DatabasePassword: pulumi.String("Yourpassword123"),
-// 			DatabaseUser:     pulumi.String("your_user_name"),
-// 			DbaUid:           pulumi.Int("1182725234xxxxxxx"),
-// 			EcsRegion:        pulumi.String("cn-shanghai"),
-// 			EnvType:          pulumi.String("test"),
-// 			ExportTimeout:    pulumi.Int(600),
-// 			Host:             pulumi.String("rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com"),
-// 			InstanceName:     pulumi.String("your_alias_name"),
-// 			InstanceSource:   pulumi.String("RDS"),
-// 			InstanceType:     pulumi.String("MySQL"),
-// 			NetworkType:      pulumi.String("VPC"),
-// 			Port:             pulumi.Int(3306),
-// 			QueryTimeout:     pulumi.Int(60),
-// 			SafeRule:         pulumi.String("自由操作"),
-// 			Tid:              pulumi.Int(12345),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dms.NewEnterpriseInstance(ctx, "default", &dms.EnterpriseInstanceArgs{
+//				DatabasePassword: pulumi.String("Yourpassword123"),
+//				DatabaseUser:     pulumi.String("your_user_name"),
+//				DbaUid:           pulumi.Int("1182725234xxxxxxx"),
+//				EcsRegion:        pulumi.String("cn-shanghai"),
+//				EnvType:          pulumi.String("test"),
+//				ExportTimeout:    pulumi.Int(600),
+//				Host:             pulumi.String("rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com"),
+//				InstanceName:     pulumi.String("your_alias_name"),
+//				InstanceSource:   pulumi.String("RDS"),
+//				InstanceType:     pulumi.String("MySQL"),
+//				NetworkType:      pulumi.String("VPC"),
+//				Port:             pulumi.Int(3306),
+//				QueryTimeout:     pulumi.Int(60),
+//				SafeRule:         pulumi.String("自由操作"),
+//				Tid:              pulumi.Int(12345),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // DMS Enterprise can be imported using host and port, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
+//
+//	$ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
+//
 // ```
 type EnterpriseInstance struct {
 	pulumi.CustomResourceState
@@ -466,7 +471,7 @@ func (i *EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.C
 // EnterpriseInstanceArrayInput is an input type that accepts EnterpriseInstanceArray and EnterpriseInstanceArrayOutput values.
 // You can construct a concrete instance of `EnterpriseInstanceArrayInput` via:
 //
-//          EnterpriseInstanceArray{ EnterpriseInstanceArgs{...} }
+//	EnterpriseInstanceArray{ EnterpriseInstanceArgs{...} }
 type EnterpriseInstanceArrayInput interface {
 	pulumi.Input
 
@@ -491,7 +496,7 @@ func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutputWithContext(ctx 
 // EnterpriseInstanceMapInput is an input type that accepts EnterpriseInstanceMap and EnterpriseInstanceMapOutput values.
 // You can construct a concrete instance of `EnterpriseInstanceMapInput` via:
 //
-//          EnterpriseInstanceMap{ "key": EnterpriseInstanceArgs{...} }
+//	EnterpriseInstanceMap{ "key": EnterpriseInstanceArgs{...} }
 type EnterpriseInstanceMapInput interface {
 	pulumi.Input
 

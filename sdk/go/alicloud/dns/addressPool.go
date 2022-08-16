@@ -22,7 +22,9 @@ import (
 // Alidns Address Pool can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
+//
+//	$ pulumi import alicloud:dns/addressPool:AddressPool example <id>
+//
 // ```
 type AddressPool struct {
 	pulumi.CustomResourceState
@@ -165,7 +167,7 @@ func (i *AddressPool) ToAddressPoolOutputWithContext(ctx context.Context) Addres
 // AddressPoolArrayInput is an input type that accepts AddressPoolArray and AddressPoolArrayOutput values.
 // You can construct a concrete instance of `AddressPoolArrayInput` via:
 //
-//          AddressPoolArray{ AddressPoolArgs{...} }
+//	AddressPoolArray{ AddressPoolArgs{...} }
 type AddressPoolArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +192,7 @@ func (i AddressPoolArray) ToAddressPoolArrayOutputWithContext(ctx context.Contex
 // AddressPoolMapInput is an input type that accepts AddressPoolMap and AddressPoolMapOutput values.
 // You can construct a concrete instance of `AddressPoolMapInput` via:
 //
-//          AddressPoolMap{ "key": AddressPoolArgs{...} }
+//	AddressPoolMap{ "key": AddressPoolArgs{...} }
 type AddressPoolMapInput interface {
 	pulumi.Input
 

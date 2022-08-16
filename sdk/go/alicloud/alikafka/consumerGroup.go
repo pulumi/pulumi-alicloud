@@ -20,67 +20,70 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		consumerId := "CID-alikafkaGroupDatasourceName"
-// 		if param := cfg.Get("consumerId"); param != "" {
-// 			consumerId = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-// 			TopicQuota: pulumi.Int(50),
-// 			DiskType:   pulumi.Int(1),
-// 			DiskSize:   pulumi.Int(500),
-// 			DeployType: pulumi.Int(5),
-// 			IoMax:      pulumi.Int(20),
-// 			VswitchId:  defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alikafka.NewConsumerGroup(ctx, "defaultConsumerGroup", &alikafka.ConsumerGroupArgs{
-// 			ConsumerId: pulumi.String(consumerId),
-// 			InstanceId: defaultInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			consumerId := "CID-alikafkaGroupDatasourceName"
+//			if param := cfg.Get("consumerId"); param != "" {
+//				consumerId = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				TopicQuota: pulumi.Int(50),
+//				DiskType:   pulumi.Int(1),
+//				DiskSize:   pulumi.Int(500),
+//				DeployType: pulumi.Int(5),
+//				IoMax:      pulumi.Int(20),
+//				VswitchId:  defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewConsumerGroup(ctx, "defaultConsumerGroup", &alikafka.ConsumerGroupArgs{
+//				ConsumerId: pulumi.String(consumerId),
+//				InstanceId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -88,7 +91,9 @@ import (
 // ALIKAFKA GROUP can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+//
+//	$ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+//
 // ```
 type ConsumerGroup struct {
 	pulumi.CustomResourceState
@@ -212,7 +217,7 @@ func (i *ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) Co
 // ConsumerGroupArrayInput is an input type that accepts ConsumerGroupArray and ConsumerGroupArrayOutput values.
 // You can construct a concrete instance of `ConsumerGroupArrayInput` via:
 //
-//          ConsumerGroupArray{ ConsumerGroupArgs{...} }
+//	ConsumerGroupArray{ ConsumerGroupArgs{...} }
 type ConsumerGroupArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +242,7 @@ func (i ConsumerGroupArray) ToConsumerGroupArrayOutputWithContext(ctx context.Co
 // ConsumerGroupMapInput is an input type that accepts ConsumerGroupMap and ConsumerGroupMapOutput values.
 // You can construct a concrete instance of `ConsumerGroupMapInput` via:
 //
-//          ConsumerGroupMap{ "key": ConsumerGroupArgs{...} }
+//	ConsumerGroupMap{ "key": ConsumerGroupArgs{...} }
 type ConsumerGroupMapInput interface {
 	pulumi.Input
 

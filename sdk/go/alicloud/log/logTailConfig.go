@@ -16,7 +16,9 @@ import (
 // Logtial config can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+//
+//	$ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+//
 // ```
 type LogTailConfig struct {
 	pulumi.CustomResourceState
@@ -179,7 +181,7 @@ func (i *LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) Lo
 // LogTailConfigArrayInput is an input type that accepts LogTailConfigArray and LogTailConfigArrayOutput values.
 // You can construct a concrete instance of `LogTailConfigArrayInput` via:
 //
-//          LogTailConfigArray{ LogTailConfigArgs{...} }
+//	LogTailConfigArray{ LogTailConfigArgs{...} }
 type LogTailConfigArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +206,7 @@ func (i LogTailConfigArray) ToLogTailConfigArrayOutputWithContext(ctx context.Co
 // LogTailConfigMapInput is an input type that accepts LogTailConfigMap and LogTailConfigMapOutput values.
 // You can construct a concrete instance of `LogTailConfigMapInput` via:
 //
-//          LogTailConfigMap{ "key": LogTailConfigArgs{...} }
+//	LogTailConfigMap{ "key": LogTailConfigArgs{...} }
 type LogTailConfigMapInput interface {
 	pulumi.Input
 

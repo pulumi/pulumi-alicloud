@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		kmsKeysDs, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
-// 			DescriptionRegex: pulumi.StringRef("Hello KMS"),
-// 			OutputFile:       pulumi.StringRef("kms_keys.json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstKeyId", kmsKeysDs.Keys[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			kmsKeysDs, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
+//				DescriptionRegex: pulumi.StringRef("Hello KMS"),
+//				OutputFile:       pulumi.StringRef("kms_keys.json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstKeyId", kmsKeysDs.Keys[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	var rv GetKeysResult

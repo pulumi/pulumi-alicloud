@@ -19,29 +19,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := privatelink.NewVpcEndpointZone(ctx, "example", &privatelink.VpcEndpointZoneArgs{
-// 			EndpointId: pulumi.String("ep-gw8boxxxxx"),
-// 			VswitchId:  pulumi.String("vsw-rtycxxxxx"),
-// 			ZoneId:     pulumi.String("eu-central-1a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := privatelink.NewVpcEndpointZone(ctx, "example", &privatelink.VpcEndpointZoneArgs{
+//				EndpointId: pulumi.String("ep-gw8boxxxxx"),
+//				VswitchId:  pulumi.String("vsw-rtycxxxxx"),
+//				ZoneId:     pulumi.String("eu-central-1a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Private Link Vpc Endpoint Zone can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
+//
+//	$ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
+//
 // ```
 type VpcEndpointZone struct {
 	pulumi.CustomResourceState
@@ -179,7 +184,7 @@ func (i *VpcEndpointZone) ToVpcEndpointZoneOutputWithContext(ctx context.Context
 // VpcEndpointZoneArrayInput is an input type that accepts VpcEndpointZoneArray and VpcEndpointZoneArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointZoneArrayInput` via:
 //
-//          VpcEndpointZoneArray{ VpcEndpointZoneArgs{...} }
+//	VpcEndpointZoneArray{ VpcEndpointZoneArgs{...} }
 type VpcEndpointZoneArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +209,7 @@ func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutputWithContext(ctx contex
 // VpcEndpointZoneMapInput is an input type that accepts VpcEndpointZoneMap and VpcEndpointZoneMapOutput values.
 // You can construct a concrete instance of `VpcEndpointZoneMapInput` via:
 //
-//          VpcEndpointZoneMap{ "key": VpcEndpointZoneArgs{...} }
+//	VpcEndpointZoneMap{ "key": VpcEndpointZoneArgs{...} }
 type VpcEndpointZoneMapInput interface {
 	pulumi.Input
 

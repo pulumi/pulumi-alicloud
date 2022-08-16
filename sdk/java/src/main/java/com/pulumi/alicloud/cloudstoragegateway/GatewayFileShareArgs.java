@@ -78,14 +78,14 @@ public final class GatewayFileShareArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      * 
      */
     @Import(name="cacheMode")
     private @Nullable Output<String> cacheMode;
 
     /**
-     * @return The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+     * @return The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      * 
      */
     public Optional<Output<String>> cacheMode() {
@@ -653,7 +653,7 @@ public final class GatewayFileShareArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cacheMode The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+         * @param cacheMode The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class GatewayFileShareArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cacheMode The set up gateway file share cache mode. Value values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
+         * @param cacheMode The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
          * 
          * @return builder
          * 

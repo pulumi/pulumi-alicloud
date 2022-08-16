@@ -16,7 +16,9 @@ import (
 // Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
 //
 // ```sh
-//  $ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
+//
+//	$ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
+//
 // ```
 type Kubernetes struct {
 	pulumi.CustomResourceState
@@ -1087,7 +1089,7 @@ func (i *Kubernetes) ToKubernetesOutputWithContext(ctx context.Context) Kubernet
 // KubernetesArrayInput is an input type that accepts KubernetesArray and KubernetesArrayOutput values.
 // You can construct a concrete instance of `KubernetesArrayInput` via:
 //
-//          KubernetesArray{ KubernetesArgs{...} }
+//	KubernetesArray{ KubernetesArgs{...} }
 type KubernetesArrayInput interface {
 	pulumi.Input
 
@@ -1112,7 +1114,7 @@ func (i KubernetesArray) ToKubernetesArrayOutputWithContext(ctx context.Context)
 // KubernetesMapInput is an input type that accepts KubernetesMap and KubernetesMapOutput values.
 // You can construct a concrete instance of `KubernetesMapInput` via:
 //
-//          KubernetesMap{ "key": KubernetesArgs{...} }
+//	KubernetesMap{ "key": KubernetesArgs{...} }
 type KubernetesMapInput interface {
 	pulumi.Input
 

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Function{}
 	case "alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig":
 		r = &FunctionAsyncInvokeConfig{}
+	case "alicloud:fc/layerVersion:LayerVersion":
+		r = &LayerVersion{}
 	case "alicloud:fc/service:Service":
 		r = &Service{}
 	case "alicloud:fc/trigger:Trigger":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"fc/functionAsyncInvokeConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/layerVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

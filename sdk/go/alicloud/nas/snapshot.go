@@ -21,53 +21,56 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "testacc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-// 			FileSystemType: pulumi.StringRef("extreme"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-// 			FileSystemType: pulumi.String("extreme"),
-// 			ProtocolType:   pulumi.String("NFS"),
-// 			ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
-// 			StorageType:    pulumi.String("standard"),
-// 			Description:    pulumi.String(name),
-// 			Capacity:       pulumi.Int(100),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = nas.NewSnapshot(ctx, "defaultSnapshot", &nas.SnapshotArgs{
-// 			FileSystemId:  defaultFileSystem.ID(),
-// 			Description:   pulumi.String(name),
-// 			RetentionDays: pulumi.Int(20),
-// 			SnapshotName:  pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "testacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("extreme"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				FileSystemType: pulumi.String("extreme"),
+//				ProtocolType:   pulumi.String("NFS"),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				StorageType:    pulumi.String("standard"),
+//				Description:    pulumi.String(name),
+//				Capacity:       pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewSnapshot(ctx, "defaultSnapshot", &nas.SnapshotArgs{
+//				FileSystemId:  defaultFileSystem.ID(),
+//				Description:   pulumi.String(name),
+//				RetentionDays: pulumi.Int(20),
+//				SnapshotName:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -75,7 +78,9 @@ import (
 // Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
+//
+//	$ pulumi import alicloud:nas/snapshot:Snapshot example <id>
+//
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
@@ -207,7 +212,7 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 // SnapshotArrayInput is an input type that accepts SnapshotArray and SnapshotArrayOutput values.
 // You can construct a concrete instance of `SnapshotArrayInput` via:
 //
-//          SnapshotArray{ SnapshotArgs{...} }
+//	SnapshotArray{ SnapshotArgs{...} }
 type SnapshotArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +237,7 @@ func (i SnapshotArray) ToSnapshotArrayOutputWithContext(ctx context.Context) Sna
 // SnapshotMapInput is an input type that accepts SnapshotMap and SnapshotMapOutput values.
 // You can construct a concrete instance of `SnapshotMapInput` via:
 //
-//          SnapshotMap{ "key": SnapshotArgs{...} }
+//	SnapshotMap{ "key": SnapshotArgs{...} }
 type SnapshotMapInput interface {
 	pulumi.Input
 

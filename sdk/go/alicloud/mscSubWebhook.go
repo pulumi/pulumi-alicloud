@@ -17,28 +17,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alicloud.NewMscSubWebhook(ctx, "example", &alicloud.MscSubWebhookArgs{
-// 			ServerUrl:   pulumi.String("example_value"),
-// 			WebhookName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alicloud.NewMscSubWebhook(ctx, "example", &alicloud.MscSubWebhookArgs{
+//				ServerUrl:   pulumi.String("example_value"),
+//				WebhookName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Msc Sub Webhook can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
+//
+//	$ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
+//
 // ```
 type MscSubWebhook struct {
 	pulumi.CustomResourceState
@@ -150,7 +155,7 @@ func (i *MscSubWebhook) ToMscSubWebhookOutputWithContext(ctx context.Context) Ms
 // MscSubWebhookArrayInput is an input type that accepts MscSubWebhookArray and MscSubWebhookArrayOutput values.
 // You can construct a concrete instance of `MscSubWebhookArrayInput` via:
 //
-//          MscSubWebhookArray{ MscSubWebhookArgs{...} }
+//	MscSubWebhookArray{ MscSubWebhookArgs{...} }
 type MscSubWebhookArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +180,7 @@ func (i MscSubWebhookArray) ToMscSubWebhookArrayOutputWithContext(ctx context.Co
 // MscSubWebhookMapInput is an input type that accepts MscSubWebhookMap and MscSubWebhookMapOutput values.
 // You can construct a concrete instance of `MscSubWebhookMapInput` via:
 //
-//          MscSubWebhookMap{ "key": MscSubWebhookArgs{...} }
+//	MscSubWebhookMap{ "key": MscSubWebhookArgs{...} }
 type MscSubWebhookMapInput interface {
 	pulumi.Input
 

@@ -21,59 +21,64 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
-// 			Content: pulumi.String(fmt.Sprintf(`  {
-//     "FormatVersion": "OOS-2019-06-01",
-//     "Description": "Update Describe instances of given status",
-//     "Parameters":{
-//       "Status":{
-//         "Type": "String",
-//         "Description": "(Required) The status of the Ecs instance."
-//       }
-//     },
-//     "Tasks": [
-//       {
-//         "Properties" :{
-//           "Parameters":{
-//             "Status": "{{ Status }}"
-//           },
-//           "API": "DescribeInstances",
-//           "Service": "Ecs"
-//         },
-//         "Name": "foo",
-//         "Action": "ACS::ExecuteApi"
-//       }]
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
+//				Content: pulumi.String(fmt.Sprintf(`  {
+//	    "FormatVersion": "OOS-2019-06-01",
+//	    "Description": "Update Describe instances of given status",
+//	    "Parameters":{
+//	      "Status":{
+//	        "Type": "String",
+//	        "Description": "(Required) The status of the Ecs instance."
+//	      }
+//	    },
+//	    "Tasks": [
+//	      {
+//	        "Properties" :{
+//	          "Parameters":{
+//	            "Status": "{{ Status }}"
+//	          },
+//	          "API": "DescribeInstances",
+//	          "Service": "Ecs"
+//	        },
+//	        "Name": "foo",
+//	        "Action": "ACS::ExecuteApi"
+//	      }]
+//	  }
+//
 // `)),
-// 			TemplateName: pulumi.String("test-name"),
-// 			VersionName:  pulumi.String("test"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("acceptance Test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewExecution(ctx, "example", &oos.ExecutionArgs{
-// 			TemplateName: _default.TemplateName,
-// 			Description:  pulumi.String("From TF Test"),
-// 			Parameters: pulumi.String("				{\"Status\":\"Running\"}\n"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				TemplateName: pulumi.String("test-name"),
+//				VersionName:  pulumi.String("test"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance Test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewExecution(ctx, "example", &oos.ExecutionArgs{
+//				TemplateName: _default.TemplateName,
+//				Description:  pulumi.String("From TF Test"),
+//				Parameters:   pulumi.String("				{\"Status\":\"Running\"}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,7 +86,9 @@ import (
 // OOS Execution can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+//
+//	$ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+//
 // ```
 type Execution struct {
 	pulumi.CustomResourceState
@@ -324,7 +331,7 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 // ExecutionArrayInput is an input type that accepts ExecutionArray and ExecutionArrayOutput values.
 // You can construct a concrete instance of `ExecutionArrayInput` via:
 //
-//          ExecutionArray{ ExecutionArgs{...} }
+//	ExecutionArray{ ExecutionArgs{...} }
 type ExecutionArrayInput interface {
 	pulumi.Input
 
@@ -349,7 +356,7 @@ func (i ExecutionArray) ToExecutionArrayOutputWithContext(ctx context.Context) E
 // ExecutionMapInput is an input type that accepts ExecutionMap and ExecutionMapOutput values.
 // You can construct a concrete instance of `ExecutionMapInput` via:
 //
-//          ExecutionMap{ "key": ExecutionArgs{...} }
+//	ExecutionMap{ "key": ExecutionArgs{...} }
 type ExecutionMapInput interface {
 	pulumi.Input
 

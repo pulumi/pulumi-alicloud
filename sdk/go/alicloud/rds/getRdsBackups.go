@@ -16,28 +16,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := rds.GetRdsBackups(ctx, &rds.GetRdsBackupsArgs{
-// 			DbInstanceId: "example_value",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstRdsBackupId", example.Backups[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := rds.GetRdsBackups(ctx, &rds.GetRdsBackupsArgs{
+//				DbInstanceId: "example_value",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRdsBackupId", example.Backups[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRdsBackups(ctx *pulumi.Context, args *GetRdsBackupsArgs, opts ...pulumi.InvokeOption) (*GetRdsBackupsResult, error) {
 	var rv GetRdsBackupsResult

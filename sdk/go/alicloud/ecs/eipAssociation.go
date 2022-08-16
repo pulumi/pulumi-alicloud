@@ -16,7 +16,9 @@ import (
 // Elastic IP address association can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+//
+//	$ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+//
 // ```
 type EipAssociation struct {
 	pulumi.CustomResourceState
@@ -150,7 +152,7 @@ func (i *EipAssociation) ToEipAssociationOutputWithContext(ctx context.Context) 
 // EipAssociationArrayInput is an input type that accepts EipAssociationArray and EipAssociationArrayOutput values.
 // You can construct a concrete instance of `EipAssociationArrayInput` via:
 //
-//          EipAssociationArray{ EipAssociationArgs{...} }
+//	EipAssociationArray{ EipAssociationArgs{...} }
 type EipAssociationArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +177,7 @@ func (i EipAssociationArray) ToEipAssociationArrayOutputWithContext(ctx context.
 // EipAssociationMapInput is an input type that accepts EipAssociationMap and EipAssociationMapOutput values.
 // You can construct a concrete instance of `EipAssociationMapInput` via:
 //
-//          EipAssociationMap{ "key": EipAssociationArgs{...} }
+//	EipAssociationMap{ "key": EipAssociationArgs{...} }
 type EipAssociationMapInput interface {
 	pulumi.Input
 

@@ -15,7 +15,9 @@ import (
 // Security Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+//
+//	$ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+//
 // ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
@@ -193,7 +195,7 @@ func (i *SecurityGroup) ToSecurityGroupOutputWithContext(ctx context.Context) Se
 // SecurityGroupArrayInput is an input type that accepts SecurityGroupArray and SecurityGroupArrayOutput values.
 // You can construct a concrete instance of `SecurityGroupArrayInput` via:
 //
-//          SecurityGroupArray{ SecurityGroupArgs{...} }
+//	SecurityGroupArray{ SecurityGroupArgs{...} }
 type SecurityGroupArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +220,7 @@ func (i SecurityGroupArray) ToSecurityGroupArrayOutputWithContext(ctx context.Co
 // SecurityGroupMapInput is an input type that accepts SecurityGroupMap and SecurityGroupMapOutput values.
 // You can construct a concrete instance of `SecurityGroupMapInput` via:
 //
-//          SecurityGroupMap{ "key": SecurityGroupArgs{...} }
+//	SecurityGroupMap{ "key": SecurityGroupArgs{...} }
 type SecurityGroupMapInput interface {
 	pulumi.Input
 

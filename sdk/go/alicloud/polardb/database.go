@@ -21,65 +21,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "polardbClusterconfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		creation := "PolarDB"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-// 			DbType:      pulumi.String("MySQL"),
-// 			DbVersion:   pulumi.String("8.0"),
-// 			PayType:     pulumi.String("PostPaid"),
-// 			DbNodeClass: pulumi.String("polar.mysql.x4.large"),
-// 			VswitchId:   defaultSwitch.ID(),
-// 			Description: pulumi.String("testDB"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = polardb.NewDatabase(ctx, "defaultDatabase", &polardb.DatabaseArgs{
-// 			DbClusterId: cluster.ID(),
-// 			DbName:      pulumi.String("tftestdatabase"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "polardbClusterconfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			creation := "PolarDB"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String("testDB"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewDatabase(ctx, "defaultDatabase", &polardb.DatabaseArgs{
+//				DbClusterId: cluster.ID(),
+//				DbName:      pulumi.String("tftestdatabase"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -87,7 +90,9 @@ import (
 // PolarDB database can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+//
+//	$ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+//
 // ```
 type Database struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 // DatabaseArrayInput is an input type that accepts DatabaseArray and DatabaseArrayOutput values.
 // You can construct a concrete instance of `DatabaseArrayInput` via:
 //
-//          DatabaseArray{ DatabaseArgs{...} }
+//	DatabaseArray{ DatabaseArgs{...} }
 type DatabaseArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i DatabaseArray) ToDatabaseArrayOutputWithContext(ctx context.Context) Dat
 // DatabaseMapInput is an input type that accepts DatabaseMap and DatabaseMapOutput values.
 // You can construct a concrete instance of `DatabaseMapInput` via:
 //
-//          DatabaseMap{ "key": DatabaseArgs{...} }
+//	DatabaseMap{ "key": DatabaseArgs{...} }
 type DatabaseMapInput interface {
 	pulumi.Input
 

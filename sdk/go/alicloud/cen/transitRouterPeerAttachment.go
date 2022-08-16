@@ -17,92 +17,95 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAcccExample"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		_, err := providers.Newalicloud(ctx, "us", &providers.alicloudArgs{
-// 			Region: "us-east-1",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = providers.Newalicloud(ctx, "cn", &providers.alicloudArgs{
-// 			Region: "cn-hangzhou",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-// 			CenInstanceName: pulumi.String(name),
-// 			ProtectionLevel: pulumi.String("REDUCED"),
-// 		}, pulumi.Provider(alicloud.Cn))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &cen.BandwidthPackageArgs{
-// 			Bandwidth:               pulumi.Int(5),
-// 			CenBandwidthPackageName: pulumi.String(name),
-// 			GeographicRegionAId:     pulumi.String("China"),
-// 			GeographicRegionBId:     pulumi.String("North-America"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
-// 			InstanceId:         defaultInstance.ID(),
-// 			BandwidthPackageId: defaultBandwidthPackage.ID(),
-// 		}, pulumi.Provider(alicloud.Cn))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cnTransitRouter, err := cen.NewTransitRouter(ctx, "cnTransitRouter", &cen.TransitRouterArgs{
-// 			CenId: defaultInstance.ID(),
-// 		}, pulumi.Provider(alicloud.Cn), pulumi.DependsOn([]pulumi.Resource{
-// 			defaultBandwidthPackageAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		usTransitRouter, err := cen.NewTransitRouter(ctx, "usTransitRouter", &cen.TransitRouterArgs{
-// 			CenId: defaultInstance.ID(),
-// 		}, pulumi.Provider(alicloud.Us), pulumi.DependsOn([]pulumi.Resource{
-// 			alicloud_cen_transit_router.Default_0,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cen.NewTransitRouterPeerAttachment(ctx, "defaultTransitRouterPeerAttachment", &cen.TransitRouterPeerAttachmentArgs{
-// 			CenId:                              defaultInstance.ID(),
-// 			TransitRouterId:                    cnTransitRouter.TransitRouterId,
-// 			PeerTransitRouterRegionId:          pulumi.String("us-east-1"),
-// 			PeerTransitRouterId:                usTransitRouter.TransitRouterId,
-// 			CenBandwidthPackageId:              defaultBandwidthPackageAttachment.BandwidthPackageId,
-// 			Bandwidth:                          pulumi.Int(5),
-// 			TransitRouterAttachmentDescription: pulumi.String(name),
-// 			TransitRouterAttachmentName:        pulumi.String(name),
-// 		}, pulumi.Provider(alicloud.Cn))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAcccExample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := providers.Newalicloud(ctx, "us", &providers.alicloudArgs{
+//				Region: "us-east-1",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = providers.Newalicloud(ctx, "cn", &providers.alicloudArgs{
+//				Region: "cn-hangzhou",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			}, pulumi.Provider(alicloud.Cn))
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &cen.BandwidthPackageArgs{
+//				Bandwidth:               pulumi.Int(5),
+//				CenBandwidthPackageName: pulumi.String(name),
+//				GeographicRegionAId:     pulumi.String("China"),
+//				GeographicRegionBId:     pulumi.String("North-America"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         defaultInstance.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//			}, pulumi.Provider(alicloud.Cn))
+//			if err != nil {
+//				return err
+//			}
+//			cnTransitRouter, err := cen.NewTransitRouter(ctx, "cnTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			}, pulumi.Provider(alicloud.Cn), pulumi.DependsOn([]pulumi.Resource{
+//				defaultBandwidthPackageAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			usTransitRouter, err := cen.NewTransitRouter(ctx, "usTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			}, pulumi.Provider(alicloud.Us), pulumi.DependsOn([]pulumi.Resource{
+//				alicloud_cen_transit_router.Default_0,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterPeerAttachment(ctx, "defaultTransitRouterPeerAttachment", &cen.TransitRouterPeerAttachmentArgs{
+//				CenId:                              defaultInstance.ID(),
+//				TransitRouterId:                    cnTransitRouter.TransitRouterId,
+//				PeerTransitRouterRegionId:          pulumi.String("us-east-1"),
+//				PeerTransitRouterId:                usTransitRouter.TransitRouterId,
+//				CenBandwidthPackageId:              defaultBandwidthPackageAttachment.BandwidthPackageId,
+//				Bandwidth:                          pulumi.Int(5),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Cn))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -110,7 +113,9 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+//
+//	$ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+//
 // ```
 type TransitRouterPeerAttachment struct {
 	pulumi.CustomResourceState
@@ -349,7 +354,7 @@ func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentOutputWithCon
 // TransitRouterPeerAttachmentArrayInput is an input type that accepts TransitRouterPeerAttachmentArray and TransitRouterPeerAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterPeerAttachmentArrayInput` via:
 //
-//          TransitRouterPeerAttachmentArray{ TransitRouterPeerAttachmentArgs{...} }
+//	TransitRouterPeerAttachmentArray{ TransitRouterPeerAttachmentArgs{...} }
 type TransitRouterPeerAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -374,7 +379,7 @@ func (i TransitRouterPeerAttachmentArray) ToTransitRouterPeerAttachmentArrayOutp
 // TransitRouterPeerAttachmentMapInput is an input type that accepts TransitRouterPeerAttachmentMap and TransitRouterPeerAttachmentMapOutput values.
 // You can construct a concrete instance of `TransitRouterPeerAttachmentMapInput` via:
 //
-//          TransitRouterPeerAttachmentMap{ "key": TransitRouterPeerAttachmentArgs{...} }
+//	TransitRouterPeerAttachmentMap{ "key": TransitRouterPeerAttachmentArgs{...} }
 type TransitRouterPeerAttachmentMapInput interface {
 	pulumi.Input
 

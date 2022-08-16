@@ -95,7 +95,7 @@ func (i *Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 // AliasArrayInput is an input type that accepts AliasArray and AliasArrayOutput values.
 // You can construct a concrete instance of `AliasArrayInput` via:
 //
-//          AliasArray{ AliasArgs{...} }
+//	AliasArray{ AliasArgs{...} }
 type AliasArrayInput interface {
 	pulumi.Input
 
@@ -120,7 +120,7 @@ func (i AliasArray) ToAliasArrayOutputWithContext(ctx context.Context) AliasArra
 // AliasMapInput is an input type that accepts AliasMap and AliasMapOutput values.
 // You can construct a concrete instance of `AliasMapInput` via:
 //
-//          AliasMap{ "key": AliasArgs{...} }
+//	AliasMap{ "key": AliasArgs{...} }
 type AliasMapInput interface {
 	pulumi.Input
 

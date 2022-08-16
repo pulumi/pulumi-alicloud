@@ -16,7 +16,8 @@ import (
 // > **NOTE:**  Available in 1.48.0+
 //
 // > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
-//  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+//	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
 // ## Example Usage
 //
@@ -24,65 +25,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "Gpdb"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "gpdbConnectionBasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef(creation),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
-// 			VswitchId:          defaultSwitch.ID(),
-// 			Engine:             pulumi.String("gpdb"),
-// 			EngineVersion:      pulumi.String("4.3"),
-// 			InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
-// 			InstanceGroupCount: pulumi.String("2"),
-// 			Description:        pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
-// 			InstanceId:       defaultInstance.ID(),
-// 			ConnectionPrefix: pulumi.String("testAbc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			creation := "Gpdb"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "gpdbConnectionBasic"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//				VswitchId:          defaultSwitch.ID(),
+//				Engine:             pulumi.String("gpdb"),
+//				EngineVersion:      pulumi.String("4.3"),
+//				InstanceClass:      pulumi.String("gpdb.group.segsdx2"),
+//				InstanceGroupCount: pulumi.String("2"),
+//				Description:        pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewConnection(ctx, "defaultConnection", &gpdb.ConnectionArgs{
+//				InstanceId:       defaultInstance.ID(),
+//				ConnectionPrefix: pulumi.String("testAbc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -90,7 +94,9 @@ import (
 // AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
+//
+//	$ pulumi import alicloud:gpdb/connection:Connection example abc12345678
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -213,7 +219,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +244,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

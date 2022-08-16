@@ -22,7 +22,9 @@ import (
 // Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
+//
+//	$ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
+//
 // ```
 type AccessConfigurationProvisioning struct {
 	pulumi.CustomResourceState
@@ -162,7 +164,7 @@ func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningOutpu
 // AccessConfigurationProvisioningArrayInput is an input type that accepts AccessConfigurationProvisioningArray and AccessConfigurationProvisioningArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationProvisioningArrayInput` via:
 //
-//          AccessConfigurationProvisioningArray{ AccessConfigurationProvisioningArgs{...} }
+//	AccessConfigurationProvisioningArray{ AccessConfigurationProvisioningArgs{...} }
 type AccessConfigurationProvisioningArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +189,7 @@ func (i AccessConfigurationProvisioningArray) ToAccessConfigurationProvisioningA
 // AccessConfigurationProvisioningMapInput is an input type that accepts AccessConfigurationProvisioningMap and AccessConfigurationProvisioningMapOutput values.
 // You can construct a concrete instance of `AccessConfigurationProvisioningMapInput` via:
 //
-//          AccessConfigurationProvisioningMap{ "key": AccessConfigurationProvisioningArgs{...} }
+//	AccessConfigurationProvisioningMap{ "key": AccessConfigurationProvisioningArgs{...} }
 type AccessConfigurationProvisioningMapInput interface {
 	pulumi.Input
 

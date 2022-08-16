@@ -19,74 +19,77 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "example_name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: pulumi.StringRef("OK"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
-// 			RuleName:         pulumi.String(name),
-// 			Description:      pulumi.String(name),
-// 			SourceIdentifier: pulumi.String("ecs-instances-in-vpc"),
-// 			SourceOwner:      pulumi.String("ALIYUN"),
-// 			ResourceTypesScopes: pulumi.StringArray{
-// 				pulumi.String("ACS::ECS::Instance"),
-// 			},
-// 			RiskLevel:               pulumi.Int(1),
-// 			ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-// 			TagKeyScope:             pulumi.String("tfTest"),
-// 			TagValueScope:           pulumi.String("tfTest 123"),
-// 			ResourceGroupIdsScope:   pulumi.String(defaultResourceGroups.Ids[0]),
-// 			ExcludeResourceIdsScope: pulumi.String(defaultInstances.Instances[0].Id),
-// 			RegionIdsScope:          pulumi.String("cn-hangzhou"),
-// 			InputParameters: pulumi.AnyMap{
-// 				"vpcIds": pulumi.String(defaultInstances.Instances[0].VpcId),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
-// 			CompliancePackName: pulumi.String("tf-testaccConfig1234"),
-// 			Description:        pulumi.String("tf-testaccConfig1234"),
-// 			RiskLevel:          pulumi.Int(1),
-// 			ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
-// 				&cfg.CompliancePackConfigRuleIdArgs{
-// 					ConfigRuleId: defaultRule.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInstances, err := ecs.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//				RuleName:         pulumi.String(name),
+//				Description:      pulumi.String(name),
+//				SourceIdentifier: pulumi.String("ecs-instances-in-vpc"),
+//				SourceOwner:      pulumi.String("ALIYUN"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ECS::Instance"),
+//				},
+//				RiskLevel:               pulumi.Int(1),
+//				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
+//				TagKeyScope:             pulumi.String("tfTest"),
+//				TagValueScope:           pulumi.String("tfTest 123"),
+//				ResourceGroupIdsScope:   pulumi.String(defaultResourceGroups.Ids[0]),
+//				ExcludeResourceIdsScope: pulumi.String(defaultInstances.Instances[0].Id),
+//				RegionIdsScope:          pulumi.String("cn-hangzhou"),
+//				InputParameters: pulumi.AnyMap{
+//					"vpcIds": pulumi.String(defaultInstances.Instances[0].VpcId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
+//				CompliancePackName: pulumi.String("tf-testaccConfig1234"),
+//				Description:        pulumi.String("tf-testaccConfig1234"),
+//				RiskLevel:          pulumi.Int(1),
+//				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
+//					&cfg.CompliancePackConfigRuleIdArgs{
+//						ConfigRuleId: defaultRule.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -94,7 +97,9 @@ import (
 // Cloud Config Compliance Pack can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
+//
+//	$ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
+//
 // ```
 type CompliancePack struct {
 	pulumi.CustomResourceState
@@ -257,7 +262,7 @@ func (i *CompliancePack) ToCompliancePackOutputWithContext(ctx context.Context) 
 // CompliancePackArrayInput is an input type that accepts CompliancePackArray and CompliancePackArrayOutput values.
 // You can construct a concrete instance of `CompliancePackArrayInput` via:
 //
-//          CompliancePackArray{ CompliancePackArgs{...} }
+//	CompliancePackArray{ CompliancePackArgs{...} }
 type CompliancePackArrayInput interface {
 	pulumi.Input
 
@@ -282,7 +287,7 @@ func (i CompliancePackArray) ToCompliancePackArrayOutputWithContext(ctx context.
 // CompliancePackMapInput is an input type that accepts CompliancePackMap and CompliancePackMapOutput values.
 // You can construct a concrete instance of `CompliancePackMapInput` via:
 //
-//          CompliancePackMap{ "key": CompliancePackArgs{...} }
+//	CompliancePackMap{ "key": CompliancePackArgs{...} }
 type CompliancePackMapInput interface {
 	pulumi.Input
 

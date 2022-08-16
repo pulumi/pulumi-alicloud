@@ -22,7 +22,9 @@ import (
 // Network Attached Storage (NAS) Data Flow can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
+//
+//	$ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
+//
 // ```
 type DataFlow struct {
 	pulumi.CustomResourceState
@@ -213,7 +215,7 @@ func (i *DataFlow) ToDataFlowOutputWithContext(ctx context.Context) DataFlowOutp
 // DataFlowArrayInput is an input type that accepts DataFlowArray and DataFlowArrayOutput values.
 // You can construct a concrete instance of `DataFlowArrayInput` via:
 //
-//          DataFlowArray{ DataFlowArgs{...} }
+//	DataFlowArray{ DataFlowArgs{...} }
 type DataFlowArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +240,7 @@ func (i DataFlowArray) ToDataFlowArrayOutputWithContext(ctx context.Context) Dat
 // DataFlowMapInput is an input type that accepts DataFlowMap and DataFlowMapOutput values.
 // You can construct a concrete instance of `DataFlowMapInput` via:
 //
-//          DataFlowMap{ "key": DataFlowArgs{...} }
+//	DataFlowMap{ "key": DataFlowArgs{...} }
 type DataFlowMapInput interface {
 	pulumi.Input
 

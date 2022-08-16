@@ -231,7 +231,7 @@ func (i *SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Con
 // SecurityGroupRuleArrayInput is an input type that accepts SecurityGroupRuleArray and SecurityGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecurityGroupRuleArrayInput` via:
 //
-//          SecurityGroupRuleArray{ SecurityGroupRuleArgs{...} }
+//	SecurityGroupRuleArray{ SecurityGroupRuleArgs{...} }
 type SecurityGroupRuleArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +256,7 @@ func (i SecurityGroupRuleArray) ToSecurityGroupRuleArrayOutputWithContext(ctx co
 // SecurityGroupRuleMapInput is an input type that accepts SecurityGroupRuleMap and SecurityGroupRuleMapOutput values.
 // You can construct a concrete instance of `SecurityGroupRuleMapInput` via:
 //
-//          SecurityGroupRuleMap{ "key": SecurityGroupRuleArgs{...} }
+//	SecurityGroupRuleMap{ "key": SecurityGroupRuleArgs{...} }
 type SecurityGroupRuleMapInput interface {
 	pulumi.Input
 

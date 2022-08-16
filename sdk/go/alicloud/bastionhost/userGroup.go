@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewUserGroup(ctx, "example", &bastionhost.UserGroupArgs{
-// 			InstanceId:    pulumi.String("example_value"),
-// 			UserGroupName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bastionhost.NewUserGroup(ctx, "example", &bastionhost.UserGroupArgs{
+//				InstanceId:    pulumi.String("example_value"),
+//				UserGroupName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Bastion Host User Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
+//
+//	$ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
+//
 // ```
 type UserGroup struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *UserGroup) ToUserGroupOutputWithContext(ctx context.Context) UserGroupO
 // UserGroupArrayInput is an input type that accepts UserGroupArray and UserGroupArrayOutput values.
 // You can construct a concrete instance of `UserGroupArrayInput` via:
 //
-//          UserGroupArray{ UserGroupArgs{...} }
+//	UserGroupArray{ UserGroupArgs{...} }
 type UserGroupArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i UserGroupArray) ToUserGroupArrayOutputWithContext(ctx context.Context) U
 // UserGroupMapInput is an input type that accepts UserGroupMap and UserGroupMapOutput values.
 // You can construct a concrete instance of `UserGroupMapInput` via:
 //
-//          UserGroupMap{ "key": UserGroupArgs{...} }
+//	UserGroupMap{ "key": UserGroupArgs{...} }
 type UserGroupMapInput interface {
 	pulumi.Input
 

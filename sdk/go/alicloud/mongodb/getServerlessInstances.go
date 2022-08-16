@@ -16,42 +16,45 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mongodb.GetServerlessInstances(ctx, &mongodb.GetServerlessInstancesArgs{
-// 			Ids: []string{
-// 				"example_value",
-// 			},
-// 			DbInstanceClass:       pulumi.StringRef("example_value"),
-// 			DbInstanceDescription: pulumi.StringRef("example_value"),
-// 			NetworkType:           pulumi.StringRef("VPC"),
-// 			ResourceGroupId:       pulumi.StringRef("example_value"),
-// 			Status:                pulumi.StringRef("Running"),
-// 			VpcId:                 pulumi.StringRef("example_value"),
-// 			VswitchId:             pulumi.StringRef("example_value"),
-// 			ZoneId:                pulumi.StringRef("example_value"),
-// 			Tags: map[string]interface{}{
-// 				"Created": "MongodbServerlessInstance",
-// 				"For":     "TF",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("mongodbServerlessInstanceId1", example.Instances[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mongodb.GetServerlessInstances(ctx, &mongodb.GetServerlessInstancesArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				DbInstanceClass:       pulumi.StringRef("example_value"),
+//				DbInstanceDescription: pulumi.StringRef("example_value"),
+//				NetworkType:           pulumi.StringRef("VPC"),
+//				ResourceGroupId:       pulumi.StringRef("example_value"),
+//				Status:                pulumi.StringRef("Running"),
+//				VpcId:                 pulumi.StringRef("example_value"),
+//				VswitchId:             pulumi.StringRef("example_value"),
+//				ZoneId:                pulumi.StringRef("example_value"),
+//				Tags: map[string]interface{}{
+//					"Created": "MongodbServerlessInstance",
+//					"For":     "TF",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mongodbServerlessInstanceId1", example.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetServerlessInstances(ctx *pulumi.Context, args *GetServerlessInstancesArgs, opts ...pulumi.InvokeOption) (*GetServerlessInstancesResult, error) {
 	var rv GetServerlessInstancesResult

@@ -24,7 +24,9 @@ import (
 // ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>
+//
+//	$ pulumi import alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount example <dedicated_host_id>:<account_name>
+//
 // ```
 type DedicatedHostAccount struct {
 	pulumi.CustomResourceState
@@ -151,7 +153,7 @@ func (i *DedicatedHostAccount) ToDedicatedHostAccountOutputWithContext(ctx conte
 // DedicatedHostAccountArrayInput is an input type that accepts DedicatedHostAccountArray and DedicatedHostAccountArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostAccountArrayInput` via:
 //
-//          DedicatedHostAccountArray{ DedicatedHostAccountArgs{...} }
+//	DedicatedHostAccountArray{ DedicatedHostAccountArgs{...} }
 type DedicatedHostAccountArrayInput interface {
 	pulumi.Input
 
@@ -176,7 +178,7 @@ func (i DedicatedHostAccountArray) ToDedicatedHostAccountArrayOutputWithContext(
 // DedicatedHostAccountMapInput is an input type that accepts DedicatedHostAccountMap and DedicatedHostAccountMapOutput values.
 // You can construct a concrete instance of `DedicatedHostAccountMapInput` via:
 //
-//          DedicatedHostAccountMap{ "key": DedicatedHostAccountArgs{...} }
+//	DedicatedHostAccountMap{ "key": DedicatedHostAccountArgs{...} }
 type DedicatedHostAccountMapInput interface {
 	pulumi.Input
 

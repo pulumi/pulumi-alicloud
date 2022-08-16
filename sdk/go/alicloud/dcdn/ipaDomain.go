@@ -19,46 +19,49 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			NameRegex: pulumi.StringRef("default"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-// 			DomainName:      pulumi.String("example.com"),
-// 			ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-// 			Sources: dcdn.IpaDomainSourceArray{
-// 				&dcdn.IpaDomainSourceArgs{
-// 					Content:  pulumi.String("1.1.1.1"),
-// 					Port:     pulumi.Int(80),
-// 					Priority: pulumi.String("20"),
-// 					Type:     pulumi.String("ipaddr"),
-// 					Weight:   pulumi.Int(10),
-// 				},
-// 			},
-// 			Scope:  pulumi.String("overseas"),
-// 			Status: pulumi.String("online"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				NameRegex: pulumi.StringRef("default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
+//				DomainName:      pulumi.String("example.com"),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				Sources: dcdn.IpaDomainSourceArray{
+//					&dcdn.IpaDomainSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Port:     pulumi.Int(80),
+//						Priority: pulumi.String("20"),
+//						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.Int(10),
+//					},
+//				},
+//				Scope:  pulumi.String("overseas"),
+//				Status: pulumi.String("online"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -66,7 +69,9 @@ import (
 // DCDN Ipa Domain can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
+//
+//	$ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
+//
 // ```
 type IpaDomain struct {
 	pulumi.CustomResourceState
@@ -200,7 +205,7 @@ func (i *IpaDomain) ToIpaDomainOutputWithContext(ctx context.Context) IpaDomainO
 // IpaDomainArrayInput is an input type that accepts IpaDomainArray and IpaDomainArrayOutput values.
 // You can construct a concrete instance of `IpaDomainArrayInput` via:
 //
-//          IpaDomainArray{ IpaDomainArgs{...} }
+//	IpaDomainArray{ IpaDomainArgs{...} }
 type IpaDomainArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +230,7 @@ func (i IpaDomainArray) ToIpaDomainArrayOutputWithContext(ctx context.Context) I
 // IpaDomainMapInput is an input type that accepts IpaDomainMap and IpaDomainMapOutput values.
 // You can construct a concrete instance of `IpaDomainMapInput` via:
 //
-//          IpaDomainMap{ "key": IpaDomainArgs{...} }
+//	IpaDomainMap{ "key": IpaDomainArgs{...} }
 type IpaDomainMapInput interface {
 	pulumi.Input
 

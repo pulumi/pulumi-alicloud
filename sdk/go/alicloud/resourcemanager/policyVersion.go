@@ -13,53 +13,60 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
-// 			PolicyName: pulumi.String("tftest"),
-// 			PolicyDocument: pulumi.String(fmt.Sprintf(`		{
-// 			"Statement": [{
-// 				"Action": ["oss:*"],
-// 				"Effect": "Allow",
-// 				"Resource": ["acs:oss:*:*:*"]
-// 			}],
-// 			"Version": "1"
-// 		}
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
+//				PolicyName: pulumi.String("tftest"),
+//				PolicyDocument: pulumi.String(fmt.Sprintf(`		{
+//				"Statement": [{
+//					"Action": ["oss:*"],
+//					"Effect": "Allow",
+//					"Resource": ["acs:oss:*:*:*"]
+//				}],
+//				"Version": "1"
+//			}
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
-// 			PolicyName: examplePolicy.PolicyName,
-// 			PolicyDocument: pulumi.String(fmt.Sprintf(`		{
-// 			"Statement": [{
-// 				"Action": ["oss:*"],
-// 				"Effect": "Allow",
-// 				"Resource": ["acs:oss:*:*:myphotos"]
-// 			}],
-// 			"Version": "1"
-// 		}
+//
+//	})
+//	if err != nil {
+//		return err
+//	}
+//	_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
+//		PolicyName: examplePolicy.PolicyName,
+//		PolicyDocument: pulumi.String(fmt.Sprintf(`		{
+//		"Statement": [{
+//			"Action": ["oss:*"],
+//			"Effect": "Allow",
+//			"Resource": ["acs:oss:*:*:myphotos"]
+//		}],
+//		"Version": "1"
+//	}
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +74,9 @@ import (
 // Resource Manager Policy Version can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+//
+//	$ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+//
 // ```
 type PolicyVersion struct {
 	pulumi.CustomResourceState
@@ -191,7 +200,7 @@ func (i *PolicyVersion) ToPolicyVersionOutputWithContext(ctx context.Context) Po
 // PolicyVersionArrayInput is an input type that accepts PolicyVersionArray and PolicyVersionArrayOutput values.
 // You can construct a concrete instance of `PolicyVersionArrayInput` via:
 //
-//          PolicyVersionArray{ PolicyVersionArgs{...} }
+//	PolicyVersionArray{ PolicyVersionArgs{...} }
 type PolicyVersionArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +225,7 @@ func (i PolicyVersionArray) ToPolicyVersionArrayOutputWithContext(ctx context.Co
 // PolicyVersionMapInput is an input type that accepts PolicyVersionMap and PolicyVersionMapOutput values.
 // You can construct a concrete instance of `PolicyVersionMapInput` via:
 //
-//          PolicyVersionMap{ "key": PolicyVersionArgs{...} }
+//	PolicyVersionMap{ "key": PolicyVersionArgs{...} }
 type PolicyVersionMapInput interface {
 	pulumi.Input
 

@@ -84,7 +84,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      */
     public readonly config!: pulumi.Output<string>;
     /**
@@ -114,6 +114,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ioMax!: pulumi.Output<number>;
     /**
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     */
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -122,17 +126,25 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
     /**
-     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     public readonly securityGroup!: pulumi.Output<string>;
     /**
-     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
     public readonly serviceVersion!: pulumi.Output<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     public readonly specType!: pulumi.Output<string | undefined>;
+    /**
+     * The status of the instance. Valid values:
+     * - 0: pending
+     * - 1: deploying
+     * - 5: running
+     * - 15: expired
+     */
+    public /*out*/ readonly status!: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -174,11 +186,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["eipMax"] = state ? state.eipMax : undefined;
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
             resourceInputs["ioMax"] = state ? state.ioMax : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paidType"] = state ? state.paidType : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             resourceInputs["specType"] = state ? state.specType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["topicQuota"] = state ? state.topicQuota : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -210,6 +224,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["eipMax"] = args ? args.eipMax : undefined;
             resourceInputs["ioMax"] = args ? args.ioMax : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paidType"] = args ? args.paidType : undefined;
             resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
@@ -219,6 +234,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["endPoint"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["vpcId"] = undefined /*out*/;
             resourceInputs["zoneId"] = undefined /*out*/;
         }
@@ -232,7 +248,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      */
     config?: pulumi.Input<string>;
     /**
@@ -262,6 +278,10 @@ export interface InstanceState {
      */
     ioMax?: pulumi.Input<number>;
     /**
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
     name?: pulumi.Input<string>;
@@ -270,17 +290,25 @@ export interface InstanceState {
      */
     paidType?: pulumi.Input<string>;
     /**
-     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
     serviceVersion?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     specType?: pulumi.Input<string>;
+    /**
+     * The status of the instance. Valid values:
+     * - 0: pending
+     * - 1: deploying
+     * - 5: running
+     * - 15: expired
+     */
+    status?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -308,7 +336,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      */
     config?: pulumi.Input<string>;
     /**
@@ -334,6 +362,10 @@ export interface InstanceArgs {
      */
     ioMax: pulumi.Input<number>;
     /**
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
     name?: pulumi.Input<string>;
@@ -342,11 +374,11 @@ export interface InstanceArgs {
      */
     paidType?: pulumi.Input<string>;
     /**
-     * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
+     * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
     serviceVersion?: pulumi.Input<string>;
     /**

@@ -16,33 +16,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := alb.GetSecurityPolicies(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albSecurityPolicyId1", ids.Policies[0].Id)
-// 		nameRegex, err := alb.GetSecurityPolicies(ctx, &alb.GetSecurityPoliciesArgs{
-// 			NameRegex: pulumi.StringRef("^my-SecurityPolicy"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("albSecurityPolicyId2", nameRegex.Policies[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := alb.GetSecurityPolicies(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albSecurityPolicyId1", ids.Policies[0].Id)
+//			nameRegex, err := alb.GetSecurityPolicies(ctx, &alb.GetSecurityPoliciesArgs{
+//				NameRegex: pulumi.StringRef("^my-SecurityPolicy"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albSecurityPolicyId2", nameRegex.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSecurityPolicies(ctx *pulumi.Context, args *GetSecurityPoliciesArgs, opts ...pulumi.InvokeOption) (*GetSecurityPoliciesResult, error) {
 	var rv GetSecurityPoliciesResult

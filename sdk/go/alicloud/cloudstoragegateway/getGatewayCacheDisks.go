@@ -16,44 +16,47 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ids, err := cloudstoragegateway.GetGatewayCacheDisks(ctx, &cloudstoragegateway.GetGatewayCacheDisksArgs{
-// 			GatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayGatewayCacheDiskId1", ids.Disks[0].Id)
-// 		status, err := cloudstoragegateway.GetGatewayCacheDisks(ctx, &cloudstoragegateway.GetGatewayCacheDisksArgs{
-// 			GatewayId: "example_value",
-// 			Ids: []string{
-// 				"example_value-1",
-// 				"example_value-2",
-// 			},
-// 			Status: pulumi.IntRef(0),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cloudStorageGatewayGatewayCacheDiskId2", status.Disks[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudstoragegateway.GetGatewayCacheDisks(ctx, &cloudstoragegateway.GetGatewayCacheDisksArgs{
+//				GatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayCacheDiskId1", ids.Disks[0].Id)
+//			status, err := cloudstoragegateway.GetGatewayCacheDisks(ctx, &cloudstoragegateway.GetGatewayCacheDisksArgs{
+//				GatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				Status: pulumi.IntRef(0),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayCacheDiskId2", status.Disks[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetGatewayCacheDisks(ctx *pulumi.Context, args *GetGatewayCacheDisksArgs, opts ...pulumi.InvokeOption) (*GetGatewayCacheDisksResult, error) {
 	var rv GetGatewayCacheDisksResult

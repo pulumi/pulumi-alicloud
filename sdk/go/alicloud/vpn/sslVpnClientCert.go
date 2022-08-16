@@ -13,27 +13,30 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpn.NewSslVpnClientCert(ctx, "foo", &vpn.SslVpnClientCertArgs{
-// 			SslVpnServerId: pulumi.String("ssl_vpn_server_fake_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpn.NewSslVpnClientCert(ctx, "foo", &vpn.SslVpnClientCertArgs{
+//				SslVpnServerId: pulumi.String("ssl_vpn_server_fake_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // SSL-VPN client certificates can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+//
+//	$ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+//
 // ```
 type SslVpnClientCert struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *SslVpnClientCert) ToSslVpnClientCertOutputWithContext(ctx context.Conte
 // SslVpnClientCertArrayInput is an input type that accepts SslVpnClientCertArray and SslVpnClientCertArrayOutput values.
 // You can construct a concrete instance of `SslVpnClientCertArrayInput` via:
 //
-//          SslVpnClientCertArray{ SslVpnClientCertArgs{...} }
+//	SslVpnClientCertArray{ SslVpnClientCertArgs{...} }
 type SslVpnClientCertArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i SslVpnClientCertArray) ToSslVpnClientCertArrayOutputWithContext(ctx cont
 // SslVpnClientCertMapInput is an input type that accepts SslVpnClientCertMap and SslVpnClientCertMapOutput values.
 // You can construct a concrete instance of `SslVpnClientCertMapInput` via:
 //
-//          SslVpnClientCertMap{ "key": SslVpnClientCertArgs{...} }
+//	SslVpnClientCertMap{ "key": SslVpnClientCertArgs{...} }
 type SslVpnClientCertMapInput interface {
 	pulumi.Input
 

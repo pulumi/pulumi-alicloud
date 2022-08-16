@@ -34,6 +34,7 @@ class AlarmArgs:
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
                  triggered_count: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
@@ -58,6 +59,7 @@ class AlarmArgs:
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -110,6 +112,8 @@ class AlarmArgs:
             pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
         if statistics is not None:
             pulumi.set(__self__, "statistics", statistics)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if threshold is not None:
             warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
             pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
@@ -342,6 +346,18 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[str]]:
         """
         Critical level alarm threshold value, which must be a numeric value currently.
@@ -399,6 +415,7 @@ class _AlarmState:
                  start_time: Optional[pulumi.Input[int]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
                  triggered_count: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
@@ -424,6 +441,7 @@ class _AlarmState:
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         :param pulumi.Input[str] status: The current alarm rule status.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -481,6 +499,8 @@ class _AlarmState:
             pulumi.set(__self__, "statistics", statistics)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if threshold is not None:
             warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
             pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
@@ -725,6 +745,18 @@ class _AlarmState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[str]]:
         """
         Critical level alarm threshold value, which must be a numeric value currently.
@@ -783,6 +815,7 @@ class Alarm(pulumi.CustomResource):
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
                  triggered_count: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
@@ -843,6 +876,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -921,6 +955,7 @@ class Alarm(pulumi.CustomResource):
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  statistics: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold: Optional[pulumi.Input[str]] = None,
                  triggered_count: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
@@ -972,6 +1007,7 @@ class Alarm(pulumi.CustomResource):
                 warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
                 pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
             __props__.__dict__["statistics"] = statistics
+            __props__.__dict__["tags"] = tags
             if threshold is not None and not opts.urn:
                 warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
                 pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
@@ -1011,6 +1047,7 @@ class Alarm(pulumi.CustomResource):
             start_time: Optional[pulumi.Input[int]] = None,
             statistics: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             threshold: Optional[pulumi.Input[str]] = None,
             triggered_count: Optional[pulumi.Input[int]] = None,
             webhook: Optional[pulumi.Input[str]] = None) -> 'Alarm':
@@ -1041,6 +1078,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         :param pulumi.Input[str] status: The current alarm rule status.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -1068,6 +1106,7 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["start_time"] = start_time
         __props__.__dict__["statistics"] = statistics
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["threshold"] = threshold
         __props__.__dict__["triggered_count"] = triggered_count
         __props__.__dict__["webhook"] = webhook
@@ -1225,6 +1264,14 @@ class Alarm(pulumi.CustomResource):
         The current alarm rule status.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

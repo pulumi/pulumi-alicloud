@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRepos, err := cs.GetRegistryEnterpriseRepos(ctx, &cs.GetRegistryEnterpriseReposArgs{
-// 			InstanceId: "cri-xx",
-// 			NameRegex:  pulumi.StringRef("my-repos"),
-// 			OutputFile: pulumi.StringRef("my-repo-json"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("output", myRepos.Repos)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myRepos, err := cs.GetRegistryEnterpriseRepos(ctx, &cs.GetRegistryEnterpriseReposArgs{
+//				InstanceId: "cri-xx",
+//				NameRegex:  pulumi.StringRef("my-repos"),
+//				OutputFile: pulumi.StringRef("my-repo-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", myRepos.Repos)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRegistryEnterpriseRepos(ctx *pulumi.Context, args *GetRegistryEnterpriseReposArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseReposResult, error) {
 	var rv GetRegistryEnterpriseReposResult

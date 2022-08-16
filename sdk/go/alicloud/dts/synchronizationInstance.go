@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
-// 			DestinationEndpointEngineName: pulumi.String("ADB30"),
-// 			DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
-// 			InstanceClass:                 pulumi.String("small"),
-// 			PaymentType:                   pulumi.String("PayAsYouGo"),
-// 			SourceEndpointEngineName:      pulumi.String("PolarDB"),
-// 			SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
-// 			SyncArchitecture:              pulumi.String("oneway"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
+//				DestinationEndpointEngineName: pulumi.String("ADB30"),
+//				DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
+//				InstanceClass:                 pulumi.String("small"),
+//				PaymentType:                   pulumi.String("PayAsYouGo"),
+//				SourceEndpointEngineName:      pulumi.String("PolarDB"),
+//				SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
+//				SyncArchitecture:              pulumi.String("oneway"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // DTS Synchronization Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
+//
+//	$ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
+//
 // ```
 type SynchronizationInstance struct {
 	pulumi.CustomResourceState
@@ -292,7 +297,7 @@ func (i *SynchronizationInstance) ToSynchronizationInstanceOutputWithContext(ctx
 // SynchronizationInstanceArrayInput is an input type that accepts SynchronizationInstanceArray and SynchronizationInstanceArrayOutput values.
 // You can construct a concrete instance of `SynchronizationInstanceArrayInput` via:
 //
-//          SynchronizationInstanceArray{ SynchronizationInstanceArgs{...} }
+//	SynchronizationInstanceArray{ SynchronizationInstanceArgs{...} }
 type SynchronizationInstanceArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +322,7 @@ func (i SynchronizationInstanceArray) ToSynchronizationInstanceArrayOutputWithCo
 // SynchronizationInstanceMapInput is an input type that accepts SynchronizationInstanceMap and SynchronizationInstanceMapOutput values.
 // You can construct a concrete instance of `SynchronizationInstanceMapInput` via:
 //
-//          SynchronizationInstanceMap{ "key": SynchronizationInstanceArgs{...} }
+//	SynchronizationInstanceMap{ "key": SynchronizationInstanceArgs{...} }
 type SynchronizationInstanceMapInput interface {
 	pulumi.Input
 

@@ -19,47 +19,50 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
-// 			LocalGatewayIp:          pulumi.String("10.0.0.1"),
-// 			PeerGatewayIp:           pulumi.String("10.0.0.2"),
-// 			PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-// 			PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
-// 			VirtualBorderRouterName: pulumi.Any(_var.Name),
-// 			VlanId:                  pulumi.Int(120),
-// 			MinRxInterval:           pulumi.Int(1000),
-// 			MinTxInterval:           pulumi.Int(1000),
-// 			DetectMultiplier:        pulumi.Int(10),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewBgpNetwork(ctx, "example", &vpc.BgpNetworkArgs{
-// 			DstCidrBlock: pulumi.String("example_value"),
-// 			RouterId:     defaultVirtualBorderRouter.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.Any(_var.Name),
+//				VlanId:                  pulumi.Int(120),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewBgpNetwork(ctx, "example", &vpc.BgpNetworkArgs{
+//				DstCidrBlock: pulumi.String("example_value"),
+//				RouterId:     defaultVirtualBorderRouter.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // VPC Bgp Network can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
+//
+//	$ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
+//
 // ```
 type BgpNetwork struct {
 	pulumi.CustomResourceState
@@ -177,7 +182,7 @@ func (i *BgpNetwork) ToBgpNetworkOutputWithContext(ctx context.Context) BgpNetwo
 // BgpNetworkArrayInput is an input type that accepts BgpNetworkArray and BgpNetworkArrayOutput values.
 // You can construct a concrete instance of `BgpNetworkArrayInput` via:
 //
-//          BgpNetworkArray{ BgpNetworkArgs{...} }
+//	BgpNetworkArray{ BgpNetworkArgs{...} }
 type BgpNetworkArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i BgpNetworkArray) ToBgpNetworkArrayOutputWithContext(ctx context.Context)
 // BgpNetworkMapInput is an input type that accepts BgpNetworkMap and BgpNetworkMapOutput values.
 // You can construct a concrete instance of `BgpNetworkMapInput` via:
 //
-//          BgpNetworkMap{ "key": BgpNetworkArgs{...} }
+//	BgpNetworkMap{ "key": BgpNetworkArgs{...} }
 type BgpNetworkMapInput interface {
 	pulumi.Input
 

@@ -20,7 +20,7 @@ type DomainConfigFunctionArg struct {
 // DomainConfigFunctionArgInput is an input type that accepts DomainConfigFunctionArgArgs and DomainConfigFunctionArgOutput values.
 // You can construct a concrete instance of `DomainConfigFunctionArgInput` via:
 //
-//          DomainConfigFunctionArgArgs{...}
+//	DomainConfigFunctionArgArgs{...}
 type DomainConfigFunctionArgInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i DomainConfigFunctionArgArgs) ToDomainConfigFunctionArgOutputWithContext(
 // DomainConfigFunctionArgArrayInput is an input type that accepts DomainConfigFunctionArgArray and DomainConfigFunctionArgArrayOutput values.
 // You can construct a concrete instance of `DomainConfigFunctionArgArrayInput` via:
 //
-//          DomainConfigFunctionArgArray{ DomainConfigFunctionArgArgs{...} }
+//	DomainConfigFunctionArgArray{ DomainConfigFunctionArgArgs{...} }
 type DomainConfigFunctionArgArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ type DomainSource struct {
 // DomainSourceInput is an input type that accepts DomainSourceArgs and DomainSourceOutput values.
 // You can construct a concrete instance of `DomainSourceInput` via:
 //
-//          DomainSourceArgs{...}
+//	DomainSourceArgs{...}
 type DomainSourceInput interface {
 	pulumi.Input
 
@@ -174,7 +174,7 @@ func (i DomainSourceArgs) ToDomainSourceOutputWithContext(ctx context.Context) D
 // DomainSourceArrayInput is an input type that accepts DomainSourceArray and DomainSourceArrayOutput values.
 // You can construct a concrete instance of `DomainSourceArrayInput` via:
 //
-//          DomainSourceArray{ DomainSourceArgs{...} }
+//	DomainSourceArray{ DomainSourceArgs{...} }
 type DomainSourceArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +274,7 @@ type IpaDomainSource struct {
 // IpaDomainSourceInput is an input type that accepts IpaDomainSourceArgs and IpaDomainSourceOutput values.
 // You can construct a concrete instance of `IpaDomainSourceInput` via:
 //
-//          IpaDomainSourceArgs{...}
+//	IpaDomainSourceArgs{...}
 type IpaDomainSourceInput interface {
 	pulumi.Input
 
@@ -310,7 +310,7 @@ func (i IpaDomainSourceArgs) ToIpaDomainSourceOutputWithContext(ctx context.Cont
 // IpaDomainSourceArrayInput is an input type that accepts IpaDomainSourceArray and IpaDomainSourceArrayOutput values.
 // You can construct a concrete instance of `IpaDomainSourceArrayInput` via:
 //
-//          IpaDomainSourceArray{ IpaDomainSourceArgs{...} }
+//	IpaDomainSourceArray{ IpaDomainSourceArgs{...} }
 type IpaDomainSourceArrayInput interface {
 	pulumi.Input
 
@@ -421,7 +421,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -471,7 +471,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -605,7 +605,7 @@ type GetDomainsDomainSource struct {
 // GetDomainsDomainSourceInput is an input type that accepts GetDomainsDomainSourceArgs and GetDomainsDomainSourceOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceInput` via:
 //
-//          GetDomainsDomainSourceArgs{...}
+//	GetDomainsDomainSourceArgs{...}
 type GetDomainsDomainSourceInput interface {
 	pulumi.Input
 
@@ -643,7 +643,7 @@ func (i GetDomainsDomainSourceArgs) ToGetDomainsDomainSourceOutputWithContext(ct
 // GetDomainsDomainSourceArrayInput is an input type that accepts GetDomainsDomainSourceArray and GetDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceArrayInput` via:
 //
-//          GetDomainsDomainSourceArray{ GetDomainsDomainSourceArgs{...} }
+//	GetDomainsDomainSourceArray{ GetDomainsDomainSourceArgs{...} }
 type GetDomainsDomainSourceArrayInput interface {
 	pulumi.Input
 
@@ -759,7 +759,7 @@ type GetIpaDomainsDomain struct {
 // GetIpaDomainsDomainInput is an input type that accepts GetIpaDomainsDomainArgs and GetIpaDomainsDomainOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainInput` via:
 //
-//          GetIpaDomainsDomainArgs{...}
+//	GetIpaDomainsDomainArgs{...}
 type GetIpaDomainsDomainInput interface {
 	pulumi.Input
 
@@ -809,7 +809,7 @@ func (i GetIpaDomainsDomainArgs) ToGetIpaDomainsDomainOutputWithContext(ctx cont
 // GetIpaDomainsDomainArrayInput is an input type that accepts GetIpaDomainsDomainArray and GetIpaDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainArrayInput` via:
 //
-//          GetIpaDomainsDomainArray{ GetIpaDomainsDomainArgs{...} }
+//	GetIpaDomainsDomainArray{ GetIpaDomainsDomainArgs{...} }
 type GetIpaDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -941,7 +941,7 @@ type GetIpaDomainsDomainSource struct {
 // GetIpaDomainsDomainSourceInput is an input type that accepts GetIpaDomainsDomainSourceArgs and GetIpaDomainsDomainSourceOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainSourceInput` via:
 //
-//          GetIpaDomainsDomainSourceArgs{...}
+//	GetIpaDomainsDomainSourceArgs{...}
 type GetIpaDomainsDomainSourceInput interface {
 	pulumi.Input
 
@@ -977,7 +977,7 @@ func (i GetIpaDomainsDomainSourceArgs) ToGetIpaDomainsDomainSourceOutputWithCont
 // GetIpaDomainsDomainSourceArrayInput is an input type that accepts GetIpaDomainsDomainSourceArray and GetIpaDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetIpaDomainsDomainSourceArrayInput` via:
 //
-//          GetIpaDomainsDomainSourceArray{ GetIpaDomainsDomainSourceArgs{...} }
+//	GetIpaDomainsDomainSourceArray{ GetIpaDomainsDomainSourceArgs{...} }
 type GetIpaDomainsDomainSourceArrayInput interface {
 	pulumi.Input
 

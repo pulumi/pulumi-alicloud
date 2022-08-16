@@ -16,7 +16,9 @@ import (
 // Log store index can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
+//
+//	$ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
+//
 // ```
 type StoreIndex struct {
 	pulumi.CustomResourceState
@@ -140,7 +142,7 @@ func (i *StoreIndex) ToStoreIndexOutputWithContext(ctx context.Context) StoreInd
 // StoreIndexArrayInput is an input type that accepts StoreIndexArray and StoreIndexArrayOutput values.
 // You can construct a concrete instance of `StoreIndexArrayInput` via:
 //
-//          StoreIndexArray{ StoreIndexArgs{...} }
+//	StoreIndexArray{ StoreIndexArgs{...} }
 type StoreIndexArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +167,7 @@ func (i StoreIndexArray) ToStoreIndexArrayOutputWithContext(ctx context.Context)
 // StoreIndexMapInput is an input type that accepts StoreIndexMap and StoreIndexMapOutput values.
 // You can construct a concrete instance of `StoreIndexMapInput` via:
 //
-//          StoreIndexMap{ "key": StoreIndexArgs{...} }
+//	StoreIndexMap{ "key": StoreIndexArgs{...} }
 type StoreIndexMapInput interface {
 	pulumi.Input
 

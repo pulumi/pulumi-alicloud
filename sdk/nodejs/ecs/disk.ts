@@ -124,7 +124,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    public readonly size!: pulumi.Output<number | undefined>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */

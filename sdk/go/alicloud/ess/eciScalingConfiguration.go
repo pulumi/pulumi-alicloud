@@ -17,84 +17,87 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "essscalingconfiguration"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.Any(data.Alicloud_zones.Default.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
-// 			MinSize:          pulumi.Int(0),
-// 			MaxSize:          pulumi.Int(1),
-// 			ScalingGroupName: pulumi.String(name),
-// 			RemovalPolicies: pulumi.StringArray{
-// 				pulumi.String("OldestInstance"),
-// 				pulumi.String("NewestInstance"),
-// 			},
-// 			VswitchIds: pulumi.StringArray{
-// 				defaultSwitch.ID(),
-// 			},
-// 			GroupType: pulumi.String("ECI"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ess.NewEciScalingConfiguration(ctx, "defaultEciScalingConfiguration", &ess.EciScalingConfigurationArgs{
-// 			ScalingGroupId:     defaultScalingGroup.ID(),
-// 			Cpu:                pulumi.Float64(2),
-// 			Memory:             pulumi.Float64(4),
-// 			SecurityGroupId:    defaultSecurityGroup.ID(),
-// 			ForceDelete:        pulumi.Bool(true),
-// 			Active:             pulumi.Bool(true),
-// 			ContainerGroupName: pulumi.String("container-group-1649839595174"),
-// 			Containers: ess.EciScalingConfigurationContainerArray{
-// 				&ess.EciScalingConfigurationContainerArgs{
-// 					Name:  pulumi.String("container-1"),
-// 					Image: pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "essscalingconfiguration"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.Any(data.Alicloud_zones.Default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(0),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String(name),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				GroupType: pulumi.String("ECI"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewEciScalingConfiguration(ctx, "defaultEciScalingConfiguration", &ess.EciScalingConfigurationArgs{
+//				ScalingGroupId:     defaultScalingGroup.ID(),
+//				Cpu:                pulumi.Float64(2),
+//				Memory:             pulumi.Float64(4),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
+//				ForceDelete:        pulumi.Bool(true),
+//				Active:             pulumi.Bool(true),
+//				ContainerGroupName: pulumi.String("container-group-1649839595174"),
+//				Containers: ess.EciScalingConfigurationContainerArray{
+//					&ess.EciScalingConfigurationContainerArgs{
+//						Name:  pulumi.String("container-1"),
+//						Image: pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -102,7 +105,9 @@ import (
 // ESS eci scaling configuration can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
+//
+//	$ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
+//
 // ```
 type EciScalingConfiguration struct {
 	pulumi.CustomResourceState
@@ -528,7 +533,7 @@ func (i *EciScalingConfiguration) ToEciScalingConfigurationOutputWithContext(ctx
 // EciScalingConfigurationArrayInput is an input type that accepts EciScalingConfigurationArray and EciScalingConfigurationArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationArrayInput` via:
 //
-//          EciScalingConfigurationArray{ EciScalingConfigurationArgs{...} }
+//	EciScalingConfigurationArray{ EciScalingConfigurationArgs{...} }
 type EciScalingConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -553,7 +558,7 @@ func (i EciScalingConfigurationArray) ToEciScalingConfigurationArrayOutputWithCo
 // EciScalingConfigurationMapInput is an input type that accepts EciScalingConfigurationMap and EciScalingConfigurationMapOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationMapInput` via:
 //
-//          EciScalingConfigurationMap{ "key": EciScalingConfigurationArgs{...} }
+//	EciScalingConfigurationMap{ "key": EciScalingConfigurationArgs{...} }
 type EciScalingConfigurationMapInput interface {
 	pulumi.Input
 
@@ -730,10 +735,10 @@ func (o EciScalingConfigurationOutput) SpotStrategy() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
-// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-//   be a null string.
-// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-//   a null string.
+//   - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
+//     be a null string.
+//   - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
+//     a null string.
 func (o EciScalingConfigurationOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

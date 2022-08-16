@@ -19,27 +19,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := alb.NewHealthCheckTemplate(ctx, "example", &alb.HealthCheckTemplateArgs{
-// 			HealthCheckTemplateName: pulumi.String("example_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alb.NewHealthCheckTemplate(ctx, "example", &alb.HealthCheckTemplateArgs{
+//				HealthCheckTemplateName: pulumi.String("example_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
+//
+//	$ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
+//
 // ```
 type HealthCheckTemplate struct {
 	pulumi.CustomResourceState
@@ -258,7 +263,7 @@ func (i *HealthCheckTemplate) ToHealthCheckTemplateOutputWithContext(ctx context
 // HealthCheckTemplateArrayInput is an input type that accepts HealthCheckTemplateArray and HealthCheckTemplateArrayOutput values.
 // You can construct a concrete instance of `HealthCheckTemplateArrayInput` via:
 //
-//          HealthCheckTemplateArray{ HealthCheckTemplateArgs{...} }
+//	HealthCheckTemplateArray{ HealthCheckTemplateArgs{...} }
 type HealthCheckTemplateArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +288,7 @@ func (i HealthCheckTemplateArray) ToHealthCheckTemplateArrayOutputWithContext(ct
 // HealthCheckTemplateMapInput is an input type that accepts HealthCheckTemplateMap and HealthCheckTemplateMapOutput values.
 // You can construct a concrete instance of `HealthCheckTemplateMapInput` via:
 //
-//          HealthCheckTemplateMap{ "key": HealthCheckTemplateArgs{...} }
+//	HealthCheckTemplateMap{ "key": HealthCheckTemplateArgs{...} }
 type HealthCheckTemplateMapInput interface {
 	pulumi.Input
 

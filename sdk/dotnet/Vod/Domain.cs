@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Vod
         public Output<string> SslPub { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the domain name for CDN. Value values:
+        /// The status of the domain name for CDN. Valid values:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Vod
         public Input<string>? SslPub { get; set; }
 
         /// <summary>
-        /// The status of the domain name for CDN. Value values:
+        /// The status of the domain name for CDN. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

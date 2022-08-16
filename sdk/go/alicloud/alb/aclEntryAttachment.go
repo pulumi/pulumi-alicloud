@@ -21,41 +21,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "terraformalbaclconfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
-// 			AclName:         pulumi.String(name),
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = alb.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &alb.AclEntryAttachmentArgs{
-// 			AclId:       defaultAcl.ID(),
-// 			Entry:       pulumi.String("168.10.10.0/24"),
-// 			Description: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraformalbaclconfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
+//				AclName:         pulumi.String(name),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &alb.AclEntryAttachmentArgs{
+//				AclId:       defaultAcl.ID(),
+//				Entry:       pulumi.String("168.10.10.0/24"),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Acl entry attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+//
+//	$ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+//
 // ```
 type AclEntryAttachment struct {
 	pulumi.CustomResourceState
@@ -183,7 +188,7 @@ func (i *AclEntryAttachment) ToAclEntryAttachmentOutputWithContext(ctx context.C
 // AclEntryAttachmentArrayInput is an input type that accepts AclEntryAttachmentArray and AclEntryAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclEntryAttachmentArrayInput` via:
 //
-//          AclEntryAttachmentArray{ AclEntryAttachmentArgs{...} }
+//	AclEntryAttachmentArray{ AclEntryAttachmentArgs{...} }
 type AclEntryAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +213,7 @@ func (i AclEntryAttachmentArray) ToAclEntryAttachmentArrayOutputWithContext(ctx 
 // AclEntryAttachmentMapInput is an input type that accepts AclEntryAttachmentMap and AclEntryAttachmentMapOutput values.
 // You can construct a concrete instance of `AclEntryAttachmentMapInput` via:
 //
-//          AclEntryAttachmentMap{ "key": AclEntryAttachmentArgs{...} }
+//	AclEntryAttachmentMap{ "key": AclEntryAttachmentArgs{...} }
 type AclEntryAttachmentMapInput interface {
 	pulumi.Input
 

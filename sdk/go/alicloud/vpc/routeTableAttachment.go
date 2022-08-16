@@ -13,63 +13,66 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "route-table-attachment-example-name"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_default, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-// 			VpcId:     fooNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/21"),
-// 			ZoneId:    pulumi.String(_default.Zones[0].Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
-// 			VpcId:          fooNetwork.ID(),
-// 			RouteTableName: pulumi.String(name),
-// 			Description:    pulumi.String("route_table_attachment"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewRouteTableAttachment(ctx, "fooRouteTableAttachment", &vpc.RouteTableAttachmentArgs{
-// 			VswitchId:    fooSwitch.ID(),
-// 			RouteTableId: fooRouteTable.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "route-table-attachment-example-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:     fooNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/21"),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
+//				VpcId:          fooNetwork.ID(),
+//				RouteTableName: pulumi.String(name),
+//				Description:    pulumi.String("route_table_attachment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouteTableAttachment(ctx, "fooRouteTableAttachment", &vpc.RouteTableAttachmentArgs{
+//				VswitchId:    fooSwitch.ID(),
+//				RouteTableId: fooRouteTable.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -77,7 +80,9 @@ import (
 // The route table attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+//
+//	$ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+//
 // ```
 type RouteTableAttachment struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx conte
 // RouteTableAttachmentArrayInput is an input type that accepts RouteTableAttachmentArray and RouteTableAttachmentArrayOutput values.
 // You can construct a concrete instance of `RouteTableAttachmentArrayInput` via:
 //
-//          RouteTableAttachmentArray{ RouteTableAttachmentArgs{...} }
+//	RouteTableAttachmentArray{ RouteTableAttachmentArgs{...} }
 type RouteTableAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i RouteTableAttachmentArray) ToRouteTableAttachmentArrayOutputWithContext(
 // RouteTableAttachmentMapInput is an input type that accepts RouteTableAttachmentMap and RouteTableAttachmentMapOutput values.
 // You can construct a concrete instance of `RouteTableAttachmentMapInput` via:
 //
-//          RouteTableAttachmentMap{ "key": RouteTableAttachmentArgs{...} }
+//	RouteTableAttachmentMap{ "key": RouteTableAttachmentArgs{...} }
 type RouteTableAttachmentMapInput interface {
 	pulumi.Input
 

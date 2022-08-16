@@ -19,43 +19,46 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ddos.NewDomainResource(ctx, "example", &ddos.DomainResourceArgs{
-// 			Domain:   pulumi.String("tftestacc1234.abc"),
-// 			HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0，\"Https2http\":0}"),
-// 			InstanceIds: pulumi.StringArray{
-// 				pulumi.String("ddoscoo-cn-6ja1rl4j****"),
-// 			},
-// 			ProxyTypes: ddos.DomainResourceProxyTypeArray{
-// 				&ddos.DomainResourceProxyTypeArgs{
-// 					ProxyPorts: pulumi.IntArray{
-// 						pulumi.Int(443),
-// 					},
-// 					ProxyType: pulumi.String("https"),
-// 				},
-// 			},
-// 			RealServers: pulumi.StringArray{
-// 				pulumi.String("177.167.32.11"),
-// 			},
-// 			RsType: pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ddos.NewDomainResource(ctx, "example", &ddos.DomainResourceArgs{
+//				Domain:   pulumi.String("tftestacc1234.abc"),
+//				HttpsExt: pulumi.String("{\"Http2\":1,\"Http2https\":0，\"Https2http\":0}"),
+//				InstanceIds: pulumi.StringArray{
+//					pulumi.String("ddoscoo-cn-6ja1rl4j****"),
+//				},
+//				ProxyTypes: ddos.DomainResourceProxyTypeArray{
+//					&ddos.DomainResourceProxyTypeArgs{
+//						ProxyPorts: pulumi.IntArray{
+//							pulumi.Int(443),
+//						},
+//						ProxyType: pulumi.String("https"),
+//					},
+//				},
+//				RealServers: pulumi.StringArray{
+//					pulumi.String("177.167.32.11"),
+//				},
+//				RsType: pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
+//
+//	$ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
+//
 // ```
 type DomainResource struct {
 	pulumi.CustomResourceState
@@ -226,7 +231,7 @@ func (i *DomainResource) ToDomainResourceOutputWithContext(ctx context.Context) 
 // DomainResourceArrayInput is an input type that accepts DomainResourceArray and DomainResourceArrayOutput values.
 // You can construct a concrete instance of `DomainResourceArrayInput` via:
 //
-//          DomainResourceArray{ DomainResourceArgs{...} }
+//	DomainResourceArray{ DomainResourceArgs{...} }
 type DomainResourceArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +256,7 @@ func (i DomainResourceArray) ToDomainResourceArrayOutputWithContext(ctx context.
 // DomainResourceMapInput is an input type that accepts DomainResourceMap and DomainResourceMapOutput values.
 // You can construct a concrete instance of `DomainResourceMapInput` via:
 //
-//          DomainResourceMap{ "key": DomainResourceArgs{...} }
+//	DomainResourceMap{ "key": DomainResourceArgs{...} }
 type DomainResourceMapInput interface {
 	pulumi.Input
 

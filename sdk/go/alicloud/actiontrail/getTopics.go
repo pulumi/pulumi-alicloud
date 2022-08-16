@@ -20,24 +20,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		topicsDs, err := actiontrail.GetTopics(ctx, &actiontrail.GetTopicsArgs{
-// 			InstanceId: "xxx",
-// 			NameRegex:  pulumi.StringRef("alikafkaTopicName"),
-// 			OutputFile: pulumi.StringRef("topics.txt"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstTopicName", topicsDs.Topics[0].Topic)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topicsDs, err := actiontrail.GetTopics(ctx, &actiontrail.GetTopicsArgs{
+//				InstanceId: "xxx",
+//				NameRegex:  pulumi.StringRef("alikafkaTopicName"),
+//				OutputFile: pulumi.StringRef("topics.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTopicName", topicsDs.Topics[0].Topic)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	var rv GetTopicsResult

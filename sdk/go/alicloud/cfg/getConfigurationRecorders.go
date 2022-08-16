@@ -22,20 +22,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.GetConfigurationRecorders(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("listOfResourceTypes", data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cfg.GetConfigurationRecorders(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("listOfResourceTypes", data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetConfigurationRecorders(ctx *pulumi.Context, args *GetConfigurationRecordersArgs, opts ...pulumi.InvokeOption) (*GetConfigurationRecordersResult, error) {
 	var rv GetConfigurationRecordersResult

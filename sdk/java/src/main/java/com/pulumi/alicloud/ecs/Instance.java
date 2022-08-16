@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.InstanceArgs;
 import com.pulumi.alicloud.ecs.inputs.InstanceState;
 import com.pulumi.alicloud.ecs.outputs.InstanceDataDisk;
+import com.pulumi.alicloud.ecs.outputs.InstanceMaintenanceTime;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -434,6 +435,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * 
+     */
+    @Export(name="maintenanceAction", type=String.class, parameters={})
+    private Output<String> maintenanceAction;
+
+    /**
+     * @return The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * 
+     */
+    public Output<String> maintenanceAction() {
+        return this.maintenanceAction;
+    }
+    /**
+     * Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     * 
+     */
+    @Export(name="maintenanceNotify", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> maintenanceNotify;
+
+    /**
+     * @return Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> maintenanceNotify() {
+        return Codegen.optional(this.maintenanceNotify);
+    }
+    /**
+     * The time of maintenance. See the following `Block maintenance_time`.
+     * 
+     */
+    @Export(name="maintenanceTime", type=InstanceMaintenanceTime.class, parameters={})
+    private Output</* @Nullable */ InstanceMaintenanceTime> maintenanceTime;
+
+    /**
+     * @return The time of maintenance. See the following `Block maintenance_time`.
+     * 
+     */
+    public Output<Optional<InstanceMaintenanceTime>> maintenanceTime() {
+        return Codegen.optional(this.maintenanceTime);
     }
     /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.

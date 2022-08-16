@@ -19,62 +19,65 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultZones, err := eds.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eds.NewAdConnectorDirectory(ctx, "defaultAdConnectorDirectory", &eds.AdConnectorDirectoryArgs{
-// 			DirectoryName:     pulumi.Any(_var.Name),
-// 			DesktopAccessType: pulumi.String("INTERNET"),
-// 			DnsAddresses: pulumi.StringArray{
-// 				pulumi.String("127.0.0.2"),
-// 			},
-// 			DomainName:        pulumi.String("corp.example.com"),
-// 			DomainPassword:    pulumi.String("YourPassword1234"),
-// 			DomainUserName:    pulumi.String("sAMAccountName"),
-// 			EnableAdminAccess: pulumi.Bool(false),
-// 			MfaEnabled:        pulumi.Bool(false),
-// 			Specification:     pulumi.Int(1),
-// 			SubDomainDnsAddresses: pulumi.StringArray{
-// 				pulumi.String("127.0.0.3"),
-// 			},
-// 			SubDomainName: pulumi.String("child.example.com"),
-// 			VswitchIds: pulumi.StringArray{
-// 				pulumi.String(defaultSwitches.Ids[0]),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := eds.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eds.NewAdConnectorDirectory(ctx, "defaultAdConnectorDirectory", &eds.AdConnectorDirectoryArgs{
+//				DirectoryName:     pulumi.Any(_var.Name),
+//				DesktopAccessType: pulumi.String("INTERNET"),
+//				DnsAddresses: pulumi.StringArray{
+//					pulumi.String("127.0.0.2"),
+//				},
+//				DomainName:        pulumi.String("corp.example.com"),
+//				DomainPassword:    pulumi.String("YourPassword1234"),
+//				DomainUserName:    pulumi.String("sAMAccountName"),
+//				EnableAdminAccess: pulumi.Bool(false),
+//				MfaEnabled:        pulumi.Bool(false),
+//				Specification:     pulumi.Int(1),
+//				SubDomainDnsAddresses: pulumi.StringArray{
+//					pulumi.String("127.0.0.3"),
+//				},
+//				SubDomainName: pulumi.String("child.example.com"),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.String(defaultSwitches.Ids[0]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // ECD Ad Connector Directory can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
+//
+//	$ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
+//
 // ```
 type AdConnectorDirectory struct {
 	pulumi.CustomResourceState
@@ -304,7 +309,7 @@ func (i *AdConnectorDirectory) ToAdConnectorDirectoryOutputWithContext(ctx conte
 // AdConnectorDirectoryArrayInput is an input type that accepts AdConnectorDirectoryArray and AdConnectorDirectoryArrayOutput values.
 // You can construct a concrete instance of `AdConnectorDirectoryArrayInput` via:
 //
-//          AdConnectorDirectoryArray{ AdConnectorDirectoryArgs{...} }
+//	AdConnectorDirectoryArray{ AdConnectorDirectoryArgs{...} }
 type AdConnectorDirectoryArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +334,7 @@ func (i AdConnectorDirectoryArray) ToAdConnectorDirectoryArrayOutputWithContext(
 // AdConnectorDirectoryMapInput is an input type that accepts AdConnectorDirectoryMap and AdConnectorDirectoryMapOutput values.
 // You can construct a concrete instance of `AdConnectorDirectoryMapInput` via:
 //
-//          AdConnectorDirectoryMap{ "key": AdConnectorDirectoryArgs{...} }
+//	AdConnectorDirectoryMap{ "key": AdConnectorDirectoryArgs{...} }
 type AdConnectorDirectoryMapInput interface {
 	pulumi.Input
 

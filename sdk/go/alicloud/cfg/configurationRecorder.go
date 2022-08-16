@@ -23,24 +23,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cfg.NewConfigurationRecorder(ctx, "example", &cfg.ConfigurationRecorderArgs{
-// 			ResourceTypes: pulumi.StringArray{
-// 				pulumi.String("ACS::ECS::Instance"),
-// 				pulumi.String("ACS::ECS::Disk"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cfg.NewConfigurationRecorder(ctx, "example", &cfg.ConfigurationRecorderArgs{
+//				ResourceTypes: pulumi.StringArray{
+//					pulumi.String("ACS::ECS::Instance"),
+//					pulumi.String("ACS::ECS::Disk"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Alicloud Config Configuration Recorder can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+//
+//	$ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+//
 // ```
 type ConfigurationRecorder struct {
 	pulumi.CustomResourceState
@@ -169,7 +174,7 @@ func (i *ConfigurationRecorder) ToConfigurationRecorderOutputWithContext(ctx con
 // ConfigurationRecorderArrayInput is an input type that accepts ConfigurationRecorderArray and ConfigurationRecorderArrayOutput values.
 // You can construct a concrete instance of `ConfigurationRecorderArrayInput` via:
 //
-//          ConfigurationRecorderArray{ ConfigurationRecorderArgs{...} }
+//	ConfigurationRecorderArray{ ConfigurationRecorderArgs{...} }
 type ConfigurationRecorderArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +199,7 @@ func (i ConfigurationRecorderArray) ToConfigurationRecorderArrayOutputWithContex
 // ConfigurationRecorderMapInput is an input type that accepts ConfigurationRecorderMap and ConfigurationRecorderMapOutput values.
 // You can construct a concrete instance of `ConfigurationRecorderMapInput` via:
 //
-//          ConfigurationRecorderMap{ "key": ConfigurationRecorderArgs{...} }
+//	ConfigurationRecorderMap{ "key": ConfigurationRecorderArgs{...} }
 type ConfigurationRecorderMapInput interface {
 	pulumi.Input
 

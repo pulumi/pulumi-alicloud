@@ -17,30 +17,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewApplicationDeployment(ctx, "default", &edas.ApplicationDeploymentArgs{
-// 			AppId:          pulumi.Any(_var.App_id),
-// 			GroupId:        pulumi.Any(_var.Group_id),
-// 			PackageVersion: pulumi.Any(_var.Package_version),
-// 			WarUrl:         pulumi.Any(_var.War_url),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edas.NewApplicationDeployment(ctx, "default", &edas.ApplicationDeploymentArgs{
+//				AppId:          pulumi.Any(_var.App_id),
+//				GroupId:        pulumi.Any(_var.Group_id),
+//				PackageVersion: pulumi.Any(_var.Package_version),
+//				WarUrl:         pulumi.Any(_var.War_url),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ApplicationDeployment struct {
 	pulumi.CustomResourceState
@@ -173,7 +176,7 @@ func (i *ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx con
 // ApplicationDeploymentArrayInput is an input type that accepts ApplicationDeploymentArray and ApplicationDeploymentArrayOutput values.
 // You can construct a concrete instance of `ApplicationDeploymentArrayInput` via:
 //
-//          ApplicationDeploymentArray{ ApplicationDeploymentArgs{...} }
+//	ApplicationDeploymentArray{ ApplicationDeploymentArgs{...} }
 type ApplicationDeploymentArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +201,7 @@ func (i ApplicationDeploymentArray) ToApplicationDeploymentArrayOutputWithContex
 // ApplicationDeploymentMapInput is an input type that accepts ApplicationDeploymentMap and ApplicationDeploymentMapOutput values.
 // You can construct a concrete instance of `ApplicationDeploymentMapInput` via:
 //
-//          ApplicationDeploymentMap{ "key": ApplicationDeploymentArgs{...} }
+//	ApplicationDeploymentMap{ "key": ApplicationDeploymentArgs{...} }
 type ApplicationDeploymentMapInput interface {
 	pulumi.Input
 

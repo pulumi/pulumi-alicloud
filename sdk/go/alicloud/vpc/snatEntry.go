@@ -18,7 +18,9 @@ import (
 // Snat Entry can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+//
+//	$ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+//
 // ```
 type SnatEntry struct {
 	pulumi.CustomResourceState
@@ -164,7 +166,7 @@ func (i *SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryO
 // SnatEntryArrayInput is an input type that accepts SnatEntryArray and SnatEntryArrayOutput values.
 // You can construct a concrete instance of `SnatEntryArrayInput` via:
 //
-//          SnatEntryArray{ SnatEntryArgs{...} }
+//	SnatEntryArray{ SnatEntryArgs{...} }
 type SnatEntryArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +191,7 @@ func (i SnatEntryArray) ToSnatEntryArrayOutputWithContext(ctx context.Context) S
 // SnatEntryMapInput is an input type that accepts SnatEntryMap and SnatEntryMapOutput values.
 // You can construct a concrete instance of `SnatEntryMapInput` via:
 //
-//          SnatEntryMap{ "key": SnatEntryArgs{...} }
+//	SnatEntryMap{ "key": SnatEntryArgs{...} }
 type SnatEntryMapInput interface {
 	pulumi.Input
 

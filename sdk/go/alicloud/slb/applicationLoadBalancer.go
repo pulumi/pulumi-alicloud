@@ -15,7 +15,9 @@ import (
 // Load balancer can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer example lb-abc123456
+//
+//	$ pulumi import alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer example lb-abc123456
+//
 // ```
 type ApplicationLoadBalancer struct {
 	pulumi.CustomResourceState
@@ -343,7 +345,7 @@ func (i *ApplicationLoadBalancer) ToApplicationLoadBalancerOutputWithContext(ctx
 // ApplicationLoadBalancerArrayInput is an input type that accepts ApplicationLoadBalancerArray and ApplicationLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `ApplicationLoadBalancerArrayInput` via:
 //
-//          ApplicationLoadBalancerArray{ ApplicationLoadBalancerArgs{...} }
+//	ApplicationLoadBalancerArray{ ApplicationLoadBalancerArgs{...} }
 type ApplicationLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -368,7 +370,7 @@ func (i ApplicationLoadBalancerArray) ToApplicationLoadBalancerArrayOutputWithCo
 // ApplicationLoadBalancerMapInput is an input type that accepts ApplicationLoadBalancerMap and ApplicationLoadBalancerMapOutput values.
 // You can construct a concrete instance of `ApplicationLoadBalancerMapInput` via:
 //
-//          ApplicationLoadBalancerMap{ "key": ApplicationLoadBalancerArgs{...} }
+//	ApplicationLoadBalancerMap{ "key": ApplicationLoadBalancerArgs{...} }
 type ApplicationLoadBalancerMapInput interface {
 	pulumi.Input
 

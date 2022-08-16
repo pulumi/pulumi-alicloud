@@ -22,7 +22,9 @@ import (
 // Cloud Config Delivery can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cfg/delivery:Delivery example <id>
+//
+//	$ pulumi import alicloud:cfg/delivery:Delivery example <id>
+//
 // ```
 type Delivery struct {
 	pulumi.CustomResourceState
@@ -231,7 +233,7 @@ func (i *Delivery) ToDeliveryOutputWithContext(ctx context.Context) DeliveryOutp
 // DeliveryArrayInput is an input type that accepts DeliveryArray and DeliveryArrayOutput values.
 // You can construct a concrete instance of `DeliveryArrayInput` via:
 //
-//          DeliveryArray{ DeliveryArgs{...} }
+//	DeliveryArray{ DeliveryArgs{...} }
 type DeliveryArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +258,7 @@ func (i DeliveryArray) ToDeliveryArrayOutputWithContext(ctx context.Context) Del
 // DeliveryMapInput is an input type that accepts DeliveryMap and DeliveryMapOutput values.
 // You can construct a concrete instance of `DeliveryMapInput` via:
 //
-//          DeliveryMap{ "key": DeliveryArgs{...} }
+//	DeliveryMap{ "key": DeliveryArgs{...} }
 type DeliveryMapInput interface {
 	pulumi.Input
 

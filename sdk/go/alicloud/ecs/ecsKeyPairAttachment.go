@@ -19,30 +19,33 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsKeyPairAttachment(ctx, "example", &ecs.EcsKeyPairAttachmentArgs{
-// 			KeyPairName: pulumi.String("key_pair_name"),
-// 			InstanceIds: pulumi.StringArray{
-// 				pulumi.Any(i_gw80pxxxxxxxxxx),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsKeyPairAttachment(ctx, "example", &ecs.EcsKeyPairAttachmentArgs{
+//				KeyPairName: pulumi.String("key_pair_name"),
+//				InstanceIds: pulumi.StringArray{
+//					pulumi.Any(i_gw80pxxxxxxxxxx),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // ECS Key Pair Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
+//
+//	$ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
+//
 // ```
 type EcsKeyPairAttachment struct {
 	pulumi.CustomResourceState
@@ -171,7 +176,7 @@ func (i *EcsKeyPairAttachment) ToEcsKeyPairAttachmentOutputWithContext(ctx conte
 // EcsKeyPairAttachmentArrayInput is an input type that accepts EcsKeyPairAttachmentArray and EcsKeyPairAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsKeyPairAttachmentArrayInput` via:
 //
-//          EcsKeyPairAttachmentArray{ EcsKeyPairAttachmentArgs{...} }
+//	EcsKeyPairAttachmentArray{ EcsKeyPairAttachmentArgs{...} }
 type EcsKeyPairAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +201,7 @@ func (i EcsKeyPairAttachmentArray) ToEcsKeyPairAttachmentArrayOutputWithContext(
 // EcsKeyPairAttachmentMapInput is an input type that accepts EcsKeyPairAttachmentMap and EcsKeyPairAttachmentMapOutput values.
 // You can construct a concrete instance of `EcsKeyPairAttachmentMapInput` via:
 //
-//          EcsKeyPairAttachmentMap{ "key": EcsKeyPairAttachmentArgs{...} }
+//	EcsKeyPairAttachmentMap{ "key": EcsKeyPairAttachmentArgs{...} }
 type EcsKeyPairAttachmentMapInput interface {
 	pulumi.Input
 

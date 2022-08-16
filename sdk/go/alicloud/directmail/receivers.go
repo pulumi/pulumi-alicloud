@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directmail.NewReceivers(ctx, "example", &directmail.ReceiversArgs{
-// 			ReceiversAlias: pulumi.String("tf-vme8@onaliyun.com"),
-// 			ReceiversName:  pulumi.String("vme8"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := directmail.NewReceivers(ctx, "example", &directmail.ReceiversArgs{
+//				ReceiversAlias: pulumi.String("tf-vme8@onaliyun.com"),
+//				ReceiversName:  pulumi.String("vme8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Direct Mail Receivers can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:directmail/receivers:Receivers example <id>
+//
+//	$ pulumi import alicloud:directmail/receivers:Receivers example <id>
+//
 // ```
 type Receivers struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *Receivers) ToReceiversOutputWithContext(ctx context.Context) ReceiversO
 // ReceiversArrayInput is an input type that accepts ReceiversArray and ReceiversArrayOutput values.
 // You can construct a concrete instance of `ReceiversArrayInput` via:
 //
-//          ReceiversArray{ ReceiversArgs{...} }
+//	ReceiversArray{ ReceiversArgs{...} }
 type ReceiversArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i ReceiversArray) ToReceiversArrayOutputWithContext(ctx context.Context) R
 // ReceiversMapInput is an input type that accepts ReceiversMap and ReceiversMapOutput values.
 // You can construct a concrete instance of `ReceiversMapInput` via:
 //
-//          ReceiversMap{ "key": ReceiversArgs{...} }
+//	ReceiversMap{ "key": ReceiversArgs{...} }
 type ReceiversMapInput interface {
 	pulumi.Input
 

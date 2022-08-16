@@ -21,81 +21,84 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testAcc"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VswitchName: pulumi.String(name),
-// 			CidrBlock:   pulumi.String("192.168.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VpcId:       defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: pulumi.StringRef("OK"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
-// 			NetworkInterfaceName: pulumi.String(name),
-// 			VswitchId:            defaultSwitch.ID(),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				defaultSecurityGroup.ID(),
-// 			},
-// 			Description:      pulumi.String("Basic test"),
-// 			PrimaryIpAddress: pulumi.String("192.168.0.2"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 				"For":     pulumi.Any("Test"),
-// 			},
-// 			ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAcc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				VpcId:       defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//				NetworkInterfaceName: pulumi.String(name),
+//				VswitchId:            defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				Description:      pulumi.String("Basic test"),
+//				PrimaryIpAddress: pulumi.String("192.168.0.2"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Test"),
+//				},
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -103,7 +106,9 @@ import (
 // ECS Network Interface can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
+//
+//	$ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
+//
 // ```
 type EcsNetworkInterface struct {
 	pulumi.CustomResourceState
@@ -396,7 +401,7 @@ func (i *EcsNetworkInterface) ToEcsNetworkInterfaceOutputWithContext(ctx context
 // EcsNetworkInterfaceArrayInput is an input type that accepts EcsNetworkInterfaceArray and EcsNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfaceArrayInput` via:
 //
-//          EcsNetworkInterfaceArray{ EcsNetworkInterfaceArgs{...} }
+//	EcsNetworkInterfaceArray{ EcsNetworkInterfaceArgs{...} }
 type EcsNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -421,7 +426,7 @@ func (i EcsNetworkInterfaceArray) ToEcsNetworkInterfaceArrayOutputWithContext(ct
 // EcsNetworkInterfaceMapInput is an input type that accepts EcsNetworkInterfaceMap and EcsNetworkInterfaceMapOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfaceMapInput` via:
 //
-//          EcsNetworkInterfaceMap{ "key": EcsNetworkInterfaceArgs{...} }
+//	EcsNetworkInterfaceMap{ "key": EcsNetworkInterfaceArgs{...} }
 type EcsNetworkInterfaceMapInput interface {
 	pulumi.Input
 

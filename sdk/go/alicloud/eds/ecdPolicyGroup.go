@@ -18,48 +18,51 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
-// 			AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-// 					CidrIp:      pulumi.String("1.2.3.45/24"),
-// 					Description: pulumi.String("my-description1"),
-// 				},
-// 			},
-// 			AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-// 				&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-// 					CidrIp:      pulumi.String("1.2.3.4/24"),
-// 					Description: pulumi.String("my-description"),
-// 					IpProtocol:  pulumi.String("TCP"),
-// 					Policy:      pulumi.String("accept"),
-// 					PortRange:   pulumi.String("80/80"),
-// 					Priority:    pulumi.String("1"),
-// 					Type:        pulumi.String("inflow"),
-// 				},
-// 			},
-// 			Clipboard:       pulumi.String("read"),
-// 			LocalDrive:      pulumi.String("read"),
-// 			PolicyGroupName: pulumi.String("my-policy-group"),
-// 			UsbRedirect:     pulumi.String("off"),
-// 			Watermark:       pulumi.String("off"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						CidrIp:      pulumi.String("1.2.3.45/24"),
+//						Description: pulumi.String("my-description1"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//						Description: pulumi.String("my-description"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Policy:      pulumi.String("accept"),
+//						PortRange:   pulumi.String("80/80"),
+//						Priority:    pulumi.String("1"),
+//						Type:        pulumi.String("inflow"),
+//					},
+//				},
+//				Clipboard:       pulumi.String("read"),
+//				LocalDrive:      pulumi.String("read"),
+//				PolicyGroupName: pulumi.String("my-policy-group"),
+//				UsbRedirect:     pulumi.String("off"),
+//				Watermark:       pulumi.String("off"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
+//
+//	$ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
+//
 // ```
 type EcdPolicyGroup struct {
 	pulumi.CustomResourceState
@@ -331,7 +336,7 @@ func (i *EcdPolicyGroup) ToEcdPolicyGroupOutputWithContext(ctx context.Context) 
 // EcdPolicyGroupArrayInput is an input type that accepts EcdPolicyGroupArray and EcdPolicyGroupArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupArrayInput` via:
 //
-//          EcdPolicyGroupArray{ EcdPolicyGroupArgs{...} }
+//	EcdPolicyGroupArray{ EcdPolicyGroupArgs{...} }
 type EcdPolicyGroupArrayInput interface {
 	pulumi.Input
 
@@ -356,7 +361,7 @@ func (i EcdPolicyGroupArray) ToEcdPolicyGroupArrayOutputWithContext(ctx context.
 // EcdPolicyGroupMapInput is an input type that accepts EcdPolicyGroupMap and EcdPolicyGroupMapOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupMapInput` via:
 //
-//          EcdPolicyGroupMap{ "key": EcdPolicyGroupArgs{...} }
+//	EcdPolicyGroupMap{ "key": EcdPolicyGroupArgs{...} }
 type EcdPolicyGroupMapInput interface {
 	pulumi.Input
 

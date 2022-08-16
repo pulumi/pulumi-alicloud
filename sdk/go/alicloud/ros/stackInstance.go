@@ -19,58 +19,61 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRegions, err := ros.GetRegions(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleStackGroup, err := ros.NewStackGroup(ctx, "exampleStackGroup", &ros.StackGroupArgs{
-// 			StackGroupName: pulumi.Any(_var.Name),
-// 			TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
-// 			Description:    pulumi.String("test for stack groups"),
-// 			Parameters: ros.StackGroupParameterArray{
-// 				&ros.StackGroupParameterArgs{
-// 					ParameterKey:   pulumi.String("VpcName"),
-// 					ParameterValue: pulumi.String("VpcName"),
-// 				},
-// 				&ros.StackGroupParameterArgs{
-// 					ParameterKey:   pulumi.String("InstanceType"),
-// 					ParameterValue: pulumi.String("InstanceType"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
-// 			StackGroupName:         exampleStackGroup.StackGroupName,
-// 			StackInstanceAccountId: pulumi.String("example_value"),
-// 			StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
-// 			OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
-// 			ParameterOverrides: ros.StackInstanceParameterOverrideArray{
-// 				&ros.StackInstanceParameterOverrideArgs{
-// 					ParameterValue: pulumi.String("VpcName"),
-// 					ParameterKey:   pulumi.String("VpcName"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleRegions, err := ros.GetRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleStackGroup, err := ros.NewStackGroup(ctx, "exampleStackGroup", &ros.StackGroupArgs{
+//				StackGroupName: pulumi.Any(_var.Name),
+//				TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
+//				Description:    pulumi.String("test for stack groups"),
+//				Parameters: ros.StackGroupParameterArray{
+//					&ros.StackGroupParameterArgs{
+//						ParameterKey:   pulumi.String("VpcName"),
+//						ParameterValue: pulumi.String("VpcName"),
+//					},
+//					&ros.StackGroupParameterArgs{
+//						ParameterKey:   pulumi.String("InstanceType"),
+//						ParameterValue: pulumi.String("InstanceType"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
+//				StackGroupName:         exampleStackGroup.StackGroupName,
+//				StackInstanceAccountId: pulumi.String("example_value"),
+//				StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
+//				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
+//				ParameterOverrides: ros.StackInstanceParameterOverrideArray{
+//					&ros.StackInstanceParameterOverrideArgs{
+//						ParameterValue: pulumi.String("VpcName"),
+//						ParameterKey:   pulumi.String("VpcName"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // ROS Stack Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
+//
+//	$ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
+//
 // ```
 type StackInstance struct {
 	pulumi.CustomResourceState
@@ -266,7 +271,7 @@ func (i *StackInstance) ToStackInstanceOutputWithContext(ctx context.Context) St
 // StackInstanceArrayInput is an input type that accepts StackInstanceArray and StackInstanceArrayOutput values.
 // You can construct a concrete instance of `StackInstanceArrayInput` via:
 //
-//          StackInstanceArray{ StackInstanceArgs{...} }
+//	StackInstanceArray{ StackInstanceArgs{...} }
 type StackInstanceArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +296,7 @@ func (i StackInstanceArray) ToStackInstanceArrayOutputWithContext(ctx context.Co
 // StackInstanceMapInput is an input type that accepts StackInstanceMap and StackInstanceMapOutput values.
 // You can construct a concrete instance of `StackInstanceMapInput` via:
 //
-//          StackInstanceMap{ "key": StackInstanceArgs{...} }
+//	StackInstanceMap{ "key": StackInstanceArgs{...} }
 type StackInstanceMapInput interface {
 	pulumi.Input
 

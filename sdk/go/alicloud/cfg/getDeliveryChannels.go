@@ -16,25 +16,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cfg.GetDeliveryChannels(ctx, &cfg.GetDeliveryChannelsArgs{
-// 			Ids: []string{
-// 				"cdc-49a2ad756057********",
-// 			},
-// 			NameRegex: pulumi.StringRef("tftest"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstConfigDeliveryChannelId", example.Channels[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cfg.GetDeliveryChannels(ctx, &cfg.GetDeliveryChannelsArgs{
+//				Ids: []string{
+//					"cdc-49a2ad756057********",
+//				},
+//				NameRegex: pulumi.StringRef("tftest"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstConfigDeliveryChannelId", example.Channels[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetDeliveryChannels(ctx *pulumi.Context, args *GetDeliveryChannelsArgs, opts ...pulumi.InvokeOption) (*GetDeliveryChannelsResult, error) {
 	var rv GetDeliveryChannelsResult

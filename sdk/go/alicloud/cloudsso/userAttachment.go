@@ -24,7 +24,9 @@ import (
 // Cloud SSO User Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
+//
+//	$ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
+//
 // ```
 type UserAttachment struct {
 	pulumi.CustomResourceState
@@ -141,7 +143,7 @@ func (i *UserAttachment) ToUserAttachmentOutputWithContext(ctx context.Context) 
 // UserAttachmentArrayInput is an input type that accepts UserAttachmentArray and UserAttachmentArrayOutput values.
 // You can construct a concrete instance of `UserAttachmentArrayInput` via:
 //
-//          UserAttachmentArray{ UserAttachmentArgs{...} }
+//	UserAttachmentArray{ UserAttachmentArgs{...} }
 type UserAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -166,7 +168,7 @@ func (i UserAttachmentArray) ToUserAttachmentArrayOutputWithContext(ctx context.
 // UserAttachmentMapInput is an input type that accepts UserAttachmentMap and UserAttachmentMapOutput values.
 // You can construct a concrete instance of `UserAttachmentMapInput` via:
 //
-//          UserAttachmentMap{ "key": UserAttachmentArgs{...} }
+//	UserAttachmentMap{ "key": UserAttachmentArgs{...} }
 type UserAttachmentMapInput interface {
 	pulumi.Input
 

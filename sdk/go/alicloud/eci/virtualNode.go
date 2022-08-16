@@ -19,85 +19,88 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testaccvirtualnode"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultZones, err := eci.GetZones(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: pulumi.StringRef("default-NODELETING"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneIds[1]),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// 			VpcId: pulumi.String(defaultNetworks.Ids[0]),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-// 			AddressName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = eci.NewVirtualNode(ctx, "defaultVirtualNode", &eci.VirtualNodeArgs{
-// 			SecurityGroupId:     defaultSecurityGroup.ID(),
-// 			VirtualNodeName:     pulumi.String(name),
-// 			VswitchId:           pulumi.String(defaultSwitches.Ids[1]),
-// 			EnablePublicNetwork: pulumi.Bool(false),
-// 			EipInstanceId:       defaultEipAddress.ID(),
-// 			ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
-// 			KubeConfig:          pulumi.String("kube config"),
-// 			Tags: pulumi.AnyMap{
-// 				"Created": pulumi.Any("TF"),
-// 			},
-// 			Taints: eci.VirtualNodeTaintArray{
-// 				&eci.VirtualNodeTaintArgs{
-// 					Effect: pulumi.String("NoSchedule"),
-// 					Key:    pulumi.String("Tf1"),
-// 					Value:  pulumi.String("Test1"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccvirtualnode"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneIds[1]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				AddressName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewVirtualNode(ctx, "defaultVirtualNode", &eci.VirtualNodeArgs{
+//				SecurityGroupId:     defaultSecurityGroup.ID(),
+//				VirtualNodeName:     pulumi.String(name),
+//				VswitchId:           pulumi.String(defaultSwitches.Ids[1]),
+//				EnablePublicNetwork: pulumi.Bool(false),
+//				EipInstanceId:       defaultEipAddress.ID(),
+//				ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				KubeConfig:          pulumi.String("kube config"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//				},
+//				Taints: eci.VirtualNodeTaintArray{
+//					&eci.VirtualNodeTaintArgs{
+//						Effect: pulumi.String("NoSchedule"),
+//						Key:    pulumi.String("Tf1"),
+//						Value:  pulumi.String("Test1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -105,7 +108,9 @@ import (
 // ECI Virtual Node can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
+//
+//	$ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
+//
 // ```
 type VirtualNode struct {
 	pulumi.CustomResourceState
@@ -298,7 +303,7 @@ func (i *VirtualNode) ToVirtualNodeOutputWithContext(ctx context.Context) Virtua
 // VirtualNodeArrayInput is an input type that accepts VirtualNodeArray and VirtualNodeArrayOutput values.
 // You can construct a concrete instance of `VirtualNodeArrayInput` via:
 //
-//          VirtualNodeArray{ VirtualNodeArgs{...} }
+//	VirtualNodeArray{ VirtualNodeArgs{...} }
 type VirtualNodeArrayInput interface {
 	pulumi.Input
 
@@ -323,7 +328,7 @@ func (i VirtualNodeArray) ToVirtualNodeArrayOutputWithContext(ctx context.Contex
 // VirtualNodeMapInput is an input type that accepts VirtualNodeMap and VirtualNodeMapOutput values.
 // You can construct a concrete instance of `VirtualNodeMapInput` via:
 //
-//          VirtualNodeMap{ "key": VirtualNodeArgs{...} }
+//	VirtualNodeMap{ "key": VirtualNodeArgs{...} }
 type VirtualNodeMapInput interface {
 	pulumi.Input
 

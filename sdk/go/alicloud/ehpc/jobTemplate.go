@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
-// 			CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
-// 			JobTemplateName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
+//				CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
+//				JobTemplateName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Ehpc Job Template can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
+//
+//	$ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
+//
 // ```
 type JobTemplate struct {
 	pulumi.CustomResourceState
@@ -302,7 +307,7 @@ func (i *JobTemplate) ToJobTemplateOutputWithContext(ctx context.Context) JobTem
 // JobTemplateArrayInput is an input type that accepts JobTemplateArray and JobTemplateArrayOutput values.
 // You can construct a concrete instance of `JobTemplateArrayInput` via:
 //
-//          JobTemplateArray{ JobTemplateArgs{...} }
+//	JobTemplateArray{ JobTemplateArgs{...} }
 type JobTemplateArrayInput interface {
 	pulumi.Input
 
@@ -327,7 +332,7 @@ func (i JobTemplateArray) ToJobTemplateArrayOutputWithContext(ctx context.Contex
 // JobTemplateMapInput is an input type that accepts JobTemplateMap and JobTemplateMapOutput values.
 // You can construct a concrete instance of `JobTemplateMapInput` via:
 //
-//          JobTemplateMap{ "key": JobTemplateArgs{...} }
+//	JobTemplateMap{ "key": JobTemplateArgs{...} }
 type JobTemplateMapInput interface {
 	pulumi.Input
 

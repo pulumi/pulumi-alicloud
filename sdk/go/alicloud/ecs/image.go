@@ -26,37 +26,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
-// 			Architecture:    pulumi.String("x86_64"),
-// 			Description:     pulumi.String("test-image"),
-// 			ImageName:       pulumi.String("test-image"),
-// 			InstanceId:      pulumi.String("i-bp1g6zv0ce8oghu7k***"),
-// 			Platform:        pulumi.String("CentOS"),
-// 			ResourceGroupId: pulumi.String("rg-bp67acfmxazb4ph***"),
-// 			Tags: pulumi.AnyMap{
-// 				"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
+//				Architecture:    pulumi.String("x86_64"),
+//				Description:     pulumi.String("test-image"),
+//				ImageName:       pulumi.String("test-image"),
+//				InstanceId:      pulumi.String("i-bp1g6zv0ce8oghu7k***"),
+//				Platform:        pulumi.String("CentOS"),
+//				ResourceGroupId: pulumi.String("rg-bp67acfmxazb4ph***"),
+//				Tags: pulumi.AnyMap{
+//					"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-//  image can be imported using the id, e.g.
+//	image can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+//
+//	$ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+//
 // ```
 type Image struct {
 	pulumi.CustomResourceState
@@ -259,7 +264,7 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//          ImageArray{ ImageArgs{...} }
+//	ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -284,7 +289,7 @@ func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArra
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
 // You can construct a concrete instance of `ImageMapInput` via:
 //
-//          ImageMap{ "key": ImageArgs{...} }
+//	ImageMap{ "key": ImageArgs{...} }
 type ImageMapInput interface {
 	pulumi.Input
 

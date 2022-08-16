@@ -16,27 +16,30 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cdn.GetBlockedRegions(ctx, &cdn.GetBlockedRegionsArgs{
-// 			Language: "zh",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cdn.GetBlockedRegions(ctx, &cdn.GetBlockedRegionsArgs{
+//				Language: "zh",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetBlockedRegions(ctx *pulumi.Context, args *GetBlockedRegionsArgs, opts ...pulumi.InvokeOption) (*GetBlockedRegionsResult, error) {
 	var rv GetBlockedRegionsResult

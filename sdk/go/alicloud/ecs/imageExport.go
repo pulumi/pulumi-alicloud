@@ -27,27 +27,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImageExport(ctx, "default", &ecs.ImageExportArgs{
-// 			ImageId:   pulumi.String("m-bp1gxy***"),
-// 			OssBucket: pulumi.String("ecsimageexportconfig"),
-// 			OssPrefix: pulumi.String("ecsExport"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewImageExport(ctx, "default", &ecs.ImageExportArgs{
+//				ImageId:   pulumi.String("m-bp1gxy***"),
+//				OssBucket: pulumi.String("ecsimageexportconfig"),
+//				OssPrefix: pulumi.String("ecsExport"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes Reference0
 //
-//  The following attributes are exported:
+//	The following attributes are exported:
 //
 // * `id` - ID of the image.
 type ImageExport struct {
@@ -162,7 +165,7 @@ func (i *ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageE
 // ImageExportArrayInput is an input type that accepts ImageExportArray and ImageExportArrayOutput values.
 // You can construct a concrete instance of `ImageExportArrayInput` via:
 //
-//          ImageExportArray{ ImageExportArgs{...} }
+//	ImageExportArray{ ImageExportArgs{...} }
 type ImageExportArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +190,7 @@ func (i ImageExportArray) ToImageExportArrayOutputWithContext(ctx context.Contex
 // ImageExportMapInput is an input type that accepts ImageExportMap and ImageExportMapOutput values.
 // You can construct a concrete instance of `ImageExportMapInput` via:
 //
-//          ImageExportMap{ "key": ImageExportArgs{...} }
+//	ImageExportMap{ "key": ImageExportArgs{...} }
 type ImageExportMapInput interface {
 	pulumi.Input
 

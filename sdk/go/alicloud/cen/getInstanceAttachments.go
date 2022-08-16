@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cen.GetInstanceAttachments(ctx, &cen.GetInstanceAttachmentsArgs{
-// 			InstanceId: "cen-o40h17ll9w********",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("theFirstAttachmentedInstanceId", example.Attachments[0].ChildInstanceId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cen.GetInstanceAttachments(ctx, &cen.GetInstanceAttachmentsArgs{
+//				InstanceId: "cen-o40h17ll9w********",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("theFirstAttachmentedInstanceId", example.Attachments[0].ChildInstanceId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceAttachments(ctx *pulumi.Context, args *GetInstanceAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetInstanceAttachmentsResult, error) {
 	var rv GetInstanceAttachmentsResult

@@ -19,28 +19,31 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "example", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
-// 			AutoSnapshotPolicyId: pulumi.String("s-ge465xxxx"),
-// 			DiskId:               pulumi.String("d-gw835xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "example", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
+//				AutoSnapshotPolicyId: pulumi.String("s-ge465xxxx"),
+//				DiskId:               pulumi.String("d-gw835xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+//
+//	$ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+//
 // ```
 type EcsAutoSnapshotPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -152,7 +157,7 @@ func (i *EcsAutoSnapshotPolicyAttachment) ToEcsAutoSnapshotPolicyAttachmentOutpu
 // EcsAutoSnapshotPolicyAttachmentArrayInput is an input type that accepts EcsAutoSnapshotPolicyAttachmentArray and EcsAutoSnapshotPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsAutoSnapshotPolicyAttachmentArrayInput` via:
 //
-//          EcsAutoSnapshotPolicyAttachmentArray{ EcsAutoSnapshotPolicyAttachmentArgs{...} }
+//	EcsAutoSnapshotPolicyAttachmentArray{ EcsAutoSnapshotPolicyAttachmentArgs{...} }
 type EcsAutoSnapshotPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +182,7 @@ func (i EcsAutoSnapshotPolicyAttachmentArray) ToEcsAutoSnapshotPolicyAttachmentA
 // EcsAutoSnapshotPolicyAttachmentMapInput is an input type that accepts EcsAutoSnapshotPolicyAttachmentMap and EcsAutoSnapshotPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `EcsAutoSnapshotPolicyAttachmentMapInput` via:
 //
-//          EcsAutoSnapshotPolicyAttachmentMap{ "key": EcsAutoSnapshotPolicyAttachmentArgs{...} }
+//	EcsAutoSnapshotPolicyAttachmentMap{ "key": EcsAutoSnapshotPolicyAttachmentArgs{...} }
 type EcsAutoSnapshotPolicyAttachmentMapInput interface {
 	pulumi.Input
 

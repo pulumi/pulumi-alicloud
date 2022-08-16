@@ -395,14 +395,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.internetChargeType;
     }
     /**
-     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      * 
      */
     @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value values: `1` to `100`.
+     * @return The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      * 
      */
     public Output<Integer> internetMaxBandwidthOut() {

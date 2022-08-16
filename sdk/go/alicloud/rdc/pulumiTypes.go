@@ -22,7 +22,7 @@ type GetOrganizationsOrganization struct {
 // GetOrganizationsOrganizationInput is an input type that accepts GetOrganizationsOrganizationArgs and GetOrganizationsOrganizationOutput values.
 // You can construct a concrete instance of `GetOrganizationsOrganizationInput` via:
 //
-//          GetOrganizationsOrganizationArgs{...}
+//	GetOrganizationsOrganizationArgs{...}
 type GetOrganizationsOrganizationInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i GetOrganizationsOrganizationArgs) ToGetOrganizationsOrganizationOutputWi
 // GetOrganizationsOrganizationArrayInput is an input type that accepts GetOrganizationsOrganizationArray and GetOrganizationsOrganizationArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationsOrganizationArrayInput` via:
 //
-//          GetOrganizationsOrganizationArray{ GetOrganizationsOrganizationArgs{...} }
+//	GetOrganizationsOrganizationArray{ GetOrganizationsOrganizationArgs{...} }
 type GetOrganizationsOrganizationArrayInput interface {
 	pulumi.Input
 

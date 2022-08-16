@@ -19,34 +19,37 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
-// 			AclEntries: ga.AclAclEntryArray{
-// 				&ga.AclAclEntryArgs{
-// 					Entry:            pulumi.String("192.168.1.0/24"),
-// 					EntryDescription: pulumi.String("tf-test1"),
-// 				},
-// 			},
-// 			AclName:          pulumi.String("tf-testAccAcl"),
-// 			AddressIpVersion: pulumi.String("IPv4"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
+//				AclEntries: ga.AclAclEntryArray{
+//					&ga.AclAclEntryArgs{
+//						Entry:            pulumi.String("192.168.1.0/24"),
+//						EntryDescription: pulumi.String("tf-test1"),
+//					},
+//				},
+//				AclName:          pulumi.String("tf-testAccAcl"),
+//				AddressIpVersion: pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Global Accelerator (GA) Acl can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/acl:Acl example <id>
+//
+//	$ pulumi import alicloud:ga/acl:Acl example <id>
+//
 // ```
 type Acl struct {
 	pulumi.CustomResourceState
@@ -181,7 +186,7 @@ func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
-//          AclArray{ AclArgs{...} }
+//	AclArray{ AclArgs{...} }
 type AclArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +211,7 @@ func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutpu
 // AclMapInput is an input type that accepts AclMap and AclMapOutput values.
 // You can construct a concrete instance of `AclMapInput` via:
 //
-//          AclMap{ "key": AclArgs{...} }
+//	AclMap{ "key": AclArgs{...} }
 type AclMapInput interface {
 	pulumi.Input
 

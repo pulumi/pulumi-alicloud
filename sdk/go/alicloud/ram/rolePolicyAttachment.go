@@ -19,72 +19,79 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`    {
-//       "Statement": [
-//         {
-//           "Action": "sts:AssumeRole",
-//           "Effect": "Allow",
-//           "Principal": {
-//             "Service": [
-//               "apigateway.aliyuncs.com",
-//               "ecs.aliyuncs.com"
-//             ]
-//           }
-//         }
-//       ],
-//       "Version": "1"
-//     }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Document: pulumi.String(fmt.Sprintf(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "apigateway.aliyuncs.com",
+//	              "ecs.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	    }
+//
 // `)),
-// 			Description: pulumi.String("this is a role test."),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-// 			Document: pulumi.String(fmt.Sprintf(`  {
-//     "Statement": [
-//       {
-//         "Action": [
-//           "oss:ListObjects",
-//           "oss:GetObject"
-//         ],
-//         "Effect": "Allow",
-//         "Resource": [
-//           "acs:oss:*:*:mybucket",
-//           "acs:oss:*:*:mybucket/*"
-//         ]
-//       }
-//     ],
-//       "Version": "1"
-//   }
+//
+//				Description: pulumi.String("this is a role test."),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Document: pulumi.String(fmt.Sprintf(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": [
+//	          "oss:ListObjects",
+//	          "oss:GetObject"
+//	        ],
+//	        "Effect": "Allow",
+//	        "Resource": [
+//	          "acs:oss:*:*:mybucket",
+//	          "acs:oss:*:*:mybucket/*"
+//	        ]
+//	      }
+//	    ],
+//	      "Version": "1"
+//	  }
+//
 // `)),
-// 			Description: pulumi.String("this is a policy test"),
-// 			Force:       pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
-// 			PolicyName: policy.Name,
-// 			PolicyType: policy.Type,
-// 			RoleName:   role.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
+//				PolicyName: policy.Name,
+//				PolicyType: policy.Type,
+//				RoleName:   role.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +99,9 @@ import (
 // RAM Role Policy attachment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+//
+//	$ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+//
 // ```
 type RolePolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -209,7 +218,7 @@ func (i *RolePolicyAttachment) ToRolePolicyAttachmentOutputWithContext(ctx conte
 // RolePolicyAttachmentArrayInput is an input type that accepts RolePolicyAttachmentArray and RolePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `RolePolicyAttachmentArrayInput` via:
 //
-//          RolePolicyAttachmentArray{ RolePolicyAttachmentArgs{...} }
+//	RolePolicyAttachmentArray{ RolePolicyAttachmentArgs{...} }
 type RolePolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +243,7 @@ func (i RolePolicyAttachmentArray) ToRolePolicyAttachmentArrayOutputWithContext(
 // RolePolicyAttachmentMapInput is an input type that accepts RolePolicyAttachmentMap and RolePolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `RolePolicyAttachmentMapInput` via:
 //
-//          RolePolicyAttachmentMap{ "key": RolePolicyAttachmentArgs{...} }
+//	RolePolicyAttachmentMap{ "key": RolePolicyAttachmentArgs{...} }
 type RolePolicyAttachmentMapInput interface {
 	pulumi.Input
 

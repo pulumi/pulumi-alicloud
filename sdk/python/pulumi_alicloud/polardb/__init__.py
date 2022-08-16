@@ -16,7 +16,9 @@ from .get_accounts import *
 from .get_clusters import *
 from .get_databases import *
 from .get_endpoints import *
+from .get_global_database_networks import *
 from .get_node_classes import *
 from .get_zones import *
+from .global_database_network import *
 from ._inputs import *
 from . import outputs

@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Member type. The value of `ResourceAccount` indicates the resource account.
         /// </summary>
         [Output("type")]
@@ -181,6 +187,18 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("payerAccountId")]
         public Input<string>? PayerAccountId { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public AccountArgs()
         {
         }
@@ -241,6 +259,18 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Member type. The value of `ResourceAccount` indicates the resource account.

@@ -16,29 +16,32 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.GetModifyParameterLogs(ctx, &rds.GetModifyParameterLogsArgs{
-// 			DbInstanceId: "example_value",
-// 			EndTime:      "2022-06-08T13:56Z",
-// 			StartTime:    "2022-06-04T13:56Z",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rds.GetModifyParameterLogs(ctx, &rds.GetModifyParameterLogsArgs{
+//				DbInstanceId: "example_value",
+//				EndTime:      "2022-06-08T13:56Z",
+//				StartTime:    "2022-06-04T13:56Z",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetModifyParameterLogs(ctx *pulumi.Context, args *GetModifyParameterLogsArgs, opts ...pulumi.InvokeOption) (*GetModifyParameterLogsResult, error) {
 	var rv GetModifyParameterLogsResult

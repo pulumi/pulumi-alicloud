@@ -16,7 +16,9 @@ import (
 // Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+//
+//	$ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+//
 // ```
 type ManagedKubernetes struct {
 	pulumi.CustomResourceState
@@ -1153,7 +1155,7 @@ func (i *ManagedKubernetes) ToManagedKubernetesOutputWithContext(ctx context.Con
 // ManagedKubernetesArrayInput is an input type that accepts ManagedKubernetesArray and ManagedKubernetesArrayOutput values.
 // You can construct a concrete instance of `ManagedKubernetesArrayInput` via:
 //
-//          ManagedKubernetesArray{ ManagedKubernetesArgs{...} }
+//	ManagedKubernetesArray{ ManagedKubernetesArgs{...} }
 type ManagedKubernetesArrayInput interface {
 	pulumi.Input
 
@@ -1178,7 +1180,7 @@ func (i ManagedKubernetesArray) ToManagedKubernetesArrayOutputWithContext(ctx co
 // ManagedKubernetesMapInput is an input type that accepts ManagedKubernetesMap and ManagedKubernetesMapOutput values.
 // You can construct a concrete instance of `ManagedKubernetesMapInput` via:
 //
-//          ManagedKubernetesMap{ "key": ManagedKubernetesArgs{...} }
+//	ManagedKubernetesMap{ "key": ManagedKubernetesArgs{...} }
 type ManagedKubernetesMapInput interface {
 	pulumi.Input
 

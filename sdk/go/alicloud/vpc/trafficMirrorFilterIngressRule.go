@@ -19,40 +19,43 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "exampleTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
-// 			TrafficMirrorFilterName: pulumi.String("example_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "exampleTrafficMirrorFilterIngressRule", &vpc.TrafficMirrorFilterIngressRuleArgs{
-// 			TrafficMirrorFilterId: exampleTrafficMirrorFilter.ID(),
-// 			Priority:              pulumi.Int(1),
-// 			RuleAction:            pulumi.String("accept"),
-// 			Protocol:              pulumi.String("UDP"),
-// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/24"),
-// 			SourceCidrBlock:       pulumi.String("10.0.0.0/24"),
-// 			DestinationPortRange:  pulumi.String("1/120"),
-// 			SourcePortRange:       pulumi.String("1/120"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "exampleTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
+//				TrafficMirrorFilterName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "exampleTrafficMirrorFilterIngressRule", &vpc.TrafficMirrorFilterIngressRuleArgs{
+//				TrafficMirrorFilterId: exampleTrafficMirrorFilter.ID(),
+//				Priority:              pulumi.Int(1),
+//				RuleAction:            pulumi.String("accept"),
+//				Protocol:              pulumi.String("UDP"),
+//				DestinationCidrBlock:  pulumi.String("10.0.0.0/24"),
+//				SourceCidrBlock:       pulumi.String("10.0.0.0/24"),
+//				DestinationPortRange:  pulumi.String("1/120"),
+//				SourcePortRange:       pulumi.String("1/120"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +63,9 @@ import (
 // VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_ingress_rule_id>
+//
+//	$ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_ingress_rule_id>
+//
 // ```
 type TrafficMirrorFilterIngressRule struct {
 	pulumi.CustomResourceState
@@ -258,7 +263,7 @@ func (i *TrafficMirrorFilterIngressRule) ToTrafficMirrorFilterIngressRuleOutputW
 // TrafficMirrorFilterIngressRuleArrayInput is an input type that accepts TrafficMirrorFilterIngressRuleArray and TrafficMirrorFilterIngressRuleArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorFilterIngressRuleArrayInput` via:
 //
-//          TrafficMirrorFilterIngressRuleArray{ TrafficMirrorFilterIngressRuleArgs{...} }
+//	TrafficMirrorFilterIngressRuleArray{ TrafficMirrorFilterIngressRuleArgs{...} }
 type TrafficMirrorFilterIngressRuleArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +288,7 @@ func (i TrafficMirrorFilterIngressRuleArray) ToTrafficMirrorFilterIngressRuleArr
 // TrafficMirrorFilterIngressRuleMapInput is an input type that accepts TrafficMirrorFilterIngressRuleMap and TrafficMirrorFilterIngressRuleMapOutput values.
 // You can construct a concrete instance of `TrafficMirrorFilterIngressRuleMapInput` via:
 //
-//          TrafficMirrorFilterIngressRuleMap{ "key": TrafficMirrorFilterIngressRuleArgs{...} }
+//	TrafficMirrorFilterIngressRuleMap{ "key": TrafficMirrorFilterIngressRuleArgs{...} }
 type TrafficMirrorFilterIngressRuleMapInput interface {
 	pulumi.Input
 

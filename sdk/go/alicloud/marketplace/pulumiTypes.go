@@ -24,7 +24,7 @@ type GetProductProduct struct {
 // GetProductProductInput is an input type that accepts GetProductProductArgs and GetProductProductOutput values.
 // You can construct a concrete instance of `GetProductProductInput` via:
 //
-//          GetProductProductArgs{...}
+//	GetProductProductArgs{...}
 type GetProductProductInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i GetProductProductArgs) ToGetProductProductOutputWithContext(ctx context.
 // GetProductProductArrayInput is an input type that accepts GetProductProductArray and GetProductProductArrayOutput values.
 // You can construct a concrete instance of `GetProductProductArrayInput` via:
 //
-//          GetProductProductArray{ GetProductProductArgs{...} }
+//	GetProductProductArray{ GetProductProductArgs{...} }
 type GetProductProductArrayInput interface {
 	pulumi.Input
 
@@ -148,7 +148,7 @@ type GetProductProductSkus struct {
 // GetProductProductSkusInput is an input type that accepts GetProductProductSkusArgs and GetProductProductSkusOutput values.
 // You can construct a concrete instance of `GetProductProductSkusInput` via:
 //
-//          GetProductProductSkusArgs{...}
+//	GetProductProductSkusArgs{...}
 type GetProductProductSkusInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ func (i GetProductProductSkusArgs) ToGetProductProductSkusOutputWithContext(ctx 
 // GetProductProductSkusArrayInput is an input type that accepts GetProductProductSkusArray and GetProductProductSkusArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusArrayInput` via:
 //
-//          GetProductProductSkusArray{ GetProductProductSkusArgs{...} }
+//	GetProductProductSkusArray{ GetProductProductSkusArgs{...} }
 type GetProductProductSkusArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +270,7 @@ type GetProductProductSkusImage struct {
 // GetProductProductSkusImageInput is an input type that accepts GetProductProductSkusImageArgs and GetProductProductSkusImageOutput values.
 // You can construct a concrete instance of `GetProductProductSkusImageInput` via:
 //
-//          GetProductProductSkusImageArgs{...}
+//	GetProductProductSkusImageArgs{...}
 type GetProductProductSkusImageInput interface {
 	pulumi.Input
 
@@ -302,7 +302,7 @@ func (i GetProductProductSkusImageArgs) ToGetProductProductSkusImageOutputWithCo
 // GetProductProductSkusImageArrayInput is an input type that accepts GetProductProductSkusImageArray and GetProductProductSkusImageArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusImageArrayInput` via:
 //
-//          GetProductProductSkusImageArray{ GetProductProductSkusImageArgs{...} }
+//	GetProductProductSkusImageArray{ GetProductProductSkusImageArgs{...} }
 type GetProductProductSkusImageArrayInput interface {
 	pulumi.Input
 
@@ -383,7 +383,7 @@ type GetProductProductSkusPackageVersion struct {
 // GetProductProductSkusPackageVersionInput is an input type that accepts GetProductProductSkusPackageVersionArgs and GetProductProductSkusPackageVersionOutput values.
 // You can construct a concrete instance of `GetProductProductSkusPackageVersionInput` via:
 //
-//          GetProductProductSkusPackageVersionArgs{...}
+//	GetProductProductSkusPackageVersionArgs{...}
 type GetProductProductSkusPackageVersionInput interface {
 	pulumi.Input
 
@@ -413,7 +413,7 @@ func (i GetProductProductSkusPackageVersionArgs) ToGetProductProductSkusPackageV
 // GetProductProductSkusPackageVersionArrayInput is an input type that accepts GetProductProductSkusPackageVersionArray and GetProductProductSkusPackageVersionArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusPackageVersionArrayInput` via:
 //
-//          GetProductProductSkusPackageVersionArray{ GetProductProductSkusPackageVersionArgs{...} }
+//	GetProductProductSkusPackageVersionArray{ GetProductProductSkusPackageVersionArgs{...} }
 type GetProductProductSkusPackageVersionArrayInput interface {
 	pulumi.Input
 
@@ -515,7 +515,7 @@ type GetProductsProduct struct {
 // GetProductsProductInput is an input type that accepts GetProductsProductArgs and GetProductsProductOutput values.
 // You can construct a concrete instance of `GetProductsProductInput` via:
 //
-//          GetProductsProductArgs{...}
+//	GetProductsProductArgs{...}
 type GetProductsProductInput interface {
 	pulumi.Input
 
@@ -571,7 +571,7 @@ func (i GetProductsProductArgs) ToGetProductsProductOutputWithContext(ctx contex
 // GetProductsProductArrayInput is an input type that accepts GetProductsProductArray and GetProductsProductArrayOutput values.
 // You can construct a concrete instance of `GetProductsProductArrayInput` via:
 //
-//          GetProductsProductArray{ GetProductsProductArgs{...} }
+//	GetProductsProductArray{ GetProductsProductArgs{...} }
 type GetProductsProductArrayInput interface {
 	pulumi.Input
 

@@ -18,50 +18,53 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "tf-testaccoossetting"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-// 			Bucket: pulumi.String(name),
-// 			Acl:    pulumi.String("public-read-write"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oos.NewServiceSetting(ctx, "defaultServiceSetting", &oos.ServiceSettingArgs{
-// 			DeliveryOssEnabled:     pulumi.Bool(true),
-// 			DeliveryOssKeyPrefix:   pulumi.String("path1/"),
-// 			DeliveryOssBucketName:  defaultBucket.Bucket,
-// 			DeliverySlsEnabled:     pulumi.Bool(true),
-// 			DeliverySlsProjectName: defaultProject.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccoossetting"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//				Acl:    pulumi.String("public-read-write"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewServiceSetting(ctx, "defaultServiceSetting", &oos.ServiceSettingArgs{
+//				DeliveryOssEnabled:     pulumi.Bool(true),
+//				DeliveryOssKeyPrefix:   pulumi.String("path1/"),
+//				DeliveryOssBucketName:  defaultBucket.Bucket,
+//				DeliverySlsEnabled:     pulumi.Bool(true),
+//				DeliverySlsProjectName: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -69,7 +72,9 @@ import (
 // OOS Service Setting can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
+//
+//	$ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
+//
 // ```
 type ServiceSetting struct {
 	pulumi.CustomResourceState
@@ -197,7 +202,7 @@ func (i *ServiceSetting) ToServiceSettingOutputWithContext(ctx context.Context) 
 // ServiceSettingArrayInput is an input type that accepts ServiceSettingArray and ServiceSettingArrayOutput values.
 // You can construct a concrete instance of `ServiceSettingArrayInput` via:
 //
-//          ServiceSettingArray{ ServiceSettingArgs{...} }
+//	ServiceSettingArray{ ServiceSettingArgs{...} }
 type ServiceSettingArrayInput interface {
 	pulumi.Input
 
@@ -222,7 +227,7 @@ func (i ServiceSettingArray) ToServiceSettingArrayOutputWithContext(ctx context.
 // ServiceSettingMapInput is an input type that accepts ServiceSettingMap and ServiceSettingMapOutput values.
 // You can construct a concrete instance of `ServiceSettingMapInput` via:
 //
-//          ServiceSettingMap{ "key": ServiceSettingArgs{...} }
+//	ServiceSettingMap{ "key": ServiceSettingArgs{...} }
 type ServiceSettingMapInput interface {
 	pulumi.Input
 

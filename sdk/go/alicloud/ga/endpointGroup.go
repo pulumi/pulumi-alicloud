@@ -20,90 +20,94 @@ import (
 // > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
 // * For a TCP or UDP listener, you can create only one default endpoint group.
 // * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
-//   * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
-//   * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
+//   - A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
+//   - A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
+//
 // * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			Duration:      pulumi.Int(1),
-// 			AutoUseCoupon: pulumi.Bool(true),
-// 			Spec:          pulumi.String("1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			Bandwidth:     pulumi.Int(100),
-// 			Type:          pulumi.String("Basic"),
-// 			BandwidthType: pulumi.String("Basic"),
-// 			PaymentType:   pulumi.String("PayAsYouGo"),
-// 			BillingType:   pulumi.String("PayBy95"),
-// 			Ratio:         pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      exampleAccelerator.ID(),
-// 			BandwidthPackageId: deBandwidthPackage.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-// 			AcceleratorId: exampleAccelerator.ID(),
-// 			PortRanges: ga.ListenerPortRangeArray{
-// 				&ga.ListenerPortRangeArgs{
-// 					FromPort: pulumi.Int(60),
-// 					ToPort:   pulumi.Int(70),
-// 				},
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			deBandwidthPackageAttachment,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
-// 			Bandwidth:          pulumi.String("10"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ga.NewEndpointGroup(ctx, "exampleEndpointGroup", &ga.EndpointGroupArgs{
-// 			AcceleratorId: exampleAccelerator.ID(),
-// 			EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
-// 				&ga.EndpointGroupEndpointConfigurationArgs{
-// 					Endpoint: exampleEipAddress.IpAddress,
-// 					Type:     pulumi.String("PublicIp"),
-// 					Weight:   pulumi.Int(20),
-// 				},
-// 			},
-// 			EndpointGroupRegion: pulumi.String("cn-hangzhou"),
-// 			ListenerId:          exampleListener.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      exampleAccelerator.ID(),
+//				BandwidthPackageId: deBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
+//				AcceleratorId: exampleAccelerator.ID(),
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(60),
+//						ToPort:   pulumi.Int(70),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				deBandwidthPackageAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
+//				Bandwidth:          pulumi.String("10"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewEndpointGroup(ctx, "exampleEndpointGroup", &ga.EndpointGroupArgs{
+//				AcceleratorId: exampleAccelerator.ID(),
+//				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
+//					&ga.EndpointGroupEndpointConfigurationArgs{
+//						Endpoint: exampleEipAddress.IpAddress,
+//						Type:     pulumi.String("PublicIp"),
+//						Weight:   pulumi.Int(20),
+//					},
+//				},
+//				EndpointGroupRegion: pulumi.String("cn-hangzhou"),
+//				ListenerId:          exampleListener.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -111,7 +115,9 @@ import (
 // Ga Endpoint Group can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
+//
+//	$ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
+//
 // ```
 type EndpointGroup struct {
 	pulumi.CustomResourceState
@@ -357,7 +363,7 @@ func (i *EndpointGroup) ToEndpointGroupOutputWithContext(ctx context.Context) En
 // EndpointGroupArrayInput is an input type that accepts EndpointGroupArray and EndpointGroupArrayOutput values.
 // You can construct a concrete instance of `EndpointGroupArrayInput` via:
 //
-//          EndpointGroupArray{ EndpointGroupArgs{...} }
+//	EndpointGroupArray{ EndpointGroupArgs{...} }
 type EndpointGroupArrayInput interface {
 	pulumi.Input
 
@@ -382,7 +388,7 @@ func (i EndpointGroupArray) ToEndpointGroupArrayOutputWithContext(ctx context.Co
 // EndpointGroupMapInput is an input type that accepts EndpointGroupMap and EndpointGroupMapOutput values.
 // You can construct a concrete instance of `EndpointGroupMapInput` via:
 //
-//          EndpointGroupMap{ "key": EndpointGroupArgs{...} }
+//	EndpointGroupMap{ "key": EndpointGroupArgs{...} }
 type EndpointGroupMapInput interface {
 	pulumi.Input
 

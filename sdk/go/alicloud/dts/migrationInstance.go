@@ -19,33 +19,36 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dts.NewMigrationInstance(ctx, "default", &dts.MigrationInstanceArgs{
-// 			DestinationEndpointEngineName: pulumi.String("MySQL"),
-// 			DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
-// 			InstanceClass:                 pulumi.String("small"),
-// 			PaymentType:                   pulumi.String("PayAsYouGo"),
-// 			SourceEndpointEngineName:      pulumi.String("MySQL"),
-// 			SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
-// 			SyncArchitecture:              pulumi.String("oneway"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dts.NewMigrationInstance(ctx, "default", &dts.MigrationInstanceArgs{
+//				DestinationEndpointEngineName: pulumi.String("MySQL"),
+//				DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
+//				InstanceClass:                 pulumi.String("small"),
+//				PaymentType:                   pulumi.String("PayAsYouGo"),
+//				SourceEndpointEngineName:      pulumi.String("MySQL"),
+//				SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
+//				SyncArchitecture:              pulumi.String("oneway"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // DTS Migration Instance can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
+//
+//	$ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
+//
 // ```
 type MigrationInstance struct {
 	pulumi.CustomResourceState
@@ -258,7 +263,7 @@ func (i *MigrationInstance) ToMigrationInstanceOutputWithContext(ctx context.Con
 // MigrationInstanceArrayInput is an input type that accepts MigrationInstanceArray and MigrationInstanceArrayOutput values.
 // You can construct a concrete instance of `MigrationInstanceArrayInput` via:
 //
-//          MigrationInstanceArray{ MigrationInstanceArgs{...} }
+//	MigrationInstanceArray{ MigrationInstanceArgs{...} }
 type MigrationInstanceArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +288,7 @@ func (i MigrationInstanceArray) ToMigrationInstanceArrayOutputWithContext(ctx co
 // MigrationInstanceMapInput is an input type that accepts MigrationInstanceMap and MigrationInstanceMapOutput values.
 // You can construct a concrete instance of `MigrationInstanceMapInput` via:
 //
-//          MigrationInstanceMap{ "key": MigrationInstanceArgs{...} }
+//	MigrationInstanceMap{ "key": MigrationInstanceArgs{...} }
 type MigrationInstanceMapInput interface {
 	pulumi.Input
 

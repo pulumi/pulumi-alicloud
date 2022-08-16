@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 export * from "./connection";
 export * from "./customerGateway";
 export * from "./gateway";
+export * from "./gatewayVpnAttachment";
 export * from "./getConnections";
 export * from "./getCustomerGateways";
+export * from "./getGatewayVpnAttachments";
 export * from "./getGateways";
 export * from "./ipsecServer";
 export * from "./pbrRouteEntry";
@@ -21,6 +23,7 @@ export * from "./sslVpnServer";
 import { Connection } from "./connection";
 import { CustomerGateway } from "./customerGateway";
 import { Gateway } from "./gateway";
+import { GatewayVpnAttachment } from "./gatewayVpnAttachment";
 import { IpsecServer } from "./ipsecServer";
 import { PbrRouteEntry } from "./pbrRouteEntry";
 import { RouteEntry } from "./routeEntry";
@@ -37,6 +40,8 @@ const _module = {
                 return new CustomerGateway(name, <any>undefined, { urn })
             case "alicloud:vpn/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment":
+                return new GatewayVpnAttachment(name, <any>undefined, { urn })
             case "alicloud:vpn/ipsecServer:IpsecServer":
                 return new IpsecServer(name, <any>undefined, { urn })
             case "alicloud:vpn/pbrRouteEntry:PbrRouteEntry":
@@ -55,6 +60,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "vpn/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/customerGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayVpnAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/ipsecServer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/pbrRouteEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/routeEntry", _module)

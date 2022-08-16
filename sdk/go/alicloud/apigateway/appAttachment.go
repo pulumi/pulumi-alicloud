@@ -13,30 +13,33 @@ import (
 
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.NewAppAttachment(ctx, "foo", &apigateway.AppAttachmentArgs{
-// 			ApiId:     pulumi.String("d29d25b9cfdf4742b1a3f6537299a749"),
-// 			AppId:     pulumi.String("20898181"),
-// 			GroupId:   pulumi.String("aaef8cdbb404420f9398a74ed1db7fff"),
-// 			StageName: pulumi.String("PRE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewAppAttachment(ctx, "foo", &apigateway.AppAttachmentArgs{
+//				ApiId:     pulumi.String("d29d25b9cfdf4742b1a3f6537299a749"),
+//				AppId:     pulumi.String("20898181"),
+//				GroupId:   pulumi.String("aaef8cdbb404420f9398a74ed1db7fff"),
+//				StageName: pulumi.String("PRE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AppAttachment struct {
 	pulumi.CustomResourceState
@@ -166,7 +169,7 @@ func (i *AppAttachment) ToAppAttachmentOutputWithContext(ctx context.Context) Ap
 // AppAttachmentArrayInput is an input type that accepts AppAttachmentArray and AppAttachmentArrayOutput values.
 // You can construct a concrete instance of `AppAttachmentArrayInput` via:
 //
-//          AppAttachmentArray{ AppAttachmentArgs{...} }
+//	AppAttachmentArray{ AppAttachmentArgs{...} }
 type AppAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +194,7 @@ func (i AppAttachmentArray) ToAppAttachmentArrayOutputWithContext(ctx context.Co
 // AppAttachmentMapInput is an input type that accepts AppAttachmentMap and AppAttachmentMapOutput values.
 // You can construct a concrete instance of `AppAttachmentMapInput` via:
 //
-//          AppAttachmentMap{ "key": AppAttachmentArgs{...} }
+//	AppAttachmentMap{ "key": AppAttachmentArgs{...} }
 type AppAttachmentMapInput interface {
 	pulumi.Input
 

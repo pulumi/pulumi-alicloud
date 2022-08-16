@@ -19,21 +19,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
-// 			AccountAlias: pulumi.String("hallo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
+//				AccountAlias: pulumi.String("hallo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // RAM account alias can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+//
+//	$ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+//
 // ```
 type AccountAlias struct {
 	pulumi.CustomResourceState
@@ -132,7 +137,7 @@ func (i *AccountAlias) ToAccountAliasOutputWithContext(ctx context.Context) Acco
 // AccountAliasArrayInput is an input type that accepts AccountAliasArray and AccountAliasArrayOutput values.
 // You can construct a concrete instance of `AccountAliasArrayInput` via:
 //
-//          AccountAliasArray{ AccountAliasArgs{...} }
+//	AccountAliasArray{ AccountAliasArgs{...} }
 type AccountAliasArrayInput interface {
 	pulumi.Input
 
@@ -157,7 +162,7 @@ func (i AccountAliasArray) ToAccountAliasArrayOutputWithContext(ctx context.Cont
 // AccountAliasMapInput is an input type that accepts AccountAliasMap and AccountAliasMapOutput values.
 // You can construct a concrete instance of `AccountAliasMapInput` via:
 //
-//          AccountAliasMap{ "key": AccountAliasArgs{...} }
+//	AccountAliasMap{ "key": AccountAliasArgs{...} }
 type AccountAliasMapInput interface {
 	pulumi.Input
 

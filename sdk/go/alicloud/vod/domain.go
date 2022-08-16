@@ -19,39 +19,42 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vod.NewDomain(ctx, "default", &vod.DomainArgs{
-// 			DomainName: pulumi.String("your_domain_name"),
-// 			Scope:      pulumi.String("domestic"),
-// 			Sources: vod.DomainSourceArray{
-// 				&vod.DomainSourceArgs{
-// 					SourceContent: pulumi.String("your_source_content"),
-// 					SourcePort:    pulumi.String("80"),
-// 					SourceType:    pulumi.String("domain"),
-// 				},
-// 			},
-// 			Tags: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vod.NewDomain(ctx, "default", &vod.DomainArgs{
+//				DomainName: pulumi.String("your_domain_name"),
+//				Scope:      pulumi.String("domestic"),
+//				Sources: vod.DomainSourceArray{
+//					&vod.DomainSourceArgs{
+//						SourceContent: pulumi.String("your_source_content"),
+//						SourcePort:    pulumi.String("80"),
+//						SourceType:    pulumi.String("domain"),
+//					},
+//				},
+//				Tags: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +62,9 @@ import (
 // VOD Domain can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:vod/domain:Domain example <domain_name>
+//
+//	$ pulumi import alicloud:vod/domain:Domain example <domain_name>
+//
 // ```
 type Domain struct {
 	pulumi.CustomResourceState
@@ -86,7 +91,7 @@ type Domain struct {
 	SslProtocol pulumi.StringOutput `pulumi:"sslProtocol"`
 	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
 	SslPub pulumi.StringOutput `pulumi:"sslPub"`
-	// The status of the domain name for CDN. Value values:
+	// The status of the domain name for CDN. Valid values:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -155,7 +160,7 @@ type domainState struct {
 	SslProtocol *string `pulumi:"sslProtocol"`
 	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
 	SslPub *string `pulumi:"sslPub"`
-	// The status of the domain name for CDN. Value values:
+	// The status of the domain name for CDN. Valid values:
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -190,7 +195,7 @@ type DomainState struct {
 	SslProtocol pulumi.StringPtrInput
 	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
 	SslPub pulumi.StringPtrInput
-	// The status of the domain name for CDN. Value values:
+	// The status of the domain name for CDN. Valid values:
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -267,7 +272,7 @@ func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
 // You can construct a concrete instance of `DomainArrayInput` via:
 //
-//          DomainArray{ DomainArgs{...} }
+//	DomainArray{ DomainArgs{...} }
 type DomainArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +297,7 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
-//          DomainMap{ "key": DomainArgs{...} }
+//	DomainMap{ "key": DomainArgs{...} }
 type DomainMapInput interface {
 	pulumi.Input
 
@@ -383,7 +388,7 @@ func (o DomainOutput) SslPub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslPub }).(pulumi.StringOutput)
 }
 
-// The status of the domain name for CDN. Value values:
+// The status of the domain name for CDN. Valid values:
 func (o DomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

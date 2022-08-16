@@ -16,31 +16,34 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ecs.GetEipAddresses(ctx, &ecs.GetEipAddressesArgs{
-// 			Ids: []string{
-// 				"eip-bp1jvx5ki6c********",
-// 			},
-// 			NameRegex: pulumi.StringRef("the_resource_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstEipAddressId", example.Addresses[0].Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetEipAddresses(ctx, &ecs.GetEipAddressesArgs{
+//				Ids: []string{
+//					"eip-bp1jvx5ki6c********",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEipAddressId", example.Addresses[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetEipAddresses(ctx *pulumi.Context, args *GetEipAddressesArgs, opts ...pulumi.InvokeOption) (*GetEipAddressesResult, error) {
 	var rv GetEipAddressesResult
