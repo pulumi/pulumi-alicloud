@@ -15,6 +15,7 @@ __all__ = [
     'AlarmEscalationsWarnArgs',
     'AlarmPrometheusArgs',
     'DynamicTagGroupMatchExpressArgs',
+    'EventRuleEventPatternArgs',
     'GroupMetricRuleEscalationsArgs',
     'GroupMetricRuleEscalationsCriticalArgs',
     'GroupMetricRuleEscalationsInfoArgs',
@@ -355,6 +356,108 @@ class DynamicTagGroupMatchExpressArgs:
     @tag_value_match_function.setter
     def tag_value_match_function(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag_value_match_function", value)
+
+
+@pulumi.input_type
+class EventRuleEventPatternArgs:
+    def __init__(__self__, *,
+                 product: pulumi.Input[str],
+                 event_type_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 level_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_filter: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] product: The type of the cloud service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_type_lists: The type of the event-triggered alert rule. Valid values:
+               - `StatusNotification`: fault notifications.
+               - `Exception`: exceptions.
+               - `Maintenance`: O&M.
+               - `*`: all types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] level_lists: The level of the event-triggered alert rule. Valid values:
+               - `CRITICAL`: critical.
+               - `WARN`: warning.
+               - `INFO`: information.
+               - `*`: all types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_lists: The name of the event-triggered alert rule.
+        :param pulumi.Input[str] sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+        """
+        pulumi.set(__self__, "product", product)
+        if event_type_lists is not None:
+            pulumi.set(__self__, "event_type_lists", event_type_lists)
+        if level_lists is not None:
+            pulumi.set(__self__, "level_lists", level_lists)
+        if name_lists is not None:
+            pulumi.set(__self__, "name_lists", name_lists)
+        if sql_filter is not None:
+            pulumi.set(__self__, "sql_filter", sql_filter)
+
+    @property
+    @pulumi.getter
+    def product(self) -> pulumi.Input[str]:
+        """
+        The type of the cloud service.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product", value)
+
+    @property
+    @pulumi.getter(name="eventTypeLists")
+    def event_type_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The type of the event-triggered alert rule. Valid values:
+        - `StatusNotification`: fault notifications.
+        - `Exception`: exceptions.
+        - `Maintenance`: O&M.
+        - `*`: all types.
+        """
+        return pulumi.get(self, "event_type_lists")
+
+    @event_type_lists.setter
+    def event_type_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "event_type_lists", value)
+
+    @property
+    @pulumi.getter(name="levelLists")
+    def level_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The level of the event-triggered alert rule. Valid values:
+        - `CRITICAL`: critical.
+        - `WARN`: warning.
+        - `INFO`: information.
+        - `*`: all types.
+        """
+        return pulumi.get(self, "level_lists")
+
+    @level_lists.setter
+    def level_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "level_lists", value)
+
+    @property
+    @pulumi.getter(name="nameLists")
+    def name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the event-triggered alert rule.
+        """
+        return pulumi.get(self, "name_lists")
+
+    @name_lists.setter
+    def name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "name_lists", value)
+
+    @property
+    @pulumi.getter(name="sqlFilter")
+    def sql_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+        """
+        return pulumi.get(self, "sql_filter")
+
+    @sql_filter.setter
+    def sql_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_filter", value)
 
 
 @pulumi.input_type

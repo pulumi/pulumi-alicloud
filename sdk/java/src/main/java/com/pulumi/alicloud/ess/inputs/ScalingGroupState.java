@@ -230,6 +230,21 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set or unset instances within group into protected status.
+     * 
+     */
+    @Import(name="protectedInstances")
+    private @Nullable Output<List<String>> protectedInstances;
+
+    /**
+     * @return Set or unset instances within group into protected status.
+     * 
+     */
+    public Optional<Output<List<String>>> protectedInstances() {
+        return Optional.ofNullable(this.protectedInstances);
+    }
+
+    /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
      * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -370,6 +385,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         this.multiAzPolicy = $.multiAzPolicy;
         this.onDemandBaseCapacity = $.onDemandBaseCapacity;
         this.onDemandPercentageAboveBaseCapacity = $.onDemandPercentageAboveBaseCapacity;
+        this.protectedInstances = $.protectedInstances;
         this.removalPolicies = $.removalPolicies;
         this.scalingGroupName = $.scalingGroupName;
         this.spotInstancePools = $.spotInstancePools;
@@ -709,6 +725,37 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
             return onDemandPercentageAboveBaseCapacity(Output.of(onDemandPercentageAboveBaseCapacity));
+        }
+
+        /**
+         * @param protectedInstances Set or unset instances within group into protected status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedInstances(@Nullable Output<List<String>> protectedInstances) {
+            $.protectedInstances = protectedInstances;
+            return this;
+        }
+
+        /**
+         * @param protectedInstances Set or unset instances within group into protected status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedInstances(List<String> protectedInstances) {
+            return protectedInstances(Output.of(protectedInstances));
+        }
+
+        /**
+         * @param protectedInstances Set or unset instances within group into protected status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedInstances(String... protectedInstances) {
+            return protectedInstances(List.of(protectedInstances));
         }
 
         /**

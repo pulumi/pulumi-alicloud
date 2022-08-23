@@ -35,6 +35,8 @@ type Cluster struct {
 	ChargeType pulumi.StringPtrOutput `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
+	// The custom configurations of emr-cluster service.
+	Configs ClusterConfigArrayOutput `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrOutput `pulumi:"depositType"`
 	// High security cluster (true) or not. Default value is false.
@@ -51,6 +53,12 @@ type Cluster struct {
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrOutput `pulumi:"masterPwd"`
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	MetaStoreConf ClusterMetaStoreConfPtrOutput `pulumi:"metaStoreConf"`
+	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+	MetaStoreType pulumi.StringOutput `pulumi:"metaStoreType"`
+	// The configurations of emr-cluster service modification after cluster created.
+	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrOutput `pulumi:"modifyClusterServiceConfig"`
 	// bootstrap action name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional software list.
@@ -59,6 +67,8 @@ type Cluster struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrOutput `pulumi:"relatedClusterId"`
+	// The Id of resource group which the emr-cluster belongs.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// If this is set true, we can ssh into cluster. Default value is false.
@@ -119,6 +129,8 @@ type clusterState struct {
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType *string `pulumi:"clusterType"`
+	// The custom configurations of emr-cluster service.
+	Configs []ClusterConfig `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType *string `pulumi:"depositType"`
 	// High security cluster (true) or not. Default value is false.
@@ -135,6 +147,12 @@ type clusterState struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd *string `pulumi:"masterPwd"`
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	MetaStoreConf *ClusterMetaStoreConf `pulumi:"metaStoreConf"`
+	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+	MetaStoreType *string `pulumi:"metaStoreType"`
+	// The configurations of emr-cluster service modification after cluster created.
+	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
 	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	// Optional software list.
@@ -143,6 +161,8 @@ type clusterState struct {
 	Period *int `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
+	// The Id of resource group which the emr-cluster belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// If this is set true, we can ssh into cluster. Default value is false.
@@ -166,6 +186,8 @@ type ClusterState struct {
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringPtrInput
+	// The custom configurations of emr-cluster service.
+	Configs ClusterConfigArrayInput
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrInput
 	// High security cluster (true) or not. Default value is false.
@@ -182,6 +204,12 @@ type ClusterState struct {
 	KeyPairName pulumi.StringPtrInput
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrInput
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	MetaStoreConf ClusterMetaStoreConfPtrInput
+	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+	MetaStoreType pulumi.StringPtrInput
+	// The configurations of emr-cluster service modification after cluster created.
+	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
 	// bootstrap action name.
 	Name pulumi.StringPtrInput
 	// Optional software list.
@@ -190,6 +218,8 @@ type ClusterState struct {
 	Period pulumi.IntPtrInput
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrInput
+	// The Id of resource group which the emr-cluster belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Security Group ID for Cluster, you can also specify this key for each host group.
 	SecurityGroupId pulumi.StringPtrInput
 	// If this is set true, we can ssh into cluster. Default value is false.
@@ -217,6 +247,8 @@ type clusterArgs struct {
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType string `pulumi:"clusterType"`
+	// The custom configurations of emr-cluster service.
+	Configs []ClusterConfig `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType *string `pulumi:"depositType"`
 	// High security cluster (true) or not. Default value is false.
@@ -233,6 +265,12 @@ type clusterArgs struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd *string `pulumi:"masterPwd"`
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	MetaStoreConf *ClusterMetaStoreConf `pulumi:"metaStoreConf"`
+	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+	MetaStoreType *string `pulumi:"metaStoreType"`
+	// The configurations of emr-cluster service modification after cluster created.
+	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
 	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	// Optional software list.
@@ -241,6 +279,8 @@ type clusterArgs struct {
 	Period *int `pulumi:"period"`
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
+	// The Id of resource group which the emr-cluster belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Security Group ID for Cluster, you can also specify this key for each host group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// If this is set true, we can ssh into cluster. Default value is false.
@@ -265,6 +305,8 @@ type ClusterArgs struct {
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringInput
+	// The custom configurations of emr-cluster service.
+	Configs ClusterConfigArrayInput
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrInput
 	// High security cluster (true) or not. Default value is false.
@@ -281,6 +323,12 @@ type ClusterArgs struct {
 	KeyPairName pulumi.StringPtrInput
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrInput
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	MetaStoreConf ClusterMetaStoreConfPtrInput
+	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+	MetaStoreType pulumi.StringPtrInput
+	// The configurations of emr-cluster service modification after cluster created.
+	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
 	// bootstrap action name.
 	Name pulumi.StringPtrInput
 	// Optional software list.
@@ -289,6 +337,8 @@ type ClusterArgs struct {
 	Period pulumi.IntPtrInput
 	// This specify the related cluster id, if this cluster is a Gateway.
 	RelatedClusterId pulumi.StringPtrInput
+	// The Id of resource group which the emr-cluster belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Security Group ID for Cluster, you can also specify this key for each host group.
 	SecurityGroupId pulumi.StringPtrInput
 	// If this is set true, we can ssh into cluster. Default value is false.
@@ -407,6 +457,11 @@ func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
 }
 
+// The custom configurations of emr-cluster service.
+func (o ClusterOutput) Configs() ClusterConfigArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterConfigArrayOutput { return v.Configs }).(ClusterConfigArrayOutput)
+}
+
 // Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 func (o ClusterOutput) DepositType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DepositType }).(pulumi.StringPtrOutput)
@@ -447,6 +502,21 @@ func (o ClusterOutput) MasterPwd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MasterPwd }).(pulumi.StringPtrOutput)
 }
 
+// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+func (o ClusterOutput) MetaStoreConf() ClusterMetaStoreConfPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMetaStoreConfPtrOutput { return v.MetaStoreConf }).(ClusterMetaStoreConfPtrOutput)
+}
+
+// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+func (o ClusterOutput) MetaStoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MetaStoreType }).(pulumi.StringOutput)
+}
+
+// The configurations of emr-cluster service modification after cluster created.
+func (o ClusterOutput) ModifyClusterServiceConfig() ClusterModifyClusterServiceConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterModifyClusterServiceConfigPtrOutput { return v.ModifyClusterServiceConfig }).(ClusterModifyClusterServiceConfigPtrOutput)
+}
+
 // bootstrap action name.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -465,6 +535,11 @@ func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 // This specify the related cluster id, if this cluster is a Gateway.
 func (o ClusterOutput) RelatedClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RelatedClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the emr-cluster belongs.
+func (o ClusterOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 // Security Group ID for Cluster, you can also specify this key for each host group.

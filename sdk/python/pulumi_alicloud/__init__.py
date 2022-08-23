@@ -1396,6 +1396,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/eventRule",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/eventRule:EventRule": "EventRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/groupMetricRule",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
@@ -5064,6 +5072,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment": "NetworkInterfaceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/prefixList",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/prefixList:PrefixList": "PrefixList"
   }
  },
  {

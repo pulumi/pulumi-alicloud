@@ -21,6 +21,16 @@ public final class GetInstancesInstanceDiskDeviceMapping {
      */
     private final String device;
     /**
+     * @return The ID of the Disk.
+     * 
+     */
+    private final String diskId;
+    /**
+     * @return The name of the Disk.
+     * 
+     */
+    private final String diskName;
+    /**
      * @return Size of the created disk.
      * 
      */
@@ -35,10 +45,14 @@ public final class GetInstancesInstanceDiskDeviceMapping {
     private GetInstancesInstanceDiskDeviceMapping(
         @CustomType.Parameter("category") String category,
         @CustomType.Parameter("device") String device,
+        @CustomType.Parameter("diskId") String diskId,
+        @CustomType.Parameter("diskName") String diskName,
         @CustomType.Parameter("size") Integer size,
         @CustomType.Parameter("type") String type) {
         this.category = category;
         this.device = device;
+        this.diskId = diskId;
+        this.diskName = diskName;
         this.size = size;
         this.type = type;
     }
@@ -56,6 +70,20 @@ public final class GetInstancesInstanceDiskDeviceMapping {
      */
     public String device() {
         return this.device;
+    }
+    /**
+     * @return The ID of the Disk.
+     * 
+     */
+    public String diskId() {
+        return this.diskId;
+    }
+    /**
+     * @return The name of the Disk.
+     * 
+     */
+    public String diskName() {
+        return this.diskName;
     }
     /**
      * @return Size of the created disk.
@@ -83,6 +111,8 @@ public final class GetInstancesInstanceDiskDeviceMapping {
     public static final class Builder {
         private String category;
         private String device;
+        private String diskId;
+        private String diskName;
         private Integer size;
         private String type;
 
@@ -94,6 +124,8 @@ public final class GetInstancesInstanceDiskDeviceMapping {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
     	      this.device = defaults.device;
+    	      this.diskId = defaults.diskId;
+    	      this.diskName = defaults.diskName;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
         }
@@ -106,6 +138,14 @@ public final class GetInstancesInstanceDiskDeviceMapping {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        public Builder diskId(String diskId) {
+            this.diskId = Objects.requireNonNull(diskId);
+            return this;
+        }
+        public Builder diskName(String diskName) {
+            this.diskName = Objects.requireNonNull(diskName);
+            return this;
+        }
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
@@ -114,7 +154,7 @@ public final class GetInstancesInstanceDiskDeviceMapping {
             this.type = Objects.requireNonNull(type);
             return this;
         }        public GetInstancesInstanceDiskDeviceMapping build() {
-            return new GetInstancesInstanceDiskDeviceMapping(category, device, size, type);
+            return new GetInstancesInstanceDiskDeviceMapping(category, device, diskId, diskName, size, type);
         }
     }
 }

@@ -489,13 +489,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    @Import(name="timeSeriresEngineSpecification")
-    private @Nullable Output<String> timeSeriresEngineSpecification;
+    @Import(name="timeSeriesEngineSpecification")
+    private @Nullable Output<String> timeSeriesEngineSpecification;
 
     /**
      * @return The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
+    public Optional<Output<String>> timeSeriesEngineSpecification() {
+        return Optional.ofNullable(this.timeSeriesEngineSpecification);
+    }
+
+    /**
+     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * 
+     * @deprecated
+     * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
+    @Import(name="timeSeriresEngineSpecification")
+    private @Nullable Output<String> timeSeriresEngineSpecification;
+
+    /**
+     * @return Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * 
+     * @deprecated
+     * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
     public Optional<Output<String>> timeSeriresEngineSpecification() {
         return Optional.ofNullable(this.timeSeriresEngineSpecification);
     }
@@ -587,6 +610,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.tableEngineSpecification = $.tableEngineSpecification;
         this.tags = $.tags;
         this.timeSeriesEngineNodeCount = $.timeSeriesEngineNodeCount;
+        this.timeSeriesEngineSpecification = $.timeSeriesEngineSpecification;
         this.timeSeriresEngineSpecification = $.timeSeriresEngineSpecification;
         this.upgradeType = $.upgradeType;
         this.vswitchId = $.vswitchId;
@@ -1273,22 +1297,51 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeSeriresEngineSpecification The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+         * @param timeSeriesEngineSpecification The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
          * 
          * @return builder
          * 
          */
+        public Builder timeSeriesEngineSpecification(@Nullable Output<String> timeSeriesEngineSpecification) {
+            $.timeSeriesEngineSpecification = timeSeriesEngineSpecification;
+            return this;
+        }
+
+        /**
+         * @param timeSeriesEngineSpecification The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeSeriesEngineSpecification(String timeSeriesEngineSpecification) {
+            return timeSeriesEngineSpecification(Output.of(timeSeriesEngineSpecification));
+        }
+
+        /**
+         * @param timeSeriresEngineSpecification Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
         public Builder timeSeriresEngineSpecification(@Nullable Output<String> timeSeriresEngineSpecification) {
             $.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
             return this;
         }
 
         /**
-         * @param timeSeriresEngineSpecification The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+         * @param timeSeriresEngineSpecification Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;time_serires_engine_specification&#39; has been deprecated from provider version 1.182.0. New field &#39;time_series_engine_specification&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             return timeSeriresEngineSpecification(Output.of(timeSeriresEngineSpecification));
         }

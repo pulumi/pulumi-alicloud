@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
-//				Namespace:     pulumi.String("example_value"),
+//				Namespace:     pulumi.String("example-value"),
 //				Specification: pulumi.String("cms.s1.large"),
 //			})
 //			if err != nil {

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cms.Namespace("example", {
- *     namespace: "example_value",
+ *     namespace: "example-value",
  *     specification: "cms.s1.large",
  * });
  * ```

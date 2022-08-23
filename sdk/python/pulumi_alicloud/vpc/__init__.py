@@ -34,6 +34,7 @@ from .get_nat_ips import *
 from .get_network_acls import *
 from .get_networks import *
 from .get_pbr_route_entries import *
+from .get_prefix_lists import *
 from .get_route_entries import *
 from .get_route_tables import *
 from .get_router_interfaces import *
@@ -62,6 +63,7 @@ from .network_acl_attachment import *
 from .network_acl_entries import *
 from .network_interface import *
 from .network_interface_attachment import *
+from .prefix_list import *
 from .route_entry import *
 from .route_table import *
 from .route_table_attachment import *

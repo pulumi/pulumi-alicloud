@@ -9,9 +9,11 @@ from .alarm import *
 from .alarm_contact import *
 from .alarm_contact_group import *
 from .dynamic_tag_group import *
+from .event_rule import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
 from .get_dynamic_tag_groups import *
+from .get_event_rules import *
 from .get_group_metric_rules import *
 from .get_hybrid_monitor_datas import *
 from .get_hybrid_monitor_fc_tasks import *

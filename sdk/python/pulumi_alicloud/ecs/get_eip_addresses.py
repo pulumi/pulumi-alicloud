@@ -284,7 +284,7 @@ def get_eip_addresses(address_name: Optional[str] = None,
     :param str associated_instance_id: The associated instance id.
     :param str associated_instance_type: The associated instance type.
     :param bool dry_run: The dry run.
-    :param bool enable_details: Default to `tue`. Set it to `false` can hidden the `tags` to output.
+    :param bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[str] ids: A list of Address IDs.
     :param bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
     :param str ip_address: The IP address of the EIP.
@@ -387,7 +387,7 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     :param str associated_instance_id: The associated instance id.
     :param str associated_instance_type: The associated instance type.
     :param bool dry_run: The dry run.
-    :param bool enable_details: Default to `tue`. Set it to `false` can hidden the `tags` to output.
+    :param bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[str] ids: A list of Address IDs.
     :param bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
     :param str ip_address: The IP address of the EIP.

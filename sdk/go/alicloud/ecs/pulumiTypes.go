@@ -12639,6 +12639,10 @@ type GetInstancesInstanceDiskDeviceMapping struct {
 	Category string `pulumi:"category"`
 	// Device information of the created disk: such as /dev/xvdb.
 	Device string `pulumi:"device"`
+	// The ID of the Disk.
+	DiskId string `pulumi:"diskId"`
+	// The name of the Disk.
+	DiskName string `pulumi:"diskName"`
 	// Size of the created disk.
 	Size int `pulumi:"size"`
 	// Cloud disk type: system disk or data disk.
@@ -12661,6 +12665,10 @@ type GetInstancesInstanceDiskDeviceMappingArgs struct {
 	Category pulumi.StringInput `pulumi:"category"`
 	// Device information of the created disk: such as /dev/xvdb.
 	Device pulumi.StringInput `pulumi:"device"`
+	// The ID of the Disk.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The name of the Disk.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
 	// Size of the created disk.
 	Size pulumi.IntInput `pulumi:"size"`
 	// Cloud disk type: system disk or data disk.
@@ -12726,6 +12734,16 @@ func (o GetInstancesInstanceDiskDeviceMappingOutput) Category() pulumi.StringOut
 // Device information of the created disk: such as /dev/xvdb.
 func (o GetInstancesInstanceDiskDeviceMappingOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The ID of the Disk.
+func (o GetInstancesInstanceDiskDeviceMappingOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The name of the Disk.
+func (o GetInstancesInstanceDiskDeviceMappingOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.DiskName }).(pulumi.StringOutput)
 }
 
 // Size of the created disk.

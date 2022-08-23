@@ -107,6 +107,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> OnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
 
         /// <summary>
+        /// Set or unset instances within group into protected status.
+        /// </summary>
+        [Output("protectedInstances")]
+        public Output<ImmutableArray<string>> ProtectedInstances { get; private set; } = null!;
+
+        /// <summary>
         /// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
         /// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
         /// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -297,6 +303,18 @@ namespace Pulumi.AliCloud.Ess
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
 
+        [Input("protectedInstances")]
+        private InputList<string>? _protectedInstances;
+
+        /// <summary>
+        /// Set or unset instances within group into protected status.
+        /// </summary>
+        public InputList<string> ProtectedInstances
+        {
+            get => _protectedInstances ?? (_protectedInstances = new InputList<string>());
+            set => _protectedInstances = value;
+        }
+
         [Input("removalPolicies")]
         private InputList<string>? _removalPolicies;
 
@@ -466,6 +484,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
         public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
+
+        [Input("protectedInstances")]
+        private InputList<string>? _protectedInstances;
+
+        /// <summary>
+        /// Set or unset instances within group into protected status.
+        /// </summary>
+        public InputList<string> ProtectedInstances
+        {
+            get => _protectedInstances ?? (_protectedInstances = new InputList<string>());
+            set => _protectedInstances = value;
+        }
 
         [Input("removalPolicies")]
         private InputList<string>? _removalPolicies;

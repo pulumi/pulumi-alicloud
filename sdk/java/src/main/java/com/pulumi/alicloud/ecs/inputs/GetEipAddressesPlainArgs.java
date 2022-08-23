@@ -79,14 +79,14 @@ public final class GetEipAddressesPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Default to `tue`. Set it to `false` can hidden the `tags` to output.
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `tue`. Set it to `false` can hidden the `tags` to output.
+     * @return Default to `true`. Set it to `false` can hide the `tags` to output.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -370,7 +370,7 @@ public final class GetEipAddressesPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param enableDetails Default to `tue`. Set it to `false` can hidden the `tags` to output.
+         * @param enableDetails Default to `true`. Set it to `false` can hide the `tags` to output.
          * 
          * @return builder
          * 

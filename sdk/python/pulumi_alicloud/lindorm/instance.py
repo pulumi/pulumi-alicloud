@@ -40,6 +40,7 @@ class InstanceArgs:
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -71,7 +72,8 @@ class InstanceArgs:
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -124,6 +126,11 @@ class InstanceArgs:
             pulumi.set(__self__, "tags", tags)
         if time_series_engine_node_count is not None:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
+        if time_series_engine_specification is not None:
+            pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
+        if time_serires_engine_specification is not None:
+            warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
         if upgrade_type is not None:
@@ -447,10 +454,22 @@ class InstanceArgs:
         pulumi.set(self, "time_series_engine_node_count", value)
 
     @property
+    @pulumi.getter(name="timeSeriesEngineSpecification")
+    def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        """
+        return pulumi.get(self, "time_series_engine_specification")
+
+    @time_series_engine_specification.setter
+    def time_series_engine_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_series_engine_specification", value)
+
+    @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
     def time_serires_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
 
@@ -517,6 +536,7 @@ class _InstanceState:
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -554,7 +574,8 @@ class _InstanceState:
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -621,6 +642,11 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if time_series_engine_node_count is not None:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
+        if time_series_engine_specification is not None:
+            pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
+        if time_serires_engine_specification is not None:
+            warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+            pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
         if upgrade_type is not None:
@@ -1006,10 +1032,22 @@ class _InstanceState:
         pulumi.set(self, "time_series_engine_node_count", value)
 
     @property
+    @pulumi.getter(name="timeSeriesEngineSpecification")
+    def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        """
+        return pulumi.get(self, "time_series_engine_specification")
+
+    @time_series_engine_specification.setter
+    def time_series_engine_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_series_engine_specification", value)
+
+    @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
     def time_serires_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
 
@@ -1084,6 +1122,7 @@ class Instance(pulumi.CustomResource):
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1133,7 +1172,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1201,6 +1241,7 @@ class Instance(pulumi.CustomResource):
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+                 time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1243,6 +1284,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["table_engine_specification"] = table_engine_specification
             __props__.__dict__["tags"] = tags
             __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
+            __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
+            if time_serires_engine_specification is not None and not opts.urn:
+                warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+                pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
             if upgrade_type is not None and not opts.urn:
                 warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
@@ -1299,6 +1344,7 @@ class Instance(pulumi.CustomResource):
             table_engine_specification: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+            time_series_engine_specification: Optional[pulumi.Input[str]] = None,
             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
             upgrade_type: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1341,7 +1387,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1381,6 +1428,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["table_engine_specification"] = table_engine_specification
         __props__.__dict__["tags"] = tags
         __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
+        __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
         __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
         __props__.__dict__["upgrade_type"] = upgrade_type
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1636,10 +1684,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "time_series_engine_node_count")
 
     @property
+    @pulumi.getter(name="timeSeriesEngineSpecification")
+    def time_series_engine_specification(self) -> pulumi.Output[str]:
+        """
+        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        """
+        return pulumi.get(self, "time_series_engine_specification")
+
+    @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
     def time_serires_engine_specification(self) -> pulumi.Output[str]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
 

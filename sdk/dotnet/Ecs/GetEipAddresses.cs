@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+        /// Default to `true`. Set it to `false` can hide the `tags` to output.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+        /// Default to `true`. Set it to `false` can hide the `tags` to output.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

@@ -18,6 +18,7 @@ __all__ = [
     'NetworkAclEntriesIngress',
     'NetworkAclIngressAclEntry',
     'NetworkAclResource',
+    'PrefixListEntry',
     'GetBgpGroupsGroupResult',
     'GetBgpNetworksNetworkResult',
     'GetBgpPeersPeerResult',
@@ -45,6 +46,8 @@ __all__ = [
     'GetNetworkAclsAclResourceResult',
     'GetNetworksVpcResult',
     'GetPbrRouteEntriesEntryResult',
+    'GetPrefixListsListResult',
+    'GetPrefixListsListEntryResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
     'GetRouterInterfacesInterfaceResult',
@@ -621,6 +624,36 @@ class NetworkAclResource(dict):
         The type of the associated resource. Valid values `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class PrefixListEntry(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 description: Optional[str] = None):
+        """
+        :param str cidr: The CIDR address block of the prefix list.
+        :param str description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The CIDR address block of the prefix list.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -3683,6 +3716,141 @@ class GetPbrRouteEntriesEntryResult(dict):
         The weight of the policy-based route. Valid values: 0 and 100.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetPrefixListsListResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 entrys: Sequence['outputs.GetPrefixListsListEntryResult'],
+                 id: str,
+                 ip_version: str,
+                 max_entries: int,
+                 prefix_list_description: str,
+                 prefix_list_id: str,
+                 prefix_list_name: str,
+                 share_type: str):
+        """
+        :param str create_time: The time when the prefix list was created.
+        :param Sequence['GetPrefixListsListEntryArgs'] entrys: The CIDR address block list of the prefix list.
+        :param str id: The ID of the Prefix List.
+        :param str ip_version: The IP version of the prefix list.
+        :param int max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
+        :param str prefix_list_description: The description of the prefix list.
+        :param str prefix_list_id: The ID of the query Prefix List.
+        :param str prefix_list_name: The name of the prefix list.
+        :param str share_type: The share type of the prefix list.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "entrys", entrys)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_version", ip_version)
+        pulumi.set(__self__, "max_entries", max_entries)
+        pulumi.set(__self__, "prefix_list_description", prefix_list_description)
+        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
+        pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the prefix list was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def entrys(self) -> Sequence['outputs.GetPrefixListsListEntryResult']:
+        """
+        The CIDR address block list of the prefix list.
+        """
+        return pulumi.get(self, "entrys")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Prefix List.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        The IP version of the prefix list.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="maxEntries")
+    def max_entries(self) -> int:
+        """
+        The maximum number of entries for CIDR address blocks in the prefix list.
+        """
+        return pulumi.get(self, "max_entries")
+
+    @property
+    @pulumi.getter(name="prefixListDescription")
+    def prefix_list_description(self) -> str:
+        """
+        The description of the prefix list.
+        """
+        return pulumi.get(self, "prefix_list_description")
+
+    @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> str:
+        """
+        The ID of the query Prefix List.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @property
+    @pulumi.getter(name="prefixListName")
+    def prefix_list_name(self) -> str:
+        """
+        The name of the prefix list.
+        """
+        return pulumi.get(self, "prefix_list_name")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        The share type of the prefix list.
+        """
+        return pulumi.get(self, "share_type")
+
+
+@pulumi.output_type
+class GetPrefixListsListEntryResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 description: str):
+        """
+        :param str cidr: The CIDR address block of the prefix list.
+        :param str description: The description of the cidr entry.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The CIDR address block of the prefix list.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the cidr entry.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

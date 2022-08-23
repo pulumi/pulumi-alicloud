@@ -914,6 +914,112 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 	}).(NetworkAclResourceOutput)
 }
 
+type PrefixListEntry struct {
+	// The CIDR address block of the prefix list.
+	Cidr string `pulumi:"cidr"`
+	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	Description *string `pulumi:"description"`
+}
+
+// PrefixListEntryInput is an input type that accepts PrefixListEntryArgs and PrefixListEntryOutput values.
+// You can construct a concrete instance of `PrefixListEntryInput` via:
+//
+//	PrefixListEntryArgs{...}
+type PrefixListEntryInput interface {
+	pulumi.Input
+
+	ToPrefixListEntryOutput() PrefixListEntryOutput
+	ToPrefixListEntryOutputWithContext(context.Context) PrefixListEntryOutput
+}
+
+type PrefixListEntryArgs struct {
+	// The CIDR address block of the prefix list.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (PrefixListEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrefixListEntry)(nil)).Elem()
+}
+
+func (i PrefixListEntryArgs) ToPrefixListEntryOutput() PrefixListEntryOutput {
+	return i.ToPrefixListEntryOutputWithContext(context.Background())
+}
+
+func (i PrefixListEntryArgs) ToPrefixListEntryOutputWithContext(ctx context.Context) PrefixListEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrefixListEntryOutput)
+}
+
+// PrefixListEntryArrayInput is an input type that accepts PrefixListEntryArray and PrefixListEntryArrayOutput values.
+// You can construct a concrete instance of `PrefixListEntryArrayInput` via:
+//
+//	PrefixListEntryArray{ PrefixListEntryArgs{...} }
+type PrefixListEntryArrayInput interface {
+	pulumi.Input
+
+	ToPrefixListEntryArrayOutput() PrefixListEntryArrayOutput
+	ToPrefixListEntryArrayOutputWithContext(context.Context) PrefixListEntryArrayOutput
+}
+
+type PrefixListEntryArray []PrefixListEntryInput
+
+func (PrefixListEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrefixListEntry)(nil)).Elem()
+}
+
+func (i PrefixListEntryArray) ToPrefixListEntryArrayOutput() PrefixListEntryArrayOutput {
+	return i.ToPrefixListEntryArrayOutputWithContext(context.Background())
+}
+
+func (i PrefixListEntryArray) ToPrefixListEntryArrayOutputWithContext(ctx context.Context) PrefixListEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrefixListEntryArrayOutput)
+}
+
+type PrefixListEntryOutput struct{ *pulumi.OutputState }
+
+func (PrefixListEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrefixListEntry)(nil)).Elem()
+}
+
+func (o PrefixListEntryOutput) ToPrefixListEntryOutput() PrefixListEntryOutput {
+	return o
+}
+
+func (o PrefixListEntryOutput) ToPrefixListEntryOutputWithContext(ctx context.Context) PrefixListEntryOutput {
+	return o
+}
+
+// The CIDR address block of the prefix list.
+func (o PrefixListEntryOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v PrefixListEntry) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+func (o PrefixListEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type PrefixListEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (PrefixListEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrefixListEntry)(nil)).Elem()
+}
+
+func (o PrefixListEntryArrayOutput) ToPrefixListEntryArrayOutput() PrefixListEntryArrayOutput {
+	return o
+}
+
+func (o PrefixListEntryArrayOutput) ToPrefixListEntryArrayOutputWithContext(ctx context.Context) PrefixListEntryArrayOutput {
+	return o
+}
+
+func (o PrefixListEntryArrayOutput) Index(i pulumi.IntInput) PrefixListEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrefixListEntry {
+		return vs[0].([]PrefixListEntry)[vs[1].(int)]
+	}).(PrefixListEntryOutput)
+}
+
 type GetBgpGroupsGroup struct {
 	// The key used by the BGP group.
 	AuthKey string `pulumi:"authKey"`
@@ -5658,6 +5764,281 @@ func (o GetPbrRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetPbrRoute
 	}).(GetPbrRouteEntriesEntryOutput)
 }
 
+type GetPrefixListsList struct {
+	// The time when the prefix list was created.
+	CreateTime string `pulumi:"createTime"`
+	// The CIDR address block list of the prefix list.
+	Entrys []GetPrefixListsListEntry `pulumi:"entrys"`
+	// The ID of the Prefix List.
+	Id string `pulumi:"id"`
+	// The IP version of the prefix list.
+	IpVersion string `pulumi:"ipVersion"`
+	// The maximum number of entries for CIDR address blocks in the prefix list.
+	MaxEntries int `pulumi:"maxEntries"`
+	// The description of the prefix list.
+	PrefixListDescription string `pulumi:"prefixListDescription"`
+	// The ID of the query Prefix List.
+	PrefixListId string `pulumi:"prefixListId"`
+	// The name of the prefix list.
+	PrefixListName string `pulumi:"prefixListName"`
+	// The share type of the prefix list.
+	ShareType string `pulumi:"shareType"`
+}
+
+// GetPrefixListsListInput is an input type that accepts GetPrefixListsListArgs and GetPrefixListsListOutput values.
+// You can construct a concrete instance of `GetPrefixListsListInput` via:
+//
+//	GetPrefixListsListArgs{...}
+type GetPrefixListsListInput interface {
+	pulumi.Input
+
+	ToGetPrefixListsListOutput() GetPrefixListsListOutput
+	ToGetPrefixListsListOutputWithContext(context.Context) GetPrefixListsListOutput
+}
+
+type GetPrefixListsListArgs struct {
+	// The time when the prefix list was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The CIDR address block list of the prefix list.
+	Entrys GetPrefixListsListEntryArrayInput `pulumi:"entrys"`
+	// The ID of the Prefix List.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP version of the prefix list.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// The maximum number of entries for CIDR address blocks in the prefix list.
+	MaxEntries pulumi.IntInput `pulumi:"maxEntries"`
+	// The description of the prefix list.
+	PrefixListDescription pulumi.StringInput `pulumi:"prefixListDescription"`
+	// The ID of the query Prefix List.
+	PrefixListId pulumi.StringInput `pulumi:"prefixListId"`
+	// The name of the prefix list.
+	PrefixListName pulumi.StringInput `pulumi:"prefixListName"`
+	// The share type of the prefix list.
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+}
+
+func (GetPrefixListsListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListsList)(nil)).Elem()
+}
+
+func (i GetPrefixListsListArgs) ToGetPrefixListsListOutput() GetPrefixListsListOutput {
+	return i.ToGetPrefixListsListOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListsListArgs) ToGetPrefixListsListOutputWithContext(ctx context.Context) GetPrefixListsListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListsListOutput)
+}
+
+// GetPrefixListsListArrayInput is an input type that accepts GetPrefixListsListArray and GetPrefixListsListArrayOutput values.
+// You can construct a concrete instance of `GetPrefixListsListArrayInput` via:
+//
+//	GetPrefixListsListArray{ GetPrefixListsListArgs{...} }
+type GetPrefixListsListArrayInput interface {
+	pulumi.Input
+
+	ToGetPrefixListsListArrayOutput() GetPrefixListsListArrayOutput
+	ToGetPrefixListsListArrayOutputWithContext(context.Context) GetPrefixListsListArrayOutput
+}
+
+type GetPrefixListsListArray []GetPrefixListsListInput
+
+func (GetPrefixListsListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListsList)(nil)).Elem()
+}
+
+func (i GetPrefixListsListArray) ToGetPrefixListsListArrayOutput() GetPrefixListsListArrayOutput {
+	return i.ToGetPrefixListsListArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListsListArray) ToGetPrefixListsListArrayOutputWithContext(ctx context.Context) GetPrefixListsListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListsListArrayOutput)
+}
+
+type GetPrefixListsListOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListsListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListsList)(nil)).Elem()
+}
+
+func (o GetPrefixListsListOutput) ToGetPrefixListsListOutput() GetPrefixListsListOutput {
+	return o
+}
+
+func (o GetPrefixListsListOutput) ToGetPrefixListsListOutputWithContext(ctx context.Context) GetPrefixListsListOutput {
+	return o
+}
+
+// The time when the prefix list was created.
+func (o GetPrefixListsListOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The CIDR address block list of the prefix list.
+func (o GetPrefixListsListOutput) Entrys() GetPrefixListsListEntryArrayOutput {
+	return o.ApplyT(func(v GetPrefixListsList) []GetPrefixListsListEntry { return v.Entrys }).(GetPrefixListsListEntryArrayOutput)
+}
+
+// The ID of the Prefix List.
+func (o GetPrefixListsListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP version of the prefix list.
+func (o GetPrefixListsListOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// The maximum number of entries for CIDR address blocks in the prefix list.
+func (o GetPrefixListsListOutput) MaxEntries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrefixListsList) int { return v.MaxEntries }).(pulumi.IntOutput)
+}
+
+// The description of the prefix list.
+func (o GetPrefixListsListOutput) PrefixListDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.PrefixListDescription }).(pulumi.StringOutput)
+}
+
+// The ID of the query Prefix List.
+func (o GetPrefixListsListOutput) PrefixListId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.PrefixListId }).(pulumi.StringOutput)
+}
+
+// The name of the prefix list.
+func (o GetPrefixListsListOutput) PrefixListName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.PrefixListName }).(pulumi.StringOutput)
+}
+
+// The share type of the prefix list.
+func (o GetPrefixListsListOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsList) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+type GetPrefixListsListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListsListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListsList)(nil)).Elem()
+}
+
+func (o GetPrefixListsListArrayOutput) ToGetPrefixListsListArrayOutput() GetPrefixListsListArrayOutput {
+	return o
+}
+
+func (o GetPrefixListsListArrayOutput) ToGetPrefixListsListArrayOutputWithContext(ctx context.Context) GetPrefixListsListArrayOutput {
+	return o
+}
+
+func (o GetPrefixListsListArrayOutput) Index(i pulumi.IntInput) GetPrefixListsListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrefixListsList {
+		return vs[0].([]GetPrefixListsList)[vs[1].(int)]
+	}).(GetPrefixListsListOutput)
+}
+
+type GetPrefixListsListEntry struct {
+	// The CIDR address block of the prefix list.
+	Cidr string `pulumi:"cidr"`
+	// The description of the cidr entry.
+	Description string `pulumi:"description"`
+}
+
+// GetPrefixListsListEntryInput is an input type that accepts GetPrefixListsListEntryArgs and GetPrefixListsListEntryOutput values.
+// You can construct a concrete instance of `GetPrefixListsListEntryInput` via:
+//
+//	GetPrefixListsListEntryArgs{...}
+type GetPrefixListsListEntryInput interface {
+	pulumi.Input
+
+	ToGetPrefixListsListEntryOutput() GetPrefixListsListEntryOutput
+	ToGetPrefixListsListEntryOutputWithContext(context.Context) GetPrefixListsListEntryOutput
+}
+
+type GetPrefixListsListEntryArgs struct {
+	// The CIDR address block of the prefix list.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// The description of the cidr entry.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (GetPrefixListsListEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListsListEntry)(nil)).Elem()
+}
+
+func (i GetPrefixListsListEntryArgs) ToGetPrefixListsListEntryOutput() GetPrefixListsListEntryOutput {
+	return i.ToGetPrefixListsListEntryOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListsListEntryArgs) ToGetPrefixListsListEntryOutputWithContext(ctx context.Context) GetPrefixListsListEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListsListEntryOutput)
+}
+
+// GetPrefixListsListEntryArrayInput is an input type that accepts GetPrefixListsListEntryArray and GetPrefixListsListEntryArrayOutput values.
+// You can construct a concrete instance of `GetPrefixListsListEntryArrayInput` via:
+//
+//	GetPrefixListsListEntryArray{ GetPrefixListsListEntryArgs{...} }
+type GetPrefixListsListEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetPrefixListsListEntryArrayOutput() GetPrefixListsListEntryArrayOutput
+	ToGetPrefixListsListEntryArrayOutputWithContext(context.Context) GetPrefixListsListEntryArrayOutput
+}
+
+type GetPrefixListsListEntryArray []GetPrefixListsListEntryInput
+
+func (GetPrefixListsListEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListsListEntry)(nil)).Elem()
+}
+
+func (i GetPrefixListsListEntryArray) ToGetPrefixListsListEntryArrayOutput() GetPrefixListsListEntryArrayOutput {
+	return i.ToGetPrefixListsListEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListsListEntryArray) ToGetPrefixListsListEntryArrayOutputWithContext(ctx context.Context) GetPrefixListsListEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListsListEntryArrayOutput)
+}
+
+type GetPrefixListsListEntryOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListsListEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListsListEntry)(nil)).Elem()
+}
+
+func (o GetPrefixListsListEntryOutput) ToGetPrefixListsListEntryOutput() GetPrefixListsListEntryOutput {
+	return o
+}
+
+func (o GetPrefixListsListEntryOutput) ToGetPrefixListsListEntryOutputWithContext(ctx context.Context) GetPrefixListsListEntryOutput {
+	return o
+}
+
+// The CIDR address block of the prefix list.
+func (o GetPrefixListsListEntryOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsListEntry) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The description of the cidr entry.
+func (o GetPrefixListsListEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListsListEntry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type GetPrefixListsListEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListsListEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListsListEntry)(nil)).Elem()
+}
+
+func (o GetPrefixListsListEntryArrayOutput) ToGetPrefixListsListEntryArrayOutput() GetPrefixListsListEntryArrayOutput {
+	return o
+}
+
+func (o GetPrefixListsListEntryArrayOutput) ToGetPrefixListsListEntryArrayOutputWithContext(ctx context.Context) GetPrefixListsListEntryArrayOutput {
+	return o
+}
+
+func (o GetPrefixListsListEntryArrayOutput) Index(i pulumi.IntInput) GetPrefixListsListEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrefixListsListEntry {
+		return vs[0].([]GetPrefixListsListEntry)[vs[1].(int)]
+	}).(GetPrefixListsListEntryOutput)
+}
+
 type GetRouteEntriesEntry struct {
 	// The destination CIDR block of the route entry.
 	CidrBlock string `pulumi:"cidrBlock"`
@@ -7893,6 +8274,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclIngressAclEntryArrayInput)(nil)).Elem(), NetworkAclIngressAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceInput)(nil)).Elem(), NetworkAclResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceArrayInput)(nil)).Elem(), NetworkAclResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListEntryInput)(nil)).Elem(), PrefixListEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListEntryArrayInput)(nil)).Elem(), PrefixListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupInput)(nil)).Elem(), GetBgpGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupArrayInput)(nil)).Elem(), GetBgpGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpNetworksNetworkInput)(nil)).Elem(), GetBgpNetworksNetworkArgs{})
@@ -7947,6 +8330,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksVpcArrayInput)(nil)).Elem(), GetNetworksVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryInput)(nil)).Elem(), GetPbrRouteEntriesEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryArrayInput)(nil)).Elem(), GetPbrRouteEntriesEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListInput)(nil)).Elem(), GetPrefixListsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListArrayInput)(nil)).Elem(), GetPrefixListsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListEntryInput)(nil)).Elem(), GetPrefixListsListEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListEntryArrayInput)(nil)).Elem(), GetPrefixListsListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryInput)(nil)).Elem(), GetRouteEntriesEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryArrayInput)(nil)).Elem(), GetRouteEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTablesTableInput)(nil)).Elem(), GetRouteTablesTableArgs{})
@@ -7985,6 +8372,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkAclIngressAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceArrayOutput{})
+	pulumi.RegisterOutputType(PrefixListEntryOutput{})
+	pulumi.RegisterOutputType(PrefixListEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpNetworksNetworkOutput{})
@@ -8039,6 +8428,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetPrefixListsListOutput{})
+	pulumi.RegisterOutputType(GetPrefixListsListArrayOutput{})
+	pulumi.RegisterOutputType(GetPrefixListsListEntryOutput{})
+	pulumi.RegisterOutputType(GetPrefixListsListEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteTablesTableOutput{})

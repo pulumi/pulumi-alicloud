@@ -11,7 +11,10 @@ from .. import _utilities
 
 __all__ = [
     'ClusterBootstrapActionArgs',
+    'ClusterConfigArgs',
     'ClusterHostGroupArgs',
+    'ClusterMetaStoreConfArgs',
+    'ClusterModifyClusterServiceConfigArgs',
 ]
 
 @pulumi.input_type
@@ -115,6 +118,73 @@ class ClusterBootstrapActionArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class ClusterConfigArgs:
+    def __init__(__self__, *,
+                 config_key: pulumi.Input[str],
+                 config_value: pulumi.Input[str],
+                 file_name: pulumi.Input[str],
+                 service_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] config_key: Custom configuration service config key, e.g. ’dfs.replication’.
+        :param pulumi.Input[str] config_value: Custom configuration service config value, e.g. ’3’.
+        :param pulumi.Input[str] file_name: Custom configuration service file name, e.g. ’hdfs-site’.
+        :param pulumi.Input[str] service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        pulumi.set(__self__, "config_key", config_key)
+        pulumi.set(__self__, "config_value", config_value)
+        pulumi.set(__self__, "file_name", file_name)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="configKey")
+    def config_key(self) -> pulumi.Input[str]:
+        """
+        Custom configuration service config key, e.g. ’dfs.replication’.
+        """
+        return pulumi.get(self, "config_key")
+
+    @config_key.setter
+    def config_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_key", value)
+
+    @property
+    @pulumi.getter(name="configValue")
+    def config_value(self) -> pulumi.Input[str]:
+        """
+        Custom configuration service config value, e.g. ’3’.
+        """
+        return pulumi.get(self, "config_value")
+
+    @config_value.setter
+    def config_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_value", value)
+
+    @property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> pulumi.Input[str]:
+        """
+        Custom configuration service file name, e.g. ’hdfs-site’.
+        """
+        return pulumi.get(self, "file_name")
+
+    @file_name.setter
+    def file_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
 
 
 @pulumi.input_type
@@ -374,5 +444,206 @@ class ClusterHostGroupArgs:
     @sys_disk_type.setter
     def sys_disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sys_disk_type", value)
+
+
+@pulumi.input_type
+class ClusterMetaStoreConfArgs:
+    def __init__(__self__, *,
+                 db_password: pulumi.Input[str],
+                 db_url: pulumi.Input[str],
+                 db_user_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] db_password: Custom rds database password.
+        :param pulumi.Input[str] db_url: Custom rds database connection url.
+        :param pulumi.Input[str] db_user_name: Custom rds database user name.
+        """
+        pulumi.set(__self__, "db_password", db_password)
+        pulumi.set(__self__, "db_url", db_url)
+        pulumi.set(__self__, "db_user_name", db_user_name)
+
+    @property
+    @pulumi.getter(name="dbPassword")
+    def db_password(self) -> pulumi.Input[str]:
+        """
+        Custom rds database password.
+        """
+        return pulumi.get(self, "db_password")
+
+    @db_password.setter
+    def db_password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_password", value)
+
+    @property
+    @pulumi.getter(name="dbUrl")
+    def db_url(self) -> pulumi.Input[str]:
+        """
+        Custom rds database connection url.
+        """
+        return pulumi.get(self, "db_url")
+
+    @db_url.setter
+    def db_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_url", value)
+
+    @property
+    @pulumi.getter(name="dbUserName")
+    def db_user_name(self) -> pulumi.Input[str]:
+        """
+        Custom rds database user name.
+        """
+        return pulumi.get(self, "db_user_name")
+
+    @db_user_name.setter
+    def db_user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_user_name", value)
+
+
+@pulumi.input_type
+class ClusterModifyClusterServiceConfigArgs:
+    def __init__(__self__, *,
+                 config_params: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None,
+                 config_type: Optional[pulumi.Input[str]] = None,
+                 custom_config_params: Optional[pulumi.Input[str]] = None,
+                 gateway_cluster_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 host_instance_id: Optional[pulumi.Input[str]] = None,
+                 refresh_host_config: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        :param pulumi.Input[str] service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        :param pulumi.Input[str] comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        :param pulumi.Input[str] config_type: Cluster service configuration modification type.
+        :param pulumi.Input[str] custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateway_cluster_id_lists: Cluster service configuration modification related gateway cluster id list.
+        :param pulumi.Input[str] group_id: Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        :param pulumi.Input[str] host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        :param pulumi.Input[bool] refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        """
+        pulumi.set(__self__, "config_params", config_params)
+        pulumi.set(__self__, "service_name", service_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if config_type is not None:
+            pulumi.set(__self__, "config_type", config_type)
+        if custom_config_params is not None:
+            pulumi.set(__self__, "custom_config_params", custom_config_params)
+        if gateway_cluster_id_lists is not None:
+            pulumi.set(__self__, "gateway_cluster_id_lists", gateway_cluster_id_lists)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if host_instance_id is not None:
+            pulumi.set(__self__, "host_instance_id", host_instance_id)
+        if refresh_host_config is not None:
+            pulumi.set(__self__, "refresh_host_config", refresh_host_config)
+
+    @property
+    @pulumi.getter(name="configParams")
+    def config_params(self) -> pulumi.Input[str]:
+        """
+        Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        """
+        return pulumi.get(self, "config_params")
+
+    @config_params.setter
+    def config_params(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_params", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster service configuration modification type.
+        """
+        return pulumi.get(self, "config_type")
+
+    @config_type.setter
+    def config_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_type", value)
+
+    @property
+    @pulumi.getter(name="customConfigParams")
+    def custom_config_params(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        """
+        return pulumi.get(self, "custom_config_params")
+
+    @custom_config_params.setter
+    def custom_config_params(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_config_params", value)
+
+    @property
+    @pulumi.getter(name="gatewayClusterIdLists")
+    def gateway_cluster_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cluster service configuration modification related gateway cluster id list.
+        """
+        return pulumi.get(self, "gateway_cluster_id_lists")
+
+    @gateway_cluster_id_lists.setter
+    def gateway_cluster_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gateway_cluster_id_lists", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="hostInstanceId")
+    def host_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        """
+        return pulumi.get(self, "host_instance_id")
+
+    @host_instance_id.setter
+    def host_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_instance_id", value)
+
+    @property
+    @pulumi.getter(name="refreshHostConfig")
+    def refresh_host_config(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        """
+        return pulumi.get(self, "refresh_host_config")
+
+    @refresh_host_config.setter
+    def refresh_host_config(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "refresh_host_config", value)
 
 

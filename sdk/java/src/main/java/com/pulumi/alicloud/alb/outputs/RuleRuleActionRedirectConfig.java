@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,7 +30,7 @@ public final class RuleRuleActionRedirectConfig {
      * @return The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
      * 
      */
-    private final @Nullable Integer port;
+    private final @Nullable String port;
     /**
      * @return The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
      * 
@@ -48,7 +47,7 @@ public final class RuleRuleActionRedirectConfig {
         @CustomType.Parameter("host") @Nullable String host,
         @CustomType.Parameter("httpCode") @Nullable String httpCode,
         @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("port") @Nullable Integer port,
+        @CustomType.Parameter("port") @Nullable String port,
         @CustomType.Parameter("protocol") @Nullable String protocol,
         @CustomType.Parameter("query") @Nullable String query) {
         this.host = host;
@@ -84,7 +83,7 @@ public final class RuleRuleActionRedirectConfig {
      * @return The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
      * 
      */
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
@@ -114,7 +113,7 @@ public final class RuleRuleActionRedirectConfig {
         private @Nullable String host;
         private @Nullable String httpCode;
         private @Nullable String path;
-        private @Nullable Integer port;
+        private @Nullable String port;
         private @Nullable String protocol;
         private @Nullable String query;
 
@@ -144,7 +143,7 @@ public final class RuleRuleActionRedirectConfig {
             this.path = path;
             return this;
         }
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }

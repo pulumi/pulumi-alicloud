@@ -34,6 +34,7 @@ export * from "./getNatIps";
 export * from "./getNetworkAcls";
 export * from "./getNetworks";
 export * from "./getPbrRouteEntries";
+export * from "./getPrefixLists";
 export * from "./getRouteEntries";
 export * from "./getRouteTables";
 export * from "./getRouterInterfaces";
@@ -62,6 +63,7 @@ export * from "./networkAclAttachment";
 export * from "./networkAclEntries";
 export * from "./networkInterface";
 export * from "./networkInterfaceAttachment";
+export * from "./prefixList";
 export * from "./routeEntry";
 export * from "./routeTable";
 export * from "./routeTableAttachment";
@@ -101,6 +103,7 @@ import { NetworkAclAttachment } from "./networkAclAttachment";
 import { NetworkAclEntries } from "./networkAclEntries";
 import { NetworkInterface } from "./networkInterface";
 import { NetworkInterfaceAttachment } from "./networkInterfaceAttachment";
+import { PrefixList } from "./prefixList";
 import { RouteEntry } from "./routeEntry";
 import { RouteTable } from "./routeTable";
 import { RouteTableAttachment } from "./routeTableAttachment";
@@ -167,6 +170,8 @@ const _module = {
                 return new NetworkInterface(name, <any>undefined, { urn })
             case "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment":
                 return new NetworkInterfaceAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/prefixList:PrefixList":
+                return new PrefixList(name, <any>undefined, { urn })
             case "alicloud:vpc/routeEntry:RouteEntry":
                 return new RouteEntry(name, <any>undefined, { urn })
             case "alicloud:vpc/routeTable:RouteTable":
@@ -222,6 +227,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/networkAclAttachment", _m
 pulumi.runtime.registerResourceModule("alicloud", "vpc/networkAclEntries", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/networkInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/networkInterfaceAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/prefixList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeTable", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/routeTableAttachment", _module)

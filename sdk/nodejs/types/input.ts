@@ -445,7 +445,7 @@ export namespace alb {
         /**
          * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
          */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
         /**
          * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
          */
@@ -1484,6 +1484,37 @@ export namespace cms {
          * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
          */
         tagValueMatchFunction: pulumi.Input<string>;
+    }
+
+    export interface EventRuleEventPattern {
+        /**
+         * The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&M.
+         * - `*`: all types.
+         */
+        eventTypeLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
+         */
+        levelLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the event-triggered alert rule.
+         */
+        nameLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The type of the cloud service.
+         */
+        product: pulumi.Input<string>;
+        /**
+         * The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+         */
+        sqlFilter?: pulumi.Input<string>;
     }
 
     export interface GroupMetricRuleEscalations {
@@ -3779,6 +3810,25 @@ export namespace emr {
         path?: pulumi.Input<string>;
     }
 
+    export interface ClusterConfig {
+        /**
+         * Custom configuration service config key, e.g. ’dfs.replication’.
+         */
+        configKey: pulumi.Input<string>;
+        /**
+         * Custom configuration service config value, e.g. ’3’.
+         */
+        configValue: pulumi.Input<string>;
+        /**
+         * Custom configuration service file name, e.g. ’hdfs-site’.
+         */
+        fileName: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification name, e.g. ’HDFS’.
+         */
+        serviceName: pulumi.Input<string>;
+    }
+
     export interface ClusterHostGroup {
         /**
          * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
@@ -3841,6 +3891,60 @@ export namespace emr {
          * System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
          */
         sysDiskType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterMetaStoreConf {
+        /**
+         * Custom rds database password.
+         */
+        dbPassword: pulumi.Input<string>;
+        /**
+         * Custom rds database connection url.
+         */
+        dbUrl: pulumi.Input<string>;
+        /**
+         * Custom rds database user name.
+         */
+        dbUserName: pulumi.Input<string>;
+    }
+
+    export interface ClusterModifyClusterServiceConfig {
+        /**
+         * Cluster service configuration modification comment, e.g. "Modify tez configuration".
+         */
+        comment?: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+         */
+        configParams: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification type.
+         */
+        configType?: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+         */
+        customConfigParams?: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification related gateway cluster id list.
+         */
+        gatewayClusterIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Cluster service configuration modification node group id, e.g. ’G-XXX’.
+         */
+        groupId?: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+         */
+        hostInstanceId?: pulumi.Input<string>;
+        /**
+         * Cluster service configuration modification refresh host config, ’true’ or ’false’.
+         */
+        refreshHostConfig?: pulumi.Input<boolean>;
+        /**
+         * Cluster service configuration modification name, e.g. ’HDFS’.
+         */
+        serviceName: pulumi.Input<string>;
     }
 
 }
@@ -6935,6 +7039,17 @@ export namespace vpc {
          * The type of the associated resource. Valid values `VSwitch`.
          */
         resourceType?: pulumi.Input<string>;
+    }
+
+    export interface PrefixListEntry {
+        /**
+         * The CIDR address block of the prefix list.
+         */
+        cidr: pulumi.Input<string>;
+        /**
+         * The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         */
+        description?: pulumi.Input<string>;
     }
 }
 
