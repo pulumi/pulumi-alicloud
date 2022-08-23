@@ -44,6 +44,8 @@ import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
 import com.pulumi.alicloud.vpc.inputs.GetNetworksPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPrefixListsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
@@ -90,6 +92,7 @@ import com.pulumi.alicloud.vpc.outputs.GetNatIpsResult;
 import com.pulumi.alicloud.vpc.outputs.GetNetworkAclsResult;
 import com.pulumi.alicloud.vpc.outputs.GetNetworksResult;
 import com.pulumi.alicloud.vpc.outputs.GetPbrRouteEntriesResult;
+import com.pulumi.alicloud.vpc.outputs.GetPrefixListsResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteTablesResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouterInterfacesResult;
@@ -5901,6 +5904,276 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", TypeShape.of(GetPbrRouteEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrefixListsResult> getPrefixLists() {
+        return getPrefixLists(GetPrefixListsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain() {
+        return getPrefixListsPlain(GetPrefixListsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrefixListsResult> getPrefixLists(GetPrefixListsArgs args) {
+        return getPrefixLists(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain(GetPrefixListsPlainArgs args) {
+        return getPrefixListsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrefixListsResult> getPrefixLists(GetPrefixListsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getPrefixLists:getPrefixLists", TypeShape.of(GetPrefixListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPrefixLists();
+     * 
+     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain(GetPrefixListsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getPrefixLists:getPrefixLists", TypeShape.of(GetPrefixListsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of Route Entries owned by an Alibaba Cloud account.

@@ -27,6 +27,7 @@ class ScalingGroupArgs:
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
                  on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
@@ -56,6 +57,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -94,6 +96,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
         if on_demand_percentage_above_base_capacity is not None:
             pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        if protected_instances is not None:
+            pulumi.set(__self__, "protected_instances", protected_instances)
         if removal_policies is not None:
             pulumi.set(__self__, "removal_policies", removal_policies)
         if scaling_group_name is not None:
@@ -276,6 +280,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @property
+    @pulumi.getter(name="protectedInstances")
+    def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set or unset instances within group into protected status.
+        """
+        return pulumi.get(self, "protected_instances")
+
+    @protected_instances.setter
+    def protected_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "protected_instances", value)
+
+    @property
     @pulumi.getter(name="removalPolicies")
     def removal_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -382,6 +398,7 @@ class _ScalingGroupState:
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
                  on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
@@ -411,6 +428,7 @@ class _ScalingGroupState:
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -451,6 +469,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
         if on_demand_percentage_above_base_capacity is not None:
             pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        if protected_instances is not None:
+            pulumi.set(__self__, "protected_instances", protected_instances)
         if removal_policies is not None:
             pulumi.set(__self__, "removal_policies", removal_policies)
         if scaling_group_name is not None:
@@ -633,6 +653,18 @@ class _ScalingGroupState:
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @property
+    @pulumi.getter(name="protectedInstances")
+    def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set or unset instances within group into protected status.
+        """
+        return pulumi.get(self, "protected_instances")
+
+    @protected_instances.setter
+    def protected_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "protected_instances", value)
+
+    @property
     @pulumi.getter(name="removalPolicies")
     def removal_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -741,6 +773,7 @@ class ScalingGroup(pulumi.CustomResource):
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
                  on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
@@ -780,6 +813,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -837,6 +871,7 @@ class ScalingGroup(pulumi.CustomResource):
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
                  on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
@@ -870,6 +905,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["multi_az_policy"] = multi_az_policy
             __props__.__dict__["on_demand_base_capacity"] = on_demand_base_capacity
             __props__.__dict__["on_demand_percentage_above_base_capacity"] = on_demand_percentage_above_base_capacity
+            __props__.__dict__["protected_instances"] = protected_instances
             __props__.__dict__["removal_policies"] = removal_policies
             __props__.__dict__["scaling_group_name"] = scaling_group_name
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
@@ -903,6 +939,7 @@ class ScalingGroup(pulumi.CustomResource):
             multi_az_policy: Optional[pulumi.Input[str]] = None,
             on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
             on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+            protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scaling_group_name: Optional[pulumi.Input[str]] = None,
             spot_instance_pools: Optional[pulumi.Input[int]] = None,
@@ -937,6 +974,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -968,6 +1006,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["multi_az_policy"] = multi_az_policy
         __props__.__dict__["on_demand_base_capacity"] = on_demand_base_capacity
         __props__.__dict__["on_demand_percentage_above_base_capacity"] = on_demand_percentage_above_base_capacity
+        __props__.__dict__["protected_instances"] = protected_instances
         __props__.__dict__["removal_policies"] = removal_policies
         __props__.__dict__["scaling_group_name"] = scaling_group_name
         __props__.__dict__["spot_instance_pools"] = spot_instance_pools
@@ -1087,6 +1126,14 @@ class ScalingGroup(pulumi.CustomResource):
         Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
+
+    @property
+    @pulumi.getter(name="protectedInstances")
+    def protected_instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set or unset instances within group into protected status.
+        """
+        return pulumi.get(self, "protected_instances")
 
     @property
     @pulumi.getter(name="removalPolicies")

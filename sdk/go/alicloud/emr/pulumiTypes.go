@@ -152,6 +152,130 @@ func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 	}).(ClusterBootstrapActionOutput)
 }
 
+type ClusterConfig struct {
+	// Custom configuration service config key, e.g. ’dfs.replication’.
+	ConfigKey string `pulumi:"configKey"`
+	// Custom configuration service config value, e.g. ’3’.
+	ConfigValue string `pulumi:"configValue"`
+	// Custom configuration service file name, e.g. ’hdfs-site’.
+	FileName string `pulumi:"fileName"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// ClusterConfigInput is an input type that accepts ClusterConfigArgs and ClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterConfigInput` via:
+//
+//	ClusterConfigArgs{...}
+type ClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterConfigOutput() ClusterConfigOutput
+	ToClusterConfigOutputWithContext(context.Context) ClusterConfigOutput
+}
+
+type ClusterConfigArgs struct {
+	// Custom configuration service config key, e.g. ’dfs.replication’.
+	ConfigKey pulumi.StringInput `pulumi:"configKey"`
+	// Custom configuration service config value, e.g. ’3’.
+	ConfigValue pulumi.StringInput `pulumi:"configValue"`
+	// Custom configuration service file name, e.g. ’hdfs-site’.
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (ClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterConfigArgs) ToClusterConfigOutput() ClusterConfigOutput {
+	return i.ToClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigArgs) ToClusterConfigOutputWithContext(ctx context.Context) ClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigOutput)
+}
+
+// ClusterConfigArrayInput is an input type that accepts ClusterConfigArray and ClusterConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterConfigArrayInput` via:
+//
+//	ClusterConfigArray{ ClusterConfigArgs{...} }
+type ClusterConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterConfigArrayOutput() ClusterConfigArrayOutput
+	ToClusterConfigArrayOutputWithContext(context.Context) ClusterConfigArrayOutput
+}
+
+type ClusterConfigArray []ClusterConfigInput
+
+func (ClusterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterConfigArray) ToClusterConfigArrayOutput() ClusterConfigArrayOutput {
+	return i.ToClusterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigArray) ToClusterConfigArrayOutputWithContext(ctx context.Context) ClusterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigArrayOutput)
+}
+
+type ClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterConfigOutput) ToClusterConfigOutput() ClusterConfigOutput {
+	return o
+}
+
+func (o ClusterConfigOutput) ToClusterConfigOutputWithContext(ctx context.Context) ClusterConfigOutput {
+	return o
+}
+
+// Custom configuration service config key, e.g. ’dfs.replication’.
+func (o ClusterConfigOutput) ConfigKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfig) string { return v.ConfigKey }).(pulumi.StringOutput)
+}
+
+// Custom configuration service config value, e.g. ’3’.
+func (o ClusterConfigOutput) ConfigValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfig) string { return v.ConfigValue }).(pulumi.StringOutput)
+}
+
+// Custom configuration service file name, e.g. ’hdfs-site’.
+func (o ClusterConfigOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfig) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Cluster service configuration modification name, e.g. ’HDFS’.
+func (o ClusterConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type ClusterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterConfigArrayOutput) ToClusterConfigArrayOutput() ClusterConfigArrayOutput {
+	return o
+}
+
+func (o ClusterConfigArrayOutput) ToClusterConfigArrayOutputWithContext(ctx context.Context) ClusterConfigArrayOutput {
+	return o
+}
+
+func (o ClusterConfigArrayOutput) Index(i pulumi.IntInput) ClusterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterConfig {
+		return vs[0].([]ClusterConfig)[vs[1].(int)]
+	}).(ClusterConfigOutput)
+}
+
 type ClusterHostGroup struct {
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -379,6 +503,470 @@ func (o ClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ClusterHostGroupOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterHostGroup {
 		return vs[0].([]ClusterHostGroup)[vs[1].(int)]
 	}).(ClusterHostGroupOutput)
+}
+
+type ClusterMetaStoreConf struct {
+	// Custom rds database password.
+	DbPassword string `pulumi:"dbPassword"`
+	// Custom rds database connection url.
+	DbUrl string `pulumi:"dbUrl"`
+	// Custom rds database user name.
+	DbUserName string `pulumi:"dbUserName"`
+}
+
+// ClusterMetaStoreConfInput is an input type that accepts ClusterMetaStoreConfArgs and ClusterMetaStoreConfOutput values.
+// You can construct a concrete instance of `ClusterMetaStoreConfInput` via:
+//
+//	ClusterMetaStoreConfArgs{...}
+type ClusterMetaStoreConfInput interface {
+	pulumi.Input
+
+	ToClusterMetaStoreConfOutput() ClusterMetaStoreConfOutput
+	ToClusterMetaStoreConfOutputWithContext(context.Context) ClusterMetaStoreConfOutput
+}
+
+type ClusterMetaStoreConfArgs struct {
+	// Custom rds database password.
+	DbPassword pulumi.StringInput `pulumi:"dbPassword"`
+	// Custom rds database connection url.
+	DbUrl pulumi.StringInput `pulumi:"dbUrl"`
+	// Custom rds database user name.
+	DbUserName pulumi.StringInput `pulumi:"dbUserName"`
+}
+
+func (ClusterMetaStoreConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMetaStoreConf)(nil)).Elem()
+}
+
+func (i ClusterMetaStoreConfArgs) ToClusterMetaStoreConfOutput() ClusterMetaStoreConfOutput {
+	return i.ToClusterMetaStoreConfOutputWithContext(context.Background())
+}
+
+func (i ClusterMetaStoreConfArgs) ToClusterMetaStoreConfOutputWithContext(ctx context.Context) ClusterMetaStoreConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetaStoreConfOutput)
+}
+
+func (i ClusterMetaStoreConfArgs) ToClusterMetaStoreConfPtrOutput() ClusterMetaStoreConfPtrOutput {
+	return i.ToClusterMetaStoreConfPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMetaStoreConfArgs) ToClusterMetaStoreConfPtrOutputWithContext(ctx context.Context) ClusterMetaStoreConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetaStoreConfOutput).ToClusterMetaStoreConfPtrOutputWithContext(ctx)
+}
+
+// ClusterMetaStoreConfPtrInput is an input type that accepts ClusterMetaStoreConfArgs, ClusterMetaStoreConfPtr and ClusterMetaStoreConfPtrOutput values.
+// You can construct a concrete instance of `ClusterMetaStoreConfPtrInput` via:
+//
+//	        ClusterMetaStoreConfArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterMetaStoreConfPtrInput interface {
+	pulumi.Input
+
+	ToClusterMetaStoreConfPtrOutput() ClusterMetaStoreConfPtrOutput
+	ToClusterMetaStoreConfPtrOutputWithContext(context.Context) ClusterMetaStoreConfPtrOutput
+}
+
+type clusterMetaStoreConfPtrType ClusterMetaStoreConfArgs
+
+func ClusterMetaStoreConfPtr(v *ClusterMetaStoreConfArgs) ClusterMetaStoreConfPtrInput {
+	return (*clusterMetaStoreConfPtrType)(v)
+}
+
+func (*clusterMetaStoreConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMetaStoreConf)(nil)).Elem()
+}
+
+func (i *clusterMetaStoreConfPtrType) ToClusterMetaStoreConfPtrOutput() ClusterMetaStoreConfPtrOutput {
+	return i.ToClusterMetaStoreConfPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMetaStoreConfPtrType) ToClusterMetaStoreConfPtrOutputWithContext(ctx context.Context) ClusterMetaStoreConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetaStoreConfPtrOutput)
+}
+
+type ClusterMetaStoreConfOutput struct{ *pulumi.OutputState }
+
+func (ClusterMetaStoreConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMetaStoreConf)(nil)).Elem()
+}
+
+func (o ClusterMetaStoreConfOutput) ToClusterMetaStoreConfOutput() ClusterMetaStoreConfOutput {
+	return o
+}
+
+func (o ClusterMetaStoreConfOutput) ToClusterMetaStoreConfOutputWithContext(ctx context.Context) ClusterMetaStoreConfOutput {
+	return o
+}
+
+func (o ClusterMetaStoreConfOutput) ToClusterMetaStoreConfPtrOutput() ClusterMetaStoreConfPtrOutput {
+	return o.ToClusterMetaStoreConfPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMetaStoreConfOutput) ToClusterMetaStoreConfPtrOutputWithContext(ctx context.Context) ClusterMetaStoreConfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMetaStoreConf) *ClusterMetaStoreConf {
+		return &v
+	}).(ClusterMetaStoreConfPtrOutput)
+}
+
+// Custom rds database password.
+func (o ClusterMetaStoreConfOutput) DbPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbPassword }).(pulumi.StringOutput)
+}
+
+// Custom rds database connection url.
+func (o ClusterMetaStoreConfOutput) DbUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbUrl }).(pulumi.StringOutput)
+}
+
+// Custom rds database user name.
+func (o ClusterMetaStoreConfOutput) DbUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbUserName }).(pulumi.StringOutput)
+}
+
+type ClusterMetaStoreConfPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMetaStoreConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMetaStoreConf)(nil)).Elem()
+}
+
+func (o ClusterMetaStoreConfPtrOutput) ToClusterMetaStoreConfPtrOutput() ClusterMetaStoreConfPtrOutput {
+	return o
+}
+
+func (o ClusterMetaStoreConfPtrOutput) ToClusterMetaStoreConfPtrOutputWithContext(ctx context.Context) ClusterMetaStoreConfPtrOutput {
+	return o
+}
+
+func (o ClusterMetaStoreConfPtrOutput) Elem() ClusterMetaStoreConfOutput {
+	return o.ApplyT(func(v *ClusterMetaStoreConf) ClusterMetaStoreConf {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMetaStoreConf
+		return ret
+	}).(ClusterMetaStoreConfOutput)
+}
+
+// Custom rds database password.
+func (o ClusterMetaStoreConfPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom rds database connection url.
+func (o ClusterMetaStoreConfPtrOutput) DbUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DbUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom rds database user name.
+func (o ClusterMetaStoreConfPtrOutput) DbUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DbUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterModifyClusterServiceConfig struct {
+	// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+	Comment *string `pulumi:"comment"`
+	// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+	ConfigParams string `pulumi:"configParams"`
+	// Cluster service configuration modification type.
+	ConfigType *string `pulumi:"configType"`
+	// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+	CustomConfigParams *string `pulumi:"customConfigParams"`
+	// Cluster service configuration modification related gateway cluster id list.
+	GatewayClusterIdLists []string `pulumi:"gatewayClusterIdLists"`
+	// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+	GroupId *string `pulumi:"groupId"`
+	// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+	HostInstanceId *string `pulumi:"hostInstanceId"`
+	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+	RefreshHostConfig *bool `pulumi:"refreshHostConfig"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// ClusterModifyClusterServiceConfigInput is an input type that accepts ClusterModifyClusterServiceConfigArgs and ClusterModifyClusterServiceConfigOutput values.
+// You can construct a concrete instance of `ClusterModifyClusterServiceConfigInput` via:
+//
+//	ClusterModifyClusterServiceConfigArgs{...}
+type ClusterModifyClusterServiceConfigInput interface {
+	pulumi.Input
+
+	ToClusterModifyClusterServiceConfigOutput() ClusterModifyClusterServiceConfigOutput
+	ToClusterModifyClusterServiceConfigOutputWithContext(context.Context) ClusterModifyClusterServiceConfigOutput
+}
+
+type ClusterModifyClusterServiceConfigArgs struct {
+	// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+	ConfigParams pulumi.StringInput `pulumi:"configParams"`
+	// Cluster service configuration modification type.
+	ConfigType pulumi.StringPtrInput `pulumi:"configType"`
+	// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+	CustomConfigParams pulumi.StringPtrInput `pulumi:"customConfigParams"`
+	// Cluster service configuration modification related gateway cluster id list.
+	GatewayClusterIdLists pulumi.StringArrayInput `pulumi:"gatewayClusterIdLists"`
+	// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+	HostInstanceId pulumi.StringPtrInput `pulumi:"hostInstanceId"`
+	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+	RefreshHostConfig pulumi.BoolPtrInput `pulumi:"refreshHostConfig"`
+	// Cluster service configuration modification name, e.g. ’HDFS’.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (ClusterModifyClusterServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterModifyClusterServiceConfig)(nil)).Elem()
+}
+
+func (i ClusterModifyClusterServiceConfigArgs) ToClusterModifyClusterServiceConfigOutput() ClusterModifyClusterServiceConfigOutput {
+	return i.ToClusterModifyClusterServiceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterModifyClusterServiceConfigArgs) ToClusterModifyClusterServiceConfigOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterModifyClusterServiceConfigOutput)
+}
+
+func (i ClusterModifyClusterServiceConfigArgs) ToClusterModifyClusterServiceConfigPtrOutput() ClusterModifyClusterServiceConfigPtrOutput {
+	return i.ToClusterModifyClusterServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterModifyClusterServiceConfigArgs) ToClusterModifyClusterServiceConfigPtrOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterModifyClusterServiceConfigOutput).ToClusterModifyClusterServiceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterModifyClusterServiceConfigPtrInput is an input type that accepts ClusterModifyClusterServiceConfigArgs, ClusterModifyClusterServiceConfigPtr and ClusterModifyClusterServiceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterModifyClusterServiceConfigPtrInput` via:
+//
+//	        ClusterModifyClusterServiceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterModifyClusterServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterModifyClusterServiceConfigPtrOutput() ClusterModifyClusterServiceConfigPtrOutput
+	ToClusterModifyClusterServiceConfigPtrOutputWithContext(context.Context) ClusterModifyClusterServiceConfigPtrOutput
+}
+
+type clusterModifyClusterServiceConfigPtrType ClusterModifyClusterServiceConfigArgs
+
+func ClusterModifyClusterServiceConfigPtr(v *ClusterModifyClusterServiceConfigArgs) ClusterModifyClusterServiceConfigPtrInput {
+	return (*clusterModifyClusterServiceConfigPtrType)(v)
+}
+
+func (*clusterModifyClusterServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterModifyClusterServiceConfig)(nil)).Elem()
+}
+
+func (i *clusterModifyClusterServiceConfigPtrType) ToClusterModifyClusterServiceConfigPtrOutput() ClusterModifyClusterServiceConfigPtrOutput {
+	return i.ToClusterModifyClusterServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterModifyClusterServiceConfigPtrType) ToClusterModifyClusterServiceConfigPtrOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterModifyClusterServiceConfigPtrOutput)
+}
+
+type ClusterModifyClusterServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterModifyClusterServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterModifyClusterServiceConfig)(nil)).Elem()
+}
+
+func (o ClusterModifyClusterServiceConfigOutput) ToClusterModifyClusterServiceConfigOutput() ClusterModifyClusterServiceConfigOutput {
+	return o
+}
+
+func (o ClusterModifyClusterServiceConfigOutput) ToClusterModifyClusterServiceConfigOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigOutput {
+	return o
+}
+
+func (o ClusterModifyClusterServiceConfigOutput) ToClusterModifyClusterServiceConfigPtrOutput() ClusterModifyClusterServiceConfigPtrOutput {
+	return o.ToClusterModifyClusterServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterModifyClusterServiceConfigOutput) ToClusterModifyClusterServiceConfigPtrOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterModifyClusterServiceConfig) *ClusterModifyClusterServiceConfig {
+		return &v
+	}).(ClusterModifyClusterServiceConfigPtrOutput)
+}
+
+// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+func (o ClusterModifyClusterServiceConfigOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+func (o ClusterModifyClusterServiceConfigOutput) ConfigParams() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) string { return v.ConfigParams }).(pulumi.StringOutput)
+}
+
+// Cluster service configuration modification type.
+func (o ClusterModifyClusterServiceConfigOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+func (o ClusterModifyClusterServiceConfigOutput) CustomConfigParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.CustomConfigParams }).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification related gateway cluster id list.
+func (o ClusterModifyClusterServiceConfigOutput) GatewayClusterIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) []string { return v.GatewayClusterIdLists }).(pulumi.StringArrayOutput)
+}
+
+// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+func (o ClusterModifyClusterServiceConfigOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+func (o ClusterModifyClusterServiceConfigOutput) HostInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.HostInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+func (o ClusterModifyClusterServiceConfigOutput) RefreshHostConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *bool { return v.RefreshHostConfig }).(pulumi.BoolPtrOutput)
+}
+
+// Cluster service configuration modification name, e.g. ’HDFS’.
+func (o ClusterModifyClusterServiceConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type ClusterModifyClusterServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterModifyClusterServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterModifyClusterServiceConfig)(nil)).Elem()
+}
+
+func (o ClusterModifyClusterServiceConfigPtrOutput) ToClusterModifyClusterServiceConfigPtrOutput() ClusterModifyClusterServiceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterModifyClusterServiceConfigPtrOutput) ToClusterModifyClusterServiceConfigPtrOutputWithContext(ctx context.Context) ClusterModifyClusterServiceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterModifyClusterServiceConfigPtrOutput) Elem() ClusterModifyClusterServiceConfigOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) ClusterModifyClusterServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterModifyClusterServiceConfig
+		return ret
+	}).(ClusterModifyClusterServiceConfigOutput)
+}
+
+// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+func (o ClusterModifyClusterServiceConfigPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigParams
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification type.
+func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) CustomConfigParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomConfigParams
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification related gateway cluster id list.
+func (o ClusterModifyClusterServiceConfigPtrOutput) GatewayClusterIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayClusterIdLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) HostInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) RefreshHostConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshHostConfig
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cluster service configuration modification name, e.g. ’HDFS’.
+func (o ClusterModifyClusterServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceName
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetClustersCluster struct {
@@ -2539,8 +3127,14 @@ func (o GetMainVersionsMainVersionArrayOutput) Index(i pulumi.IntInput) GetMainV
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBootstrapActionInput)(nil)).Elem(), ClusterBootstrapActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBootstrapActionArrayInput)(nil)).Elem(), ClusterBootstrapActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigArrayInput)(nil)).Elem(), ClusterConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupInput)(nil)).Elem(), ClusterHostGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupArrayInput)(nil)).Elem(), ClusterHostGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMetaStoreConfInput)(nil)).Elem(), ClusterMetaStoreConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMetaStoreConfPtrInput)(nil)).Elem(), ClusterMetaStoreConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterModifyClusterServiceConfigInput)(nil)).Elem(), ClusterModifyClusterServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterModifyClusterServiceConfigPtrInput)(nil)).Elem(), ClusterModifyClusterServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAccessInfoInput)(nil)).Elem(), GetClustersClusterAccessInfoArgs{})
@@ -2571,8 +3165,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMainVersionsMainVersionArrayInput)(nil)).Elem(), GetMainVersionsMainVersionArray{})
 	pulumi.RegisterOutputType(ClusterBootstrapActionOutput{})
 	pulumi.RegisterOutputType(ClusterBootstrapActionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMetaStoreConfOutput{})
+	pulumi.RegisterOutputType(ClusterMetaStoreConfPtrOutput{})
+	pulumi.RegisterOutputType(ClusterModifyClusterServiceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterModifyClusterServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterAccessInfoOutput{})

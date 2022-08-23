@@ -10,6 +10,8 @@ import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlarmContactsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsPlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+import com.pulumi.alicloud.cms.inputs.GetEventRulesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
 import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
@@ -33,6 +35,7 @@ import com.pulumi.alicloud.cms.inputs.GetSlsGroupsPlainArgs;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactsResult;
 import com.pulumi.alicloud.cms.outputs.GetDynamicTagGroupsResult;
+import com.pulumi.alicloud.cms.outputs.GetEventRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorFcTasksResult;
@@ -931,6 +934,288 @@ public final class CmsFunctions {
      */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain(GetDynamicTagGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", TypeShape.of(GetDynamicTagGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEventRulesResult> getEventRules() {
+        return getEventRules(GetEventRulesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEventRulesResult> getEventRulesPlain() {
+        return getEventRulesPlain(GetEventRulesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args) {
+        return getEventRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEventRulesResult> getEventRulesPlain(GetEventRulesPlainArgs args) {
+        return getEventRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getEventRules:getEventRules", TypeShape.of(GetEventRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEventRulesResult> getEventRulesPlain(GetEventRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getEventRules:getEventRules", TypeShape.of(GetEventRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.

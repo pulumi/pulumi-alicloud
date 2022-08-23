@@ -9,9 +9,11 @@ export * from "./alarm";
 export * from "./alarmContact";
 export * from "./alarmContactGroup";
 export * from "./dynamicTagGroup";
+export * from "./eventRule";
 export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
 export * from "./getDynamicTagGroups";
+export * from "./getEventRules";
 export * from "./getGroupMetricRules";
 export * from "./getHybridMonitorDatas";
 export * from "./getHybridMonitorFcTasks";
@@ -37,6 +39,7 @@ import { Alarm } from "./alarm";
 import { AlarmContact } from "./alarmContact";
 import { AlarmContactGroup } from "./alarmContactGroup";
 import { DynamicTagGroup } from "./dynamicTagGroup";
+import { EventRule } from "./eventRule";
 import { GroupMetricRule } from "./groupMetricRule";
 import { HybridMonitorFcTask } from "./hybridMonitorFcTask";
 import { HybridMonitorSlsTask } from "./hybridMonitorSlsTask";
@@ -59,6 +62,8 @@ const _module = {
                 return new AlarmContactGroup(name, <any>undefined, { urn })
             case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
                 return new DynamicTagGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/eventRule:EventRule":
+                return new EventRule(name, <any>undefined, { urn })
             case "alicloud:cms/groupMetricRule:GroupMetricRule":
                 return new GroupMetricRule(name, <any>undefined, { urn })
             case "alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask":
@@ -86,6 +91,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorFcTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorSlsTask", _module)

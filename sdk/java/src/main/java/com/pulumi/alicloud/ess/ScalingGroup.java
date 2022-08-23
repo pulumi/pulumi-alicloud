@@ -228,6 +228,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.onDemandPercentageAboveBaseCapacity;
     }
     /**
+     * Set or unset instances within group into protected status.
+     * 
+     */
+    @Export(name="protectedInstances", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> protectedInstances;
+
+    /**
+     * @return Set or unset instances within group into protected status.
+     * 
+     */
+    public Output<Optional<List<String>>> protectedInstances() {
+        return Codegen.optional(this.protectedInstances);
+    }
+    /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
      * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.

@@ -101,6 +101,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
+     * Set or unset instances within group into protected status.
+     */
+    public readonly protectedInstances!: pulumi.Output<string[] | undefined>;
+    /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
      * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -163,6 +167,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
             resourceInputs["onDemandBaseCapacity"] = state ? state.onDemandBaseCapacity : undefined;
             resourceInputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["protectedInstances"] = state ? state.protectedInstances : undefined;
             resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
             resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
@@ -191,6 +196,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
             resourceInputs["onDemandBaseCapacity"] = args ? args.onDemandBaseCapacity : undefined;
             resourceInputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["protectedInstances"] = args ? args.protectedInstances : undefined;
             resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
             resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
@@ -267,6 +273,10 @@ export interface ScalingGroupState {
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    /**
+     * Set or unset instances within group into protected status.
+     */
+    protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -368,6 +378,10 @@ export interface ScalingGroupArgs {
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    /**
+     * Set or unset instances within group into protected status.
+     */
+    protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.

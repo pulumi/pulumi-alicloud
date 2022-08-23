@@ -7,7 +7,10 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.emr.ClusterArgs;
 import com.pulumi.alicloud.emr.inputs.ClusterState;
 import com.pulumi.alicloud.emr.outputs.ClusterBootstrapAction;
+import com.pulumi.alicloud.emr.outputs.ClusterConfig;
 import com.pulumi.alicloud.emr.outputs.ClusterHostGroup;
+import com.pulumi.alicloud.emr.outputs.ClusterMetaStoreConf;
+import com.pulumi.alicloud.emr.outputs.ClusterModifyClusterServiceConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -719,6 +722,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
+     * The custom configurations of emr-cluster service.
+     * 
+     */
+    @Export(name="configs", type=List.class, parameters={ClusterConfig.class})
+    private Output</* @Nullable */ List<ClusterConfig>> configs;
+
+    /**
+     * @return The custom configurations of emr-cluster service.
+     * 
+     */
+    public Output<Optional<List<ClusterConfig>>> configs() {
+        return Codegen.optional(this.configs);
+    }
+    /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      * 
      */
@@ -831,6 +848,48 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterPwd);
     }
     /**
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * 
+     */
+    @Export(name="metaStoreConf", type=ClusterMetaStoreConf.class, parameters={})
+    private Output</* @Nullable */ ClusterMetaStoreConf> metaStoreConf;
+
+    /**
+     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * 
+     */
+    public Output<Optional<ClusterMetaStoreConf>> metaStoreConf() {
+        return Codegen.optional(this.metaStoreConf);
+    }
+    /**
+     * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     * 
+     */
+    @Export(name="metaStoreType", type=String.class, parameters={})
+    private Output<String> metaStoreType;
+
+    /**
+     * @return The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     * 
+     */
+    public Output<String> metaStoreType() {
+        return this.metaStoreType;
+    }
+    /**
+     * The configurations of emr-cluster service modification after cluster created.
+     * 
+     */
+    @Export(name="modifyClusterServiceConfig", type=ClusterModifyClusterServiceConfig.class, parameters={})
+    private Output</* @Nullable */ ClusterModifyClusterServiceConfig> modifyClusterServiceConfig;
+
+    /**
+     * @return The configurations of emr-cluster service modification after cluster created.
+     * 
+     */
+    public Output<Optional<ClusterModifyClusterServiceConfig>> modifyClusterServiceConfig() {
+        return Codegen.optional(this.modifyClusterServiceConfig);
+    }
+    /**
      * bootstrap action name.
      * 
      */
@@ -887,6 +946,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.relatedClusterId);
     }
     /**
+     * The Id of resource group which the emr-cluster belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> resourceGroupId;
+
+    /**
+     * @return The Id of resource group which the emr-cluster belongs.
+     * 
+     */
+    public Output<Optional<String>> resourceGroupId() {
+        return Codegen.optional(this.resourceGroupId);
+    }
+    /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      * 
      */
@@ -919,14 +992,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    private Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,Object>> tags() {
+        return this.tags;
     }
     /**
      * Use local metadb. Default is false.

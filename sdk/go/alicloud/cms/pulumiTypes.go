@@ -822,6 +822,251 @@ func (o DynamicTagGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) Dynamic
 	}).(DynamicTagGroupMatchExpressOutput)
 }
 
+type EventRuleEventPattern struct {
+	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
+	EventTypeLists []string `pulumi:"eventTypeLists"`
+	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
+	LevelLists []string `pulumi:"levelLists"`
+	// The name of the event-triggered alert rule.
+	NameLists []string `pulumi:"nameLists"`
+	// The type of the cloud service.
+	Product string `pulumi:"product"`
+	// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+	SqlFilter *string `pulumi:"sqlFilter"`
+}
+
+// EventRuleEventPatternInput is an input type that accepts EventRuleEventPatternArgs and EventRuleEventPatternOutput values.
+// You can construct a concrete instance of `EventRuleEventPatternInput` via:
+//
+//	EventRuleEventPatternArgs{...}
+type EventRuleEventPatternInput interface {
+	pulumi.Input
+
+	ToEventRuleEventPatternOutput() EventRuleEventPatternOutput
+	ToEventRuleEventPatternOutputWithContext(context.Context) EventRuleEventPatternOutput
+}
+
+type EventRuleEventPatternArgs struct {
+	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
+	EventTypeLists pulumi.StringArrayInput `pulumi:"eventTypeLists"`
+	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
+	LevelLists pulumi.StringArrayInput `pulumi:"levelLists"`
+	// The name of the event-triggered alert rule.
+	NameLists pulumi.StringArrayInput `pulumi:"nameLists"`
+	// The type of the cloud service.
+	Product pulumi.StringInput `pulumi:"product"`
+	// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+	SqlFilter pulumi.StringPtrInput `pulumi:"sqlFilter"`
+}
+
+func (EventRuleEventPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleEventPattern)(nil)).Elem()
+}
+
+func (i EventRuleEventPatternArgs) ToEventRuleEventPatternOutput() EventRuleEventPatternOutput {
+	return i.ToEventRuleEventPatternOutputWithContext(context.Background())
+}
+
+func (i EventRuleEventPatternArgs) ToEventRuleEventPatternOutputWithContext(ctx context.Context) EventRuleEventPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleEventPatternOutput)
+}
+
+func (i EventRuleEventPatternArgs) ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput {
+	return i.ToEventRuleEventPatternPtrOutputWithContext(context.Background())
+}
+
+func (i EventRuleEventPatternArgs) ToEventRuleEventPatternPtrOutputWithContext(ctx context.Context) EventRuleEventPatternPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleEventPatternOutput).ToEventRuleEventPatternPtrOutputWithContext(ctx)
+}
+
+// EventRuleEventPatternPtrInput is an input type that accepts EventRuleEventPatternArgs, EventRuleEventPatternPtr and EventRuleEventPatternPtrOutput values.
+// You can construct a concrete instance of `EventRuleEventPatternPtrInput` via:
+//
+//	        EventRuleEventPatternArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventRuleEventPatternPtrInput interface {
+	pulumi.Input
+
+	ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput
+	ToEventRuleEventPatternPtrOutputWithContext(context.Context) EventRuleEventPatternPtrOutput
+}
+
+type eventRuleEventPatternPtrType EventRuleEventPatternArgs
+
+func EventRuleEventPatternPtr(v *EventRuleEventPatternArgs) EventRuleEventPatternPtrInput {
+	return (*eventRuleEventPatternPtrType)(v)
+}
+
+func (*eventRuleEventPatternPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventRuleEventPattern)(nil)).Elem()
+}
+
+func (i *eventRuleEventPatternPtrType) ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput {
+	return i.ToEventRuleEventPatternPtrOutputWithContext(context.Background())
+}
+
+func (i *eventRuleEventPatternPtrType) ToEventRuleEventPatternPtrOutputWithContext(ctx context.Context) EventRuleEventPatternPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleEventPatternPtrOutput)
+}
+
+type EventRuleEventPatternOutput struct{ *pulumi.OutputState }
+
+func (EventRuleEventPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleEventPattern)(nil)).Elem()
+}
+
+func (o EventRuleEventPatternOutput) ToEventRuleEventPatternOutput() EventRuleEventPatternOutput {
+	return o
+}
+
+func (o EventRuleEventPatternOutput) ToEventRuleEventPatternOutputWithContext(ctx context.Context) EventRuleEventPatternOutput {
+	return o
+}
+
+func (o EventRuleEventPatternOutput) ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput {
+	return o.ToEventRuleEventPatternPtrOutputWithContext(context.Background())
+}
+
+func (o EventRuleEventPatternOutput) ToEventRuleEventPatternPtrOutputWithContext(ctx context.Context) EventRuleEventPatternPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventRuleEventPattern) *EventRuleEventPattern {
+		return &v
+	}).(EventRuleEventPatternPtrOutput)
+}
+
+// The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
+func (o EventRuleEventPatternOutput) EventTypeLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.EventTypeLists }).(pulumi.StringArrayOutput)
+}
+
+// The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
+func (o EventRuleEventPatternOutput) LevelLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.LevelLists }).(pulumi.StringArrayOutput)
+}
+
+// The name of the event-triggered alert rule.
+func (o EventRuleEventPatternOutput) NameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.NameLists }).(pulumi.StringArrayOutput)
+}
+
+// The type of the cloud service.
+func (o EventRuleEventPatternOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v EventRuleEventPattern) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+func (o EventRuleEventPatternOutput) SqlFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleEventPattern) *string { return v.SqlFilter }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleEventPatternPtrOutput struct{ *pulumi.OutputState }
+
+func (EventRuleEventPatternPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventRuleEventPattern)(nil)).Elem()
+}
+
+func (o EventRuleEventPatternPtrOutput) ToEventRuleEventPatternPtrOutput() EventRuleEventPatternPtrOutput {
+	return o
+}
+
+func (o EventRuleEventPatternPtrOutput) ToEventRuleEventPatternPtrOutputWithContext(ctx context.Context) EventRuleEventPatternPtrOutput {
+	return o
+}
+
+func (o EventRuleEventPatternPtrOutput) Elem() EventRuleEventPatternOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) EventRuleEventPattern {
+		if v != nil {
+			return *v
+		}
+		var ret EventRuleEventPattern
+		return ret
+	}).(EventRuleEventPatternOutput)
+}
+
+// The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
+func (o EventRuleEventPatternPtrOutput) EventTypeLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypeLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
+func (o EventRuleEventPatternPtrOutput) LevelLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LevelLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the event-triggered alert rule.
+func (o EventRuleEventPatternPtrOutput) NameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of the cloud service.
+func (o EventRuleEventPatternPtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Product
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+func (o EventRuleEventPatternPtrOutput) SqlFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventRuleEventPattern) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 type GroupMetricRuleEscalations struct {
 	// The critical level.
 	Critical *GroupMetricRuleEscalationsCritical `pulumi:"critical"`
@@ -4347,6 +4592,416 @@ func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDynamicTagGroupsGroupMatchExpress {
 		return vs[0].([]GetDynamicTagGroupsGroupMatchExpress)[vs[1].(int)]
 	}).(GetDynamicTagGroupsGroupMatchExpressOutput)
+}
+
+type GetEventRulesRule struct {
+	// The description of the rule.
+	Description string `pulumi:"description"`
+	// Event mode, used to describe the trigger conditions for this event.
+	EventPatterns []GetEventRulesRuleEventPattern `pulumi:"eventPatterns"`
+	// The name of the event rule.
+	EventRuleName string `pulumi:"eventRuleName"`
+	// The type of event.
+	EventType string `pulumi:"eventType"`
+	// The ID of the application Group.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the Event Rule. Its value is same as Event Rule Name.
+	Id string `pulumi:"id"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met.
+	SilenceTime int `pulumi:"silenceTime"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetEventRulesRuleInput is an input type that accepts GetEventRulesRuleArgs and GetEventRulesRuleOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleInput` via:
+//
+//	GetEventRulesRuleArgs{...}
+type GetEventRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleOutput() GetEventRulesRuleOutput
+	ToGetEventRulesRuleOutputWithContext(context.Context) GetEventRulesRuleOutput
+}
+
+type GetEventRulesRuleArgs struct {
+	// The description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Event mode, used to describe the trigger conditions for this event.
+	EventPatterns GetEventRulesRuleEventPatternArrayInput `pulumi:"eventPatterns"`
+	// The name of the event rule.
+	EventRuleName pulumi.StringInput `pulumi:"eventRuleName"`
+	// The type of event.
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// The ID of the application Group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the Event Rule. Its value is same as Event Rule Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met.
+	SilenceTime pulumi.IntInput `pulumi:"silenceTime"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEventRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRule)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleArgs) ToGetEventRulesRuleOutput() GetEventRulesRuleOutput {
+	return i.ToGetEventRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleArgs) ToGetEventRulesRuleOutputWithContext(ctx context.Context) GetEventRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleOutput)
+}
+
+// GetEventRulesRuleArrayInput is an input type that accepts GetEventRulesRuleArray and GetEventRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleArrayInput` via:
+//
+//	GetEventRulesRuleArray{ GetEventRulesRuleArgs{...} }
+type GetEventRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleArrayOutput() GetEventRulesRuleArrayOutput
+	ToGetEventRulesRuleArrayOutputWithContext(context.Context) GetEventRulesRuleArrayOutput
+}
+
+type GetEventRulesRuleArray []GetEventRulesRuleInput
+
+func (GetEventRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRule)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleArray) ToGetEventRulesRuleArrayOutput() GetEventRulesRuleArrayOutput {
+	return i.ToGetEventRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleArray) ToGetEventRulesRuleArrayOutputWithContext(ctx context.Context) GetEventRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleArrayOutput)
+}
+
+type GetEventRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRule)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleOutput) ToGetEventRulesRuleOutput() GetEventRulesRuleOutput {
+	return o
+}
+
+func (o GetEventRulesRuleOutput) ToGetEventRulesRuleOutputWithContext(ctx context.Context) GetEventRulesRuleOutput {
+	return o
+}
+
+// The description of the rule.
+func (o GetEventRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Event mode, used to describe the trigger conditions for this event.
+func (o GetEventRulesRuleOutput) EventPatterns() GetEventRulesRuleEventPatternArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRule) []GetEventRulesRuleEventPattern { return v.EventPatterns }).(GetEventRulesRuleEventPatternArrayOutput)
+}
+
+// The name of the event rule.
+func (o GetEventRulesRuleOutput) EventRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.EventRuleName }).(pulumi.StringOutput)
+}
+
+// The type of event.
+func (o GetEventRulesRuleOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+// The ID of the application Group.
+func (o GetEventRulesRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Event Rule. Its value is same as Event Rule Name.
+func (o GetEventRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The mute period during which new alerts are not sent even if the trigger conditions are met.
+func (o GetEventRulesRuleOutput) SilenceTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventRulesRule) int { return v.SilenceTime }).(pulumi.IntOutput)
+}
+
+// The status of the resource.
+func (o GetEventRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEventRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRule)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleArrayOutput) ToGetEventRulesRuleArrayOutput() GetEventRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleArrayOutput) ToGetEventRulesRuleArrayOutputWithContext(ctx context.Context) GetEventRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventRulesRule {
+		return vs[0].([]GetEventRulesRule)[vs[1].(int)]
+	}).(GetEventRulesRuleOutput)
+}
+
+type GetEventRulesRuleEventPattern struct {
+	// The list of event types.
+	EventTypeLists []string `pulumi:"eventTypeLists"`
+	// The filter keyword.
+	KeywordFilters []GetEventRulesRuleEventPatternKeywordFilter `pulumi:"keywordFilters"`
+	// The list of event levels.
+	LevelLists []string `pulumi:"levelLists"`
+	// The list of event names.
+	NameLists []string `pulumi:"nameLists"`
+	// The type of the cloud service.
+	Product string `pulumi:"product"`
+	// The SQL condition that is used to filter events.
+	SqlFilter string `pulumi:"sqlFilter"`
+}
+
+// GetEventRulesRuleEventPatternInput is an input type that accepts GetEventRulesRuleEventPatternArgs and GetEventRulesRuleEventPatternOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleEventPatternInput` via:
+//
+//	GetEventRulesRuleEventPatternArgs{...}
+type GetEventRulesRuleEventPatternInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleEventPatternOutput() GetEventRulesRuleEventPatternOutput
+	ToGetEventRulesRuleEventPatternOutputWithContext(context.Context) GetEventRulesRuleEventPatternOutput
+}
+
+type GetEventRulesRuleEventPatternArgs struct {
+	// The list of event types.
+	EventTypeLists pulumi.StringArrayInput `pulumi:"eventTypeLists"`
+	// The filter keyword.
+	KeywordFilters GetEventRulesRuleEventPatternKeywordFilterArrayInput `pulumi:"keywordFilters"`
+	// The list of event levels.
+	LevelLists pulumi.StringArrayInput `pulumi:"levelLists"`
+	// The list of event names.
+	NameLists pulumi.StringArrayInput `pulumi:"nameLists"`
+	// The type of the cloud service.
+	Product pulumi.StringInput `pulumi:"product"`
+	// The SQL condition that is used to filter events.
+	SqlFilter pulumi.StringInput `pulumi:"sqlFilter"`
+}
+
+func (GetEventRulesRuleEventPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRuleEventPattern)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleEventPatternArgs) ToGetEventRulesRuleEventPatternOutput() GetEventRulesRuleEventPatternOutput {
+	return i.ToGetEventRulesRuleEventPatternOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleEventPatternArgs) ToGetEventRulesRuleEventPatternOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternOutput)
+}
+
+// GetEventRulesRuleEventPatternArrayInput is an input type that accepts GetEventRulesRuleEventPatternArray and GetEventRulesRuleEventPatternArrayOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleEventPatternArrayInput` via:
+//
+//	GetEventRulesRuleEventPatternArray{ GetEventRulesRuleEventPatternArgs{...} }
+type GetEventRulesRuleEventPatternArrayInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleEventPatternArrayOutput() GetEventRulesRuleEventPatternArrayOutput
+	ToGetEventRulesRuleEventPatternArrayOutputWithContext(context.Context) GetEventRulesRuleEventPatternArrayOutput
+}
+
+type GetEventRulesRuleEventPatternArray []GetEventRulesRuleEventPatternInput
+
+func (GetEventRulesRuleEventPatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRuleEventPattern)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleEventPatternArray) ToGetEventRulesRuleEventPatternArrayOutput() GetEventRulesRuleEventPatternArrayOutput {
+	return i.ToGetEventRulesRuleEventPatternArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleEventPatternArray) ToGetEventRulesRuleEventPatternArrayOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternArrayOutput)
+}
+
+type GetEventRulesRuleEventPatternOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleEventPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRuleEventPattern)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleEventPatternOutput) ToGetEventRulesRuleEventPatternOutput() GetEventRulesRuleEventPatternOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternOutput) ToGetEventRulesRuleEventPatternOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternOutput {
+	return o
+}
+
+// The list of event types.
+func (o GetEventRulesRuleEventPatternOutput) EventTypeLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) []string { return v.EventTypeLists }).(pulumi.StringArrayOutput)
+}
+
+// The filter keyword.
+func (o GetEventRulesRuleEventPatternOutput) KeywordFilters() GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) []GetEventRulesRuleEventPatternKeywordFilter {
+		return v.KeywordFilters
+	}).(GetEventRulesRuleEventPatternKeywordFilterArrayOutput)
+}
+
+// The list of event levels.
+func (o GetEventRulesRuleEventPatternOutput) LevelLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) []string { return v.LevelLists }).(pulumi.StringArrayOutput)
+}
+
+// The list of event names.
+func (o GetEventRulesRuleEventPatternOutput) NameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) []string { return v.NameLists }).(pulumi.StringArrayOutput)
+}
+
+// The type of the cloud service.
+func (o GetEventRulesRuleEventPatternOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// The SQL condition that is used to filter events.
+func (o GetEventRulesRuleEventPatternOutput) SqlFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPattern) string { return v.SqlFilter }).(pulumi.StringOutput)
+}
+
+type GetEventRulesRuleEventPatternArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleEventPatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRuleEventPattern)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleEventPatternArrayOutput) ToGetEventRulesRuleEventPatternArrayOutput() GetEventRulesRuleEventPatternArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternArrayOutput) ToGetEventRulesRuleEventPatternArrayOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleEventPatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventRulesRuleEventPattern {
+		return vs[0].([]GetEventRulesRuleEventPattern)[vs[1].(int)]
+	}).(GetEventRulesRuleEventPatternOutput)
+}
+
+type GetEventRulesRuleEventPatternKeywordFilter struct {
+	// The keywords that are used to match events.
+	KeyWords []string `pulumi:"keyWords"`
+	// The relationship between multiple keywords in a condition.
+	Relation string `pulumi:"relation"`
+}
+
+// GetEventRulesRuleEventPatternKeywordFilterInput is an input type that accepts GetEventRulesRuleEventPatternKeywordFilterArgs and GetEventRulesRuleEventPatternKeywordFilterOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleEventPatternKeywordFilterInput` via:
+//
+//	GetEventRulesRuleEventPatternKeywordFilterArgs{...}
+type GetEventRulesRuleEventPatternKeywordFilterInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleEventPatternKeywordFilterOutput() GetEventRulesRuleEventPatternKeywordFilterOutput
+	ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(context.Context) GetEventRulesRuleEventPatternKeywordFilterOutput
+}
+
+type GetEventRulesRuleEventPatternKeywordFilterArgs struct {
+	// The keywords that are used to match events.
+	KeyWords pulumi.StringArrayInput `pulumi:"keyWords"`
+	// The relationship between multiple keywords in a condition.
+	Relation pulumi.StringInput `pulumi:"relation"`
+}
+
+func (GetEventRulesRuleEventPatternKeywordFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRuleEventPatternKeywordFilter)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleEventPatternKeywordFilterArgs) ToGetEventRulesRuleEventPatternKeywordFilterOutput() GetEventRulesRuleEventPatternKeywordFilterOutput {
+	return i.ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleEventPatternKeywordFilterArgs) ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternKeywordFilterOutput)
+}
+
+// GetEventRulesRuleEventPatternKeywordFilterArrayInput is an input type that accepts GetEventRulesRuleEventPatternKeywordFilterArray and GetEventRulesRuleEventPatternKeywordFilterArrayOutput values.
+// You can construct a concrete instance of `GetEventRulesRuleEventPatternKeywordFilterArrayInput` via:
+//
+//	GetEventRulesRuleEventPatternKeywordFilterArray{ GetEventRulesRuleEventPatternKeywordFilterArgs{...} }
+type GetEventRulesRuleEventPatternKeywordFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetEventRulesRuleEventPatternKeywordFilterArrayOutput() GetEventRulesRuleEventPatternKeywordFilterArrayOutput
+	ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(context.Context) GetEventRulesRuleEventPatternKeywordFilterArrayOutput
+}
+
+type GetEventRulesRuleEventPatternKeywordFilterArray []GetEventRulesRuleEventPatternKeywordFilterInput
+
+func (GetEventRulesRuleEventPatternKeywordFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRuleEventPatternKeywordFilter)(nil)).Elem()
+}
+
+func (i GetEventRulesRuleEventPatternKeywordFilterArray) ToGetEventRulesRuleEventPatternKeywordFilterArrayOutput() GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
+	return i.ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventRulesRuleEventPatternKeywordFilterArray) ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventRulesRuleEventPatternKeywordFilterArrayOutput)
+}
+
+type GetEventRulesRuleEventPatternKeywordFilterOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleEventPatternKeywordFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventRulesRuleEventPatternKeywordFilter)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterOutput) ToGetEventRulesRuleEventPatternKeywordFilterOutput() GetEventRulesRuleEventPatternKeywordFilterOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterOutput) ToGetEventRulesRuleEventPatternKeywordFilterOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterOutput {
+	return o
+}
+
+// The keywords that are used to match events.
+func (o GetEventRulesRuleEventPatternKeywordFilterOutput) KeyWords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPatternKeywordFilter) []string { return v.KeyWords }).(pulumi.StringArrayOutput)
+}
+
+// The relationship between multiple keywords in a condition.
+func (o GetEventRulesRuleEventPatternKeywordFilterOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventRulesRuleEventPatternKeywordFilter) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+type GetEventRulesRuleEventPatternKeywordFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventRulesRuleEventPatternKeywordFilter)(nil)).Elem()
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ToGetEventRulesRuleEventPatternKeywordFilterArrayOutput() GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) ToGetEventRulesRuleEventPatternKeywordFilterArrayOutputWithContext(ctx context.Context) GetEventRulesRuleEventPatternKeywordFilterArrayOutput {
+	return o
+}
+
+func (o GetEventRulesRuleEventPatternKeywordFilterArrayOutput) Index(i pulumi.IntInput) GetEventRulesRuleEventPatternKeywordFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventRulesRuleEventPatternKeywordFilter {
+		return vs[0].([]GetEventRulesRuleEventPatternKeywordFilter)[vs[1].(int)]
+	}).(GetEventRulesRuleEventPatternKeywordFilterOutput)
 }
 
 type GetGroupMetricRulesRule struct {
@@ -8449,6 +9104,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusArrayInput)(nil)).Elem(), AlarmPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleEventPatternInput)(nil)).Elem(), EventRuleEventPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleEventPatternPtrInput)(nil)).Elem(), EventRuleEventPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsCriticalInput)(nil)).Elem(), GroupMetricRuleEscalationsCriticalArgs{})
@@ -8495,6 +9152,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleInput)(nil)).Elem(), GetEventRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleArrayInput)(nil)).Elem(), GetEventRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleEventPatternInput)(nil)).Elem(), GetEventRulesRuleEventPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleEventPatternArrayInput)(nil)).Elem(), GetEventRulesRuleEventPatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleEventPatternKeywordFilterInput)(nil)).Elem(), GetEventRulesRuleEventPatternKeywordFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventRulesRuleEventPatternKeywordFilterArrayInput)(nil)).Elem(), GetEventRulesRuleEventPatternKeywordFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleInput)(nil)).Elem(), GetGroupMetricRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationArgs{})
@@ -8565,6 +9228,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleEventPatternOutput{})
+	pulumi.RegisterOutputType(EventRuleEventPatternPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsCriticalOutput{})
@@ -8611,6 +9276,12 @@ func init() {
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleEventPatternOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleEventPatternArrayOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleEventPatternKeywordFilterOutput{})
+	pulumi.RegisterOutputType(GetEventRulesRuleEventPatternKeywordFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationOutput{})

@@ -56,6 +56,8 @@ type ScalingGroup struct {
 	OnDemandBaseCapacity pulumi.IntOutput `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// Set or unset instances within group into protected status.
+	ProtectedInstances pulumi.StringArrayOutput `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
 	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -148,6 +150,8 @@ type scalingGroupState struct {
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// Set or unset instances within group into protected status.
+	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
 	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -206,6 +210,8 @@ type ScalingGroupState struct {
 	OnDemandBaseCapacity pulumi.IntPtrInput
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	// Set or unset instances within group into protected status.
+	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
 	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -268,6 +274,8 @@ type scalingGroupArgs struct {
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// Set or unset instances within group into protected status.
+	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
 	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -327,6 +335,8 @@ type ScalingGroupArgs struct {
 	OnDemandBaseCapacity pulumi.IntPtrInput
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	// Set or unset instances within group into protected status.
+	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
 	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -508,6 +518,11 @@ func (o ScalingGroupOutput) OnDemandBaseCapacity() pulumi.IntOutput {
 // Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 func (o ScalingGroupOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
+}
+
+// Set or unset instances within group into protected status.
+func (o ScalingGroupOutput) ProtectedInstances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.ProtectedInstances }).(pulumi.StringArrayOutput)
 }
 
 // RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:

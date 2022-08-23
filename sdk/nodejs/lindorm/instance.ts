@@ -176,6 +176,12 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
+    public readonly timeSeriesEngineSpecification!: pulumi.Output<string>;
+    /**
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     *
+     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+     */
     public readonly timeSeriresEngineSpecification!: pulumi.Output<string>;
     /**
      * The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -236,6 +242,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeSeriesEngineNodeCount"] = state ? state.timeSeriesEngineNodeCount : undefined;
+            resourceInputs["timeSeriesEngineSpecification"] = state ? state.timeSeriesEngineSpecification : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -276,6 +283,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeSeriesEngineNodeCount"] = args ? args.timeSeriesEngineNodeCount : undefined;
+            resourceInputs["timeSeriesEngineSpecification"] = args ? args.timeSeriesEngineSpecification : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -423,6 +431,12 @@ export interface InstanceState {
     /**
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
+    timeSeriesEngineSpecification?: pulumi.Input<string>;
+    /**
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     *
+     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
+     */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
      * The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -546,6 +560,12 @@ export interface InstanceArgs {
     timeSeriesEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+     */
+    timeSeriesEngineSpecification?: pulumi.Input<string>;
+    /**
+     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     *
+     * @deprecated Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**

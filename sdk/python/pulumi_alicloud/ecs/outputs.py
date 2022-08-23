@@ -8246,16 +8246,22 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
     def __init__(__self__, *,
                  category: str,
                  device: str,
+                 disk_id: str,
+                 disk_name: str,
                  size: int,
                  type: str):
         """
         :param str category: Cloud disk category.
         :param str device: Device information of the created disk: such as /dev/xvdb.
+        :param str disk_id: The ID of the Disk.
+        :param str disk_name: The name of the Disk.
         :param int size: Size of the created disk.
         :param str type: Cloud disk type: system disk or data disk.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
 
@@ -8274,6 +8280,22 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
         Device information of the created disk: such as /dev/xvdb.
         """
         return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The ID of the Disk.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        The name of the Disk.
+        """
+        return pulumi.get(self, "disk_name")
 
     @property
     @pulumi.getter

@@ -3141,7 +3141,7 @@ type RuleRuleActionRedirectConfig struct {
 	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
 	Path *string `pulumi:"path"`
 	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
-	Port *int `pulumi:"port"`
+	Port *string `pulumi:"port"`
 	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol *string `pulumi:"protocol"`
 	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
@@ -3167,7 +3167,7 @@ type RuleRuleActionRedirectConfigArgs struct {
 	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
@@ -3267,8 +3267,8 @@ func (o RuleRuleActionRedirectConfigOutput) Path() pulumi.StringPtrOutput {
 }
 
 // The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
-func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 // The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
@@ -3336,13 +3336,13 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
-func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *int {
+func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.

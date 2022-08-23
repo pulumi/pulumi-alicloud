@@ -449,6 +449,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_sls_group":               {Tok: resource(cmsMod, "SlsGroup")},
 			"alicloud_cms_hybrid_monitor_fc_task":  {Tok: resource(cmsMod, "HybridMonitorFcTask")},
 			"alicloud_cms_hybrid_monitor_sls_task": {Tok: resource(cmsMod, "HybridMonitorSlsTask")},
+			"alicloud_cms_event_rule":              {Tok: resource(cmsMod, "EventRule")},
 
 			// Config
 			"alicloud_config_configuration_recorder":    {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -1218,6 +1219,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_bgp_network":                        {Tok: resource(vpcMod, "BgpNetwork")},
 			"alicloud_vpc_bgp_group":                          {Tok: resource(vpcMod, "BgpGroup")},
 			"alicloud_vpc_ipv4_gateway":                       {Tok: resource(vpcMod, "Ipv4Gateway")},
+			"alicloud_vpc_prefix_list":                        {Tok: resource(vpcMod, "PrefixList")},
 
 			// Vod
 			"alicloud_vod_domain": {Tok: resource(vodMod, "Domain")},
@@ -1450,6 +1452,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_hybrid_monitor_datas":     {Tok: dataSource(cmsMod, "getHybridMonitorDatas")},
 			"alicloud_cms_hybrid_monitor_fc_tasks":  {Tok: dataSource(cmsMod, "getHybridMonitorFcTasks")},
 			"alicloud_cms_hybrid_monitor_sls_tasks": {Tok: dataSource(cmsMod, "getHybridMonitorSlsTasks")},
+			"alicloud_cms_event_rules":              {Tok: dataSource(cmsMod, "getEventRules")},
 
 			// Config
 			"alicloud_config_configuration_recorders":    {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -2073,6 +2076,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_bgp_networks":             {Tok: dataSource(vpcMod, "getBgpNetworks")},
 			"alicloud_vpc_bgp_peers":                {Tok: dataSource(vpcMod, "getBgpPeers")},
 			"alicloud_vpc_ipv4_gateways":            {Tok: dataSource(vpcMod, "getIpv4Gateways")},
+			"alicloud_vpc_prefix_lists":             {Tok: dataSource(vpcMod, "getPrefixLists")},
 
 			// Vod
 			"alicloud_vod_domains": {Tok: dataSource(vodMod, "getDomains")},

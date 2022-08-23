@@ -787,6 +787,12 @@ namespace Pulumi.AliCloud.Emr
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
+        /// The custom configurations of emr-cluster service.
+        /// </summary>
+        [Output("configs")]
+        public Output<ImmutableArray<Outputs.ClusterConfig>> Configs { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         /// </summary>
         [Output("depositType")]
@@ -835,6 +841,24 @@ namespace Pulumi.AliCloud.Emr
         public Output<string?> MasterPwd { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// </summary>
+        [Output("metaStoreConf")]
+        public Output<Outputs.ClusterMetaStoreConf?> MetaStoreConf { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+        /// </summary>
+        [Output("metaStoreType")]
+        public Output<string> MetaStoreType { get; private set; } = null!;
+
+        /// <summary>
+        /// The configurations of emr-cluster service modification after cluster created.
+        /// </summary>
+        [Output("modifyClusterServiceConfig")]
+        public Output<Outputs.ClusterModifyClusterServiceConfig?> ModifyClusterServiceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// bootstrap action name.
         /// </summary>
         [Output("name")]
@@ -859,6 +883,12 @@ namespace Pulumi.AliCloud.Emr
         public Output<string?> RelatedClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The Id of resource group which the emr-cluster belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Security Group ID for Cluster, you can also specify this key for each host group.
         /// </summary>
         [Output("securityGroupId")]
@@ -874,7 +904,7 @@ namespace Pulumi.AliCloud.Emr
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Use local metadb. Default is false.
@@ -970,6 +1000,18 @@ namespace Pulumi.AliCloud.Emr
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
 
+        [Input("configs")]
+        private InputList<Inputs.ClusterConfigArgs>? _configs;
+
+        /// <summary>
+        /// The custom configurations of emr-cluster service.
+        /// </summary>
+        public InputList<Inputs.ClusterConfigArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.ClusterConfigArgs>());
+            set => _configs = value;
+        }
+
         /// <summary>
         /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         /// </summary>
@@ -1025,6 +1067,24 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// </summary>
+        [Input("metaStoreConf")]
+        public Input<Inputs.ClusterMetaStoreConfArgs>? MetaStoreConf { get; set; }
+
+        /// <summary>
+        /// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+        /// </summary>
+        [Input("metaStoreType")]
+        public Input<string>? MetaStoreType { get; set; }
+
+        /// <summary>
+        /// The configurations of emr-cluster service modification after cluster created.
+        /// </summary>
+        [Input("modifyClusterServiceConfig")]
+        public Input<Inputs.ClusterModifyClusterServiceConfigArgs>? ModifyClusterServiceConfig { get; set; }
+
+        /// <summary>
         /// bootstrap action name.
         /// </summary>
         [Input("name")]
@@ -1053,6 +1113,12 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         [Input("relatedClusterId")]
         public Input<string>? RelatedClusterId { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the emr-cluster belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Security Group ID for Cluster, you can also specify this key for each host group.
@@ -1133,6 +1199,18 @@ namespace Pulumi.AliCloud.Emr
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
+        [Input("configs")]
+        private InputList<Inputs.ClusterConfigGetArgs>? _configs;
+
+        /// <summary>
+        /// The custom configurations of emr-cluster service.
+        /// </summary>
+        public InputList<Inputs.ClusterConfigGetArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.ClusterConfigGetArgs>());
+            set => _configs = value;
+        }
+
         /// <summary>
         /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         /// </summary>
@@ -1188,6 +1266,24 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// </summary>
+        [Input("metaStoreConf")]
+        public Input<Inputs.ClusterMetaStoreConfGetArgs>? MetaStoreConf { get; set; }
+
+        /// <summary>
+        /// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+        /// </summary>
+        [Input("metaStoreType")]
+        public Input<string>? MetaStoreType { get; set; }
+
+        /// <summary>
+        /// The configurations of emr-cluster service modification after cluster created.
+        /// </summary>
+        [Input("modifyClusterServiceConfig")]
+        public Input<Inputs.ClusterModifyClusterServiceConfigGetArgs>? ModifyClusterServiceConfig { get; set; }
+
+        /// <summary>
         /// bootstrap action name.
         /// </summary>
         [Input("name")]
@@ -1216,6 +1312,12 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         [Input("relatedClusterId")]
         public Input<string>? RelatedClusterId { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the emr-cluster belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Security Group ID for Cluster, you can also specify this key for each host group.

@@ -16,6 +16,7 @@ __all__ = [
     'AlarmEscalationsWarn',
     'AlarmPrometheus',
     'DynamicTagGroupMatchExpress',
+    'EventRuleEventPattern',
     'GroupMetricRuleEscalations',
     'GroupMetricRuleEscalationsCritical',
     'GroupMetricRuleEscalationsInfo',
@@ -39,6 +40,9 @@ __all__ = [
     'GetAlarmContactsContactResult',
     'GetDynamicTagGroupsGroupResult',
     'GetDynamicTagGroupsGroupMatchExpressResult',
+    'GetEventRulesRuleResult',
+    'GetEventRulesRuleEventPatternResult',
+    'GetEventRulesRuleEventPatternKeywordFilterResult',
     'GetGroupMetricRulesRuleResult',
     'GetGroupMetricRulesRuleEscalationResult',
     'GetGroupMetricRulesRuleEscalationCriticalResult',
@@ -405,6 +409,111 @@ class DynamicTagGroupMatchExpress(dict):
         Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
         return pulumi.get(self, "tag_value_match_function")
+
+
+@pulumi.output_type
+class EventRuleEventPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventTypeLists":
+            suggest = "event_type_lists"
+        elif key == "levelLists":
+            suggest = "level_lists"
+        elif key == "nameLists":
+            suggest = "name_lists"
+        elif key == "sqlFilter":
+            suggest = "sql_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventRuleEventPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventRuleEventPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventRuleEventPattern.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 product: str,
+                 event_type_lists: Optional[Sequence[str]] = None,
+                 level_lists: Optional[Sequence[str]] = None,
+                 name_lists: Optional[Sequence[str]] = None,
+                 sql_filter: Optional[str] = None):
+        """
+        :param str product: The type of the cloud service.
+        :param Sequence[str] event_type_lists: The type of the event-triggered alert rule. Valid values:
+               - `StatusNotification`: fault notifications.
+               - `Exception`: exceptions.
+               - `Maintenance`: O&M.
+               - `*`: all types.
+        :param Sequence[str] level_lists: The level of the event-triggered alert rule. Valid values:
+               - `CRITICAL`: critical.
+               - `WARN`: warning.
+               - `INFO`: information.
+               - `*`: all types.
+        :param Sequence[str] name_lists: The name of the event-triggered alert rule.
+        :param str sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+        """
+        pulumi.set(__self__, "product", product)
+        if event_type_lists is not None:
+            pulumi.set(__self__, "event_type_lists", event_type_lists)
+        if level_lists is not None:
+            pulumi.set(__self__, "level_lists", level_lists)
+        if name_lists is not None:
+            pulumi.set(__self__, "name_lists", name_lists)
+        if sql_filter is not None:
+            pulumi.set(__self__, "sql_filter", sql_filter)
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        """
+        The type of the cloud service.
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter(name="eventTypeLists")
+    def event_type_lists(self) -> Optional[Sequence[str]]:
+        """
+        The type of the event-triggered alert rule. Valid values:
+        - `StatusNotification`: fault notifications.
+        - `Exception`: exceptions.
+        - `Maintenance`: O&M.
+        - `*`: all types.
+        """
+        return pulumi.get(self, "event_type_lists")
+
+    @property
+    @pulumi.getter(name="levelLists")
+    def level_lists(self) -> Optional[Sequence[str]]:
+        """
+        The level of the event-triggered alert rule. Valid values:
+        - `CRITICAL`: critical.
+        - `WARN`: warning.
+        - `INFO`: information.
+        - `*`: all types.
+        """
+        return pulumi.get(self, "level_lists")
+
+    @property
+    @pulumi.getter(name="nameLists")
+    def name_lists(self) -> Optional[Sequence[str]]:
+        """
+        The name of the event-triggered alert rule.
+        """
+        return pulumi.get(self, "name_lists")
+
+    @property
+    @pulumi.getter(name="sqlFilter")
+    def sql_filter(self) -> Optional[str]:
+        """
+        The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+        """
+        return pulumi.get(self, "sql_filter")
 
 
 @pulumi.output_type
@@ -1858,6 +1967,203 @@ class GetDynamicTagGroupsGroupMatchExpressResult(dict):
         Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
         return pulumi.get(self, "tag_value_match_function")
+
+
+@pulumi.output_type
+class GetEventRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 event_patterns: Sequence['outputs.GetEventRulesRuleEventPatternResult'],
+                 event_rule_name: str,
+                 event_type: str,
+                 group_id: str,
+                 id: str,
+                 silence_time: int,
+                 status: str):
+        """
+        :param str description: The description of the rule.
+        :param Sequence['GetEventRulesRuleEventPatternArgs'] event_patterns: Event mode, used to describe the trigger conditions for this event.
+        :param str event_rule_name: The name of the event rule.
+        :param str event_type: The type of event.
+        :param str group_id: The ID of the application Group.
+        :param str id: The ID of the Event Rule. Its value is same as Event Rule Name.
+        :param int silence_time: The mute period during which new alerts are not sent even if the trigger conditions are met.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "event_patterns", event_patterns)
+        pulumi.set(__self__, "event_rule_name", event_rule_name)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "silence_time", silence_time)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="eventPatterns")
+    def event_patterns(self) -> Sequence['outputs.GetEventRulesRuleEventPatternResult']:
+        """
+        Event mode, used to describe the trigger conditions for this event.
+        """
+        return pulumi.get(self, "event_patterns")
+
+    @property
+    @pulumi.getter(name="eventRuleName")
+    def event_rule_name(self) -> str:
+        """
+        The name of the event rule.
+        """
+        return pulumi.get(self, "event_rule_name")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> str:
+        """
+        The type of event.
+        """
+        return pulumi.get(self, "event_type")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The ID of the application Group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Event Rule. Its value is same as Event Rule Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="silenceTime")
+    def silence_time(self) -> int:
+        """
+        The mute period during which new alerts are not sent even if the trigger conditions are met.
+        """
+        return pulumi.get(self, "silence_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEventRulesRuleEventPatternResult(dict):
+    def __init__(__self__, *,
+                 event_type_lists: Sequence[str],
+                 keyword_filters: Sequence['outputs.GetEventRulesRuleEventPatternKeywordFilterResult'],
+                 level_lists: Sequence[str],
+                 name_lists: Sequence[str],
+                 product: str,
+                 sql_filter: str):
+        """
+        :param Sequence[str] event_type_lists: The list of event types.
+        :param Sequence['GetEventRulesRuleEventPatternKeywordFilterArgs'] keyword_filters: The filter keyword.
+        :param Sequence[str] level_lists: The list of event levels.
+        :param Sequence[str] name_lists: The list of event names.
+        :param str product: The type of the cloud service.
+        :param str sql_filter: The SQL condition that is used to filter events.
+        """
+        pulumi.set(__self__, "event_type_lists", event_type_lists)
+        pulumi.set(__self__, "keyword_filters", keyword_filters)
+        pulumi.set(__self__, "level_lists", level_lists)
+        pulumi.set(__self__, "name_lists", name_lists)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "sql_filter", sql_filter)
+
+    @property
+    @pulumi.getter(name="eventTypeLists")
+    def event_type_lists(self) -> Sequence[str]:
+        """
+        The list of event types.
+        """
+        return pulumi.get(self, "event_type_lists")
+
+    @property
+    @pulumi.getter(name="keywordFilters")
+    def keyword_filters(self) -> Sequence['outputs.GetEventRulesRuleEventPatternKeywordFilterResult']:
+        """
+        The filter keyword.
+        """
+        return pulumi.get(self, "keyword_filters")
+
+    @property
+    @pulumi.getter(name="levelLists")
+    def level_lists(self) -> Sequence[str]:
+        """
+        The list of event levels.
+        """
+        return pulumi.get(self, "level_lists")
+
+    @property
+    @pulumi.getter(name="nameLists")
+    def name_lists(self) -> Sequence[str]:
+        """
+        The list of event names.
+        """
+        return pulumi.get(self, "name_lists")
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        """
+        The type of the cloud service.
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter(name="sqlFilter")
+    def sql_filter(self) -> str:
+        """
+        The SQL condition that is used to filter events.
+        """
+        return pulumi.get(self, "sql_filter")
+
+
+@pulumi.output_type
+class GetEventRulesRuleEventPatternKeywordFilterResult(dict):
+    def __init__(__self__, *,
+                 key_words: Sequence[str],
+                 relation: str):
+        """
+        :param Sequence[str] key_words: The keywords that are used to match events.
+        :param str relation: The relationship between multiple keywords in a condition.
+        """
+        pulumi.set(__self__, "key_words", key_words)
+        pulumi.set(__self__, "relation", relation)
+
+    @property
+    @pulumi.getter(name="keyWords")
+    def key_words(self) -> Sequence[str]:
+        """
+        The keywords that are used to match events.
+        """
+        return pulumi.get(self, "key_words")
+
+    @property
+    @pulumi.getter
+    def relation(self) -> str:
+        """
+        The relationship between multiple keywords in a condition.
+        """
+        return pulumi.get(self, "relation")
 
 
 @pulumi.output_type

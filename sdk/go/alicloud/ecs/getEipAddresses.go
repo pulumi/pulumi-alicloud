@@ -64,7 +64,7 @@ type GetEipAddressesArgs struct {
 	AssociatedInstanceType *string `pulumi:"associatedInstanceType"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+	// Default to `true`. Set it to `false` can hide the `tags` to output.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Address IDs.
 	Ids []string `pulumi:"ids"`
@@ -145,7 +145,7 @@ type GetEipAddressesOutputArgs struct {
 	AssociatedInstanceType pulumi.StringPtrInput `pulumi:"associatedInstanceType"`
 	// The dry run.
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+	// Default to `true`. Set it to `false` can hide the `tags` to output.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Address IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

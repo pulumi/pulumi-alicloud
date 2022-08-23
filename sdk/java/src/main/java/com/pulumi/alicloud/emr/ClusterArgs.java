@@ -4,7 +4,10 @@
 package com.pulumi.alicloud.emr;
 
 import com.pulumi.alicloud.emr.inputs.ClusterBootstrapActionArgs;
+import com.pulumi.alicloud.emr.inputs.ClusterConfigArgs;
 import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
+import com.pulumi.alicloud.emr.inputs.ClusterMetaStoreConfArgs;
+import com.pulumi.alicloud.emr.inputs.ClusterModifyClusterServiceConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -65,6 +68,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> clusterType() {
         return this.clusterType;
+    }
+
+    /**
+     * The custom configurations of emr-cluster service.
+     * 
+     */
+    @Import(name="configs")
+    private @Nullable Output<List<ClusterConfigArgs>> configs;
+
+    /**
+     * @return The custom configurations of emr-cluster service.
+     * 
+     */
+    public Optional<Output<List<ClusterConfigArgs>>> configs() {
+        return Optional.ofNullable(this.configs);
     }
 
     /**
@@ -188,6 +206,51 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * 
+     */
+    @Import(name="metaStoreConf")
+    private @Nullable Output<ClusterMetaStoreConfArgs> metaStoreConf;
+
+    /**
+     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * 
+     */
+    public Optional<Output<ClusterMetaStoreConfArgs>> metaStoreConf() {
+        return Optional.ofNullable(this.metaStoreConf);
+    }
+
+    /**
+     * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     * 
+     */
+    @Import(name="metaStoreType")
+    private @Nullable Output<String> metaStoreType;
+
+    /**
+     * @return The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     * 
+     */
+    public Optional<Output<String>> metaStoreType() {
+        return Optional.ofNullable(this.metaStoreType);
+    }
+
+    /**
+     * The configurations of emr-cluster service modification after cluster created.
+     * 
+     */
+    @Import(name="modifyClusterServiceConfig")
+    private @Nullable Output<ClusterModifyClusterServiceConfigArgs> modifyClusterServiceConfig;
+
+    /**
+     * @return The configurations of emr-cluster service modification after cluster created.
+     * 
+     */
+    public Optional<Output<ClusterModifyClusterServiceConfigArgs>> modifyClusterServiceConfig() {
+        return Optional.ofNullable(this.modifyClusterServiceConfig);
+    }
+
+    /**
      * bootstrap action name.
      * 
      */
@@ -245,6 +308,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> relatedClusterId() {
         return Optional.ofNullable(this.relatedClusterId);
+    }
+
+    /**
+     * The Id of resource group which the emr-cluster belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The Id of resource group which the emr-cluster belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
@@ -358,6 +436,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.bootstrapActions = $.bootstrapActions;
         this.chargeType = $.chargeType;
         this.clusterType = $.clusterType;
+        this.configs = $.configs;
         this.depositType = $.depositType;
         this.easEnable = $.easEnable;
         this.emrVer = $.emrVer;
@@ -366,10 +445,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.isOpenPublicIp = $.isOpenPublicIp;
         this.keyPairName = $.keyPairName;
         this.masterPwd = $.masterPwd;
+        this.metaStoreConf = $.metaStoreConf;
+        this.metaStoreType = $.metaStoreType;
+        this.modifyClusterServiceConfig = $.modifyClusterServiceConfig;
         this.name = $.name;
         this.optionSoftwareLists = $.optionSoftwareLists;
         this.period = $.period;
         this.relatedClusterId = $.relatedClusterId;
+        this.resourceGroupId = $.resourceGroupId;
         this.securityGroupId = $.securityGroupId;
         this.sshEnable = $.sshEnable;
         this.tags = $.tags;
@@ -468,6 +551,37 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterType(String clusterType) {
             return clusterType(Output.of(clusterType));
+        }
+
+        /**
+         * @param configs The custom configurations of emr-cluster service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(@Nullable Output<List<ClusterConfigArgs>> configs) {
+            $.configs = configs;
+            return this;
+        }
+
+        /**
+         * @param configs The custom configurations of emr-cluster service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(List<ClusterConfigArgs> configs) {
+            return configs(Output.of(configs));
+        }
+
+        /**
+         * @param configs The custom configurations of emr-cluster service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(ClusterConfigArgs... configs) {
+            return configs(List.of(configs));
         }
 
         /**
@@ -649,6 +763,69 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metaStoreConf(@Nullable Output<ClusterMetaStoreConfArgs> metaStoreConf) {
+            $.metaStoreConf = metaStoreConf;
+            return this;
+        }
+
+        /**
+         * @param metaStoreConf The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metaStoreConf(ClusterMetaStoreConfArgs metaStoreConf) {
+            return metaStoreConf(Output.of(metaStoreConf));
+        }
+
+        /**
+         * @param metaStoreType The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metaStoreType(@Nullable Output<String> metaStoreType) {
+            $.metaStoreType = metaStoreType;
+            return this;
+        }
+
+        /**
+         * @param metaStoreType The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metaStoreType(String metaStoreType) {
+            return metaStoreType(Output.of(metaStoreType));
+        }
+
+        /**
+         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyClusterServiceConfig(@Nullable Output<ClusterModifyClusterServiceConfigArgs> modifyClusterServiceConfig) {
+            $.modifyClusterServiceConfig = modifyClusterServiceConfig;
+            return this;
+        }
+
+        /**
+         * @param modifyClusterServiceConfig The configurations of emr-cluster service modification after cluster created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyClusterServiceConfig(ClusterModifyClusterServiceConfigArgs modifyClusterServiceConfig) {
+            return modifyClusterServiceConfig(Output.of(modifyClusterServiceConfig));
+        }
+
+        /**
          * @param name bootstrap action name.
          * 
          * @return builder
@@ -740,6 +917,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder relatedClusterId(String relatedClusterId) {
             return relatedClusterId(Output.of(relatedClusterId));
+        }
+
+        /**
+         * @param resourceGroupId The Id of resource group which the emr-cluster belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The Id of resource group which the emr-cluster belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

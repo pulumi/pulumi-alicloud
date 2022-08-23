@@ -75,7 +75,7 @@ export interface GetEipAddressesArgs {
      */
     dryRun?: boolean;
     /**
-     * Default to `tue`. Set it to `false` can hidden the `tags` to output.
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
      */
     enableDetails?: boolean;
     /**
@@ -191,7 +191,7 @@ export interface GetEipAddressesOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Default to `tue`. Set it to `false` can hidden the `tags` to output.
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

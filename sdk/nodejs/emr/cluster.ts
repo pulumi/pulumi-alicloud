@@ -528,6 +528,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterType!: pulumi.Output<string>;
     /**
+     * The custom configurations of emr-cluster service.
+     */
+    public readonly configs!: pulumi.Output<outputs.emr.ClusterConfig[] | undefined>;
+    /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
     public readonly depositType!: pulumi.Output<string | undefined>;
@@ -560,6 +564,18 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterPwd!: pulumi.Output<string | undefined>;
     /**
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     */
+    public readonly metaStoreConf!: pulumi.Output<outputs.emr.ClusterMetaStoreConf | undefined>;
+    /**
+     * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     */
+    public readonly metaStoreType!: pulumi.Output<string>;
+    /**
+     * The configurations of emr-cluster service modification after cluster created.
+     */
+    public readonly modifyClusterServiceConfig!: pulumi.Output<outputs.emr.ClusterModifyClusterServiceConfig | undefined>;
+    /**
      * bootstrap action name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -576,6 +592,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly relatedClusterId!: pulumi.Output<string | undefined>;
     /**
+     * The Id of resource group which the emr-cluster belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
@@ -586,7 +606,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any}>;
     /**
      * Use local metadb. Default is false.
      */
@@ -620,6 +640,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
             resourceInputs["chargeType"] = state ? state.chargeType : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["configs"] = state ? state.configs : undefined;
             resourceInputs["depositType"] = state ? state.depositType : undefined;
             resourceInputs["easEnable"] = state ? state.easEnable : undefined;
             resourceInputs["emrVer"] = state ? state.emrVer : undefined;
@@ -628,10 +649,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["isOpenPublicIp"] = state ? state.isOpenPublicIp : undefined;
             resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
             resourceInputs["masterPwd"] = state ? state.masterPwd : undefined;
+            resourceInputs["metaStoreConf"] = state ? state.metaStoreConf : undefined;
+            resourceInputs["metaStoreType"] = state ? state.metaStoreType : undefined;
+            resourceInputs["modifyClusterServiceConfig"] = state ? state.modifyClusterServiceConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["optionSoftwareLists"] = state ? state.optionSoftwareLists : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["relatedClusterId"] = state ? state.relatedClusterId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["sshEnable"] = state ? state.sshEnable : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -653,6 +678,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
             resourceInputs["chargeType"] = args ? args.chargeType : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["configs"] = args ? args.configs : undefined;
             resourceInputs["depositType"] = args ? args.depositType : undefined;
             resourceInputs["easEnable"] = args ? args.easEnable : undefined;
             resourceInputs["emrVer"] = args ? args.emrVer : undefined;
@@ -661,10 +687,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["isOpenPublicIp"] = args ? args.isOpenPublicIp : undefined;
             resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
             resourceInputs["masterPwd"] = args ? args.masterPwd : undefined;
+            resourceInputs["metaStoreConf"] = args ? args.metaStoreConf : undefined;
+            resourceInputs["metaStoreType"] = args ? args.metaStoreType : undefined;
+            resourceInputs["modifyClusterServiceConfig"] = args ? args.modifyClusterServiceConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["optionSoftwareLists"] = args ? args.optionSoftwareLists : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["relatedClusterId"] = args ? args.relatedClusterId : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["sshEnable"] = args ? args.sshEnable : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -694,6 +724,10 @@ export interface ClusterState {
      * EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
      */
     clusterType?: pulumi.Input<string>;
+    /**
+     * The custom configurations of emr-cluster service.
+     */
+    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[]>;
     /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
@@ -727,6 +761,18 @@ export interface ClusterState {
      */
     masterPwd?: pulumi.Input<string>;
     /**
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     */
+    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf>;
+    /**
+     * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     */
+    metaStoreType?: pulumi.Input<string>;
+    /**
+     * The configurations of emr-cluster service modification after cluster created.
+     */
+    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig>;
+    /**
      * bootstrap action name.
      */
     name?: pulumi.Input<string>;
@@ -742,6 +788,10 @@ export interface ClusterState {
      * This specify the related cluster id, if this cluster is a Gateway.
      */
     relatedClusterId?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the emr-cluster belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */
@@ -789,6 +839,10 @@ export interface ClusterArgs {
      */
     clusterType: pulumi.Input<string>;
     /**
+     * The custom configurations of emr-cluster service.
+     */
+    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[]>;
+    /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
     depositType?: pulumi.Input<string>;
@@ -821,6 +875,18 @@ export interface ClusterArgs {
      */
     masterPwd?: pulumi.Input<string>;
     /**
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     */
+    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf>;
+    /**
+     * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
+     */
+    metaStoreType?: pulumi.Input<string>;
+    /**
+     * The configurations of emr-cluster service modification after cluster created.
+     */
+    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig>;
+    /**
      * bootstrap action name.
      */
     name?: pulumi.Input<string>;
@@ -836,6 +902,10 @@ export interface ClusterArgs {
      * This specify the related cluster id, if this cluster is a Gateway.
      */
     relatedClusterId?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the emr-cluster belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */

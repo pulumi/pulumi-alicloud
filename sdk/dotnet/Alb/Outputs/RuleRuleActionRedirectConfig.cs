@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// <summary>
         /// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
         /// </summary>
-        public readonly int? Port;
+        public readonly string? Port;
         /// <summary>
         /// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             string? path,
 
-            int? port,
+            string? port,
 
             string? protocol,
 

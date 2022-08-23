@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Device;
         /// <summary>
+        /// The ID of the Disk.
+        /// </summary>
+        public readonly string DiskId;
+        /// <summary>
+        /// The name of the Disk.
+        /// </summary>
+        public readonly string DiskName;
+        /// <summary>
         /// Size of the created disk.
         /// </summary>
         public readonly int Size;
@@ -36,12 +44,18 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string device,
 
+            string diskId,
+
+            string diskName,
+
             int size,
 
             string type)
         {
             Category = category;
             Device = device;
+            DiskId = diskId;
+            DiskName = diskName;
             Size = size;
             Type = type;
         }

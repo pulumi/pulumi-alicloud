@@ -12,7 +12,10 @@ from . import outputs
 
 __all__ = [
     'ClusterBootstrapAction',
+    'ClusterConfig',
     'ClusterHostGroup',
+    'ClusterMetaStoreConf',
+    'ClusterModifyClusterServiceConfig',
     'GetClustersClusterResult',
     'GetClustersClusterAccessInfoResult',
     'GetClustersClusterAccessInfoZkLinkResult',
@@ -127,6 +130,80 @@ class ClusterBootstrapAction(dict):
         bootstrap action path, e.g. "oss://bucket/path".
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class ClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configKey":
+            suggest = "config_key"
+        elif key == "configValue":
+            suggest = "config_value"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_key: str,
+                 config_value: str,
+                 file_name: str,
+                 service_name: str):
+        """
+        :param str config_key: Custom configuration service config key, e.g. ’dfs.replication’.
+        :param str config_value: Custom configuration service config value, e.g. ’3’.
+        :param str file_name: Custom configuration service file name, e.g. ’hdfs-site’.
+        :param str service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        pulumi.set(__self__, "config_key", config_key)
+        pulumi.set(__self__, "config_value", config_value)
+        pulumi.set(__self__, "file_name", file_name)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="configKey")
+    def config_key(self) -> str:
+        """
+        Custom configuration service config key, e.g. ’dfs.replication’.
+        """
+        return pulumi.get(self, "config_key")
+
+    @property
+    @pulumi.getter(name="configValue")
+    def config_value(self) -> str:
+        """
+        Custom configuration service config value, e.g. ’3’.
+        """
+        return pulumi.get(self, "config_value")
+
+    @property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> str:
+        """
+        Custom configuration service file name, e.g. ’hdfs-site’.
+        """
+        return pulumi.get(self, "file_name")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -367,6 +444,211 @@ class ClusterHostGroup(dict):
         System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
         return pulumi.get(self, "sys_disk_type")
+
+
+@pulumi.output_type
+class ClusterMetaStoreConf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbPassword":
+            suggest = "db_password"
+        elif key == "dbUrl":
+            suggest = "db_url"
+        elif key == "dbUserName":
+            suggest = "db_user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMetaStoreConf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMetaStoreConf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMetaStoreConf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 db_password: str,
+                 db_url: str,
+                 db_user_name: str):
+        """
+        :param str db_password: Custom rds database password.
+        :param str db_url: Custom rds database connection url.
+        :param str db_user_name: Custom rds database user name.
+        """
+        pulumi.set(__self__, "db_password", db_password)
+        pulumi.set(__self__, "db_url", db_url)
+        pulumi.set(__self__, "db_user_name", db_user_name)
+
+    @property
+    @pulumi.getter(name="dbPassword")
+    def db_password(self) -> str:
+        """
+        Custom rds database password.
+        """
+        return pulumi.get(self, "db_password")
+
+    @property
+    @pulumi.getter(name="dbUrl")
+    def db_url(self) -> str:
+        """
+        Custom rds database connection url.
+        """
+        return pulumi.get(self, "db_url")
+
+    @property
+    @pulumi.getter(name="dbUserName")
+    def db_user_name(self) -> str:
+        """
+        Custom rds database user name.
+        """
+        return pulumi.get(self, "db_user_name")
+
+
+@pulumi.output_type
+class ClusterModifyClusterServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configParams":
+            suggest = "config_params"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "configType":
+            suggest = "config_type"
+        elif key == "customConfigParams":
+            suggest = "custom_config_params"
+        elif key == "gatewayClusterIdLists":
+            suggest = "gateway_cluster_id_lists"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "hostInstanceId":
+            suggest = "host_instance_id"
+        elif key == "refreshHostConfig":
+            suggest = "refresh_host_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterModifyClusterServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterModifyClusterServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterModifyClusterServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_params: str,
+                 service_name: str,
+                 comment: Optional[str] = None,
+                 config_type: Optional[str] = None,
+                 custom_config_params: Optional[str] = None,
+                 gateway_cluster_id_lists: Optional[Sequence[str]] = None,
+                 group_id: Optional[str] = None,
+                 host_instance_id: Optional[str] = None,
+                 refresh_host_config: Optional[bool] = None):
+        """
+        :param str config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        :param str service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        :param str comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        :param str config_type: Cluster service configuration modification type.
+        :param str custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        :param Sequence[str] gateway_cluster_id_lists: Cluster service configuration modification related gateway cluster id list.
+        :param str group_id: Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        :param str host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        :param bool refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        """
+        pulumi.set(__self__, "config_params", config_params)
+        pulumi.set(__self__, "service_name", service_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if config_type is not None:
+            pulumi.set(__self__, "config_type", config_type)
+        if custom_config_params is not None:
+            pulumi.set(__self__, "custom_config_params", custom_config_params)
+        if gateway_cluster_id_lists is not None:
+            pulumi.set(__self__, "gateway_cluster_id_lists", gateway_cluster_id_lists)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if host_instance_id is not None:
+            pulumi.set(__self__, "host_instance_id", host_instance_id)
+        if refresh_host_config is not None:
+            pulumi.set(__self__, "refresh_host_config", refresh_host_config)
+
+    @property
+    @pulumi.getter(name="configParams")
+    def config_params(self) -> str:
+        """
+        Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        """
+        return pulumi.get(self, "config_params")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Cluster service configuration modification name, e.g. ’HDFS’.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> Optional[str]:
+        """
+        Cluster service configuration modification type.
+        """
+        return pulumi.get(self, "config_type")
+
+    @property
+    @pulumi.getter(name="customConfigParams")
+    def custom_config_params(self) -> Optional[str]:
+        """
+        Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        """
+        return pulumi.get(self, "custom_config_params")
+
+    @property
+    @pulumi.getter(name="gatewayClusterIdLists")
+    def gateway_cluster_id_lists(self) -> Optional[Sequence[str]]:
+        """
+        Cluster service configuration modification related gateway cluster id list.
+        """
+        return pulumi.get(self, "gateway_cluster_id_lists")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="hostInstanceId")
+    def host_instance_id(self) -> Optional[str]:
+        """
+        Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        """
+        return pulumi.get(self, "host_instance_id")
+
+    @property
+    @pulumi.getter(name="refreshHostConfig")
+    def refresh_host_config(self) -> Optional[bool]:
+        """
+        Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        """
+        return pulumi.get(self, "refresh_host_config")
 
 
 @pulumi.output_type

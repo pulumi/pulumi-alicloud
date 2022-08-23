@@ -2206,7 +2206,7 @@ export namespace alb {
         /**
          * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
          */
-        port?: number;
+        port?: string;
         /**
          * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
          */
@@ -7578,6 +7578,37 @@ export namespace cms {
         tagValueMatchFunction: string;
     }
 
+    export interface EventRuleEventPattern {
+        /**
+         * The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&M.
+         * - `*`: all types.
+         */
+        eventTypeLists?: string[];
+        /**
+         * The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
+         */
+        levelLists?: string[];
+        /**
+         * The name of the event-triggered alert rule.
+         */
+        nameLists?: string[];
+        /**
+         * The type of the cloud service.
+         */
+        product: string;
+        /**
+         * The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+         */
+        sqlFilter?: string;
+    }
+
     export interface GetAlarmContactGroupsGroup {
         /**
          * The name of Alarm Contact Group.
@@ -7689,6 +7720,79 @@ export namespace cms {
          * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
          */
         tagValueMatchFunction: string;
+    }
+
+    export interface GetEventRulesRule {
+        /**
+         * The description of the rule.
+         */
+        description: string;
+        /**
+         * Event mode, used to describe the trigger conditions for this event.
+         */
+        eventPatterns: outputs.cms.GetEventRulesRuleEventPattern[];
+        /**
+         * The name of the event rule.
+         */
+        eventRuleName: string;
+        /**
+         * The type of event.
+         */
+        eventType: string;
+        /**
+         * The ID of the application Group.
+         */
+        groupId: string;
+        /**
+         * The ID of the Event Rule. Its value is same as Event Rule Name.
+         */
+        id: string;
+        /**
+         * The mute period during which new alerts are not sent even if the trigger conditions are met.
+         */
+        silenceTime: number;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetEventRulesRuleEventPattern {
+        /**
+         * The list of event types.
+         */
+        eventTypeLists: string[];
+        /**
+         * The filter keyword.
+         */
+        keywordFilters: outputs.cms.GetEventRulesRuleEventPatternKeywordFilter[];
+        /**
+         * The list of event levels.
+         */
+        levelLists: string[];
+        /**
+         * The list of event names.
+         */
+        nameLists: string[];
+        /**
+         * The type of the cloud service.
+         */
+        product: string;
+        /**
+         * The SQL condition that is used to filter events.
+         */
+        sqlFilter: string;
+    }
+
+    export interface GetEventRulesRuleEventPatternKeywordFilter {
+        /**
+         * The keywords that are used to match events.
+         */
+        keyWords: string[];
+        /**
+         * The relationship between multiple keywords in a condition.
+         */
+        relation: string;
     }
 
     export interface GetGroupMetricRulesRule {
@@ -16812,6 +16916,14 @@ export namespace ecs {
          */
         device: string;
         /**
+         * The ID of the Disk.
+         */
+        diskId: string;
+        /**
+         * The name of the Disk.
+         */
+        diskName: string;
+        /**
          * Size of the created disk.
          */
         size: number;
@@ -19275,6 +19387,25 @@ export namespace emr {
         path?: string;
     }
 
+    export interface ClusterConfig {
+        /**
+         * Custom configuration service config key, e.g. ’dfs.replication’.
+         */
+        configKey: string;
+        /**
+         * Custom configuration service config value, e.g. ’3’.
+         */
+        configValue: string;
+        /**
+         * Custom configuration service file name, e.g. ’hdfs-site’.
+         */
+        fileName: string;
+        /**
+         * Cluster service configuration modification name, e.g. ’HDFS’.
+         */
+        serviceName: string;
+    }
+
     export interface ClusterHostGroup {
         /**
          * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
@@ -19287,7 +19418,7 @@ export namespace emr {
         /**
          * Graceful decommission timeout, unit: seconds.
          */
-        decommissionTimeout?: number;
+        decommissionTimeout: number;
         /**
          * Data disk capacity.
          */
@@ -19303,7 +19434,7 @@ export namespace emr {
         /**
          * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
          */
-        enableGracefulDecommission?: boolean;
+        enableGracefulDecommission: boolean;
         gpuDriver?: string;
         /**
          * host group name.
@@ -19328,7 +19459,7 @@ export namespace emr {
         /**
          * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
          */
-        period?: number;
+        period: number;
         /**
          * System disk capacity.
          */
@@ -19337,6 +19468,60 @@ export namespace emr {
          * System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
          */
         sysDiskType?: string;
+    }
+
+    export interface ClusterMetaStoreConf {
+        /**
+         * Custom rds database password.
+         */
+        dbPassword: string;
+        /**
+         * Custom rds database connection url.
+         */
+        dbUrl: string;
+        /**
+         * Custom rds database user name.
+         */
+        dbUserName: string;
+    }
+
+    export interface ClusterModifyClusterServiceConfig {
+        /**
+         * Cluster service configuration modification comment, e.g. "Modify tez configuration".
+         */
+        comment?: string;
+        /**
+         * Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+         */
+        configParams: string;
+        /**
+         * Cluster service configuration modification type.
+         */
+        configType?: string;
+        /**
+         * Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+         */
+        customConfigParams?: string;
+        /**
+         * Cluster service configuration modification related gateway cluster id list.
+         */
+        gatewayClusterIdLists?: string[];
+        /**
+         * Cluster service configuration modification node group id, e.g. ’G-XXX’.
+         */
+        groupId?: string;
+        /**
+         * Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+         */
+        hostInstanceId?: string;
+        /**
+         * Cluster service configuration modification refresh host config, ’true’ or ’false’.
+         */
+        refreshHostConfig?: boolean;
+        /**
+         * Cluster service configuration modification name, e.g. ’HDFS’.
+         */
+        serviceName: string;
     }
 
     export interface GetClustersCluster {
@@ -35727,6 +35912,56 @@ export namespace vpc {
         weight: number;
     }
 
+    export interface GetPrefixListsList {
+        /**
+         * The time when the prefix list was created.
+         */
+        createTime: string;
+        /**
+         * The CIDR address block list of the prefix list.
+         */
+        entrys: outputs.vpc.GetPrefixListsListEntry[];
+        /**
+         * The ID of the Prefix List.
+         */
+        id: string;
+        /**
+         * The IP version of the prefix list.
+         */
+        ipVersion: string;
+        /**
+         * The maximum number of entries for CIDR address blocks in the prefix list.
+         */
+        maxEntries: number;
+        /**
+         * The description of the prefix list.
+         */
+        prefixListDescription: string;
+        /**
+         * The ID of the query Prefix List.
+         */
+        prefixListId: string;
+        /**
+         * The name of the prefix list.
+         */
+        prefixListName: string;
+        /**
+         * The share type of the prefix list.
+         */
+        shareType: string;
+    }
+
+    export interface GetPrefixListsListEntry {
+        /**
+         * The CIDR address block of the prefix list.
+         */
+        cidr: string;
+        /**
+         * The description of the cidr entry.
+         */
+        description: string;
+    }
+
     export interface GetRouteEntriesEntry {
         /**
          * The destination CIDR block of the route entry.
@@ -36416,6 +36651,17 @@ export namespace vpc {
          * The type of the associated resource. Valid values `VSwitch`.
          */
         resourceType?: string;
+    }
+
+    export interface PrefixListEntry {
+        /**
+         * The CIDR address block of the prefix list.
+         */
+        cidr: string;
+        /**
+         * The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         */
+        description?: string;
     }
 
 }

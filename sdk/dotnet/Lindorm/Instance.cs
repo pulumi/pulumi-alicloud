@@ -218,6 +218,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         /// </summary>
+        [Output("timeSeriesEngineSpecification")]
+        public Output<string> TimeSeriesEngineSpecification { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// </summary>
         [Output("timeSeriresEngineSpecification")]
         public Output<string> TimeSeriresEngineSpecification { get; private set; } = null!;
 
@@ -450,6 +456,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         /// </summary>
+        [Input("timeSeriesEngineSpecification")]
+        public Input<string>? TimeSeriesEngineSpecification { get; set; }
+
+        /// <summary>
+        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
 
@@ -678,6 +690,12 @@ namespace Pulumi.AliCloud.Lindorm
 
         /// <summary>
         /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// </summary>
+        [Input("timeSeriesEngineSpecification")]
+        public Input<string>? TimeSeriesEngineSpecification { get; set; }
+
+        /// <summary>
+        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
