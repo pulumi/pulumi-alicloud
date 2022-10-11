@@ -14,133 +14,94 @@ public final class GetInstancesInstance {
      * @return Auto renew.
      * 
      */
-    private final String autoRenew;
+    private String autoRenew;
     /**
      * @return The cpu core number of instance.
      * 
      */
-    private final String cpuNumber;
+    private String cpuNumber;
     /**
      * @return The disk type of instance. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
      * 
      */
-    private final String diskCategory;
+    private String diskCategory;
     /**
      * @return The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
      * 
      */
-    private final String engineType;
+    private String engineType;
     /**
      * @return Instance expiration time.
      * 
      */
-    private final Integer expiredTime;
+    private Integer expiredTime;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The alias of the instance.
      * 
      */
-    private final String instanceAlias;
+    private String instanceAlias;
     /**
      * @return The specification of the instance.
      * 
      */
-    private final String instanceClass;
+    private String instanceClass;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      * 
      */
-    private final String instanceStorage;
+    private String instanceStorage;
     /**
      * @return The memory size of instance.
      * 
      */
-    private final String memorySize;
+    private String memorySize;
     /**
      * @return Instance network type.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The vpc connection address of instance.
      * 
      */
-    private final String vpcConnectionAddress;
+    private String vpcConnectionAddress;
     /**
      * @return The ID of the virtual private cloud (VPC) that is connected to the instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone ID of the instance.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("autoRenew") String autoRenew,
-        @CustomType.Parameter("cpuNumber") String cpuNumber,
-        @CustomType.Parameter("diskCategory") String diskCategory,
-        @CustomType.Parameter("engineType") String engineType,
-        @CustomType.Parameter("expiredTime") Integer expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceAlias") String instanceAlias,
-        @CustomType.Parameter("instanceClass") String instanceClass,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceStorage") String instanceStorage,
-        @CustomType.Parameter("memorySize") String memorySize,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcConnectionAddress") String vpcConnectionAddress,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.autoRenew = autoRenew;
-        this.cpuNumber = cpuNumber;
-        this.diskCategory = diskCategory;
-        this.engineType = engineType;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.instanceAlias = instanceAlias;
-        this.instanceClass = instanceClass;
-        this.instanceId = instanceId;
-        this.instanceStorage = instanceStorage;
-        this.memorySize = memorySize;
-        this.networkType = networkType;
-        this.paymentType = paymentType;
-        this.status = status;
-        this.vpcConnectionAddress = vpcConnectionAddress;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Auto renew.
      * 
@@ -275,7 +236,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String autoRenew;
         private String cpuNumber;
@@ -295,11 +256,7 @@ public final class GetInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenew = defaults.autoRenew;
@@ -322,79 +279,117 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder autoRenew(String autoRenew) {
             this.autoRenew = Objects.requireNonNull(autoRenew);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuNumber(String cpuNumber) {
             this.cpuNumber = Objects.requireNonNull(cpuNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder diskCategory(String diskCategory) {
             this.diskCategory = Objects.requireNonNull(diskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder engineType(String engineType) {
             this.engineType = Objects.requireNonNull(engineType);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceAlias(String instanceAlias) {
             this.instanceAlias = Objects.requireNonNull(instanceAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceStorage(String instanceStorage) {
             this.instanceStorage = Objects.requireNonNull(instanceStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder memorySize(String memorySize) {
             this.memorySize = Objects.requireNonNull(memorySize);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConnectionAddress(String vpcConnectionAddress) {
             this.vpcConnectionAddress = Objects.requireNonNull(vpcConnectionAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(autoRenew, cpuNumber, diskCategory, engineType, expiredTime, id, instanceAlias, instanceClass, instanceId, instanceStorage, memorySize, networkType, paymentType, status, vpcConnectionAddress, vpcId, vswitchId, zoneId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.autoRenew = autoRenew;
+            o.cpuNumber = cpuNumber;
+            o.diskCategory = diskCategory;
+            o.engineType = engineType;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.instanceAlias = instanceAlias;
+            o.instanceClass = instanceClass;
+            o.instanceId = instanceId;
+            o.instanceStorage = instanceStorage;
+            o.memorySize = memorySize;
+            o.networkType = networkType;
+            o.paymentType = paymentType;
+            o.status = status;
+            o.vpcConnectionAddress = vpcConnectionAddress;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

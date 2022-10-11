@@ -44,6 +44,20 @@ import * as utilities from "../utilities";
  *             type: "Binary",
  *         },
  *     ],
+ *     definedColumns: [
+ *         {
+ *             name: "col1",
+ *             type: "Integer",
+ *         },
+ *         {
+ *             name: "col2",
+ *             type: "String",
+ *         },
+ *         {
+ *             name: "col3",
+ *             type: "Binary",
+ *         },
+ *     ],
  *     timeToLive: -1,
  *     maxVersion: 1,
  *     deviationCellVersionInSec: "1",
@@ -88,6 +102,10 @@ export class Table extends pulumi.CustomResource {
         return obj['__pulumiType'] === Table.__pulumiType;
     }
 
+    /**
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     */
+    public readonly definedColumns!: pulumi.Output<outputs.ots.TableDefinedColumn[] | undefined>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
@@ -134,6 +152,7 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
+            resourceInputs["definedColumns"] = state ? state.definedColumns : undefined;
             resourceInputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
             resourceInputs["enableSse"] = state ? state.enableSse : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
@@ -159,6 +178,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.timeToLive === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeToLive'");
             }
+            resourceInputs["definedColumns"] = args ? args.definedColumns : undefined;
             resourceInputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
             resourceInputs["enableSse"] = args ? args.enableSse : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
@@ -177,6 +197,10 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     */
+    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
@@ -215,6 +239,10 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+     */
+    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */

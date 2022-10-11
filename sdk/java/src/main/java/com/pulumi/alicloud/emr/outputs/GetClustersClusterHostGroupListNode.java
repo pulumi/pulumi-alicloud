@@ -16,77 +16,54 @@ public final class GetClustersClusterHostGroupListNode {
      * @return Creation time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Disk information.
      * 
      */
-    private final List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos;
+    private List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos;
     /**
      * @return The timeout of the EMR.
      * 
      */
-    private final String emrExpiredTime;
+    private String emrExpiredTime;
     /**
      * @return Timeout time.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The Intranet IP of the EMR.
      * 
      */
-    private final String innerIp;
+    private String innerIp;
     /**
      * @return The ID of the ECS instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Public IP address.
      * 
      */
-    private final String pubIp;
+    private String pubIp;
     /**
      * @return The cluster status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Whether IPV6 is supported.
      * 
      */
-    private final Boolean supportIpv6;
+    private Boolean supportIpv6;
     /**
      * @return The zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersClusterHostGroupListNode(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("diskInfos") List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos,
-        @CustomType.Parameter("emrExpiredTime") String emrExpiredTime,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("innerIp") String innerIp,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("pubIp") String pubIp,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("supportIpv6") Boolean supportIpv6,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.createTime = createTime;
-        this.diskInfos = diskInfos;
-        this.emrExpiredTime = emrExpiredTime;
-        this.expiredTime = expiredTime;
-        this.innerIp = innerIp;
-        this.instanceId = instanceId;
-        this.pubIp = pubIp;
-        this.status = status;
-        this.supportIpv6 = supportIpv6;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersClusterHostGroupListNode() {}
     /**
      * @return Creation time.
      * 
@@ -165,7 +142,7 @@ public final class GetClustersClusterHostGroupListNode {
     public static Builder builder(GetClustersClusterHostGroupListNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos;
@@ -177,11 +154,7 @@ public final class GetClustersClusterHostGroupListNode {
         private String status;
         private Boolean supportIpv6;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterHostGroupListNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -196,10 +169,12 @@ public final class GetClustersClusterHostGroupListNode {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder diskInfos(List<GetClustersClusterHostGroupListNodeDiskInfo> diskInfos) {
             this.diskInfos = Objects.requireNonNull(diskInfos);
             return this;
@@ -207,39 +182,59 @@ public final class GetClustersClusterHostGroupListNode {
         public Builder diskInfos(GetClustersClusterHostGroupListNodeDiskInfo... diskInfos) {
             return diskInfos(List.of(diskInfos));
         }
+        @CustomType.Setter
         public Builder emrExpiredTime(String emrExpiredTime) {
             this.emrExpiredTime = Objects.requireNonNull(emrExpiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder innerIp(String innerIp) {
             this.innerIp = Objects.requireNonNull(innerIp);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder pubIp(String pubIp) {
             this.pubIp = Objects.requireNonNull(pubIp);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder supportIpv6(Boolean supportIpv6) {
             this.supportIpv6 = Objects.requireNonNull(supportIpv6);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersClusterHostGroupListNode build() {
-            return new GetClustersClusterHostGroupListNode(createTime, diskInfos, emrExpiredTime, expiredTime, innerIp, instanceId, pubIp, status, supportIpv6, zoneId);
+        }
+        public GetClustersClusterHostGroupListNode build() {
+            final var o = new GetClustersClusterHostGroupListNode();
+            o.createTime = createTime;
+            o.diskInfos = diskInfos;
+            o.emrExpiredTime = emrExpiredTime;
+            o.expiredTime = expiredTime;
+            o.innerIp = innerIp;
+            o.instanceId = instanceId;
+            o.pubIp = pubIp;
+            o.status = status;
+            o.supportIpv6 = supportIpv6;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

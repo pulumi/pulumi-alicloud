@@ -147,6 +147,12 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Output("otsDetail")]
+        public Output<Outputs.RestoreJobOtsDetail> OtsDetail { get; private set; } = null!;
+
+        /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         /// </summary>
         [Output("restoreJobId")]
@@ -325,6 +331,12 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Options { get; set; }
 
         /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Input("otsDetail")]
+        public Input<Inputs.RestoreJobOtsDetailArgs>? OtsDetail { get; set; }
+
+        /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         /// </summary>
         [Input("restoreJobId")]
@@ -456,6 +468,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
+
+        /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Input("otsDetail")]
+        public Input<Inputs.RestoreJobOtsDetailGetArgs>? OtsDetail { get; set; }
 
         /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.

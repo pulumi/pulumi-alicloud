@@ -12,4 +12,5 @@ from .get_accounts import *
 from .get_instances import *
 from .get_zones import *
 from .instance import *
+from ._inputs import *
 from . import outputs

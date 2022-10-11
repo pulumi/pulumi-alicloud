@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsDisksOperationLock {
-    private final @Nullable String lockReason;
+    private @Nullable String lockReason;
 
-    @CustomType.Constructor
-    private GetEcsDisksOperationLock(@CustomType.Parameter("lockReason") @Nullable String lockReason) {
-        this.lockReason = lockReason;
-    }
-
+    private GetEcsDisksOperationLock() {}
     public Optional<String> lockReason() {
         return Optional.ofNullable(this.lockReason);
     }
@@ -29,24 +25,24 @@ public final class GetEcsDisksOperationLock {
     public static Builder builder(GetEcsDisksOperationLock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String lockReason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsDisksOperationLock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lockReason = defaults.lockReason;
         }
 
+        @CustomType.Setter
         public Builder lockReason(@Nullable String lockReason) {
             this.lockReason = lockReason;
             return this;
-        }        public GetEcsDisksOperationLock build() {
-            return new GetEcsDisksOperationLock(lockReason);
+        }
+        public GetEcsDisksOperationLock build() {
+            final var o = new GetEcsDisksOperationLock();
+            o.lockReason = lockReason;
+            return o;
         }
     }
 }

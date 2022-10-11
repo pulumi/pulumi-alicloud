@@ -144,6 +144,8 @@ type Listener struct {
 	PersistenceTimeout pulumi.IntPtrOutput `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolOutput `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrOutput `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -275,6 +277,8 @@ type listenerState struct {
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol *string `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -369,6 +373,8 @@ type ListenerState struct {
 	PersistenceTimeout pulumi.IntPtrInput
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringPtrInput
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -467,6 +473,8 @@ type listenerArgs struct {
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol string `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -562,6 +570,8 @@ type ListenerArgs struct {
 	PersistenceTimeout pulumi.IntPtrInput
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringInput
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -842,6 +852,11 @@ func (o ListenerOutput) PersistenceTimeout() pulumi.IntPtrOutput {
 // The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 func (o ListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+func (o ListenerOutput) ProxyProtocolV2Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.ProxyProtocolV2Enabled }).(pulumi.BoolOutput)
 }
 
 // Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.

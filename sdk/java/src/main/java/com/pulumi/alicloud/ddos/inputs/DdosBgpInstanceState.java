@@ -92,6 +92,21 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    @Import(name="normalBandwidth")
+    private @Nullable Output<Integer> normalBandwidth;
+
+    /**
+     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    public Optional<Output<Integer>> normalBandwidth() {
+        return Optional.ofNullable(this.normalBandwidth);
+    }
+
+    /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify &#34;period&#34;.
      * 
      */
@@ -107,14 +122,14 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * @return Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      * 
      */
     public Optional<Output<String>> type() {
@@ -129,6 +144,7 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
         this.ipCount = $.ipCount;
         this.ipType = $.ipType;
         this.name = $.name;
+        this.normalBandwidth = $.normalBandwidth;
         this.period = $.period;
         this.type = $.type;
     }
@@ -257,6 +273,27 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param normalBandwidth Normal defend bandwidth of the instance. The unit is Gbps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(@Nullable Output<Integer> normalBandwidth) {
+            $.normalBandwidth = normalBandwidth;
+            return this;
+        }
+
+        /**
+         * @param normalBandwidth Normal defend bandwidth of the instance. The unit is Gbps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalBandwidth(Integer normalBandwidth) {
+            return normalBandwidth(Output.of(normalBandwidth));
+        }
+
+        /**
          * @param period The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify &#34;period&#34;.
          * 
          * @return builder
@@ -278,7 +315,7 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+         * @param type Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
          * 
          * @return builder
          * 
@@ -289,7 +326,7 @@ public final class DdosBgpInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+         * @param type Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
          * 
          * @return builder
          * 

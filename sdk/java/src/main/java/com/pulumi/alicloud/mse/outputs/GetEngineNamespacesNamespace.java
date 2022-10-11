@@ -14,37 +14,37 @@ public final class GetEngineNamespacesNamespace {
      * @return The Number of Configuration of the Namespace.
      * 
      */
-    private final Integer configCount;
+    private Integer configCount;
     /**
      * @return The ID of the Engine Namespace. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The description of the Namespace.
      * 
      */
-    private final String namespaceDesc;
+    private String namespaceDesc;
     /**
      * @return The id of Namespace.
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return The name of the Namespace.
      * 
      */
-    private final String namespaceShowName;
+    private String namespaceShowName;
     /**
      * @return The Quota of the Namespace.
      * 
      */
-    private final Integer quota;
+    private Integer quota;
     /**
      * @return The number of active services.
      * 
      */
-    private final String serviceCount;
+    private String serviceCount;
     /**
      * @return The type of the Namespace, the value is as follows:
      * - &#39;0&#39;: Global Configuration.
@@ -52,28 +52,9 @@ public final class GetEngineNamespacesNamespace {
      * - &#39;2&#39;: Custom Namespace.
      * 
      */
-    private final Integer type;
+    private Integer type;
 
-    @CustomType.Constructor
-    private GetEngineNamespacesNamespace(
-        @CustomType.Parameter("configCount") Integer configCount,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespaceDesc") String namespaceDesc,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("namespaceShowName") String namespaceShowName,
-        @CustomType.Parameter("quota") Integer quota,
-        @CustomType.Parameter("serviceCount") String serviceCount,
-        @CustomType.Parameter("type") Integer type) {
-        this.configCount = configCount;
-        this.id = id;
-        this.namespaceDesc = namespaceDesc;
-        this.namespaceId = namespaceId;
-        this.namespaceShowName = namespaceShowName;
-        this.quota = quota;
-        this.serviceCount = serviceCount;
-        this.type = type;
-    }
-
+    private GetEngineNamespacesNamespace() {}
     /**
      * @return The Number of Configuration of the Namespace.
      * 
@@ -141,7 +122,7 @@ public final class GetEngineNamespacesNamespace {
     public static Builder builder(GetEngineNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer configCount;
         private String id;
@@ -151,11 +132,7 @@ public final class GetEngineNamespacesNamespace {
         private Integer quota;
         private String serviceCount;
         private Integer type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEngineNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configCount = defaults.configCount;
@@ -168,39 +145,57 @@ public final class GetEngineNamespacesNamespace {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder configCount(Integer configCount) {
             this.configCount = Objects.requireNonNull(configCount);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceDesc(String namespaceDesc) {
             this.namespaceDesc = Objects.requireNonNull(namespaceDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceShowName(String namespaceShowName) {
             this.namespaceShowName = Objects.requireNonNull(namespaceShowName);
             return this;
         }
+        @CustomType.Setter
         public Builder quota(Integer quota) {
             this.quota = Objects.requireNonNull(quota);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceCount(String serviceCount) {
             this.serviceCount = Objects.requireNonNull(serviceCount);
             return this;
         }
+        @CustomType.Setter
         public Builder type(Integer type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetEngineNamespacesNamespace build() {
-            return new GetEngineNamespacesNamespace(configCount, id, namespaceDesc, namespaceId, namespaceShowName, quota, serviceCount, type);
+        }
+        public GetEngineNamespacesNamespace build() {
+            final var o = new GetEngineNamespacesNamespace();
+            o.configCount = configCount;
+            o.id = id;
+            o.namespaceDesc = namespaceDesc;
+            o.namespaceId = namespaceId;
+            o.namespaceShowName = namespaceShowName;
+            o.quota = quota;
+            o.serviceCount = serviceCount;
+            o.type = type;
+            return o;
         }
     }
 }

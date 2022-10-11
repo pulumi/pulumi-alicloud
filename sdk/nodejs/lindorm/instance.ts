@@ -58,7 +58,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly coreNum!: pulumi.Output<number | undefined>;
     /**
-     * The core spec.
+     * The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+     * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      */
     public readonly coreSpec!: pulumi.Output<string | undefined>;
     /**
@@ -66,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProection!: pulumi.Output<boolean>;
     /**
-     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
      */
     public readonly diskCategory!: pulumi.Output<string>;
     /**
@@ -190,6 +192,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly upgradeType!: pulumi.Output<string | undefined>;
     /**
+     * The VPC ID of the instance.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The vswitch id.
      */
     public readonly vswitchId!: pulumi.Output<string>;
@@ -245,6 +251,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["timeSeriesEngineSpecification"] = state ? state.timeSeriesEngineSpecification : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -286,6 +293,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["timeSeriesEngineSpecification"] = args ? args.timeSeriesEngineSpecification : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["enabledFileEngine"] = undefined /*out*/;
@@ -313,7 +321,9 @@ export interface InstanceState {
      */
     coreNum?: pulumi.Input<number>;
     /**
-     * The core spec.
+     * The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+     * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      */
     coreSpec?: pulumi.Input<string>;
     /**
@@ -321,7 +331,7 @@ export interface InstanceState {
      */
     deletionProection?: pulumi.Input<boolean>;
     /**
-     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
      */
     diskCategory?: pulumi.Input<string>;
     /**
@@ -445,6 +455,10 @@ export interface InstanceState {
      */
     upgradeType?: pulumi.Input<string>;
     /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id.
      */
     vswitchId?: pulumi.Input<string>;
@@ -467,7 +481,9 @@ export interface InstanceArgs {
      */
     coreNum?: pulumi.Input<number>;
     /**
-     * The core spec.
+     * The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+     * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      */
     coreSpec?: pulumi.Input<string>;
     /**
@@ -475,7 +491,7 @@ export interface InstanceArgs {
      */
     deletionProection?: pulumi.Input<boolean>;
     /**
-     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+     * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
      */
     diskCategory: pulumi.Input<string>;
     /**
@@ -574,6 +590,10 @@ export interface InstanceArgs {
      * @deprecated Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
      */
     upgradeType?: pulumi.Input<string>;
+    /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */

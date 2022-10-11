@@ -121,6 +121,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Output("portType")]
         public Output<string?> PortType { get; private set; } = null!;
@@ -244,6 +246,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
@@ -328,6 +332,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }

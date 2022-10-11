@@ -6,24 +6,20 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
- * Filters support regular expression for the instance name or availability_zone.
+ * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.47.0+
  *
  * ## Example Usage
  *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const gpdb = pulumi.output(alicloud.gpdb.getInstances({
- *     availabilityZone: "cn-beijing-c",
- *     nameRegex: "gp-.+\\d+",
- *     outputFile: "instances.txt",
- * }));
- *
- * export const instanceId = gpdb.instances[0].id;
+ * const ids = alicloud.gpdb.getInstances({});
+ * export const gpdbDbInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -35,9 +31,16 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:gpdb/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
+        "dbInstanceCategories": args.dbInstanceCategories,
+        "dbInstanceModes": args.dbInstanceModes,
+        "description": args.description,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "instanceNetworkType": args.instanceNetworkType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
         "tags": args.tags,
         "vswitchId": args.vswitchId,
     }, opts);
@@ -52,20 +55,48 @@ export interface GetInstancesArgs {
      */
     availabilityZone?: string;
     /**
-     * A list of instance IDs.
+     * The db instance categories.
+     */
+    dbInstanceCategories?: string;
+    /**
+     * The db instance modes.
+     */
+    dbInstanceModes?: string;
+    /**
+     * The description of the instance.
+     */
+    description?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: boolean;
+    /**
+     * The ids list of AnalyticDB for PostgreSQL instances.
      */
     ids?: string[];
+    /**
+     * The network type of the instance.
+     */
+    instanceNetworkType?: string;
     /**
      * A regex string to apply to the instance name.
      */
     nameRegex?: string;
     outputFile?: string;
     /**
-     * A mapping of tags to assign to the resource.
+     * The ID of the enterprise resource group to which the instance belongs.
+     */
+    resourceGroupId?: string;
+    /**
+     * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     */
+    status?: string;
+    /**
+     * The tags of the instance.
      */
     tags?: {[key: string]: any};
     /**
-     * Used to retrieve instances belong to specified `vswitch` resources.
+     * The vswitch id.
      */
     vswitchId?: string;
 }
@@ -74,28 +105,23 @@ export interface GetInstancesArgs {
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
-    /**
-     * Instance availability zone.
-     */
     readonly availabilityZone?: string;
+    readonly dbInstanceCategories?: string;
+    readonly dbInstanceModes?: string;
+    readonly description?: string;
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The ids list of AnalyticDB for PostgreSQL instances.
-     */
     readonly ids: string[];
-    /**
-     * A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
-     */
+    readonly instanceNetworkType?: string;
     readonly instances: outputs.gpdb.GetInstancesInstance[];
     readonly nameRegex?: string;
-    /**
-     * The names list of AnalyticDB for PostgreSQL instance.
-     */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly resourceGroupId?: string;
+    readonly status?: string;
     readonly tags?: {[key: string]: any};
     readonly vswitchId?: string;
 }
@@ -113,20 +139,48 @@ export interface GetInstancesOutputArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * A list of instance IDs.
+     * The db instance categories.
+     */
+    dbInstanceCategories?: pulumi.Input<string>;
+    /**
+     * The db instance modes.
+     */
+    dbInstanceModes?: pulumi.Input<string>;
+    /**
+     * The description of the instance.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The ids list of AnalyticDB for PostgreSQL instances.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The network type of the instance.
+     */
+    instanceNetworkType?: pulumi.Input<string>;
     /**
      * A regex string to apply to the instance name.
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The ID of the enterprise resource group to which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags of the instance.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Used to retrieve instances belong to specified `vswitch` resources.
+     * The vswitch id.
      */
     vswitchId?: pulumi.Input<string>;
 }

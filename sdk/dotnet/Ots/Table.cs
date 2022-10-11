@@ -59,6 +59,24 @@ namespace Pulumi.AliCloud.Ots
     ///                     Type = "Binary",
     ///                 },
     ///             },
+    ///             DefinedColumns = 
+    ///             {
+    ///                 new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///                 {
+    ///                     Name = "col1",
+    ///                     Type = "Integer",
+    ///                 },
+    ///                 new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///                 {
+    ///                     Name = "col2",
+    ///                     Type = "String",
+    ///                 },
+    ///                 new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///                 {
+    ///                     Name = "col3",
+    ///                     Type = "Binary",
+    ///                 },
+    ///             },
     ///             TimeToLive = -1,
     ///             MaxVersion = 1,
     ///             DeviationCellVersionInSec = "1",
@@ -81,6 +99,12 @@ namespace Pulumi.AliCloud.Ots
     [AliCloudResourceType("alicloud:ots/table:Table")]
     public partial class Table : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        [Output("definedColumns")]
+        public Output<ImmutableArray<Outputs.TableDefinedColumn>> DefinedColumns { get; private set; } = null!;
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>
@@ -175,6 +199,18 @@ namespace Pulumi.AliCloud.Ots
 
     public sealed class TableArgs : Pulumi.ResourceArgs
     {
+        [Input("definedColumns")]
+        private InputList<Inputs.TableDefinedColumnArgs>? _definedColumns;
+
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        public InputList<Inputs.TableDefinedColumnArgs> DefinedColumns
+        {
+            get => _definedColumns ?? (_definedColumns = new InputList<Inputs.TableDefinedColumnArgs>());
+            set => _definedColumns = value;
+        }
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>
@@ -236,6 +272,18 @@ namespace Pulumi.AliCloud.Ots
 
     public sealed class TableState : Pulumi.ResourceArgs
     {
+        [Input("definedColumns")]
+        private InputList<Inputs.TableDefinedColumnGetArgs>? _definedColumns;
+
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        public InputList<Inputs.TableDefinedColumnGetArgs> DefinedColumns
+        {
+            get => _definedColumns ?? (_definedColumns = new InputList<Inputs.TableDefinedColumnGetArgs>());
+            set => _definedColumns = value;
+        }
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>

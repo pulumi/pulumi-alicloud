@@ -477,6 +477,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
@@ -540,6 +555,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -1226,6 +1242,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tdeStatus(String tdeStatus) {
             return tdeStatus(Output.of(tdeStatus));
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

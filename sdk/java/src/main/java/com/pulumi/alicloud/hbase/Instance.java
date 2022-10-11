@@ -432,6 +432,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.uiProxyConnAddrs;
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
+    }
+    /**
      * If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
      * 
      */

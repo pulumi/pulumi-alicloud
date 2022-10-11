@@ -13,35 +13,24 @@ public final class GetAdConnectorOfficeSitesSiteLog {
      * @return Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
      * 
      */
-    private final String level;
+    private String level;
     /**
      * @return The Log Details.
      * 
      */
-    private final String message;
+    private String message;
     /**
      * @return Log Information Corresponding to the Step.
      * 
      */
-    private final String step;
+    private String step;
     /**
      * @return Log Print Time.
      * 
      */
-    private final String timeStamp;
+    private String timeStamp;
 
-    @CustomType.Constructor
-    private GetAdConnectorOfficeSitesSiteLog(
-        @CustomType.Parameter("level") String level,
-        @CustomType.Parameter("message") String message,
-        @CustomType.Parameter("step") String step,
-        @CustomType.Parameter("timeStamp") String timeStamp) {
-        this.level = level;
-        this.message = message;
-        this.step = step;
-        this.timeStamp = timeStamp;
-    }
-
+    private GetAdConnectorOfficeSitesSiteLog() {}
     /**
      * @return Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
      * 
@@ -78,17 +67,13 @@ public final class GetAdConnectorOfficeSitesSiteLog {
     public static Builder builder(GetAdConnectorOfficeSitesSiteLog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String level;
         private String message;
         private String step;
         private String timeStamp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAdConnectorOfficeSitesSiteLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.level = defaults.level;
@@ -97,23 +82,33 @@ public final class GetAdConnectorOfficeSitesSiteLog {
     	      this.timeStamp = defaults.timeStamp;
         }
 
+        @CustomType.Setter
         public Builder level(String level) {
             this.level = Objects.requireNonNull(level);
             return this;
         }
+        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
+        @CustomType.Setter
         public Builder step(String step) {
             this.step = Objects.requireNonNull(step);
             return this;
         }
+        @CustomType.Setter
         public Builder timeStamp(String timeStamp) {
             this.timeStamp = Objects.requireNonNull(timeStamp);
             return this;
-        }        public GetAdConnectorOfficeSitesSiteLog build() {
-            return new GetAdConnectorOfficeSitesSiteLog(level, message, step, timeStamp);
+        }
+        public GetAdConnectorOfficeSitesSiteLog build() {
+            final var o = new GetAdConnectorOfficeSitesSiteLog();
+            o.level = level;
+            o.message = message;
+            o.step = step;
+            o.timeStamp = timeStamp;
+            return o;
         }
     }
 }

@@ -13,57 +13,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetControlPoliciesResult {
-    private final @Nullable String aclAction;
-    private final @Nullable String aclUuid;
-    private final @Nullable String description;
-    private final @Nullable String destination;
-    private final String direction;
+    private @Nullable String aclAction;
+    private @Nullable String aclUuid;
+    private @Nullable String description;
+    private @Nullable String destination;
+    private String direction;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String ipVersion;
-    private final @Nullable String lang;
-    private final @Nullable String outputFile;
-    private final List<GetControlPoliciesPolicy> policies;
-    private final @Nullable String proto;
-    private final @Nullable String source;
-    private final @Nullable String sourceIp;
+    private String id;
+    private List<String> ids;
+    private @Nullable String ipVersion;
+    private @Nullable String lang;
+    private @Nullable String outputFile;
+    private List<GetControlPoliciesPolicy> policies;
+    private @Nullable String proto;
+    private @Nullable String source;
+    private @Nullable String sourceIp;
 
-    @CustomType.Constructor
-    private GetControlPoliciesResult(
-        @CustomType.Parameter("aclAction") @Nullable String aclAction,
-        @CustomType.Parameter("aclUuid") @Nullable String aclUuid,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("destination") @Nullable String destination,
-        @CustomType.Parameter("direction") String direction,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("ipVersion") @Nullable String ipVersion,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetControlPoliciesPolicy> policies,
-        @CustomType.Parameter("proto") @Nullable String proto,
-        @CustomType.Parameter("source") @Nullable String source,
-        @CustomType.Parameter("sourceIp") @Nullable String sourceIp) {
-        this.aclAction = aclAction;
-        this.aclUuid = aclUuid;
-        this.description = description;
-        this.destination = destination;
-        this.direction = direction;
-        this.id = id;
-        this.ids = ids;
-        this.ipVersion = ipVersion;
-        this.lang = lang;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.proto = proto;
-        this.source = source;
-        this.sourceIp = sourceIp;
-    }
-
+    private GetControlPoliciesResult() {}
     public Optional<String> aclAction() {
         return Optional.ofNullable(this.aclAction);
     }
@@ -118,7 +87,7 @@ public final class GetControlPoliciesResult {
     public static Builder builder(GetControlPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aclAction;
         private @Nullable String aclUuid;
@@ -134,11 +103,7 @@ public final class GetControlPoliciesResult {
         private @Nullable String proto;
         private @Nullable String source;
         private @Nullable String sourceIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetControlPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclAction = defaults.aclAction;
@@ -157,30 +122,37 @@ public final class GetControlPoliciesResult {
     	      this.sourceIp = defaults.sourceIp;
         }
 
+        @CustomType.Setter
         public Builder aclAction(@Nullable String aclAction) {
             this.aclAction = aclAction;
             return this;
         }
+        @CustomType.Setter
         public Builder aclUuid(@Nullable String aclUuid) {
             this.aclUuid = aclUuid;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
         }
+        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -188,18 +160,22 @@ public final class GetControlPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder ipVersion(@Nullable String ipVersion) {
             this.ipVersion = ipVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetControlPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -207,19 +183,38 @@ public final class GetControlPoliciesResult {
         public Builder policies(GetControlPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder proto(@Nullable String proto) {
             this.proto = proto;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceIp(@Nullable String sourceIp) {
             this.sourceIp = sourceIp;
             return this;
-        }        public GetControlPoliciesResult build() {
-            return new GetControlPoliciesResult(aclAction, aclUuid, description, destination, direction, id, ids, ipVersion, lang, outputFile, policies, proto, source, sourceIp);
+        }
+        public GetControlPoliciesResult build() {
+            final var o = new GetControlPoliciesResult();
+            o.aclAction = aclAction;
+            o.aclUuid = aclUuid;
+            o.description = description;
+            o.destination = destination;
+            o.direction = direction;
+            o.id = id;
+            o.ids = ids;
+            o.ipVersion = ipVersion;
+            o.lang = lang;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.proto = proto;
+            o.source = source;
+            o.sourceIp = sourceIp;
+            return o;
         }
     }
 }

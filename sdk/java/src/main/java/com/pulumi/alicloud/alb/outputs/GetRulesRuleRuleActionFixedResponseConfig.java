@@ -13,28 +13,19 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
      * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
      * 
      */
-    private final String contentType;
+    private String contentType;
     /**
      * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
      * 
      */
-    private final String httpCode;
+    private String httpCode;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionFixedResponseConfig(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("contentType") String contentType,
-        @CustomType.Parameter("httpCode") String httpCode) {
-        this.content = content;
-        this.contentType = contentType;
-        this.httpCode = httpCode;
-    }
-
+    private GetRulesRuleRuleActionFixedResponseConfig() {}
     /**
      * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
      * 
@@ -64,16 +55,12 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
     public static Builder builder(GetRulesRuleRuleActionFixedResponseConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private String contentType;
         private String httpCode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionFixedResponseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -81,19 +68,27 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
     	      this.httpCode = defaults.httpCode;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder contentType(String contentType) {
             this.contentType = Objects.requireNonNull(contentType);
             return this;
         }
+        @CustomType.Setter
         public Builder httpCode(String httpCode) {
             this.httpCode = Objects.requireNonNull(httpCode);
             return this;
-        }        public GetRulesRuleRuleActionFixedResponseConfig build() {
-            return new GetRulesRuleRuleActionFixedResponseConfig(content, contentType, httpCode);
+        }
+        public GetRulesRuleRuleActionFixedResponseConfig build() {
+            final var o = new GetRulesRuleRuleActionFixedResponseConfig();
+            o.content = content;
+            o.contentType = contentType;
+            o.httpCode = httpCode;
+            return o;
         }
     }
 }

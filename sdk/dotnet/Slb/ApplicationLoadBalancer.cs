@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         /// </summary>
         [Output("loadBalancerSpec")]
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         /// </summary>
         [Input("loadBalancerSpec")]
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         /// </summary>
         [Input("loadBalancerSpec")]
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

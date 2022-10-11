@@ -22,29 +22,35 @@ class ClusterArgs:
                  pub_network_flow: pulumi.Input[str],
                  acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 request_pars: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
-               `MSE_SC_1_2_200_c`：1C2G
-               `MSE_SC_2_4_200_c`：2C4G
-               `MSE_SC_4_8_200_c`：4C8G
-               `MSE_SC_8_16_200_c`：8C16G
+               `MSE_SC_1_2_60_c`：1C2G
+               `MSE_SC_2_4_60_c`：2C4G
+               `MSE_SC_4_8_60_c`：4C8G
+               `MSE_SC_8_16_60_c`：8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         :param pulumi.Input[int] instance_count: The count of instance.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         pulumi.set(__self__, "cluster_specification", cluster_specification)
@@ -57,6 +63,8 @@ class ClusterArgs:
             pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
         if cluster_alias_name is not None:
             pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if mse_version is not None:
@@ -65,6 +73,10 @@ class ClusterArgs:
             pulumi.set(__self__, "private_slb_specification", private_slb_specification)
         if pub_slb_specification is not None:
             pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
+        if request_pars is not None:
+            pulumi.set(__self__, "request_pars", request_pars)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -73,10 +85,10 @@ class ClusterArgs:
     def cluster_specification(self) -> pulumi.Input[str]:
         """
         The engine specification of MSE Cluster. Valid values:
-        `MSE_SC_1_2_200_c`：1C2G
-        `MSE_SC_2_4_200_c`：2C4G
-        `MSE_SC_4_8_200_c`：4C8G
-        `MSE_SC_8_16_200_c`：8C16G
+        `MSE_SC_1_2_60_c`：1C2G
+        `MSE_SC_2_4_60_c`：2C4G
+        `MSE_SC_4_8_60_c`：4C8G
+        `MSE_SC_8_16_60_c`：8C16G
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -100,7 +112,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> pulumi.Input[str]:
         """
-        The version of MSE Cluster.
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 
@@ -169,6 +181,18 @@ class ClusterArgs:
         pulumi.set(self, "cluster_alias_name", value)
 
     @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection type. Valid values: `slb`.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -184,7 +208,7 @@ class ClusterArgs:
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         """
         return pulumi.get(self, "mse_version")
 
@@ -217,6 +241,30 @@ class ClusterArgs:
         pulumi.set(self, "pub_slb_specification", value)
 
     @property
+    @pulumi.getter(name="requestPars")
+    def request_pars(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended request parameters in the JSON format.
+        """
+        return pulumi.get(self, "request_pars")
+
+    @request_pars.setter
+    def request_pars(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_pars", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -238,6 +286,7 @@ class _ClusterState:
                  cluster_specification: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
@@ -245,7 +294,9 @@ class _ClusterState:
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 request_pars: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -253,20 +304,23 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
-               `MSE_SC_1_2_200_c`：1C2G
-               `MSE_SC_2_4_200_c`：2C4G
-               `MSE_SC_4_8_200_c`：4C8G
-               `MSE_SC_8_16_200_c`：8C16G
+               `MSE_SC_1_2_60_c`：1C2G
+               `MSE_SC_2_4_60_c`：2C4G
+               `MSE_SC_4_8_60_c`：4C8G
+               `MSE_SC_8_16_60_c`：8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] status: The status of MSE Cluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         if acl_entry_lists is not None:
@@ -281,6 +335,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_type", cluster_type)
         if cluster_version is not None:
             pulumi.set(__self__, "cluster_version", cluster_version)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if instance_count is not None:
@@ -295,8 +351,12 @@ class _ClusterState:
             pulumi.set(__self__, "pub_network_flow", pub_network_flow)
         if pub_slb_specification is not None:
             pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
+        if request_pars is not None:
+            pulumi.set(__self__, "request_pars", request_pars)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -341,10 +401,10 @@ class _ClusterState:
     def cluster_specification(self) -> Optional[pulumi.Input[str]]:
         """
         The engine specification of MSE Cluster. Valid values:
-        `MSE_SC_1_2_200_c`：1C2G
-        `MSE_SC_2_4_200_c`：2C4G
-        `MSE_SC_4_8_200_c`：4C8G
-        `MSE_SC_8_16_200_c`：8C16G
+        `MSE_SC_1_2_60_c`：1C2G
+        `MSE_SC_2_4_60_c`：2C4G
+        `MSE_SC_4_8_60_c`：4C8G
+        `MSE_SC_8_16_60_c`：8C16G
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -368,13 +428,25 @@ class _ClusterState:
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE Cluster.
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 
     @cluster_version.setter
     def cluster_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_version", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection type. Valid values: `slb`.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
 
     @property
     @pulumi.getter(name="diskType")
@@ -404,7 +476,7 @@ class _ClusterState:
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         """
         return pulumi.get(self, "mse_version")
 
@@ -461,6 +533,18 @@ class _ClusterState:
         pulumi.set(self, "pub_slb_specification", value)
 
     @property
+    @pulumi.getter(name="requestPars")
+    def request_pars(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended request parameters in the JSON format.
+        """
+        return pulumi.get(self, "request_pars")
+
+    @request_pars.setter
+    def request_pars(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_pars", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -471,6 +555,18 @@ class _ClusterState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -495,6 +591,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_specification: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
@@ -502,6 +599,8 @@ class Cluster(pulumi.CustomResource):
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 request_pars: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -522,6 +621,7 @@ class Cluster(pulumi.CustomResource):
             cluster_type="Nacos-Ans",
             cluster_version="NACOS_ANS_1_2_1",
             instance_count=1,
+            mse_version="mse_dev",
             net_type="privatenet",
             pub_network_flow="1",
             vswitch_id="vsw-123456")
@@ -540,19 +640,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
-               `MSE_SC_1_2_200_c`：1C2G
-               `MSE_SC_2_4_200_c`：2C4G
-               `MSE_SC_4_8_200_c`：4C8G
-               `MSE_SC_8_16_200_c`：8C16G
+               `MSE_SC_1_2_60_c`：1C2G
+               `MSE_SC_2_4_60_c`：2C4G
+               `MSE_SC_4_8_60_c`：4C8G
+               `MSE_SC_8_16_60_c`：8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         ...
@@ -579,6 +682,7 @@ class Cluster(pulumi.CustomResource):
             cluster_type="Nacos-Ans",
             cluster_version="NACOS_ANS_1_2_1",
             instance_count=1,
+            mse_version="mse_dev",
             net_type="privatenet",
             pub_network_flow="1",
             vswitch_id="vsw-123456")
@@ -612,6 +716,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_specification: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
@@ -619,6 +724,8 @@ class Cluster(pulumi.CustomResource):
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 request_pars: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -640,6 +747,7 @@ class Cluster(pulumi.CustomResource):
             if cluster_version is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_version'")
             __props__.__dict__["cluster_version"] = cluster_version
+            __props__.__dict__["connection_type"] = connection_type
             __props__.__dict__["disk_type"] = disk_type
             if instance_count is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_count'")
@@ -653,6 +761,8 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'pub_network_flow'")
             __props__.__dict__["pub_network_flow"] = pub_network_flow
             __props__.__dict__["pub_slb_specification"] = pub_slb_specification
+            __props__.__dict__["request_pars"] = request_pars
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["cluster_id"] = None
             __props__.__dict__["status"] = None
@@ -672,6 +782,7 @@ class Cluster(pulumi.CustomResource):
             cluster_specification: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             cluster_version: Optional[pulumi.Input[str]] = None,
+            connection_type: Optional[pulumi.Input[str]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
             instance_count: Optional[pulumi.Input[int]] = None,
             mse_version: Optional[pulumi.Input[str]] = None,
@@ -679,7 +790,9 @@ class Cluster(pulumi.CustomResource):
             private_slb_specification: Optional[pulumi.Input[str]] = None,
             pub_network_flow: Optional[pulumi.Input[str]] = None,
             pub_slb_specification: Optional[pulumi.Input[str]] = None,
+            request_pars: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -692,20 +805,23 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
-               `MSE_SC_1_2_200_c`：1C2G
-               `MSE_SC_2_4_200_c`：2C4G
-               `MSE_SC_4_8_200_c`：4C8G
-               `MSE_SC_8_16_200_c`：8C16G
+               `MSE_SC_1_2_60_c`：1C2G
+               `MSE_SC_2_4_60_c`：2C4G
+               `MSE_SC_4_8_60_c`：4C8G
+               `MSE_SC_8_16_60_c`：8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] status: The status of MSE Cluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -718,6 +834,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_specification"] = cluster_specification
         __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["cluster_version"] = cluster_version
+        __props__.__dict__["connection_type"] = connection_type
         __props__.__dict__["disk_type"] = disk_type
         __props__.__dict__["instance_count"] = instance_count
         __props__.__dict__["mse_version"] = mse_version
@@ -725,7 +842,9 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["private_slb_specification"] = private_slb_specification
         __props__.__dict__["pub_network_flow"] = pub_network_flow
         __props__.__dict__["pub_slb_specification"] = pub_slb_specification
+        __props__.__dict__["request_pars"] = request_pars
         __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -758,10 +877,10 @@ class Cluster(pulumi.CustomResource):
     def cluster_specification(self) -> pulumi.Output[str]:
         """
         The engine specification of MSE Cluster. Valid values:
-        `MSE_SC_1_2_200_c`：1C2G
-        `MSE_SC_2_4_200_c`：2C4G
-        `MSE_SC_4_8_200_c`：4C8G
-        `MSE_SC_8_16_200_c`：8C16G
+        `MSE_SC_1_2_60_c`：1C2G
+        `MSE_SC_2_4_60_c`：2C4G
+        `MSE_SC_4_8_60_c`：4C8G
+        `MSE_SC_8_16_60_c`：8C16G
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -777,9 +896,17 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> pulumi.Output[str]:
         """
-        The version of MSE Cluster.
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         """
         return pulumi.get(self, "cluster_version")
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> pulumi.Output[str]:
+        """
+        The connection type. Valid values: `slb`.
+        """
+        return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="diskType")
@@ -801,7 +928,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> pulumi.Output[str]:
         """
-        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         """
         return pulumi.get(self, "mse_version")
 
@@ -838,12 +965,28 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "pub_slb_specification")
 
     @property
+    @pulumi.getter(name="requestPars")
+    def request_pars(self) -> pulumi.Output[Optional[str]]:
+        """
+        The extended request parameters in the JSON format.
+        """
+        return pulumi.get(self, "request_pars")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
         The status of MSE Cluster.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

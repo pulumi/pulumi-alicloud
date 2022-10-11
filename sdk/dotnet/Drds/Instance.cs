@@ -91,6 +91,12 @@ namespace Pulumi.AliCloud.Drds
         public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The VSwitch ID to launch in.
         /// </summary>
         [Output("vswitchId")]
@@ -184,6 +190,12 @@ namespace Pulumi.AliCloud.Drds
         public Input<string> Specification { get; set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The VSwitch ID to launch in.
         /// </summary>
         [Input("vswitchId", required: true)]
@@ -236,6 +248,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The VSwitch ID to launch in.

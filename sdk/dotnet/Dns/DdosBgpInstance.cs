@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
-    /// &gt; **NOTE:** Available in 1.57.0+ .
+    /// &gt; **NOTE:** Available in 1.183.0+ .
     /// 
     /// ## Example Usage
     /// 
@@ -30,10 +30,12 @@ namespace Pulumi.AliCloud.Dns
     ///     {
     ///         var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new AliCloud.Ddos.DdosBgpInstanceArgs
     ///         {
-    ///             Bandwidth = 201,
+    ///             Bandwidth = -1,
     ///             BaseBandwidth = 20,
     ///             IpCount = 100,
     ///             IpType = "IPv4",
+    ///             NormalBandwidth = 100,
+    ///             Type = "Enterprise",
     ///         });
     ///     }
     /// 
@@ -83,13 +85,19 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// </summary>
+        [Output("normalBandwidth")]
+        public Output<int> NormalBandwidth { get; private set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -171,13 +179,19 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// </summary>
+        [Input("normalBandwidth", required: true)]
+        public Input<int> NormalBandwidth { get; set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -220,13 +234,19 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// </summary>
+        [Input("normalBandwidth")]
+        public Input<int>? NormalBandwidth { get; set; }
+
+        /// <summary>
         /// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

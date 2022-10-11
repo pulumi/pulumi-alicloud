@@ -13,21 +13,14 @@ public final class GetResolverZonesZone {
      * @return The status of the Zone.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetResolverZonesZone(
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.status = status;
-        this.zoneId = zoneId;
-    }
-
+    private GetResolverZonesZone() {}
     /**
      * @return The status of the Zone.
      * 
@@ -50,30 +43,32 @@ public final class GetResolverZonesZone {
     public static Builder builder(GetResolverZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String status;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResolverZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetResolverZonesZone build() {
-            return new GetResolverZonesZone(status, zoneId);
+        }
+        public GetResolverZonesZone build() {
+            final var o = new GetResolverZonesZone();
+            o.status = status;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

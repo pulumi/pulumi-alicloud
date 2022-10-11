@@ -15,13 +15,9 @@ public final class RuleRuleConditionPathConfig {
      * @return The query string.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private RuleRuleConditionPathConfig(@CustomType.Parameter("values") @Nullable List<String> values) {
-        this.values = values;
-    }
-
+    private RuleRuleConditionPathConfig() {}
     /**
      * @return The query string.
      * 
@@ -37,27 +33,27 @@ public final class RuleRuleConditionPathConfig {
     public static Builder builder(RuleRuleConditionPathConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleConditionPathConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public RuleRuleConditionPathConfig build() {
-            return new RuleRuleConditionPathConfig(values);
+        }
+        public RuleRuleConditionPathConfig build() {
+            final var o = new RuleRuleConditionPathConfig();
+            o.values = values;
+            return o;
         }
     }
 }

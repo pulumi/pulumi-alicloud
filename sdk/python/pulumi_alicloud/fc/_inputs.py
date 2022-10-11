@@ -20,6 +20,7 @@ __all__ = [
     'ServiceLogConfigArgs',
     'ServiceNasConfigArgs',
     'ServiceNasConfigMountPointArgs',
+    'ServiceTracingConfigArgs',
     'ServiceVpcConfigArgs',
 ]
 
@@ -319,13 +320,21 @@ class FunctionCustomContainerConfigArgs:
 class ServiceLogConfigArgs:
     def __init__(__self__, *,
                  logstore: pulumi.Input[str],
-                 project: pulumi.Input[str]):
+                 project: pulumi.Input[str],
+                 enable_instance_metrics: Optional[pulumi.Input[bool]] = None,
+                 enable_request_metrics: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] logstore: The log store name of Alicloud Simple Log Service.
         :param pulumi.Input[str] project: The project name of the Alicloud Simple Log Service.
+        :param pulumi.Input[bool] enable_instance_metrics: Enable instance level metrics.
+        :param pulumi.Input[bool] enable_request_metrics: Enable request level metrics.
         """
         pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "project", project)
+        if enable_instance_metrics is not None:
+            pulumi.set(__self__, "enable_instance_metrics", enable_instance_metrics)
+        if enable_request_metrics is not None:
+            pulumi.set(__self__, "enable_request_metrics", enable_request_metrics)
 
     @property
     @pulumi.getter
@@ -350,6 +359,30 @@ class ServiceLogConfigArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="enableInstanceMetrics")
+    def enable_instance_metrics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable instance level metrics.
+        """
+        return pulumi.get(self, "enable_instance_metrics")
+
+    @enable_instance_metrics.setter
+    def enable_instance_metrics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_instance_metrics", value)
+
+    @property
+    @pulumi.getter(name="enableRequestMetrics")
+    def enable_request_metrics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable request level metrics.
+        """
+        return pulumi.get(self, "enable_request_metrics")
+
+    @enable_request_metrics.setter
+    def enable_request_metrics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_request_metrics", value)
 
 
 @pulumi.input_type
@@ -439,6 +472,43 @@ class ServiceNasConfigMountPointArgs:
     @server_addr.setter
     def server_addr(self, value: pulumi.Input[str]):
         pulumi.set(self, "server_addr", value)
+
+
+@pulumi.input_type
+class ServiceTracingConfigArgs:
+    def __init__(__self__, *,
+                 params: pulumi.Input[Mapping[str, Any]],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Mapping[str, Any]] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        :param pulumi.Input[str] type: Tracing protocol type. Currently, only Jaeger is supported.
+        """
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Mapping[str, Any]]:
+        """
+        Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Mapping[str, Any]]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Tracing protocol type. Currently, only Jaeger is supported.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

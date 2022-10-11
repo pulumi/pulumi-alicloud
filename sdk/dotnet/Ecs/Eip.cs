@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        [Output("securityProtectionTypes")]
+        public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
+
         /// <summary>
         /// The EIP current status.
         /// </summary>
@@ -234,6 +237,14 @@ namespace Pulumi.AliCloud.Ecs
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -332,6 +343,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         /// <summary>
         /// The EIP current status.

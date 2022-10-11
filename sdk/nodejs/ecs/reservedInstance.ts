@@ -80,12 +80,20 @@ export class ReservedInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      */
-    public readonly offeringType!: pulumi.Output<string | undefined>;
+    public readonly offeringType!: pulumi.Output<string>;
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+     * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `periodUnit` is `Month`, Valid values: `1`.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
@@ -99,7 +107,7 @@ export class ReservedInstance extends pulumi.CustomResource {
     /**
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    public readonly scope!: pulumi.Output<string>;
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      */
@@ -172,12 +180,20 @@ export interface ReservedInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      */
     offeringType?: pulumi.Input<string>;
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+     * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `periodUnit` is `Month`, Valid values: `1`.
+     */
     period?: pulumi.Input<number>;
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      */
     periodUnit?: pulumi.Input<string>;
     /**
@@ -219,12 +235,20 @@ export interface ReservedInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      */
     offeringType?: pulumi.Input<string>;
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+     * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `periodUnit` is `Month`, Valid values: `1`.
+     */
     period?: pulumi.Input<number>;
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      */
     periodUnit?: pulumi.Input<string>;
     /**

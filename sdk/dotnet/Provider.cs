@@ -202,6 +202,12 @@ namespace Pulumi.AliCloud
         [Input("logEndpoint")]
         public Input<string>? LogEndpoint { get; set; }
 
+        /// <summary>
+        /// The maximum retry timeout of the request.
+        /// </summary>
+        [Input("maxRetryTimeout", json: true)]
+        public Input<int>? MaxRetryTimeout { get; set; }
+
         [Input("mnsEndpoint")]
         public Input<string>? MnsEndpoint { get; set; }
 

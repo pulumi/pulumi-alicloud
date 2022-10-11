@@ -5,13 +5,46 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServiceLogConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceLogConfigArgs Empty = new ServiceLogConfigArgs();
+
+    /**
+     * Enable instance level metrics.
+     * 
+     */
+    @Import(name="enableInstanceMetrics")
+    private @Nullable Output<Boolean> enableInstanceMetrics;
+
+    /**
+     * @return Enable instance level metrics.
+     * 
+     */
+    public Optional<Output<Boolean>> enableInstanceMetrics() {
+        return Optional.ofNullable(this.enableInstanceMetrics);
+    }
+
+    /**
+     * Enable request level metrics.
+     * 
+     */
+    @Import(name="enableRequestMetrics")
+    private @Nullable Output<Boolean> enableRequestMetrics;
+
+    /**
+     * @return Enable request level metrics.
+     * 
+     */
+    public Optional<Output<Boolean>> enableRequestMetrics() {
+        return Optional.ofNullable(this.enableRequestMetrics);
+    }
 
     /**
      * The log store name of Alicloud Simple Log Service.
@@ -46,6 +79,8 @@ public final class ServiceLogConfigArgs extends com.pulumi.resources.ResourceArg
     private ServiceLogConfigArgs() {}
 
     private ServiceLogConfigArgs(ServiceLogConfigArgs $) {
+        this.enableInstanceMetrics = $.enableInstanceMetrics;
+        this.enableRequestMetrics = $.enableRequestMetrics;
         this.logstore = $.logstore;
         this.project = $.project;
     }
@@ -66,6 +101,48 @@ public final class ServiceLogConfigArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(ServiceLogConfigArgs defaults) {
             $ = new ServiceLogConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableInstanceMetrics Enable instance level metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableInstanceMetrics(@Nullable Output<Boolean> enableInstanceMetrics) {
+            $.enableInstanceMetrics = enableInstanceMetrics;
+            return this;
+        }
+
+        /**
+         * @param enableInstanceMetrics Enable instance level metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableInstanceMetrics(Boolean enableInstanceMetrics) {
+            return enableInstanceMetrics(Output.of(enableInstanceMetrics));
+        }
+
+        /**
+         * @param enableRequestMetrics Enable request level metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRequestMetrics(@Nullable Output<Boolean> enableRequestMetrics) {
+            $.enableRequestMetrics = enableRequestMetrics;
+            return this;
+        }
+
+        /**
+         * @param enableRequestMetrics Enable request level metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRequestMetrics(Boolean enableRequestMetrics) {
+            return enableRequestMetrics(Output.of(enableRequestMetrics));
         }
 
         /**

@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Serverless Kubernetes cluster can be imported using the id, e.g.
+ * Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
@@ -125,7 +125,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
     /**
@@ -138,6 +138,8 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
@@ -168,6 +170,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    /**
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    public readonly rrsaMetadata!: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -247,6 +253,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["privateZone"] = state ? state.privateZone : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retainResources"] = state ? state.retainResources : undefined;
+            resourceInputs["rrsaMetadata"] = state ? state.rrsaMetadata : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             resourceInputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
@@ -282,6 +289,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["privateZone"] = args ? args.privateZone : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
+            resourceInputs["rrsaMetadata"] = args ? args.rrsaMetadata : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             resourceInputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
@@ -333,7 +341,7 @@ export interface ServerlessKubernetesState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
@@ -346,6 +354,8 @@ export interface ServerlessKubernetesState {
     forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -376,6 +386,10 @@ export interface ServerlessKubernetesState {
      */
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -458,7 +472,7 @@ export interface ServerlessKubernetesArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
@@ -471,6 +485,8 @@ export interface ServerlessKubernetesArgs {
     forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -501,6 +517,10 @@ export interface ServerlessKubernetesArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

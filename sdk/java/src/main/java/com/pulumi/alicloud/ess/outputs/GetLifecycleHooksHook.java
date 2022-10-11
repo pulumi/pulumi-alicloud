@@ -14,63 +14,44 @@ public final class GetLifecycleHooksHook {
      * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
      * 
      */
-    private final String defaultResult;
+    private String defaultResult;
     /**
      * @return Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
      * 
      */
-    private final Integer heartbeatTimeout;
+    private Integer heartbeatTimeout;
     /**
      * @return ID of the lifecycle hook.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Type of Scaling activity attached to lifecycle hook.
      * 
      */
-    private final String lifecycleTransition;
+    private String lifecycleTransition;
     /**
      * @return Name of the lifecycle hook.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The Arn of notification target.
      * 
      */
-    private final String notificationArn;
+    private String notificationArn;
     /**
      * @return Additional information that you want to include when Auto Scaling sends a message to the notification target.
      * 
      */
-    private final String notificationMetadata;
+    private String notificationMetadata;
     /**
      * @return Scaling group id the lifecycle hooks belong to.
      * 
      */
-    private final String scalingGroupId;
+    private String scalingGroupId;
 
-    @CustomType.Constructor
-    private GetLifecycleHooksHook(
-        @CustomType.Parameter("defaultResult") String defaultResult,
-        @CustomType.Parameter("heartbeatTimeout") Integer heartbeatTimeout,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lifecycleTransition") String lifecycleTransition,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("notificationArn") String notificationArn,
-        @CustomType.Parameter("notificationMetadata") String notificationMetadata,
-        @CustomType.Parameter("scalingGroupId") String scalingGroupId) {
-        this.defaultResult = defaultResult;
-        this.heartbeatTimeout = heartbeatTimeout;
-        this.id = id;
-        this.lifecycleTransition = lifecycleTransition;
-        this.name = name;
-        this.notificationArn = notificationArn;
-        this.notificationMetadata = notificationMetadata;
-        this.scalingGroupId = scalingGroupId;
-    }
-
+    private GetLifecycleHooksHook() {}
     /**
      * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
      * 
@@ -135,7 +116,7 @@ public final class GetLifecycleHooksHook {
     public static Builder builder(GetLifecycleHooksHook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultResult;
         private Integer heartbeatTimeout;
@@ -145,11 +126,7 @@ public final class GetLifecycleHooksHook {
         private String notificationArn;
         private String notificationMetadata;
         private String scalingGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLifecycleHooksHook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultResult = defaults.defaultResult;
@@ -162,39 +139,57 @@ public final class GetLifecycleHooksHook {
     	      this.scalingGroupId = defaults.scalingGroupId;
         }
 
+        @CustomType.Setter
         public Builder defaultResult(String defaultResult) {
             this.defaultResult = Objects.requireNonNull(defaultResult);
             return this;
         }
+        @CustomType.Setter
         public Builder heartbeatTimeout(Integer heartbeatTimeout) {
             this.heartbeatTimeout = Objects.requireNonNull(heartbeatTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleTransition(String lifecycleTransition) {
             this.lifecycleTransition = Objects.requireNonNull(lifecycleTransition);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationArn(String notificationArn) {
             this.notificationArn = Objects.requireNonNull(notificationArn);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationMetadata(String notificationMetadata) {
             this.notificationMetadata = Objects.requireNonNull(notificationMetadata);
             return this;
         }
+        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
-        }        public GetLifecycleHooksHook build() {
-            return new GetLifecycleHooksHook(defaultResult, heartbeatTimeout, id, lifecycleTransition, name, notificationArn, notificationMetadata, scalingGroupId);
+        }
+        public GetLifecycleHooksHook build() {
+            final var o = new GetLifecycleHooksHook();
+            o.defaultResult = defaultResult;
+            o.heartbeatTimeout = heartbeatTimeout;
+            o.id = id;
+            o.lifecycleTransition = lifecycleTransition;
+            o.name = name;
+            o.notificationArn = notificationArn;
+            o.notificationMetadata = notificationMetadata;
+            o.scalingGroupId = scalingGroupId;
+            return o;
         }
     }
 }

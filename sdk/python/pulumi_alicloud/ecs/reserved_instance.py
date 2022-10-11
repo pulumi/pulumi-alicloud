@@ -31,8 +31,14 @@ class ReservedInstanceArgs:
         :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
@@ -112,7 +118,10 @@ class ReservedInstanceArgs:
     @pulumi.getter(name="offeringType")
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -123,6 +132,11 @@ class ReservedInstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -133,7 +147,7 @@ class ReservedInstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -210,8 +224,14 @@ class _ReservedInstanceState:
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
@@ -292,7 +312,10 @@ class _ReservedInstanceState:
     @pulumi.getter(name="offeringType")
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -303,6 +326,11 @@ class _ReservedInstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -313,7 +341,7 @@ class _ReservedInstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -423,8 +451,14 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
@@ -546,8 +580,14 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
@@ -604,22 +644,30 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="offeringType")
-    def offering_type(self) -> pulumi.Output[Optional[str]]:
+    def offering_type(self) -> pulumi.Output[str]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -641,7 +689,7 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> pulumi.Output[Optional[str]]:
+    def scope(self) -> pulumi.Output[str]:
         """
         Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         """

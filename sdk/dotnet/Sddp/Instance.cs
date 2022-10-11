@@ -105,6 +105,9 @@ namespace Pulumi.AliCloud.Sddp
         [Output("ossBucketSet")]
         public Output<bool> OssBucketSet { get; private set; } = null!;
 
+        /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
         [Output("ossSize")]
         public Output<string> OssSize { get; private set; } = null!;
 
@@ -126,6 +129,9 @@ namespace Pulumi.AliCloud.Sddp
         [Output("rdsSet")]
         public Output<bool> RdsSet { get; private set; } = null!;
 
+        /// <summary>
+        /// The remaining days of the protection period of the assets in the current login account.
+        /// </summary>
         [Output("remainDays")]
         public Output<string> RemainDays { get; private set; } = null!;
 
@@ -248,6 +254,12 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
+        [Input("ossSize")]
+        public Input<string>? OssSize { get; set; }
+
+        /// <summary>
         /// The payment type of the resource. Valid values: `Subscription`.
         /// </summary>
         [Input("paymentType", required: true)]
@@ -356,6 +368,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("ossBucketSet")]
         public Input<bool>? OssBucketSet { get; set; }
 
+        /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
         [Input("ossSize")]
         public Input<string>? OssSize { get; set; }
 
@@ -377,6 +392,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("rdsSet")]
         public Input<bool>? RdsSet { get; set; }
 
+        /// <summary>
+        /// The remaining days of the protection period of the assets in the current login account.
+        /// </summary>
         [Input("remainDays")]
         public Input<string>? RemainDays { get; set; }
 

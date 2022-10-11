@@ -16,54 +16,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerGroupsResult {
-    private final @Nullable Boolean enableDetails;
-    private final List<GetServerGroupsGroup> groups;
+    private @Nullable Boolean enableDetails;
+    private List<GetServerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable List<String> serverGroupIds;
-    private final @Nullable String serverGroupName;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String vpcId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable List<String> serverGroupIds;
+    private @Nullable String serverGroupName;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private GetServerGroupsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("groups") List<GetServerGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("serverGroupIds") @Nullable List<String> serverGroupIds,
-        @CustomType.Parameter("serverGroupName") @Nullable String serverGroupName,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.enableDetails = enableDetails;
-        this.groups = groups;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.serverGroupIds = serverGroupIds;
-        this.serverGroupName = serverGroupName;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-    }
-
+    private GetServerGroupsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -115,7 +86,7 @@ public final class GetServerGroupsResult {
     public static Builder builder(GetServerGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetServerGroupsGroup> groups;
@@ -130,11 +101,7 @@ public final class GetServerGroupsResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -152,10 +119,12 @@ public final class GetServerGroupsResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<GetServerGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -163,10 +132,12 @@ public final class GetServerGroupsResult {
         public Builder groups(GetServerGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -174,10 +145,12 @@ public final class GetServerGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -185,14 +158,17 @@ public final class GetServerGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupIds(@Nullable List<String> serverGroupIds) {
             this.serverGroupIds = serverGroupIds;
             return this;
@@ -200,23 +176,42 @@ public final class GetServerGroupsResult {
         public Builder serverGroupIds(String... serverGroupIds) {
             return serverGroupIds(List.of(serverGroupIds));
         }
+        @CustomType.Setter
         public Builder serverGroupName(@Nullable String serverGroupName) {
             this.serverGroupName = serverGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public GetServerGroupsResult build() {
-            return new GetServerGroupsResult(enableDetails, groups, id, ids, nameRegex, names, outputFile, resourceGroupId, serverGroupIds, serverGroupName, status, tags, vpcId);
+        }
+        public GetServerGroupsResult build() {
+            final var o = new GetServerGroupsResult();
+            o.enableDetails = enableDetails;
+            o.groups = groups;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.serverGroupIds = serverGroupIds;
+            o.serverGroupName = serverGroupName;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

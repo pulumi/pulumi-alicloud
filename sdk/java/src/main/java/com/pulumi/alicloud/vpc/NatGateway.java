@@ -62,15 +62,49 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Specifies whether to only precheck this request. Default value: `false`.
+     * 
+     */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
+    /**
+     * @return Specifies whether to only precheck this request. Default value: `false`.
+     * 
+     */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
+    /**
+     * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+     * 
+     */
+    @Export(name="eipBindMode", type=String.class, parameters={})
+    private Output<String> eipBindMode;
+
+    /**
+     * @return The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+     * 
+     */
+    public Output<String> eipBindMode() {
+        return this.eipBindMode;
+    }
+    /**
+     * Specifies whether to forcefully delete the NAT gateway.
+     * 
+     */
     @Export(name="force", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Specifies whether to forcefully delete the NAT gateway.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }

@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesRuleForwardIp {
-    private final String ip;
-    private final Integer port;
+    private String ip;
+    private Integer port;
 
-    @CustomType.Constructor
-    private GetRulesRuleForwardIp(
-        @CustomType.Parameter("ip") String ip,
-        @CustomType.Parameter("port") Integer port) {
-        this.ip = ip;
-        this.port = port;
-    }
-
+    private GetRulesRuleForwardIp() {}
     public String ip() {
         return this.ip;
     }
@@ -35,30 +28,32 @@ public final class GetRulesRuleForwardIp {
     public static Builder builder(GetRulesRuleForwardIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ip;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleForwardIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ip = defaults.ip;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public GetRulesRuleForwardIp build() {
-            return new GetRulesRuleForwardIp(ip, port);
+        }
+        public GetRulesRuleForwardIp build() {
+            final var o = new GetRulesRuleForwardIp();
+            o.ip = ip;
+            o.port = port;
+            return o;
         }
     }
 }

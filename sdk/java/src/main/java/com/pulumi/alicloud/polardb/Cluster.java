@@ -552,20 +552,34 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tdeStatus);
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
+    }
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
-    private Output<String> vswitchId;
+    private Output</* @Nullable */ String> vswitchId;
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
-    public Output<String> vswitchId() {
-        return this.vswitchId;
+    public Output<Optional<String>> vswitchId() {
+        return Codegen.optional(this.vswitchId);
     }
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.

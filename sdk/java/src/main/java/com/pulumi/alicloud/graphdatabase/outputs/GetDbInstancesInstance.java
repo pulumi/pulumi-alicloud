@@ -16,238 +16,169 @@ public final class GetDbInstancesInstance {
      * @return Virtual Private Cloud (vpc connection such as a VPN connection or leased line domain name).
      * 
      */
-    private final String connectionString;
+    private String connectionString;
     /**
      * @return Creation time, which follows the format of `YYYY-MM-DD &#39;T&#39;hh:mm:ssZ`, such as `2011-05-30 T12:11:4Z`.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The current kernel image version.
      * 
      */
-    private final String currentMinorVersion;
+    private String currentMinorVersion;
     /**
      * @return The category of the db instance.
      * 
      */
-    private final String dbInstanceCategory;
+    private String dbInstanceCategory;
     /**
      * @return For example, instances can be grouped according to Cpu core count.
      * 
      */
-    private final String dbInstanceCpu;
+    private String dbInstanceCpu;
     /**
      * @return According to the practical example or notes.
      * 
      */
-    private final String dbInstanceDescription;
+    private String dbInstanceDescription;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String dbInstanceId;
+    private String dbInstanceId;
     /**
      * @return IP ADDRESS whitelist for the instance group list.
      * 
      */
-    private final List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays;
+    private List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays;
     /**
      * @return Instance memory, which is measured in MB.
      * 
      */
-    private final String dbInstanceMemory;
+    private String dbInstanceMemory;
     /**
      * @return The network type of the db instance.
      * 
      */
-    private final String dbInstanceNetworkType;
+    private String dbInstanceNetworkType;
     /**
      * @return Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`.
      * 
      */
-    private final String dbInstanceStorageType;
+    private String dbInstanceStorageType;
     /**
      * @return The type of the db instance.
      * 
      */
-    private final String dbInstanceType;
+    private String dbInstanceType;
     /**
      * @return The class of the db node.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
     /**
      * @return The count of the db node.
      * 
      */
-    private final String dbNodeCount;
+    private String dbNodeCount;
     /**
      * @return Instance storage space, which is measured in GB.
      * 
      */
-    private final String dbNodeStorage;
+    private String dbNodeStorage;
     /**
      * @return Kernel Version. Value range: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      * 
      */
-    private final String dbVersion;
+    private String dbVersion;
     /**
      * @return The instance after it expires time for subscription instance.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The expire status of the db instance.
      * 
      */
-    private final String expired;
+    private String expired;
     /**
      * @return The ID of the Db Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The latest kernel image version.
      * 
      */
-    private final String latestMinorVersion;
+    private String latestMinorVersion;
     /**
      * @return Instance lock state. Value range: `Unlock`, `ManualLock`, `LockByExpiration`, `LockByRestoration` and `LockByDiskQuota`. `Unlock`: normal. `ManualLock`: the manual trigger lock. `LockByExpiration`: that represents the instance expires automatically lock. `LockByRestoration`: indicates that the instance rollback before auto-lock. `LockByDiskQuota`: that represents the instance space full automatic lock.
      * 
      */
-    private final String lockMode;
+    private String lockMode;
     /**
      * @return An instance is locked the reason.
      * 
      */
-    private final String lockReason;
+    private String lockReason;
     /**
      * @return Instance maintenance time such as `00:00Z-02:00Z`, 0 to 2 points to carry out routine maintenance.
      * 
      */
-    private final String maintainTime;
+    private String maintainTime;
     /**
      * @return The master instance ID of the db instance.
      * 
      */
-    private final String masterDbInstanceId;
+    private String masterDbInstanceId;
     /**
      * @return The paymen type of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Application Port.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The public connection string ID of the resource.
      * 
      */
-    private final String publicConnectionString;
+    private String publicConnectionString;
     /**
      * @return The public port ID of the resource.
      * 
      */
-    private final Integer publicPort;
+    private Integer publicPort;
     /**
      * @return The array of the readonly db instances.
      * 
      */
-    private final List<String> readOnlyDbInstanceIds;
+    private List<String> readOnlyDbInstanceIds;
     /**
      * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The vpc id of the db instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone ID of the resource.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetDbInstancesInstance(
-        @CustomType.Parameter("connectionString") String connectionString,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("currentMinorVersion") String currentMinorVersion,
-        @CustomType.Parameter("dbInstanceCategory") String dbInstanceCategory,
-        @CustomType.Parameter("dbInstanceCpu") String dbInstanceCpu,
-        @CustomType.Parameter("dbInstanceDescription") String dbInstanceDescription,
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("dbInstanceIpArrays") List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays,
-        @CustomType.Parameter("dbInstanceMemory") String dbInstanceMemory,
-        @CustomType.Parameter("dbInstanceNetworkType") String dbInstanceNetworkType,
-        @CustomType.Parameter("dbInstanceStorageType") String dbInstanceStorageType,
-        @CustomType.Parameter("dbInstanceType") String dbInstanceType,
-        @CustomType.Parameter("dbNodeClass") String dbNodeClass,
-        @CustomType.Parameter("dbNodeCount") String dbNodeCount,
-        @CustomType.Parameter("dbNodeStorage") String dbNodeStorage,
-        @CustomType.Parameter("dbVersion") String dbVersion,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("expired") String expired,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latestMinorVersion") String latestMinorVersion,
-        @CustomType.Parameter("lockMode") String lockMode,
-        @CustomType.Parameter("lockReason") String lockReason,
-        @CustomType.Parameter("maintainTime") String maintainTime,
-        @CustomType.Parameter("masterDbInstanceId") String masterDbInstanceId,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("publicConnectionString") String publicConnectionString,
-        @CustomType.Parameter("publicPort") Integer publicPort,
-        @CustomType.Parameter("readOnlyDbInstanceIds") List<String> readOnlyDbInstanceIds,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.connectionString = connectionString;
-        this.createTime = createTime;
-        this.currentMinorVersion = currentMinorVersion;
-        this.dbInstanceCategory = dbInstanceCategory;
-        this.dbInstanceCpu = dbInstanceCpu;
-        this.dbInstanceDescription = dbInstanceDescription;
-        this.dbInstanceId = dbInstanceId;
-        this.dbInstanceIpArrays = dbInstanceIpArrays;
-        this.dbInstanceMemory = dbInstanceMemory;
-        this.dbInstanceNetworkType = dbInstanceNetworkType;
-        this.dbInstanceStorageType = dbInstanceStorageType;
-        this.dbInstanceType = dbInstanceType;
-        this.dbNodeClass = dbNodeClass;
-        this.dbNodeCount = dbNodeCount;
-        this.dbNodeStorage = dbNodeStorage;
-        this.dbVersion = dbVersion;
-        this.expireTime = expireTime;
-        this.expired = expired;
-        this.id = id;
-        this.latestMinorVersion = latestMinorVersion;
-        this.lockMode = lockMode;
-        this.lockReason = lockReason;
-        this.maintainTime = maintainTime;
-        this.masterDbInstanceId = masterDbInstanceId;
-        this.paymentType = paymentType;
-        this.port = port;
-        this.publicConnectionString = publicConnectionString;
-        this.publicPort = publicPort;
-        this.readOnlyDbInstanceIds = readOnlyDbInstanceIds;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetDbInstancesInstance() {}
     /**
      * @return Virtual Private Cloud (vpc connection such as a VPN connection or leased line domain name).
      * 
@@ -487,7 +418,7 @@ public final class GetDbInstancesInstance {
     public static Builder builder(GetDbInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String connectionString;
         private String createTime;
@@ -522,11 +453,7 @@ public final class GetDbInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionString = defaults.connectionString;
@@ -564,34 +491,42 @@ public final class GetDbInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder currentMinorVersion(String currentMinorVersion) {
             this.currentMinorVersion = Objects.requireNonNull(currentMinorVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceCategory(String dbInstanceCategory) {
             this.dbInstanceCategory = Objects.requireNonNull(dbInstanceCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceCpu(String dbInstanceCpu) {
             this.dbInstanceCpu = Objects.requireNonNull(dbInstanceCpu);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceDescription(String dbInstanceDescription) {
             this.dbInstanceDescription = Objects.requireNonNull(dbInstanceDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceIpArrays(List<GetDbInstancesInstanceDbInstanceIpArray> dbInstanceIpArrays) {
             this.dbInstanceIpArrays = Objects.requireNonNull(dbInstanceIpArrays);
             return this;
@@ -599,86 +534,107 @@ public final class GetDbInstancesInstance {
         public Builder dbInstanceIpArrays(GetDbInstancesInstanceDbInstanceIpArray... dbInstanceIpArrays) {
             return dbInstanceIpArrays(List.of(dbInstanceIpArrays));
         }
+        @CustomType.Setter
         public Builder dbInstanceMemory(String dbInstanceMemory) {
             this.dbInstanceMemory = Objects.requireNonNull(dbInstanceMemory);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceNetworkType(String dbInstanceNetworkType) {
             this.dbInstanceNetworkType = Objects.requireNonNull(dbInstanceNetworkType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
             this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceType(String dbInstanceType) {
             this.dbInstanceType = Objects.requireNonNull(dbInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeCount(String dbNodeCount) {
             this.dbNodeCount = Objects.requireNonNull(dbNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeStorage(String dbNodeStorage) {
             this.dbNodeStorage = Objects.requireNonNull(dbNodeStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
             this.dbVersion = Objects.requireNonNull(dbVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expired(String expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latestMinorVersion(String latestMinorVersion) {
             this.latestMinorVersion = Objects.requireNonNull(latestMinorVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
+        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
         }
+        @CustomType.Setter
         public Builder maintainTime(String maintainTime) {
             this.maintainTime = Objects.requireNonNull(maintainTime);
             return this;
         }
+        @CustomType.Setter
         public Builder masterDbInstanceId(String masterDbInstanceId) {
             this.masterDbInstanceId = Objects.requireNonNull(masterDbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder publicConnectionString(String publicConnectionString) {
             this.publicConnectionString = Objects.requireNonNull(publicConnectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPort(Integer publicPort) {
             this.publicPort = Objects.requireNonNull(publicPort);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnlyDbInstanceIds(List<String> readOnlyDbInstanceIds) {
             this.readOnlyDbInstanceIds = Objects.requireNonNull(readOnlyDbInstanceIds);
             return this;
@@ -686,23 +642,62 @@ public final class GetDbInstancesInstance {
         public Builder readOnlyDbInstanceIds(String... readOnlyDbInstanceIds) {
             return readOnlyDbInstanceIds(List.of(readOnlyDbInstanceIds));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetDbInstancesInstance build() {
-            return new GetDbInstancesInstance(connectionString, createTime, currentMinorVersion, dbInstanceCategory, dbInstanceCpu, dbInstanceDescription, dbInstanceId, dbInstanceIpArrays, dbInstanceMemory, dbInstanceNetworkType, dbInstanceStorageType, dbInstanceType, dbNodeClass, dbNodeCount, dbNodeStorage, dbVersion, expireTime, expired, id, latestMinorVersion, lockMode, lockReason, maintainTime, masterDbInstanceId, paymentType, port, publicConnectionString, publicPort, readOnlyDbInstanceIds, status, vpcId, vswitchId, zoneId);
+        }
+        public GetDbInstancesInstance build() {
+            final var o = new GetDbInstancesInstance();
+            o.connectionString = connectionString;
+            o.createTime = createTime;
+            o.currentMinorVersion = currentMinorVersion;
+            o.dbInstanceCategory = dbInstanceCategory;
+            o.dbInstanceCpu = dbInstanceCpu;
+            o.dbInstanceDescription = dbInstanceDescription;
+            o.dbInstanceId = dbInstanceId;
+            o.dbInstanceIpArrays = dbInstanceIpArrays;
+            o.dbInstanceMemory = dbInstanceMemory;
+            o.dbInstanceNetworkType = dbInstanceNetworkType;
+            o.dbInstanceStorageType = dbInstanceStorageType;
+            o.dbInstanceType = dbInstanceType;
+            o.dbNodeClass = dbNodeClass;
+            o.dbNodeCount = dbNodeCount;
+            o.dbNodeStorage = dbNodeStorage;
+            o.dbVersion = dbVersion;
+            o.expireTime = expireTime;
+            o.expired = expired;
+            o.id = id;
+            o.latestMinorVersion = latestMinorVersion;
+            o.lockMode = lockMode;
+            o.lockReason = lockReason;
+            o.maintainTime = maintainTime;
+            o.masterDbInstanceId = masterDbInstanceId;
+            o.paymentType = paymentType;
+            o.port = port;
+            o.publicConnectionString = publicConnectionString;
+            o.publicPort = publicPort;
+            o.readOnlyDbInstanceIds = readOnlyDbInstanceIds;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

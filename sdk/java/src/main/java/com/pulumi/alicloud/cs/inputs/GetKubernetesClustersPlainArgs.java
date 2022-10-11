@@ -39,14 +39,14 @@ public final class GetKubernetesClustersPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
      * 
      */
     @Import(name="kubeConfigFilePrefix")
     private @Nullable String kubeConfigFilePrefix;
 
     /**
-     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
      * 
      */
     public Optional<String> kubeConfigFilePrefix() {
@@ -130,7 +130,7 @@ public final class GetKubernetesClustersPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
          * 
          * @return builder
          * 

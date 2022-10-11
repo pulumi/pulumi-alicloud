@@ -13,21 +13,14 @@ public final class GetHybridMonitorDatasDataLabel {
      * @return Label key.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Label value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetHybridMonitorDatasDataLabel(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetHybridMonitorDatasDataLabel() {}
     /**
      * @return Label key.
      * 
@@ -50,30 +43,32 @@ public final class GetHybridMonitorDatasDataLabel {
     public static Builder builder(GetHybridMonitorDatasDataLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorDatasDataLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetHybridMonitorDatasDataLabel build() {
-            return new GetHybridMonitorDatasDataLabel(key, value);
+        }
+        public GetHybridMonitorDatasDataLabel build() {
+            final var o = new GetHybridMonitorDatasDataLabel();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -18,41 +18,18 @@ public final class GetEventRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String namePrefix;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final List<GetEventRulesRule> rules;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String namePrefix;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private List<GetEventRulesRule> rules;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetEventRulesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("namePrefix") @Nullable String namePrefix,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("rules") List<GetEventRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.namePrefix = namePrefix;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetEventRulesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -95,7 +72,7 @@ public final class GetEventRulesResult {
     public static Builder builder(GetEventRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -107,11 +84,7 @@ public final class GetEventRulesResult {
         private @Nullable Integer pageSize;
         private List<GetEventRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEventRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -126,10 +99,12 @@ public final class GetEventRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,14 +112,17 @@ public final class GetEventRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
             this.namePrefix = namePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -152,18 +130,22 @@ public final class GetEventRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetEventRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -171,11 +153,24 @@ public final class GetEventRulesResult {
         public Builder rules(GetEventRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetEventRulesResult build() {
-            return new GetEventRulesResult(id, ids, namePrefix, nameRegex, names, outputFile, pageNumber, pageSize, rules, status);
+        }
+        public GetEventRulesResult build() {
+            final var o = new GetEventRulesResult();
+            o.id = id;
+            o.ids = ids;
+            o.namePrefix = namePrefix;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

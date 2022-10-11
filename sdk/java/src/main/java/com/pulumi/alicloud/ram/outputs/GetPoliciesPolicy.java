@@ -14,94 +14,65 @@ public final class GetPoliciesPolicy {
      * @return Attachment count of the policy.
      * 
      */
-    private final Integer attachmentCount;
+    private Integer attachmentCount;
     /**
      * @return Creation date of the policy.
      * 
      */
-    private final String createDate;
+    private String createDate;
     /**
      * @return Default version of the policy.
      * 
      */
-    private final String defaultVersion;
+    private String defaultVersion;
     /**
      * @return Description of the policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Policy document of the policy.
      * 
      */
-    private final String document;
-    private final String id;
+    private String document;
+    private String id;
     /**
      * @return Name of the policy.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Policy document of the policy.
      * 
      */
-    private final String policyDocument;
+    private String policyDocument;
     /**
      * @return Name of the policy.
      * 
      */
-    private final String policyName;
+    private String policyName;
     /**
      * @return Filter results by a specific policy type. Valid values are `Custom` and `System`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Update date of the policy.
      * 
      */
-    private final String updateDate;
+    private String updateDate;
     /**
      * @return Filter results by a specific user name. Returned policies are attached to the specified user.
      * 
      */
-    private final String userName;
+    private String userName;
     /**
      * @return The ID of default policy.
      * 
      */
-    private final String versionId;
+    private String versionId;
 
-    @CustomType.Constructor
-    private GetPoliciesPolicy(
-        @CustomType.Parameter("attachmentCount") Integer attachmentCount,
-        @CustomType.Parameter("createDate") String createDate,
-        @CustomType.Parameter("defaultVersion") String defaultVersion,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("document") String document,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("policyDocument") String policyDocument,
-        @CustomType.Parameter("policyName") String policyName,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updateDate") String updateDate,
-        @CustomType.Parameter("userName") String userName,
-        @CustomType.Parameter("versionId") String versionId) {
-        this.attachmentCount = attachmentCount;
-        this.createDate = createDate;
-        this.defaultVersion = defaultVersion;
-        this.description = description;
-        this.document = document;
-        this.id = id;
-        this.name = name;
-        this.policyDocument = policyDocument;
-        this.policyName = policyName;
-        this.type = type;
-        this.updateDate = updateDate;
-        this.userName = userName;
-        this.versionId = versionId;
-    }
-
+    private GetPoliciesPolicy() {}
     /**
      * @return Attachment count of the policy.
      * 
@@ -197,7 +168,7 @@ public final class GetPoliciesPolicy {
     public static Builder builder(GetPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer attachmentCount;
         private String createDate;
@@ -212,11 +183,7 @@ public final class GetPoliciesPolicy {
         private String updateDate;
         private String userName;
         private String versionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachmentCount = defaults.attachmentCount;
@@ -234,59 +201,87 @@ public final class GetPoliciesPolicy {
     	      this.versionId = defaults.versionId;
         }
 
+        @CustomType.Setter
         public Builder attachmentCount(Integer attachmentCount) {
             this.attachmentCount = Objects.requireNonNull(attachmentCount);
             return this;
         }
+        @CustomType.Setter
         public Builder createDate(String createDate) {
             this.createDate = Objects.requireNonNull(createDate);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultVersion(String defaultVersion) {
             this.defaultVersion = Objects.requireNonNull(defaultVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder document(String document) {
             this.document = Objects.requireNonNull(document);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
             this.policyDocument = Objects.requireNonNull(policyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             this.updateDate = Objects.requireNonNull(updateDate);
             return this;
         }
+        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
         }
+        @CustomType.Setter
         public Builder versionId(String versionId) {
             this.versionId = Objects.requireNonNull(versionId);
             return this;
-        }        public GetPoliciesPolicy build() {
-            return new GetPoliciesPolicy(attachmentCount, createDate, defaultVersion, description, document, id, name, policyDocument, policyName, type, updateDate, userName, versionId);
+        }
+        public GetPoliciesPolicy build() {
+            final var o = new GetPoliciesPolicy();
+            o.attachmentCount = attachmentCount;
+            o.createDate = createDate;
+            o.defaultVersion = defaultVersion;
+            o.description = description;
+            o.document = document;
+            o.id = id;
+            o.name = name;
+            o.policyDocument = policyDocument;
+            o.policyName = policyName;
+            o.type = type;
+            o.updateDate = updateDate;
+            o.userName = userName;
+            o.versionId = versionId;
+            return o;
         }
     }
 }

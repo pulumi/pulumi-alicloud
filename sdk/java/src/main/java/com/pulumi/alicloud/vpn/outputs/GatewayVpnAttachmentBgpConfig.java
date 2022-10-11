@@ -17,35 +17,24 @@ public final class GatewayVpnAttachmentBgpConfig {
      * @return Whether to enable BGP.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return The ASN on the Alibaba Cloud side.
      * 
      */
-    private final @Nullable Integer localAsn;
+    private @Nullable Integer localAsn;
     /**
      * @return The BGP IP address on the Alibaba Cloud side.
      * 
      */
-    private final @Nullable String localBgpIp;
+    private @Nullable String localBgpIp;
     /**
      * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
      * 
      */
-    private final @Nullable String tunnelCidr;
+    private @Nullable String tunnelCidr;
 
-    @CustomType.Constructor
-    private GatewayVpnAttachmentBgpConfig(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("localAsn") @Nullable Integer localAsn,
-        @CustomType.Parameter("localBgpIp") @Nullable String localBgpIp,
-        @CustomType.Parameter("tunnelCidr") @Nullable String tunnelCidr) {
-        this.enable = enable;
-        this.localAsn = localAsn;
-        this.localBgpIp = localBgpIp;
-        this.tunnelCidr = tunnelCidr;
-    }
-
+    private GatewayVpnAttachmentBgpConfig() {}
     /**
      * @return Whether to enable BGP.
      * 
@@ -82,17 +71,13 @@ public final class GatewayVpnAttachmentBgpConfig {
     public static Builder builder(GatewayVpnAttachmentBgpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable Integer localAsn;
         private @Nullable String localBgpIp;
         private @Nullable String tunnelCidr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GatewayVpnAttachmentBgpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -101,23 +86,33 @@ public final class GatewayVpnAttachmentBgpConfig {
     	      this.tunnelCidr = defaults.tunnelCidr;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder localAsn(@Nullable Integer localAsn) {
             this.localAsn = localAsn;
             return this;
         }
+        @CustomType.Setter
         public Builder localBgpIp(@Nullable String localBgpIp) {
             this.localBgpIp = localBgpIp;
             return this;
         }
+        @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
             this.tunnelCidr = tunnelCidr;
             return this;
-        }        public GatewayVpnAttachmentBgpConfig build() {
-            return new GatewayVpnAttachmentBgpConfig(enable, localAsn, localBgpIp, tunnelCidr);
+        }
+        public GatewayVpnAttachmentBgpConfig build() {
+            final var o = new GatewayVpnAttachmentBgpConfig();
+            o.enable = enable;
+            o.localAsn = localAsn;
+            o.localBgpIp = localBgpIp;
+            o.tunnelCidr = tunnelCidr;
+            return o;
         }
     }
 }

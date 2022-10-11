@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'OtsBackupPlanOtsDetailArgs',
     'OtsBackupPlanRuleArgs',
+    'RestoreJobOtsDetailArgs',
     'ServerBackupPlanDetailArgs',
     'GetBackupJobsFilterArgs',
     'GetServerBackupPlansFilterArgs',
@@ -125,6 +126,29 @@ class OtsBackupPlanRuleArgs:
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class RestoreJobOtsDetailArgs:
+    def __init__(__self__, *,
+                 overwrite_existing: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "overwrite_existing")
+
+    @overwrite_existing.setter
+    def overwrite_existing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "overwrite_existing", value)
 
 
 @pulumi.input_type

@@ -16,6 +16,7 @@ __all__ = [
     'EdgeKubernetesCertificateAuthorityArgs',
     'EdgeKubernetesConnectionsArgs',
     'EdgeKubernetesLogConfigArgs',
+    'EdgeKubernetesRuntimeArgs',
     'EdgeKubernetesWorkerDataDiskArgs',
     'EdgeKubernetesWorkerNodeArgs',
     'KubernetesAddonArgs',
@@ -32,6 +33,7 @@ __all__ = [
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesConnectionsArgs',
     'ManagedKubernetesMaintenanceWindowArgs',
+    'ManagedKubernetesRrsaMetadataArgs',
     'ManagedKubernetesRuntimeArgs',
     'ManagedKubernetesTaintArgs',
     'ManagedKubernetesWorkerDataDiskArgs',
@@ -40,11 +42,13 @@ __all__ = [
     'NodePoolKubeletConfigurationArgs',
     'NodePoolLabelArgs',
     'NodePoolManagementArgs',
+    'NodePoolRollingPolicyArgs',
     'NodePoolRolloutPolicyArgs',
     'NodePoolScalingConfigArgs',
     'NodePoolSpotPriceLimitArgs',
     'NodePoolTaintArgs',
     'ServerlessKubernetesAddonArgs',
+    'ServerlessKubernetesRrsaMetadataArgs',
     'SwarmNodeArgs',
     'GetKubernetesAddonsAddonArgs',
     'GetKubernetesPermissionPermissionArgs',
@@ -277,6 +281,12 @@ class EdgeKubernetesConnectionsArgs:
                  api_server_intranet: Optional[pulumi.Input[str]] = None,
                  master_public_ip: Optional[pulumi.Input[str]] = None,
                  service_domain: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_server_internet: API Server Internet endpoint.
+        :param pulumi.Input[str] api_server_intranet: API Server Intranet endpoint.
+        :param pulumi.Input[str] master_public_ip: Master node SSH IP address.
+        :param pulumi.Input[str] service_domain: Service Access Domain.
+        """
         if api_server_internet is not None:
             pulumi.set(__self__, "api_server_internet", api_server_internet)
         if api_server_intranet is not None:
@@ -289,6 +299,9 @@ class EdgeKubernetesConnectionsArgs:
     @property
     @pulumi.getter(name="apiServerInternet")
     def api_server_internet(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Server Internet endpoint.
+        """
         return pulumi.get(self, "api_server_internet")
 
     @api_server_internet.setter
@@ -298,6 +311,9 @@ class EdgeKubernetesConnectionsArgs:
     @property
     @pulumi.getter(name="apiServerIntranet")
     def api_server_intranet(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Server Intranet endpoint.
+        """
         return pulumi.get(self, "api_server_intranet")
 
     @api_server_intranet.setter
@@ -307,6 +323,9 @@ class EdgeKubernetesConnectionsArgs:
     @property
     @pulumi.getter(name="masterPublicIp")
     def master_public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Master node SSH IP address.
+        """
         return pulumi.get(self, "master_public_ip")
 
     @master_public_ip.setter
@@ -316,6 +335,9 @@ class EdgeKubernetesConnectionsArgs:
     @property
     @pulumi.getter(name="serviceDomain")
     def service_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Access Domain.
+        """
         return pulumi.get(self, "service_domain")
 
     @service_domain.setter
@@ -328,6 +350,10 @@ class EdgeKubernetesLogConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of collecting logs, only `SLS` are supported currently.
+        :param pulumi.Input[str] project: Log Service project name, cluster logs will output to this project.
+        """
         pulumi.set(__self__, "type", type)
         if project is not None:
             pulumi.set(__self__, "project", project)
@@ -335,6 +361,9 @@ class EdgeKubernetesLogConfigArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Type of collecting logs, only `SLS` are supported currently.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -344,11 +373,53 @@ class EdgeKubernetesLogConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log Service project name, cluster logs will output to this project.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class EdgeKubernetesRuntimeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is unique in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -1429,6 +1500,77 @@ class ManagedKubernetesMaintenanceWindowArgs:
 
 
 @pulumi.input_type
+class ManagedKubernetesRrsaMetadataArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
+                 ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
+                 rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether the RRSA feature has been enabled.
+        :param pulumi.Input[str] ram_oidc_provider_arn: The arn of OIDC provider that was registered in RAM.
+        :param pulumi.Input[str] ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
+        :param pulumi.Input[str] rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ram_oidc_provider_arn is not None:
+            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+        if ram_oidc_provider_name is not None:
+            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+        if rrsa_oidc_issuer_url is not None:
+            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="ramOidcProviderArn")
+    def ram_oidc_provider_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The arn of OIDC provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_arn")
+
+    @ram_oidc_provider_arn.setter
+    def ram_oidc_provider_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_oidc_provider_arn", value)
+
+    @property
+    @pulumi.getter(name="ramOidcProviderName")
+    def ram_oidc_provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of OIDC Provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_name")
+
+    @ram_oidc_provider_name.setter
+    def ram_oidc_provider_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_oidc_provider_name", value)
+
+    @property
+    @pulumi.getter(name="rrsaOidcIssuerUrl")
+    def rrsa_oidc_issuer_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The issuer URL of RRSA OIDC Token.
+        """
+        return pulumi.get(self, "rrsa_oidc_issuer_url")
+
+    @rrsa_oidc_issuer_url.setter
+    def rrsa_oidc_issuer_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rrsa_oidc_issuer_url", value)
+
+
+@pulumi.input_type
 class ManagedKubernetesRuntimeArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2181,6 +2323,29 @@ class NodePoolManagementArgs:
 
 
 @pulumi.input_type
+class NodePoolRollingPolicyArgs:
+    def __init__(__self__, *,
+                 max_parallelism: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_parallelism: Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        """
+        if max_parallelism is not None:
+            pulumi.set(__self__, "max_parallelism", max_parallelism)
+
+    @property
+    @pulumi.getter(name="maxParallelism")
+    def max_parallelism(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        """
+        return pulumi.get(self, "max_parallelism")
+
+    @max_parallelism.setter
+    def max_parallelism(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_parallelism", value)
+
+
+@pulumi.input_type
 class NodePoolRolloutPolicyArgs:
     def __init__(__self__, *,
                  max_unavailable: Optional[pulumi.Input[int]] = None):
@@ -2446,6 +2611,77 @@ class ServerlessKubernetesAddonArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ServerlessKubernetesRrsaMetadataArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
+                 ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
+                 rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether the RRSA feature has been enabled.
+        :param pulumi.Input[str] ram_oidc_provider_arn: The arn of OIDC provider that was registered in RAM.
+        :param pulumi.Input[str] ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
+        :param pulumi.Input[str] rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ram_oidc_provider_arn is not None:
+            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+        if ram_oidc_provider_name is not None:
+            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+        if rrsa_oidc_issuer_url is not None:
+            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="ramOidcProviderArn")
+    def ram_oidc_provider_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The arn of OIDC provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_arn")
+
+    @ram_oidc_provider_arn.setter
+    def ram_oidc_provider_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_oidc_provider_arn", value)
+
+    @property
+    @pulumi.getter(name="ramOidcProviderName")
+    def ram_oidc_provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of OIDC Provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_name")
+
+    @ram_oidc_provider_name.setter
+    def ram_oidc_provider_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_oidc_provider_name", value)
+
+    @property
+    @pulumi.getter(name="rrsaOidcIssuerUrl")
+    def rrsa_oidc_issuer_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The issuer URL of RRSA OIDC Token.
+        """
+        return pulumi.get(self, "rrsa_oidc_issuer_url")
+
+    @rrsa_oidc_issuer_url.setter
+    def rrsa_oidc_issuer_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rrsa_oidc_issuer_url", value)
 
 
 @pulumi.input_type

@@ -76,14 +76,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return this.addressType;
     }
     /**
-     * Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+     * Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     @Export(name="bandwidth", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
-     * @return Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+     * @return Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     public Output<Optional<Integer>> bandwidth() {
@@ -143,7 +143,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     }
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
      * 
      */
@@ -152,7 +152,7 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
 
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
      * 
      */
@@ -240,14 +240,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.period);
     }
     /**
-     * The Id of resource group which the SLB belongs.
+     * The id of resource group which the SLB belongs.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the SLB belongs.
+     * @return The id of resource group which the SLB belongs.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -314,14 +314,14 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.tags);
     }
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
      * 
      */
     public Output<Optional<String>> vswitchId() {

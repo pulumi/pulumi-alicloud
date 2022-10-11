@@ -283,11 +283,17 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string> VswitchId { get; private set; } = null!;
+        public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster. it supports multiple zone.
@@ -557,6 +563,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
@@ -796,6 +808,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.

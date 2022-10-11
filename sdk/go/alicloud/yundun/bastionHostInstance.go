@@ -20,6 +20,8 @@ type BastionHostInstance struct {
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
 	LicenseCode        pulumi.StringOutput                          `pulumi:"licenseCode"`
 	Period             pulumi.IntPtrOutput                          `pulumi:"period"`
+	RenewPeriod        pulumi.IntPtrOutput                          `pulumi:"renewPeriod"`
+	RenewalStatus      pulumi.StringOutput                          `pulumi:"renewalStatus"`
 	ResourceGroupId    pulumi.StringPtrOutput                       `pulumi:"resourceGroupId"`
 	SecurityGroupIds   pulumi.StringArrayOutput                     `pulumi:"securityGroupIds"`
 	Tags               pulumi.MapOutput                             `pulumi:"tags"`
@@ -73,6 +75,8 @@ type bastionHostInstanceState struct {
 	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	LicenseCode        *string                             `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
+	RenewPeriod        *int                                `pulumi:"renewPeriod"`
+	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
 	Tags               map[string]interface{}              `pulumi:"tags"`
@@ -86,6 +90,8 @@ type BastionHostInstanceState struct {
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringPtrInput
 	Period             pulumi.IntPtrInput
+	RenewPeriod        pulumi.IntPtrInput
+	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
 	Tags               pulumi.MapInput
@@ -103,6 +109,8 @@ type bastionHostInstanceArgs struct {
 	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	LicenseCode        string                              `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
+	RenewPeriod        *int                                `pulumi:"renewPeriod"`
+	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
 	Tags               map[string]interface{}              `pulumi:"tags"`
@@ -117,6 +125,8 @@ type BastionHostInstanceArgs struct {
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringInput
 	Period             pulumi.IntPtrInput
+	RenewPeriod        pulumi.IntPtrInput
+	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
 	Tags               pulumi.MapInput
@@ -232,6 +242,14 @@ func (o BastionHostInstanceOutput) LicenseCode() pulumi.StringOutput {
 
 func (o BastionHostInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o BastionHostInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o BastionHostInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
 func (o BastionHostInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {

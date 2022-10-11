@@ -16,63 +16,44 @@ public final class GetEcsSnapshotGroupsGroup {
      * @return The description of the snapshot-consistent group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Snapshot Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The ID of the resource group to which the snapshot consistency group belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String snapshotGroupId;
+    private String snapshotGroupId;
     /**
      * @return The name of the snapshot-consistent group.
      * 
      */
-    private final String snapshotGroupName;
+    private String snapshotGroupName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return List of label key-value pairs.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEcsSnapshotGroupsGroup(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("snapshotGroupId") String snapshotGroupId,
-        @CustomType.Parameter("snapshotGroupName") String snapshotGroupName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.description = description;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.resourceGroupId = resourceGroupId;
-        this.snapshotGroupId = snapshotGroupId;
-        this.snapshotGroupName = snapshotGroupName;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetEcsSnapshotGroupsGroup() {}
     /**
      * @return The description of the snapshot-consistent group.
      * 
@@ -137,7 +118,7 @@ public final class GetEcsSnapshotGroupsGroup {
     public static Builder builder(GetEcsSnapshotGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -147,11 +128,7 @@ public final class GetEcsSnapshotGroupsGroup {
         private String snapshotGroupName;
         private String status;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsSnapshotGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -164,39 +141,57 @@ public final class GetEcsSnapshotGroupsGroup {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotGroupId(String snapshotGroupId) {
             this.snapshotGroupId = Objects.requireNonNull(snapshotGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotGroupName(String snapshotGroupName) {
             this.snapshotGroupName = Objects.requireNonNull(snapshotGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetEcsSnapshotGroupsGroup build() {
-            return new GetEcsSnapshotGroupsGroup(description, id, instanceId, resourceGroupId, snapshotGroupId, snapshotGroupName, status, tags);
+        }
+        public GetEcsSnapshotGroupsGroup build() {
+            final var o = new GetEcsSnapshotGroupsGroup();
+            o.description = description;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.resourceGroupId = resourceGroupId;
+            o.snapshotGroupId = snapshotGroupId;
+            o.snapshotGroupName = snapshotGroupName;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

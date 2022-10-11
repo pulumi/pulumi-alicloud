@@ -49,6 +49,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterRouteEntryDestinationCidrBlock")]
         public Output<string> TransitRouterRouteEntryDestinationCidrBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the route entry.
+        /// </summary>
         [Output("transitRouterRouteEntryId")]
         public Output<string> TransitRouterRouteEntryId { get; private set; } = null!;
 
@@ -195,6 +198,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterRouteEntryDestinationCidrBlock")]
         public Input<string>? TransitRouterRouteEntryDestinationCidrBlock { get; set; }
 
+        /// <summary>
+        /// The ID of the route entry.
+        /// </summary>
         [Input("transitRouterRouteEntryId")]
         public Input<string>? TransitRouterRouteEntryId { get; set; }
 

@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointAclPoliciesResult {
-    private final String endpointType;
+    private String endpointType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String outputFile;
-    private final List<GetEndpointAclPoliciesPolicy> policies;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String outputFile;
+    private List<GetEndpointAclPoliciesPolicy> policies;
 
-    @CustomType.Constructor
-    private GetEndpointAclPoliciesResult(
-        @CustomType.Parameter("endpointType") String endpointType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetEndpointAclPoliciesPolicy> policies) {
-        this.endpointType = endpointType;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.policies = policies;
-    }
-
+    private GetEndpointAclPoliciesResult() {}
     public String endpointType() {
         return this.endpointType;
     }
@@ -70,7 +55,7 @@ public final class GetEndpointAclPoliciesResult {
     public static Builder builder(GetEndpointAclPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpointType;
         private String id;
@@ -78,11 +63,7 @@ public final class GetEndpointAclPoliciesResult {
         private String instanceId;
         private @Nullable String outputFile;
         private List<GetEndpointAclPoliciesPolicy> policies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointAclPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointType = defaults.endpointType;
@@ -93,14 +74,17 @@ public final class GetEndpointAclPoliciesResult {
     	      this.policies = defaults.policies;
         }
 
+        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -108,22 +92,33 @@ public final class GetEndpointAclPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetEndpointAclPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
         }
         public Builder policies(GetEndpointAclPoliciesPolicy... policies) {
             return policies(List.of(policies));
-        }        public GetEndpointAclPoliciesResult build() {
-            return new GetEndpointAclPoliciesResult(endpointType, id, ids, instanceId, outputFile, policies);
+        }
+        public GetEndpointAclPoliciesResult build() {
+            final var o = new GetEndpointAclPoliciesResult();
+            o.endpointType = endpointType;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            return o;
         }
     }
 }

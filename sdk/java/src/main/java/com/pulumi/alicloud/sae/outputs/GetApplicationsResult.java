@@ -14,51 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationsResult {
-    private final @Nullable String appName;
-    private final List<GetApplicationsApplication> applications;
-    private final @Nullable Boolean enableDetails;
-    private final @Nullable String fieldType;
-    private final @Nullable String fieldValue;
+    private @Nullable String appName;
+    private List<GetApplicationsApplication> applications;
+    private @Nullable Boolean enableDetails;
+    private @Nullable String fieldType;
+    private @Nullable String fieldValue;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String namespaceId;
-    private final @Nullable String orderBy;
-    private final @Nullable String outputFile;
-    private final @Nullable Boolean reverse;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String namespaceId;
+    private @Nullable String orderBy;
+    private @Nullable String outputFile;
+    private @Nullable Boolean reverse;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetApplicationsResult(
-        @CustomType.Parameter("appName") @Nullable String appName,
-        @CustomType.Parameter("applications") List<GetApplicationsApplication> applications,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("fieldType") @Nullable String fieldType,
-        @CustomType.Parameter("fieldValue") @Nullable String fieldValue,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("namespaceId") @Nullable String namespaceId,
-        @CustomType.Parameter("orderBy") @Nullable String orderBy,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("reverse") @Nullable Boolean reverse,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.appName = appName;
-        this.applications = applications;
-        this.enableDetails = enableDetails;
-        this.fieldType = fieldType;
-        this.fieldValue = fieldValue;
-        this.id = id;
-        this.ids = ids;
-        this.namespaceId = namespaceId;
-        this.orderBy = orderBy;
-        this.outputFile = outputFile;
-        this.reverse = reverse;
-        this.status = status;
-    }
-
+    private GetApplicationsResult() {}
     public Optional<String> appName() {
         return Optional.ofNullable(this.appName);
     }
@@ -107,7 +80,7 @@ public final class GetApplicationsResult {
     public static Builder builder(GetApplicationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appName;
         private List<GetApplicationsApplication> applications;
@@ -121,11 +94,7 @@ public final class GetApplicationsResult {
         private @Nullable String outputFile;
         private @Nullable Boolean reverse;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appName = defaults.appName;
@@ -142,10 +111,12 @@ public final class GetApplicationsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder appName(@Nullable String appName) {
             this.appName = appName;
             return this;
         }
+        @CustomType.Setter
         public Builder applications(List<GetApplicationsApplication> applications) {
             this.applications = Objects.requireNonNull(applications);
             return this;
@@ -153,22 +124,27 @@ public final class GetApplicationsResult {
         public Builder applications(GetApplicationsApplication... applications) {
             return applications(List.of(applications));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldType(@Nullable String fieldType) {
             this.fieldType = fieldType;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldValue(@Nullable String fieldValue) {
             this.fieldValue = fieldValue;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -176,27 +152,46 @@ public final class GetApplicationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
             this.namespaceId = namespaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder reverse(@Nullable Boolean reverse) {
             this.reverse = reverse;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetApplicationsResult build() {
-            return new GetApplicationsResult(appName, applications, enableDetails, fieldType, fieldValue, id, ids, namespaceId, orderBy, outputFile, reverse, status);
+        }
+        public GetApplicationsResult build() {
+            final var o = new GetApplicationsResult();
+            o.appName = appName;
+            o.applications = applications;
+            o.enableDetails = enableDetails;
+            o.fieldType = fieldType;
+            o.fieldValue = fieldValue;
+            o.id = id;
+            o.ids = ids;
+            o.namespaceId = namespaceId;
+            o.orderBy = orderBy;
+            o.outputFile = outputFile;
+            o.reverse = reverse;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'OtsBackupPlanOtsDetail',
     'OtsBackupPlanRule',
+    'RestoreJobOtsDetail',
     'ServerBackupPlanDetail',
     'GetBackupJobsFilterResult',
     'GetBackupJobsJobResult',
@@ -155,6 +156,42 @@ class OtsBackupPlanRule(dict):
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class RestoreJobOtsDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "overwriteExisting":
+            suggest = "overwrite_existing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestoreJobOtsDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestoreJobOtsDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestoreJobOtsDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 overwrite_existing: Optional[bool] = None):
+        """
+        :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[bool]:
+        """
+        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "overwrite_existing")
 
 
 @pulumi.output_type

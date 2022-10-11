@@ -55,6 +55,18 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// </summary>
+        [Output("renewPeriod")]
+        public Output<int?> RenewPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        /// </summary>
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
@@ -167,6 +179,18 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// </summary>
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -249,6 +273,18 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        /// </summary>
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.

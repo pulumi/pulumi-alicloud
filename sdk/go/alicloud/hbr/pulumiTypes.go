@@ -240,6 +240,143 @@ func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRule
 	}).(OtsBackupPlanRuleOutput)
 }
 
+type RestoreJobOtsDetail struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+	OverwriteExisting *bool `pulumi:"overwriteExisting"`
+}
+
+// RestoreJobOtsDetailInput is an input type that accepts RestoreJobOtsDetailArgs and RestoreJobOtsDetailOutput values.
+// You can construct a concrete instance of `RestoreJobOtsDetailInput` via:
+//
+//	RestoreJobOtsDetailArgs{...}
+type RestoreJobOtsDetailInput interface {
+	pulumi.Input
+
+	ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput
+	ToRestoreJobOtsDetailOutputWithContext(context.Context) RestoreJobOtsDetailOutput
+}
+
+type RestoreJobOtsDetailArgs struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
+}
+
+func (RestoreJobOtsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput {
+	return i.ToRestoreJobOtsDetailOutputWithContext(context.Background())
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutputWithContext(ctx context.Context) RestoreJobOtsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailOutput)
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return i.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailOutput).ToRestoreJobOtsDetailPtrOutputWithContext(ctx)
+}
+
+// RestoreJobOtsDetailPtrInput is an input type that accepts RestoreJobOtsDetailArgs, RestoreJobOtsDetailPtr and RestoreJobOtsDetailPtrOutput values.
+// You can construct a concrete instance of `RestoreJobOtsDetailPtrInput` via:
+//
+//	        RestoreJobOtsDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreJobOtsDetailPtrInput interface {
+	pulumi.Input
+
+	ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput
+	ToRestoreJobOtsDetailPtrOutputWithContext(context.Context) RestoreJobOtsDetailPtrOutput
+}
+
+type restoreJobOtsDetailPtrType RestoreJobOtsDetailArgs
+
+func RestoreJobOtsDetailPtr(v *RestoreJobOtsDetailArgs) RestoreJobOtsDetailPtrInput {
+	return (*restoreJobOtsDetailPtrType)(v)
+}
+
+func (*restoreJobOtsDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (i *restoreJobOtsDetailPtrType) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return i.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreJobOtsDetailPtrType) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailPtrOutput)
+}
+
+type RestoreJobOtsDetailOutput struct{ *pulumi.OutputState }
+
+func (RestoreJobOtsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailOutputWithContext(ctx context.Context) RestoreJobOtsDetailOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return o.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreJobOtsDetail) *RestoreJobOtsDetail {
+		return &v
+	}).(RestoreJobOtsDetailPtrOutput)
+}
+
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+func (o RestoreJobOtsDetailOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreJobOtsDetail) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+type RestoreJobOtsDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreJobOtsDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailPtrOutput) Elem() RestoreJobOtsDetailOutput {
+	return o.ApplyT(func(v *RestoreJobOtsDetail) RestoreJobOtsDetail {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreJobOtsDetail
+		return ret
+	}).(RestoreJobOtsDetailOutput)
+}
+
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+func (o RestoreJobOtsDetailPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreJobOtsDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServerBackupPlanDetail struct {
 	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
 	AppConsistent bool `pulumi:"appConsistent"`
@@ -4471,6 +4608,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanOtsDetailArrayInput)(nil)).Elem(), OtsBackupPlanOtsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleInput)(nil)).Elem(), OtsBackupPlanRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleArrayInput)(nil)).Elem(), OtsBackupPlanRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailPtrInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailArrayInput)(nil)).Elem(), ServerBackupPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterInput)(nil)).Elem(), GetBackupJobsFilterArgs{})
@@ -4515,6 +4654,8 @@ func init() {
 	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailArrayOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleArrayOutput{})
+	pulumi.RegisterOutputType(RestoreJobOtsDetailOutput{})
+	pulumi.RegisterOutputType(RestoreJobOtsDetailPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterOutput{})

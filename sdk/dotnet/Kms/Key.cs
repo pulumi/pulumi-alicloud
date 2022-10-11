@@ -88,6 +88,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Output("dkmsInstanceId")]
+        public Output<string?> DkmsInstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Output("isEnabled")]
@@ -142,12 +148,13 @@ namespace Pulumi.AliCloud.Kms
         /// For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
         /// </summary>
         [Output("origin")]
-        public Output<string?> Origin { get; private set; } = null!;
+        public Output<string> Origin { get; private set; } = null!;
 
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Output("pendingWindowInDays")]
         public Output<int> PendingWindowInDays { get; private set; } = null!;
@@ -256,6 +263,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
+
+        /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Input("isEnabled")]
@@ -297,7 +310,8 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }
@@ -379,6 +393,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
+
+        /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Input("isEnabled")]
@@ -438,7 +458,8 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }

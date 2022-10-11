@@ -98,6 +98,7 @@ export class Eip extends pulumi.CustomResource {
      * The Id of resource group which the eip belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The EIP current status.
      */
@@ -138,6 +139,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -156,6 +158,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -223,6 +226,7 @@ export interface EipState {
      * The Id of resource group which the eip belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The EIP current status.
      */
@@ -287,6 +291,7 @@ export interface EipArgs {
      * The Id of resource group which the eip belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

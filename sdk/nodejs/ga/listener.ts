@@ -121,6 +121,25 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * - `tlsCipherPolicy10`:
+     * - Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy11`:
+     * - Supported TLS versions: TLS 1.1 and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12Strict`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     * - `tlsCipherPolicy12StrictWith13`:
+     * - Supported TLS versions: TLS 1.2 and TLS 1.3.
+     * - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     */
+    public readonly securityPolicyId!: pulumi.Output<string>;
+    /**
      * The status of the listener.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -146,6 +165,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["portRanges"] = state ? state.portRanges : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
@@ -163,6 +183,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["portRanges"] = args ? args.portRanges : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -211,6 +232,25 @@ export interface ListenerState {
      */
     proxyProtocol?: pulumi.Input<boolean>;
     /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * - `tlsCipherPolicy10`:
+     * - Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy11`:
+     * - Supported TLS versions: TLS 1.1 and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12Strict`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     * - `tlsCipherPolicy12StrictWith13`:
+     * - Supported TLS versions: TLS 1.2 and TLS 1.3.
+     * - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     */
+    securityPolicyId?: pulumi.Input<string>;
+    /**
      * The status of the listener.
      */
     status?: pulumi.Input<string>;
@@ -256,4 +296,23 @@ export interface ListenerArgs {
      * `false`: keep client source IP function is not turned on.
      */
     proxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * - `tlsCipherPolicy10`:
+     * - Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy11`:
+     * - Supported TLS versions: TLS 1.1 and TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+     * - `tlsCipherPolicy12Strict`:
+     * - Supported TLS version: TLS 1.2.
+     * - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     * - `tlsCipherPolicy12StrictWith13`:
+     * - Supported TLS versions: TLS 1.2 and TLS 1.3.
+     * - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+     */
+    securityPolicyId?: pulumi.Input<string>;
 }

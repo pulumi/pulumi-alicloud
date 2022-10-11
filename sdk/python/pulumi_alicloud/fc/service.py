@@ -24,18 +24,20 @@ class ServiceArgs:
                  nas_config: Optional[pulumi.Input['ServiceNasConfigArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] description: The Function Compute Service description.
         :param pulumi.Input[bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
-        :param pulumi.Input['ServiceLogConfigArgs'] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        :param pulumi.Input['ServiceLogConfigArgs'] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         :param pulumi.Input[str] name: The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with `name`.
-        :param pulumi.Input['ServiceNasConfigArgs'] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        :param pulumi.Input['ServiceNasConfigArgs'] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        :param pulumi.Input['ServiceVpcConfigArgs'] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        :param pulumi.Input['ServiceTracingConfigArgs'] tracing_config: Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+        :param pulumi.Input['ServiceVpcConfigArgs'] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -53,6 +55,8 @@ class ServiceArgs:
             pulumi.set(__self__, "publish", publish)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if tracing_config is not None:
+            pulumi.set(__self__, "tracing_config", tracing_config)
         if vpc_config is not None:
             pulumi.set(__self__, "vpc_config", vpc_config)
 
@@ -84,7 +88,7 @@ class ServiceArgs:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['ServiceLogConfigArgs']]:
         """
-        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "log_config")
 
@@ -120,7 +124,7 @@ class ServiceArgs:
     @pulumi.getter(name="nasConfig")
     def nas_config(self) -> Optional[pulumi.Input['ServiceNasConfigArgs']]:
         """
-        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         """
         return pulumi.get(self, "nas_config")
 
@@ -153,10 +157,22 @@ class ServiceArgs:
         pulumi.set(self, "role", value)
 
     @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
+        """
+        Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @tracing_config.setter
+    def tracing_config(self, value: Optional[pulumi.Input['ServiceTracingConfigArgs']]):
+        pulumi.set(self, "tracing_config", value)
+
+    @property
     @pulumi.getter(name="vpcConfig")
     def vpc_config(self) -> Optional[pulumi.Input['ServiceVpcConfigArgs']]:
         """
-        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "vpc_config")
 
@@ -178,6 +194,7 @@ class _ServiceState:
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
         """
@@ -185,15 +202,16 @@ class _ServiceState:
         :param pulumi.Input[str] description: The Function Compute Service description.
         :param pulumi.Input[bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input['ServiceLogConfigArgs'] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        :param pulumi.Input['ServiceLogConfigArgs'] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         :param pulumi.Input[str] name: The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with `name`.
-        :param pulumi.Input['ServiceNasConfigArgs'] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        :param pulumi.Input['ServiceNasConfigArgs'] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[str] service_id: The Function Compute Service ID.
+        :param pulumi.Input['ServiceTracingConfigArgs'] tracing_config: Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
         :param pulumi.Input[str] version: The latest published version of your Function Compute Service.
-        :param pulumi.Input['ServiceVpcConfigArgs'] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        :param pulumi.Input['ServiceVpcConfigArgs'] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -215,6 +233,8 @@ class _ServiceState:
             pulumi.set(__self__, "role", role)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+        if tracing_config is not None:
+            pulumi.set(__self__, "tracing_config", tracing_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if vpc_config is not None:
@@ -260,7 +280,7 @@ class _ServiceState:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['ServiceLogConfigArgs']]:
         """
-        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "log_config")
 
@@ -296,7 +316,7 @@ class _ServiceState:
     @pulumi.getter(name="nasConfig")
     def nas_config(self) -> Optional[pulumi.Input['ServiceNasConfigArgs']]:
         """
-        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         """
         return pulumi.get(self, "nas_config")
 
@@ -341,6 +361,18 @@ class _ServiceState:
         pulumi.set(self, "service_id", value)
 
     @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
+        """
+        Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @tracing_config.setter
+    def tracing_config(self, value: Optional[pulumi.Input['ServiceTracingConfigArgs']]):
+        pulumi.set(self, "tracing_config", value)
+
+    @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -356,7 +388,7 @@ class _ServiceState:
     @pulumi.getter(name="vpcConfig")
     def vpc_config(self) -> Optional[pulumi.Input['ServiceVpcConfigArgs']]:
         """
-        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "vpc_config")
 
@@ -378,6 +410,7 @@ class Service(pulumi.CustomResource):
                  nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
                  vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
                  __props__=None):
         """
@@ -393,13 +426,14 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The Function Compute Service description.
         :param pulumi.Input[bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
-        :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         :param pulumi.Input[str] name: The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with `name`.
-        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        :param pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']] tracing_config: Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+        :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         ...
     @overload
@@ -439,6 +473,7 @@ class Service(pulumi.CustomResource):
                  nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
                  vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -457,6 +492,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["nas_config"] = nas_config
             __props__.__dict__["publish"] = publish
             __props__.__dict__["role"] = role
+            __props__.__dict__["tracing_config"] = tracing_config
             __props__.__dict__["vpc_config"] = vpc_config
             __props__.__dict__["last_modified"] = None
             __props__.__dict__["service_id"] = None
@@ -481,6 +517,7 @@ class Service(pulumi.CustomResource):
             publish: Optional[pulumi.Input[bool]] = None,
             role: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
+            tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None) -> 'Service':
         """
@@ -493,15 +530,16 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Function Compute Service description.
         :param pulumi.Input[bool] internet_access: Whether to allow the Service to access Internet. Default to "true".
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        :param pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']] log_config: Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         :param pulumi.Input[str] name: The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with `name`.
-        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        :param pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']] nas_config: Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         :param pulumi.Input[bool] publish: Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[str] service_id: The Function Compute Service ID.
+        :param pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']] tracing_config: Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
         :param pulumi.Input[str] version: The latest published version of your Function Compute Service.
-        :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        :param pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']] vpc_config: Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,6 +555,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["publish"] = publish
         __props__.__dict__["role"] = role
         __props__.__dict__["service_id"] = service_id
+        __props__.__dict__["tracing_config"] = tracing_config
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_config"] = vpc_config
         return Service(resource_name, opts=opts, __props__=__props__)
@@ -549,7 +588,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Output[Optional['outputs.ServiceLogConfig']]:
         """
-        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+        Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "log_config")
 
@@ -573,7 +612,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="nasConfig")
     def nas_config(self) -> pulumi.Output[Optional['outputs.ServiceNasConfig']]:
         """
-        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+        Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
         """
         return pulumi.get(self, "nas_config")
 
@@ -602,6 +641,14 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "service_id")
 
     @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> pulumi.Output[Optional['outputs.ServiceTracingConfig']]:
+        """
+        Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @property
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
@@ -613,7 +660,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="vpcConfig")
     def vpc_config(self) -> pulumi.Output[Optional['outputs.ServiceVpcConfig']]:
         """
-        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+        Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
         """
         return pulumi.get(self, "vpc_config")
 

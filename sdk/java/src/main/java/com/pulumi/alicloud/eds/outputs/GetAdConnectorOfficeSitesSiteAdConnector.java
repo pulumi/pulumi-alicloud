@@ -13,35 +13,24 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
      * @return AD Connector across Zones, Its Connection Addresses.
      * 
      */
-    private final String adConnectorAddress;
+    private String adConnectorAddress;
     /**
      * @return AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
      * 
      */
-    private final String connectorStatus;
+    private String connectorStatus;
     /**
      * @return AD Connector Mount of the Card ID.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return AD Connector in the Network Corresponding to the ID of the VSwitch in.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetAdConnectorOfficeSitesSiteAdConnector(
-        @CustomType.Parameter("adConnectorAddress") String adConnectorAddress,
-        @CustomType.Parameter("connectorStatus") String connectorStatus,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.adConnectorAddress = adConnectorAddress;
-        this.connectorStatus = connectorStatus;
-        this.networkInterfaceId = networkInterfaceId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetAdConnectorOfficeSitesSiteAdConnector() {}
     /**
      * @return AD Connector across Zones, Its Connection Addresses.
      * 
@@ -78,17 +67,13 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
     public static Builder builder(GetAdConnectorOfficeSitesSiteAdConnector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String adConnectorAddress;
         private String connectorStatus;
         private String networkInterfaceId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAdConnectorOfficeSitesSiteAdConnector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adConnectorAddress = defaults.adConnectorAddress;
@@ -97,23 +82,33 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder adConnectorAddress(String adConnectorAddress) {
             this.adConnectorAddress = Objects.requireNonNull(adConnectorAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder connectorStatus(String connectorStatus) {
             this.connectorStatus = Objects.requireNonNull(connectorStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetAdConnectorOfficeSitesSiteAdConnector build() {
-            return new GetAdConnectorOfficeSitesSiteAdConnector(adConnectorAddress, connectorStatus, networkInterfaceId, vswitchId);
+        }
+        public GetAdConnectorOfficeSitesSiteAdConnector build() {
+            final var o = new GetAdConnectorOfficeSitesSiteAdConnector();
+            o.adConnectorAddress = adConnectorAddress;
+            o.connectorStatus = connectorStatus;
+            o.networkInterfaceId = networkInterfaceId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

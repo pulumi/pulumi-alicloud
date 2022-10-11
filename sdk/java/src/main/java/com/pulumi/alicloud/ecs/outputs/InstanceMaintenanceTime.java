@@ -15,21 +15,14 @@ public final class InstanceMaintenanceTime {
      * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private InstanceMaintenanceTime(
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.endTime = endTime;
-        this.startTime = startTime;
-    }
-
+    private InstanceMaintenanceTime() {}
     /**
      * @return The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
      * 
@@ -52,30 +45,32 @@ public final class InstanceMaintenanceTime {
     public static Builder builder(InstanceMaintenanceTime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endTime;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMaintenanceTime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public InstanceMaintenanceTime build() {
-            return new InstanceMaintenanceTime(endTime, startTime);
+        }
+        public InstanceMaintenanceTime build() {
+            final var o = new InstanceMaintenanceTime();
+            o.endTime = endTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

@@ -151,9 +151,17 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly usedTime!: pulumi.Output<string | undefined>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
+    /**
+     * The zone ID of the instance.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a DbCluster resource with the given unique name, arguments, and options.
@@ -184,7 +192,9 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DbClusterArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -227,7 +237,9 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbCluster.__pulumiType, name, resourceInputs, opts);
@@ -305,9 +317,17 @@ export interface DbClusterState {
      */
     usedTime?: pulumi.Input<string>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -381,7 +401,15 @@ export interface DbClusterArgs {
      */
     usedTime?: pulumi.Input<string>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

@@ -126,8 +126,12 @@ type DbCluster struct {
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrOutput `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewDbCluster registers a new resource with the given unique name, arguments, and options.
@@ -217,8 +221,12 @@ type dbClusterState struct {
 	StorageType *string `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime *string `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type DbClusterState struct {
@@ -256,8 +264,12 @@ type DbClusterState struct {
 	StorageType pulumi.StringPtrInput
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbClusterState) ElementType() reflect.Type {
@@ -299,8 +311,12 @@ type dbClusterArgs struct {
 	StorageType string `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime *string `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DbCluster resource.
@@ -339,8 +355,12 @@ type DbClusterArgs struct {
 	StorageType pulumi.StringInput
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbClusterArgs) ElementType() reflect.Type {
@@ -512,9 +532,19 @@ func (o DbClusterOutput) UsedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.UsedTime }).(pulumi.StringPtrOutput)
 }
 
+// The id of the VPC.
+func (o DbClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 // The vswitch id of DBCluster.
 func (o DbClusterOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the instance.
+func (o DbClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type DbClusterArrayOutput struct{ *pulumi.OutputState }

@@ -967,6 +967,7 @@ class InstanceDataDiskArgs:
                  category: Optional[pulumi.Input[str]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -989,6 +990,7 @@ class InstanceDataDiskArgs:
                Default to `cloud_efficiency`.
         :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] device: The mount point of the data disk.
         :param pulumi.Input[bool] encrypted: -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
         :param pulumi.Input[str] kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param pulumi.Input[str] name: The name of the data disk.
@@ -1009,6 +1011,8 @@ class InstanceDataDiskArgs:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -1090,6 +1094,18 @@ class InstanceDataDiskArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point of the data disk.
+        """
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
 
     @property
     @pulumi.getter

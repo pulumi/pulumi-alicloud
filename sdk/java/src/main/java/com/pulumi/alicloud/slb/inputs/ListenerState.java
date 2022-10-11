@@ -541,6 +541,21 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    @Import(name="proxyProtocolV2Enabled")
+    private @Nullable Output<Boolean> proxyProtocolV2Enabled;
+
+    /**
+     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> proxyProtocolV2Enabled() {
+        return Optional.ofNullable(this.proxyProtocolV2Enabled);
+    }
+
+    /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      * 
      */
@@ -737,6 +752,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.masterSlaveServerGroupId = $.masterSlaveServerGroupId;
         this.persistenceTimeout = $.persistenceTimeout;
         this.protocol = $.protocol;
+        this.proxyProtocolV2Enabled = $.proxyProtocolV2Enabled;
         this.requestTimeout = $.requestTimeout;
         this.scheduler = $.scheduler;
         this.serverCertificateId = $.serverCertificateId;
@@ -1491,6 +1507,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
+        }
+
+        /**
+         * @param proxyProtocolV2Enabled Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolV2Enabled(@Nullable Output<Boolean> proxyProtocolV2Enabled) {
+            $.proxyProtocolV2Enabled = proxyProtocolV2Enabled;
+            return this;
+        }
+
+        /**
+         * @param proxyProtocolV2Enabled Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolV2Enabled(Boolean proxyProtocolV2Enabled) {
+            return proxyProtocolV2Enabled(Output.of(proxyProtocolV2Enabled));
         }
 
         /**

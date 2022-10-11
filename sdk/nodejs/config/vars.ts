@@ -120,6 +120,17 @@ Object.defineProperty(exports, "logEndpoint", {
     enumerable: true,
 });
 
+/**
+ * The maximum retry timeout of the request.
+ */
+export declare const maxRetryTimeout: number | undefined;
+Object.defineProperty(exports, "maxRetryTimeout", {
+    get() {
+        return __config.getObject<number>("maxRetryTimeout");
+    },
+    enumerable: true,
+});
+
 export declare const mnsEndpoint: string | undefined;
 Object.defineProperty(exports, "mnsEndpoint", {
     get() {

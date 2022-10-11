@@ -84,6 +84,7 @@ class ProviderEndpointArgs:
                  cas: Optional[pulumi.Input[str]] = None,
                  cassandra: Optional[pulumi.Input[str]] = None,
                  cbn: Optional[pulumi.Input[str]] = None,
+                 cbs: Optional[pulumi.Input[str]] = None,
                  cddc: Optional[pulumi.Input[str]] = None,
                  cdn: Optional[pulumi.Input[str]] = None,
                  cds: Optional[pulumi.Input[str]] = None,
@@ -113,6 +114,7 @@ class ProviderEndpointArgs:
                  dts: Optional[pulumi.Input[str]] = None,
                  dysms: Optional[pulumi.Input[str]] = None,
                  eais: Optional[pulumi.Input[str]] = None,
+                 ebs: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
                  edas: Optional[pulumi.Input[str]] = None,
@@ -151,6 +153,7 @@ class ProviderEndpointArgs:
                  mscopensubscription: Optional[pulumi.Input[str]] = None,
                  mse: Optional[pulumi.Input[str]] = None,
                  nas: Optional[pulumi.Input[str]] = None,
+                 nlb: Optional[pulumi.Input[str]] = None,
                  ons: Optional[pulumi.Input[str]] = None,
                  onsproxy: Optional[pulumi.Input[str]] = None,
                  oos: Optional[pulumi.Input[str]] = None,
@@ -182,6 +185,7 @@ class ProviderEndpointArgs:
                  tag: Optional[pulumi.Input[str]] = None,
                  vod: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
+                 vpcpeer: Optional[pulumi.Input[str]] = None,
                  vs: Optional[pulumi.Input[str]] = None,
                  waf: Optional[pulumi.Input[str]] = None,
                  waf_openapi: Optional[pulumi.Input[str]] = None):
@@ -215,6 +219,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cassandra", cassandra)
         if cbn is not None:
             pulumi.set(__self__, "cbn", cbn)
+        if cbs is not None:
+            pulumi.set(__self__, "cbs", cbs)
         if cddc is not None:
             pulumi.set(__self__, "cddc", cddc)
         if cdn is not None:
@@ -273,6 +279,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "dysms", dysms)
         if eais is not None:
             pulumi.set(__self__, "eais", eais)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -349,6 +357,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "mse", mse)
         if nas is not None:
             pulumi.set(__self__, "nas", nas)
+        if nlb is not None:
+            pulumi.set(__self__, "nlb", nlb)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
         if onsproxy is not None:
@@ -411,6 +421,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+        if vpcpeer is not None:
+            pulumi.set(__self__, "vpcpeer", vpcpeer)
         if vs is not None:
             pulumi.set(__self__, "vs", vs)
         if waf is not None:
@@ -552,6 +564,15 @@ class ProviderEndpointArgs:
     @cbn.setter
     def cbn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cbn", value)
+
+    @property
+    @pulumi.getter
+    def cbs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cbs")
+
+    @cbs.setter
+    def cbs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cbs", value)
 
     @property
     @pulumi.getter
@@ -813,6 +834,15 @@ class ProviderEndpointArgs:
     @eais.setter
     def eais(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eais", value)
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ebs")
+
+    @ebs.setter
+    def ebs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ebs", value)
 
     @property
     @pulumi.getter
@@ -1158,6 +1188,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def nlb(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "nlb")
+
+    @nlb.setter
+    def nlb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nlb", value)
+
+    @property
+    @pulumi.getter
     def ons(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ons")
 
@@ -1434,6 +1473,15 @@ class ProviderEndpointArgs:
     @vpc.setter
     def vpc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc", value)
+
+    @property
+    @pulumi.getter
+    def vpcpeer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpcpeer")
+
+    @vpcpeer.setter
+    def vpcpeer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpcpeer", value)
 
     @property
     @pulumi.getter

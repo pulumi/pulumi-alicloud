@@ -13,70 +13,49 @@ public final class GetServerSnapshotsSnapshot {
      * @return The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the source disk. This parameter has a value even after the source disk is released.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The progress of snapshot creation.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The remarks of the snapshot.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return The ID of the snapshot.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return The name of the snapshot.
      * 
      */
-    private final String snapshotName;
+    private String snapshotName;
     /**
      * @return A snapshot of the source of a disk type. Possible values: `System`, `Data`.
      * 
      */
-    private final String sourceDiskType;
+    private String sourceDiskType;
     /**
      * @return The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetServerSnapshotsSnapshot(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("snapshotName") String snapshotName,
-        @CustomType.Parameter("sourceDiskType") String sourceDiskType,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.diskId = diskId;
-        this.id = id;
-        this.progress = progress;
-        this.remark = remark;
-        this.snapshotId = snapshotId;
-        this.snapshotName = snapshotName;
-        this.sourceDiskType = sourceDiskType;
-        this.status = status;
-    }
-
+    private GetServerSnapshotsSnapshot() {}
     /**
      * @return The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
@@ -148,7 +127,7 @@ public final class GetServerSnapshotsSnapshot {
     public static Builder builder(GetServerSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String diskId;
@@ -159,11 +138,7 @@ public final class GetServerSnapshotsSnapshot {
         private String snapshotName;
         private String sourceDiskType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -177,43 +152,63 @@ public final class GetServerSnapshotsSnapshot {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             this.snapshotName = Objects.requireNonNull(snapshotName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
             this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetServerSnapshotsSnapshot build() {
-            return new GetServerSnapshotsSnapshot(createTime, diskId, id, progress, remark, snapshotId, snapshotName, sourceDiskType, status);
+        }
+        public GetServerSnapshotsSnapshot build() {
+            final var o = new GetServerSnapshotsSnapshot();
+            o.createTime = createTime;
+            o.diskId = diskId;
+            o.id = id;
+            o.progress = progress;
+            o.remark = remark;
+            o.snapshotId = snapshotId;
+            o.snapshotName = snapshotName;
+            o.sourceDiskType = sourceDiskType;
+            o.status = status;
+            return o;
         }
     }
 }

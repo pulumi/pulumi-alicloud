@@ -90,6 +90,21 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The mount point of the data disk.
+     * 
+     */
+    @Import(name="device")
+    private @Nullable Output<String> device;
+
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
+    public Optional<Output<String>> device() {
+        return Optional.ofNullable(this.device);
+    }
+
+    /**
      * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
      * 
      */
@@ -206,6 +221,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.device = $.device;
         this.encrypted = $.encrypted;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
@@ -326,6 +342,27 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(@Nullable Output<String> device) {
+            $.device = device;
+            return this;
+        }
+
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(String device) {
+            return device(Output.of(device));
         }
 
         /**

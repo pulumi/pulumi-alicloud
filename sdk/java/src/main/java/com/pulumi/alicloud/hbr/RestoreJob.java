@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.hbr.RestoreJobArgs;
 import com.pulumi.alicloud.hbr.inputs.RestoreJobState;
+import com.pulumi.alicloud.hbr.outputs.RestoreJobOtsDetail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -176,6 +177,20 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> options() {
         return Codegen.optional(this.options);
+    }
+    /**
+     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    @Export(name="otsDetail", type=RestoreJobOtsDetail.class, parameters={})
+    private Output<RestoreJobOtsDetail> otsDetail;
+
+    /**
+     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    public Output<RestoreJobOtsDetail> otsDetail() {
+        return this.otsDetail;
     }
     /**
      * Restore Job ID. It&#39;s the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.

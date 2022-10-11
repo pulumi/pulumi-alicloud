@@ -83,6 +83,8 @@ type Instance struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringOutput `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -152,6 +154,8 @@ type instanceState struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification *string `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -178,6 +182,8 @@ type InstanceState struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DRDS instance.
@@ -208,6 +214,8 @@ type instanceArgs struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification string `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -235,6 +243,8 @@ type InstanceArgs struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the DRDS instance.
@@ -357,6 +367,11 @@ func (o InstanceOutput) InstanceSeries() pulumi.StringOutput {
 // - value range : `drds.sn1.32c64g.128c256g`
 func (o InstanceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
+}
+
+// The id of the VPC.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The VSwitch ID to launch in.

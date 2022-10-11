@@ -13,35 +13,24 @@ public final class GetAccessStrategiesStrategyLine {
      * @return The code of the source region group.
      * 
      */
-    private final String groupCode;
+    private String groupCode;
     /**
      * @return The name of the source region group.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The line code of the source region.
      * 
      */
-    private final String lineCode;
+    private String lineCode;
     /**
      * @return The line name of the source region.
      * 
      */
-    private final String lineName;
+    private String lineName;
 
-    @CustomType.Constructor
-    private GetAccessStrategiesStrategyLine(
-        @CustomType.Parameter("groupCode") String groupCode,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("lineCode") String lineCode,
-        @CustomType.Parameter("lineName") String lineName) {
-        this.groupCode = groupCode;
-        this.groupName = groupName;
-        this.lineCode = lineCode;
-        this.lineName = lineName;
-    }
-
+    private GetAccessStrategiesStrategyLine() {}
     /**
      * @return The code of the source region group.
      * 
@@ -78,17 +67,13 @@ public final class GetAccessStrategiesStrategyLine {
     public static Builder builder(GetAccessStrategiesStrategyLine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String groupCode;
         private String groupName;
         private String lineCode;
         private String lineName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessStrategiesStrategyLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupCode = defaults.groupCode;
@@ -97,23 +82,33 @@ public final class GetAccessStrategiesStrategyLine {
     	      this.lineName = defaults.lineName;
         }
 
+        @CustomType.Setter
         public Builder groupCode(String groupCode) {
             this.groupCode = Objects.requireNonNull(groupCode);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder lineCode(String lineCode) {
             this.lineCode = Objects.requireNonNull(lineCode);
             return this;
         }
+        @CustomType.Setter
         public Builder lineName(String lineName) {
             this.lineName = Objects.requireNonNull(lineName);
             return this;
-        }        public GetAccessStrategiesStrategyLine build() {
-            return new GetAccessStrategiesStrategyLine(groupCode, groupName, lineCode, lineName);
+        }
+        public GetAccessStrategiesStrategyLine build() {
+            final var o = new GetAccessStrategiesStrategyLine();
+            o.groupCode = groupCode;
+            o.groupName = groupName;
+            o.lineCode = lineCode;
+            o.lineName = lineName;
+            return o;
         }
     }
 }

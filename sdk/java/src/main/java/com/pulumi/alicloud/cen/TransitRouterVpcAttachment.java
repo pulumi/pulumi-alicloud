@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -44,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,9 +94,15 @@ import javax.annotation.Nullable;
  *             .cenId(defaultInstance.id())
  *             .transitRouterId(defaultTransitRouter.id())
  *             .vpcId(defaultNetwork.id())
- *             .zoneMapping(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(data.alicloud_cen_transit_router_available_resource().default().zones()[0].master_zones()[0])
+ *                     .vswitchId(defaultMaster.id())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(data.alicloud_cen_transit_router_available_resource().default().zones()[0].slave_zones()[0])
+ *                     .vswitchId(defaultSlave.id())
+ *                     .build())
  *             .transitRouterAttachmentName(transitRouterAttachmentName)
  *             .transitRouterAttachmentDescription(transitRouterAttachmentDescription)
  *             .build());
@@ -299,14 +305,14 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return this.vpcOwnerId;
     }
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={TransitRouterVpcAttachmentZoneMapping.class})
     private Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC.
+     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
      * 
      */
     public Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings() {

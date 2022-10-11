@@ -14,63 +14,44 @@ public final class GetControlPoliciesPolicy {
      * @return The count of policy attachment.
      * 
      */
-    private final Integer attachmentCount;
+    private Integer attachmentCount;
     /**
      * @return The name of policy.
      * 
      */
-    private final String controlPolicyName;
+    private String controlPolicyName;
     /**
      * @return The description of policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The effect scope.
      * 
      */
-    private final String effectScope;
+    private String effectScope;
     /**
      * @return The ID of the Control Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The policy document.
      * 
      */
-    private final String policyDocument;
+    private String policyDocument;
     /**
      * @return The ID of policy.
      * 
      */
-    private final String policyId;
+    private String policyId;
     /**
      * @return The type of policy.
      * 
      */
-    private final String policyType;
+    private String policyType;
 
-    @CustomType.Constructor
-    private GetControlPoliciesPolicy(
-        @CustomType.Parameter("attachmentCount") Integer attachmentCount,
-        @CustomType.Parameter("controlPolicyName") String controlPolicyName,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("effectScope") String effectScope,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("policyDocument") String policyDocument,
-        @CustomType.Parameter("policyId") String policyId,
-        @CustomType.Parameter("policyType") String policyType) {
-        this.attachmentCount = attachmentCount;
-        this.controlPolicyName = controlPolicyName;
-        this.description = description;
-        this.effectScope = effectScope;
-        this.id = id;
-        this.policyDocument = policyDocument;
-        this.policyId = policyId;
-        this.policyType = policyType;
-    }
-
+    private GetControlPoliciesPolicy() {}
     /**
      * @return The count of policy attachment.
      * 
@@ -135,7 +116,7 @@ public final class GetControlPoliciesPolicy {
     public static Builder builder(GetControlPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer attachmentCount;
         private String controlPolicyName;
@@ -145,11 +126,7 @@ public final class GetControlPoliciesPolicy {
         private String policyDocument;
         private String policyId;
         private String policyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetControlPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachmentCount = defaults.attachmentCount;
@@ -162,39 +139,57 @@ public final class GetControlPoliciesPolicy {
     	      this.policyType = defaults.policyType;
         }
 
+        @CustomType.Setter
         public Builder attachmentCount(Integer attachmentCount) {
             this.attachmentCount = Objects.requireNonNull(attachmentCount);
             return this;
         }
+        @CustomType.Setter
         public Builder controlPolicyName(String controlPolicyName) {
             this.controlPolicyName = Objects.requireNonNull(controlPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder effectScope(String effectScope) {
             this.effectScope = Objects.requireNonNull(effectScope);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
             this.policyDocument = Objects.requireNonNull(policyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(String policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
         }
+        @CustomType.Setter
         public Builder policyType(String policyType) {
             this.policyType = Objects.requireNonNull(policyType);
             return this;
-        }        public GetControlPoliciesPolicy build() {
-            return new GetControlPoliciesPolicy(attachmentCount, controlPolicyName, description, effectScope, id, policyDocument, policyId, policyType);
+        }
+        public GetControlPoliciesPolicy build() {
+            final var o = new GetControlPoliciesPolicy();
+            o.attachmentCount = attachmentCount;
+            o.controlPolicyName = controlPolicyName;
+            o.description = description;
+            o.effectScope = effectScope;
+            o.id = id;
+            o.policyDocument = policyDocument;
+            o.policyId = policyId;
+            o.policyType = policyType;
+            return o;
         }
     }
 }

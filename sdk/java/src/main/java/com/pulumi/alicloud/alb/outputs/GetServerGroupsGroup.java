@@ -19,80 +19,55 @@ public final class GetServerGroupsGroup {
      * @return The configuration of health checks.
      * 
      */
-    private final List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
+    private List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
     /**
      * @return The ID of the Server Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
      * 
      */
-    private final String scheduler;
+    private String scheduler;
     /**
      * @return The first ID of the res ource.
      * 
      */
-    private final String serverGroupId;
+    private String serverGroupId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String serverGroupName;
+    private String serverGroupName;
     /**
      * @return The backend server.
      * 
      */
-    private final List<GetServerGroupsGroupServer> servers;
+    private List<GetServerGroupsGroupServer> servers;
     /**
      * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The configuration of the sticky session.
      * 
      */
-    private final List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
-    private final Map<String,Object> tags;
+    private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
+    private Map<String,Object> tags;
     /**
      * @return The ID of the VPC that you want to access.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetServerGroupsGroup(
-        @CustomType.Parameter("healthCheckConfigs") List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("scheduler") String scheduler,
-        @CustomType.Parameter("serverGroupId") String serverGroupId,
-        @CustomType.Parameter("serverGroupName") String serverGroupName,
-        @CustomType.Parameter("servers") List<GetServerGroupsGroupServer> servers,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("stickySessionConfigs") List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.healthCheckConfigs = healthCheckConfigs;
-        this.id = id;
-        this.protocol = protocol;
-        this.scheduler = scheduler;
-        this.serverGroupId = serverGroupId;
-        this.serverGroupName = serverGroupName;
-        this.servers = servers;
-        this.status = status;
-        this.stickySessionConfigs = stickySessionConfigs;
-        this.tags = tags;
-        this.vpcId = vpcId;
-    }
-
+    private GetServerGroupsGroup() {}
     /**
      * @return The configuration of health checks.
      * 
@@ -174,7 +149,7 @@ public final class GetServerGroupsGroup {
     public static Builder builder(GetServerGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
         private String id;
@@ -187,11 +162,7 @@ public final class GetServerGroupsGroup {
         private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
         private Map<String,Object> tags;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckConfigs = defaults.healthCheckConfigs;
@@ -207,6 +178,7 @@ public final class GetServerGroupsGroup {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder healthCheckConfigs(List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs) {
             this.healthCheckConfigs = Objects.requireNonNull(healthCheckConfigs);
             return this;
@@ -214,26 +186,32 @@ public final class GetServerGroupsGroup {
         public Builder healthCheckConfigs(GetServerGroupsGroupHealthCheckConfig... healthCheckConfigs) {
             return healthCheckConfigs(List.of(healthCheckConfigs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduler(String scheduler) {
             this.scheduler = Objects.requireNonNull(scheduler);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupName(String serverGroupName) {
             this.serverGroupName = Objects.requireNonNull(serverGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder servers(List<GetServerGroupsGroupServer> servers) {
             this.servers = Objects.requireNonNull(servers);
             return this;
@@ -241,10 +219,12 @@ public final class GetServerGroupsGroup {
         public Builder servers(GetServerGroupsGroupServer... servers) {
             return servers(List.of(servers));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder stickySessionConfigs(List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs) {
             this.stickySessionConfigs = Objects.requireNonNull(stickySessionConfigs);
             return this;
@@ -252,15 +232,30 @@ public final class GetServerGroupsGroup {
         public Builder stickySessionConfigs(GetServerGroupsGroupStickySessionConfig... stickySessionConfigs) {
             return stickySessionConfigs(List.of(stickySessionConfigs));
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetServerGroupsGroup build() {
-            return new GetServerGroupsGroup(healthCheckConfigs, id, protocol, scheduler, serverGroupId, serverGroupName, servers, status, stickySessionConfigs, tags, vpcId);
+        }
+        public GetServerGroupsGroup build() {
+            final var o = new GetServerGroupsGroup();
+            o.healthCheckConfigs = healthCheckConfigs;
+            o.id = id;
+            o.protocol = protocol;
+            o.scheduler = scheduler;
+            o.serverGroupId = serverGroupId;
+            o.serverGroupName = serverGroupName;
+            o.servers = servers;
+            o.status = status;
+            o.stickySessionConfigs = stickySessionConfigs;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

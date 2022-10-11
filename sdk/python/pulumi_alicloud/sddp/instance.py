@@ -25,6 +25,7 @@ class InstanceArgs:
                  dataphin_count: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 oss_size: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None):
         """
@@ -40,6 +41,7 @@ class InstanceArgs:
         :param pulumi.Input[str] dataphin_count: The dataphin count. Valid values: 1 to 20.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+        :param pulumi.Input[str] oss_size: The OSS storage capacity.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         """
@@ -58,6 +60,8 @@ class InstanceArgs:
             pulumi.set(__self__, "logistics", logistics)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if oss_size is not None:
+            pulumi.set(__self__, "oss_size", oss_size)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
@@ -196,6 +200,18 @@ class InstanceArgs:
         pulumi.set(self, "modify_type", value)
 
     @property
+    @pulumi.getter(name="ossSize")
+    def oss_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OSS storage capacity.
+        """
+        return pulumi.get(self, "oss_size")
+
+    @oss_size.setter
+    def oss_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_size", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -254,9 +270,11 @@ class _InstanceState:
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
         :param pulumi.Input[bool] odps_set: Whether the authorized MaxCompute (ODPS) assets.
         :param pulumi.Input[bool] oss_bucket_set: Whether the authorized oss assets.
+        :param pulumi.Input[str] oss_size: The OSS storage capacity.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
         :param pulumi.Input[bool] rds_set: Whether the authorized rds assets.
+        :param pulumi.Input[str] remain_days: The remaining days of the protection period of the assets in the current login account.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param pulumi.Input[str] sd_cbool: Whether to use the database. Valid values:`yes`,`no`.
@@ -408,6 +426,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="ossSize")
     def oss_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OSS storage capacity.
+        """
         return pulumi.get(self, "oss_size")
 
     @oss_size.setter
@@ -453,6 +474,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="remainDays")
     def remain_days(self) -> Optional[pulumi.Input[str]]:
+        """
+        The remaining days of the protection period of the assets in the current login account.
+        """
         return pulumi.get(self, "remain_days")
 
     @remain_days.setter
@@ -565,6 +589,7 @@ class Instance(pulumi.CustomResource):
                  dataphin_count: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 oss_size: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -617,6 +642,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] dataphin_count: The dataphin count. Valid values: 1 to 20.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
+        :param pulumi.Input[str] oss_size: The OSS storage capacity.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
@@ -688,6 +714,7 @@ class Instance(pulumi.CustomResource):
                  dataphin_count: Optional[pulumi.Input[str]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 oss_size: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
@@ -710,6 +737,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["dataphin_count"] = dataphin_count
             __props__.__dict__["logistics"] = logistics
             __props__.__dict__["modify_type"] = modify_type
+            __props__.__dict__["oss_size"] = oss_size
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
@@ -737,7 +765,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_num"] = None
             __props__.__dict__["odps_set"] = None
             __props__.__dict__["oss_bucket_set"] = None
-            __props__.__dict__["oss_size"] = None
             __props__.__dict__["rds_set"] = None
             __props__.__dict__["remain_days"] = None
             __props__.__dict__["status"] = None
@@ -787,9 +814,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
         :param pulumi.Input[bool] odps_set: Whether the authorized MaxCompute (ODPS) assets.
         :param pulumi.Input[bool] oss_bucket_set: Whether the authorized oss assets.
+        :param pulumi.Input[str] oss_size: The OSS storage capacity.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
         :param pulumi.Input[bool] rds_set: Whether the authorized rds assets.
+        :param pulumi.Input[str] remain_days: The remaining days of the protection period of the assets in the current login account.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param pulumi.Input[str] sd_cbool: Whether to use the database. Valid values:`yes`,`no`.
@@ -893,6 +922,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ossSize")
     def oss_size(self) -> pulumi.Output[str]:
+        """
+        The OSS storage capacity.
+        """
         return pulumi.get(self, "oss_size")
 
     @property
@@ -922,6 +954,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="remainDays")
     def remain_days(self) -> pulumi.Output[str]:
+        """
+        The remaining days of the protection period of the assets in the current login account.
+        """
         return pulumi.get(self, "remain_days")
 
     @property

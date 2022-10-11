@@ -141,11 +141,11 @@ type Instance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -234,11 +234,11 @@ type instanceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota *int `pulumi:"topicQuota"`
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -281,11 +281,11 @@ type InstanceState struct {
 	Tags pulumi.MapInput
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntPtrInput
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -324,8 +324,12 @@ type instanceArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota int `pulumi:"topicQuota"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -360,8 +364,12 @@ type InstanceArgs struct {
 	Tags pulumi.MapInput
 	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -537,7 +545,7 @@ func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
 }
 
-// The ID of attaching VPC to instance.
+// The VPC ID of the instance.
 func (o InstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -547,7 +555,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The Zone to launch the kafka instance.
+// The zone ID of the instance.
 func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

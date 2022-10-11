@@ -133,6 +133,10 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     public readonly ikeConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
+     * The VPN gateway IP.
+     */
+    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    /**
      * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
      */
     public readonly ipsecConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIpsecConfig>;
@@ -177,6 +181,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
             resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
             resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
+            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
             resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
             resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
@@ -206,6 +211,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["remoteSubnet"] = args ? args.remoteSubnet : undefined;
             resourceInputs["vpnAttachmentName"] = args ? args.vpnAttachmentName : undefined;
+            resourceInputs["internetIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -245,6 +251,10 @@ export interface GatewayVpnAttachmentState {
      * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig>;
+    /**
+     * The VPN gateway IP.
+     */
+    internetIp?: pulumi.Input<string>;
     /**
      * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
      */

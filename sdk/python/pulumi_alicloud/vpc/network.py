@@ -28,13 +28,13 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidr blocks of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         if cidr_block is not None:
@@ -52,6 +52,9 @@ class NetworkArgs:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_cidr_blocks is not None:
+            warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
         if secondary_cidr_blocks is not None:
             pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
         if tags is not None:
@@ -89,7 +92,7 @@ class NetworkArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -125,7 +128,7 @@ class NetworkArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the VPC belongs.
+        The ID of resource group which the VPC belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -137,7 +140,7 @@ class NetworkArgs:
     @pulumi.getter(name="secondaryCidrBlocks")
     def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The secondary CIDR blocks for the VPC.
+        Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         """
         return pulumi.get(self, "secondary_cidr_blocks")
 
@@ -161,7 +164,7 @@ class NetworkArgs:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The user cidrs of the VPC.
+        The user cidr blocks of the VPC.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -204,18 +207,18 @@ class _NetworkState:
         Input properties used for looking up and filtering Network resources.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
         :param pulumi.Input[str] ipv6_cidr_block: (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_table_id: (Deprecated) It has been deprecated and replaced with `route_table_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidr blocks of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         if cidr_block is not None:
@@ -244,6 +247,9 @@ class _NetworkState:
             pulumi.log.warn("""router_table_id is deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.""")
         if router_table_id is not None:
             pulumi.set(__self__, "router_table_id", router_table_id)
+        if secondary_cidr_blocks is not None:
+            warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
         if secondary_cidr_blocks is not None:
             pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
         if status is not None:
@@ -283,7 +289,7 @@ class _NetworkState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -331,7 +337,7 @@ class _NetworkState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the VPC belongs.
+        The ID of resource group which the VPC belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -379,7 +385,7 @@ class _NetworkState:
     @pulumi.getter(name="secondaryCidrBlocks")
     def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The secondary CIDR blocks for the VPC.
+        Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         """
         return pulumi.get(self, "secondary_cidr_blocks")
 
@@ -415,7 +421,7 @@ class _NetworkState:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The user cidrs of the VPC.
+        The user cidr blocks of the VPC.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -465,13 +471,13 @@ class Network(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidr blocks of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         ...
@@ -532,6 +538,9 @@ class Network(pulumi.CustomResource):
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
+            if secondary_cidr_blocks is not None and not opts.urn:
+                warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
+                pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
             __props__.__dict__["secondary_cidr_blocks"] = secondary_cidr_blocks
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_cidrs"] = user_cidrs
@@ -575,18 +584,18 @@ class Network(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
         :param pulumi.Input[str] ipv6_cidr_block: (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_table_id: (Deprecated) It has been deprecated and replaced with `route_table_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidr blocks of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -630,7 +639,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -662,7 +671,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The Id of resource group which the VPC belongs.
+        The ID of resource group which the VPC belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -692,9 +701,9 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryCidrBlocks")
-    def secondary_cidr_blocks(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def secondary_cidr_blocks(self) -> pulumi.Output[Sequence[str]]:
         """
-        The secondary CIDR blocks for the VPC.
+        Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
         """
         return pulumi.get(self, "secondary_cidr_blocks")
 
@@ -718,7 +727,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The user cidrs of the VPC.
+        The user cidr blocks of the VPC.
         """
         return pulumi.get(self, "user_cidrs")
 

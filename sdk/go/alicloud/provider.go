@@ -105,6 +105,8 @@ type providerArgs struct {
 	Fc *string `pulumi:"fc"`
 	// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
 	LogEndpoint *string `pulumi:"logEndpoint"`
+	// The maximum retry timeout of the request.
+	MaxRetryTimeout *int `pulumi:"maxRetryTimeout"`
 	// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
 	MnsEndpoint *string `pulumi:"mnsEndpoint"`
 	// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
@@ -156,6 +158,8 @@ type ProviderArgs struct {
 	Fc pulumi.StringPtrInput
 	// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
 	LogEndpoint pulumi.StringPtrInput
+	// The maximum retry timeout of the request.
+	MaxRetryTimeout pulumi.IntPtrInput
 	// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
 	MnsEndpoint pulumi.StringPtrInput
 	// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.

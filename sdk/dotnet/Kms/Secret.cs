@@ -63,6 +63,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Output("dkmsInstanceId")]
+        public Output<string?> DkmsInstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable automatic key rotation.
         /// </summary>
         [Output("enableAutomaticRotation")]
@@ -187,6 +193,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
+
+        /// <summary>
         /// Whether to enable automatic key rotation.
         /// </summary>
         [Input("enableAutomaticRotation")]
@@ -282,6 +294,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// Whether to enable automatic key rotation.

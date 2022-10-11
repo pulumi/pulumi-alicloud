@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The mount point of the data disk.
+        /// </summary>
+        [Input("device")]
+        public Input<string>? Device { get; set; }
+
+        /// <summary>
         /// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
         /// </summary>
         [Input("encrypted")]

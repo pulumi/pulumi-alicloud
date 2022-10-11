@@ -12,29 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MasterSlaveServerGroupServer {
-    private final @Nullable Integer isBackup;
-    private final Integer port;
-    private final String serverId;
-    private final @Nullable String serverType;
-    private final @Nullable String type;
-    private final @Nullable Integer weight;
+    private @Nullable Integer isBackup;
+    private Integer port;
+    private String serverId;
+    private @Nullable String serverType;
+    private @Nullable String type;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private MasterSlaveServerGroupServer(
-        @CustomType.Parameter("isBackup") @Nullable Integer isBackup,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("serverId") String serverId,
-        @CustomType.Parameter("serverType") @Nullable String serverType,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.isBackup = isBackup;
-        this.port = port;
-        this.serverId = serverId;
-        this.serverType = serverType;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private MasterSlaveServerGroupServer() {}
     public Optional<Integer> isBackup() {
         return Optional.ofNullable(this.isBackup);
     }
@@ -61,7 +46,7 @@ public final class MasterSlaveServerGroupServer {
     public static Builder builder(MasterSlaveServerGroupServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer isBackup;
         private Integer port;
@@ -69,11 +54,7 @@ public final class MasterSlaveServerGroupServer {
         private @Nullable String serverType;
         private @Nullable String type;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MasterSlaveServerGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isBackup = defaults.isBackup;
@@ -84,31 +65,45 @@ public final class MasterSlaveServerGroupServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder isBackup(@Nullable Integer isBackup) {
             this.isBackup = isBackup;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(@Nullable String serverType) {
             this.serverType = serverType;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public MasterSlaveServerGroupServer build() {
-            return new MasterSlaveServerGroupServer(isBackup, port, serverId, serverType, type, weight);
+        }
+        public MasterSlaveServerGroupServer build() {
+            final var o = new MasterSlaveServerGroupServer();
+            o.isBackup = isBackup;
+            o.port = port;
+            o.serverId = serverId;
+            o.serverType = serverType;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

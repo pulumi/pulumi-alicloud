@@ -15,49 +15,34 @@ public final class GetEventRulesRuleEventPattern {
      * @return The list of event types.
      * 
      */
-    private final List<String> eventTypeLists;
+    private List<String> eventTypeLists;
     /**
      * @return The filter keyword.
      * 
      */
-    private final List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters;
+    private List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters;
     /**
      * @return The list of event levels.
      * 
      */
-    private final List<String> levelLists;
+    private List<String> levelLists;
     /**
      * @return The list of event names.
      * 
      */
-    private final List<String> nameLists;
+    private List<String> nameLists;
     /**
      * @return The type of the cloud service.
      * 
      */
-    private final String product;
+    private String product;
     /**
      * @return The SQL condition that is used to filter events.
      * 
      */
-    private final String sqlFilter;
+    private String sqlFilter;
 
-    @CustomType.Constructor
-    private GetEventRulesRuleEventPattern(
-        @CustomType.Parameter("eventTypeLists") List<String> eventTypeLists,
-        @CustomType.Parameter("keywordFilters") List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters,
-        @CustomType.Parameter("levelLists") List<String> levelLists,
-        @CustomType.Parameter("nameLists") List<String> nameLists,
-        @CustomType.Parameter("product") String product,
-        @CustomType.Parameter("sqlFilter") String sqlFilter) {
-        this.eventTypeLists = eventTypeLists;
-        this.keywordFilters = keywordFilters;
-        this.levelLists = levelLists;
-        this.nameLists = nameLists;
-        this.product = product;
-        this.sqlFilter = sqlFilter;
-    }
-
+    private GetEventRulesRuleEventPattern() {}
     /**
      * @return The list of event types.
      * 
@@ -108,7 +93,7 @@ public final class GetEventRulesRuleEventPattern {
     public static Builder builder(GetEventRulesRuleEventPattern defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> eventTypeLists;
         private List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters;
@@ -116,11 +101,7 @@ public final class GetEventRulesRuleEventPattern {
         private List<String> nameLists;
         private String product;
         private String sqlFilter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEventRulesRuleEventPattern defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventTypeLists = defaults.eventTypeLists;
@@ -131,6 +112,7 @@ public final class GetEventRulesRuleEventPattern {
     	      this.sqlFilter = defaults.sqlFilter;
         }
 
+        @CustomType.Setter
         public Builder eventTypeLists(List<String> eventTypeLists) {
             this.eventTypeLists = Objects.requireNonNull(eventTypeLists);
             return this;
@@ -138,6 +120,7 @@ public final class GetEventRulesRuleEventPattern {
         public Builder eventTypeLists(String... eventTypeLists) {
             return eventTypeLists(List.of(eventTypeLists));
         }
+        @CustomType.Setter
         public Builder keywordFilters(List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters) {
             this.keywordFilters = Objects.requireNonNull(keywordFilters);
             return this;
@@ -145,6 +128,7 @@ public final class GetEventRulesRuleEventPattern {
         public Builder keywordFilters(GetEventRulesRuleEventPatternKeywordFilter... keywordFilters) {
             return keywordFilters(List.of(keywordFilters));
         }
+        @CustomType.Setter
         public Builder levelLists(List<String> levelLists) {
             this.levelLists = Objects.requireNonNull(levelLists);
             return this;
@@ -152,6 +136,7 @@ public final class GetEventRulesRuleEventPattern {
         public Builder levelLists(String... levelLists) {
             return levelLists(List.of(levelLists));
         }
+        @CustomType.Setter
         public Builder nameLists(List<String> nameLists) {
             this.nameLists = Objects.requireNonNull(nameLists);
             return this;
@@ -159,15 +144,25 @@ public final class GetEventRulesRuleEventPattern {
         public Builder nameLists(String... nameLists) {
             return nameLists(List.of(nameLists));
         }
+        @CustomType.Setter
         public Builder product(String product) {
             this.product = Objects.requireNonNull(product);
             return this;
         }
+        @CustomType.Setter
         public Builder sqlFilter(String sqlFilter) {
             this.sqlFilter = Objects.requireNonNull(sqlFilter);
             return this;
-        }        public GetEventRulesRuleEventPattern build() {
-            return new GetEventRulesRuleEventPattern(eventTypeLists, keywordFilters, levelLists, nameLists, product, sqlFilter);
+        }
+        public GetEventRulesRuleEventPattern build() {
+            final var o = new GetEventRulesRuleEventPattern();
+            o.eventTypeLists = eventTypeLists;
+            o.keywordFilters = keywordFilters;
+            o.levelLists = levelLists;
+            o.nameLists = nameLists;
+            o.product = product;
+            o.sqlFilter = sqlFilter;
+            return o;
         }
     }
 }

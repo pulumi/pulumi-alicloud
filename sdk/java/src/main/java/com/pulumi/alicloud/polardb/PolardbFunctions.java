@@ -1142,8 +1142,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1159,18 +1157,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1191,8 +1185,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1208,18 +1200,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1240,8 +1228,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1257,18 +1243,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1289,8 +1271,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1306,18 +1286,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```

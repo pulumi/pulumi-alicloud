@@ -66,6 +66,11 @@ func GetLogEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:logEndpoint")
 }
 
+// The maximum retry timeout of the request.
+func GetMaxRetryTimeout(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "alicloud:maxRetryTimeout")
+}
+
 // Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
 func GetMnsEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:mnsEndpoint")

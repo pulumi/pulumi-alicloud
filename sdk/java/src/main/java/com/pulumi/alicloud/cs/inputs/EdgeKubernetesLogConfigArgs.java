@@ -15,16 +15,32 @@ public final class EdgeKubernetesLogConfigArgs extends com.pulumi.resources.Reso
 
     public static final EdgeKubernetesLogConfigArgs Empty = new EdgeKubernetesLogConfigArgs();
 
+    /**
+     * Log Service project name, cluster logs will output to this project.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return Log Service project name, cluster logs will output to this project.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Type of collecting logs, only `SLS` are supported currently.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Type of collecting logs, only `SLS` are supported currently.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -54,20 +70,44 @@ public final class EdgeKubernetesLogConfigArgs extends com.pulumi.resources.Reso
             $ = new EdgeKubernetesLogConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project Log Service project name, cluster logs will output to this project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Log Service project name, cluster logs will output to this project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param type Type of collecting logs, only `SLS` are supported currently.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of collecting logs, only `SLS` are supported currently.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

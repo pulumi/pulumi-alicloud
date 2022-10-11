@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -127,6 +128,10 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    public readonly otsDetail!: pulumi.Output<outputs.hbr.RestoreJobOtsDetail>;
+    /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
     public readonly restoreJobId!: pulumi.Output<string>;
@@ -219,6 +224,7 @@ export class RestoreJob extends pulumi.CustomResource {
             resourceInputs["exclude"] = state ? state.exclude : undefined;
             resourceInputs["include"] = state ? state.include : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["otsDetail"] = state ? state.otsDetail : undefined;
             resourceInputs["restoreJobId"] = state ? state.restoreJobId : undefined;
             resourceInputs["restoreType"] = state ? state.restoreType : undefined;
             resourceInputs["snapshotHash"] = state ? state.snapshotHash : undefined;
@@ -258,6 +264,7 @@ export class RestoreJob extends pulumi.CustomResource {
             resourceInputs["exclude"] = args ? args.exclude : undefined;
             resourceInputs["include"] = args ? args.include : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["otsDetail"] = args ? args.otsDetail : undefined;
             resourceInputs["restoreJobId"] = args ? args.restoreJobId : undefined;
             resourceInputs["restoreType"] = args ? args.restoreType : undefined;
             resourceInputs["snapshotHash"] = args ? args.snapshotHash : undefined;
@@ -299,6 +306,10 @@ export interface RestoreJobState {
      * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
      */
     options?: pulumi.Input<string>;
+    /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
@@ -393,6 +404,10 @@ export interface RestoreJobArgs {
      * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
      */
     options?: pulumi.Input<string>;
+    /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */

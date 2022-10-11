@@ -32,7 +32,7 @@ class TransitRouterVpcAttachmentArgs:
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
@@ -93,7 +93,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]:
         """
-        The list of zone mapping of the VPC.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -242,7 +242,7 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
@@ -433,7 +433,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
         """
-        The list of zone mapping of the VPC.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -465,6 +465,57 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.126.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        transit_router_attachment_name = config.get("transitRouterAttachmentName")
+        if transit_router_attachment_name is None:
+            transit_router_attachment_name = "sdk_rebot_cen_tr_yaochi"
+        transit_router_attachment_description = config.get("transitRouterAttachmentDescription")
+        if transit_router_attachment_description is None:
+            transit_router_attachment_description = "sdk_rebot_cen_tr_yaochi"
+        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="sdk_rebot_cen_tr_yaochi",
+            cidr_block="192.168.0.0/16")
+        default_master = alicloud.vpc.Switch("defaultMaster",
+            vswitch_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id=default_transit_router_available_resources.resources[0].master_zones[0])
+        default_slave = alicloud.vpc.Switch("defaultSlave",
+            vswitch_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=default_network.id,
+            cidr_block="192.168.2.0/24",
+            zone_id=default_transit_router_available_resources.resources[0].slave_zones[0])
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name="sdk_rebot_cen_tr_yaochi",
+            protection_level="REDUCED")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment",
+            cen_id=default_instance.id,
+            transit_router_id=default_transit_router.id,
+            vpc_id=default_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=data["alicloud_cen_transit_router_available_resource"]["default"]["zones"][0]["master_zones"],
+                    vswitch_id=default_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=data["alicloud_cen_transit_router_available_resource"]["default"]["zones"][0]["slave_zones"],
+                    vswitch_id=default_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_attachment_description=transit_router_attachment_description)
+        ```
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -486,7 +537,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         ...
     @overload
@@ -498,6 +549,57 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
 
         > **NOTE:** Available in 1.126.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        transit_router_attachment_name = config.get("transitRouterAttachmentName")
+        if transit_router_attachment_name is None:
+            transit_router_attachment_name = "sdk_rebot_cen_tr_yaochi"
+        transit_router_attachment_description = config.get("transitRouterAttachmentDescription")
+        if transit_router_attachment_description is None:
+            transit_router_attachment_description = "sdk_rebot_cen_tr_yaochi"
+        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="sdk_rebot_cen_tr_yaochi",
+            cidr_block="192.168.0.0/16")
+        default_master = alicloud.vpc.Switch("defaultMaster",
+            vswitch_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id=default_transit_router_available_resources.resources[0].master_zones[0])
+        default_slave = alicloud.vpc.Switch("defaultSlave",
+            vswitch_name="sdk_rebot_cen_tr_yaochi",
+            vpc_id=default_network.id,
+            cidr_block="192.168.2.0/24",
+            zone_id=default_transit_router_available_resources.resources[0].slave_zones[0])
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name="sdk_rebot_cen_tr_yaochi",
+            protection_level="REDUCED")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment",
+            cen_id=default_instance.id,
+            transit_router_id=default_transit_router.id,
+            vpc_id=default_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=data["alicloud_cen_transit_router_available_resource"]["default"]["zones"][0]["master_zones"],
+                    vswitch_id=default_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=data["alicloud_cen_transit_router_available_resource"]["default"]["zones"][0]["slave_zones"],
+                    vswitch_id=default_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_attachment_description=transit_router_attachment_description)
+        ```
 
         ## Import
 
@@ -607,7 +709,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -737,7 +839,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.TransitRouterVpcAttachmentZoneMapping']]:
         """
-        The list of zone mapping of the VPC.
+        The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         """
         return pulumi.get(self, "zone_mappings")
 

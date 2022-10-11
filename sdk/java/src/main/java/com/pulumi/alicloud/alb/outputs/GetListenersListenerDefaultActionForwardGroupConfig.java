@@ -14,13 +14,9 @@ public final class GetListenersListenerDefaultActionForwardGroupConfig {
      * @return The destination server group to which requests are forwarded.
      * 
      */
-    private final List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
+    private List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
-    @CustomType.Constructor
-    private GetListenersListenerDefaultActionForwardGroupConfig(@CustomType.Parameter("serverGroupTuples") List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
-        this.serverGroupTuples = serverGroupTuples;
-    }
-
+    private GetListenersListenerDefaultActionForwardGroupConfig() {}
     /**
      * @return The destination server group to which requests are forwarded.
      * 
@@ -36,27 +32,27 @@ public final class GetListenersListenerDefaultActionForwardGroupConfig {
     public static Builder builder(GetListenersListenerDefaultActionForwardGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListenerDefaultActionForwardGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        @CustomType.Setter
         public Builder serverGroupTuples(List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = Objects.requireNonNull(serverGroupTuples);
             return this;
         }
         public Builder serverGroupTuples(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
-        }        public GetListenersListenerDefaultActionForwardGroupConfig build() {
-            return new GetListenersListenerDefaultActionForwardGroupConfig(serverGroupTuples);
+        }
+        public GetListenersListenerDefaultActionForwardGroupConfig build() {
+            final var o = new GetListenersListenerDefaultActionForwardGroupConfig();
+            o.serverGroupTuples = serverGroupTuples;
+            return o;
         }
     }
 }

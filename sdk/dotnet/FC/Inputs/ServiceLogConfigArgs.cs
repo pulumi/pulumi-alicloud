@@ -13,6 +13,18 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class ServiceLogConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable instance level metrics.
+        /// </summary>
+        [Input("enableInstanceMetrics")]
+        public Input<bool>? EnableInstanceMetrics { get; set; }
+
+        /// <summary>
+        /// Enable request level metrics.
+        /// </summary>
+        [Input("enableRequestMetrics")]
+        public Input<bool>? EnableRequestMetrics { get; set; }
+
+        /// <summary>
         /// The log store name of Alicloud Simple Log Service.
         /// </summary>
         [Input("logstore", required: true)]

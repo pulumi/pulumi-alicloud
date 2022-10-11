@@ -11,31 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceResult {
-    private final @Nullable String enable;
+    private @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String password;
+    private String id;
+    private String password;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("status") String status) {
-        this.enable = enable;
-        this.id = id;
-        this.password = password;
-        this.status = status;
-    }
-
+    private GetServiceResult() {}
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -64,17 +53,13 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String enable;
         private String id;
         private String password;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -83,23 +68,33 @@ public final class GetServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetServiceResult build() {
-            return new GetServiceResult(enable, id, password, status);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.enable = enable;
+            o.id = id;
+            o.password = password;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -95,6 +95,10 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
+     * The configuration for layers.
+     */
+    public readonly layers!: pulumi.Output<string[] | undefined>;
+    /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     public readonly memorySize!: pulumi.Output<number | undefined>;
@@ -115,7 +119,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly ossKey!: pulumi.Output<string | undefined>;
     /**
-     * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -153,6 +157,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["lastModified"] = state ? state.lastModified : undefined;
+            resourceInputs["layers"] = state ? state.layers : undefined;
             resourceInputs["memorySize"] = state ? state.memorySize : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
@@ -183,6 +188,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["initializer"] = args ? args.initializer : undefined;
             resourceInputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["layers"] = args ? args.layers : undefined;
             resourceInputs["memorySize"] = args ? args.memorySize : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -256,6 +262,10 @@ export interface FunctionState {
      */
     lastModified?: pulumi.Input<string>;
     /**
+     * The configuration for layers.
+     */
+    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     memorySize?: pulumi.Input<number>;
@@ -276,7 +286,7 @@ export interface FunctionState {
      */
     ossKey?: pulumi.Input<string>;
     /**
-     * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -338,6 +348,10 @@ export interface FunctionArgs {
      */
     instanceType?: pulumi.Input<string>;
     /**
+     * The configuration for layers.
+     */
+    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     memorySize?: pulumi.Input<number>;
@@ -358,7 +372,7 @@ export interface FunctionArgs {
      */
     ossKey?: pulumi.Input<string>;
     /**
-     * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      */
     runtime: pulumi.Input<string>;
     /**

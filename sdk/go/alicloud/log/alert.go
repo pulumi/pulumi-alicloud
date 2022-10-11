@@ -286,7 +286,7 @@ type Alert struct {
 	// Labels for new alert.
 	Labels AlertLabelArrayOutput `pulumi:"labels"`
 	// Timestamp, notifications before closing again.
-	MuteUntil pulumi.IntPtrOutput `pulumi:"muteUntil"`
+	MuteUntil pulumi.IntOutput `pulumi:"muteUntil"`
 	// Switch for whether new alert fires when no data happens, default is false.
 	NoDataFire pulumi.BoolPtrOutput `pulumi:"noDataFire"`
 	// when no data happens, the severity of new alert.
@@ -792,8 +792,8 @@ func (o AlertOutput) Labels() AlertLabelArrayOutput {
 }
 
 // Timestamp, notifications before closing again.
-func (o AlertOutput) MuteUntil() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.MuteUntil }).(pulumi.IntPtrOutput)
+func (o AlertOutput) MuteUntil() pulumi.IntOutput {
+	return o.ApplyT(func(v *Alert) pulumi.IntOutput { return v.MuteUntil }).(pulumi.IntOutput)
 }
 
 // Switch for whether new alert fires when no data happens, default is false.

@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> TopicQuota { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of attaching VPC to instance.
+        /// The VPC ID of the instance.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the kafka instance.
+        /// The zone ID of the instance.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -338,10 +338,22 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int> TopicQuota { get; set; } = null!;
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The ID of attaching vswitch to instance.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
+
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public InstanceArgs()
         {
@@ -459,7 +471,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? TopicQuota { get; set; }
 
         /// <summary>
-        /// The ID of attaching VPC to instance.
+        /// The VPC ID of the instance.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -471,7 +483,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the kafka instance.
+        /// The zone ID of the instance.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

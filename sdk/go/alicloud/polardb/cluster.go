@@ -183,9 +183,11 @@ type Cluster struct {
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
+	// The id of the VPC.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
-	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -301,6 +303,8 @@ type clusterState struct {
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -382,6 +386,8 @@ type ClusterState struct {
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
@@ -465,6 +471,8 @@ type clusterArgs struct {
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -545,6 +553,8 @@ type ClusterArgs struct {
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
@@ -802,10 +812,15 @@ func (o ClusterOutput) TdeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
 }
 
+// The id of the VPC.
+func (o ClusterOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
 // The virtual switch ID to launch DB instances in one VPC.
 // > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
-func (o ClusterOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+func (o ClusterOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
 // The Zone to launch the DB cluster. it supports multiple zone.

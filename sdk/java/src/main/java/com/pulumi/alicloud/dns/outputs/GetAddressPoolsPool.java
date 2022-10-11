@@ -15,98 +15,69 @@ public final class GetAddressPoolsPool {
      * @return The first ID of the resource.
      * 
      */
-    private final String addressPoolId;
+    private String addressPoolId;
     /**
      * @return The name of the address pool.
      * 
      */
-    private final String addressPoolName;
+    private String addressPoolName;
     /**
      * @return The address that you want to add to the address pool.
      * 
      */
-    private final List<GetAddressPoolsPoolAddress> addresses;
+    private List<GetAddressPoolsPoolAddress> addresses;
     /**
      * @return The time when the address pool was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The timestamp that indicates when the address pool was created.
      * 
      */
-    private final String createTimestamp;
+    private String createTimestamp;
     /**
      * @return The ID of the Address Pool.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The id of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The load balancing policy of the address pool.
      * 
      */
-    private final String lbaStrategy;
+    private String lbaStrategy;
     /**
      * @return The ID of the health check task.
      * 
      */
-    private final String monitorConfigId;
+    private String monitorConfigId;
     /**
      * @return Indicates whether health checks are configured.
      * 
      */
-    private final String monitorStatus;
+    private String monitorStatus;
     /**
      * @return The type of the address pool.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The time when the address pool was updated.
      * 
      */
-    private final String updateTime;
+    private String updateTime;
     /**
      * @return The timestamp that indicates when the address pool was updated.
      * 
      */
-    private final String updateTimestamp;
+    private String updateTimestamp;
 
-    @CustomType.Constructor
-    private GetAddressPoolsPool(
-        @CustomType.Parameter("addressPoolId") String addressPoolId,
-        @CustomType.Parameter("addressPoolName") String addressPoolName,
-        @CustomType.Parameter("addresses") List<GetAddressPoolsPoolAddress> addresses,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createTimestamp") String createTimestamp,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("lbaStrategy") String lbaStrategy,
-        @CustomType.Parameter("monitorConfigId") String monitorConfigId,
-        @CustomType.Parameter("monitorStatus") String monitorStatus,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updateTime") String updateTime,
-        @CustomType.Parameter("updateTimestamp") String updateTimestamp) {
-        this.addressPoolId = addressPoolId;
-        this.addressPoolName = addressPoolName;
-        this.addresses = addresses;
-        this.createTime = createTime;
-        this.createTimestamp = createTimestamp;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.lbaStrategy = lbaStrategy;
-        this.monitorConfigId = monitorConfigId;
-        this.monitorStatus = monitorStatus;
-        this.type = type;
-        this.updateTime = updateTime;
-        this.updateTimestamp = updateTimestamp;
-    }
-
+    private GetAddressPoolsPool() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -206,7 +177,7 @@ public final class GetAddressPoolsPool {
     public static Builder builder(GetAddressPoolsPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addressPoolId;
         private String addressPoolName;
@@ -221,11 +192,7 @@ public final class GetAddressPoolsPool {
         private String type;
         private String updateTime;
         private String updateTimestamp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAddressPoolsPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressPoolId = defaults.addressPoolId;
@@ -243,14 +210,17 @@ public final class GetAddressPoolsPool {
     	      this.updateTimestamp = defaults.updateTimestamp;
         }
 
+        @CustomType.Setter
         public Builder addressPoolId(String addressPoolId) {
             this.addressPoolId = Objects.requireNonNull(addressPoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder addressPoolName(String addressPoolName) {
             this.addressPoolName = Objects.requireNonNull(addressPoolName);
             return this;
         }
+        @CustomType.Setter
         public Builder addresses(List<GetAddressPoolsPoolAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -258,47 +228,72 @@ public final class GetAddressPoolsPool {
         public Builder addresses(GetAddressPoolsPoolAddress... addresses) {
             return addresses(List.of(addresses));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createTimestamp(String createTimestamp) {
             this.createTimestamp = Objects.requireNonNull(createTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder lbaStrategy(String lbaStrategy) {
             this.lbaStrategy = Objects.requireNonNull(lbaStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorConfigId(String monitorConfigId) {
             this.monitorConfigId = Objects.requireNonNull(monitorConfigId);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorStatus(String monitorStatus) {
             this.monitorStatus = Objects.requireNonNull(monitorStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTimestamp(String updateTimestamp) {
             this.updateTimestamp = Objects.requireNonNull(updateTimestamp);
             return this;
-        }        public GetAddressPoolsPool build() {
-            return new GetAddressPoolsPool(addressPoolId, addressPoolName, addresses, createTime, createTimestamp, id, instanceId, lbaStrategy, monitorConfigId, monitorStatus, type, updateTime, updateTimestamp);
+        }
+        public GetAddressPoolsPool build() {
+            final var o = new GetAddressPoolsPool();
+            o.addressPoolId = addressPoolId;
+            o.addressPoolName = addressPoolName;
+            o.addresses = addresses;
+            o.createTime = createTime;
+            o.createTimestamp = createTimestamp;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.lbaStrategy = lbaStrategy;
+            o.monitorConfigId = monitorConfigId;
+            o.monitorStatus = monitorStatus;
+            o.type = type;
+            o.updateTime = updateTime;
+            o.updateTimestamp = updateTimestamp;
+            return o;
         }
     }
 }

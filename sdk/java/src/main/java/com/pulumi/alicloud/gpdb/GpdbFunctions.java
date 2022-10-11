@@ -225,12 +225,13 @@ public final class GpdbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -252,13 +253,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```
@@ -268,12 +265,13 @@ public final class GpdbFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -295,13 +293,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```
@@ -311,12 +305,13 @@ public final class GpdbFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -338,13 +333,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```
@@ -354,12 +345,13 @@ public final class GpdbFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -381,13 +373,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```
@@ -397,12 +385,13 @@ public final class GpdbFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -424,13 +413,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```
@@ -440,12 +425,13 @@ public final class GpdbFunctions {
         return Deployment.getInstance().invoke("alicloud:gpdb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-     * Filters support regular expression for the instance name or availability_zone.
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.47.0+
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -467,13 +453,9 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gpdb = GpdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-beijing-c&#34;)
-     *             .nameRegex(&#34;gp-.+\\d+&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
-     *             .build());
+     *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;instanceId&#34;, gpdb.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
      *     }
      * }
      * ```

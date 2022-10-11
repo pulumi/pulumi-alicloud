@@ -13,13 +13,9 @@ public final class BucketVersioning {
      * @return Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private BucketVersioning(@CustomType.Parameter("status") String status) {
-        this.status = status;
-    }
-
+    private BucketVersioning() {}
     /**
      * @return Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
      * 
@@ -35,24 +31,24 @@ public final class BucketVersioning {
     public static Builder builder(BucketVersioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public BucketVersioning build() {
-            return new BucketVersioning(status);
+        }
+        public BucketVersioning build() {
+            final var o = new BucketVersioning();
+            o.status = status;
+            return o;
         }
     }
 }

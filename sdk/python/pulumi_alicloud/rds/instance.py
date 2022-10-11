@@ -27,6 +27,7 @@ class InstanceArgs:
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
@@ -76,6 +77,7 @@ class InstanceArgs:
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -108,6 +110,11 @@ class InstanceArgs:
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
+        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+               * **Basic**: Basic Edition.
+               * **HighAvailability**: High-availability Edition.
+               * **AlwaysOn**: Cluster Edition.
+               * **Finance**: Enterprise Edition.
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -207,6 +214,7 @@ class InstanceArgs:
                - Immediate: The minor engine version is immediately updated.
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -236,6 +244,8 @@ class InstanceArgs:
             pulumi.set(__self__, "babelfish_port", babelfish_port)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
         if client_ca_cert is not None:
             pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
@@ -337,6 +347,8 @@ class InstanceArgs:
             pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
             pulumi.set(__self__, "upgrade_time", upgrade_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
@@ -493,6 +505,22 @@ class InstanceArgs:
     @ca_type.setter
     def ca_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_type", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RDS edition of the instance. Valid values:
+        * **Basic**: Basic Edition.
+        * **HighAvailability**: High-availability Edition.
+        * **AlwaysOn**: Cluster Edition.
+        * **Finance**: Enterprise Edition.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter(name="clientCaCert")
@@ -1127,6 +1155,18 @@ class InstanceArgs:
         pulumi.set(self, "upgrade_time", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1202,6 +1242,7 @@ class _InstanceState:
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
@@ -1257,6 +1298,7 @@ class _InstanceState:
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1279,6 +1321,11 @@ class _InstanceState:
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
+        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+               * **Basic**: Basic Edition.
+               * **HighAvailability**: High-availability Edition.
+               * **AlwaysOn**: Cluster Edition.
+               * **Finance**: Enterprise Edition.
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -1390,6 +1437,7 @@ class _InstanceState:
                - Immediate: The minor engine version is immediately updated.
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -1415,6 +1463,8 @@ class _InstanceState:
             pulumi.set(__self__, "babelfish_port", babelfish_port)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
         if client_ca_cert is not None:
             pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
@@ -1528,6 +1578,8 @@ class _InstanceState:
             pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
             pulumi.set(__self__, "upgrade_time", upgrade_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
@@ -1630,6 +1682,22 @@ class _InstanceState:
     @ca_type.setter
     def ca_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_type", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RDS edition of the instance. Valid values:
+        * **Basic**: Basic Edition.
+        * **HighAvailability**: High-availability Edition.
+        * **AlwaysOn**: Cluster Edition.
+        * **Finance**: Enterprise Edition.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter(name="clientCaCert")
@@ -2342,6 +2410,18 @@ class _InstanceState:
         pulumi.set(self, "upgrade_time", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2419,6 +2499,7 @@ class Instance(pulumi.CustomResource):
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
@@ -2472,6 +2553,7 @@ class Instance(pulumi.CustomResource):
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -2504,6 +2586,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
+        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+               * **Basic**: Basic Edition.
+               * **HighAvailability**: High-availability Edition.
+               * **AlwaysOn**: Cluster Edition.
+               * **Finance**: Enterprise Edition.
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -2613,6 +2700,7 @@ class Instance(pulumi.CustomResource):
                - Immediate: The minor engine version is immediately updated.
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -2661,6 +2749,7 @@ class Instance(pulumi.CustomResource):
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
@@ -2714,6 +2803,7 @@ class Instance(pulumi.CustomResource):
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -2735,6 +2825,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["babelfish_configs"] = babelfish_configs
             __props__.__dict__["babelfish_port"] = babelfish_port
             __props__.__dict__["ca_type"] = ca_type
+            __props__.__dict__["category"] = category
             __props__.__dict__["client_ca_cert"] = client_ca_cert
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
@@ -2799,6 +2890,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
@@ -2823,6 +2915,7 @@ class Instance(pulumi.CustomResource):
             babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
             babelfish_port: Optional[pulumi.Input[str]] = None,
             ca_type: Optional[pulumi.Input[str]] = None,
+            category: Optional[pulumi.Input[str]] = None,
             client_ca_cert: Optional[pulumi.Input[str]] = None,
             client_ca_enabled: Optional[pulumi.Input[int]] = None,
             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
@@ -2878,6 +2971,7 @@ class Instance(pulumi.CustomResource):
             tde_status: Optional[pulumi.Input[str]] = None,
             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
             upgrade_time: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
@@ -2905,6 +2999,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
+        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+               * **Basic**: Basic Edition.
+               * **HighAvailability**: High-availability Edition.
+               * **AlwaysOn**: Cluster Edition.
+               * **Finance**: Enterprise Edition.
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -3016,6 +3115,7 @@ class Instance(pulumi.CustomResource):
                - Immediate: The minor engine version is immediately updated.
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -3038,6 +3138,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["babelfish_configs"] = babelfish_configs
         __props__.__dict__["babelfish_port"] = babelfish_port
         __props__.__dict__["ca_type"] = ca_type
+        __props__.__dict__["category"] = category
         __props__.__dict__["client_ca_cert"] = client_ca_cert
         __props__.__dict__["client_ca_enabled"] = client_ca_enabled
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
@@ -3093,6 +3194,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
         __props__.__dict__["upgrade_time"] = upgrade_time
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
@@ -3163,6 +3265,18 @@ class Instance(pulumi.CustomResource):
         - custom: a custom certificate
         """
         return pulumi.get(self, "ca_type")
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Output[str]:
+        """
+        The RDS edition of the instance. Valid values:
+        * **Basic**: Basic Edition.
+        * **HighAvailability**: High-availability Edition.
+        * **AlwaysOn**: Cluster Edition.
+        * **Finance**: Enterprise Edition.
+        """
+        return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="clientCaCert")
@@ -3653,6 +3767,14 @@ class Instance(pulumi.CustomResource):
         - SpecifyTime: The minor engine version is updated at the point in time you specify.
         """
         return pulumi.get(self, "upgrade_time")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

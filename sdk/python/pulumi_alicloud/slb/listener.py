@@ -50,6 +50,7 @@ class ListenerArgs:
                  listener_forward: Optional[pulumi.Input[str]] = None,
                  master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
                  persistence_timeout: Optional[pulumi.Input[int]] = None,
+                 proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,7 @@ class ListenerArgs:
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
@@ -179,6 +181,8 @@ class ListenerArgs:
             pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
         if persistence_timeout is not None:
             pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+        if proxy_protocol_v2_enabled is not None:
+            pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if scheduler is not None:
@@ -603,6 +607,18 @@ class ListenerArgs:
         pulumi.set(self, "persistence_timeout", value)
 
     @property
+    @pulumi.getter(name="proxyProtocolV2Enabled")
+    def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        """
+        return pulumi.get(self, "proxy_protocol_v2_enabled")
+
+    @proxy_protocol_v2_enabled.setter
+    def proxy_protocol_v2_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol_v2_enabled", value)
+
+    @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
@@ -761,6 +777,7 @@ class _ListenerState:
                  master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
                  persistence_timeout: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None,
@@ -804,6 +821,7 @@ class _ListenerState:
         :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
@@ -893,6 +911,8 @@ class _ListenerState:
             pulumi.set(__self__, "persistence_timeout", persistence_timeout)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if proxy_protocol_v2_enabled is not None:
+            pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if scheduler is not None:
@@ -1317,6 +1337,18 @@ class _ListenerState:
         pulumi.set(self, "protocol", value)
 
     @property
+    @pulumi.getter(name="proxyProtocolV2Enabled")
+    def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        """
+        return pulumi.get(self, "proxy_protocol_v2_enabled")
+
+    @proxy_protocol_v2_enabled.setter
+    def proxy_protocol_v2_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol_v2_enabled", value)
+
+    @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1477,6 +1509,7 @@ class Listener(pulumi.CustomResource):
                  master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
                  persistence_timeout: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None,
@@ -1583,6 +1616,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
@@ -1712,6 +1746,7 @@ class Listener(pulumi.CustomResource):
                  master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
                  persistence_timeout: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None,
@@ -1780,6 +1815,7 @@ class Listener(pulumi.CustomResource):
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["proxy_protocol_v2_enabled"] = proxy_protocol_v2_enabled
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["scheduler"] = scheduler
             __props__.__dict__["server_certificate_id"] = server_certificate_id
@@ -1837,6 +1873,7 @@ class Listener(pulumi.CustomResource):
             master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
             persistence_timeout: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
+            proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
             request_timeout: Optional[pulumi.Input[int]] = None,
             scheduler: Optional[pulumi.Input[str]] = None,
             server_certificate_id: Optional[pulumi.Input[str]] = None,
@@ -1885,6 +1922,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
@@ -1935,6 +1973,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["master_slave_server_group_id"] = master_slave_server_group_id
         __props__.__dict__["persistence_timeout"] = persistence_timeout
         __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["proxy_protocol_v2_enabled"] = proxy_protocol_v2_enabled
         __props__.__dict__["request_timeout"] = request_timeout
         __props__.__dict__["scheduler"] = scheduler
         __props__.__dict__["server_certificate_id"] = server_certificate_id
@@ -2209,6 +2248,14 @@ class Listener(pulumi.CustomResource):
         The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="proxyProtocolV2Enabled")
+    def proxy_protocol_v2_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        """
+        return pulumi.get(self, "proxy_protocol_v2_enabled")
 
     @property
     @pulumi.getter(name="requestTimeout")

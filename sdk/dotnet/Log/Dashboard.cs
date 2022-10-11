@@ -39,6 +39,7 @@ namespace Pulumi.AliCloud.Log
     ///         });
     ///         var example = new AliCloud.Log.Dashboard("example", new AliCloud.Log.DashboardArgs
     ///         {
+    ///             Attribute = "{\"type\":\"grid\"}",
     ///             CharList = @"  [
     ///     {
     ///       ""action"": {},
@@ -87,6 +88,12 @@ namespace Pulumi.AliCloud.Log
     [AliCloudResourceType("alicloud:log/dashboard:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Output("attribute")]
+        public Output<string> Attribute { get; private set; } = null!;
+
         /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>
@@ -158,6 +165,12 @@ namespace Pulumi.AliCloud.Log
     public sealed class DashboardArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Input("attribute")]
+        public Input<string>? Attribute { get; set; }
+
+        /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>
         [Input("charList", required: true)]
@@ -188,6 +201,12 @@ namespace Pulumi.AliCloud.Log
 
     public sealed class DashboardState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Input("attribute")]
+        public Input<string>? Attribute { get; set; }
+
         /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>

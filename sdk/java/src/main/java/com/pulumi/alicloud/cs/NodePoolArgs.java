@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolRolloutPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
@@ -59,14 +60,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      * 
      */
     @Import(name="cisEnabled")
     private @Nullable Output<Boolean> cisEnabled;
 
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      * 
      */
     public Optional<Output<Boolean>> cisEnabled() {
@@ -540,16 +541,39 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
      * 
      */
+    @Import(name="rollingPolicy")
+    private @Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy;
+
+    /**
+     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    public Optional<Output<NodePoolRollingPolicyArgs>> rollingPolicy() {
+        return Optional.ofNullable(this.rollingPolicy);
+    }
+
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * 
+     * @deprecated
+     * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
+     * 
+     */
+    @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
     @Import(name="rolloutPolicy")
     private @Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * 
+     * @deprecated
+     * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
      * 
      */
+    @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
     public Optional<Output<NodePoolRolloutPolicyArgs>> rolloutPolicy() {
         return Optional.ofNullable(this.rolloutPolicy);
     }
@@ -653,7 +677,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
@@ -661,7 +685,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> socEnabled;
 
     /**
-     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
@@ -915,6 +939,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.platform = $.platform;
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
+        this.rollingPolicy = $.rollingPolicy;
         this.rolloutPolicy = $.rolloutPolicy;
         this.runtimeName = $.runtimeName;
         this.runtimeVersion = $.runtimeVersion;
@@ -1000,7 +1025,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
          * 
          * @return builder
          * 
@@ -1011,7 +1036,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
          * 
          * @return builder
          * 
@@ -1717,22 +1742,51 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
          * 
          * @return builder
          * 
          */
+        public Builder rollingPolicy(@Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy) {
+            $.rollingPolicy = rollingPolicy;
+            return this;
+        }
+
+        /**
+         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rollingPolicy(NodePoolRollingPolicyArgs rollingPolicy) {
+            return rollingPolicy(Output.of(rollingPolicy));
+        }
+
+        /**
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
+         * 
+         */
+        @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
         public Builder rolloutPolicy(@Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy) {
             $.rolloutPolicy = rolloutPolicy;
             return this;
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
+         * 
          */
+        @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
         public Builder rolloutPolicy(NodePoolRolloutPolicyArgs rolloutPolicy) {
             return rolloutPolicy(Output.of(rolloutPolicy));
         }
@@ -1882,7 +1936,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+         * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
          * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
          * 
          * @return builder
@@ -1894,7 +1948,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+         * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
          * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
          * 
          * @return builder

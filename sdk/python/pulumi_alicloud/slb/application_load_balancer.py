@@ -42,24 +42,24 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
+        :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -155,7 +155,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -213,7 +213,7 @@ class ApplicationLoadBalancerArgs:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         """
         return pulumi.get(self, "load_balancer_spec")
@@ -295,7 +295,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the SLB belongs.
+        The id of resource group which the SLB belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -355,7 +355,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -395,24 +395,24 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
+        :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -508,7 +508,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -566,7 +566,7 @@ class _ApplicationLoadBalancerState:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         """
         return pulumi.get(self, "load_balancer_spec")
@@ -648,7 +648,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the SLB belongs.
+        The id of resource group which the SLB belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -708,7 +708,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -760,24 +760,24 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
+        :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         ...
     @overload
@@ -912,24 +912,24 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
-        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        :param pulumi.Input[int] bandwidth: Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
+        :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -988,7 +988,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
-        Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1026,7 +1026,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     def load_balancer_spec(self) -> pulumi.Output[str]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         """
         return pulumi.get(self, "load_balancer_spec")
@@ -1080,7 +1080,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The Id of resource group which the SLB belongs.
+        The id of resource group which the SLB belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1120,7 +1120,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 

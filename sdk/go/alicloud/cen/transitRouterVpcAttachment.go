@@ -15,6 +15,101 @@ import (
 //
 // > **NOTE:** Available in 1.126.0+
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			transitRouterAttachmentName := "sdk_rebot_cen_tr_yaochi"
+//			if param := cfg.Get("transitRouterAttachmentName"); param != "" {
+//				transitRouterAttachmentName = param
+//			}
+//			transitRouterAttachmentDescription := "sdk_rebot_cen_tr_yaochi"
+//			if param := cfg.Get("transitRouterAttachmentDescription"); param != "" {
+//				transitRouterAttachmentDescription = param
+//			}
+//			defaultTransitRouterAvailableResources, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMaster, err := vpc.NewSwitch(ctx, "defaultMaster", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				ZoneId:      pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSlave, err := vpc.NewSwitch(ctx, "defaultSlave", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				ZoneId:      pulumi.String(defaultTransitRouterAvailableResources.Resources[0].SlaveZones[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "defaultTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:           defaultInstance.ID(),
+//				TransitRouterId: defaultTransitRouter.ID(),
+//				VpcId:           defaultNetwork.ID(),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    pulumi.Any(data.Alicloud_cen_transit_router_available_resource.Default.Zones[0].Master_zones[0]),
+//						VswitchId: defaultMaster.ID(),
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    pulumi.Any(data.Alicloud_cen_transit_router_available_resource.Default.Zones[0].Slave_zones[0]),
+//						VswitchId: defaultSlave.ID(),
+//					},
+//				},
+//				TransitRouterAttachmentName:        pulumi.String(transitRouterAttachmentName),
+//				TransitRouterAttachmentDescription: pulumi.String(transitRouterAttachmentDescription),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // CEN instance can be imported using the id, e.g.
@@ -53,7 +148,7 @@ type TransitRouterVpcAttachment struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringOutput `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -121,7 +216,7 @@ type transitRouterVpcAttachmentState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId *string `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -152,7 +247,7 @@ type TransitRouterVpcAttachmentState struct {
 	VpcId pulumi.StringPtrInput
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringPtrInput
-	// The list of zone mapping of the VPC.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
 
@@ -183,7 +278,7 @@ type transitRouterVpcAttachmentArgs struct {
 	VpcId string `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId *string `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -211,7 +306,7 @@ type TransitRouterVpcAttachmentArgs struct {
 	VpcId pulumi.StringInput
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringPtrInput
-	// The list of zone mapping of the VPC.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
 
@@ -369,7 +464,7 @@ func (o TransitRouterVpcAttachmentOutput) VpcOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.VpcOwnerId }).(pulumi.StringOutput)
 }
 
-// The list of zone mapping of the VPC.
+// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
 func (o TransitRouterVpcAttachmentOutput) ZoneMappings() TransitRouterVpcAttachmentZoneMappingArrayOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) TransitRouterVpcAttachmentZoneMappingArrayOutput {
 		return v.ZoneMappings

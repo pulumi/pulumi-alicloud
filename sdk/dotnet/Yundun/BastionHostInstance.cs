@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.Yundun
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        [Output("renewPeriod")]
+        public Output<int?> RenewPeriod { get; private set; } = null!;
+
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
@@ -116,6 +122,12 @@ namespace Pulumi.AliCloud.Yundun
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -172,6 +184,12 @@ namespace Pulumi.AliCloud.Yundun
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
 
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

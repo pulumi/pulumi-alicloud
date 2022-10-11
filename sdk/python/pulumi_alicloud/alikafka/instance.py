@@ -28,7 +28,9 @@ class InstanceArgs:
                  security_group: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  spec_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
@@ -48,6 +50,8 @@ class InstanceArgs:
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "deploy_type", deploy_type)
         pulumi.set(__self__, "disk_size", disk_size)
@@ -73,6 +77,10 @@ class InstanceArgs:
             pulumi.set(__self__, "spec_type", spec_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="deployType")
@@ -256,6 +264,30 @@ class InstanceArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -303,9 +335,9 @@ class _InstanceState:
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
-        :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -548,7 +580,7 @@ class _InstanceState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of attaching VPC to instance.
+        The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -572,7 +604,7 @@ class _InstanceState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone to launch the kafka instance.
+        The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 
@@ -600,7 +632,9 @@ class Instance(pulumi.CustomResource):
                  spec_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic_quota: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides an ALIKAFKA instance resource.
@@ -669,7 +703,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
     @overload
@@ -755,7 +791,9 @@ class Instance(pulumi.CustomResource):
                  spec_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  topic_quota: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -789,13 +827,13 @@ class Instance(pulumi.CustomResource):
             if topic_quota is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_quota'")
             __props__.__dict__["topic_quota"] = topic_quota
+            __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["end_point"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["vpc_id"] = None
-            __props__.__dict__["zone_id"] = None
         super(Instance, __self__).__init__(
             'alicloud:alikafka/instance:Instance',
             resource_name,
@@ -854,9 +892,9 @@ class Instance(pulumi.CustomResource):
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
-        :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1021,7 +1059,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of attaching VPC to instance.
+        The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1037,7 +1075,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The Zone to launch the kafka instance.
+        The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 

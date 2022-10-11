@@ -16,16 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "PolarDB",
- * });
- * const resourcesNodeClasses = resourcesZones.then(resourcesZones => alicloud.polardb.getNodeClasses({
- *     zoneId: resourcesZones.zones?[0]?.id,
+ * const resources = alicloud.polardb.getNodeClasses({
  *     payType: "PostPaid",
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
- * }));
- * export const polardbNodeClasses = resourcesNodeClasses.then(resourcesNodeClasses => resourcesNodeClasses.classes);
+ * });
+ * export const polardbNodeClasses = resources.then(resources => resources.classes);
+ * export const polardbAvailableZoneId = resources.then(resources => resources.classes?[0]?.zoneId);
  * ```
  */
 export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeClassesResult> {

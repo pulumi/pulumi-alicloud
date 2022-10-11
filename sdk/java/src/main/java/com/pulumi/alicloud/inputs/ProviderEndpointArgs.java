@@ -120,6 +120,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.cbn);
     }
 
+    @Import(name="cbs")
+    private @Nullable Output<String> cbs;
+
+    public Optional<Output<String>> cbs() {
+        return Optional.ofNullable(this.cbs);
+    }
+
     @Import(name="cddc")
     private @Nullable Output<String> cddc;
 
@@ -321,6 +328,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> eais() {
         return Optional.ofNullable(this.eais);
+    }
+
+    @Import(name="ebs")
+    private @Nullable Output<String> ebs;
+
+    public Optional<Output<String>> ebs() {
+        return Optional.ofNullable(this.ebs);
     }
 
     @Import(name="eci")
@@ -589,6 +603,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.nas);
     }
 
+    @Import(name="nlb")
+    private @Nullable Output<String> nlb;
+
+    public Optional<Output<String>> nlb() {
+        return Optional.ofNullable(this.nlb);
+    }
+
     @Import(name="ons")
     private @Nullable Output<String> ons;
 
@@ -806,6 +827,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.vpc);
     }
 
+    @Import(name="vpcpeer")
+    private @Nullable Output<String> vpcpeer;
+
+    public Optional<Output<String>> vpcpeer() {
+        return Optional.ofNullable(this.vpcpeer);
+    }
+
     @Import(name="vs")
     private @Nullable Output<String> vs;
 
@@ -845,6 +873,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.cas = $.cas;
         this.cassandra = $.cassandra;
         this.cbn = $.cbn;
+        this.cbs = $.cbs;
         this.cddc = $.cddc;
         this.cdn = $.cdn;
         this.cds = $.cds;
@@ -874,6 +903,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.dts = $.dts;
         this.dysms = $.dysms;
         this.eais = $.eais;
+        this.ebs = $.ebs;
         this.eci = $.eci;
         this.ecs = $.ecs;
         this.edas = $.edas;
@@ -912,6 +942,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.mscopensubscription = $.mscopensubscription;
         this.mse = $.mse;
         this.nas = $.nas;
+        this.nlb = $.nlb;
         this.ons = $.ons;
         this.onsproxy = $.onsproxy;
         this.oos = $.oos;
@@ -943,6 +974,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.tag = $.tag;
         this.vod = $.vod;
         this.vpc = $.vpc;
+        this.vpcpeer = $.vpcpeer;
         this.vs = $.vs;
         this.waf = $.waf;
         this.wafOpenapi = $.wafOpenapi;
@@ -1099,6 +1131,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder cbn(String cbn) {
             return cbn(Output.of(cbn));
+        }
+
+        public Builder cbs(@Nullable Output<String> cbs) {
+            $.cbs = cbs;
+            return this;
+        }
+
+        public Builder cbs(String cbs) {
+            return cbs(Output.of(cbs));
         }
 
         public Builder cddc(@Nullable Output<String> cddc) {
@@ -1360,6 +1401,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder eais(String eais) {
             return eais(Output.of(eais));
+        }
+
+        public Builder ebs(@Nullable Output<String> ebs) {
+            $.ebs = ebs;
+            return this;
+        }
+
+        public Builder ebs(String ebs) {
+            return ebs(Output.of(ebs));
         }
 
         public Builder eci(@Nullable Output<String> eci) {
@@ -1704,6 +1754,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return nas(Output.of(nas));
         }
 
+        public Builder nlb(@Nullable Output<String> nlb) {
+            $.nlb = nlb;
+            return this;
+        }
+
+        public Builder nlb(String nlb) {
+            return nlb(Output.of(nlb));
+        }
+
         public Builder ons(@Nullable Output<String> ons) {
             $.ons = ons;
             return this;
@@ -1981,6 +2040,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder vpc(String vpc) {
             return vpc(Output.of(vpc));
+        }
+
+        public Builder vpcpeer(@Nullable Output<String> vpcpeer) {
+            $.vpcpeer = vpcpeer;
+            return this;
+        }
+
+        public Builder vpcpeer(String vpcpeer) {
+            return vpcpeer(Output.of(vpcpeer));
         }
 
         public Builder vs(@Nullable Output<String> vs) {

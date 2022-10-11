@@ -28,22 +28,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// {
         ///     public MyStack()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         var resources = Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
         ///         {
-        ///             AvailableResourceCreation = "PolarDB",
-        ///         }));
-        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
-        ///         {
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
         ///             PayType = "PostPaid",
         ///             DbType = "MySQL",
         ///             DbVersion = "5.6",
-        ///         })));
-        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
+        ///         }));
+        ///         this.PolardbNodeClasses = resources.Apply(resources =&gt; resources.Classes);
+        ///         this.PolardbAvailableZoneId = resources.Apply(resources =&gt; resources.Classes?[0]?.ZoneId);
         ///     }
         /// 
         ///     [Output("polardbNodeClasses")]
         ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
+        ///     [Output("polardbAvailableZoneId")]
+        ///     public Output&lt;string&gt; PolardbAvailableZoneId { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -69,22 +67,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// {
         ///     public MyStack()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         var resources = Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
         ///         {
-        ///             AvailableResourceCreation = "PolarDB",
-        ///         }));
-        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
-        ///         {
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
         ///             PayType = "PostPaid",
         ///             DbType = "MySQL",
         ///             DbVersion = "5.6",
-        ///         })));
-        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
+        ///         }));
+        ///         this.PolardbNodeClasses = resources.Apply(resources =&gt; resources.Classes);
+        ///         this.PolardbAvailableZoneId = resources.Apply(resources =&gt; resources.Classes?[0]?.ZoneId);
         ///     }
         /// 
         ///     [Output("polardbNodeClasses")]
         ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
+        ///     [Output("polardbAvailableZoneId")]
+        ///     public Output&lt;string&gt; PolardbAvailableZoneId { get; set; }
         /// }
         /// ```
         /// {{% /example %}}

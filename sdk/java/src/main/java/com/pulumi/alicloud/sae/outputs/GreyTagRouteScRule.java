@@ -17,28 +17,19 @@ public final class GreyTagRouteScRule {
      * @return The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
      * 
      */
-    private final @Nullable String condition;
+    private @Nullable String condition;
     /**
      * @return A list of conditions items. The details see Block `sc_rules_items`.
      * 
      */
-    private final @Nullable List<GreyTagRouteScRuleItem> items;
+    private @Nullable List<GreyTagRouteScRuleItem> items;
     /**
      * @return The path corresponding to the grayscale rule.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private GreyTagRouteScRule(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("items") @Nullable List<GreyTagRouteScRuleItem> items,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.condition = condition;
-        this.items = items;
-        this.path = path;
-    }
-
+    private GreyTagRouteScRule() {}
     /**
      * @return The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
      * 
@@ -68,16 +59,12 @@ public final class GreyTagRouteScRule {
     public static Builder builder(GreyTagRouteScRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private @Nullable List<GreyTagRouteScRuleItem> items;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GreyTagRouteScRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -85,10 +72,12 @@ public final class GreyTagRouteScRule {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder items(@Nullable List<GreyTagRouteScRuleItem> items) {
             this.items = items;
             return this;
@@ -96,11 +85,17 @@ public final class GreyTagRouteScRule {
         public Builder items(GreyTagRouteScRuleItem... items) {
             return items(List.of(items));
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public GreyTagRouteScRule build() {
-            return new GreyTagRouteScRule(condition, items, path);
+        }
+        public GreyTagRouteScRule build() {
+            final var o = new GreyTagRouteScRule();
+            o.condition = condition;
+            o.items = items;
+            o.path = path;
+            return o;
         }
     }
 }

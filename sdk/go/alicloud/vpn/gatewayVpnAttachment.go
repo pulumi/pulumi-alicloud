@@ -117,6 +117,8 @@ type GatewayVpnAttachment struct {
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
 	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
 	IkeConfig GatewayVpnAttachmentIkeConfigOutput `pulumi:"ikeConfig"`
+	// The VPN gateway IP.
+	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigOutput `pulumi:"ipsecConfig"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -183,6 +185,8 @@ type gatewayVpnAttachmentState struct {
 	HealthCheckConfig *GatewayVpnAttachmentHealthCheckConfig `pulumi:"healthCheckConfig"`
 	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
 	IkeConfig *GatewayVpnAttachmentIkeConfig `pulumi:"ikeConfig"`
+	// The VPN gateway IP.
+	InternetIp *string `pulumi:"internetIp"`
 	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
 	IpsecConfig *GatewayVpnAttachmentIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -212,6 +216,8 @@ type GatewayVpnAttachmentState struct {
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigPtrInput
 	// Configuration negotiated in the second stage. See the following `Block ikeConfig`.
 	IkeConfig GatewayVpnAttachmentIkeConfigPtrInput
+	// The VPN gateway IP.
+	InternetIp pulumi.StringPtrInput
 	// Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigPtrInput
 	// The CIDR block of the virtual private cloud (VPC).
@@ -405,6 +411,11 @@ func (o GatewayVpnAttachmentOutput) HealthCheckConfig() GatewayVpnAttachmentHeal
 // Configuration negotiated in the second stage. See the following `Block ikeConfig`.
 func (o GatewayVpnAttachmentOutput) IkeConfig() GatewayVpnAttachmentIkeConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentIkeConfigOutput { return v.IkeConfig }).(GatewayVpnAttachmentIkeConfigOutput)
+}
+
+// The VPN gateway IP.
+func (o GatewayVpnAttachmentOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
 }
 
 // Configuration negotiated in the second stage. See the following `Block ipsecConfig`.

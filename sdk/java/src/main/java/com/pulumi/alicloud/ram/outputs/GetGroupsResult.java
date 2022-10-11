@@ -17,43 +17,24 @@ public final class GetGroupsResult {
      * @return A list of groups. Each element contains the following attributes:
      * 
      */
-    private final List<GetGroupsGroup> groups;
+    private List<GetGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String nameRegex;
+    private String id;
+    private @Nullable String nameRegex;
     /**
      * @return A list of ram group names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String policyName;
-    private final @Nullable String policyType;
-    private final @Nullable String userName;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String policyName;
+    private @Nullable String policyType;
+    private @Nullable String userName;
 
-    @CustomType.Constructor
-    private GetGroupsResult(
-        @CustomType.Parameter("groups") List<GetGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policyName") @Nullable String policyName,
-        @CustomType.Parameter("policyType") @Nullable String policyType,
-        @CustomType.Parameter("userName") @Nullable String userName) {
-        this.groups = groups;
-        this.id = id;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policyName = policyName;
-        this.policyType = policyType;
-        this.userName = userName;
-    }
-
+    private GetGroupsResult() {}
     /**
      * @return A list of groups. Each element contains the following attributes:
      * 
@@ -98,7 +79,7 @@ public final class GetGroupsResult {
     public static Builder builder(GetGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGroupsGroup> groups;
         private String id;
@@ -108,11 +89,7 @@ public final class GetGroupsResult {
         private @Nullable String policyName;
         private @Nullable String policyType;
         private @Nullable String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -125,6 +102,7 @@ public final class GetGroupsResult {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder groups(List<GetGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -132,14 +110,17 @@ public final class GetGroupsResult {
         public Builder groups(GetGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,23 +128,37 @@ public final class GetGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
             this.policyName = policyName;
             return this;
         }
+        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
         }
+        @CustomType.Setter
         public Builder userName(@Nullable String userName) {
             this.userName = userName;
             return this;
-        }        public GetGroupsResult build() {
-            return new GetGroupsResult(groups, id, nameRegex, names, outputFile, policyName, policyType, userName);
+        }
+        public GetGroupsResult build() {
+            final var o = new GetGroupsResult();
+            o.groups = groups;
+            o.id = id;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policyName = policyName;
+            o.policyType = policyType;
+            o.userName = userName;
+            return o;
         }
     }
 }

@@ -15,185 +15,130 @@ public final class GetGatewayBlockVolumesVolume {
      * @return The IP ADDRESS.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
-    private final String cacheMode;
+    private String cacheMode;
     /**
      * @return Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
      * 
      */
-    private final Boolean chapEnabled;
+    private Boolean chapEnabled;
     /**
      * @return The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
      * 
      */
-    private final String chapInUser;
+    private String chapInUser;
     /**
      * @return The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
      * 
      */
-    private final Integer chunkSize;
+    private Integer chunkSize;
     /**
      * @return The cache disk ID.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The cache disk type.
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return Whether to enable Volume.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
      * 
      */
-    private final String gatewayBlockVolumeName;
+    private String gatewayBlockVolumeName;
     /**
      * @return The Gateway ID.
      * 
      */
-    private final String gatewayId;
+    private String gatewayId;
     /**
      * @return The ID of the Gateway Block Volume. The value formats as `&lt;gateway_id&gt;:&lt;index_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the index.
      * 
      */
-    private final String indexId;
+    private String indexId;
     /**
      * @return CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
      * 
      */
-    private final String localPath;
+    private String localPath;
     /**
      * @return The Lun identifier.
      * 
      */
-    private final Integer lunId;
+    private Integer lunId;
     /**
      * @return The name of the OSS Bucket.
      * 
      */
-    private final String ossBucketName;
+    private String ossBucketName;
     /**
      * @return Whether to enable SSL access your OSS Buckets. Default value: `true`.
      * 
      */
-    private final Boolean ossBucketSsl;
+    private Boolean ossBucketSsl;
     /**
      * @return The endpoint of the OSS Bucket.
      * 
      */
-    private final String ossEndpoint;
+    private String ossEndpoint;
     /**
      * @return The Port.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The Protocol.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The Volume size.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The Buffer status.
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return The status of volume.
      * 
      */
-    private final Integer status;
+    private Integer status;
     /**
      * @return The target.
      * 
      */
-    private final String target;
+    private String target;
     /**
      * @return The total amount of downloaded data. Unit: `B`.
      * 
      */
-    private final Integer totalDownload;
+    private Integer totalDownload;
     /**
      * @return The total amount of uploaded data. Unit: `B`.
      * 
      */
-    private final Integer totalUpload;
-    private final Integer volumeState;
+    private Integer totalUpload;
+    private Integer volumeState;
 
-    @CustomType.Constructor
-    private GetGatewayBlockVolumesVolume(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("cacheMode") String cacheMode,
-        @CustomType.Parameter("chapEnabled") Boolean chapEnabled,
-        @CustomType.Parameter("chapInUser") String chapInUser,
-        @CustomType.Parameter("chunkSize") Integer chunkSize,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("gatewayBlockVolumeName") String gatewayBlockVolumeName,
-        @CustomType.Parameter("gatewayId") String gatewayId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("indexId") String indexId,
-        @CustomType.Parameter("localPath") String localPath,
-        @CustomType.Parameter("lunId") Integer lunId,
-        @CustomType.Parameter("ossBucketName") String ossBucketName,
-        @CustomType.Parameter("ossBucketSsl") Boolean ossBucketSsl,
-        @CustomType.Parameter("ossEndpoint") String ossEndpoint,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("status") Integer status,
-        @CustomType.Parameter("target") String target,
-        @CustomType.Parameter("totalDownload") Integer totalDownload,
-        @CustomType.Parameter("totalUpload") Integer totalUpload,
-        @CustomType.Parameter("volumeState") Integer volumeState) {
-        this.address = address;
-        this.cacheMode = cacheMode;
-        this.chapEnabled = chapEnabled;
-        this.chapInUser = chapInUser;
-        this.chunkSize = chunkSize;
-        this.diskId = diskId;
-        this.diskType = diskType;
-        this.enabled = enabled;
-        this.gatewayBlockVolumeName = gatewayBlockVolumeName;
-        this.gatewayId = gatewayId;
-        this.id = id;
-        this.indexId = indexId;
-        this.localPath = localPath;
-        this.lunId = lunId;
-        this.ossBucketName = ossBucketName;
-        this.ossBucketSsl = ossBucketSsl;
-        this.ossEndpoint = ossEndpoint;
-        this.port = port;
-        this.protocol = protocol;
-        this.size = size;
-        this.state = state;
-        this.status = status;
-        this.target = target;
-        this.totalDownload = totalDownload;
-        this.totalUpload = totalUpload;
-        this.volumeState = volumeState;
-    }
-
+    private GetGatewayBlockVolumesVolume() {}
     /**
      * @return The IP ADDRESS.
      * 
@@ -380,7 +325,7 @@ public final class GetGatewayBlockVolumesVolume {
     public static Builder builder(GetGatewayBlockVolumesVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String cacheMode;
@@ -408,11 +353,7 @@ public final class GetGatewayBlockVolumesVolume {
         private Integer totalDownload;
         private Integer totalUpload;
         private Integer volumeState;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayBlockVolumesVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -443,111 +384,165 @@ public final class GetGatewayBlockVolumesVolume {
     	      this.volumeState = defaults.volumeState;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheMode(String cacheMode) {
             this.cacheMode = Objects.requireNonNull(cacheMode);
             return this;
         }
+        @CustomType.Setter
         public Builder chapEnabled(Boolean chapEnabled) {
             this.chapEnabled = Objects.requireNonNull(chapEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder chapInUser(String chapInUser) {
             this.chapInUser = Objects.requireNonNull(chapInUser);
             return this;
         }
+        @CustomType.Setter
         public Builder chunkSize(Integer chunkSize) {
             this.chunkSize = Objects.requireNonNull(chunkSize);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayBlockVolumeName(String gatewayBlockVolumeName) {
             this.gatewayBlockVolumeName = Objects.requireNonNull(gatewayBlockVolumeName);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder indexId(String indexId) {
             this.indexId = Objects.requireNonNull(indexId);
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(String localPath) {
             this.localPath = Objects.requireNonNull(localPath);
             return this;
         }
+        @CustomType.Setter
         public Builder lunId(Integer lunId) {
             this.lunId = Objects.requireNonNull(lunId);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
             this.ossBucketName = Objects.requireNonNull(ossBucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketSsl(Boolean ossBucketSsl) {
             this.ossBucketSsl = Objects.requireNonNull(ossBucketSsl);
             return this;
         }
+        @CustomType.Setter
         public Builder ossEndpoint(String ossEndpoint) {
             this.ossEndpoint = Objects.requireNonNull(ossEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
         public Builder totalDownload(Integer totalDownload) {
             this.totalDownload = Objects.requireNonNull(totalDownload);
             return this;
         }
+        @CustomType.Setter
         public Builder totalUpload(Integer totalUpload) {
             this.totalUpload = Objects.requireNonNull(totalUpload);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeState(Integer volumeState) {
             this.volumeState = Objects.requireNonNull(volumeState);
             return this;
-        }        public GetGatewayBlockVolumesVolume build() {
-            return new GetGatewayBlockVolumesVolume(address, cacheMode, chapEnabled, chapInUser, chunkSize, diskId, diskType, enabled, gatewayBlockVolumeName, gatewayId, id, indexId, localPath, lunId, ossBucketName, ossBucketSsl, ossEndpoint, port, protocol, size, state, status, target, totalDownload, totalUpload, volumeState);
+        }
+        public GetGatewayBlockVolumesVolume build() {
+            final var o = new GetGatewayBlockVolumesVolume();
+            o.address = address;
+            o.cacheMode = cacheMode;
+            o.chapEnabled = chapEnabled;
+            o.chapInUser = chapInUser;
+            o.chunkSize = chunkSize;
+            o.diskId = diskId;
+            o.diskType = diskType;
+            o.enabled = enabled;
+            o.gatewayBlockVolumeName = gatewayBlockVolumeName;
+            o.gatewayId = gatewayId;
+            o.id = id;
+            o.indexId = indexId;
+            o.localPath = localPath;
+            o.lunId = lunId;
+            o.ossBucketName = ossBucketName;
+            o.ossBucketSsl = ossBucketSsl;
+            o.ossEndpoint = ossEndpoint;
+            o.port = port;
+            o.protocol = protocol;
+            o.size = size;
+            o.state = state;
+            o.status = status;
+            o.target = target;
+            o.totalDownload = totalDownload;
+            o.totalUpload = totalUpload;
+            o.volumeState = volumeState;
+            return o;
         }
     }
 }

@@ -1062,6 +1062,10 @@ func (o FunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
 }
 
 type ServiceLogConfig struct {
+	// Enable instance level metrics.
+	EnableInstanceMetrics *bool `pulumi:"enableInstanceMetrics"`
+	// Enable request level metrics.
+	EnableRequestMetrics *bool `pulumi:"enableRequestMetrics"`
 	// The log store name of Alicloud Simple Log Service.
 	Logstore string `pulumi:"logstore"`
 	// The project name of the Alicloud Simple Log Service.
@@ -1080,6 +1084,10 @@ type ServiceLogConfigInput interface {
 }
 
 type ServiceLogConfigArgs struct {
+	// Enable instance level metrics.
+	EnableInstanceMetrics pulumi.BoolPtrInput `pulumi:"enableInstanceMetrics"`
+	// Enable request level metrics.
+	EnableRequestMetrics pulumi.BoolPtrInput `pulumi:"enableRequestMetrics"`
 	// The log store name of Alicloud Simple Log Service.
 	Logstore pulumi.StringInput `pulumi:"logstore"`
 	// The project name of the Alicloud Simple Log Service.
@@ -1163,6 +1171,16 @@ func (o ServiceLogConfigOutput) ToServiceLogConfigPtrOutputWithContext(ctx conte
 	}).(ServiceLogConfigPtrOutput)
 }
 
+// Enable instance level metrics.
+func (o ServiceLogConfigOutput) EnableInstanceMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceLogConfig) *bool { return v.EnableInstanceMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// Enable request level metrics.
+func (o ServiceLogConfigOutput) EnableRequestMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceLogConfig) *bool { return v.EnableRequestMetrics }).(pulumi.BoolPtrOutput)
+}
+
 // The log store name of Alicloud Simple Log Service.
 func (o ServiceLogConfigOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
@@ -1195,6 +1213,26 @@ func (o ServiceLogConfigPtrOutput) Elem() ServiceLogConfigOutput {
 		var ret ServiceLogConfig
 		return ret
 	}).(ServiceLogConfigOutput)
+}
+
+// Enable instance level metrics.
+func (o ServiceLogConfigPtrOutput) EnableInstanceMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInstanceMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable request level metrics.
+func (o ServiceLogConfigPtrOutput) EnableRequestMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRequestMetrics
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The log store name of Alicloud Simple Log Service.
@@ -1496,6 +1534,162 @@ func (o ServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) ServiceN
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceNasConfigMountPoint {
 		return vs[0].([]ServiceNasConfigMountPoint)[vs[1].(int)]
 	}).(ServiceNasConfigMountPointOutput)
+}
+
+type ServiceTracingConfig struct {
+	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+	Params map[string]interface{} `pulumi:"params"`
+	// Tracing protocol type. Currently, only Jaeger is supported.
+	Type string `pulumi:"type"`
+}
+
+// ServiceTracingConfigInput is an input type that accepts ServiceTracingConfigArgs and ServiceTracingConfigOutput values.
+// You can construct a concrete instance of `ServiceTracingConfigInput` via:
+//
+//	ServiceTracingConfigArgs{...}
+type ServiceTracingConfigInput interface {
+	pulumi.Input
+
+	ToServiceTracingConfigOutput() ServiceTracingConfigOutput
+	ToServiceTracingConfigOutputWithContext(context.Context) ServiceTracingConfigOutput
+}
+
+type ServiceTracingConfigArgs struct {
+	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+	Params pulumi.MapInput `pulumi:"params"`
+	// Tracing protocol type. Currently, only Jaeger is supported.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceTracingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTracingConfig)(nil)).Elem()
+}
+
+func (i ServiceTracingConfigArgs) ToServiceTracingConfigOutput() ServiceTracingConfigOutput {
+	return i.ToServiceTracingConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceTracingConfigArgs) ToServiceTracingConfigOutputWithContext(ctx context.Context) ServiceTracingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTracingConfigOutput)
+}
+
+func (i ServiceTracingConfigArgs) ToServiceTracingConfigPtrOutput() ServiceTracingConfigPtrOutput {
+	return i.ToServiceTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTracingConfigArgs) ToServiceTracingConfigPtrOutputWithContext(ctx context.Context) ServiceTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTracingConfigOutput).ToServiceTracingConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceTracingConfigPtrInput is an input type that accepts ServiceTracingConfigArgs, ServiceTracingConfigPtr and ServiceTracingConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceTracingConfigPtrInput` via:
+//
+//	        ServiceTracingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTracingConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceTracingConfigPtrOutput() ServiceTracingConfigPtrOutput
+	ToServiceTracingConfigPtrOutputWithContext(context.Context) ServiceTracingConfigPtrOutput
+}
+
+type serviceTracingConfigPtrType ServiceTracingConfigArgs
+
+func ServiceTracingConfigPtr(v *ServiceTracingConfigArgs) ServiceTracingConfigPtrInput {
+	return (*serviceTracingConfigPtrType)(v)
+}
+
+func (*serviceTracingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTracingConfig)(nil)).Elem()
+}
+
+func (i *serviceTracingConfigPtrType) ToServiceTracingConfigPtrOutput() ServiceTracingConfigPtrOutput {
+	return i.ToServiceTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTracingConfigPtrType) ToServiceTracingConfigPtrOutputWithContext(ctx context.Context) ServiceTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTracingConfigPtrOutput)
+}
+
+type ServiceTracingConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceTracingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTracingConfig)(nil)).Elem()
+}
+
+func (o ServiceTracingConfigOutput) ToServiceTracingConfigOutput() ServiceTracingConfigOutput {
+	return o
+}
+
+func (o ServiceTracingConfigOutput) ToServiceTracingConfigOutputWithContext(ctx context.Context) ServiceTracingConfigOutput {
+	return o
+}
+
+func (o ServiceTracingConfigOutput) ToServiceTracingConfigPtrOutput() ServiceTracingConfigPtrOutput {
+	return o.ToServiceTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTracingConfigOutput) ToServiceTracingConfigPtrOutputWithContext(ctx context.Context) ServiceTracingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTracingConfig) *ServiceTracingConfig {
+		return &v
+	}).(ServiceTracingConfigPtrOutput)
+}
+
+// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+func (o ServiceTracingConfigOutput) Params() pulumi.MapOutput {
+	return o.ApplyT(func(v ServiceTracingConfig) map[string]interface{} { return v.Params }).(pulumi.MapOutput)
+}
+
+// Tracing protocol type. Currently, only Jaeger is supported.
+func (o ServiceTracingConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTracingConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceTracingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTracingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTracingConfig)(nil)).Elem()
+}
+
+func (o ServiceTracingConfigPtrOutput) ToServiceTracingConfigPtrOutput() ServiceTracingConfigPtrOutput {
+	return o
+}
+
+func (o ServiceTracingConfigPtrOutput) ToServiceTracingConfigPtrOutputWithContext(ctx context.Context) ServiceTracingConfigPtrOutput {
+	return o
+}
+
+func (o ServiceTracingConfigPtrOutput) Elem() ServiceTracingConfigOutput {
+	return o.ApplyT(func(v *ServiceTracingConfig) ServiceTracingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTracingConfig
+		return ret
+	}).(ServiceTracingConfigOutput)
+}
+
+// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+func (o ServiceTracingConfigPtrOutput) Params() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServiceTracingConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Params
+	}).(pulumi.MapOutput)
+}
+
+// Tracing protocol type. Currently, only Jaeger is supported.
+func (o ServiceTracingConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTracingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceVpcConfig struct {
@@ -3222,6 +3416,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigPtrInput)(nil)).Elem(), ServiceNasConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigMountPointInput)(nil)).Elem(), ServiceNasConfigMountPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNasConfigMountPointArrayInput)(nil)).Elem(), ServiceNasConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTracingConfigInput)(nil)).Elem(), ServiceTracingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTracingConfigPtrInput)(nil)).Elem(), ServiceTracingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigInput)(nil)).Elem(), ServiceVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceVpcConfigPtrInput)(nil)).Elem(), ServiceVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
@@ -3264,6 +3460,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceNasConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceNasConfigMountPointOutput{})
 	pulumi.RegisterOutputType(ServiceNasConfigMountPointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTracingConfigOutput{})
+	pulumi.RegisterOutputType(ServiceTracingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigOutput{})
 	pulumi.RegisterOutputType(ServiceVpcConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})

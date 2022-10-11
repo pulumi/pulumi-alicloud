@@ -42,7 +42,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<int?> CoreNum { get; private set; } = null!;
 
         /// <summary>
-        /// The core spec.
+        /// The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Output("coreSpec")]
         public Output<string?> CoreSpec { get; private set; } = null!;
@@ -54,7 +56,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<bool> DeletionProection { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Output("diskCategory")]
         public Output<string> DiskCategory { get; private set; } = null!;
@@ -234,6 +236,12 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string?> UpgradeType { get; private set; } = null!;
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The vswitch id.
         /// </summary>
         [Output("vswitchId")]
@@ -304,7 +312,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? CoreNum { get; set; }
 
         /// <summary>
-        /// The core spec.
+        /// The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -316,7 +326,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Input("diskCategory", required: true)]
         public Input<string> DiskCategory { get; set; } = null!;
@@ -472,6 +482,12 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? UpgradeType { get; set; }
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The vswitch id.
         /// </summary>
         [Input("vswitchId", required: true)]
@@ -503,7 +519,9 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? CoreNum { get; set; }
 
         /// <summary>
-        /// The core spec.
+        /// The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -515,7 +533,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Input("diskCategory")]
         public Input<string>? DiskCategory { get; set; }
@@ -705,6 +723,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("upgradeType")]
         public Input<string>? UpgradeType { get; set; }
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch id.

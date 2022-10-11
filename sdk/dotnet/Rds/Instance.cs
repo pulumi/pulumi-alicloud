@@ -72,6 +72,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> CaType { get; private set; } = null!;
 
         /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         /// </summary>
         [Output("clientCaCert")]
@@ -452,6 +462,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> UpgradeTime { get; private set; } = null!;
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Output("vswitchId")]
@@ -587,6 +603,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -987,6 +1013,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? UpgradeTime { get; set; }
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Input("vswitchId")]
@@ -1083,6 +1115,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -1493,6 +1535,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("upgradeTime")]
         public Input<string>? UpgradeTime { get; set; }
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.

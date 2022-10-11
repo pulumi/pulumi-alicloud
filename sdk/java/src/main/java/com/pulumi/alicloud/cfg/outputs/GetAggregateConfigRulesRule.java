@@ -18,161 +18,110 @@ public final class GetAggregateConfigRulesRule {
      * @return The Aliyun User ID.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The config rule name.
      * 
      */
-    private final String aggregateConfigRuleName;
+    private String aggregateConfigRuleName;
     /**
      * @return The ID of aggregator.
      * 
      */
-    private final String aggregatorId;
+    private String aggregatorId;
     /**
      * @return The ID of Compliance Package.
      * 
      */
-    private final String compliancePackId;
-    private final List<GetAggregateConfigRulesRuleCompliance> compliances;
+    private String compliancePackId;
+    private List<GetAggregateConfigRulesRuleCompliance> compliances;
     /**
      * @return The config rule arn.
      * 
      */
-    private final String configRuleArn;
+    private String configRuleArn;
     /**
      * @return The ID of the rule.
      * 
      */
-    private final String configRuleId;
+    private String configRuleId;
     /**
      * @return The trigger types of config rules.
      * 
      */
-    private final String configRuleTriggerTypes;
+    private String configRuleTriggerTypes;
     /**
      * @return The description of the rule.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Event source of the Config Rule.
      * 
      */
-    private final String eventSource;
+    private String eventSource;
     /**
      * @return The id of the resources to be evaluated against the rule.
      * * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
      * * `source_owner`- The source owner of the Config Rule.
      * 
      */
-    private final String excludeResourceIdsScope;
+    private String excludeResourceIdsScope;
     /**
      * @return The ID of the Aggregate Config Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The settings of the input parameters for the rule.
      * 
      */
-    private final Map<String,Object> inputParameters;
+    private Map<String,Object> inputParameters;
     /**
      * @return The frequency of the compliance evaluations.
      * 
      */
-    private final String maximumExecutionFrequency;
+    private String maximumExecutionFrequency;
     /**
      * @return The timestamp when the rule was last modified.
      * 
      */
-    private final String modifiedTimestamp;
+    private String modifiedTimestamp;
     /**
      * @return The scope of resource region ids.
      * 
      */
-    private final String regionIdsScope;
+    private String regionIdsScope;
     /**
      * @return The scope of resource group ids.
      * 
      */
-    private final String resourceGroupIdsScope;
-    private final List<String> resourceTypesScopes;
+    private String resourceGroupIdsScope;
+    private List<String> resourceTypesScopes;
     /**
      * @return Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
-    private final Integer riskLevel;
-    private final String sourceIdentifier;
-    private final String sourceOwner;
+    private Integer riskLevel;
+    private String sourceIdentifier;
+    private String sourceOwner;
     /**
      * @return The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The scope of tay key.
      * 
      */
-    private final String tagKeyScope;
+    private String tagKeyScope;
     /**
      * @return The scope of tay value.
      * 
      */
-    private final String tagValueScope;
+    private String tagValueScope;
 
-    @CustomType.Constructor
-    private GetAggregateConfigRulesRule(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("aggregateConfigRuleName") String aggregateConfigRuleName,
-        @CustomType.Parameter("aggregatorId") String aggregatorId,
-        @CustomType.Parameter("compliancePackId") String compliancePackId,
-        @CustomType.Parameter("compliances") List<GetAggregateConfigRulesRuleCompliance> compliances,
-        @CustomType.Parameter("configRuleArn") String configRuleArn,
-        @CustomType.Parameter("configRuleId") String configRuleId,
-        @CustomType.Parameter("configRuleTriggerTypes") String configRuleTriggerTypes,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("eventSource") String eventSource,
-        @CustomType.Parameter("excludeResourceIdsScope") String excludeResourceIdsScope,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inputParameters") Map<String,Object> inputParameters,
-        @CustomType.Parameter("maximumExecutionFrequency") String maximumExecutionFrequency,
-        @CustomType.Parameter("modifiedTimestamp") String modifiedTimestamp,
-        @CustomType.Parameter("regionIdsScope") String regionIdsScope,
-        @CustomType.Parameter("resourceGroupIdsScope") String resourceGroupIdsScope,
-        @CustomType.Parameter("resourceTypesScopes") List<String> resourceTypesScopes,
-        @CustomType.Parameter("riskLevel") Integer riskLevel,
-        @CustomType.Parameter("sourceIdentifier") String sourceIdentifier,
-        @CustomType.Parameter("sourceOwner") String sourceOwner,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tagKeyScope") String tagKeyScope,
-        @CustomType.Parameter("tagValueScope") String tagValueScope) {
-        this.accountId = accountId;
-        this.aggregateConfigRuleName = aggregateConfigRuleName;
-        this.aggregatorId = aggregatorId;
-        this.compliancePackId = compliancePackId;
-        this.compliances = compliances;
-        this.configRuleArn = configRuleArn;
-        this.configRuleId = configRuleId;
-        this.configRuleTriggerTypes = configRuleTriggerTypes;
-        this.description = description;
-        this.eventSource = eventSource;
-        this.excludeResourceIdsScope = excludeResourceIdsScope;
-        this.id = id;
-        this.inputParameters = inputParameters;
-        this.maximumExecutionFrequency = maximumExecutionFrequency;
-        this.modifiedTimestamp = modifiedTimestamp;
-        this.regionIdsScope = regionIdsScope;
-        this.resourceGroupIdsScope = resourceGroupIdsScope;
-        this.resourceTypesScopes = resourceTypesScopes;
-        this.riskLevel = riskLevel;
-        this.sourceIdentifier = sourceIdentifier;
-        this.sourceOwner = sourceOwner;
-        this.status = status;
-        this.tagKeyScope = tagKeyScope;
-        this.tagValueScope = tagValueScope;
-    }
-
+    private GetAggregateConfigRulesRule() {}
     /**
      * @return The Aliyun User ID.
      * 
@@ -335,7 +284,7 @@ public final class GetAggregateConfigRulesRule {
     public static Builder builder(GetAggregateConfigRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String aggregateConfigRuleName;
@@ -361,11 +310,7 @@ public final class GetAggregateConfigRulesRule {
         private String status;
         private String tagKeyScope;
         private String tagValueScope;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateConfigRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -394,22 +339,27 @@ public final class GetAggregateConfigRulesRule {
     	      this.tagValueScope = defaults.tagValueScope;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder aggregateConfigRuleName(String aggregateConfigRuleName) {
             this.aggregateConfigRuleName = Objects.requireNonNull(aggregateConfigRuleName);
             return this;
         }
+        @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
             this.aggregatorId = Objects.requireNonNull(aggregatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder compliancePackId(String compliancePackId) {
             this.compliancePackId = Objects.requireNonNull(compliancePackId);
             return this;
         }
+        @CustomType.Setter
         public Builder compliances(List<GetAggregateConfigRulesRuleCompliance> compliances) {
             this.compliances = Objects.requireNonNull(compliances);
             return this;
@@ -417,54 +367,67 @@ public final class GetAggregateConfigRulesRule {
         public Builder compliances(GetAggregateConfigRulesRuleCompliance... compliances) {
             return compliances(List.of(compliances));
         }
+        @CustomType.Setter
         public Builder configRuleArn(String configRuleArn) {
             this.configRuleArn = Objects.requireNonNull(configRuleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
             this.configRuleId = Objects.requireNonNull(configRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder configRuleTriggerTypes(String configRuleTriggerTypes) {
             this.configRuleTriggerTypes = Objects.requireNonNull(configRuleTriggerTypes);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder eventSource(String eventSource) {
             this.eventSource = Objects.requireNonNull(eventSource);
             return this;
         }
+        @CustomType.Setter
         public Builder excludeResourceIdsScope(String excludeResourceIdsScope) {
             this.excludeResourceIdsScope = Objects.requireNonNull(excludeResourceIdsScope);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inputParameters(Map<String,Object> inputParameters) {
             this.inputParameters = Objects.requireNonNull(inputParameters);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumExecutionFrequency(String maximumExecutionFrequency) {
             this.maximumExecutionFrequency = Objects.requireNonNull(maximumExecutionFrequency);
             return this;
         }
+        @CustomType.Setter
         public Builder modifiedTimestamp(String modifiedTimestamp) {
             this.modifiedTimestamp = Objects.requireNonNull(modifiedTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder regionIdsScope(String regionIdsScope) {
             this.regionIdsScope = Objects.requireNonNull(regionIdsScope);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupIdsScope(String resourceGroupIdsScope) {
             this.resourceGroupIdsScope = Objects.requireNonNull(resourceGroupIdsScope);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypesScopes(List<String> resourceTypesScopes) {
             this.resourceTypesScopes = Objects.requireNonNull(resourceTypesScopes);
             return this;
@@ -472,31 +435,63 @@ public final class GetAggregateConfigRulesRule {
         public Builder resourceTypesScopes(String... resourceTypesScopes) {
             return resourceTypesScopes(List.of(resourceTypesScopes));
         }
+        @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
             this.riskLevel = Objects.requireNonNull(riskLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceIdentifier(String sourceIdentifier) {
             this.sourceIdentifier = Objects.requireNonNull(sourceIdentifier);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceOwner(String sourceOwner) {
             this.sourceOwner = Objects.requireNonNull(sourceOwner);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tagKeyScope(String tagKeyScope) {
             this.tagKeyScope = Objects.requireNonNull(tagKeyScope);
             return this;
         }
+        @CustomType.Setter
         public Builder tagValueScope(String tagValueScope) {
             this.tagValueScope = Objects.requireNonNull(tagValueScope);
             return this;
-        }        public GetAggregateConfigRulesRule build() {
-            return new GetAggregateConfigRulesRule(accountId, aggregateConfigRuleName, aggregatorId, compliancePackId, compliances, configRuleArn, configRuleId, configRuleTriggerTypes, description, eventSource, excludeResourceIdsScope, id, inputParameters, maximumExecutionFrequency, modifiedTimestamp, regionIdsScope, resourceGroupIdsScope, resourceTypesScopes, riskLevel, sourceIdentifier, sourceOwner, status, tagKeyScope, tagValueScope);
+        }
+        public GetAggregateConfigRulesRule build() {
+            final var o = new GetAggregateConfigRulesRule();
+            o.accountId = accountId;
+            o.aggregateConfigRuleName = aggregateConfigRuleName;
+            o.aggregatorId = aggregatorId;
+            o.compliancePackId = compliancePackId;
+            o.compliances = compliances;
+            o.configRuleArn = configRuleArn;
+            o.configRuleId = configRuleId;
+            o.configRuleTriggerTypes = configRuleTriggerTypes;
+            o.description = description;
+            o.eventSource = eventSource;
+            o.excludeResourceIdsScope = excludeResourceIdsScope;
+            o.id = id;
+            o.inputParameters = inputParameters;
+            o.maximumExecutionFrequency = maximumExecutionFrequency;
+            o.modifiedTimestamp = modifiedTimestamp;
+            o.regionIdsScope = regionIdsScope;
+            o.resourceGroupIdsScope = resourceGroupIdsScope;
+            o.resourceTypesScopes = resourceTypesScopes;
+            o.riskLevel = riskLevel;
+            o.sourceIdentifier = sourceIdentifier;
+            o.sourceOwner = sourceOwner;
+            o.status = status;
+            o.tagKeyScope = tagKeyScope;
+            o.tagValueScope = tagValueScope;
+            return o;
         }
     }
 }

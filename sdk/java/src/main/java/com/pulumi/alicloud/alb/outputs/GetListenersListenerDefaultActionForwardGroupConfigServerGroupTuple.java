@@ -13,13 +13,9 @@ public final class GetListenersListenerDefaultActionForwardGroupConfigServerGrou
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private final String serverGroupId;
+    private String serverGroupId;
 
-    @CustomType.Constructor
-    private GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") String serverGroupId) {
-        this.serverGroupId = serverGroupId;
-    }
-
+    private GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple() {}
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -35,24 +31,24 @@ public final class GetListenersListenerDefaultActionForwardGroupConfigServerGrou
     public static Builder builder(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String serverGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
+        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
-        }        public GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
-            return new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple(serverGroupId);
+        }
+        public GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
+            final var o = new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple();
+            o.serverGroupId = serverGroupId;
+            return o;
         }
     }
 }

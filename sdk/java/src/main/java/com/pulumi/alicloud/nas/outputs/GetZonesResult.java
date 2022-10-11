@@ -13,31 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private final @Nullable String fileSystemType;
+    private @Nullable String fileSystemType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
+    private String id;
+    private @Nullable String outputFile;
     /**
      * @return A list of availability zone information collection.
      * 
      */
-    private final List<GetZonesZone> zones;
+    private List<GetZonesZone> zones;
 
-    @CustomType.Constructor
-    private GetZonesResult(
-        @CustomType.Parameter("fileSystemType") @Nullable String fileSystemType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
-        this.fileSystemType = fileSystemType;
-        this.id = id;
-        this.outputFile = outputFile;
-        this.zones = zones;
-    }
-
+    private GetZonesResult() {}
     public Optional<String> fileSystemType() {
         return Optional.ofNullable(this.fileSystemType);
     }
@@ -66,17 +55,13 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String fileSystemType;
         private String id;
         private @Nullable String outputFile;
         private List<GetZonesZone> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileSystemType = defaults.fileSystemType;
@@ -85,26 +70,36 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder fileSystemType(@Nullable String fileSystemType) {
             this.fileSystemType = fileSystemType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }        public GetZonesResult build() {
-            return new GetZonesResult(fileSystemType, id, outputFile, zones);
+        }
+        public GetZonesResult build() {
+            final var o = new GetZonesResult();
+            o.fileSystemType = fileSystemType;
+            o.id = id;
+            o.outputFile = outputFile;
+            o.zones = zones;
+            return o;
         }
     }
 }

@@ -56,7 +56,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly addressType!: pulumi.Output<string>;
     /**
-     * Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+     * Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      */
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
@@ -76,7 +76,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
     public readonly loadBalancerName!: pulumi.Output<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
@@ -104,7 +104,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
     public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The Id of resource group which the SLB belongs.
+     * The id of resource group which the SLB belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
 
@@ -212,7 +212,7 @@ export interface ApplicationLoadBalancerState {
      */
     addressType?: pulumi.Input<string>;
     /**
-     * Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+     * Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -232,7 +232,7 @@ export interface ApplicationLoadBalancerState {
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
      */
     loadBalancerSpec?: pulumi.Input<string>;
@@ -260,7 +260,7 @@ export interface ApplicationLoadBalancerState {
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     /**
-     * The Id of resource group which the SLB belongs.
+     * The id of resource group which the SLB belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -282,7 +282,7 @@ export interface ApplicationLoadBalancerState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -306,7 +306,7 @@ export interface ApplicationLoadBalancerArgs {
      */
     addressType?: pulumi.Input<string>;
     /**
-     * Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+     * Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -326,7 +326,7 @@ export interface ApplicationLoadBalancerArgs {
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
      */
     loadBalancerSpec?: pulumi.Input<string>;
@@ -354,7 +354,7 @@ export interface ApplicationLoadBalancerArgs {
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     /**
-     * The Id of resource group which the SLB belongs.
+     * The id of resource group which the SLB belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -376,7 +376,7 @@ export interface ApplicationLoadBalancerArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
      */
     vswitchId?: pulumi.Input<string>;
 }

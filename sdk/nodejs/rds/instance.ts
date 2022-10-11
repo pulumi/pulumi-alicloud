@@ -79,6 +79,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly caType!: pulumi.Output<string>;
     /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    public readonly category!: pulumi.Output<string>;
+    /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
     public readonly clientCaCert!: pulumi.Output<string | undefined>;
@@ -351,6 +359,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly upgradeTime!: pulumi.Output<string | undefined>;
     /**
+     * The VPC ID of the instance.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
@@ -396,6 +408,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["babelfishConfigs"] = state ? state.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
             resourceInputs["caType"] = state ? state.caType : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
@@ -451,6 +464,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -477,6 +491,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["babelfishConfigs"] = args ? args.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
@@ -530,6 +545,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -583,6 +599,14 @@ export interface InstanceState {
      * - custom: a custom certificate
      */
     caType?: pulumi.Input<string>;
+    /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    category?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
@@ -856,6 +880,10 @@ export interface InstanceState {
      */
     upgradeTime?: pulumi.Input<string>;
     /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
@@ -922,6 +950,14 @@ export interface InstanceArgs {
      * - custom: a custom certificate
      */
     caType?: pulumi.Input<string>;
+    /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    category?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
@@ -1186,6 +1222,10 @@ export interface InstanceArgs {
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
     upgradeTime?: pulumi.Input<string>;
+    /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */

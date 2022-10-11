@@ -13,21 +13,14 @@ public final class TemplateScratchPreferenceParameter {
      * @return Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
      * 
      */
-    private final String parameterKey;
+    private String parameterKey;
     /**
      * @return Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
      * 
      */
-    private final String parameterValue;
+    private String parameterValue;
 
-    @CustomType.Constructor
-    private TemplateScratchPreferenceParameter(
-        @CustomType.Parameter("parameterKey") String parameterKey,
-        @CustomType.Parameter("parameterValue") String parameterValue) {
-        this.parameterKey = parameterKey;
-        this.parameterValue = parameterValue;
-    }
-
+    private TemplateScratchPreferenceParameter() {}
     /**
      * @return Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
      * 
@@ -50,30 +43,32 @@ public final class TemplateScratchPreferenceParameter {
     public static Builder builder(TemplateScratchPreferenceParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TemplateScratchPreferenceParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }        public TemplateScratchPreferenceParameter build() {
-            return new TemplateScratchPreferenceParameter(parameterKey, parameterValue);
+        }
+        public TemplateScratchPreferenceParameter build() {
+            final var o = new TemplateScratchPreferenceParameter();
+            o.parameterKey = parameterKey;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

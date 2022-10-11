@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerBackendServer {
-    private final String description;
-    private final String serverId;
-    private final String type;
-    private final Integer weight;
+    private String description;
+    private String serverId;
+    private String type;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerBackendServer(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("serverId") String serverId,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.description = description;
-        this.serverId = serverId;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private GetLoadBalancersBalancerBackendServer() {}
     public String description() {
         return this.description;
     }
@@ -47,17 +36,13 @@ public final class GetLoadBalancersBalancerBackendServer {
     public static Builder builder(GetLoadBalancersBalancerBackendServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String serverId;
         private String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerBackendServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -66,23 +51,33 @@ public final class GetLoadBalancersBalancerBackendServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetLoadBalancersBalancerBackendServer build() {
-            return new GetLoadBalancersBalancerBackendServer(description, serverId, type, weight);
+        }
+        public GetLoadBalancersBalancerBackendServer build() {
+            final var o = new GetLoadBalancersBalancerBackendServer();
+            o.description = description;
+            o.serverId = serverId;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

@@ -1034,6 +1034,7 @@ class InstanceDataDisk(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  description: Optional[str] = None,
+                 device: Optional[str] = None,
                  encrypted: Optional[bool] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1056,6 +1057,7 @@ class InstanceDataDisk(dict):
                Default to `cloud_efficiency`.
         :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param str description: The description of the data disk.
+        :param str device: The mount point of the data disk.
         :param bool encrypted: -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
         :param str kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param str name: The name of the data disk.
@@ -1076,6 +1078,8 @@ class InstanceDataDisk(dict):
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -1137,6 +1141,14 @@ class InstanceDataDisk(dict):
         The description of the data disk.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        """
+        The mount point of the data disk.
+        """
+        return pulumi.get(self, "device")
 
     @property
     @pulumi.getter

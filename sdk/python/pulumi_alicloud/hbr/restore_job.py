@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RestoreJobArgs', 'RestoreJob']
 
@@ -22,6 +24,7 @@ class RestoreJobArgs:
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
@@ -45,6 +48,7 @@ class RestoreJobArgs:
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input['RestoreJobOtsDetailArgs'] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         :param pulumi.Input[str] target_client_id: The target client ID.
@@ -70,6 +74,8 @@ class RestoreJobArgs:
             pulumi.set(__self__, "include", include)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if ots_detail is not None:
+            pulumi.set(__self__, "ots_detail", ots_detail)
         if restore_job_id is not None:
             pulumi.set(__self__, "restore_job_id", restore_job_id)
         if target_bucket is not None:
@@ -192,6 +198,18 @@ class RestoreJobArgs:
     @options.setter
     def options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
+
+    @ots_detail.setter
+    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+        pulumi.set(self, "ots_detail", value)
 
     @property
     @pulumi.getter(name="restoreJobId")
@@ -356,6 +374,7 @@ class _RestoreJobState:
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -380,6 +399,7 @@ class _RestoreJobState:
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input['RestoreJobOtsDetailArgs'] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -406,6 +426,8 @@ class _RestoreJobState:
             pulumi.set(__self__, "include", include)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if ots_detail is not None:
+            pulumi.set(__self__, "ots_detail", ots_detail)
         if restore_job_id is not None:
             pulumi.set(__self__, "restore_job_id", restore_job_id)
         if restore_type is not None:
@@ -480,6 +502,18 @@ class _RestoreJobState:
     @options.setter
     def options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
+
+    @ots_detail.setter
+    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+        pulumi.set(self, "ots_detail", value)
 
     @property
     @pulumi.getter(name="restoreJobId")
@@ -718,6 +752,7 @@ class RestoreJob(pulumi.CustomResource):
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -809,6 +844,7 @@ class RestoreJob(pulumi.CustomResource):
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -919,6 +955,7 @@ class RestoreJob(pulumi.CustomResource):
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -949,6 +986,7 @@ class RestoreJob(pulumi.CustomResource):
             __props__.__dict__["exclude"] = exclude
             __props__.__dict__["include"] = include
             __props__.__dict__["options"] = options
+            __props__.__dict__["ots_detail"] = ots_detail
             __props__.__dict__["restore_job_id"] = restore_job_id
             if restore_type is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_type'")
@@ -991,6 +1029,7 @@ class RestoreJob(pulumi.CustomResource):
             exclude: Optional[pulumi.Input[str]] = None,
             include: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[str]] = None,
+            ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
             restore_job_id: Optional[pulumi.Input[str]] = None,
             restore_type: Optional[pulumi.Input[str]] = None,
             snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -1020,6 +1059,7 @@ class RestoreJob(pulumi.CustomResource):
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -1047,6 +1087,7 @@ class RestoreJob(pulumi.CustomResource):
         __props__.__dict__["exclude"] = exclude
         __props__.__dict__["include"] = include
         __props__.__dict__["options"] = options
+        __props__.__dict__["ots_detail"] = ots_detail
         __props__.__dict__["restore_job_id"] = restore_job_id
         __props__.__dict__["restore_type"] = restore_type
         __props__.__dict__["snapshot_hash"] = snapshot_hash
@@ -1091,6 +1132,14 @@ class RestoreJob(pulumi.CustomResource):
         Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> pulumi.Output['outputs.RestoreJobOtsDetail']:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
 
     @property
     @pulumi.getter(name="restoreJobId")

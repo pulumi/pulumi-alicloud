@@ -16,6 +16,21 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     public static final DashboardArgs Empty = new DashboardArgs();
 
     /**
+     * Dashboard attribute.
+     * 
+     */
+    @Import(name="attribute")
+    private @Nullable Output<String> attribute;
+
+    /**
+     * @return Dashboard attribute.
+     * 
+     */
+    public Optional<Output<String>> attribute() {
+        return Optional.ofNullable(this.attribute);
+    }
+
+    /**
      * Configuration of charts in the dashboard.
      * 
      */
@@ -78,6 +93,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     private DashboardArgs() {}
 
     private DashboardArgs(DashboardArgs $) {
+        this.attribute = $.attribute;
         this.charList = $.charList;
         this.dashboardName = $.dashboardName;
         this.displayName = $.displayName;
@@ -100,6 +116,27 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DashboardArgs defaults) {
             $ = new DashboardArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attribute Dashboard attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attribute(@Nullable Output<String> attribute) {
+            $.attribute = attribute;
+            return this;
+        }
+
+        /**
+         * @param attribute Dashboard attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attribute(String attribute) {
+            return attribute(Output.of(attribute));
         }
 
         /**

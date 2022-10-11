@@ -17,196 +17,139 @@ public final class GetRamDirectoriesDirectory {
      * @return The AD connectors.
      * 
      */
-    private final List<GetRamDirectoriesDirectoryAdConnector> adConnectors;
+    private List<GetRamDirectoriesDirectoryAdConnector> adConnectors;
     /**
      * @return The CreateTime of resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The id of the custom security group.
      * 
      */
-    private final String customSecurityGroupId;
+    private String customSecurityGroupId;
     /**
      * @return The desktop access type.
      * 
      */
-    private final String desktopAccessType;
+    private String desktopAccessType;
     /**
      * @return The desktop vpc endpoint.
      * 
      */
-    private final String desktopVpcEndpoint;
+    private String desktopVpcEndpoint;
     /**
      * @return The directory type.
      * 
      */
-    private final String directoryType;
+    private String directoryType;
     /**
      * @return The address of DNSAddress.
      * 
      */
-    private final List<String> dnsAddresses;
+    private List<String> dnsAddresses;
     /**
      * @return The username of DNS.
      * 
      */
-    private final String dnsUserName;
+    private String dnsUserName;
     /**
      * @return The name of the domain.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return The domain password.
      * 
      */
-    private final String domainPassword;
+    private String domainPassword;
     /**
      * @return The username of the domain.
      * 
      */
-    private final String domainUserName;
+    private String domainUserName;
     /**
      * @return Whether to enable admin access.
      * 
      */
-    private final Boolean enableAdminAccess;
+    private Boolean enableAdminAccess;
     /**
      * @return Whether to enable cross desktop access.
      * 
      */
-    private final Boolean enableCrossDesktopAccess;
+    private Boolean enableCrossDesktopAccess;
     /**
      * @return Whether enable internet access.
      * 
      */
-    private final Boolean enableInternetAccess;
+    private Boolean enableInternetAccess;
     /**
      * @return The ids of filesystem.
      * 
      */
-    private final List<String> fileSystemIds;
+    private List<String> fileSystemIds;
     /**
      * @return The ID of the Ram Directory.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The register log information.
      * 
      */
-    private final List<GetRamDirectoriesDirectoryLog> logs;
+    private List<GetRamDirectoriesDirectoryLog> logs;
     /**
      * @return Whether to enable MFA.
      * 
      */
-    private final Boolean mfaEnabled;
+    private Boolean mfaEnabled;
     /**
      * @return The ID of ram directory.
      * 
      */
-    private final String ramDirectoryId;
+    private String ramDirectoryId;
     /**
      * @return The name of directory.
      * 
      */
-    private final String ramDirectoryName;
+    private String ramDirectoryName;
     /**
      * @return Whether to enable SSO.
      * 
      */
-    private final Boolean ssoEnabled;
+    private Boolean ssoEnabled;
     /**
      * @return The status of directory.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The address of sub DNS.
      * 
      */
-    private final List<String> subDnsAddresses;
+    private List<String> subDnsAddresses;
     /**
      * @return The Name of the sub-domain.
      * 
      */
-    private final String subDomainName;
+    private String subDomainName;
     /**
      * @return The trust password.
      * 
      */
-    private final String trustPassword;
+    private String trustPassword;
     /**
      * @return The ID of the vpc.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return List of VSwitch IDs in the directory.
      * 
      */
-    private final List<String> vswitchIds;
+    private List<String> vswitchIds;
 
-    @CustomType.Constructor
-    private GetRamDirectoriesDirectory(
-        @CustomType.Parameter("adConnectors") List<GetRamDirectoriesDirectoryAdConnector> adConnectors,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("customSecurityGroupId") String customSecurityGroupId,
-        @CustomType.Parameter("desktopAccessType") String desktopAccessType,
-        @CustomType.Parameter("desktopVpcEndpoint") String desktopVpcEndpoint,
-        @CustomType.Parameter("directoryType") String directoryType,
-        @CustomType.Parameter("dnsAddresses") List<String> dnsAddresses,
-        @CustomType.Parameter("dnsUserName") String dnsUserName,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("domainPassword") String domainPassword,
-        @CustomType.Parameter("domainUserName") String domainUserName,
-        @CustomType.Parameter("enableAdminAccess") Boolean enableAdminAccess,
-        @CustomType.Parameter("enableCrossDesktopAccess") Boolean enableCrossDesktopAccess,
-        @CustomType.Parameter("enableInternetAccess") Boolean enableInternetAccess,
-        @CustomType.Parameter("fileSystemIds") List<String> fileSystemIds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logs") List<GetRamDirectoriesDirectoryLog> logs,
-        @CustomType.Parameter("mfaEnabled") Boolean mfaEnabled,
-        @CustomType.Parameter("ramDirectoryId") String ramDirectoryId,
-        @CustomType.Parameter("ramDirectoryName") String ramDirectoryName,
-        @CustomType.Parameter("ssoEnabled") Boolean ssoEnabled,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("subDnsAddresses") List<String> subDnsAddresses,
-        @CustomType.Parameter("subDomainName") String subDomainName,
-        @CustomType.Parameter("trustPassword") String trustPassword,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
-        this.adConnectors = adConnectors;
-        this.createTime = createTime;
-        this.customSecurityGroupId = customSecurityGroupId;
-        this.desktopAccessType = desktopAccessType;
-        this.desktopVpcEndpoint = desktopVpcEndpoint;
-        this.directoryType = directoryType;
-        this.dnsAddresses = dnsAddresses;
-        this.dnsUserName = dnsUserName;
-        this.domainName = domainName;
-        this.domainPassword = domainPassword;
-        this.domainUserName = domainUserName;
-        this.enableAdminAccess = enableAdminAccess;
-        this.enableCrossDesktopAccess = enableCrossDesktopAccess;
-        this.enableInternetAccess = enableInternetAccess;
-        this.fileSystemIds = fileSystemIds;
-        this.id = id;
-        this.logs = logs;
-        this.mfaEnabled = mfaEnabled;
-        this.ramDirectoryId = ramDirectoryId;
-        this.ramDirectoryName = ramDirectoryName;
-        this.ssoEnabled = ssoEnabled;
-        this.status = status;
-        this.subDnsAddresses = subDnsAddresses;
-        this.subDomainName = subDomainName;
-        this.trustPassword = trustPassword;
-        this.vpcId = vpcId;
-        this.vswitchIds = vswitchIds;
-    }
-
+    private GetRamDirectoriesDirectory() {}
     /**
      * @return The AD connectors.
      * 
@@ -404,7 +347,7 @@ public final class GetRamDirectoriesDirectory {
     public static Builder builder(GetRamDirectoriesDirectory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRamDirectoriesDirectoryAdConnector> adConnectors;
         private String createTime;
@@ -433,11 +376,7 @@ public final class GetRamDirectoriesDirectory {
         private String trustPassword;
         private String vpcId;
         private List<String> vswitchIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRamDirectoriesDirectory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adConnectors = defaults.adConnectors;
@@ -469,6 +408,7 @@ public final class GetRamDirectoriesDirectory {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
+        @CustomType.Setter
         public Builder adConnectors(List<GetRamDirectoriesDirectoryAdConnector> adConnectors) {
             this.adConnectors = Objects.requireNonNull(adConnectors);
             return this;
@@ -476,26 +416,32 @@ public final class GetRamDirectoriesDirectory {
         public Builder adConnectors(GetRamDirectoriesDirectoryAdConnector... adConnectors) {
             return adConnectors(List.of(adConnectors));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
             this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
             this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
             this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryType(String directoryType) {
             this.directoryType = Objects.requireNonNull(directoryType);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
             this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
             return this;
@@ -503,34 +449,42 @@ public final class GetRamDirectoriesDirectory {
         public Builder dnsAddresses(String... dnsAddresses) {
             return dnsAddresses(List.of(dnsAddresses));
         }
+        @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
             this.dnsUserName = Objects.requireNonNull(dnsUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainPassword(String domainPassword) {
             this.domainPassword = Objects.requireNonNull(domainPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
             this.domainUserName = Objects.requireNonNull(domainUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
             this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
             this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
             this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
             this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
             return this;
@@ -538,10 +492,12 @@ public final class GetRamDirectoriesDirectory {
         public Builder fileSystemIds(String... fileSystemIds) {
             return fileSystemIds(List.of(fileSystemIds));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logs(List<GetRamDirectoriesDirectoryLog> logs) {
             this.logs = Objects.requireNonNull(logs);
             return this;
@@ -549,26 +505,32 @@ public final class GetRamDirectoriesDirectory {
         public Builder logs(GetRamDirectoriesDirectoryLog... logs) {
             return logs(List.of(logs));
         }
+        @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
             this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ramDirectoryId(String ramDirectoryId) {
             this.ramDirectoryId = Objects.requireNonNull(ramDirectoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder ramDirectoryName(String ramDirectoryName) {
             this.ramDirectoryName = Objects.requireNonNull(ramDirectoryName);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
             this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder subDnsAddresses(List<String> subDnsAddresses) {
             this.subDnsAddresses = Objects.requireNonNull(subDnsAddresses);
             return this;
@@ -576,26 +538,59 @@ public final class GetRamDirectoriesDirectory {
         public Builder subDnsAddresses(String... subDnsAddresses) {
             return subDnsAddresses(List.of(subDnsAddresses));
         }
+        @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
             this.subDomainName = Objects.requireNonNull(subDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
             this.trustPassword = Objects.requireNonNull(trustPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }        public GetRamDirectoriesDirectory build() {
-            return new GetRamDirectoriesDirectory(adConnectors, createTime, customSecurityGroupId, desktopAccessType, desktopVpcEndpoint, directoryType, dnsAddresses, dnsUserName, domainName, domainPassword, domainUserName, enableAdminAccess, enableCrossDesktopAccess, enableInternetAccess, fileSystemIds, id, logs, mfaEnabled, ramDirectoryId, ramDirectoryName, ssoEnabled, status, subDnsAddresses, subDomainName, trustPassword, vpcId, vswitchIds);
+        }
+        public GetRamDirectoriesDirectory build() {
+            final var o = new GetRamDirectoriesDirectory();
+            o.adConnectors = adConnectors;
+            o.createTime = createTime;
+            o.customSecurityGroupId = customSecurityGroupId;
+            o.desktopAccessType = desktopAccessType;
+            o.desktopVpcEndpoint = desktopVpcEndpoint;
+            o.directoryType = directoryType;
+            o.dnsAddresses = dnsAddresses;
+            o.dnsUserName = dnsUserName;
+            o.domainName = domainName;
+            o.domainPassword = domainPassword;
+            o.domainUserName = domainUserName;
+            o.enableAdminAccess = enableAdminAccess;
+            o.enableCrossDesktopAccess = enableCrossDesktopAccess;
+            o.enableInternetAccess = enableInternetAccess;
+            o.fileSystemIds = fileSystemIds;
+            o.id = id;
+            o.logs = logs;
+            o.mfaEnabled = mfaEnabled;
+            o.ramDirectoryId = ramDirectoryId;
+            o.ramDirectoryName = ramDirectoryName;
+            o.ssoEnabled = ssoEnabled;
+            o.status = status;
+            o.subDnsAddresses = subDnsAddresses;
+            o.subDomainName = subDomainName;
+            o.trustPassword = trustPassword;
+            o.vpcId = vpcId;
+            o.vswitchIds = vswitchIds;
+            return o;
         }
     }
 }

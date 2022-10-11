@@ -14,28 +14,19 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusC
      * @return The current value.
      * 
      */
-    private final Integer currentValue;
+    private Integer currentValue;
     /**
      * @return The name of the trigger condition.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The metric type. Associated with monitoring indicators.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric(
-        @CustomType.Parameter("currentValue") Integer currentValue,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.currentValue = currentValue;
-        this.name = name;
-        this.type = type;
-    }
-
+    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric() {}
     /**
      * @return The current value.
      * 
@@ -65,16 +56,12 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusC
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer currentValue;
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentValue = defaults.currentValue;
@@ -82,19 +69,27 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusC
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder currentValue(Integer currentValue) {
             this.currentValue = Objects.requireNonNull(currentValue);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric build() {
-            return new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric(currentValue, name, type);
+        }
+        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric build() {
+            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric();
+            o.currentValue = currentValue;
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

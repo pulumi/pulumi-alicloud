@@ -14,42 +14,29 @@ public final class IngressRule {
      * @return Target application ID.
      * 
      */
-    private final String appId;
+    private String appId;
     /**
      * @return Target application name.
      * 
      */
-    private final String appName;
+    private String appName;
     /**
      * @return Application backend port.
      * 
      */
-    private final Integer containerPort;
+    private Integer containerPort;
     /**
      * @return Application domain name.
      * 
      */
-    private final String domain;
+    private String domain;
     /**
      * @return URL path.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private IngressRule(
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("appName") String appName,
-        @CustomType.Parameter("containerPort") Integer containerPort,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("path") String path) {
-        this.appId = appId;
-        this.appName = appName;
-        this.containerPort = containerPort;
-        this.domain = domain;
-        this.path = path;
-    }
-
+    private IngressRule() {}
     /**
      * @return Target application ID.
      * 
@@ -93,18 +80,14 @@ public final class IngressRule {
     public static Builder builder(IngressRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appId;
         private String appName;
         private Integer containerPort;
         private String domain;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IngressRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -114,27 +97,39 @@ public final class IngressRule {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder appName(String appName) {
             this.appName = Objects.requireNonNull(appName);
             return this;
         }
+        @CustomType.Setter
         public Builder containerPort(Integer containerPort) {
             this.containerPort = Objects.requireNonNull(containerPort);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public IngressRule build() {
-            return new IngressRule(appId, appName, containerPort, domain, path);
+        }
+        public IngressRule build() {
+            final var o = new IngressRule();
+            o.appId = appId;
+            o.appName = appName;
+            o.containerPort = containerPort;
+            o.domain = domain;
+            o.path = path;
+            return o;
         }
     }
 }

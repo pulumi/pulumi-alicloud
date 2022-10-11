@@ -18,23 +18,12 @@ public final class GetPolicyVersionsVersion {
      * * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
      * 
      */
-    private final String id;
-    private final Boolean isDefaultVersion;
-    private final String policyDocument;
-    private final String versionId;
+    private String id;
+    private Boolean isDefaultVersion;
+    private String policyDocument;
+    private String versionId;
 
-    @CustomType.Constructor
-    private GetPolicyVersionsVersion(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isDefaultVersion") Boolean isDefaultVersion,
-        @CustomType.Parameter("policyDocument") String policyDocument,
-        @CustomType.Parameter("versionId") String versionId) {
-        this.id = id;
-        this.isDefaultVersion = isDefaultVersion;
-        this.policyDocument = policyDocument;
-        this.versionId = versionId;
-    }
-
+    private GetPolicyVersionsVersion() {}
     /**
      * @return The ID of the resource, the value is `&lt;policy_name&gt;`:`&lt;version_id&gt;`.
      * * `version_id`- The ID of the policy version.
@@ -63,17 +52,13 @@ public final class GetPolicyVersionsVersion {
     public static Builder builder(GetPolicyVersionsVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private Boolean isDefaultVersion;
         private String policyDocument;
         private String versionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -82,23 +67,33 @@ public final class GetPolicyVersionsVersion {
     	      this.versionId = defaults.versionId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefaultVersion(Boolean isDefaultVersion) {
             this.isDefaultVersion = Objects.requireNonNull(isDefaultVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
             this.policyDocument = Objects.requireNonNull(policyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder versionId(String versionId) {
             this.versionId = Objects.requireNonNull(versionId);
             return this;
-        }        public GetPolicyVersionsVersion build() {
-            return new GetPolicyVersionsVersion(id, isDefaultVersion, policyDocument, versionId);
+        }
+        public GetPolicyVersionsVersion build() {
+            final var o = new GetPolicyVersionsVersion();
+            o.id = id;
+            o.isDefaultVersion = isDefaultVersion;
+            o.policyDocument = policyDocument;
+            o.versionId = versionId;
+            return o;
         }
     }
 }

@@ -15,91 +15,64 @@ public final class GetHostsHost {
      * @return Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
      * 
      */
-    private final String activeAddressType;
+    private String activeAddressType;
     /**
      * @return Specify a host of notes, supports up to 500 characters.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return The host ID.
      * 
      */
-    private final String hostId;
+    private String hostId;
     /**
      * @return Specify the new create a host name of the supports up to 128 characters.
      * 
      */
-    private final String hostName;
+    private String hostName;
     /**
      * @return Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
      * 
      */
-    private final String hostPrivateAddress;
+    private String hostPrivateAddress;
     /**
      * @return Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      * 
      */
-    private final String hostPublicAddress;
+    private String hostPublicAddress;
     /**
      * @return The ID of the Host.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Specify the new create a host where the Bastion host ID of.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Specify the new create the host&#39;s operating system. Valid values: Linux Windows.
      * 
      */
-    private final String osType;
+    private String osType;
     /**
      * @return The host of the protocol information.
      * 
      */
-    private final List<GetHostsHostProtocol> protocols;
+    private List<GetHostsHostProtocol> protocols;
     /**
      * @return Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
      * 
      */
-    private final String source;
+    private String source;
     /**
      * @return Specify the newly created ECS instance ID or dedicated cluster host ID.
      * 
      */
-    private final String sourceInstanceId;
+    private String sourceInstanceId;
 
-    @CustomType.Constructor
-    private GetHostsHost(
-        @CustomType.Parameter("activeAddressType") String activeAddressType,
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("hostId") String hostId,
-        @CustomType.Parameter("hostName") String hostName,
-        @CustomType.Parameter("hostPrivateAddress") String hostPrivateAddress,
-        @CustomType.Parameter("hostPublicAddress") String hostPublicAddress,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("osType") String osType,
-        @CustomType.Parameter("protocols") List<GetHostsHostProtocol> protocols,
-        @CustomType.Parameter("source") String source,
-        @CustomType.Parameter("sourceInstanceId") String sourceInstanceId) {
-        this.activeAddressType = activeAddressType;
-        this.comment = comment;
-        this.hostId = hostId;
-        this.hostName = hostName;
-        this.hostPrivateAddress = hostPrivateAddress;
-        this.hostPublicAddress = hostPublicAddress;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.osType = osType;
-        this.protocols = protocols;
-        this.source = source;
-        this.sourceInstanceId = sourceInstanceId;
-    }
-
+    private GetHostsHost() {}
     /**
      * @return Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
      * 
@@ -192,7 +165,7 @@ public final class GetHostsHost {
     public static Builder builder(GetHostsHost defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String activeAddressType;
         private String comment;
@@ -206,11 +179,7 @@ public final class GetHostsHost {
         private List<GetHostsHostProtocol> protocols;
         private String source;
         private String sourceInstanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostsHost defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeAddressType = defaults.activeAddressType;
@@ -227,42 +196,52 @@ public final class GetHostsHost {
     	      this.sourceInstanceId = defaults.sourceInstanceId;
         }
 
+        @CustomType.Setter
         public Builder activeAddressType(String activeAddressType) {
             this.activeAddressType = Objects.requireNonNull(activeAddressType);
             return this;
         }
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder hostId(String hostId) {
             this.hostId = Objects.requireNonNull(hostId);
             return this;
         }
+        @CustomType.Setter
         public Builder hostName(String hostName) {
             this.hostName = Objects.requireNonNull(hostName);
             return this;
         }
+        @CustomType.Setter
         public Builder hostPrivateAddress(String hostPrivateAddress) {
             this.hostPrivateAddress = Objects.requireNonNull(hostPrivateAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder hostPublicAddress(String hostPublicAddress) {
             this.hostPublicAddress = Objects.requireNonNull(hostPublicAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder osType(String osType) {
             this.osType = Objects.requireNonNull(osType);
             return this;
         }
+        @CustomType.Setter
         public Builder protocols(List<GetHostsHostProtocol> protocols) {
             this.protocols = Objects.requireNonNull(protocols);
             return this;
@@ -270,15 +249,31 @@ public final class GetHostsHost {
         public Builder protocols(GetHostsHostProtocol... protocols) {
             return protocols(List.of(protocols));
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceInstanceId(String sourceInstanceId) {
             this.sourceInstanceId = Objects.requireNonNull(sourceInstanceId);
             return this;
-        }        public GetHostsHost build() {
-            return new GetHostsHost(activeAddressType, comment, hostId, hostName, hostPrivateAddress, hostPublicAddress, id, instanceId, osType, protocols, source, sourceInstanceId);
+        }
+        public GetHostsHost build() {
+            final var o = new GetHostsHost();
+            o.activeAddressType = activeAddressType;
+            o.comment = comment;
+            o.hostId = hostId;
+            o.hostName = hostName;
+            o.hostPrivateAddress = hostPrivateAddress;
+            o.hostPublicAddress = hostPublicAddress;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.osType = osType;
+            o.protocols = protocols;
+            o.source = source;
+            o.sourceInstanceId = sourceInstanceId;
+            return o;
         }
     }
 }

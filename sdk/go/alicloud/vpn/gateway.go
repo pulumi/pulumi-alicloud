@@ -24,10 +24,14 @@ type Gateway struct {
 	pulumi.CustomResourceState
 
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	Bandwidth pulumi.IntOutput     `pulumi:"bandwidth"`
+	// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// - `true`: Enable automatic payment, automatic payment order.
+	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// - `true`: Enable.
+	// - `false`: Disable.
+	AutoPropagate pulumi.BoolPtrOutput `pulumi:"autoPropagate"`
+	Bandwidth     pulumi.IntOutput     `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -94,10 +98,14 @@ func GetGateway(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   *bool `pulumi:"autoPay"`
-	Bandwidth *int  `pulumi:"bandwidth"`
+	// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// - `true`: Enable automatic payment, automatic payment order.
+	AutoPay *bool `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// - `true`: Enable.
+	// - `false`: Disable.
+	AutoPropagate *bool `pulumi:"autoPropagate"`
+	Bandwidth     *int  `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -130,10 +138,14 @@ type gatewayState struct {
 
 type GatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrInput
-	Bandwidth pulumi.IntPtrInput
+	// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// - `true`: Enable automatic payment, automatic payment order.
+	AutoPay pulumi.BoolPtrInput
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// - `true`: Enable.
+	// - `false`: Disable.
+	AutoPropagate pulumi.BoolPtrInput
+	Bandwidth     pulumi.IntPtrInput
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringPtrInput
 	// The description of the VPN instance.
@@ -170,10 +182,14 @@ func (GatewayState) ElementType() reflect.Type {
 
 type gatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   *bool `pulumi:"autoPay"`
-	Bandwidth int   `pulumi:"bandwidth"`
+	// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// - `true`: Enable automatic payment, automatic payment order.
+	AutoPay *bool `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// - `true`: Enable.
+	// - `false`: Disable.
+	AutoPropagate *bool `pulumi:"autoPropagate"`
+	Bandwidth     int   `pulumi:"bandwidth"`
 	// The description of the VPN instance.
 	Description *string `pulumi:"description"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -201,10 +217,14 @@ type gatewayArgs struct {
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrInput
-	Bandwidth pulumi.IntInput
+	// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// - `true`: Enable automatic payment, automatic payment order.
+	AutoPay pulumi.BoolPtrInput
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// - `true`: Enable.
+	// - `false`: Disable.
+	AutoPropagate pulumi.BoolPtrInput
+	Bandwidth     pulumi.IntInput
 	// The description of the VPN instance.
 	Description pulumi.StringPtrInput
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -317,10 +337,17 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 }
 
 // Whether to pay automatically. Default value: `true`. Valid values:
-// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-// `true`: Enable automatic payment, automatic payment order.
+// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+// - `true`: Enable automatic payment, automatic payment order.
 func (o GatewayOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+// - `true`: Enable.
+// - `false`: Disable.
+func (o GatewayOutput) AutoPropagate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPropagate }).(pulumi.BoolPtrOutput)
 }
 
 func (o GatewayOutput) Bandwidth() pulumi.IntOutput {

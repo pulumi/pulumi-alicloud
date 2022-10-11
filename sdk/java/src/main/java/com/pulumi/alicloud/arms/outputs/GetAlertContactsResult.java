@@ -13,42 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertContactsResult {
-    private final @Nullable String alertContactName;
-    private final List<GetAlertContactsContact> contacts;
-    private final @Nullable String email;
+    private @Nullable String alertContactName;
+    private List<GetAlertContactsContact> contacts;
+    private @Nullable String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String phoneNum;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String phoneNum;
 
-    @CustomType.Constructor
-    private GetAlertContactsResult(
-        @CustomType.Parameter("alertContactName") @Nullable String alertContactName,
-        @CustomType.Parameter("contacts") List<GetAlertContactsContact> contacts,
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("phoneNum") @Nullable String phoneNum) {
-        this.alertContactName = alertContactName;
-        this.contacts = contacts;
-        this.email = email;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.phoneNum = phoneNum;
-    }
-
+    private GetAlertContactsResult() {}
     public Optional<String> alertContactName() {
         return Optional.ofNullable(this.alertContactName);
     }
@@ -88,7 +67,7 @@ public final class GetAlertContactsResult {
     public static Builder builder(GetAlertContactsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String alertContactName;
         private List<GetAlertContactsContact> contacts;
@@ -99,11 +78,7 @@ public final class GetAlertContactsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String phoneNum;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlertContactsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertContactName = defaults.alertContactName;
@@ -117,10 +92,12 @@ public final class GetAlertContactsResult {
     	      this.phoneNum = defaults.phoneNum;
         }
 
+        @CustomType.Setter
         public Builder alertContactName(@Nullable String alertContactName) {
             this.alertContactName = alertContactName;
             return this;
         }
+        @CustomType.Setter
         public Builder contacts(List<GetAlertContactsContact> contacts) {
             this.contacts = Objects.requireNonNull(contacts);
             return this;
@@ -128,14 +105,17 @@ public final class GetAlertContactsResult {
         public Builder contacts(GetAlertContactsContact... contacts) {
             return contacts(List.of(contacts));
         }
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -143,10 +123,12 @@ public final class GetAlertContactsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -154,15 +136,28 @@ public final class GetAlertContactsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder phoneNum(@Nullable String phoneNum) {
             this.phoneNum = phoneNum;
             return this;
-        }        public GetAlertContactsResult build() {
-            return new GetAlertContactsResult(alertContactName, contacts, email, id, ids, nameRegex, names, outputFile, phoneNum);
+        }
+        public GetAlertContactsResult build() {
+            final var o = new GetAlertContactsResult();
+            o.alertContactName = alertContactName;
+            o.contacts = contacts;
+            o.email = email;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.phoneNum = phoneNum;
+            return o;
         }
     }
 }

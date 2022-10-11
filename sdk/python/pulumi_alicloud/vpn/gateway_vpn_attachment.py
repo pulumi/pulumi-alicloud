@@ -220,6 +220,7 @@ class _GatewayVpnAttachmentState:
                  enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
                  health_check_config: Optional[pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs']] = None,
                  ike_config: Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']] = None,
+                 internet_ip: Optional[pulumi.Input[str]] = None,
                  ipsec_config: Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -235,6 +236,7 @@ class _GatewayVpnAttachmentState:
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
         :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: Health check configuration information. See the following `Block health_check_config`.
         :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
+        :param pulumi.Input[str] internet_ip: The VPN gateway IP.
         :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
@@ -256,6 +258,8 @@ class _GatewayVpnAttachmentState:
             pulumi.set(__self__, "health_check_config", health_check_config)
         if ike_config is not None:
             pulumi.set(__self__, "ike_config", ike_config)
+        if internet_ip is not None:
+            pulumi.set(__self__, "internet_ip", internet_ip)
         if ipsec_config is not None:
             pulumi.set(__self__, "ipsec_config", ipsec_config)
         if local_subnet is not None:
@@ -352,6 +356,18 @@ class _GatewayVpnAttachmentState:
     @ike_config.setter
     def ike_config(self, value: Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']]):
         pulumi.set(self, "ike_config", value)
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPN gateway IP.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @internet_ip.setter
+    def internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_ip", value)
 
     @property
     @pulumi.getter(name="ipsecConfig")
@@ -657,6 +673,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'remote_subnet'")
             __props__.__dict__["remote_subnet"] = remote_subnet
             __props__.__dict__["vpn_attachment_name"] = vpn_attachment_name
+            __props__.__dict__["internet_ip"] = None
             __props__.__dict__["status"] = None
         super(GatewayVpnAttachment, __self__).__init__(
             'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment',
@@ -675,6 +692,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
             health_check_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']]] = None,
             ike_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']]] = None,
+            internet_ip: Optional[pulumi.Input[str]] = None,
             ipsec_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']]] = None,
             local_subnet: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
@@ -695,6 +713,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
         :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See the following `Block health_check_config`.
         :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See the following `Block ike_config`.
+        :param pulumi.Input[str] internet_ip: The VPN gateway IP.
         :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See the following `Block ipsec_config`.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
@@ -713,6 +732,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         __props__.__dict__["enable_nat_traversal"] = enable_nat_traversal
         __props__.__dict__["health_check_config"] = health_check_config
         __props__.__dict__["ike_config"] = ike_config
+        __props__.__dict__["internet_ip"] = internet_ip
         __props__.__dict__["ipsec_config"] = ipsec_config
         __props__.__dict__["local_subnet"] = local_subnet
         __props__.__dict__["network_type"] = network_type
@@ -776,6 +796,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         Configuration negotiated in the second stage. See the following `Block ike_config`.
         """
         return pulumi.get(self, "ike_config")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> pulumi.Output[str]:
+        """
+        The VPN gateway IP.
+        """
+        return pulumi.get(self, "internet_ip")
 
     @property
     @pulumi.getter(name="ipsecConfig")

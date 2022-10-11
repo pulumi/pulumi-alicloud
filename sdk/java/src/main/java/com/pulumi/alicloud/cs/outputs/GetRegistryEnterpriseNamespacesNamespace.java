@@ -14,56 +14,39 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
      * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      * 
      */
-    private final Boolean autoCreate;
+    private Boolean autoCreate;
     /**
      * @return `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      * 
      */
-    private final String defaultVisibility;
+    private String defaultVisibility;
     /**
      * @return ID of Container Registry Enterprise Edition namespace. It formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`. Before 1.161.0, it is a namespace uuid.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of Container Registry Enterprise Edition instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Name of Container Registry Enterprise Edition namespace.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Container Registry Enterprise Edition namespace id. It is a uuid.
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return Name of Container Registry Enterprise Edition namespace.
      * 
      */
-    private final String namespaceName;
+    private String namespaceName;
 
-    @CustomType.Constructor
-    private GetRegistryEnterpriseNamespacesNamespace(
-        @CustomType.Parameter("autoCreate") Boolean autoCreate,
-        @CustomType.Parameter("defaultVisibility") String defaultVisibility,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("namespaceName") String namespaceName) {
-        this.autoCreate = autoCreate;
-        this.defaultVisibility = defaultVisibility;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.name = name;
-        this.namespaceId = namespaceId;
-        this.namespaceName = namespaceName;
-    }
-
+    private GetRegistryEnterpriseNamespacesNamespace() {}
     /**
      * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      * 
@@ -121,7 +104,7 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
     public static Builder builder(GetRegistryEnterpriseNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autoCreate;
         private String defaultVisibility;
@@ -130,11 +113,7 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
         private String name;
         private String namespaceId;
         private String namespaceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryEnterpriseNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreate = defaults.autoCreate;
@@ -146,35 +125,51 @@ public final class GetRegistryEnterpriseNamespacesNamespace {
     	      this.namespaceName = defaults.namespaceName;
         }
 
+        @CustomType.Setter
         public Builder autoCreate(Boolean autoCreate) {
             this.autoCreate = Objects.requireNonNull(autoCreate);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultVisibility(String defaultVisibility) {
             this.defaultVisibility = Objects.requireNonNull(defaultVisibility);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
             this.namespaceName = Objects.requireNonNull(namespaceName);
             return this;
-        }        public GetRegistryEnterpriseNamespacesNamespace build() {
-            return new GetRegistryEnterpriseNamespacesNamespace(autoCreate, defaultVisibility, id, instanceId, name, namespaceId, namespaceName);
+        }
+        public GetRegistryEnterpriseNamespacesNamespace build() {
+            final var o = new GetRegistryEnterpriseNamespacesNamespace();
+            o.autoCreate = autoCreate;
+            o.defaultVisibility = defaultVisibility;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.name = name;
+            o.namespaceId = namespaceId;
+            o.namespaceName = namespaceName;
+            return o;
         }
     }
 }

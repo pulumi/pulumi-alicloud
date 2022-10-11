@@ -13,21 +13,14 @@ public final class AlertJoinConfiguration {
      * @return Join condition.
      * 
      */
-    private final String condition;
+    private String condition;
     /**
      * @return including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private AlertJoinConfiguration(
-        @CustomType.Parameter("condition") String condition,
-        @CustomType.Parameter("type") String type) {
-        this.condition = condition;
-        this.type = type;
-    }
-
+    private AlertJoinConfiguration() {}
     /**
      * @return Join condition.
      * 
@@ -50,30 +43,32 @@ public final class AlertJoinConfiguration {
     public static Builder builder(AlertJoinConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String condition;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertJoinConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder condition(String condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public AlertJoinConfiguration build() {
-            return new AlertJoinConfiguration(condition, type);
+        }
+        public AlertJoinConfiguration build() {
+            final var o = new AlertJoinConfiguration();
+            o.condition = condition;
+            o.type = type;
+            return o;
         }
     }
 }

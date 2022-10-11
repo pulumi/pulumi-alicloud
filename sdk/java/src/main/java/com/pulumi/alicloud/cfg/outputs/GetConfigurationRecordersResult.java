@@ -17,24 +17,15 @@ public final class GetConfigurationRecordersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
+    private String id;
+    private @Nullable String outputFile;
     /**
      * @return A list of Config Configuration Recorders. Each element contains the following attributes:
      * 
      */
-    private final List<GetConfigurationRecordersRecorder> recorders;
+    private List<GetConfigurationRecordersRecorder> recorders;
 
-    @CustomType.Constructor
-    private GetConfigurationRecordersResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("recorders") List<GetConfigurationRecordersRecorder> recorders) {
-        this.id = id;
-        this.outputFile = outputFile;
-        this.recorders = recorders;
-    }
-
+    private GetConfigurationRecordersResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -60,16 +51,12 @@ public final class GetConfigurationRecordersResult {
     public static Builder builder(GetConfigurationRecordersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetConfigurationRecordersRecorder> recorders;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConfigurationRecordersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -77,22 +64,30 @@ public final class GetConfigurationRecordersResult {
     	      this.recorders = defaults.recorders;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder recorders(List<GetConfigurationRecordersRecorder> recorders) {
             this.recorders = Objects.requireNonNull(recorders);
             return this;
         }
         public Builder recorders(GetConfigurationRecordersRecorder... recorders) {
             return recorders(List.of(recorders));
-        }        public GetConfigurationRecordersResult build() {
-            return new GetConfigurationRecordersResult(id, outputFile, recorders);
+        }
+        public GetConfigurationRecordersResult build() {
+            final var o = new GetConfigurationRecordersResult();
+            o.id = id;
+            o.outputFile = outputFile;
+            o.recorders = recorders;
+            return o;
         }
     }
 }

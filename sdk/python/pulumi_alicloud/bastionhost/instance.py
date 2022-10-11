@@ -24,6 +24,8 @@ class InstanceArgs:
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -34,6 +36,8 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -49,6 +53,10 @@ class InstanceArgs:
             pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
@@ -145,6 +153,30 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -178,6 +210,8 @@ class _InstanceState:
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -189,6 +223,8 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -205,6 +241,10 @@ class _InstanceState:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
@@ -284,6 +324,30 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -340,6 +404,8 @@ class Instance(pulumi.CustomResource):
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -361,6 +427,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -401,6 +469,8 @@ class Instance(pulumi.CustomResource):
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -424,6 +494,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
             __props__.__dict__["period"] = period
+            __props__.__dict__["renew_period"] = renew_period
+            __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
@@ -448,6 +520,8 @@ class Instance(pulumi.CustomResource):
             ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            renew_period: Optional[pulumi.Input[int]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -464,6 +538,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -478,6 +554,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
+        __props__.__dict__["renew_period"] = renew_period
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["tags"] = tags
@@ -528,6 +606,22 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> pulumi.Output[Optional[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+        """
+        return pulumi.get(self, "renewal_status")
 
     @property
     @pulumi.getter(name="resourceGroupId")

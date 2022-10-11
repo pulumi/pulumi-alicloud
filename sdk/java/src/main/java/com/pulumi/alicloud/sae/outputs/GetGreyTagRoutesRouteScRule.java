@@ -15,28 +15,19 @@ public final class GetGreyTagRoutesRouteScRule {
      * @return The Conditional Patterns for Grayscale Rules.
      * 
      */
-    private final String condition;
+    private String condition;
     /**
      * @return A list of conditions items.
      * 
      */
-    private final List<GetGreyTagRoutesRouteScRuleItem> items;
+    private List<GetGreyTagRoutesRouteScRuleItem> items;
     /**
      * @return The path corresponding to the grayscale rule.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private GetGreyTagRoutesRouteScRule(
-        @CustomType.Parameter("condition") String condition,
-        @CustomType.Parameter("items") List<GetGreyTagRoutesRouteScRuleItem> items,
-        @CustomType.Parameter("path") String path) {
-        this.condition = condition;
-        this.items = items;
-        this.path = path;
-    }
-
+    private GetGreyTagRoutesRouteScRule() {}
     /**
      * @return The Conditional Patterns for Grayscale Rules.
      * 
@@ -66,16 +57,12 @@ public final class GetGreyTagRoutesRouteScRule {
     public static Builder builder(GetGreyTagRoutesRouteScRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String condition;
         private List<GetGreyTagRoutesRouteScRuleItem> items;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGreyTagRoutesRouteScRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -83,10 +70,12 @@ public final class GetGreyTagRoutesRouteScRule {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder condition(String condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
         }
+        @CustomType.Setter
         public Builder items(List<GetGreyTagRoutesRouteScRuleItem> items) {
             this.items = Objects.requireNonNull(items);
             return this;
@@ -94,11 +83,17 @@ public final class GetGreyTagRoutesRouteScRule {
         public Builder items(GetGreyTagRoutesRouteScRuleItem... items) {
             return items(List.of(items));
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public GetGreyTagRoutesRouteScRule build() {
-            return new GetGreyTagRoutesRouteScRule(condition, items, path);
+        }
+        public GetGreyTagRoutesRouteScRule build() {
+            final var o = new GetGreyTagRoutesRouteScRule();
+            o.condition = condition;
+            o.items = items;
+            o.path = path;
+            return o;
         }
     }
 }

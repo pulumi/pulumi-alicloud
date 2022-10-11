@@ -13,35 +13,24 @@ public final class GetRulesRuleBindVpc {
      * @return The region ID of the vpc.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The Region Name of the vpc.
      * 
      */
-    private final String regionName;
+    private String regionName;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The Name of the VPC.
      * 
      */
-    private final String vpcName;
+    private String vpcName;
 
-    @CustomType.Constructor
-    private GetRulesRuleBindVpc(
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("regionName") String regionName,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcName") String vpcName) {
-        this.regionId = regionId;
-        this.regionName = regionName;
-        this.vpcId = vpcId;
-        this.vpcName = vpcName;
-    }
-
+    private GetRulesRuleBindVpc() {}
     /**
      * @return The region ID of the vpc.
      * 
@@ -78,17 +67,13 @@ public final class GetRulesRuleBindVpc {
     public static Builder builder(GetRulesRuleBindVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String regionId;
         private String regionName;
         private String vpcId;
         private String vpcName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleBindVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
@@ -97,23 +82,33 @@ public final class GetRulesRuleBindVpc {
     	      this.vpcName = defaults.vpcName;
         }
 
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder regionName(String regionName) {
             this.regionName = Objects.requireNonNull(regionName);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
-        }        public GetRulesRuleBindVpc build() {
-            return new GetRulesRuleBindVpc(regionId, regionName, vpcId, vpcName);
+        }
+        public GetRulesRuleBindVpc build() {
+            final var o = new GetRulesRuleBindVpc();
+            o.regionId = regionId;
+            o.regionName = regionName;
+            o.vpcId = vpcId;
+            o.vpcName = vpcName;
+            return o;
         }
     }
 }

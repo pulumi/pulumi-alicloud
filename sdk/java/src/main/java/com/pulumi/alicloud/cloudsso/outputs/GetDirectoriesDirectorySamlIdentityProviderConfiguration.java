@@ -13,42 +13,29 @@ public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
      * @return Saml identifies the creation time of the provider configuration.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Base64 encoded IdP metadata document.
      * 
      */
-    private final String encodedMetadataDocument;
+    private String encodedMetadataDocument;
     /**
      * @return SAML IdPEntityID.
      * 
      */
-    private final String entityId;
+    private String entityId;
     /**
      * @return SAML IdP http-post Binding address.
      * 
      */
-    private final String loginUrl;
+    private String loginUrl;
     /**
      * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
      */
-    private final String ssoStatus;
+    private String ssoStatus;
 
-    @CustomType.Constructor
-    private GetDirectoriesDirectorySamlIdentityProviderConfiguration(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("encodedMetadataDocument") String encodedMetadataDocument,
-        @CustomType.Parameter("entityId") String entityId,
-        @CustomType.Parameter("loginUrl") String loginUrl,
-        @CustomType.Parameter("ssoStatus") String ssoStatus) {
-        this.createTime = createTime;
-        this.encodedMetadataDocument = encodedMetadataDocument;
-        this.entityId = entityId;
-        this.loginUrl = loginUrl;
-        this.ssoStatus = ssoStatus;
-    }
-
+    private GetDirectoriesDirectorySamlIdentityProviderConfiguration() {}
     /**
      * @return Saml identifies the creation time of the provider configuration.
      * 
@@ -92,18 +79,14 @@ public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
     public static Builder builder(GetDirectoriesDirectorySamlIdentityProviderConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String encodedMetadataDocument;
         private String entityId;
         private String loginUrl;
         private String ssoStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDirectoriesDirectorySamlIdentityProviderConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -113,27 +96,39 @@ public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
     	      this.ssoStatus = defaults.ssoStatus;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder encodedMetadataDocument(String encodedMetadataDocument) {
             this.encodedMetadataDocument = Objects.requireNonNull(encodedMetadataDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder entityId(String entityId) {
             this.entityId = Objects.requireNonNull(entityId);
             return this;
         }
+        @CustomType.Setter
         public Builder loginUrl(String loginUrl) {
             this.loginUrl = Objects.requireNonNull(loginUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoStatus(String ssoStatus) {
             this.ssoStatus = Objects.requireNonNull(ssoStatus);
             return this;
-        }        public GetDirectoriesDirectorySamlIdentityProviderConfiguration build() {
-            return new GetDirectoriesDirectorySamlIdentityProviderConfiguration(createTime, encodedMetadataDocument, entityId, loginUrl, ssoStatus);
+        }
+        public GetDirectoriesDirectorySamlIdentityProviderConfiguration build() {
+            final var o = new GetDirectoriesDirectorySamlIdentityProviderConfiguration();
+            o.createTime = createTime;
+            o.encodedMetadataDocument = encodedMetadataDocument;
+            o.entityId = entityId;
+            o.loginUrl = loginUrl;
+            o.ssoStatus = ssoStatus;
+            return o;
         }
     }
 }

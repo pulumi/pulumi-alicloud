@@ -17,21 +17,14 @@ public final class RuleRuleActionForwardGroupConfig {
      * @return The configuration of session persistence for server groups.
      * 
      */
-    private final @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
+    private @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
     /**
      * @return The destination server group to which requests are forwarded.
      * 
      */
-    private final @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
+    private @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
-    @CustomType.Constructor
-    private RuleRuleActionForwardGroupConfig(
-        @CustomType.Parameter("serverGroupStickySession") @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession,
-        @CustomType.Parameter("serverGroupTuples") @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
-        this.serverGroupStickySession = serverGroupStickySession;
-        this.serverGroupTuples = serverGroupTuples;
-    }
-
+    private RuleRuleActionForwardGroupConfig() {}
     /**
      * @return The configuration of session persistence for server groups.
      * 
@@ -54,33 +47,35 @@ public final class RuleRuleActionForwardGroupConfig {
     public static Builder builder(RuleRuleActionForwardGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession;
         private @Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleActionForwardGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupStickySession = defaults.serverGroupStickySession;
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        @CustomType.Setter
         public Builder serverGroupStickySession(@Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession) {
             this.serverGroupStickySession = serverGroupStickySession;
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupTuples(@Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = serverGroupTuples;
             return this;
         }
         public Builder serverGroupTuples(RuleRuleActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
-        }        public RuleRuleActionForwardGroupConfig build() {
-            return new RuleRuleActionForwardGroupConfig(serverGroupStickySession, serverGroupTuples);
+        }
+        public RuleRuleActionForwardGroupConfig build() {
+            final var o = new RuleRuleActionForwardGroupConfig();
+            o.serverGroupStickySession = serverGroupStickySession;
+            o.serverGroupTuples = serverGroupTuples;
+            return o;
         }
     }
 }

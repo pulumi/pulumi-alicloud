@@ -15,91 +15,64 @@ public final class GetMscSubSubscriptionsSubscription {
      * @return The channel the Subscription.
      * 
      */
-    private final String channel;
+    private String channel;
     /**
      * @return The ids of subscribed contacts.
      * 
      */
-    private final List<Integer> contactIds;
+    private List<Integer> contactIds;
     /**
      * @return The description of the Subscription.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    private final Integer emailStatus;
+    private Integer emailStatus;
     /**
      * @return The ID of the Subscription.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the Subscription.
      * 
      */
-    private final String itemId;
+    private String itemId;
     /**
      * @return The name of the Subscription.
      * 
      */
-    private final String itemName;
+    private String itemName;
     /**
      * @return The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    private final Integer pmsgStatus;
+    private Integer pmsgStatus;
     /**
      * @return The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    private final Integer smsStatus;
+    private Integer smsStatus;
     /**
      * @return The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    private final Integer ttsStatus;
+    private Integer ttsStatus;
     /**
      * @return The ids of subscribed webhooks.
      * 
      */
-    private final List<Integer> webhookIds;
+    private List<Integer> webhookIds;
     /**
      * @return The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    private final Integer webhookStatus;
+    private Integer webhookStatus;
 
-    @CustomType.Constructor
-    private GetMscSubSubscriptionsSubscription(
-        @CustomType.Parameter("channel") String channel,
-        @CustomType.Parameter("contactIds") List<Integer> contactIds,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("emailStatus") Integer emailStatus,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("itemId") String itemId,
-        @CustomType.Parameter("itemName") String itemName,
-        @CustomType.Parameter("pmsgStatus") Integer pmsgStatus,
-        @CustomType.Parameter("smsStatus") Integer smsStatus,
-        @CustomType.Parameter("ttsStatus") Integer ttsStatus,
-        @CustomType.Parameter("webhookIds") List<Integer> webhookIds,
-        @CustomType.Parameter("webhookStatus") Integer webhookStatus) {
-        this.channel = channel;
-        this.contactIds = contactIds;
-        this.description = description;
-        this.emailStatus = emailStatus;
-        this.id = id;
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.pmsgStatus = pmsgStatus;
-        this.smsStatus = smsStatus;
-        this.ttsStatus = ttsStatus;
-        this.webhookIds = webhookIds;
-        this.webhookStatus = webhookStatus;
-    }
-
+    private GetMscSubSubscriptionsSubscription() {}
     /**
      * @return The channel the Subscription.
      * 
@@ -192,7 +165,7 @@ public final class GetMscSubSubscriptionsSubscription {
     public static Builder builder(GetMscSubSubscriptionsSubscription defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String channel;
         private List<Integer> contactIds;
@@ -206,11 +179,7 @@ public final class GetMscSubSubscriptionsSubscription {
         private Integer ttsStatus;
         private List<Integer> webhookIds;
         private Integer webhookStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMscSubSubscriptionsSubscription defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channel = defaults.channel;
@@ -227,10 +196,12 @@ public final class GetMscSubSubscriptionsSubscription {
     	      this.webhookStatus = defaults.webhookStatus;
         }
 
+        @CustomType.Setter
         public Builder channel(String channel) {
             this.channel = Objects.requireNonNull(channel);
             return this;
         }
+        @CustomType.Setter
         public Builder contactIds(List<Integer> contactIds) {
             this.contactIds = Objects.requireNonNull(contactIds);
             return this;
@@ -238,38 +209,47 @@ public final class GetMscSubSubscriptionsSubscription {
         public Builder contactIds(Integer... contactIds) {
             return contactIds(List.of(contactIds));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder emailStatus(Integer emailStatus) {
             this.emailStatus = Objects.requireNonNull(emailStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder itemId(String itemId) {
             this.itemId = Objects.requireNonNull(itemId);
             return this;
         }
+        @CustomType.Setter
         public Builder itemName(String itemName) {
             this.itemName = Objects.requireNonNull(itemName);
             return this;
         }
+        @CustomType.Setter
         public Builder pmsgStatus(Integer pmsgStatus) {
             this.pmsgStatus = Objects.requireNonNull(pmsgStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder smsStatus(Integer smsStatus) {
             this.smsStatus = Objects.requireNonNull(smsStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder ttsStatus(Integer ttsStatus) {
             this.ttsStatus = Objects.requireNonNull(ttsStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder webhookIds(List<Integer> webhookIds) {
             this.webhookIds = Objects.requireNonNull(webhookIds);
             return this;
@@ -277,11 +257,26 @@ public final class GetMscSubSubscriptionsSubscription {
         public Builder webhookIds(Integer... webhookIds) {
             return webhookIds(List.of(webhookIds));
         }
+        @CustomType.Setter
         public Builder webhookStatus(Integer webhookStatus) {
             this.webhookStatus = Objects.requireNonNull(webhookStatus);
             return this;
-        }        public GetMscSubSubscriptionsSubscription build() {
-            return new GetMscSubSubscriptionsSubscription(channel, contactIds, description, emailStatus, id, itemId, itemName, pmsgStatus, smsStatus, ttsStatus, webhookIds, webhookStatus);
+        }
+        public GetMscSubSubscriptionsSubscription build() {
+            final var o = new GetMscSubSubscriptionsSubscription();
+            o.channel = channel;
+            o.contactIds = contactIds;
+            o.description = description;
+            o.emailStatus = emailStatus;
+            o.id = id;
+            o.itemId = itemId;
+            o.itemName = itemName;
+            o.pmsgStatus = pmsgStatus;
+            o.smsStatus = smsStatus;
+            o.ttsStatus = ttsStatus;
+            o.webhookIds = webhookIds;
+            o.webhookStatus = webhookStatus;
+            return o;
         }
     }
 }

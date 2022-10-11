@@ -17,32 +17,15 @@ public final class GetSnapshotsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetSnapshotsSnapshot> snapshots;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetSnapshotsSnapshot> snapshots;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetSnapshotsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("snapshots") List<GetSnapshotsSnapshot> snapshots,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.snapshots = snapshots;
-        this.status = status;
-    }
-
+    private GetSnapshotsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -76,7 +59,7 @@ public final class GetSnapshotsResult {
     public static Builder builder(GetSnapshotsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -85,11 +68,7 @@ public final class GetSnapshotsResult {
         private @Nullable String outputFile;
         private List<GetSnapshotsSnapshot> snapshots;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,10 +80,12 @@ public final class GetSnapshotsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -112,10 +93,12 @@ public final class GetSnapshotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,10 +106,12 @@ public final class GetSnapshotsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshots(List<GetSnapshotsSnapshot> snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
@@ -134,11 +119,21 @@ public final class GetSnapshotsResult {
         public Builder snapshots(GetSnapshotsSnapshot... snapshots) {
             return snapshots(List.of(snapshots));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetSnapshotsResult build() {
-            return new GetSnapshotsResult(id, ids, nameRegex, names, outputFile, snapshots, status);
+        }
+        public GetSnapshotsResult build() {
+            final var o = new GetSnapshotsResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.snapshots = snapshots;
+            o.status = status;
+            return o;
         }
     }
 }

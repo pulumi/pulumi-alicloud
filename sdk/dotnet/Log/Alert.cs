@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Log
         /// Timestamp, notifications before closing again.
         /// </summary>
         [Output("muteUntil")]
-        public Output<int?> MuteUntil { get; private set; } = null!;
+        public Output<int> MuteUntil { get; private set; } = null!;
 
         /// <summary>
         /// Switch for whether new alert fires when no data happens, default is false.

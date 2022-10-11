@@ -51,6 +51,21 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The instance ID of the exclusive KMS instance.
+     * 
+     */
+    @Import(name="dkmsInstanceId")
+    private @Nullable Output<String> dkmsInstanceId;
+
+    /**
+     * @return The instance ID of the exclusive KMS instance.
+     * 
+     */
+    public Optional<Output<String>> dkmsInstanceId() {
+        return Optional.ofNullable(this.dkmsInstanceId);
+    }
+
+    /**
      * Whether to enable automatic key rotation.
      * 
      */
@@ -235,6 +250,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     private SecretState(SecretState $) {
         this.arn = $.arn;
         this.description = $.description;
+        this.dkmsInstanceId = $.dkmsInstanceId;
         this.enableAutomaticRotation = $.enableAutomaticRotation;
         this.encryptionKeyId = $.encryptionKeyId;
         this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
@@ -307,6 +323,27 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(@Nullable Output<String> dkmsInstanceId) {
+            $.dkmsInstanceId = dkmsInstanceId;
+            return this;
+        }
+
+        /**
+         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(String dkmsInstanceId) {
+            return dkmsInstanceId(Output.of(dkmsInstanceId));
         }
 
         /**

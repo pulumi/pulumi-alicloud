@@ -13,84 +13,59 @@ public final class GetShardingNetworkPrivateAddressesAddress {
      * @return The db instance id.
      * 
      */
-    private final String dbInstanceId;
+    private String dbInstanceId;
     /**
      * @return The remaining duration of the classic network address. Unit: `seconds`.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The IP address of the instance.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return The endpoint of the instance.
      * 
      */
-    private final String networkAddress;
+    private String networkAddress;
     /**
      * @return The type of the network.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      * 
      */
-    private final String nodeId;
+    private String nodeId;
     /**
      * @return The type of the node.
      * 
      */
-    private final String nodeType;
+    private String nodeType;
     /**
      * @return The port number.
      * 
      */
-    private final String port;
+    private String port;
     /**
      * @return The role of the node.
      * 
      */
-    private final String role;
+    private String role;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vSwitch ID of the VPC.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetShardingNetworkPrivateAddressesAddress(
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("networkAddress") String networkAddress,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("nodeId") String nodeId,
-        @CustomType.Parameter("nodeType") String nodeType,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("role") String role,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.dbInstanceId = dbInstanceId;
-        this.expiredTime = expiredTime;
-        this.ipAddress = ipAddress;
-        this.networkAddress = networkAddress;
-        this.networkType = networkType;
-        this.nodeId = nodeId;
-        this.nodeType = nodeType;
-        this.port = port;
-        this.role = role;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetShardingNetworkPrivateAddressesAddress() {}
     /**
      * @return The db instance id.
      * 
@@ -176,7 +151,7 @@ public final class GetShardingNetworkPrivateAddressesAddress {
     public static Builder builder(GetShardingNetworkPrivateAddressesAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbInstanceId;
         private String expiredTime;
@@ -189,11 +164,7 @@ public final class GetShardingNetworkPrivateAddressesAddress {
         private String role;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetShardingNetworkPrivateAddressesAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceId = defaults.dbInstanceId;
@@ -209,51 +180,75 @@ public final class GetShardingNetworkPrivateAddressesAddress {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder networkAddress(String networkAddress) {
             this.networkAddress = Objects.requireNonNull(networkAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeType(String nodeType) {
             this.nodeType = Objects.requireNonNull(nodeType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetShardingNetworkPrivateAddressesAddress build() {
-            return new GetShardingNetworkPrivateAddressesAddress(dbInstanceId, expiredTime, ipAddress, networkAddress, networkType, nodeId, nodeType, port, role, vpcId, vswitchId);
+        }
+        public GetShardingNetworkPrivateAddressesAddress build() {
+            final var o = new GetShardingNetworkPrivateAddressesAddress();
+            o.dbInstanceId = dbInstanceId;
+            o.expiredTime = expiredTime;
+            o.ipAddress = ipAddress;
+            o.networkAddress = networkAddress;
+            o.networkType = networkType;
+            o.nodeId = nodeId;
+            o.nodeType = nodeType;
+            o.port = port;
+            o.role = role;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

@@ -14,48 +14,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewaysResult {
-    private final List<GetGatewaysGateway> gateways;
+    private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String status;
-    private final String storageBundleId;
-    private final Integer totalCount;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String status;
+    private String storageBundleId;
+    private Integer totalCount;
 
-    @CustomType.Constructor
-    private GetGatewaysResult(
-        @CustomType.Parameter("gateways") List<GetGatewaysGateway> gateways,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("storageBundleId") String storageBundleId,
-        @CustomType.Parameter("totalCount") Integer totalCount) {
-        this.gateways = gateways;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.status = status;
-        this.storageBundleId = storageBundleId;
-        this.totalCount = totalCount;
-    }
-
+    private GetGatewaysResult() {}
     public List<GetGatewaysGateway> gateways() {
         return this.gateways;
     }
@@ -101,7 +76,7 @@ public final class GetGatewaysResult {
     public static Builder builder(GetGatewaysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGatewaysGateway> gateways;
         private String id;
@@ -114,11 +89,7 @@ public final class GetGatewaysResult {
         private @Nullable String status;
         private String storageBundleId;
         private Integer totalCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gateways = defaults.gateways;
@@ -134,6 +105,7 @@ public final class GetGatewaysResult {
     	      this.totalCount = defaults.totalCount;
         }
 
+        @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -141,10 +113,12 @@ public final class GetGatewaysResult {
         public Builder gateways(GetGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,10 +126,12 @@ public final class GetGatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -163,31 +139,50 @@ public final class GetGatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
             this.storageBundleId = Objects.requireNonNull(storageBundleId);
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }        public GetGatewaysResult build() {
-            return new GetGatewaysResult(gateways, id, ids, nameRegex, names, outputFile, pageNumber, pageSize, status, storageBundleId, totalCount);
+        }
+        public GetGatewaysResult build() {
+            final var o = new GetGatewaysResult();
+            o.gateways = gateways;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.status = status;
+            o.storageBundleId = storageBundleId;
+            o.totalCount = totalCount;
+            return o;
         }
     }
 }

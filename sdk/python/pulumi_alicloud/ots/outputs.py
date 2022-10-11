@@ -11,24 +11,26 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'TableDefinedColumn',
     'TablePrimaryKey',
     'TunnelChannel',
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetTablesTableResult',
+    'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
     'GetTunnelsTunnelResult',
     'GetTunnelsTunnelChannelResult',
 ]
 
 @pulumi.output_type
-class TablePrimaryKey(dict):
+class TableDefinedColumn(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
         """
-        :param str name: Name for primary key.
-        :param str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        :param str name: Name for defined column.
+        :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -37,7 +39,7 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name for primary key.
+        Name for defined column.
         """
         return pulumi.get(self, "name")
 
@@ -45,7 +47,36 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TablePrimaryKey(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        """
+        :param str name: Name for defined column.
+        :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name for defined column.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         return pulumi.get(self, "type")
 
@@ -386,6 +417,7 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetTablesTableResult(dict):
     def __init__(__self__, *,
+                 defined_columns: Sequence['outputs.GetTablesTableDefinedColumnResult'],
                  id: str,
                  instance_name: str,
                  max_version: int,
@@ -400,12 +432,18 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
+        pulumi.set(__self__, "defined_columns", defined_columns)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        return pulumi.get(self, "defined_columns")
 
     @property
     @pulumi.getter
@@ -454,6 +492,25 @@ class GetTablesTableResult(dict):
         The retention time of data stored in this table.
         """
         return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetTablesTableDefinedColumnResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

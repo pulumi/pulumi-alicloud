@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.hbr;
 
+import com.pulumi.alicloud.hbr.inputs.RestoreJobOtsDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -58,6 +59,21 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> options() {
         return Optional.ofNullable(this.options);
+    }
+
+    /**
+     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    @Import(name="otsDetail")
+    private @Nullable Output<RestoreJobOtsDetailArgs> otsDetail;
+
+    /**
+     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    public Optional<Output<RestoreJobOtsDetailArgs>> otsDetail() {
+        return Optional.ofNullable(this.otsDetail);
     }
 
     /**
@@ -336,6 +352,7 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
         this.exclude = $.exclude;
         this.include = $.include;
         this.options = $.options;
+        this.otsDetail = $.otsDetail;
         this.restoreJobId = $.restoreJobId;
         this.restoreType = $.restoreType;
         this.snapshotHash = $.snapshotHash;
@@ -435,6 +452,27 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(String options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otsDetail(@Nullable Output<RestoreJobOtsDetailArgs> otsDetail) {
+            $.otsDetail = otsDetail;
+            return this;
+        }
+
+        /**
+         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otsDetail(RestoreJobOtsDetailArgs otsDetail) {
+            return otsDetail(Output.of(otsDetail));
         }
 
         /**

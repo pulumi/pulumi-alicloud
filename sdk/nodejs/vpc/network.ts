@@ -50,7 +50,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -68,7 +68,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Id of resource group which the VPC belongs.
+     * The ID of resource group which the VPC belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -86,9 +86,11 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly routerTableId!: pulumi.Output<string>;
     /**
-     * The secondary CIDR blocks for the VPC.
+     * Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloudVpcIpv4CidrBlock` resource cannot be used at the same time.
+     *
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      */
-    public readonly secondaryCidrBlocks!: pulumi.Output<string[] | undefined>;
+    public readonly secondaryCidrBlocks!: pulumi.Output<string[]>;
     /**
      * The status of the VPC.
      */
@@ -98,7 +100,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The user cidrs of the VPC.
+     * The user cidr blocks of the VPC.
      */
     public readonly userCidrs!: pulumi.Output<string[] | undefined>;
     /**
@@ -170,7 +172,7 @@ export interface NetworkState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -188,7 +190,7 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the VPC belongs.
+     * The ID of resource group which the VPC belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -206,7 +208,9 @@ export interface NetworkState {
      */
     routerTableId?: pulumi.Input<string>;
     /**
-     * The secondary CIDR blocks for the VPC.
+     * Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloudVpcIpv4CidrBlock` resource cannot be used at the same time.
+     *
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -218,7 +222,7 @@ export interface NetworkState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The user cidrs of the VPC.
+     * The user cidr blocks of the VPC.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -240,7 +244,7 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -254,11 +258,13 @@ export interface NetworkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the VPC belongs.
+     * The ID of resource group which the VPC belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The secondary CIDR blocks for the VPC.
+     * Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloudVpcIpv4CidrBlock` resource cannot be used at the same time.
+     *
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -266,7 +272,7 @@ export interface NetworkArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The user cidrs of the VPC.
+     * The user cidr blocks of the VPC.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**

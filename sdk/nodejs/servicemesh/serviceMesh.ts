@@ -51,7 +51,7 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * The array of the cluster ids.
      */
-    public readonly clusterIds!: pulumi.Output<string[] | undefined>;
+    public readonly clusterIds!: pulumi.Output<string[]>;
     /**
      * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
      */

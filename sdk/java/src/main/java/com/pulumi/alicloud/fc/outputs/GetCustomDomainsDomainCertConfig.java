@@ -13,21 +13,14 @@ public final class GetCustomDomainsDomainCertConfig {
      * @return The name of the certificate.
      * 
      */
-    private final String certName;
+    private String certName;
     /**
      * @return Certificate data of the HTTPS certificates, follow the &#39;pem&#39;.
      * 
      */
-    private final String certificate;
+    private String certificate;
 
-    @CustomType.Constructor
-    private GetCustomDomainsDomainCertConfig(
-        @CustomType.Parameter("certName") String certName,
-        @CustomType.Parameter("certificate") String certificate) {
-        this.certName = certName;
-        this.certificate = certificate;
-    }
-
+    private GetCustomDomainsDomainCertConfig() {}
     /**
      * @return The name of the certificate.
      * 
@@ -50,30 +43,32 @@ public final class GetCustomDomainsDomainCertConfig {
     public static Builder builder(GetCustomDomainsDomainCertConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certName;
         private String certificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomDomainsDomainCertConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
     	      this.certificate = defaults.certificate;
         }
 
+        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
+        @CustomType.Setter
         public Builder certificate(String certificate) {
             this.certificate = Objects.requireNonNull(certificate);
             return this;
-        }        public GetCustomDomainsDomainCertConfig build() {
-            return new GetCustomDomainsDomainCertConfig(certName, certificate);
+        }
+        public GetCustomDomainsDomainCertConfig build() {
+            final var o = new GetCustomDomainsDomainCertConfig();
+            o.certName = certName;
+            o.certificate = certificate;
+            return o;
         }
     }
 }

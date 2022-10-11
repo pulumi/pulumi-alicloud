@@ -14,56 +14,39 @@ public final class GetAccessGroupsGroup {
      * @return The name of access group.
      * 
      */
-    private final String accessGroupName;
+    private String accessGroupName;
     /**
      * @return Filter results by a specific AccessGroupType.
      * 
      */
-    private final String accessGroupType;
+    private String accessGroupType;
     /**
      * @return Filter results by a specific Description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return MountTargetCount block of the AccessGroup
      * 
      */
-    private final Integer mountTargetCount;
+    private Integer mountTargetCount;
     /**
      * @return RuleCount of the AccessGroup.
      * 
      */
-    private final Integer ruleCount;
+    private Integer ruleCount;
     /**
      * @return Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetAccessGroupsGroup(
-        @CustomType.Parameter("accessGroupName") String accessGroupName,
-        @CustomType.Parameter("accessGroupType") String accessGroupType,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mountTargetCount") Integer mountTargetCount,
-        @CustomType.Parameter("ruleCount") Integer ruleCount,
-        @CustomType.Parameter("type") String type) {
-        this.accessGroupName = accessGroupName;
-        this.accessGroupType = accessGroupType;
-        this.description = description;
-        this.id = id;
-        this.mountTargetCount = mountTargetCount;
-        this.ruleCount = ruleCount;
-        this.type = type;
-    }
-
+    private GetAccessGroupsGroup() {}
     /**
      * @return The name of access group.
      * 
@@ -121,7 +104,7 @@ public final class GetAccessGroupsGroup {
     public static Builder builder(GetAccessGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessGroupName;
         private String accessGroupType;
@@ -130,11 +113,7 @@ public final class GetAccessGroupsGroup {
         private Integer mountTargetCount;
         private Integer ruleCount;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupName = defaults.accessGroupName;
@@ -146,35 +125,51 @@ public final class GetAccessGroupsGroup {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
             this.accessGroupName = Objects.requireNonNull(accessGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder accessGroupType(String accessGroupType) {
             this.accessGroupType = Objects.requireNonNull(accessGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mountTargetCount(Integer mountTargetCount) {
             this.mountTargetCount = Objects.requireNonNull(mountTargetCount);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleCount(Integer ruleCount) {
             this.ruleCount = Objects.requireNonNull(ruleCount);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetAccessGroupsGroup build() {
-            return new GetAccessGroupsGroup(accessGroupName, accessGroupType, description, id, mountTargetCount, ruleCount, type);
+        }
+        public GetAccessGroupsGroup build() {
+            final var o = new GetAccessGroupsGroup();
+            o.accessGroupName = accessGroupName;
+            o.accessGroupType = accessGroupType;
+            o.description = description;
+            o.id = id;
+            o.mountTargetCount = mountTargetCount;
+            o.ruleCount = ruleCount;
+            o.type = type;
+            return o;
         }
     }
 }

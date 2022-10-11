@@ -13,27 +13,27 @@ public final class GetConfigsConfig {
      * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
      * 
      */
-    private final String code;
+    private String code;
     /**
      * @return Configure the Number.
      * 
      */
-    private final String configId;
+    private String configId;
     /**
      * @return Default Value.
      * 
      */
-    private final String defaultValue;
+    private String defaultValue;
     /**
      * @return Abnormal Alarm General Description of the Configuration Item.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Config.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
      * * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
@@ -41,24 +41,9 @@ public final class GetConfigsConfig {
      * * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetConfigsConfig(
-        @CustomType.Parameter("code") String code,
-        @CustomType.Parameter("configId") String configId,
-        @CustomType.Parameter("defaultValue") String defaultValue,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("value") String value) {
-        this.code = code;
-        this.configId = configId;
-        this.defaultValue = defaultValue;
-        this.description = description;
-        this.id = id;
-        this.value = value;
-    }
-
+    private GetConfigsConfig() {}
     /**
      * @return Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
      * 
@@ -112,7 +97,7 @@ public final class GetConfigsConfig {
     public static Builder builder(GetConfigsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String code;
         private String configId;
@@ -120,11 +105,7 @@ public final class GetConfigsConfig {
         private String description;
         private String id;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConfigsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -135,31 +116,45 @@ public final class GetConfigsConfig {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
+        @CustomType.Setter
         public Builder configId(String configId) {
             this.configId = Objects.requireNonNull(configId);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultValue(String defaultValue) {
             this.defaultValue = Objects.requireNonNull(defaultValue);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetConfigsConfig build() {
-            return new GetConfigsConfig(code, configId, defaultValue, description, id, value);
+        }
+        public GetConfigsConfig build() {
+            final var o = new GetConfigsConfig();
+            o.code = code;
+            o.configId = configId;
+            o.defaultValue = defaultValue;
+            o.description = description;
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

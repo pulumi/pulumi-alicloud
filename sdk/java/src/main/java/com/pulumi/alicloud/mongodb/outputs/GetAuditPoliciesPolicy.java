@@ -13,28 +13,19 @@ public final class GetAuditPoliciesPolicy {
      * @return The status of the log audit feature.
      * 
      */
-    private final String auditStatus;
+    private String auditStatus;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String dbInstanceId;
+    private String dbInstanceId;
     /**
      * @return The ID of the Audit Policy.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetAuditPoliciesPolicy(
-        @CustomType.Parameter("auditStatus") String auditStatus,
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("id") String id) {
-        this.auditStatus = auditStatus;
-        this.dbInstanceId = dbInstanceId;
-        this.id = id;
-    }
-
+    private GetAuditPoliciesPolicy() {}
     /**
      * @return The status of the log audit feature.
      * 
@@ -64,16 +55,12 @@ public final class GetAuditPoliciesPolicy {
     public static Builder builder(GetAuditPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String auditStatus;
         private String dbInstanceId;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuditPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditStatus = defaults.auditStatus;
@@ -81,19 +68,27 @@ public final class GetAuditPoliciesPolicy {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder auditStatus(String auditStatus) {
             this.auditStatus = Objects.requireNonNull(auditStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetAuditPoliciesPolicy build() {
-            return new GetAuditPoliciesPolicy(auditStatus, dbInstanceId, id);
+        }
+        public GetAuditPoliciesPolicy build() {
+            final var o = new GetAuditPoliciesPolicy();
+            o.auditStatus = auditStatus;
+            o.dbInstanceId = dbInstanceId;
+            o.id = id;
+            return o;
         }
     }
 }

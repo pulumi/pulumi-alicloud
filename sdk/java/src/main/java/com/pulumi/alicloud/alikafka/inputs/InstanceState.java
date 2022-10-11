@@ -271,14 +271,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of attaching VPC to instance.
+     * @return The VPC ID of the instance.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -301,14 +301,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the kafka instance.
+     * @return The zone ID of the instance.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -706,7 +706,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of attaching VPC to instance.
+         * @param vpcId The VPC ID of the instance.
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of attaching VPC to instance.
+         * @param vpcId The VPC ID of the instance.
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the kafka instance.
+         * @param zoneId The zone ID of the instance.
          * 
          * @return builder
          * 
@@ -759,7 +759,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the kafka instance.
+         * @param zoneId The zone ID of the instance.
          * 
          * @return builder
          * 

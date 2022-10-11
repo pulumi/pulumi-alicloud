@@ -13,35 +13,24 @@ public final class GetMscSubWebhooksWebhook {
      * @return The ID of the Webhook.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The serverUrl of the Subscription.
      * 
      */
-    private final String serverUrl;
+    private String serverUrl;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String webhookId;
+    private String webhookId;
     /**
      * @return The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
      * 
      */
-    private final String webhookName;
+    private String webhookName;
 
-    @CustomType.Constructor
-    private GetMscSubWebhooksWebhook(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("serverUrl") String serverUrl,
-        @CustomType.Parameter("webhookId") String webhookId,
-        @CustomType.Parameter("webhookName") String webhookName) {
-        this.id = id;
-        this.serverUrl = serverUrl;
-        this.webhookId = webhookId;
-        this.webhookName = webhookName;
-    }
-
+    private GetMscSubWebhooksWebhook() {}
     /**
      * @return The ID of the Webhook.
      * 
@@ -78,17 +67,13 @@ public final class GetMscSubWebhooksWebhook {
     public static Builder builder(GetMscSubWebhooksWebhook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String serverUrl;
         private String webhookId;
         private String webhookName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMscSubWebhooksWebhook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -97,23 +82,33 @@ public final class GetMscSubWebhooksWebhook {
     	      this.webhookName = defaults.webhookName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder serverUrl(String serverUrl) {
             this.serverUrl = Objects.requireNonNull(serverUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder webhookId(String webhookId) {
             this.webhookId = Objects.requireNonNull(webhookId);
             return this;
         }
+        @CustomType.Setter
         public Builder webhookName(String webhookName) {
             this.webhookName = Objects.requireNonNull(webhookName);
             return this;
-        }        public GetMscSubWebhooksWebhook build() {
-            return new GetMscSubWebhooksWebhook(id, serverUrl, webhookId, webhookName);
+        }
+        public GetMscSubWebhooksWebhook build() {
+            final var o = new GetMscSubWebhooksWebhook();
+            o.id = id;
+            o.serverUrl = serverUrl;
+            o.webhookId = webhookId;
+            o.webhookName = webhookName;
+            return o;
         }
     }
 }

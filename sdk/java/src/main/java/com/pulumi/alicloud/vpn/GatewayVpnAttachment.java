@@ -218,6 +218,20 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return this.ikeConfig;
     }
     /**
+     * The VPN gateway IP.
+     * 
+     */
+    @Export(name="internetIp", type=String.class, parameters={})
+    private Output<String> internetIp;
+
+    /**
+     * @return The VPN gateway IP.
+     * 
+     */
+    public Output<String> internetIp() {
+        return this.internetIp;
+    }
+    /**
      * Configuration negotiated in the second stage. See the following `Block ipsec_config`.
      * 
      */

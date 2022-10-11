@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBindingsResult {
-    private final List<GetBindingsBinding> bindings;
+    private List<GetBindingsBinding> bindings;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String outputFile;
-    private final String virtualHostName;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String outputFile;
+    private String virtualHostName;
 
-    @CustomType.Constructor
-    private GetBindingsResult(
-        @CustomType.Parameter("bindings") List<GetBindingsBinding> bindings,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("virtualHostName") String virtualHostName) {
-        this.bindings = bindings;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.virtualHostName = virtualHostName;
-    }
-
+    private GetBindingsResult() {}
     public List<GetBindingsBinding> bindings() {
         return this.bindings;
     }
@@ -70,7 +55,7 @@ public final class GetBindingsResult {
     public static Builder builder(GetBindingsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetBindingsBinding> bindings;
         private String id;
@@ -78,11 +63,7 @@ public final class GetBindingsResult {
         private String instanceId;
         private @Nullable String outputFile;
         private String virtualHostName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBindingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindings = defaults.bindings;
@@ -93,6 +74,7 @@ public final class GetBindingsResult {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
+        @CustomType.Setter
         public Builder bindings(List<GetBindingsBinding> bindings) {
             this.bindings = Objects.requireNonNull(bindings);
             return this;
@@ -100,10 +82,12 @@ public final class GetBindingsResult {
         public Builder bindings(GetBindingsBinding... bindings) {
             return bindings(List.of(bindings));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,19 +95,30 @@ public final class GetBindingsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }        public GetBindingsResult build() {
-            return new GetBindingsResult(bindings, id, ids, instanceId, outputFile, virtualHostName);
+        }
+        public GetBindingsResult build() {
+            final var o = new GetBindingsResult();
+            o.bindings = bindings;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.virtualHostName = virtualHostName;
+            return o;
         }
     }
 }

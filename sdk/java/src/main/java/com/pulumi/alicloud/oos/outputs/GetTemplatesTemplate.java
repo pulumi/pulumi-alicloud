@@ -16,112 +16,79 @@ public final class GetTemplatesTemplate {
      * @return The category of template.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The creator of the template.
      * 
      */
-    private final String createdBy;
+    private String createdBy;
     /**
      * @return The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
      * 
      */
-    private final String createdDate;
+    private String createdDate;
     /**
      * @return Description of the OOS Template.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Is it triggered successfully.
      * 
      */
-    private final Boolean hasTrigger;
+    private Boolean hasTrigger;
     /**
      * @return ID of the OOS Template. The value is same as template_name.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The sharing type of the template. Valid values: `Private`, `Public`.
      * 
      */
-    private final String shareType;
+    private String shareType;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The format of the template. Valid values: `JSON`, `YAML`.
      * 
      */
-    private final String templateFormat;
+    private String templateFormat;
     /**
      * @return ID of the OOS Template resource.
      * 
      */
-    private final String templateId;
+    private String templateId;
     /**
      * @return Name of the OOS Template.
      * 
      */
-    private final String templateName;
+    private String templateName;
     /**
      * @return The type of OOS Template.
      * 
      */
-    private final String templateType;
+    private String templateType;
     /**
      * @return Version of the OOS Template.
      * 
      */
-    private final String templateVersion;
+    private String templateVersion;
     /**
      * @return The user who updated the template.
      * 
      */
-    private final String updatedBy;
+    private String updatedBy;
     /**
      * @return The time when the template was updated.
      * 
      */
-    private final String updatedDate;
+    private String updatedDate;
 
-    @CustomType.Constructor
-    private GetTemplatesTemplate(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("createdBy") String createdBy,
-        @CustomType.Parameter("createdDate") String createdDate,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("hasTrigger") Boolean hasTrigger,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("shareType") String shareType,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("templateFormat") String templateFormat,
-        @CustomType.Parameter("templateId") String templateId,
-        @CustomType.Parameter("templateName") String templateName,
-        @CustomType.Parameter("templateType") String templateType,
-        @CustomType.Parameter("templateVersion") String templateVersion,
-        @CustomType.Parameter("updatedBy") String updatedBy,
-        @CustomType.Parameter("updatedDate") String updatedDate) {
-        this.category = category;
-        this.createdBy = createdBy;
-        this.createdDate = createdDate;
-        this.description = description;
-        this.hasTrigger = hasTrigger;
-        this.id = id;
-        this.shareType = shareType;
-        this.tags = tags;
-        this.templateFormat = templateFormat;
-        this.templateId = templateId;
-        this.templateName = templateName;
-        this.templateType = templateType;
-        this.templateVersion = templateVersion;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
-    }
-
+    private GetTemplatesTemplate() {}
     /**
      * @return The category of template.
      * 
@@ -235,7 +202,7 @@ public final class GetTemplatesTemplate {
     public static Builder builder(GetTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String createdBy;
@@ -252,11 +219,7 @@ public final class GetTemplatesTemplate {
         private String templateVersion;
         private String updatedBy;
         private String updatedDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -276,67 +239,99 @@ public final class GetTemplatesTemplate {
     	      this.updatedDate = defaults.updatedDate;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
+        @CustomType.Setter
         public Builder createdDate(String createdDate) {
             this.createdDate = Objects.requireNonNull(createdDate);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder hasTrigger(Boolean hasTrigger) {
             this.hasTrigger = Objects.requireNonNull(hasTrigger);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder templateFormat(String templateFormat) {
             this.templateFormat = Objects.requireNonNull(templateFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
         }
+        @CustomType.Setter
         public Builder templateName(String templateName) {
             this.templateName = Objects.requireNonNull(templateName);
             return this;
         }
+        @CustomType.Setter
         public Builder templateType(String templateType) {
             this.templateType = Objects.requireNonNull(templateType);
             return this;
         }
+        @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
             this.templateVersion = Objects.requireNonNull(templateVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
             this.updatedBy = Objects.requireNonNull(updatedBy);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
             this.updatedDate = Objects.requireNonNull(updatedDate);
             return this;
-        }        public GetTemplatesTemplate build() {
-            return new GetTemplatesTemplate(category, createdBy, createdDate, description, hasTrigger, id, shareType, tags, templateFormat, templateId, templateName, templateType, templateVersion, updatedBy, updatedDate);
+        }
+        public GetTemplatesTemplate build() {
+            final var o = new GetTemplatesTemplate();
+            o.category = category;
+            o.createdBy = createdBy;
+            o.createdDate = createdDate;
+            o.description = description;
+            o.hasTrigger = hasTrigger;
+            o.id = id;
+            o.shareType = shareType;
+            o.tags = tags;
+            o.templateFormat = templateFormat;
+            o.templateId = templateId;
+            o.templateName = templateName;
+            o.templateType = templateType;
+            o.templateVersion = templateVersion;
+            o.updatedBy = updatedBy;
+            o.updatedDate = updatedDate;
+            return o;
         }
     }
 }

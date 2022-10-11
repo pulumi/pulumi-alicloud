@@ -13,13 +13,9 @@ public final class GetRulesRuleRuleActionTrafficLimitConfig {
      * @return The Number of requests per second.
      * 
      */
-    private final Integer qps;
+    private Integer qps;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionTrafficLimitConfig(@CustomType.Parameter("qps") Integer qps) {
-        this.qps = qps;
-    }
-
+    private GetRulesRuleRuleActionTrafficLimitConfig() {}
     /**
      * @return The Number of requests per second.
      * 
@@ -35,24 +31,24 @@ public final class GetRulesRuleRuleActionTrafficLimitConfig {
     public static Builder builder(GetRulesRuleRuleActionTrafficLimitConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer qps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionTrafficLimitConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.qps = defaults.qps;
         }
 
+        @CustomType.Setter
         public Builder qps(Integer qps) {
             this.qps = Objects.requireNonNull(qps);
             return this;
-        }        public GetRulesRuleRuleActionTrafficLimitConfig build() {
-            return new GetRulesRuleRuleActionTrafficLimitConfig(qps);
+        }
+        public GetRulesRuleRuleActionTrafficLimitConfig build() {
+            final var o = new GetRulesRuleRuleActionTrafficLimitConfig();
+            o.qps = qps;
+            return o;
         }
     }
 }

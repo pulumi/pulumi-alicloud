@@ -16,77 +16,54 @@ public final class GetCommandsCommand {
      * @return The Base64-encoded content of the command.
      * 
      */
-    private final String commandContent;
+    private String commandContent;
     /**
      * @return The ID of the Command.
      * 
      */
-    private final String commandId;
+    private String commandId;
     /**
      * @return The description of command.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Specifies whether to use custom parameters in the command to be created.
      * 
      */
-    private final Boolean enableParameter;
+    private Boolean enableParameter;
     /**
      * @return The ID of the Command.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the command
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A list of custom parameter names which are parsed from the command content specified when the command was being created.
      * 
      */
-    private final List<String> parameterNames;
+    private List<String> parameterNames;
     /**
      * @return The timeout period that is specified for the command to be run on ECS instances.
      * 
      */
-    private final Integer timeout;
+    private Integer timeout;
     /**
      * @return The command type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The execution path of the command in the ECS instance.
      * 
      */
-    private final String workingDir;
+    private String workingDir;
 
-    @CustomType.Constructor
-    private GetCommandsCommand(
-        @CustomType.Parameter("commandContent") String commandContent,
-        @CustomType.Parameter("commandId") String commandId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableParameter") Boolean enableParameter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parameterNames") List<String> parameterNames,
-        @CustomType.Parameter("timeout") Integer timeout,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("workingDir") String workingDir) {
-        this.commandContent = commandContent;
-        this.commandId = commandId;
-        this.description = description;
-        this.enableParameter = enableParameter;
-        this.id = id;
-        this.name = name;
-        this.parameterNames = parameterNames;
-        this.timeout = timeout;
-        this.type = type;
-        this.workingDir = workingDir;
-    }
-
+    private GetCommandsCommand() {}
     /**
      * @return The Base64-encoded content of the command.
      * 
@@ -165,7 +142,7 @@ public final class GetCommandsCommand {
     public static Builder builder(GetCommandsCommand defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String commandContent;
         private String commandId;
@@ -177,11 +154,7 @@ public final class GetCommandsCommand {
         private Integer timeout;
         private String type;
         private String workingDir;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCommandsCommand defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commandContent = defaults.commandContent;
@@ -196,30 +169,37 @@ public final class GetCommandsCommand {
     	      this.workingDir = defaults.workingDir;
         }
 
+        @CustomType.Setter
         public Builder commandContent(String commandContent) {
             this.commandContent = Objects.requireNonNull(commandContent);
             return this;
         }
+        @CustomType.Setter
         public Builder commandId(String commandId) {
             this.commandId = Objects.requireNonNull(commandId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableParameter(Boolean enableParameter) {
             this.enableParameter = Objects.requireNonNull(enableParameter);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterNames(List<String> parameterNames) {
             this.parameterNames = Objects.requireNonNull(parameterNames);
             return this;
@@ -227,19 +207,34 @@ public final class GetCommandsCommand {
         public Builder parameterNames(String... parameterNames) {
             return parameterNames(List.of(parameterNames));
         }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder workingDir(String workingDir) {
             this.workingDir = Objects.requireNonNull(workingDir);
             return this;
-        }        public GetCommandsCommand build() {
-            return new GetCommandsCommand(commandContent, commandId, description, enableParameter, id, name, parameterNames, timeout, type, workingDir);
+        }
+        public GetCommandsCommand build() {
+            final var o = new GetCommandsCommand();
+            o.commandContent = commandContent;
+            o.commandId = commandId;
+            o.description = description;
+            o.enableParameter = enableParameter;
+            o.id = id;
+            o.name = name;
+            o.parameterNames = parameterNames;
+            o.timeout = timeout;
+            o.type = type;
+            o.workingDir = workingDir;
+            return o;
         }
     }
 }

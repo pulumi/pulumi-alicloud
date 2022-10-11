@@ -10,6 +10,58 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.126.0+
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const transitRouterAttachmentName = config.get("transitRouterAttachmentName") || "sdk_rebot_cen_tr_yaochi";
+ * const transitRouterAttachmentDescription = config.get("transitRouterAttachmentDescription") || "sdk_rebot_cen_tr_yaochi";
+ * const defaultTransitRouterAvailableResources = alicloud.cen.getTransitRouterAvailableResources({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "sdk_rebot_cen_tr_yaochi",
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultMaster = new alicloud.vpc.Switch("defaultMaster", {
+ *     vswitchName: "sdk_rebot_cen_tr_yaochi",
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.1.0/24",
+ *     zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?[0]?.masterZones?[0]),
+ * });
+ * const defaultSlave = new alicloud.vpc.Switch("defaultSlave", {
+ *     vswitchName: "sdk_rebot_cen_tr_yaochi",
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.2.0/24",
+ *     zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?[0]?.slaveZones?[0]),
+ * });
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ *     cenInstanceName: "sdk_rebot_cen_tr_yaochi",
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
+ * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneMappings: [
+ *         {
+ *             zoneId: data.alicloud_cen_transit_router_available_resource["default"].zones[0].master_zones[0],
+ *             vswitchId: defaultMaster.id,
+ *         },
+ *         {
+ *             zoneId: data.alicloud_cen_transit_router_available_resource["default"].zones[0].slave_zones[0],
+ *             vswitchId: defaultSlave.id,
+ *         },
+ *     ],
+ *     transitRouterAttachmentName: transitRouterAttachmentName,
+ *     transitRouterAttachmentDescription: transitRouterAttachmentDescription,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.
@@ -99,7 +151,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     public readonly vpcOwnerId!: pulumi.Output<string>;
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
      */
     public readonly zoneMappings!: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
 
@@ -218,7 +270,7 @@ export interface TransitRouterVpcAttachmentState {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }
@@ -272,7 +324,7 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }

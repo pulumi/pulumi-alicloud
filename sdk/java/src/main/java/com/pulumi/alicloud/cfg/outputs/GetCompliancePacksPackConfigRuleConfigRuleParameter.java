@@ -14,28 +14,19 @@ public final class GetCompliancePacksPackConfigRuleConfigRuleParameter {
      * @return The Parameter Name.
      * 
      */
-    private final String parameterName;
+    private String parameterName;
     /**
      * @return The Parameter Value.
      * 
      */
-    private final String parameterValue;
+    private String parameterValue;
     /**
      * @return Required.
      * 
      */
-    private final Boolean required;
+    private Boolean required;
 
-    @CustomType.Constructor
-    private GetCompliancePacksPackConfigRuleConfigRuleParameter(
-        @CustomType.Parameter("parameterName") String parameterName,
-        @CustomType.Parameter("parameterValue") String parameterValue,
-        @CustomType.Parameter("required") Boolean required) {
-        this.parameterName = parameterName;
-        this.parameterValue = parameterValue;
-        this.required = required;
-    }
-
+    private GetCompliancePacksPackConfigRuleConfigRuleParameter() {}
     /**
      * @return The Parameter Name.
      * 
@@ -65,16 +56,12 @@ public final class GetCompliancePacksPackConfigRuleConfigRuleParameter {
     public static Builder builder(GetCompliancePacksPackConfigRuleConfigRuleParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String parameterName;
         private String parameterValue;
         private Boolean required;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCompliancePacksPackConfigRuleConfigRuleParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterName = defaults.parameterName;
@@ -82,19 +69,27 @@ public final class GetCompliancePacksPackConfigRuleConfigRuleParameter {
     	      this.required = defaults.required;
         }
 
+        @CustomType.Setter
         public Builder parameterName(String parameterName) {
             this.parameterName = Objects.requireNonNull(parameterName);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
         }
+        @CustomType.Setter
         public Builder required(Boolean required) {
             this.required = Objects.requireNonNull(required);
             return this;
-        }        public GetCompliancePacksPackConfigRuleConfigRuleParameter build() {
-            return new GetCompliancePacksPackConfigRuleConfigRuleParameter(parameterName, parameterValue, required);
+        }
+        public GetCompliancePacksPackConfigRuleConfigRuleParameter build() {
+            final var o = new GetCompliancePacksPackConfigRuleConfigRuleParameter();
+            o.parameterName = parameterName;
+            o.parameterValue = parameterValue;
+            o.required = required;
+            return o;
         }
     }
 }

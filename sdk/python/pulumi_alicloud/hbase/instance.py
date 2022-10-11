@@ -37,6 +37,7 @@ class InstanceArgs:
                  pay_type: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -65,6 +66,7 @@ class InstanceArgs:
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -107,6 +109,8 @@ class InstanceArgs:
             pulumi.set(__self__, "security_groups", security_groups)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -368,6 +372,18 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -419,6 +435,7 @@ class _InstanceState:
                  slb_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ui_proxy_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zk_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -451,6 +468,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]] slb_conn_addrs: (Available in 1.105.0+) The slb service addresses of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -503,6 +521,8 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if ui_proxy_conn_addrs is not None:
             pulumi.set(__self__, "ui_proxy_conn_addrs", ui_proxy_conn_addrs)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zk_conn_addrs is not None:
@@ -802,6 +822,18 @@ class _InstanceState:
         pulumi.set(self, "ui_proxy_conn_addrs", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -864,6 +896,7 @@ class Instance(pulumi.CustomResource):
                  pay_type: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -937,6 +970,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -1026,6 +1060,7 @@ class Instance(pulumi.CustomResource):
                  pay_type: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1064,6 +1099,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["pay_type"] = pay_type
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["master_instance_quantity"] = None
@@ -1104,6 +1140,7 @@ class Instance(pulumi.CustomResource):
             slb_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             ui_proxy_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zk_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1141,6 +1178,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSlbConnAddrArgs']]]] slb_conn_addrs: (Available in 1.105.0+) The slb service addresses of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -1173,6 +1211,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["slb_conn_addrs"] = slb_conn_addrs
         __props__.__dict__["tags"] = tags
         __props__.__dict__["ui_proxy_conn_addrs"] = ui_proxy_conn_addrs
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zk_conn_addrs"] = zk_conn_addrs
         __props__.__dict__["zone_id"] = zone_id
@@ -1372,6 +1411,14 @@ class Instance(pulumi.CustomResource):
         (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         """
         return pulumi.get(self, "ui_proxy_conn_addrs")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

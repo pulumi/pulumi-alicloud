@@ -13,42 +13,29 @@ public final class GetDdosBgpIpsIp {
      * @return The ID of the Ip. The value formats as `&lt;instance_id&gt;:&lt;ip&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the native protection enterprise instance to be operated.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The IP address.
      * 
      */
-    private final String ip;
+    private String ip;
     /**
      * @return The type of cloud asset to which the IP address belongs.
      * 
      */
-    private final String product;
+    private String product;
     /**
      * @return The current state of the IP address.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetDdosBgpIpsIp(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("ip") String ip,
-        @CustomType.Parameter("product") String product,
-        @CustomType.Parameter("status") String status) {
-        this.id = id;
-        this.instanceId = instanceId;
-        this.ip = ip;
-        this.product = product;
-        this.status = status;
-    }
-
+    private GetDdosBgpIpsIp() {}
     /**
      * @return The ID of the Ip. The value formats as `&lt;instance_id&gt;:&lt;ip&gt;`.
      * 
@@ -92,18 +79,14 @@ public final class GetDdosBgpIpsIp {
     public static Builder builder(GetDdosBgpIpsIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String instanceId;
         private String ip;
         private String product;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosBgpIpsIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -113,27 +96,39 @@ public final class GetDdosBgpIpsIp {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
+        @CustomType.Setter
         public Builder product(String product) {
             this.product = Objects.requireNonNull(product);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDdosBgpIpsIp build() {
-            return new GetDdosBgpIpsIp(id, instanceId, ip, product, status);
+        }
+        public GetDdosBgpIpsIp build() {
+            final var o = new GetDdosBgpIpsIp();
+            o.id = id;
+            o.instanceId = instanceId;
+            o.ip = ip;
+            o.product = product;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -13,57 +13,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAnycastEipAddressesResult {
-    private final List<GetAnycastEipAddressesAddress> addresses;
-    private final @Nullable String anycastEipAddressName;
-    private final @Nullable List<String> bindInstanceIds;
-    private final @Nullable String businessStatus;
+    private List<GetAnycastEipAddressesAddress> addresses;
+    private @Nullable String anycastEipAddressName;
+    private @Nullable List<String> bindInstanceIds;
+    private @Nullable String businessStatus;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String internetChargeType;
-    private final @Nullable String ipAddress;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String paymentType;
-    private final @Nullable String serviceLocation;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String internetChargeType;
+    private @Nullable String ipAddress;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String paymentType;
+    private @Nullable String serviceLocation;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetAnycastEipAddressesResult(
-        @CustomType.Parameter("addresses") List<GetAnycastEipAddressesAddress> addresses,
-        @CustomType.Parameter("anycastEipAddressName") @Nullable String anycastEipAddressName,
-        @CustomType.Parameter("bindInstanceIds") @Nullable List<String> bindInstanceIds,
-        @CustomType.Parameter("businessStatus") @Nullable String businessStatus,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("internetChargeType") @Nullable String internetChargeType,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("paymentType") @Nullable String paymentType,
-        @CustomType.Parameter("serviceLocation") @Nullable String serviceLocation,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.addresses = addresses;
-        this.anycastEipAddressName = anycastEipAddressName;
-        this.bindInstanceIds = bindInstanceIds;
-        this.businessStatus = businessStatus;
-        this.id = id;
-        this.ids = ids;
-        this.internetChargeType = internetChargeType;
-        this.ipAddress = ipAddress;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.paymentType = paymentType;
-        this.serviceLocation = serviceLocation;
-        this.status = status;
-    }
-
+    private GetAnycastEipAddressesResult() {}
     public List<GetAnycastEipAddressesAddress> addresses() {
         return this.addresses;
     }
@@ -118,7 +87,7 @@ public final class GetAnycastEipAddressesResult {
     public static Builder builder(GetAnycastEipAddressesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAnycastEipAddressesAddress> addresses;
         private @Nullable String anycastEipAddressName;
@@ -134,11 +103,7 @@ public final class GetAnycastEipAddressesResult {
         private @Nullable String paymentType;
         private @Nullable String serviceLocation;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAnycastEipAddressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
@@ -157,6 +122,7 @@ public final class GetAnycastEipAddressesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder addresses(List<GetAnycastEipAddressesAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -164,10 +130,12 @@ public final class GetAnycastEipAddressesResult {
         public Builder addresses(GetAnycastEipAddressesAddress... addresses) {
             return addresses(List.of(addresses));
         }
+        @CustomType.Setter
         public Builder anycastEipAddressName(@Nullable String anycastEipAddressName) {
             this.anycastEipAddressName = anycastEipAddressName;
             return this;
         }
+        @CustomType.Setter
         public Builder bindInstanceIds(@Nullable List<String> bindInstanceIds) {
             this.bindInstanceIds = bindInstanceIds;
             return this;
@@ -175,14 +143,17 @@ public final class GetAnycastEipAddressesResult {
         public Builder bindInstanceIds(String... bindInstanceIds) {
             return bindInstanceIds(List.of(bindInstanceIds));
         }
+        @CustomType.Setter
         public Builder businessStatus(@Nullable String businessStatus) {
             this.businessStatus = businessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -190,18 +161,22 @@ public final class GetAnycastEipAddressesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder internetChargeType(@Nullable String internetChargeType) {
             this.internetChargeType = internetChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -209,23 +184,43 @@ public final class GetAnycastEipAddressesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceLocation(@Nullable String serviceLocation) {
             this.serviceLocation = serviceLocation;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetAnycastEipAddressesResult build() {
-            return new GetAnycastEipAddressesResult(addresses, anycastEipAddressName, bindInstanceIds, businessStatus, id, ids, internetChargeType, ipAddress, nameRegex, names, outputFile, paymentType, serviceLocation, status);
+        }
+        public GetAnycastEipAddressesResult build() {
+            final var o = new GetAnycastEipAddressesResult();
+            o.addresses = addresses;
+            o.anycastEipAddressName = anycastEipAddressName;
+            o.bindInstanceIds = bindInstanceIds;
+            o.businessStatus = businessStatus;
+            o.id = id;
+            o.ids = ids;
+            o.internetChargeType = internetChargeType;
+            o.ipAddress = ipAddress;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.paymentType = paymentType;
+            o.serviceLocation = serviceLocation;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ots;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ots.TableArgs;
 import com.pulumi.alicloud.ots.inputs.TableState;
+import com.pulumi.alicloud.ots.outputs.TableDefinedColumn;
 import com.pulumi.alicloud.ots.outputs.TablePrimaryKey;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -37,6 +38,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ots/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
+    /**
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * 
+     */
+    @Export(name="definedColumns", type=List.class, parameters={TableDefinedColumn.class})
+    private Output</* @Nullable */ List<TableDefinedColumn>> definedColumns;
+
+    /**
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * 
+     */
+    public Output<Optional<List<TableDefinedColumn>>> definedColumns() {
+        return Codegen.optional(this.definedColumns);
+    }
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      * 

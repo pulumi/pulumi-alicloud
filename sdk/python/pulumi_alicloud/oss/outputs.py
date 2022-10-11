@@ -43,6 +43,7 @@ __all__ = [
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetTablesTableResult',
+    'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
 ]
 
@@ -1834,6 +1835,7 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetTablesTableResult(dict):
     def __init__(__self__, *,
+                 defined_columns: Sequence['outputs.GetTablesTableDefinedColumnResult'],
                  id: str,
                  instance_name: str,
                  max_version: int,
@@ -1848,12 +1850,18 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
+        pulumi.set(__self__, "defined_columns", defined_columns)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        return pulumi.get(self, "defined_columns")
 
     @property
     @pulumi.getter
@@ -1902,6 +1910,25 @@ class GetTablesTableResult(dict):
         The retention time of data stored in this table.
         """
         return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetTablesTableDefinedColumnResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

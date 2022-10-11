@@ -50,6 +50,7 @@ class NodePoolArgs:
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
                  rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -78,7 +79,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -107,14 +108,15 @@ class NodePoolArgs:
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
-        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
@@ -201,6 +203,11 @@ class NodePoolArgs:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if rolling_policy is not None:
+            pulumi.set(__self__, "rolling_policy", rolling_policy)
+        if rollout_policy is not None:
+            warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+            pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
         if rollout_policy is not None:
             pulumi.set(__self__, "rollout_policy", rollout_policy)
         if runtime_name is not None:
@@ -311,7 +318,7 @@ class NodePoolArgs:
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         """
         return pulumi.get(self, "cis_enabled")
 
@@ -656,10 +663,22 @@ class NodePoolArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="rollingPolicy")
+    def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
+        """
+        Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rolling_policy")
+
+    @rolling_policy.setter
+    def rolling_policy(self, value: Optional[pulumi.Input['NodePoolRollingPolicyArgs']]):
+        pulumi.set(self, "rolling_policy", value)
+
+    @property
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 
@@ -743,7 +762,7 @@ class NodePoolArgs:
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         """
         return pulumi.get(self, "soc_enabled")
@@ -945,6 +964,7 @@ class _NodePoolState:
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
                  rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -973,7 +993,7 @@ class _NodePoolState:
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -1004,7 +1024,8 @@ class _NodePoolState:
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -1012,7 +1033,7 @@ class _NodePoolState:
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
-        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
@@ -1102,6 +1123,11 @@ class _NodePoolState:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if rolling_policy is not None:
+            pulumi.set(__self__, "rolling_policy", rolling_policy)
+        if rollout_policy is not None:
+            warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+            pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
         if rollout_policy is not None:
             pulumi.set(__self__, "rollout_policy", rollout_policy)
         if runtime_name is not None:
@@ -1182,7 +1208,7 @@ class _NodePoolState:
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         """
         return pulumi.get(self, "cis_enabled")
 
@@ -1551,10 +1577,22 @@ class _NodePoolState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="rollingPolicy")
+    def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
+        """
+        Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rolling_policy")
+
+    @rolling_policy.setter
+    def rolling_policy(self, value: Optional[pulumi.Input['NodePoolRollingPolicyArgs']]):
+        pulumi.set(self, "rolling_policy", value)
+
+    @property
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 
@@ -1650,7 +1688,7 @@ class _NodePoolState:
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         """
         return pulumi.get(self, "soc_enabled")
@@ -1878,6 +1916,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rolling_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']]] = None,
                  rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -2163,10 +2202,10 @@ class NodePool(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             desired_size=3,
             kubelet_configuration=alicloud.cs.NodePoolKubeletConfigurationArgs(
-                registry_pull_qps="0",
-                registry_burst="0",
-                event_record_qps="0",
-                event_burst="0",
+                registry_pull_qps="10",
+                registry_burst="5",
+                event_record_qps="10",
+                event_burst="5",
                 eviction_hard={
                     "memory.available": "1024Mi",
                     "nodefs.available": "10%",
@@ -2179,15 +2218,15 @@ class NodePool(pulumi.CustomResource):
                 system_reserved={
                     "cpu": "1",
                     "memory": "1Gi",
-                    "ephemeral_storage": "10Gi",
+                    "ephemeral-storage": "10Gi",
                 },
                 kube_reserved={
                     "cpu": "500m",
                     "memory": "1Gi",
                 },
             ),
-            rollout_policy=alicloud.cs.NodePoolRolloutPolicyArgs(
-                max_unavailable=1,
+            rolling_policy=alicloud.cs.NodePoolRollingPolicyArgs(
+                max_parallelism=1,
             ))
         ```
 
@@ -2203,7 +2242,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -2234,14 +2273,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
-        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
@@ -2526,10 +2566,10 @@ class NodePool(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             desired_size=3,
             kubelet_configuration=alicloud.cs.NodePoolKubeletConfigurationArgs(
-                registry_pull_qps="0",
-                registry_burst="0",
-                event_record_qps="0",
-                event_burst="0",
+                registry_pull_qps="10",
+                registry_burst="5",
+                event_record_qps="10",
+                event_burst="5",
                 eviction_hard={
                     "memory.available": "1024Mi",
                     "nodefs.available": "10%",
@@ -2542,15 +2582,15 @@ class NodePool(pulumi.CustomResource):
                 system_reserved={
                     "cpu": "1",
                     "memory": "1Gi",
-                    "ephemeral_storage": "10Gi",
+                    "ephemeral-storage": "10Gi",
                 },
                 kube_reserved={
                     "cpu": "500m",
                     "memory": "1Gi",
                 },
             ),
-            rollout_policy=alicloud.cs.NodePoolRolloutPolicyArgs(
-                max_unavailable=1,
+            rolling_policy=alicloud.cs.NodePoolRollingPolicyArgs(
+                max_parallelism=1,
             ))
         ```
 
@@ -2610,6 +2650,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rolling_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']]] = None,
                  rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -2684,6 +2725,10 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["platform"] = platform
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["rolling_policy"] = rolling_policy
+            if rollout_policy is not None and not opts.urn:
+                warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+                pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
             __props__.__dict__["rollout_policy"] = rollout_policy
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
@@ -2756,6 +2801,7 @@ class NodePool(pulumi.CustomResource):
             platform: Optional[pulumi.Input[str]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            rolling_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']]] = None,
             rollout_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']]] = None,
             runtime_name: Optional[pulumi.Input[str]] = None,
             runtime_version: Optional[pulumi.Input[str]] = None,
@@ -2789,7 +2835,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -2820,7 +2866,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -2828,7 +2875,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
-        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
@@ -2883,6 +2930,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["platform"] = platform
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["rolling_policy"] = rolling_policy
         __props__.__dict__["rollout_policy"] = rollout_policy
         __props__.__dict__["runtime_name"] = runtime_name
         __props__.__dict__["runtime_version"] = runtime_version
@@ -2929,7 +2977,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         """
         return pulumi.get(self, "cis_enabled")
 
@@ -3174,10 +3222,18 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="rollingPolicy")
+    def rolling_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRollingPolicy']]:
+        """
+        Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        """
+        return pulumi.get(self, "rolling_policy")
+
+    @property
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRolloutPolicy']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 
@@ -3241,7 +3297,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         """
         return pulumi.get(self, "soc_enabled")

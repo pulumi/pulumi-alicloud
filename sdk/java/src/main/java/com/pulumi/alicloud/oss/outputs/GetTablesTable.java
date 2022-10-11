@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.oss.outputs;
 
+import com.pulumi.alicloud.oss.outputs.GetTablesTableDefinedColumn;
 import com.pulumi.alicloud.oss.outputs.GetTablesTablePrimaryKey;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -12,53 +13,42 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTable {
+    private List<GetTablesTableDefinedColumn> definedColumns;
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of OTS instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The maximum number of versions stored in this table.
      * 
      */
-    private final Integer maxVersion;
+    private Integer maxVersion;
     /**
      * @return The property of `TableMeta` which indicates the structure information of a table.
      * 
      */
-    private final List<GetTablesTablePrimaryKey> primaryKeys;
+    private List<GetTablesTablePrimaryKey> primaryKeys;
     /**
      * @return The table name of the OTS which could not be changed.
      * 
      */
-    private final String tableName;
+    private String tableName;
     /**
      * @return The retention time of data stored in this table.
      * 
      */
-    private final Integer timeToLive;
+    private Integer timeToLive;
 
-    @CustomType.Constructor
-    private GetTablesTable(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("maxVersion") Integer maxVersion,
-        @CustomType.Parameter("primaryKeys") List<GetTablesTablePrimaryKey> primaryKeys,
-        @CustomType.Parameter("tableName") String tableName,
-        @CustomType.Parameter("timeToLive") Integer timeToLive) {
-        this.id = id;
-        this.instanceName = instanceName;
-        this.maxVersion = maxVersion;
-        this.primaryKeys = primaryKeys;
-        this.tableName = tableName;
-        this.timeToLive = timeToLive;
+    private GetTablesTable() {}
+    public List<GetTablesTableDefinedColumn> definedColumns() {
+        return this.definedColumns;
     }
-
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
      * 
@@ -109,21 +99,19 @@ public final class GetTablesTable {
     public static Builder builder(GetTablesTable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
+        private List<GetTablesTableDefinedColumn> definedColumns;
         private String id;
         private String instanceName;
         private Integer maxVersion;
         private List<GetTablesTablePrimaryKey> primaryKeys;
         private String tableName;
         private Integer timeToLive;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTablesTable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.definedColumns = defaults.definedColumns;
     	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.maxVersion = defaults.maxVersion;
@@ -132,18 +120,30 @@ public final class GetTablesTable {
     	      this.timeToLive = defaults.timeToLive;
         }
 
+        @CustomType.Setter
+        public Builder definedColumns(List<GetTablesTableDefinedColumn> definedColumns) {
+            this.definedColumns = Objects.requireNonNull(definedColumns);
+            return this;
+        }
+        public Builder definedColumns(GetTablesTableDefinedColumn... definedColumns) {
+            return definedColumns(List.of(definedColumns));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder maxVersion(Integer maxVersion) {
             this.maxVersion = Objects.requireNonNull(maxVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryKeys(List<GetTablesTablePrimaryKey> primaryKeys) {
             this.primaryKeys = Objects.requireNonNull(primaryKeys);
             return this;
@@ -151,15 +151,26 @@ public final class GetTablesTable {
         public Builder primaryKeys(GetTablesTablePrimaryKey... primaryKeys) {
             return primaryKeys(List.of(primaryKeys));
         }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
+        @CustomType.Setter
         public Builder timeToLive(Integer timeToLive) {
             this.timeToLive = Objects.requireNonNull(timeToLive);
             return this;
-        }        public GetTablesTable build() {
-            return new GetTablesTable(id, instanceName, maxVersion, primaryKeys, tableName, timeToLive);
+        }
+        public GetTablesTable build() {
+            final var o = new GetTablesTable();
+            o.definedColumns = definedColumns;
+            o.id = id;
+            o.instanceName = instanceName;
+            o.maxVersion = maxVersion;
+            o.primaryKeys = primaryKeys;
+            o.tableName = tableName;
+            o.timeToLive = timeToLive;
+            return o;
         }
     }
 }

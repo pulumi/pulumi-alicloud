@@ -15,21 +15,14 @@ public final class TransitRouterVpcAttachmentZoneMapping {
      * @return The VSwitch id of attachment.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
     /**
      * @return The zone Id of VSwitch.
      * 
      */
-    private final @Nullable String zoneId;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private TransitRouterVpcAttachmentZoneMapping(
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private TransitRouterVpcAttachmentZoneMapping() {}
     /**
      * @return The VSwitch id of attachment.
      * 
@@ -52,30 +45,32 @@ public final class TransitRouterVpcAttachmentZoneMapping {
     public static Builder builder(TransitRouterVpcAttachmentZoneMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String vswitchId;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransitRouterVpcAttachmentZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public TransitRouterVpcAttachmentZoneMapping build() {
-            return new TransitRouterVpcAttachmentZoneMapping(vswitchId, zoneId);
+        }
+        public TransitRouterVpcAttachmentZoneMapping build() {
+            final var o = new TransitRouterVpcAttachmentZoneMapping();
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

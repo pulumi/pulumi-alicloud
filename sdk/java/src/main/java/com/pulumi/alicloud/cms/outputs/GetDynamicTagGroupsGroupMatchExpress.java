@@ -13,21 +13,14 @@ public final class GetDynamicTagGroupsGroupMatchExpress {
      * @return The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
      * 
      */
-    private final String tagValue;
+    private String tagValue;
     /**
      * @return Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
      * 
      */
-    private final String tagValueMatchFunction;
+    private String tagValueMatchFunction;
 
-    @CustomType.Constructor
-    private GetDynamicTagGroupsGroupMatchExpress(
-        @CustomType.Parameter("tagValue") String tagValue,
-        @CustomType.Parameter("tagValueMatchFunction") String tagValueMatchFunction) {
-        this.tagValue = tagValue;
-        this.tagValueMatchFunction = tagValueMatchFunction;
-    }
-
+    private GetDynamicTagGroupsGroupMatchExpress() {}
     /**
      * @return The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
      * 
@@ -50,30 +43,32 @@ public final class GetDynamicTagGroupsGroupMatchExpress {
     public static Builder builder(GetDynamicTagGroupsGroupMatchExpress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String tagValue;
         private String tagValueMatchFunction;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDynamicTagGroupsGroupMatchExpress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tagValue = defaults.tagValue;
     	      this.tagValueMatchFunction = defaults.tagValueMatchFunction;
         }
 
+        @CustomType.Setter
         public Builder tagValue(String tagValue) {
             this.tagValue = Objects.requireNonNull(tagValue);
             return this;
         }
+        @CustomType.Setter
         public Builder tagValueMatchFunction(String tagValueMatchFunction) {
             this.tagValueMatchFunction = Objects.requireNonNull(tagValueMatchFunction);
             return this;
-        }        public GetDynamicTagGroupsGroupMatchExpress build() {
-            return new GetDynamicTagGroupsGroupMatchExpress(tagValue, tagValueMatchFunction);
+        }
+        public GetDynamicTagGroupsGroupMatchExpress build() {
+            final var o = new GetDynamicTagGroupsGroupMatchExpress();
+            o.tagValue = tagValue;
+            o.tagValueMatchFunction = tagValueMatchFunction;
+            return o;
         }
     }
 }

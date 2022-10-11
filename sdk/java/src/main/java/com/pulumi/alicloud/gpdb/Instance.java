@@ -6,10 +6,13 @@ package com.pulumi.alicloud.gpdb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.gpdb.InstanceArgs;
 import com.pulumi.alicloud.gpdb.inputs.InstanceState;
+import com.pulumi.alicloud.gpdb.outputs.InstanceIpWhitelist;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -23,188 +26,396 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:**  Available in 1.47.0+
  * 
- * &gt; **NOTE:**  The following regions don&#39;t support create Classic network Gpdb instance.
- * [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
- * 
- * &gt; **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
- * 
- * &gt; **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating a new reserved storage mode instance is no longer supported since v1.127.0.
- * You can still use this resource to manage the instance which has been already created, but can not create a new one.
- * 
- * ## Example Usage
- * ### Create a Gpdb instance
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.gpdb.Instance;
- * import com.pulumi.alicloud.gpdb.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Gpdb&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .vswitchName(&#34;vpc-123456&#34;)
- *             .build());
- * 
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .description(&#34;tf-gpdb-test&#34;)
- *             .engine(&#34;gpdb&#34;)
- *             .engineVersion(&#34;4.3&#34;)
- *             .instanceClass(&#34;gpdb.group.segsdx2&#34;)
- *             .instanceGroupCount(&#34;2&#34;)
- *             .vswitchId(defaultSwitch.id())
- *             .securityIpLists(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;100.69.7.112&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * AnalyticDB for PostgreSQL can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+ *  $ pulumi import alicloud:gpdb/instance:Instance example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:gpdb/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * 
+     * @deprecated
+     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
     @Export(name="availabilityZone", type=String.class, parameters={})
     private Output<String> availabilityZone;
 
+    /**
+     * @return Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * 
+     */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="createSampleData", type=Boolean.class, parameters={})
+    private Output<Boolean> createSampleData;
+
+    /**
+     * @return Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Boolean> createSampleData() {
+        return this.createSampleData;
+    }
+    /**
+     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Export(name="dbInstanceCategory", type=String.class, parameters={})
+    private Output<String> dbInstanceCategory;
+
+    /**
+     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Output<String> dbInstanceCategory() {
+        return this.dbInstanceCategory;
+    }
+    /**
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Export(name="dbInstanceClass", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dbInstanceClass;
+
+    /**
+     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Output<Optional<String>> dbInstanceClass() {
+        return Codegen.optional(this.dbInstanceClass);
+    }
+    /**
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    @Export(name="dbInstanceMode", type=String.class, parameters={})
+    private Output<String> dbInstanceMode;
+
+    /**
+     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    public Output<String> dbInstanceMode() {
+        return this.dbInstanceMode;
+    }
+    /**
+     * The description of the instance.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The description of the instance.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Database engine: gpdb. System Default value: gpdb.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return Database engine: gpdb. System Default value: gpdb.
+     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      * 
      */
     public Output<String> engine() {
         return this.engine;
     }
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The version of the database engine used by the instance.
      * 
      */
     @Export(name="engineVersion", type=String.class, parameters={})
     private Output<String> engineVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * @return The version of the database engine used by the instance.
      * 
      */
     public Output<String> engineVersion() {
         return this.engineVersion;
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * @return Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
      * 
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
     }
     /**
-     * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
-    private Output<String> instanceClass;
+    @Export(name="instanceGroupCount", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> instanceGroupCount;
 
     /**
-     * @return Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * @return The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      * 
      */
-    public Output<String> instanceClass() {
-        return this.instanceClass;
+    public Output<Optional<Integer>> instanceGroupCount() {
+        return Codegen.optional(this.instanceGroupCount);
     }
     /**
-     * The number of groups. Valid values: [2,4,8,16,32]
+     * The network type of the instance.
      * 
      */
-    @Export(name="instanceGroupCount", type=String.class, parameters={})
-    private Output<String> instanceGroupCount;
+    @Export(name="instanceNetworkType", type=String.class, parameters={})
+    private Output<String> instanceNetworkType;
 
     /**
-     * @return The number of groups. Valid values: [2,4,8,16,32]
+     * @return The network type of the instance.
      * 
      */
-    public Output<String> instanceGroupCount() {
-        return this.instanceGroupCount;
+    public Output<String> instanceNetworkType() {
+        return this.instanceNetworkType;
     }
     /**
-     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * The specification of segment nodes.
+     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
+    @Export(name="instanceSpec", type=String.class, parameters={})
+    private Output</* @Nullable */ String> instanceSpec;
+
+    /**
+     * @return The specification of segment nodes.
+     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * 
+     */
+    public Output<Optional<String>> instanceSpec() {
+        return Codegen.optional(this.instanceSpec);
+    }
+    /**
+     * The ip whitelist.
+     * 
+     */
+    @Export(name="ipWhitelists", type=List.class, parameters={InstanceIpWhitelist.class})
+    private Output</* @Nullable */ List<InstanceIpWhitelist>> ipWhitelists;
+
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    public Output<Optional<List<InstanceIpWhitelist>>> ipWhitelists() {
+        return Codegen.optional(this.ipWhitelists);
+    }
+    /**
+     * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     * 
+     */
+    @Export(name="maintainEndTime", type=String.class, parameters={})
+    private Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     * 
+     */
+    public Output<String> maintainEndTime() {
+        return this.maintainEndTime;
+    }
+    /**
+     * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     * 
+     */
+    @Export(name="maintainStartTime", type=String.class, parameters={})
+    private Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     * 
+     */
+    public Output<String> maintainStartTime() {
+        return this.maintainStartTime;
+    }
+    /**
+     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    @Export(name="masterNodeNum", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> masterNodeNum;
+
+    /**
+     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    public Output<Optional<Integer>> masterNodeNum() {
+        return Codegen.optional(this.masterNodeNum);
+    }
+    /**
+     * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    @Export(name="paymentType", type=String.class, parameters={})
+    private Output<String> paymentType;
+
+    /**
+     * @return The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
+     * The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * 
+     */
+    @Export(name="period", type=String.class, parameters={})
+    private Output</* @Nullable */ String> period;
+
+    /**
+     * @return The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * 
+     */
+    public Output<Optional<String>> period() {
+        return Codegen.optional(this.period);
+    }
+    /**
+     * The private ip address.
+     * 
+     */
+    @Export(name="privateIpAddress", type=String.class, parameters={})
+    private Output</* @Nullable */ String> privateIpAddress;
+
+    /**
+     * @return The private ip address.
+     * 
+     */
+    public Output<Optional<String>> privateIpAddress() {
+        return Codegen.optional(this.privateIpAddress);
+    }
+    /**
+     * The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> resourceGroupId;
+
+    /**
+     * @return The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    public Output<Optional<String>> resourceGroupId() {
+        return Codegen.optional(this.resourceGroupId);
+    }
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
+     * 
+     * @deprecated
+     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
     @Export(name="securityIpLists", type=List.class, parameters={String.class})
-    private Output<List<String>> securityIpLists;
+    private Output</* @Nullable */ List<String>> securityIpLists;
 
     /**
-     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
-    public Output<List<String>> securityIpLists() {
-        return this.securityIpLists;
+    public Output<Optional<List<String>>> securityIpLists() {
+        return Codegen.optional(this.securityIpLists);
+    }
+    /**
+     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     * 
+     */
+    @Export(name="segNodeNum", type=Integer.class, parameters={})
+    private Output<Integer> segNodeNum;
+
+    /**
+     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     * 
+     */
+    public Output<Integer> segNodeNum() {
+        return this.segNodeNum;
+    }
+    /**
+     * The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * 
+     */
+    @Export(name="segStorageType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> segStorageType;
+
+    /**
+     * @return The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * 
+     */
+    public Output<Optional<String>> segStorageType() {
+        return Codegen.optional(this.segStorageType);
+    }
+    /**
+     * The status of the instance.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Export(name="storageSize", type=Integer.class, parameters={})
+    private Output<Integer> storageSize;
+
+    /**
+     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Output<Integer> storageSize() {
+        return this.storageSize;
     }
     /**
      * A mapping of tags to assign to the resource.
@@ -221,18 +432,60 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * 
+     */
+    @Export(name="usedTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> usedTime;
+
+    /**
+     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * 
+     */
+    public Output<Optional<String>> usedTime() {
+        return Codegen.optional(this.usedTime);
+    }
+    /**
+     * The vpc ID of the resource.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The vpc ID of the resource.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
+     * The vswitch id.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output<String> vswitchId;
 
     /**
-     * @return The virtual switch ID to launch DB instances in one VPC.
+     * @return The vswitch id.
      * 
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
+    }
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Export(name="zoneId", type=String.class, parameters={})
+    private Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

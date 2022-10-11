@@ -15,28 +15,19 @@ public final class AclAclEntry {
      * @return The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The IP address for the ACL entry.
      * 
      */
-    private final @Nullable String entry;
+    private @Nullable String entry;
     /**
      * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private AclAclEntry(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("entry") @Nullable String entry,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.description = description;
-        this.entry = entry;
-        this.status = status;
-    }
-
+    private AclAclEntry() {}
     /**
      * @return The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
      * 
@@ -66,16 +57,12 @@ public final class AclAclEntry {
     public static Builder builder(AclAclEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String entry;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AclAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -83,19 +70,27 @@ public final class AclAclEntry {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder entry(@Nullable String entry) {
             this.entry = entry;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public AclAclEntry build() {
-            return new AclAclEntry(description, entry, status);
+        }
+        public AclAclEntry build() {
+            final var o = new AclAclEntry();
+            o.description = description;
+            o.entry = entry;
+            o.status = status;
+            return o;
         }
     }
 }

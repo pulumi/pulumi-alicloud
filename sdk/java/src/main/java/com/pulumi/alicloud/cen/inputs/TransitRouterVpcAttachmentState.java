@@ -214,14 +214,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC.
+     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
      * 
      */
     public Optional<Output<List<TransitRouterVpcAttachmentZoneMappingArgs>>> zoneMappings() {
@@ -539,7 +539,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
          * 
          * @return builder
          * 

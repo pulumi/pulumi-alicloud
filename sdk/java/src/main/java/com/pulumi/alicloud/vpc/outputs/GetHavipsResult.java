@@ -13,36 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHavipsResult {
-    private final List<GetHavipsHavip> havips;
+    private List<GetHavipsHavip> havips;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetHavipsResult(
-        @CustomType.Parameter("havips") List<GetHavipsHavip> havips,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.havips = havips;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetHavipsResult() {}
     public List<GetHavipsHavip> havips() {
         return this.havips;
     }
@@ -76,7 +59,7 @@ public final class GetHavipsResult {
     public static Builder builder(GetHavipsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHavipsHavip> havips;
         private String id;
@@ -85,11 +68,7 @@ public final class GetHavipsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHavipsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.havips = defaults.havips;
@@ -101,6 +80,7 @@ public final class GetHavipsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder havips(List<GetHavipsHavip> havips) {
             this.havips = Objects.requireNonNull(havips);
             return this;
@@ -108,10 +88,12 @@ public final class GetHavipsResult {
         public Builder havips(GetHavipsHavip... havips) {
             return havips(List.of(havips));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,10 +101,12 @@ public final class GetHavipsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -130,15 +114,26 @@ public final class GetHavipsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetHavipsResult build() {
-            return new GetHavipsResult(havips, id, ids, nameRegex, names, outputFile, status);
+        }
+        public GetHavipsResult build() {
+            final var o = new GetHavipsResult();
+            o.havips = havips;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -14,56 +14,39 @@ public final class GetConsumerChannelsChannel {
      * @return The ID of the consumer group.
      * 
      */
-    private final String consumerGroupId;
+    private String consumerGroupId;
     /**
      * @return The name of the consumer group.
      * 
      */
-    private final String consumerGroupName;
+    private String consumerGroupName;
     /**
      * @return The username of the consumer group.
      * 
      */
-    private final String consumerGroupUserName;
+    private String consumerGroupUserName;
     /**
      * @return The time point when the client consumed the last message in the subscription channel.
      * 
      */
-    private final String consumptionCheckpoint;
+    private String consumptionCheckpoint;
     /**
      * @return The ID of the Consumer Channel.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
      * 
      */
-    private final Integer messageDelay;
+    private Integer messageDelay;
     /**
      * @return The total number of unconsumed messages.
      * 
      */
-    private final Integer unconsumedData;
+    private Integer unconsumedData;
 
-    @CustomType.Constructor
-    private GetConsumerChannelsChannel(
-        @CustomType.Parameter("consumerGroupId") String consumerGroupId,
-        @CustomType.Parameter("consumerGroupName") String consumerGroupName,
-        @CustomType.Parameter("consumerGroupUserName") String consumerGroupUserName,
-        @CustomType.Parameter("consumptionCheckpoint") String consumptionCheckpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("messageDelay") Integer messageDelay,
-        @CustomType.Parameter("unconsumedData") Integer unconsumedData) {
-        this.consumerGroupId = consumerGroupId;
-        this.consumerGroupName = consumerGroupName;
-        this.consumerGroupUserName = consumerGroupUserName;
-        this.consumptionCheckpoint = consumptionCheckpoint;
-        this.id = id;
-        this.messageDelay = messageDelay;
-        this.unconsumedData = unconsumedData;
-    }
-
+    private GetConsumerChannelsChannel() {}
     /**
      * @return The ID of the consumer group.
      * 
@@ -121,7 +104,7 @@ public final class GetConsumerChannelsChannel {
     public static Builder builder(GetConsumerChannelsChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String consumerGroupId;
         private String consumerGroupName;
@@ -130,11 +113,7 @@ public final class GetConsumerChannelsChannel {
         private String id;
         private Integer messageDelay;
         private Integer unconsumedData;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConsumerChannelsChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerGroupId = defaults.consumerGroupId;
@@ -146,35 +125,51 @@ public final class GetConsumerChannelsChannel {
     	      this.unconsumedData = defaults.unconsumedData;
         }
 
+        @CustomType.Setter
         public Builder consumerGroupId(String consumerGroupId) {
             this.consumerGroupId = Objects.requireNonNull(consumerGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder consumerGroupName(String consumerGroupName) {
             this.consumerGroupName = Objects.requireNonNull(consumerGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder consumerGroupUserName(String consumerGroupUserName) {
             this.consumerGroupUserName = Objects.requireNonNull(consumerGroupUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder consumptionCheckpoint(String consumptionCheckpoint) {
             this.consumptionCheckpoint = Objects.requireNonNull(consumptionCheckpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder messageDelay(Integer messageDelay) {
             this.messageDelay = Objects.requireNonNull(messageDelay);
             return this;
         }
+        @CustomType.Setter
         public Builder unconsumedData(Integer unconsumedData) {
             this.unconsumedData = Objects.requireNonNull(unconsumedData);
             return this;
-        }        public GetConsumerChannelsChannel build() {
-            return new GetConsumerChannelsChannel(consumerGroupId, consumerGroupName, consumerGroupUserName, consumptionCheckpoint, id, messageDelay, unconsumedData);
+        }
+        public GetConsumerChannelsChannel build() {
+            final var o = new GetConsumerChannelsChannel();
+            o.consumerGroupId = consumerGroupId;
+            o.consumerGroupName = consumerGroupName;
+            o.consumerGroupUserName = consumerGroupUserName;
+            o.consumptionCheckpoint = consumptionCheckpoint;
+            o.id = id;
+            o.messageDelay = messageDelay;
+            o.unconsumedData = unconsumedData;
+            return o;
         }
     }
 }

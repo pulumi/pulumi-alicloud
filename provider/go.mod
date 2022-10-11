@@ -13,7 +13,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.182.0
+	github.com/aliyun/terraform-provider-alicloud v1.187.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.26.1
 	github.com/pulumi/pulumi/sdk/v3 v3.36.0
@@ -49,7 +49,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
-	github.com/alibabacloud-go/cs-20151215/v3 v3.0.14 // indirect
+	github.com/alibabacloud-go/cs-20151215/v3 v3.0.16 // indirect
 	github.com/alibabacloud-go/darabonba-openapi v0.1.19-0.20220507083948-2c7e1f6567c1 // indirect
 	github.com/alibabacloud-go/debug v0.0.0-20190504072949-9472017b5c68 // indirect
 	github.com/alibabacloud-go/endpoint-util v1.1.0 // indirect
@@ -63,7 +63,7 @@ require (
 	github.com/alibabacloud-go/tea-xml v1.1.2 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.1538 // indirect
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
-	github.com/aliyun/aliyun-log-go-sdk v0.1.37 // indirect
+	github.com/aliyun/aliyun-log-go-sdk v0.1.39-0.20220926050328-48be6df7023a // indirect
 	github.com/aliyun/aliyun-mns-go-sdk v0.0.0-20210305050620-d1b5875bda58 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.1+incompatible // indirect
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.3+incompatible // indirect
@@ -93,7 +93,7 @@ require (
 	github.com/clbanning/mxj/v2 v2.5.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
-	github.com/denverdino/aliyungo v0.0.0-20220805063645-076d420db039 // indirect
+	github.com/denverdino/aliyungo v0.0.0-20220905031958-589a058e1592 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect

@@ -13,13 +13,9 @@ public final class BucketTransferAcceleration {
      * @return Specifies the accelerate status of a bucket.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private BucketTransferAcceleration(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private BucketTransferAcceleration() {}
     /**
      * @return Specifies the accelerate status of a bucket.
      * 
@@ -35,24 +31,24 @@ public final class BucketTransferAcceleration {
     public static Builder builder(BucketTransferAcceleration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketTransferAcceleration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public BucketTransferAcceleration build() {
-            return new BucketTransferAcceleration(enabled);
+        }
+        public BucketTransferAcceleration build() {
+            final var o = new BucketTransferAcceleration();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

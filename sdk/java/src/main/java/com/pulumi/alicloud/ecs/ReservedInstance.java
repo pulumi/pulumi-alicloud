@@ -125,34 +125,52 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Export(name="offeringType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> offeringType;
+    private Output<String> offeringType;
 
     /**
-     * @return Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
-    public Output<Optional<String>> offeringType() {
-        return Codegen.optional(this.offeringType);
+    public Output<String> offeringType() {
+        return this.offeringType;
     }
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     @Export(name="periodUnit", type=String.class, parameters={})
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return Term unit. Optional value: Year.
+     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -191,14 +209,14 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scope", type=String.class, parameters={})
-    private Output</* @Nullable */ String> scope;
+    private Output<String> scope;
 
     /**
      * @return Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      * 
      */
-    public Output<Optional<String>> scope() {
-        return Codegen.optional(this.scope);
+    public Output<String> scope() {
+        return this.scope;
     }
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).

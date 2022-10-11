@@ -21,8 +21,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
+     * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * - `true`: Enable automatic payment, automatic payment order.
      * 
      */
     @Import(name="autoPay")
@@ -30,12 +30,31 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
+     * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * - `true`: Enable automatic payment, automatic payment order.
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
+    }
+
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * - `true`: Enable.
+     * - `false`: Disable.
+     * 
+     */
+    @Import(name="autoPropagate")
+    private @Nullable Output<Boolean> autoPropagate;
+
+    /**
+     * @return Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * - `true`: Enable.
+     * - `false`: Disable.
+     * 
+     */
+    public Optional<Output<Boolean>> autoPropagate() {
+        return Optional.ofNullable(this.autoPropagate);
     }
 
     @Import(name="bandwidth", required=true)
@@ -203,6 +222,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     private GatewayArgs(GatewayArgs $) {
         this.autoPay = $.autoPay;
+        this.autoPropagate = $.autoPropagate;
         this.bandwidth = $.bandwidth;
         this.description = $.description;
         this.enableIpsec = $.enableIpsec;
@@ -236,8 +256,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoPay Whether to pay automatically. Default value: `true`. Valid values:
-         * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-         * `true`: Enable automatic payment, automatic payment order.
+         * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+         * - `true`: Enable automatic payment, automatic payment order.
          * 
          * @return builder
          * 
@@ -249,14 +269,39 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoPay Whether to pay automatically. Default value: `true`. Valid values:
-         * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-         * `true`: Enable automatic payment, automatic payment order.
+         * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+         * - `true`: Enable automatic payment, automatic payment order.
          * 
          * @return builder
          * 
          */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
+        }
+
+        /**
+         * @param autoPropagate Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+         * - `true`: Enable.
+         * - `false`: Disable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPropagate(@Nullable Output<Boolean> autoPropagate) {
+            $.autoPropagate = autoPropagate;
+            return this;
+        }
+
+        /**
+         * @param autoPropagate Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+         * - `true`: Enable.
+         * - `false`: Disable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPropagate(Boolean autoPropagate) {
+            return autoPropagate(Output.of(autoPropagate));
         }
 
         public Builder bandwidth(Output<Integer> bandwidth) {

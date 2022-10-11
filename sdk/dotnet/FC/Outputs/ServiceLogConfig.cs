@@ -14,6 +14,14 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class ServiceLogConfig
     {
         /// <summary>
+        /// Enable instance level metrics.
+        /// </summary>
+        public readonly bool? EnableInstanceMetrics;
+        /// <summary>
+        /// Enable request level metrics.
+        /// </summary>
+        public readonly bool? EnableRequestMetrics;
+        /// <summary>
         /// The log store name of Alicloud Simple Log Service.
         /// </summary>
         public readonly string Logstore;
@@ -24,10 +32,16 @@ namespace Pulumi.AliCloud.FC.Outputs
 
         [OutputConstructor]
         private ServiceLogConfig(
+            bool? enableInstanceMetrics,
+
+            bool? enableRequestMetrics,
+
             string logstore,
 
             string project)
         {
+            EnableInstanceMetrics = enableInstanceMetrics;
+            EnableRequestMetrics = enableRequestMetrics;
             Logstore = logstore;
             Project = project;
         }

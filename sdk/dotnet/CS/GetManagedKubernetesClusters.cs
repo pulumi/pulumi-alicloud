@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public string? KubeConfigFilePrefix { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public Input<string>? KubeConfigFilePrefix { get; set; }

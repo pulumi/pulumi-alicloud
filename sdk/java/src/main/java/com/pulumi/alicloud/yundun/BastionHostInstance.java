@@ -59,6 +59,18 @@ public class BastionHostInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
+    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> renewPeriod;
+
+    public Output<Optional<Integer>> renewPeriod() {
+        return Codegen.optional(this.renewPeriod);
+    }
+    @Export(name="renewalStatus", type=String.class, parameters={})
+    private Output<String> renewalStatus;
+
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceGroupId;
 

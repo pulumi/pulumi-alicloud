@@ -13,21 +13,14 @@ public final class GetKubernetesClustersClusterLogConfig {
      * @return Log Service project name.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Type of collecting logs.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetKubernetesClustersClusterLogConfig(
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("type") String type) {
-        this.project = project;
-        this.type = type;
-    }
-
+    private GetKubernetesClustersClusterLogConfig() {}
     /**
      * @return Log Service project name.
      * 
@@ -50,30 +43,32 @@ public final class GetKubernetesClustersClusterLogConfig {
     public static Builder builder(GetKubernetesClustersClusterLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String project;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClustersClusterLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.project = defaults.project;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetKubernetesClustersClusterLogConfig build() {
-            return new GetKubernetesClustersClusterLogConfig(project, type);
+        }
+        public GetKubernetesClustersClusterLogConfig build() {
+            final var o = new GetKubernetesClustersClusterLogConfig();
+            o.project = project;
+            o.type = type;
+            return o;
         }
     }
 }

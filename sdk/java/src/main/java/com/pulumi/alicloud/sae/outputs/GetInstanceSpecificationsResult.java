@@ -17,23 +17,12 @@ public final class GetInstanceSpecificationsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetInstanceSpecificationsSpecification> specifications;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetInstanceSpecificationsSpecification> specifications;
 
-    @CustomType.Constructor
-    private GetInstanceSpecificationsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("specifications") List<GetInstanceSpecificationsSpecification> specifications) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.specifications = specifications;
-    }
-
+    private GetInstanceSpecificationsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,17 +47,13 @@ public final class GetInstanceSpecificationsResult {
     public static Builder builder(GetInstanceSpecificationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetInstanceSpecificationsSpecification> specifications;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceSpecificationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -77,10 +62,12 @@ public final class GetInstanceSpecificationsResult {
     	      this.specifications = defaults.specifications;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -88,18 +75,26 @@ public final class GetInstanceSpecificationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder specifications(List<GetInstanceSpecificationsSpecification> specifications) {
             this.specifications = Objects.requireNonNull(specifications);
             return this;
         }
         public Builder specifications(GetInstanceSpecificationsSpecification... specifications) {
             return specifications(List.of(specifications));
-        }        public GetInstanceSpecificationsResult build() {
-            return new GetInstanceSpecificationsResult(id, ids, outputFile, specifications);
+        }
+        public GetInstanceSpecificationsResult build() {
+            final var o = new GetInstanceSpecificationsResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.specifications = specifications;
+            return o;
         }
     }
 }

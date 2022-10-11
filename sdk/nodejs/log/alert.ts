@@ -273,7 +273,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Timestamp, notifications before closing again.
      */
-    public readonly muteUntil!: pulumi.Output<number | undefined>;
+    public readonly muteUntil!: pulumi.Output<number>;
     /**
      * Switch for whether new alert fires when no data happens, default is false.
      */

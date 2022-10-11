@@ -10,33 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class TablePrimaryKey {
     /**
-     * @return Name for primary key.
+     * @return Name for defined column.
      * 
      */
-    private final String name;
+    private String name;
     /**
-     * @return Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private TablePrimaryKey(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private TablePrimaryKey() {}
     /**
-     * @return Name for primary key.
+     * @return Name for defined column.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
      * 
      */
     public String type() {
@@ -50,30 +43,32 @@ public final class TablePrimaryKey {
     public static Builder builder(TablePrimaryKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TablePrimaryKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public TablePrimaryKey build() {
-            return new TablePrimaryKey(name, type);
+        }
+        public TablePrimaryKey build() {
+            final var o = new TablePrimaryKey();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

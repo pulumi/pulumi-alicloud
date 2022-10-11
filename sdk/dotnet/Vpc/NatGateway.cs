@@ -35,9 +35,23 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+        /// </summary>
+        [Output("eipBindMode")]
+        public Output<string> EipBindMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
@@ -188,9 +202,23 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+        /// </summary>
+        [Input("eipBindMode")]
+        public Input<string>? EipBindMode { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -290,9 +318,23 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+        /// </summary>
+        [Input("eipBindMode")]
+        public Input<string>? EipBindMode { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 

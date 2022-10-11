@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb.outputs;
 
 import com.pulumi.alicloud.gpdb.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -15,64 +16,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    /**
-     * @return Instance availability zone.
-     * 
-     */
-    private final @Nullable String availabilityZone;
+    private @Nullable String availabilityZone;
+    private @Nullable String dbInstanceCategories;
+    private @Nullable String dbInstanceModes;
+    private @Nullable String description;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    /**
-     * @return The ids list of AnalyticDB for PostgreSQL instances.
-     * 
-     */
-    private final List<String> ids;
-    /**
-     * @return A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
-     * 
-     */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String nameRegex;
-    /**
-     * @return The names list of AnalyticDB for PostgreSQL instance.
-     * 
-     */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String vswitchId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceNetworkType;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("availabilityZone") @Nullable String availabilityZone,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.availabilityZone = availabilityZone;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.tags = tags;
-        this.vswitchId = vswitchId;
-    }
-
-    /**
-     * @return Instance availability zone.
-     * 
-     */
+    private GetInstancesResult() {}
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+    public Optional<String> dbInstanceCategories() {
+        return Optional.ofNullable(this.dbInstanceCategories);
+    }
+    public Optional<String> dbInstanceModes() {
+        return Optional.ofNullable(this.dbInstanceModes);
+    }
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -81,32 +60,29 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The ids list of AnalyticDB for PostgreSQL instances.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
-    /**
-     * @return A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
-     * 
-     */
+    public Optional<String> instanceNetworkType() {
+        return Optional.ofNullable(this.instanceNetworkType);
+    }
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
-    /**
-     * @return The names list of AnalyticDB for PostgreSQL instance.
-     * 
-     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
+    }
+    public Optional<String> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
@@ -122,43 +98,76 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
+        private @Nullable String dbInstanceCategories;
+        private @Nullable String dbInstanceModes;
+        private @Nullable String description;
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
+        private @Nullable String instanceNetworkType;
         private List<GetInstancesInstance> instances;
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable String resourceGroupId;
+        private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
+    	      this.dbInstanceCategories = defaults.dbInstanceCategories;
+    	      this.dbInstanceModes = defaults.dbInstanceModes;
+    	      this.description = defaults.description;
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.instanceNetworkType = defaults.instanceNetworkType;
     	      this.instances = defaults.instances;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.resourceGroupId = defaults.resourceGroupId;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
             return this;
         }
+        @CustomType.Setter
+        public Builder dbInstanceCategories(@Nullable String dbInstanceCategories) {
+            this.dbInstanceCategories = dbInstanceCategories;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceModes(@Nullable String dbInstanceModes) {
+            this.dbInstanceModes = dbInstanceModes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            this.enableDetails = enableDetails;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -166,6 +175,12 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
+        public Builder instanceNetworkType(@Nullable String instanceNetworkType) {
+            this.instanceNetworkType = instanceNetworkType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -173,10 +188,12 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -184,19 +201,50 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
+        public Builder resourceGroupId(@Nullable String resourceGroupId) {
+            this.resourceGroupId = resourceGroupId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(availabilityZone, id, ids, instances, nameRegex, names, outputFile, tags, vswitchId);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.availabilityZone = availabilityZone;
+            o.dbInstanceCategories = dbInstanceCategories;
+            o.dbInstanceModes = dbInstanceModes;
+            o.description = description;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceNetworkType = instanceNetworkType;
+            o.instances = instances;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

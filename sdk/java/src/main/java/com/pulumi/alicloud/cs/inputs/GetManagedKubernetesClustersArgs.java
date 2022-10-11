@@ -40,14 +40,14 @@ public final class GetManagedKubernetesClustersArgs extends com.pulumi.resources
     }
 
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
      * 
      */
     @Import(name="kubeConfigFilePrefix")
     private @Nullable Output<String> kubeConfigFilePrefix;
 
     /**
-     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
      * 
      */
     public Optional<Output<String>> kubeConfigFilePrefix() {
@@ -145,7 +145,7 @@ public final class GetManagedKubernetesClustersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetManagedKubernetesClustersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don&#39;t specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
          * 
          * @return builder
          * 

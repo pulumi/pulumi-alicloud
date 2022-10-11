@@ -14,13 +14,9 @@ public final class GetRulesRuleRuleActionForwardGroupConfig {
      * @return The destination server group to which requests are forwarded.
      * 
      */
-    private final List<GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
+    private List<GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionForwardGroupConfig(@CustomType.Parameter("serverGroupTuples") List<GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
-        this.serverGroupTuples = serverGroupTuples;
-    }
-
+    private GetRulesRuleRuleActionForwardGroupConfig() {}
     /**
      * @return The destination server group to which requests are forwarded.
      * 
@@ -36,27 +32,27 @@ public final class GetRulesRuleRuleActionForwardGroupConfig {
     public static Builder builder(GetRulesRuleRuleActionForwardGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionForwardGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        @CustomType.Setter
         public Builder serverGroupTuples(List<GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = Objects.requireNonNull(serverGroupTuples);
             return this;
         }
         public Builder serverGroupTuples(GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
-        }        public GetRulesRuleRuleActionForwardGroupConfig build() {
-            return new GetRulesRuleRuleActionForwardGroupConfig(serverGroupTuples);
+        }
+        public GetRulesRuleRuleActionForwardGroupConfig build() {
+            final var o = new GetRulesRuleRuleActionForwardGroupConfig();
+            o.serverGroupTuples = serverGroupTuples;
+            return o;
         }
     }
 }

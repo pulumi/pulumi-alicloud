@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ScalingRuleStepAdjustment {
-    private final @Nullable String metricIntervalLowerBound;
-    private final @Nullable String metricIntervalUpperBound;
-    private final @Nullable Integer scalingAdjustment;
+    private @Nullable String metricIntervalLowerBound;
+    private @Nullable String metricIntervalUpperBound;
+    private @Nullable Integer scalingAdjustment;
 
-    @CustomType.Constructor
-    private ScalingRuleStepAdjustment(
-        @CustomType.Parameter("metricIntervalLowerBound") @Nullable String metricIntervalLowerBound,
-        @CustomType.Parameter("metricIntervalUpperBound") @Nullable String metricIntervalUpperBound,
-        @CustomType.Parameter("scalingAdjustment") @Nullable Integer scalingAdjustment) {
-        this.metricIntervalLowerBound = metricIntervalLowerBound;
-        this.metricIntervalUpperBound = metricIntervalUpperBound;
-        this.scalingAdjustment = scalingAdjustment;
-    }
-
+    private ScalingRuleStepAdjustment() {}
     public Optional<String> metricIntervalLowerBound() {
         return Optional.ofNullable(this.metricIntervalLowerBound);
     }
@@ -43,16 +34,12 @@ public final class ScalingRuleStepAdjustment {
     public static Builder builder(ScalingRuleStepAdjustment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String metricIntervalLowerBound;
         private @Nullable String metricIntervalUpperBound;
         private @Nullable Integer scalingAdjustment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ScalingRuleStepAdjustment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metricIntervalLowerBound = defaults.metricIntervalLowerBound;
@@ -60,19 +47,27 @@ public final class ScalingRuleStepAdjustment {
     	      this.scalingAdjustment = defaults.scalingAdjustment;
         }
 
+        @CustomType.Setter
         public Builder metricIntervalLowerBound(@Nullable String metricIntervalLowerBound) {
             this.metricIntervalLowerBound = metricIntervalLowerBound;
             return this;
         }
+        @CustomType.Setter
         public Builder metricIntervalUpperBound(@Nullable String metricIntervalUpperBound) {
             this.metricIntervalUpperBound = metricIntervalUpperBound;
             return this;
         }
+        @CustomType.Setter
         public Builder scalingAdjustment(@Nullable Integer scalingAdjustment) {
             this.scalingAdjustment = scalingAdjustment;
             return this;
-        }        public ScalingRuleStepAdjustment build() {
-            return new ScalingRuleStepAdjustment(metricIntervalLowerBound, metricIntervalUpperBound, scalingAdjustment);
+        }
+        public ScalingRuleStepAdjustment build() {
+            final var o = new ScalingRuleStepAdjustment();
+            o.metricIntervalLowerBound = metricIntervalLowerBound;
+            o.metricIntervalUpperBound = metricIntervalUpperBound;
+            o.scalingAdjustment = scalingAdjustment;
+            return o;
         }
     }
 }

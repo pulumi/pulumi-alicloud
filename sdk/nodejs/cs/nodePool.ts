@@ -284,10 +284,10 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PostPaid",
  *     desiredSize: 3,
  *     kubeletConfiguration: {
- *         registryPullQps: "0",
- *         registryBurst: "0",
- *         eventRecordQps: "0",
- *         eventBurst: "0",
+ *         registryPullQps: "10",
+ *         registryBurst: "5",
+ *         eventRecordQps: "10",
+ *         eventBurst: "5",
  *         evictionHard: {
  *             "memory.available": "1024Mi",
  *             "nodefs.available": `10%`,
@@ -300,15 +300,15 @@ import * as utilities from "../utilities";
  *         systemReserved: {
  *             cpu: "1",
  *             memory: "1Gi",
- *             ephemeral_storage: "10Gi",
+ *             "ephemeral-storage": "10Gi",
  *         },
  *         kubeReserved: {
  *             cpu: "500m",
  *             memory: "1Gi",
  *         },
  *     },
- *     rolloutPolicy: {
- *         maxUnavailable: 1,
+ *     rollingPolicy: {
+ *         maxParallelism: 1,
  *     },
  * });
  * ```
@@ -358,7 +358,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     public readonly cisEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -486,7 +486,13 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    public readonly rollingPolicy!: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     public readonly rolloutPolicy!: pulumi.Output<outputs.cs.NodePoolRolloutPolicy | undefined>;
     /**
@@ -520,7 +526,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     public readonly socEnabled!: pulumi.Output<boolean | undefined>;
@@ -631,6 +637,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = state ? state.platform : undefined;
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["rollingPolicy"] = state ? state.rollingPolicy : undefined;
             resourceInputs["rolloutPolicy"] = state ? state.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
@@ -699,6 +706,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["rollingPolicy"] = args ? args.rollingPolicy : undefined;
             resourceInputs["rolloutPolicy"] = args ? args.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
@@ -742,7 +750,7 @@ export interface NodePoolState {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -870,7 +878,13 @@ export interface NodePoolState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
@@ -904,7 +918,7 @@ export interface NodePoolState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
@@ -983,7 +997,7 @@ export interface NodePoolArgs {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -1111,7 +1125,13 @@ export interface NodePoolArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
@@ -1141,7 +1161,7 @@ export interface NodePoolArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;

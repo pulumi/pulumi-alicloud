@@ -139,6 +139,12 @@ namespace Pulumi.AliCloud.Vpn
         public Output<Outputs.GatewayVpnAttachmentIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The VPN gateway IP.
+        /// </summary>
+        [Output("internetIp")]
+        public Output<string> InternetIp { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
         /// </summary>
         [Output("ipsecConfig")]
@@ -340,6 +346,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigGetArgs>? IkeConfig { get; set; }
+
+        /// <summary>
+        /// The VPN gateway IP.
+        /// </summary>
+        [Input("internetIp")]
+        public Input<string>? InternetIp { get; set; }
 
         /// <summary>
         /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.

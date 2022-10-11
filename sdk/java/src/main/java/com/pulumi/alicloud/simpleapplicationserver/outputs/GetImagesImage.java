@@ -13,22 +13,22 @@ public final class GetImagesImage {
      * @return The description of the image.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Instance Image.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return The type of the image. Valid values: `app`, `custom`, `system`.
      * * `system`: operating system (OS) image.
@@ -36,29 +36,14 @@ public final class GetImagesImage {
      * * `custom`: custom image.
      * 
      */
-    private final String imageType;
+    private String imageType;
     /**
      * @return The platform of Plan supported.
      * 
      */
-    private final String platform;
+    private String platform;
 
-    @CustomType.Constructor
-    private GetImagesImage(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("platform") String platform) {
-        this.description = description;
-        this.id = id;
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.imageType = imageType;
-        this.platform = platform;
-    }
-
+    private GetImagesImage() {}
     /**
      * @return The description of the image.
      * 
@@ -112,7 +97,7 @@ public final class GetImagesImage {
     public static Builder builder(GetImagesImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -120,11 +105,7 @@ public final class GetImagesImage {
         private String imageName;
         private String imageType;
         private String platform;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -135,31 +116,45 @@ public final class GetImagesImage {
     	      this.platform = defaults.platform;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder platform(String platform) {
             this.platform = Objects.requireNonNull(platform);
             return this;
-        }        public GetImagesImage build() {
-            return new GetImagesImage(description, id, imageId, imageName, imageType, platform);
+        }
+        public GetImagesImage build() {
+            final var o = new GetImagesImage();
+            o.description = description;
+            o.id = id;
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.imageType = imageType;
+            o.platform = platform;
+            return o;
         }
     }
 }

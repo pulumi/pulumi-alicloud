@@ -39,6 +39,8 @@ export class BastionHostInstance extends pulumi.CustomResource {
     public readonly ldapAuthServers!: pulumi.Output<outputs.yundun.BastionHostInstanceLdapAuthServer[]>;
     public readonly licenseCode!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
+    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -63,6 +65,8 @@ export class BastionHostInstance extends pulumi.CustomResource {
             resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -87,6 +91,8 @@ export class BastionHostInstance extends pulumi.CustomResource {
             resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -107,6 +113,8 @@ export interface BastionHostInstanceState {
     ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
     licenseCode?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
+    renewalStatus?: pulumi.Input<string>;
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -123,6 +131,8 @@ export interface BastionHostInstanceArgs {
     ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
     licenseCode: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
+    renewalStatus?: pulumi.Input<string>;
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     tags?: pulumi.Input<{[key: string]: any}>;

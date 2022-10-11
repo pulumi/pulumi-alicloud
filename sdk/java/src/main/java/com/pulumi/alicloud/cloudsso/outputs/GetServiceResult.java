@@ -9,28 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceResult {
-    private final String enable;
+    private String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("enable") String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.enable = enable;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetServiceResult() {}
     public String enable() {
         return this.enable;
     }
@@ -56,16 +47,12 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String enable;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -73,19 +60,27 @@ public final class GetServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enable(String enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetServiceResult build() {
-            return new GetServiceResult(enable, id, status);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.enable = enable;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

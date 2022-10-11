@@ -17,77 +17,54 @@ public final class GetServicesService {
      * @return FC service creation time.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return FC service description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return FC service ID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicate whether the service can access to internet or not.
      * 
      */
-    private final Boolean internetAccess;
+    private Boolean internetAccess;
     /**
      * @return FC service last modification time.
      * 
      */
-    private final String lastModificationTime;
+    private String lastModificationTime;
     /**
      * @return A list of one element containing information about the associated log store. It contains the following attributes:
      * 
      */
-    private final GetServicesServiceLogConfig logConfig;
+    private GetServicesServiceLogConfig logConfig;
     /**
      * @return FC service name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A list of one element about the nas configuration.
      * 
      */
-    private final GetServicesServiceNasConfig nasConfig;
+    private GetServicesServiceNasConfig nasConfig;
     /**
      * @return FC service role ARN.
      * 
      */
-    private final String role;
+    private String role;
     /**
      * @return A list of one element containing information about accessible VPC resources. It contains the following attributes:
      * 
      */
-    private final GetServicesServiceVpcConfig vpcConfig;
+    private GetServicesServiceVpcConfig vpcConfig;
 
-    @CustomType.Constructor
-    private GetServicesService(
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("internetAccess") Boolean internetAccess,
-        @CustomType.Parameter("lastModificationTime") String lastModificationTime,
-        @CustomType.Parameter("logConfig") GetServicesServiceLogConfig logConfig,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nasConfig") GetServicesServiceNasConfig nasConfig,
-        @CustomType.Parameter("role") String role,
-        @CustomType.Parameter("vpcConfig") GetServicesServiceVpcConfig vpcConfig) {
-        this.creationTime = creationTime;
-        this.description = description;
-        this.id = id;
-        this.internetAccess = internetAccess;
-        this.lastModificationTime = lastModificationTime;
-        this.logConfig = logConfig;
-        this.name = name;
-        this.nasConfig = nasConfig;
-        this.role = role;
-        this.vpcConfig = vpcConfig;
-    }
-
+    private GetServicesService() {}
     /**
      * @return FC service creation time.
      * 
@@ -166,7 +143,7 @@ public final class GetServicesService {
     public static Builder builder(GetServicesService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String creationTime;
         private String description;
@@ -178,11 +155,7 @@ public final class GetServicesService {
         private GetServicesServiceNasConfig nasConfig;
         private String role;
         private GetServicesServiceVpcConfig vpcConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicesService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTime = defaults.creationTime;
@@ -197,47 +170,69 @@ public final class GetServicesService {
     	      this.vpcConfig = defaults.vpcConfig;
         }
 
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder internetAccess(Boolean internetAccess) {
             this.internetAccess = Objects.requireNonNull(internetAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
             this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder logConfig(GetServicesServiceLogConfig logConfig) {
             this.logConfig = Objects.requireNonNull(logConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nasConfig(GetServicesServiceNasConfig nasConfig) {
             this.nasConfig = Objects.requireNonNull(nasConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConfig(GetServicesServiceVpcConfig vpcConfig) {
             this.vpcConfig = Objects.requireNonNull(vpcConfig);
             return this;
-        }        public GetServicesService build() {
-            return new GetServicesService(creationTime, description, id, internetAccess, lastModificationTime, logConfig, name, nasConfig, role, vpcConfig);
+        }
+        public GetServicesService build() {
+            final var o = new GetServicesService();
+            o.creationTime = creationTime;
+            o.description = description;
+            o.id = id;
+            o.internetAccess = internetAccess;
+            o.lastModificationTime = lastModificationTime;
+            o.logConfig = logConfig;
+            o.name = name;
+            o.nasConfig = nasConfig;
+            o.role = role;
+            o.vpcConfig = vpcConfig;
+            return o;
         }
     }
 }

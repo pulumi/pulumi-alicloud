@@ -1663,7 +1663,7 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="muteUntil")
-    def mute_until(self) -> pulumi.Output[Optional[int]]:
+    def mute_until(self) -> pulumi.Output[int]:
         """
         Timestamp, notifications before closing again.
         """

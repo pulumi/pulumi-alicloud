@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceIpWhitelist struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute *string `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName *string `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// InstanceIpWhitelistInput is an input type that accepts InstanceIpWhitelistArgs and InstanceIpWhitelistOutput values.
+// You can construct a concrete instance of `InstanceIpWhitelistInput` via:
+//
+//	InstanceIpWhitelistArgs{...}
+type InstanceIpWhitelistInput interface {
+	pulumi.Input
+
+	ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput
+	ToInstanceIpWhitelistOutputWithContext(context.Context) InstanceIpWhitelistOutput
+}
+
+type InstanceIpWhitelistArgs struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute pulumi.StringPtrInput `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName pulumi.StringPtrInput `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (InstanceIpWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i InstanceIpWhitelistArgs) ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput {
+	return i.ToInstanceIpWhitelistOutputWithContext(context.Background())
+}
+
+func (i InstanceIpWhitelistArgs) ToInstanceIpWhitelistOutputWithContext(ctx context.Context) InstanceIpWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistOutput)
+}
+
+// InstanceIpWhitelistArrayInput is an input type that accepts InstanceIpWhitelistArray and InstanceIpWhitelistArrayOutput values.
+// You can construct a concrete instance of `InstanceIpWhitelistArrayInput` via:
+//
+//	InstanceIpWhitelistArray{ InstanceIpWhitelistArgs{...} }
+type InstanceIpWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput
+	ToInstanceIpWhitelistArrayOutputWithContext(context.Context) InstanceIpWhitelistArrayOutput
+}
+
+type InstanceIpWhitelistArray []InstanceIpWhitelistInput
+
+func (InstanceIpWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i InstanceIpWhitelistArray) ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput {
+	return i.ToInstanceIpWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceIpWhitelistArray) ToInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) InstanceIpWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistArrayOutput)
+}
+
+type InstanceIpWhitelistOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutputWithContext(ctx context.Context) InstanceIpWhitelistOutput {
+	return o
+}
+
+// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+func (o InstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// IP whitelist group name
+func (o InstanceIpWhitelistOutput) IpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+func (o InstanceIpWhitelistOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type InstanceIpWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) InstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceIpWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpWhitelist {
+		return vs[0].([]InstanceIpWhitelist)[vs[1].(int)]
+	}).(InstanceIpWhitelistOutput)
+}
+
 type GetAccountsAccount struct {
 	// The description of the account.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -146,27 +261,64 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 type GetInstancesInstance struct {
 	// Instance availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	ChargeType string `pulumi:"chargeType"`
-	// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+	// The endpoint of the instance.
+	ConnectionString string `pulumi:"connectionString"`
+	// The number of CPU cores of the computing node. Unit: Core.
+	CpuCores string `pulumi:"cpuCores"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+	CreateTime string `pulumi:"createTime"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
 	CreationTime string `pulumi:"creationTime"`
-	// The description of an instance.
+	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
+	// The db instance class.
+	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+	DbInstanceMode string `pulumi:"dbInstanceMode"`
+	// The description of the instance.
 	Description string `pulumi:"description"`
-	// Database engine type. Supported option is `gpdb`.
+	// The database engine used by the instance.
 	Engine string `pulumi:"engine"`
-	// Database engine version.
+	// The version of the database engine used by the instance.
 	EngineVersion string `pulumi:"engineVersion"`
-	// The instance id.
+	// The ID of the db Instance.
 	Id string `pulumi:"id"`
-	// The group type.
-	InstanceClass string `pulumi:"instanceClass"`
-	// The number of groups.
-	InstanceGroupCount  string `pulumi:"instanceGroupCount"`
+	// The network type of the instance.
 	InstanceNetworkType string `pulumi:"instanceNetworkType"`
+	// The ip whitelist.
+	IpWhitelists []GetInstancesInstanceIpWhitelist `pulumi:"ipWhitelists"`
+	// The end time of the maintenance window for the instance.
+	MaintainEndTime string `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window for the instance.
+	MaintainStartTime string `pulumi:"maintainStartTime"`
+	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	MasterNodeNum string `pulumi:"masterNodeNum"`
+	// The memory size of the compute node.
+	MemorySize string `pulumi:"memorySize"`
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+	PaymentType string `pulumi:"paymentType"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Status of the instance.
+	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	SegNodeNum string `pulumi:"segNodeNum"`
+	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status string `pulumi:"status"`
+	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	StorageSize int `pulumi:"storageSize"`
+	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+	StorageType string `pulumi:"storageType"`
+	// The tags of the instance.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the VPC。.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -183,27 +335,64 @@ type GetInstancesInstanceInput interface {
 type GetInstancesInstanceArgs struct {
 	// Instance availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
-	// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+	// The endpoint of the instance.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The number of CPU cores of the computing node. Unit: Core.
+	CpuCores pulumi.StringInput `pulumi:"cpuCores"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// The description of an instance.
+	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	DbInstanceCategory pulumi.StringInput `pulumi:"dbInstanceCategory"`
+	// The db instance class.
+	DbInstanceClass pulumi.StringInput `pulumi:"dbInstanceClass"`
+	// The db instance id.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+	DbInstanceMode pulumi.StringInput `pulumi:"dbInstanceMode"`
+	// The description of the instance.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Database engine type. Supported option is `gpdb`.
+	// The database engine used by the instance.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// Database engine version.
+	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// The instance id.
+	// The ID of the db Instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The group type.
-	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	// The number of groups.
-	InstanceGroupCount  pulumi.StringInput `pulumi:"instanceGroupCount"`
+	// The network type of the instance.
 	InstanceNetworkType pulumi.StringInput `pulumi:"instanceNetworkType"`
+	// The ip whitelist.
+	IpWhitelists GetInstancesInstanceIpWhitelistArrayInput `pulumi:"ipWhitelists"`
+	// The end time of the maintenance window for the instance.
+	MaintainEndTime pulumi.StringInput `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window for the instance.
+	MaintainStartTime pulumi.StringInput `pulumi:"maintainStartTime"`
+	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	MasterNodeNum pulumi.StringInput `pulumi:"masterNodeNum"`
+	// The memory size of the compute node.
+	MemorySize pulumi.StringInput `pulumi:"memorySize"`
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Status of the instance.
+	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	SegNodeNum pulumi.StringInput `pulumi:"segNodeNum"`
+	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	StorageSize pulumi.IntInput `pulumi:"storageSize"`
+	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// The tags of the instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the VPC。.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -262,48 +451,104 @@ func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+// The endpoint of the instance.
+func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores of the computing node. Unit: Core.
+func (o GetInstancesInstanceOutput) CpuCores() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CpuCores }).(pulumi.StringOutput)
+}
+
+// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The description of an instance.
+// The db instance category. Valid values: `HighAvailability`, `Basic`.
+func (o GetInstancesInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceCategory }).(pulumi.StringOutput)
+}
+
+// The db instance class.
+func (o GetInstancesInstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// The db instance id.
+func (o GetInstancesInstanceOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+func (o GetInstancesInstanceOutput) DbInstanceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceMode }).(pulumi.StringOutput)
+}
+
+// The description of the instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Database engine type. Supported option is `gpdb`.
+// The database engine used by the instance.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Database engine version.
+// The version of the database engine used by the instance.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// The instance id.
+// The ID of the db Instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The group type.
-func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
-}
-
-// The number of groups.
-func (o GetInstancesInstanceOutput) InstanceGroupCount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceGroupCount }).(pulumi.StringOutput)
-}
-
+// The network type of the instance.
 func (o GetInstancesInstanceOutput) InstanceNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// The ip whitelist.
+func (o GetInstancesInstanceOutput) IpWhitelists() GetInstancesInstanceIpWhitelistArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceIpWhitelist { return v.IpWhitelists }).(GetInstancesInstanceIpWhitelistArrayOutput)
+}
+
+// The end time of the maintenance window for the instance.
+func (o GetInstancesInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the maintenance window for the instance.
+func (o GetInstancesInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+func (o GetInstancesInstanceOutput) MasterNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterNodeNum }).(pulumi.StringOutput)
+}
+
+// The memory size of the compute node.
+func (o GetInstancesInstanceOutput) MemorySize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MemorySize }).(pulumi.StringOutput)
+}
+
+// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
@@ -311,9 +556,44 @@ func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Status of the instance.
+// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+func (o GetInstancesInstanceOutput) SegNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SegNodeNum }).(pulumi.StringOutput)
+}
+
+// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage capacity. Unit: GB. Value: `50` to `4000`.
+func (o GetInstancesInstanceOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+func (o GetInstancesInstanceOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The tags of the instance.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC。.
+func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the instance.
+func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -334,6 +614,121 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceIpWhitelist struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute string `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName string `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// GetInstancesInstanceIpWhitelistInput is an input type that accepts GetInstancesInstanceIpWhitelistArgs and GetInstancesInstanceIpWhitelistOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceIpWhitelistInput` via:
+//
+//	GetInstancesInstanceIpWhitelistArgs{...}
+type GetInstancesInstanceIpWhitelistInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput
+	ToGetInstancesInstanceIpWhitelistOutputWithContext(context.Context) GetInstancesInstanceIpWhitelistOutput
+}
+
+type GetInstancesInstanceIpWhitelistArgs struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute pulumi.StringInput `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName pulumi.StringInput `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (GetInstancesInstanceIpWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceIpWhitelistArgs) ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput {
+	return i.ToGetInstancesInstanceIpWhitelistOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceIpWhitelistArgs) ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistOutput)
+}
+
+// GetInstancesInstanceIpWhitelistArrayInput is an input type that accepts GetInstancesInstanceIpWhitelistArray and GetInstancesInstanceIpWhitelistArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceIpWhitelistArrayInput` via:
+//
+//	GetInstancesInstanceIpWhitelistArray{ GetInstancesInstanceIpWhitelistArgs{...} }
+type GetInstancesInstanceIpWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput
+	ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(context.Context) GetInstancesInstanceIpWhitelistArrayOutput
+}
+
+type GetInstancesInstanceIpWhitelistArray []GetInstancesInstanceIpWhitelistInput
+
+func (GetInstancesInstanceIpWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceIpWhitelistArray) ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput {
+	return i.ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceIpWhitelistArray) ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistArrayOutput)
+}
+
+type GetInstancesInstanceIpWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceIpWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistOutput {
+	return o
+}
+
+// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+func (o GetInstancesInstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupAttribute }).(pulumi.StringOutput)
+}
+
+// IP whitelist group name
+func (o GetInstancesInstanceIpWhitelistOutput) IpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupName }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+func (o GetInstancesInstanceIpWhitelistOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceIpWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceIpWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceIpWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceIpWhitelist {
+		return vs[0].([]GetInstancesInstanceIpWhitelist)[vs[1].(int)]
+	}).(GetInstancesInstanceIpWhitelistOutput)
 }
 
 type GetZonesZone struct {
@@ -443,16 +838,24 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistInput)(nil)).Elem(), InstanceIpWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistArrayInput)(nil)).Elem(), InstanceIpWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistArrayInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(InstanceIpWhitelistOutput{})
+	pulumi.RegisterOutputType(InstanceIpWhitelistArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

@@ -480,10 +480,10 @@ namespace Pulumi.AliCloud.CS
     ///             DesiredSize = 3,
     ///             KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
     ///             {
-    ///                 RegistryPullQps = "0",
-    ///                 RegistryBurst = "0",
-    ///                 EventRecordQps = "0",
-    ///                 EventBurst = "0",
+    ///                 RegistryPullQps = "10",
+    ///                 RegistryBurst = "5",
+    ///                 EventRecordQps = "10",
+    ///                 EventBurst = "5",
     ///                 EvictionHard = 
     ///                 {
     ///                     { "memory.available", "1024Mi" },
@@ -498,7 +498,7 @@ namespace Pulumi.AliCloud.CS
     ///                 {
     ///                     { "cpu", "1" },
     ///                     { "memory", "1Gi" },
-    ///                     { "ephemeral_storage", "10Gi" },
+    ///                     { "ephemeral-storage", "10Gi" },
     ///                 },
     ///                 KubeReserved = 
     ///                 {
@@ -506,9 +506,9 @@ namespace Pulumi.AliCloud.CS
     ///                     { "memory", "1Gi" },
     ///                 },
     ///             },
-    ///             RolloutPolicy = new AliCloud.CS.Inputs.NodePoolRolloutPolicyArgs
+    ///             RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
     ///             {
-    ///                 MaxUnavailable = 1,
+    ///                 MaxParallelism = 1,
     ///             },
     ///         });
     ///     }
@@ -540,7 +540,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Output("cisEnabled")]
         public Output<bool?> CisEnabled { get; private set; } = null!;
@@ -726,7 +726,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Output("rollingPolicy")]
+        public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Output("rolloutPolicy")]
         public Output<Outputs.NodePoolRolloutPolicy?> RolloutPolicy { get; private set; } = null!;
@@ -774,7 +780,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Output("socEnabled")]
@@ -929,7 +935,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1151,7 +1157,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Input("rollingPolicy")]
+        public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyArgs>? RolloutPolicy { get; set; }
@@ -1199,7 +1211,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Input("socEnabled")]
@@ -1333,7 +1345,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1555,7 +1567,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Input("rollingPolicy")]
+        public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyGetArgs>? RolloutPolicy { get; set; }
@@ -1609,7 +1627,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Input("socEnabled")]

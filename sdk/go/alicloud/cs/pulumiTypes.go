@@ -525,10 +525,14 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.String
 }
 
 type EdgeKubernetesConnections struct {
+	// API Server Internet endpoint.
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
 	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
-	MasterPublicIp    *string `pulumi:"masterPublicIp"`
-	ServiceDomain     *string `pulumi:"serviceDomain"`
+	// Master node SSH IP address.
+	MasterPublicIp *string `pulumi:"masterPublicIp"`
+	// Service Access Domain.
+	ServiceDomain *string `pulumi:"serviceDomain"`
 }
 
 // EdgeKubernetesConnectionsInput is an input type that accepts EdgeKubernetesConnectionsArgs and EdgeKubernetesConnectionsOutput values.
@@ -543,10 +547,14 @@ type EdgeKubernetesConnectionsInput interface {
 }
 
 type EdgeKubernetesConnectionsArgs struct {
+	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
 	ApiServerIntranet pulumi.StringPtrInput `pulumi:"apiServerIntranet"`
-	MasterPublicIp    pulumi.StringPtrInput `pulumi:"masterPublicIp"`
-	ServiceDomain     pulumi.StringPtrInput `pulumi:"serviceDomain"`
+	// Master node SSH IP address.
+	MasterPublicIp pulumi.StringPtrInput `pulumi:"masterPublicIp"`
+	// Service Access Domain.
+	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
 
 func (EdgeKubernetesConnectionsArgs) ElementType() reflect.Type {
@@ -626,18 +634,22 @@ func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutputWit
 	}).(EdgeKubernetesConnectionsPtrOutput)
 }
 
+// API Server Internet endpoint.
 func (o EdgeKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
+// API Server Intranet endpoint.
 func (o EdgeKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
+// Master node SSH IP address.
 func (o EdgeKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
+// Service Access Domain.
 func (o EdgeKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
@@ -666,6 +678,7 @@ func (o EdgeKubernetesConnectionsPtrOutput) Elem() EdgeKubernetesConnectionsOutp
 	}).(EdgeKubernetesConnectionsOutput)
 }
 
+// API Server Internet endpoint.
 func (o EdgeKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
 		if v == nil {
@@ -675,6 +688,7 @@ func (o EdgeKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// API Server Intranet endpoint.
 func (o EdgeKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
 		if v == nil {
@@ -684,6 +698,7 @@ func (o EdgeKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Master node SSH IP address.
 func (o EdgeKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
 		if v == nil {
@@ -693,6 +708,7 @@ func (o EdgeKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Service Access Domain.
 func (o EdgeKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
 		if v == nil {
@@ -703,8 +719,10 @@ func (o EdgeKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutp
 }
 
 type EdgeKubernetesLogConfig struct {
+	// Log Service project name, cluster logs will output to this project.
 	Project *string `pulumi:"project"`
-	Type    string  `pulumi:"type"`
+	// Type of collecting logs, only `SLS` are supported currently.
+	Type string `pulumi:"type"`
 }
 
 // EdgeKubernetesLogConfigInput is an input type that accepts EdgeKubernetesLogConfigArgs and EdgeKubernetesLogConfigOutput values.
@@ -719,8 +737,10 @@ type EdgeKubernetesLogConfigInput interface {
 }
 
 type EdgeKubernetesLogConfigArgs struct {
+	// Log Service project name, cluster logs will output to this project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Type    pulumi.StringInput    `pulumi:"type"`
+	// Type of collecting logs, only `SLS` are supported currently.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (EdgeKubernetesLogConfigArgs) ElementType() reflect.Type {
@@ -800,10 +820,12 @@ func (o EdgeKubernetesLogConfigOutput) ToEdgeKubernetesLogConfigPtrOutputWithCon
 	}).(EdgeKubernetesLogConfigPtrOutput)
 }
 
+// Log Service project name, cluster logs will output to this project.
 func (o EdgeKubernetesLogConfigOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Type of collecting logs, only `SLS` are supported currently.
 func (o EdgeKubernetesLogConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeKubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -832,6 +854,7 @@ func (o EdgeKubernetesLogConfigPtrOutput) Elem() EdgeKubernetesLogConfigOutput {
 	}).(EdgeKubernetesLogConfigOutput)
 }
 
+// Log Service project name, cluster logs will output to this project.
 func (o EdgeKubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesLogConfig) *string {
 		if v == nil {
@@ -841,12 +864,169 @@ func (o EdgeKubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type of collecting logs, only `SLS` are supported currently.
 func (o EdgeKubernetesLogConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesLogConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesRuntime struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version *string `pulumi:"version"`
+}
+
+// EdgeKubernetesRuntimeInput is an input type that accepts EdgeKubernetesRuntimeArgs and EdgeKubernetesRuntimeOutput values.
+// You can construct a concrete instance of `EdgeKubernetesRuntimeInput` via:
+//
+//	EdgeKubernetesRuntimeArgs{...}
+type EdgeKubernetesRuntimeInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesRuntimeOutput() EdgeKubernetesRuntimeOutput
+	ToEdgeKubernetesRuntimeOutputWithContext(context.Context) EdgeKubernetesRuntimeOutput
+}
+
+type EdgeKubernetesRuntimeArgs struct {
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (EdgeKubernetesRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesRuntime)(nil)).Elem()
+}
+
+func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimeOutput() EdgeKubernetesRuntimeOutput {
+	return i.ToEdgeKubernetesRuntimeOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimeOutputWithContext(ctx context.Context) EdgeKubernetesRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimeOutput)
+}
+
+func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
+	return i.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimeOutput).ToEdgeKubernetesRuntimePtrOutputWithContext(ctx)
+}
+
+// EdgeKubernetesRuntimePtrInput is an input type that accepts EdgeKubernetesRuntimeArgs, EdgeKubernetesRuntimePtr and EdgeKubernetesRuntimePtrOutput values.
+// You can construct a concrete instance of `EdgeKubernetesRuntimePtrInput` via:
+//
+//	        EdgeKubernetesRuntimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeKubernetesRuntimePtrInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput
+	ToEdgeKubernetesRuntimePtrOutputWithContext(context.Context) EdgeKubernetesRuntimePtrOutput
+}
+
+type edgeKubernetesRuntimePtrType EdgeKubernetesRuntimeArgs
+
+func EdgeKubernetesRuntimePtr(v *EdgeKubernetesRuntimeArgs) EdgeKubernetesRuntimePtrInput {
+	return (*edgeKubernetesRuntimePtrType)(v)
+}
+
+func (*edgeKubernetesRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesRuntime)(nil)).Elem()
+}
+
+func (i *edgeKubernetesRuntimePtrType) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
+	return i.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *edgeKubernetesRuntimePtrType) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimePtrOutput)
+}
+
+type EdgeKubernetesRuntimeOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesRuntime)(nil)).Elem()
+}
+
+func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimeOutput() EdgeKubernetesRuntimeOutput {
+	return o
+}
+
+func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimeOutputWithContext(ctx context.Context) EdgeKubernetesRuntimeOutput {
+	return o
+}
+
+func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
+	return o.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesRuntime) *EdgeKubernetesRuntime {
+		return &v
+	}).(EdgeKubernetesRuntimePtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o EdgeKubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type EdgeKubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetesRuntime)(nil)).Elem()
+}
+
+func (o EdgeKubernetesRuntimePtrOutput) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesRuntimePtrOutput) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesRuntimePtrOutput) Elem() EdgeKubernetesRuntimeOutput {
+	return o.ApplyT(func(v *EdgeKubernetesRuntime) EdgeKubernetesRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeKubernetesRuntime
+		return ret
+	}).(EdgeKubernetesRuntimeOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o EdgeKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+func (o EdgeKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3175,6 +3355,200 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesRrsaMetadata struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn *string `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName *string `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl *string `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+// ManagedKubernetesRrsaMetadataInput is an input type that accepts ManagedKubernetesRrsaMetadataArgs and ManagedKubernetesRrsaMetadataOutput values.
+// You can construct a concrete instance of `ManagedKubernetesRrsaMetadataInput` via:
+//
+//	ManagedKubernetesRrsaMetadataArgs{...}
+type ManagedKubernetesRrsaMetadataInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesRrsaMetadataOutput() ManagedKubernetesRrsaMetadataOutput
+	ToManagedKubernetesRrsaMetadataOutputWithContext(context.Context) ManagedKubernetesRrsaMetadataOutput
+}
+
+type ManagedKubernetesRrsaMetadataArgs struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn pulumi.StringPtrInput `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName pulumi.StringPtrInput `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl pulumi.StringPtrInput `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+func (ManagedKubernetesRrsaMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (i ManagedKubernetesRrsaMetadataArgs) ToManagedKubernetesRrsaMetadataOutput() ManagedKubernetesRrsaMetadataOutput {
+	return i.ToManagedKubernetesRrsaMetadataOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesRrsaMetadataArgs) ToManagedKubernetesRrsaMetadataOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRrsaMetadataOutput)
+}
+
+func (i ManagedKubernetesRrsaMetadataArgs) ToManagedKubernetesRrsaMetadataPtrOutput() ManagedKubernetesRrsaMetadataPtrOutput {
+	return i.ToManagedKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesRrsaMetadataArgs) ToManagedKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRrsaMetadataOutput).ToManagedKubernetesRrsaMetadataPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesRrsaMetadataPtrInput is an input type that accepts ManagedKubernetesRrsaMetadataArgs, ManagedKubernetesRrsaMetadataPtr and ManagedKubernetesRrsaMetadataPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesRrsaMetadataPtrInput` via:
+//
+//	        ManagedKubernetesRrsaMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesRrsaMetadataPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesRrsaMetadataPtrOutput() ManagedKubernetesRrsaMetadataPtrOutput
+	ToManagedKubernetesRrsaMetadataPtrOutputWithContext(context.Context) ManagedKubernetesRrsaMetadataPtrOutput
+}
+
+type managedKubernetesRrsaMetadataPtrType ManagedKubernetesRrsaMetadataArgs
+
+func ManagedKubernetesRrsaMetadataPtr(v *ManagedKubernetesRrsaMetadataArgs) ManagedKubernetesRrsaMetadataPtrInput {
+	return (*managedKubernetesRrsaMetadataPtrType)(v)
+}
+
+func (*managedKubernetesRrsaMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (i *managedKubernetesRrsaMetadataPtrType) ToManagedKubernetesRrsaMetadataPtrOutput() ManagedKubernetesRrsaMetadataPtrOutput {
+	return i.ToManagedKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesRrsaMetadataPtrType) ToManagedKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesRrsaMetadataPtrOutput)
+}
+
+type ManagedKubernetesRrsaMetadataOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesRrsaMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (o ManagedKubernetesRrsaMetadataOutput) ToManagedKubernetesRrsaMetadataOutput() ManagedKubernetesRrsaMetadataOutput {
+	return o
+}
+
+func (o ManagedKubernetesRrsaMetadataOutput) ToManagedKubernetesRrsaMetadataOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataOutput {
+	return o
+}
+
+func (o ManagedKubernetesRrsaMetadataOutput) ToManagedKubernetesRrsaMetadataPtrOutput() ManagedKubernetesRrsaMetadataPtrOutput {
+	return o.ToManagedKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesRrsaMetadataOutput) ToManagedKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesRrsaMetadata) *ManagedKubernetesRrsaMetadata {
+		return &v
+	}).(ManagedKubernetesRrsaMetadataPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesRrsaMetadataOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRrsaMetadata) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The arn of OIDC provider that was registered in RAM.
+func (o ManagedKubernetesRrsaMetadataOutput) RamOidcProviderArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRrsaMetadata) *string { return v.RamOidcProviderArn }).(pulumi.StringPtrOutput)
+}
+
+// The name of OIDC Provider that was registered in RAM.
+func (o ManagedKubernetesRrsaMetadataOutput) RamOidcProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRrsaMetadata) *string { return v.RamOidcProviderName }).(pulumi.StringPtrOutput)
+}
+
+// The issuer URL of RRSA OIDC Token.
+func (o ManagedKubernetesRrsaMetadataOutput) RrsaOidcIssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesRrsaMetadata) *string { return v.RrsaOidcIssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesRrsaMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesRrsaMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (o ManagedKubernetesRrsaMetadataPtrOutput) ToManagedKubernetesRrsaMetadataPtrOutput() ManagedKubernetesRrsaMetadataPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesRrsaMetadataPtrOutput) ToManagedKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ManagedKubernetesRrsaMetadataPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesRrsaMetadataPtrOutput) Elem() ManagedKubernetesRrsaMetadataOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRrsaMetadata) ManagedKubernetesRrsaMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesRrsaMetadata
+		return ret
+	}).(ManagedKubernetesRrsaMetadataOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesRrsaMetadataPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRrsaMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The arn of OIDC provider that was registered in RAM.
+func (o ManagedKubernetesRrsaMetadataPtrOutput) RamOidcProviderArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RamOidcProviderArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of OIDC Provider that was registered in RAM.
+func (o ManagedKubernetesRrsaMetadataPtrOutput) RamOidcProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RamOidcProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issuer URL of RRSA OIDC Token.
+func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RrsaOidcIssuerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedKubernetesRuntime struct {
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
@@ -4556,6 +4930,143 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NodePoolRollingPolicy struct {
+	// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+	MaxParallelism *int `pulumi:"maxParallelism"`
+}
+
+// NodePoolRollingPolicyInput is an input type that accepts NodePoolRollingPolicyArgs and NodePoolRollingPolicyOutput values.
+// You can construct a concrete instance of `NodePoolRollingPolicyInput` via:
+//
+//	NodePoolRollingPolicyArgs{...}
+type NodePoolRollingPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolRollingPolicyOutput() NodePoolRollingPolicyOutput
+	ToNodePoolRollingPolicyOutputWithContext(context.Context) NodePoolRollingPolicyOutput
+}
+
+type NodePoolRollingPolicyArgs struct {
+	// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+	MaxParallelism pulumi.IntPtrInput `pulumi:"maxParallelism"`
+}
+
+func (NodePoolRollingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolRollingPolicy)(nil)).Elem()
+}
+
+func (i NodePoolRollingPolicyArgs) ToNodePoolRollingPolicyOutput() NodePoolRollingPolicyOutput {
+	return i.ToNodePoolRollingPolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolRollingPolicyArgs) ToNodePoolRollingPolicyOutputWithContext(ctx context.Context) NodePoolRollingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRollingPolicyOutput)
+}
+
+func (i NodePoolRollingPolicyArgs) ToNodePoolRollingPolicyPtrOutput() NodePoolRollingPolicyPtrOutput {
+	return i.ToNodePoolRollingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolRollingPolicyArgs) ToNodePoolRollingPolicyPtrOutputWithContext(ctx context.Context) NodePoolRollingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRollingPolicyOutput).ToNodePoolRollingPolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolRollingPolicyPtrInput is an input type that accepts NodePoolRollingPolicyArgs, NodePoolRollingPolicyPtr and NodePoolRollingPolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolRollingPolicyPtrInput` via:
+//
+//	        NodePoolRollingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolRollingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolRollingPolicyPtrOutput() NodePoolRollingPolicyPtrOutput
+	ToNodePoolRollingPolicyPtrOutputWithContext(context.Context) NodePoolRollingPolicyPtrOutput
+}
+
+type nodePoolRollingPolicyPtrType NodePoolRollingPolicyArgs
+
+func NodePoolRollingPolicyPtr(v *NodePoolRollingPolicyArgs) NodePoolRollingPolicyPtrInput {
+	return (*nodePoolRollingPolicyPtrType)(v)
+}
+
+func (*nodePoolRollingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolRollingPolicy)(nil)).Elem()
+}
+
+func (i *nodePoolRollingPolicyPtrType) ToNodePoolRollingPolicyPtrOutput() NodePoolRollingPolicyPtrOutput {
+	return i.ToNodePoolRollingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolRollingPolicyPtrType) ToNodePoolRollingPolicyPtrOutputWithContext(ctx context.Context) NodePoolRollingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRollingPolicyPtrOutput)
+}
+
+type NodePoolRollingPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolRollingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolRollingPolicy)(nil)).Elem()
+}
+
+func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyOutput() NodePoolRollingPolicyOutput {
+	return o
+}
+
+func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyOutputWithContext(ctx context.Context) NodePoolRollingPolicyOutput {
+	return o
+}
+
+func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyPtrOutput() NodePoolRollingPolicyPtrOutput {
+	return o.ToNodePoolRollingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyPtrOutputWithContext(ctx context.Context) NodePoolRollingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolRollingPolicy) *NodePoolRollingPolicy {
+		return &v
+	}).(NodePoolRollingPolicyPtrOutput)
+}
+
+// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+func (o NodePoolRollingPolicyOutput) MaxParallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolRollingPolicy) *int { return v.MaxParallelism }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolRollingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolRollingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolRollingPolicy)(nil)).Elem()
+}
+
+func (o NodePoolRollingPolicyPtrOutput) ToNodePoolRollingPolicyPtrOutput() NodePoolRollingPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolRollingPolicyPtrOutput) ToNodePoolRollingPolicyPtrOutputWithContext(ctx context.Context) NodePoolRollingPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolRollingPolicyPtrOutput) Elem() NodePoolRollingPolicyOutput {
+	return o.ApplyT(func(v *NodePoolRollingPolicy) NodePoolRollingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolRollingPolicy
+		return ret
+	}).(NodePoolRollingPolicyOutput)
+}
+
+// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolRollingPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelism
+	}).(pulumi.IntPtrOutput)
+}
+
 type NodePoolRolloutPolicy struct {
 	// Max number of unavailable nodes. Default to `1`.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
@@ -5256,6 +5767,200 @@ func (o ServerlessKubernetesAddonArrayOutput) Index(i pulumi.IntInput) Serverles
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetesAddon {
 		return vs[0].([]ServerlessKubernetesAddon)[vs[1].(int)]
 	}).(ServerlessKubernetesAddonOutput)
+}
+
+type ServerlessKubernetesRrsaMetadata struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn *string `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName *string `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl *string `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+// ServerlessKubernetesRrsaMetadataInput is an input type that accepts ServerlessKubernetesRrsaMetadataArgs and ServerlessKubernetesRrsaMetadataOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesRrsaMetadataInput` via:
+//
+//	ServerlessKubernetesRrsaMetadataArgs{...}
+type ServerlessKubernetesRrsaMetadataInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesRrsaMetadataOutput() ServerlessKubernetesRrsaMetadataOutput
+	ToServerlessKubernetesRrsaMetadataOutputWithContext(context.Context) ServerlessKubernetesRrsaMetadataOutput
+}
+
+type ServerlessKubernetesRrsaMetadataArgs struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn pulumi.StringPtrInput `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName pulumi.StringPtrInput `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl pulumi.StringPtrInput `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+func (ServerlessKubernetesRrsaMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesRrsaMetadataArgs) ToServerlessKubernetesRrsaMetadataOutput() ServerlessKubernetesRrsaMetadataOutput {
+	return i.ToServerlessKubernetesRrsaMetadataOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesRrsaMetadataArgs) ToServerlessKubernetesRrsaMetadataOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesRrsaMetadataOutput)
+}
+
+func (i ServerlessKubernetesRrsaMetadataArgs) ToServerlessKubernetesRrsaMetadataPtrOutput() ServerlessKubernetesRrsaMetadataPtrOutput {
+	return i.ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesRrsaMetadataArgs) ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesRrsaMetadataOutput).ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(ctx)
+}
+
+// ServerlessKubernetesRrsaMetadataPtrInput is an input type that accepts ServerlessKubernetesRrsaMetadataArgs, ServerlessKubernetesRrsaMetadataPtr and ServerlessKubernetesRrsaMetadataPtrOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesRrsaMetadataPtrInput` via:
+//
+//	        ServerlessKubernetesRrsaMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessKubernetesRrsaMetadataPtrInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesRrsaMetadataPtrOutput() ServerlessKubernetesRrsaMetadataPtrOutput
+	ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(context.Context) ServerlessKubernetesRrsaMetadataPtrOutput
+}
+
+type serverlessKubernetesRrsaMetadataPtrType ServerlessKubernetesRrsaMetadataArgs
+
+func ServerlessKubernetesRrsaMetadataPtr(v *ServerlessKubernetesRrsaMetadataArgs) ServerlessKubernetesRrsaMetadataPtrInput {
+	return (*serverlessKubernetesRrsaMetadataPtrType)(v)
+}
+
+func (*serverlessKubernetesRrsaMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (i *serverlessKubernetesRrsaMetadataPtrType) ToServerlessKubernetesRrsaMetadataPtrOutput() ServerlessKubernetesRrsaMetadataPtrOutput {
+	return i.ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessKubernetesRrsaMetadataPtrType) ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesRrsaMetadataPtrOutput)
+}
+
+type ServerlessKubernetesRrsaMetadataOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesRrsaMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesRrsaMetadataOutput) ToServerlessKubernetesRrsaMetadataOutput() ServerlessKubernetesRrsaMetadataOutput {
+	return o
+}
+
+func (o ServerlessKubernetesRrsaMetadataOutput) ToServerlessKubernetesRrsaMetadataOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataOutput {
+	return o
+}
+
+func (o ServerlessKubernetesRrsaMetadataOutput) ToServerlessKubernetesRrsaMetadataPtrOutput() ServerlessKubernetesRrsaMetadataPtrOutput {
+	return o.ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessKubernetesRrsaMetadataOutput) ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessKubernetesRrsaMetadata) *ServerlessKubernetesRrsaMetadata {
+		return &v
+	}).(ServerlessKubernetesRrsaMetadataPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ServerlessKubernetesRrsaMetadataOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesRrsaMetadata) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The arn of OIDC provider that was registered in RAM.
+func (o ServerlessKubernetesRrsaMetadataOutput) RamOidcProviderArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesRrsaMetadata) *string { return v.RamOidcProviderArn }).(pulumi.StringPtrOutput)
+}
+
+// The name of OIDC Provider that was registered in RAM.
+func (o ServerlessKubernetesRrsaMetadataOutput) RamOidcProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesRrsaMetadata) *string { return v.RamOidcProviderName }).(pulumi.StringPtrOutput)
+}
+
+// The issuer URL of RRSA OIDC Token.
+func (o ServerlessKubernetesRrsaMetadataOutput) RrsaOidcIssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesRrsaMetadata) *string { return v.RrsaOidcIssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+type ServerlessKubernetesRrsaMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesRrsaMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesRrsaMetadata)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) ToServerlessKubernetesRrsaMetadataPtrOutput() ServerlessKubernetesRrsaMetadataPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) ToServerlessKubernetesRrsaMetadataPtrOutputWithContext(ctx context.Context) ServerlessKubernetesRrsaMetadataPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) Elem() ServerlessKubernetesRrsaMetadataOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesRrsaMetadata) ServerlessKubernetesRrsaMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessKubernetesRrsaMetadata
+		return ret
+	}).(ServerlessKubernetesRrsaMetadataOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesRrsaMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The arn of OIDC provider that was registered in RAM.
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) RamOidcProviderArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RamOidcProviderArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of OIDC Provider that was registered in RAM.
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) RamOidcProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RamOidcProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The issuer URL of RRSA OIDC Token.
+func (o ServerlessKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesRrsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RrsaOidcIssuerUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type SwarmNode struct {
@@ -8712,6 +9417,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionsPtrInput)(nil)).Elem(), EdgeKubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigPtrInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesRuntimeInput)(nil)).Elem(), EdgeKubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesRuntimePtrInput)(nil)).Elem(), EdgeKubernetesRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArgs{})
@@ -8744,6 +9451,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimeInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRuntimePtrInput)(nil)).Elem(), ManagedKubernetesRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesTaintInput)(nil)).Elem(), ManagedKubernetesTaintArgs{})
@@ -8760,6 +9469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelArrayInput)(nil)).Elem(), NodePoolLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementInput)(nil)).Elem(), NodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyPtrInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyPtrInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
@@ -8770,6 +9481,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintArrayInput)(nil)).Elem(), NodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonInput)(nil)).Elem(), ServerlessKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeArrayInput)(nil)).Elem(), SwarmNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArgs{})
@@ -8826,6 +9539,8 @@ func init() {
 	pulumi.RegisterOutputType(EdgeKubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesLogConfigOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesRuntimeOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesRuntimePtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeOutput{})
@@ -8858,6 +9573,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRuntimeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRuntimePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesTaintOutput{})
@@ -8874,6 +9591,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolRollingPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolRollingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolRolloutPolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})
@@ -8884,6 +9603,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})
 	pulumi.RegisterOutputType(SwarmNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterOutput{})

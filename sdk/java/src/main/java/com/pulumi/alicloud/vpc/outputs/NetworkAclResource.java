@@ -15,21 +15,14 @@ public final class NetworkAclResource {
      * @return The ID of the associated resource.
      * 
      */
-    private final @Nullable String resourceId;
+    private @Nullable String resourceId;
     /**
      * @return The type of the associated resource. Valid values `VSwitch`.
      * 
      */
-    private final @Nullable String resourceType;
+    private @Nullable String resourceType;
 
-    @CustomType.Constructor
-    private NetworkAclResource(
-        @CustomType.Parameter("resourceId") @Nullable String resourceId,
-        @CustomType.Parameter("resourceType") @Nullable String resourceType) {
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-    }
-
+    private NetworkAclResource() {}
     /**
      * @return The ID of the associated resource.
      * 
@@ -52,30 +45,32 @@ public final class NetworkAclResource {
     public static Builder builder(NetworkAclResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String resourceId;
         private @Nullable String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NetworkAclResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
-        }        public NetworkAclResource build() {
-            return new NetworkAclResource(resourceId, resourceType);
+        }
+        public NetworkAclResource build() {
+            final var o = new NetworkAclResource();
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

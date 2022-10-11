@@ -13,112 +13,79 @@ public final class GetDirectoriesDirectoryTask {
      * @return The ID of Access Configuration.
      * 
      */
-    private final String accessConfigurationId;
+    private String accessConfigurationId;
     /**
      * @return The Name of Access Configuration.
      * 
      */
-    private final String accessConfigurationName;
+    private String accessConfigurationName;
     /**
      * @return The End Time of Task.
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return the Reason for the Failure of  the task.
      * 
      */
-    private final String failureReason;
+    private String failureReason;
     /**
      * @return The ID of Cloud SSO Identity.
      * 
      */
-    private final String principalId;
+    private String principalId;
     /**
      * @return The Name of Cloud SSO Identity.
      * 
      */
-    private final String principalName;
+    private String principalName;
     /**
      * @return The Type of Cloud SSO Identity.
      * 
      */
-    private final String principalType;
+    private String principalType;
     /**
      * @return The Start Time of Task.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The Task Status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The Id of deploy target.
      * 
      */
-    private final String targetId;
+    private String targetId;
     /**
      * @return The Name of Deploy Target.
      * 
      */
-    private final String targetName;
+    private String targetName;
     /**
      * @return The Path in RD of Deploy Target.
      * 
      */
-    private final String targetPath;
+    private String targetPath;
     /**
      * @return The Type of Deploy Target.
      * 
      */
-    private final String targetType;
+    private String targetType;
     /**
      * @return The ID of the Task.
      * 
      */
-    private final String taskId;
+    private String taskId;
     /**
      * @return The Type of the Task.
      * 
      */
-    private final String taskType;
+    private String taskType;
 
-    @CustomType.Constructor
-    private GetDirectoriesDirectoryTask(
-        @CustomType.Parameter("accessConfigurationId") String accessConfigurationId,
-        @CustomType.Parameter("accessConfigurationName") String accessConfigurationName,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("failureReason") String failureReason,
-        @CustomType.Parameter("principalId") String principalId,
-        @CustomType.Parameter("principalName") String principalName,
-        @CustomType.Parameter("principalType") String principalType,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("targetId") String targetId,
-        @CustomType.Parameter("targetName") String targetName,
-        @CustomType.Parameter("targetPath") String targetPath,
-        @CustomType.Parameter("targetType") String targetType,
-        @CustomType.Parameter("taskId") String taskId,
-        @CustomType.Parameter("taskType") String taskType) {
-        this.accessConfigurationId = accessConfigurationId;
-        this.accessConfigurationName = accessConfigurationName;
-        this.endTime = endTime;
-        this.failureReason = failureReason;
-        this.principalId = principalId;
-        this.principalName = principalName;
-        this.principalType = principalType;
-        this.startTime = startTime;
-        this.status = status;
-        this.targetId = targetId;
-        this.targetName = targetName;
-        this.targetPath = targetPath;
-        this.targetType = targetType;
-        this.taskId = taskId;
-        this.taskType = taskType;
-    }
-
+    private GetDirectoriesDirectoryTask() {}
     /**
      * @return The ID of Access Configuration.
      * 
@@ -232,7 +199,7 @@ public final class GetDirectoriesDirectoryTask {
     public static Builder builder(GetDirectoriesDirectoryTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessConfigurationId;
         private String accessConfigurationName;
@@ -249,11 +216,7 @@ public final class GetDirectoriesDirectoryTask {
         private String targetType;
         private String taskId;
         private String taskType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDirectoriesDirectoryTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigurationId = defaults.accessConfigurationId;
@@ -273,67 +236,99 @@ public final class GetDirectoriesDirectoryTask {
     	      this.taskType = defaults.taskType;
         }
 
+        @CustomType.Setter
         public Builder accessConfigurationId(String accessConfigurationId) {
             this.accessConfigurationId = Objects.requireNonNull(accessConfigurationId);
             return this;
         }
+        @CustomType.Setter
         public Builder accessConfigurationName(String accessConfigurationName) {
             this.accessConfigurationName = Objects.requireNonNull(accessConfigurationName);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder failureReason(String failureReason) {
             this.failureReason = Objects.requireNonNull(failureReason);
             return this;
         }
+        @CustomType.Setter
         public Builder principalId(String principalId) {
             this.principalId = Objects.requireNonNull(principalId);
             return this;
         }
+        @CustomType.Setter
         public Builder principalName(String principalName) {
             this.principalName = Objects.requireNonNull(principalName);
             return this;
         }
+        @CustomType.Setter
         public Builder principalType(String principalType) {
             this.principalType = Objects.requireNonNull(principalType);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetName(String targetName) {
             this.targetName = Objects.requireNonNull(targetName);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPath(String targetPath) {
             this.targetPath = Objects.requireNonNull(targetPath);
             return this;
         }
+        @CustomType.Setter
         public Builder targetType(String targetType) {
             this.targetType = Objects.requireNonNull(targetType);
             return this;
         }
+        @CustomType.Setter
         public Builder taskId(String taskId) {
             this.taskId = Objects.requireNonNull(taskId);
             return this;
         }
+        @CustomType.Setter
         public Builder taskType(String taskType) {
             this.taskType = Objects.requireNonNull(taskType);
             return this;
-        }        public GetDirectoriesDirectoryTask build() {
-            return new GetDirectoriesDirectoryTask(accessConfigurationId, accessConfigurationName, endTime, failureReason, principalId, principalName, principalType, startTime, status, targetId, targetName, targetPath, targetType, taskId, taskType);
+        }
+        public GetDirectoriesDirectoryTask build() {
+            final var o = new GetDirectoriesDirectoryTask();
+            o.accessConfigurationId = accessConfigurationId;
+            o.accessConfigurationName = accessConfigurationName;
+            o.endTime = endTime;
+            o.failureReason = failureReason;
+            o.principalId = principalId;
+            o.principalName = principalName;
+            o.principalType = principalType;
+            o.startTime = startTime;
+            o.status = status;
+            o.targetId = targetId;
+            o.targetName = targetName;
+            o.targetPath = targetPath;
+            o.targetType = targetType;
+            o.taskId = taskId;
+            o.taskType = taskType;
+            return o;
         }
     }
 }

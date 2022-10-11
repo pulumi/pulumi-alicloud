@@ -17,29 +17,14 @@ public final class GetGtmInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetGtmInstancesInstance> instances;
-    private final @Nullable String lang;
-    private final String outputFile;
-    private final @Nullable String resourceGroupId;
+    private String id;
+    private List<String> ids;
+    private List<GetGtmInstancesInstance> instances;
+    private @Nullable String lang;
+    private String outputFile;
+    private @Nullable String resourceGroupId;
 
-    @CustomType.Constructor
-    private GetGtmInstancesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetGtmInstancesInstance> instances,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("outputFile") String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId) {
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.lang = lang;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-    }
-
+    private GetGtmInstancesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetGtmInstancesResult {
     public static Builder builder(GetGtmInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetGtmInstancesResult {
         private @Nullable String lang;
         private String outputFile;
         private @Nullable String resourceGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGtmInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetGtmInstancesResult {
     	      this.resourceGroupId = defaults.resourceGroupId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,6 +87,7 @@ public final class GetGtmInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetGtmInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -111,19 +95,30 @@ public final class GetGtmInstancesResult {
         public Builder instances(GetGtmInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(String outputFile) {
             this.outputFile = Objects.requireNonNull(outputFile);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
-        }        public GetGtmInstancesResult build() {
-            return new GetGtmInstancesResult(id, ids, instances, lang, outputFile, resourceGroupId);
+        }
+        public GetGtmInstancesResult build() {
+            final var o = new GetGtmInstancesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.lang = lang;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            return o;
         }
     }
 }

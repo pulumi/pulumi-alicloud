@@ -143,7 +143,7 @@ type Instance struct {
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
@@ -335,7 +335,7 @@ type instanceState struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
@@ -490,7 +490,7 @@ type InstanceState struct {
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
@@ -645,7 +645,7 @@ type instanceArgs struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
@@ -797,7 +797,7 @@ type InstanceArgs struct {
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
@@ -1185,7 +1185,7 @@ func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 func (o InstanceOutput) SystemDiskCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
 }

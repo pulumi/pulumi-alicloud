@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ots.inputs;
 
+import com.pulumi.alicloud.ots.inputs.TableDefinedColumnArgs;
 import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class TableState extends com.pulumi.resources.ResourceArgs {
 
     public static final TableState Empty = new TableState();
+
+    /**
+     * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * 
+     */
+    @Import(name="definedColumns")
+    private @Nullable Output<List<TableDefinedColumnArgs>> definedColumns;
+
+    /**
+     * @return The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+     * 
+     */
+    public Optional<Output<List<TableDefinedColumnArgs>>> definedColumns() {
+        return Optional.ofNullable(this.definedColumns);
+    }
 
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -142,6 +158,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private TableState() {}
 
     private TableState(TableState $) {
+        this.definedColumns = $.definedColumns;
         this.deviationCellVersionInSec = $.deviationCellVersionInSec;
         this.enableSse = $.enableSse;
         this.instanceName = $.instanceName;
@@ -168,6 +185,37 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableState defaults) {
             $ = new TableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder definedColumns(@Nullable Output<List<TableDefinedColumnArgs>> definedColumns) {
+            $.definedColumns = definedColumns;
+            return this;
+        }
+
+        /**
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder definedColumns(List<TableDefinedColumnArgs> definedColumns) {
+            return definedColumns(Output.of(definedColumns));
+        }
+
+        /**
+         * @param definedColumns The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder definedColumns(TableDefinedColumnArgs... definedColumns) {
+            return definedColumns(List.of(definedColumns));
         }
 
         /**

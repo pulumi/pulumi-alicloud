@@ -1721,6 +1721,8 @@ type InstanceDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
+	// The mount point of the data disk.
+	Device *string `pulumi:"device"`
 	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the Nth data disk.
@@ -1771,6 +1773,8 @@ type InstanceDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The mount point of the data disk.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the Nth data disk.
@@ -1870,6 +1874,11 @@ func (o InstanceDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 // The description of the data disk.
 func (o InstanceDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the data disk.
+func (o InstanceDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.

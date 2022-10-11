@@ -10,6 +10,7 @@ import com.pulumi.alicloud.cs.outputs.EdgeKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesLogConfig;
+import com.pulumi.alicloud.cs.outputs.EdgeKubernetesRuntime;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesWorkerDataDisk;
 import com.pulumi.alicloud.cs.outputs.EdgeKubernetesWorkerNode;
 import com.pulumi.core.Output;
@@ -28,7 +29,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+ * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  * 
  * ```sh
  *  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
@@ -37,9 +38,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cs/edgeKubernetes:EdgeKubernetes")
 public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
+    /**
+     * The addon you want to install in cluster.
+     * 
+     */
     @Export(name="addons", type=List.class, parameters={EdgeKubernetesAddon.class})
     private Output</* @Nullable */ List<EdgeKubernetesAddon>> addons;
 
+    /**
+     * @return The addon you want to install in cluster.
+     * 
+     */
     public Output<Optional<List<EdgeKubernetesAddon>>> addons() {
         return Codegen.optional(this.addons);
     }
@@ -113,9 +122,35 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> clusterCaCert() {
         return Codegen.optional(this.clusterCaCert);
     }
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     * 
+     */
+    @Export(name="clusterSpec", type=String.class, parameters={})
+    private Output<String> clusterSpec;
+
+    /**
+     * @return The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     * 
+     */
+    public Output<String> clusterSpec() {
+        return this.clusterSpec;
+    }
+    /**
+     * Map of kubernetes cluster connection information.
+     * 
+     */
     @Export(name="connections", type=EdgeKubernetesConnections.class, parameters={})
     private Output<EdgeKubernetesConnections> connections;
 
+    /**
+     * @return Map of kubernetes cluster connection information.
+     * 
+     */
     public Output<EdgeKubernetesConnections> connections() {
         return this.connections;
     }
@@ -192,7 +227,11 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Export(name="kubeConfig", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubeConfig;
 
@@ -203,9 +242,35 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> kubeConfig() {
         return Codegen.optional(this.kubeConfig);
     }
+    /**
+     * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * 
+     */
+    @Export(name="loadBalancerSpec", type=String.class, parameters={})
+    private Output<String> loadBalancerSpec;
+
+    /**
+     * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * 
+     */
+    public Output<String> loadBalancerSpec() {
+        return this.loadBalancerSpec;
+    }
+    /**
+     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * 
+     * @deprecated
+     * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
     @Export(name="logConfig", type=EdgeKubernetesLogConfig.class, parameters={})
     private Output</* @Nullable */ EdgeKubernetesLogConfig> logConfig;
 
+    /**
+     * @return A list of one element containing information about the associated log store. It contains the following attributes:
+     * 
+     */
     public Output<Optional<EdgeKubernetesLogConfig>> logConfig() {
         return Codegen.optional(this.logConfig);
     }
@@ -313,9 +378,17 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> proxyMode() {
         return Codegen.optional(this.proxyMode);
     }
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * 
+     */
     @Export(name="rdsInstances", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> rdsInstances;
 
+    /**
+     * @return RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * 
+     */
     public Output<Optional<List<String>>> rdsInstances() {
         return Codegen.optional(this.rdsInstances);
     }
@@ -338,6 +411,20 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> retainResources() {
         return Codegen.optional(this.retainResources);
+    }
+    /**
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * 
+     */
+    @Export(name="runtime", type=EdgeKubernetesRuntime.class, parameters={})
+    private Output</* @Nullable */ EdgeKubernetesRuntime> runtime;
+
+    /**
+     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * 
+     */
+    public Output<Optional<EdgeKubernetesRuntime>> runtime() {
+        return Codegen.optional(this.runtime);
     }
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -367,9 +454,17 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> serviceCidr() {
         return Codegen.optional(this.serviceCidr);
     }
+    /**
+     * The public ip of load balancer.
+     * 
+     */
     @Export(name="slbInternet", type=String.class, parameters={})
     private Output<String> slbInternet;
 
+    /**
+     * @return The public ip of load balancer.
+     * 
+     */
     public Output<String> slbInternet() {
         return this.slbInternet;
     }
@@ -527,21 +622,29 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> workerDiskSnapshotPolicyId() {
         return Codegen.optional(this.workerDiskSnapshotPolicyId);
     }
+    /**
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * 
+     */
     @Export(name="workerInstanceChargeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> workerInstanceChargeType;
 
+    /**
+     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * 
+     */
     public Output<Optional<String>> workerInstanceChargeType() {
         return Codegen.optional(this.workerInstanceChargeType);
     }
     /**
-     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      * 
      */
     @Export(name="workerInstanceTypes", type=List.class, parameters={String.class})
     private Output<List<String>> workerInstanceTypes;
 
     /**
-     * @return The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * @return The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      * 
      */
     public Output<List<String>> workerInstanceTypes() {
@@ -575,9 +678,31 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<Integer> workerNumber() {
         return this.workerNumber;
     }
+    /**
+     * The RamRole Name attached to worker node.
+     * 
+     */
+    @Export(name="workerRamRoleName", type=String.class, parameters={})
+    private Output<String> workerRamRoleName;
+
+    /**
+     * @return The RamRole Name attached to worker node.
+     * 
+     */
+    public Output<String> workerRamRoleName() {
+        return this.workerRamRoleName;
+    }
+    /**
+     * The vswitches used by workers.
+     * 
+     */
     @Export(name="workerVswitchIds", type=List.class, parameters={String.class})
     private Output<List<String>> workerVswitchIds;
 
+    /**
+     * @return The vswitches used by workers.
+     * 
+     */
     public Output<List<String>> workerVswitchIds() {
         return this.workerVswitchIds;
     }

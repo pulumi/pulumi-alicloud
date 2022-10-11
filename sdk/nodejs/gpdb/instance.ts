@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -10,51 +11,12 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  Available in 1.47.0+
  *
- * > **NOTE:**  The following regions don't support create Classic network Gpdb instance.
- * [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
- *
- * > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
- *
- * > **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating a new reserved storage mode instance is no longer supported since v1.127.0.
- * You can still use this resource to manage the instance which has been already created, but can not create a new one.
- *
- * ## Example Usage
- * ### Create a Gpdb instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "Gpdb",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     vswitchName: "vpc-123456",
- * });
- * const example = new alicloud.gpdb.Instance("example", {
- *     description: "tf-gpdb-test",
- *     engine: "gpdb",
- *     engineVersion: "4.3",
- *     instanceClass: "gpdb.group.segsdx2",
- *     instanceGroupCount: "2",
- *     vswitchId: defaultSwitch.id,
- *     securityIpLists: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * AnalyticDB for PostgreSQL can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+ *  $ pulumi import alicloud:gpdb/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -85,43 +47,141 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
+     */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     */
+    public readonly createSampleData!: pulumi.Output<boolean>;
+    /**
+     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    public readonly dbInstanceCategory!: pulumi.Output<string>;
+    /**
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    public readonly dbInstanceClass!: pulumi.Output<string | undefined>;
+    /**
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     */
+    public readonly dbInstanceMode!: pulumi.Output<string>;
+    /**
+     * The description of the instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Database engine: gpdb. System Default value: gpdb.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The version of the database engine used by the instance.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    public readonly instanceGroupCount!: pulumi.Output<number | undefined>;
     /**
-     * The number of groups. Valid values: [2,4,8,16,32]
+     * The network type of the instance.
      */
-    public readonly instanceGroupCount!: pulumi.Output<string>;
+    public readonly instanceNetworkType!: pulumi.Output<string>;
     /**
-     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * The specification of segment nodes.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    public readonly instanceSpec!: pulumi.Output<string | undefined>;
+    /**
+     * The ip whitelist.
+     */
+    public readonly ipWhitelists!: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[] | undefined>;
+    /**
+     * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     */
+    public readonly maintainEndTime!: pulumi.Output<string>;
+    /**
+     * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     */
+    public readonly maintainStartTime!: pulumi.Output<string>;
+    /**
+     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     */
+    public readonly masterNodeNum!: pulumi.Output<number | undefined>;
+    /**
+     * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
+     */
+    public readonly period!: pulumi.Output<string | undefined>;
+    /**
+     * The private ip address.
+     */
+    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the enterprise resource group to which the instance belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+     *
+     * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
+     */
+    public readonly securityIpLists!: pulumi.Output<string[] | undefined>;
+    /**
+     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     */
+    public readonly segNodeNum!: pulumi.Output<number>;
+    /**
+     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     */
+    public readonly segStorageType!: pulumi.Output<string | undefined>;
+    /**
+     * The status of the instance.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    public readonly storageSize!: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+     */
+    public readonly usedTime!: pulumi.Output<string | undefined>;
+    /**
+     * The vpc ID of the resource.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
+     * The vswitch id.
      */
     public readonly vswitchId!: pulumi.Output<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -137,39 +197,79 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["createSampleData"] = state ? state.createSampleData : undefined;
+            resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
+            resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceMode"] = state ? state.dbInstanceMode : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
             resourceInputs["instanceGroupCount"] = state ? state.instanceGroupCount : undefined;
+            resourceInputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
+            resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
+            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
+            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["masterNodeNum"] = state ? state.masterNodeNum : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
+            resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            if ((!args || args.dbInstanceMode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dbInstanceMode'");
+            }
             if ((!args || args.engine === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
             if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.instanceClass === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceClass'");
-            }
-            if ((!args || args.instanceGroupCount === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceGroupCount'");
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["createSampleData"] = args ? args.createSampleData : undefined;
+            resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
+            resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceMode"] = args ? args.dbInstanceMode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
             resourceInputs["instanceGroupCount"] = args ? args.instanceGroupCount : undefined;
+            resourceInputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
+            resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
+            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
+            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["masterNodeNum"] = args ? args.masterNodeNum : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
+            resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
+            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -180,84 +280,276 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
+     */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     */
+    createSampleData?: pulumi.Input<boolean>;
+    /**
+     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    dbInstanceCategory?: pulumi.Input<string>;
+    /**
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    dbInstanceClass?: pulumi.Input<string>;
+    /**
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     */
+    dbInstanceMode?: pulumi.Input<string>;
+    /**
+     * The description of the instance.
      */
     description?: pulumi.Input<string>;
     /**
-     * Database engine: gpdb. System Default value: gpdb.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
     engine?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The version of the database engine used by the instance.
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceGroupCount?: pulumi.Input<number>;
     /**
-     * The number of groups. Valid values: [2,4,8,16,32]
+     * The network type of the instance.
      */
-    instanceGroupCount?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string>;
     /**
-     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * The specification of segment nodes.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     */
+    instanceSpec?: pulumi.Input<string>;
+    /**
+     * The ip whitelist.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
+    /**
+     * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     */
+    maintainEndTime?: pulumi.Input<string>;
+    /**
+     * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     */
+    maintainStartTime?: pulumi.Input<string>;
+    /**
+     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     */
+    masterNodeNum?: pulumi.Input<number>;
+    /**
+     * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
+     */
+    period?: pulumi.Input<string>;
+    /**
+     * The private ip address.
+     */
+    privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the enterprise resource group to which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+     *
+     * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     */
+    segNodeNum?: pulumi.Input<number>;
+    /**
+     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     */
+    segStorageType?: pulumi.Input<string>;
+    /**
+     * The status of the instance.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    storageSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
+     */
+    usedTime?: pulumi.Input<string>;
+    /**
+     * The vpc ID of the resource.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The vswitch id.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.
+     */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     */
+    createSampleData?: pulumi.Input<boolean>;
+    /**
+     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    dbInstanceCategory?: pulumi.Input<string>;
+    /**
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    dbInstanceClass?: pulumi.Input<string>;
+    /**
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     */
+    dbInstanceMode: pulumi.Input<string>;
+    /**
+     * The description of the instance.
      */
     description?: pulumi.Input<string>;
     /**
-     * Database engine: gpdb. System Default value: gpdb.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
     engine: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The version of the database engine used by the instance.
      */
     engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      */
-    instanceClass: pulumi.Input<string>;
+    instanceGroupCount?: pulumi.Input<number>;
     /**
-     * The number of groups. Valid values: [2,4,8,16,32]
+     * The network type of the instance.
      */
-    instanceGroupCount: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string>;
     /**
-     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * The specification of segment nodes.
+     * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     */
+    instanceSpec?: pulumi.Input<string>;
+    /**
+     * The ip whitelist.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
+    /**
+     * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     */
+    maintainEndTime?: pulumi.Input<string>;
+    /**
+     * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     */
+    maintainStartTime?: pulumi.Input<string>;
+    /**
+     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     */
+    masterNodeNum?: pulumi.Input<number>;
+    /**
+     * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
+     */
+    period?: pulumi.Input<string>;
+    /**
+     * The private ip address.
+     */
+    privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the enterprise resource group to which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+     *
+     * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     */
+    segNodeNum?: pulumi.Input<number>;
+    /**
+     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
+     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     */
+    segStorageType?: pulumi.Input<string>;
+    /**
+     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     */
+    storageSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The used time. When the parameter `period` is `Year`, the `usedTime` value is 1 to 3. When the parameter `period` is `Month`, the `usedTime` value is 1 to 9.
      */
-    vswitchId?: pulumi.Input<string>;
+    usedTime?: pulumi.Input<string>;
+    /**
+     * The vpc ID of the resource.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The vswitch id.
+     */
+    vswitchId: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

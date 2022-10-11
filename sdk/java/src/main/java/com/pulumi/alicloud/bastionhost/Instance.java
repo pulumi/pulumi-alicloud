@@ -110,6 +110,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * 
+     */
+    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> renewPeriod;
+
+    /**
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * 
+     */
+    public Output<Optional<Integer>> renewPeriod() {
+        return Codegen.optional(this.renewPeriod);
+    }
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     * 
+     */
+    @Export(name="renewalStatus", type=String.class, parameters={})
+    private Output<String> renewalStatus;
+
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     * 
+     */
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      * 
      */

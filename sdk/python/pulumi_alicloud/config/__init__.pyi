@@ -56,6 +56,11 @@ fc: Optional[str]
 
 logEndpoint: Optional[str]
 
+maxRetryTimeout: Optional[int]
+"""
+The maximum retry timeout of the request.
+"""
+
 mnsEndpoint: Optional[str]
 
 otsInstanceName: Optional[str]

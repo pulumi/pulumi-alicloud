@@ -213,6 +213,12 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Output("vswitchId")]
@@ -418,6 +424,12 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
@@ -606,6 +618,12 @@ namespace Pulumi.AliCloud.Hbase
             get => _uiProxyConnAddrs ?? (_uiProxyConnAddrs = new InputList<Inputs.InstanceUiProxyConnAddrGetArgs>());
             set => _uiProxyConnAddrs = value;
         }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.

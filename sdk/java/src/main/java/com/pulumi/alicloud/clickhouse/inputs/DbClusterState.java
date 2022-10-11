@@ -263,6 +263,21 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The vswitch id of DBCluster.
      * 
      */
@@ -275,6 +290,21 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private DbClusterState() {}
@@ -296,7 +326,9 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.storageType = $.storageType;
         this.usedTime = $.usedTime;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -668,6 +700,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
          * @param vswitchId The vswitch id of DBCluster.
          * 
          * @return builder
@@ -686,6 +739,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public DbClusterState build() {

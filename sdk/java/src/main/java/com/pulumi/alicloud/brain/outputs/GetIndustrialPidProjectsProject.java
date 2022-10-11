@@ -13,42 +13,29 @@ public final class GetIndustrialPidProjectsProject {
      * @return The ID of the Pid Project.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of Pid Organization.
      * 
      */
-    private final String pidOrganizationId;
+    private String pidOrganizationId;
     /**
      * @return The description of Pid Project.
      * 
      */
-    private final String pidProjectDesc;
+    private String pidProjectDesc;
     /**
      * @return The ID of Pid Project.
      * 
      */
-    private final String pidProjectId;
+    private String pidProjectId;
     /**
      * @return The name of Pid Project.
      * 
      */
-    private final String pidProjectName;
+    private String pidProjectName;
 
-    @CustomType.Constructor
-    private GetIndustrialPidProjectsProject(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pidOrganizationId") String pidOrganizationId,
-        @CustomType.Parameter("pidProjectDesc") String pidProjectDesc,
-        @CustomType.Parameter("pidProjectId") String pidProjectId,
-        @CustomType.Parameter("pidProjectName") String pidProjectName) {
-        this.id = id;
-        this.pidOrganizationId = pidOrganizationId;
-        this.pidProjectDesc = pidProjectDesc;
-        this.pidProjectId = pidProjectId;
-        this.pidProjectName = pidProjectName;
-    }
-
+    private GetIndustrialPidProjectsProject() {}
     /**
      * @return The ID of the Pid Project.
      * 
@@ -92,18 +79,14 @@ public final class GetIndustrialPidProjectsProject {
     public static Builder builder(GetIndustrialPidProjectsProject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String pidOrganizationId;
         private String pidProjectDesc;
         private String pidProjectId;
         private String pidProjectName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIndustrialPidProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -113,27 +96,39 @@ public final class GetIndustrialPidProjectsProject {
     	      this.pidProjectName = defaults.pidProjectName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pidOrganizationId(String pidOrganizationId) {
             this.pidOrganizationId = Objects.requireNonNull(pidOrganizationId);
             return this;
         }
+        @CustomType.Setter
         public Builder pidProjectDesc(String pidProjectDesc) {
             this.pidProjectDesc = Objects.requireNonNull(pidProjectDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder pidProjectId(String pidProjectId) {
             this.pidProjectId = Objects.requireNonNull(pidProjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder pidProjectName(String pidProjectName) {
             this.pidProjectName = Objects.requireNonNull(pidProjectName);
             return this;
-        }        public GetIndustrialPidProjectsProject build() {
-            return new GetIndustrialPidProjectsProject(id, pidOrganizationId, pidProjectDesc, pidProjectId, pidProjectName);
+        }
+        public GetIndustrialPidProjectsProject build() {
+            final var o = new GetIndustrialPidProjectsProject();
+            o.id = id;
+            o.pidOrganizationId = pidOrganizationId;
+            o.pidProjectDesc = pidProjectDesc;
+            o.pidProjectId = pidProjectId;
+            o.pidProjectName = pidProjectName;
+            return o;
         }
     }
 }

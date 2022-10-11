@@ -190,6 +190,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
                  ip_count: int,
                  ip_type: str,
                  name: str,
+                 normal_bandwidth: int,
                  region: str,
                  type: str):
         """
@@ -199,6 +200,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
         :param int ip_count: The instance's count of ip config.
         :param str ip_type: The instance's IP version.
         :param str name: The instance's remark.
+        :param int normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
         :param str region: A region of instance.
         :param str type: The instance's type.
         """
@@ -208,6 +210,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
         pulumi.set(__self__, "ip_count", ip_count)
         pulumi.set(__self__, "ip_type", ip_type)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "type", type)
 
@@ -258,6 +261,14 @@ class GetDdosBgpInstancesInstanceResult(dict):
         The instance's remark.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="normalBandwidth")
+    def normal_bandwidth(self) -> int:
+        """
+        Normal defend bandwidth of the instance. The unit is Gbps.
+        """
+        return pulumi.get(self, "normal_bandwidth")
 
     @property
     @pulumi.getter

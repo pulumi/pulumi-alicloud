@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+ * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
@@ -42,6 +42,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeKubernetes.__pulumiType;
     }
 
+    /**
+     * The addon you want to install in cluster.
+     */
     public readonly addons!: pulumi.Output<outputs.cs.EdgeKubernetesAddon[] | undefined>;
     /**
      * The ID of availability zone.
@@ -63,6 +66,15 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     */
+    public readonly clusterSpec!: pulumi.Output<string>;
+    /**
+     * Map of kubernetes cluster connection information.
+     */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.EdgeKubernetesConnections>;
     /**
      * Whether to enable cluster deletion protection.
@@ -86,8 +98,19 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly keyName!: pulumi.Output<string | undefined>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    /**
+     * A list of one element containing information about the associated log store. It contains the following attributes:
+     *
+     * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+     */
     public readonly logConfig!: pulumi.Output<outputs.cs.EdgeKubernetesLogConfig | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -118,12 +141,19 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    /**
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     */
+    public readonly runtime!: pulumi.Output<outputs.cs.EdgeKubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -132,6 +162,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    /**
+     * The public ip of load balancer.
+     */
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
@@ -177,9 +210,12 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * Worker node system disk auto snapshot policy.
      */
     public readonly workerDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    /**
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     */
     public readonly workerInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[]>;
     /**
@@ -190,6 +226,13 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
     public readonly workerNumber!: pulumi.Output<number>;
+    /**
+     * The RamRole Name attached to worker node.
+     */
+    public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
+    /**
+     * The vswitches used by workers.
+     */
     public readonly workerVswitchIds!: pulumi.Output<string[]>;
 
     /**
@@ -211,6 +254,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["clientCert"] = state ? state.clientCert : undefined;
             resourceInputs["clientKey"] = state ? state.clientKey : undefined;
             resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
+            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             resourceInputs["connections"] = state ? state.connections : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
@@ -218,6 +262,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
@@ -230,6 +275,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retainResources"] = state ? state.retainResources : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             resourceInputs["slbInternet"] = state ? state.slbInternet : undefined;
@@ -248,6 +294,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["workerInstanceTypes"] = state ? state.workerInstanceTypes : undefined;
             resourceInputs["workerNodes"] = state ? state.workerNodes : undefined;
             resourceInputs["workerNumber"] = state ? state.workerNumber : undefined;
+            resourceInputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
             resourceInputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as EdgeKubernetesArgs | undefined;
@@ -265,12 +312,14 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
+            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             resourceInputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -282,6 +331,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             resourceInputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
@@ -304,6 +354,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             resourceInputs["slbIntranet"] = undefined /*out*/;
             resourceInputs["vpcId"] = undefined /*out*/;
             resourceInputs["workerNodes"] = undefined /*out*/;
+            resourceInputs["workerRamRoleName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeKubernetes.__pulumiType, name, resourceInputs, opts);
@@ -314,6 +365,9 @@ export class EdgeKubernetes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeKubernetes resources.
  */
 export interface EdgeKubernetesState {
+    /**
+     * The addon you want to install in cluster.
+     */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
@@ -335,6 +389,15 @@ export interface EdgeKubernetesState {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     clusterCaCert?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     */
+    clusterSpec?: pulumi.Input<string>;
+    /**
+     * Map of kubernetes cluster connection information.
+     */
     connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
     /**
      * Whether to enable cluster deletion protection.
@@ -358,8 +421,19 @@ export interface EdgeKubernetesState {
     keyName?: pulumi.Input<string>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    loadBalancerSpec?: pulumi.Input<string>;
+    /**
+     * A list of one element containing information about the associated log store. It contains the following attributes:
+     *
+     * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+     */
     logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -390,12 +464,19 @@ export interface EdgeKubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     */
+    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -404,6 +485,9 @@ export interface EdgeKubernetesState {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     serviceCidr?: pulumi.Input<string>;
+    /**
+     * The public ip of load balancer.
+     */
     slbInternet?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
@@ -449,9 +533,12 @@ export interface EdgeKubernetesState {
      * Worker node system disk auto snapshot policy.
      */
     workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    /**
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     */
     workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      */
     workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -462,6 +549,13 @@ export interface EdgeKubernetesState {
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
     workerNumber?: pulumi.Input<number>;
+    /**
+     * The RamRole Name attached to worker node.
+     */
+    workerRamRoleName?: pulumi.Input<string>;
+    /**
+     * The vswitches used by workers.
+     */
     workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -469,6 +563,9 @@ export interface EdgeKubernetesState {
  * The set of arguments for constructing a EdgeKubernetes resource.
  */
 export interface EdgeKubernetesArgs {
+    /**
+     * The addon you want to install in cluster.
+     */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
     /**
      * The ID of availability zone.
@@ -486,6 +583,12 @@ export interface EdgeKubernetesArgs {
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
     clusterCaCert?: pulumi.Input<string>;
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     */
+    clusterSpec?: pulumi.Input<string>;
     /**
      * Whether to enable cluster deletion protection.
      */
@@ -508,8 +611,19 @@ export interface EdgeKubernetesArgs {
     keyName?: pulumi.Input<string>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    loadBalancerSpec?: pulumi.Input<string>;
+    /**
+     * A list of one element containing information about the associated log store. It contains the following attributes:
+     *
+     * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+     */
     logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -536,12 +650,19 @@ export interface EdgeKubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     */
+    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -586,14 +707,20 @@ export interface EdgeKubernetesArgs {
      * Worker node system disk auto snapshot policy.
      */
     workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    /**
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     */
     workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      */
     workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
     workerNumber: pulumi.Input<number>;
+    /**
+     * The vswitches used by workers.
+     */
     workerVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
 }

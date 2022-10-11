@@ -539,10 +539,10 @@ import (
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				DesiredSize:        pulumi.Int(3),
 //				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
-//					RegistryPullQps: pulumi.String("0"),
-//					RegistryBurst:   pulumi.String("0"),
-//					EventRecordQps:  pulumi.String("0"),
-//					EventBurst:      pulumi.String("0"),
+//					RegistryPullQps: pulumi.String("10"),
+//					RegistryBurst:   pulumi.String("5"),
+//					EventRecordQps:  pulumi.String("10"),
+//					EventBurst:      pulumi.String("5"),
 //					EvictionHard: pulumi.AnyMap{
 //						"memory.available":            pulumi.Any("1024Mi"),
 //						"nodefs.available":            pulumi.Any(fmt.Sprintf("10%v", "%")),
@@ -555,15 +555,15 @@ import (
 //					SystemReserved: pulumi.AnyMap{
 //						"cpu":               pulumi.Any("1"),
 //						"memory":            pulumi.Any("1Gi"),
-//						"ephemeral_storage": pulumi.Any("10Gi"),
+//						"ephemeral-storage": pulumi.Any("10Gi"),
 //					},
 //					KubeReserved: pulumi.AnyMap{
 //						"cpu":    pulumi.Any("500m"),
 //						"memory": pulumi.Any("1Gi"),
 //					},
 //				},
-//				RolloutPolicy: &cs.NodePoolRolloutPolicyArgs{
-//					MaxUnavailable: pulumi.Int(1),
+//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
+//					MaxParallelism: pulumi.Int(1),
 //				},
 //			})
 //			if err != nil {
@@ -591,7 +591,7 @@ type NodePool struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrOutput `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -657,7 +657,11 @@ type NodePool struct {
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrOutput `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
@@ -675,7 +679,7 @@ type NodePool struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
@@ -752,7 +756,7 @@ type nodePoolState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
@@ -818,7 +822,11 @@ type nodePoolState struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
@@ -836,7 +844,7 @@ type nodePoolState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
@@ -876,7 +884,7 @@ type NodePoolState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
@@ -942,7 +950,11 @@ type NodePoolState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
@@ -960,7 +972,7 @@ type NodePoolState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
@@ -1004,7 +1016,7 @@ type nodePoolArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -1070,7 +1082,11 @@ type nodePoolArgs struct {
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
@@ -1086,7 +1102,7 @@ type nodePoolArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
@@ -1125,7 +1141,7 @@ type NodePoolArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
@@ -1191,7 +1207,11 @@ type NodePoolArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
@@ -1207,7 +1227,7 @@ type NodePoolArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
@@ -1337,7 +1357,7 @@ func (o NodePoolOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 func (o NodePoolOutput) CisEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.CisEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1496,7 +1516,14 @@ func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
+}
+
+// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+//
+// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 func (o NodePoolOutput) RolloutPolicy() NodePoolRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRolloutPolicyPtrOutput { return v.RolloutPolicy }).(NodePoolRolloutPolicyPtrOutput)
 }
@@ -1538,7 +1565,7 @@ func (o NodePoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 // > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)

@@ -15,231 +15,164 @@ public final class GetVirtualBorderRoutersRouter {
      * @return The physical leased line access point ID.
      * 
      */
-    private final String accessPointId;
+    private String accessPointId;
     /**
      * @return The first activation time of VBR.
      * 
      */
-    private final String activationTime;
+    private String activationTime;
     /**
      * @return Operators for physical connection circuit provided coding.
      * 
      */
-    private final String circuitCode;
+    private String circuitCode;
     /**
      * @return Box Instance Id.
      * 
      */
-    private final String cloudBoxInstanceId;
+    private String cloudBoxInstanceId;
     /**
      * @return The representative of the creation time resources attribute field.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
      * 
      */
-    private final Integer detectMultiplier;
+    private Integer detectMultiplier;
     /**
      * @return High Speed Migration Service Instance Id.
      * 
      */
-    private final String eccId;
+    private String eccId;
     /**
      * @return Whether to Enable IPv6.
      * 
      */
-    private final Boolean enableIpv6;
+    private Boolean enableIpv6;
     /**
      * @return The ID of the Virtual Border Router.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Alibaba Cloud-Connected IPv4 address.
      * 
      */
-    private final String localGatewayIp;
+    private String localGatewayIp;
     /**
      * @return Alibaba Cloud-Connected IPv6 Address.
      * 
      */
-    private final String localIpv6GatewayIp;
+    private String localIpv6GatewayIp;
     /**
      * @return Configure BFD packet reception interval of values include: 200~1000, unit: ms.
      * 
      */
-    private final Integer minRxInterval;
+    private Integer minRxInterval;
     /**
      * @return Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
      * 
      */
-    private final Integer minTxInterval;
+    private Integer minTxInterval;
     /**
      * @return The Billing of the Extended Time.
      * 
      */
-    private final String paymentVbrExpireTime;
+    private String paymentVbrExpireTime;
     /**
      * @return The Client-Side Interconnection IPv4 Address.
      * 
      */
-    private final String peerGatewayIp;
+    private String peerGatewayIp;
     /**
      * @return The Client-Side Interconnection IPv6 Address.
      * 
      */
-    private final String peerIpv6GatewayIp;
+    private String peerIpv6GatewayIp;
     /**
      * @return Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
      * 
      */
-    private final String peeringIpv6SubnetMask;
+    private String peeringIpv6SubnetMask;
     /**
      * @return Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
      * 
      */
-    private final String peeringSubnetMask;
+    private String peeringSubnetMask;
     /**
      * @return Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
      * 
      */
-    private final String physicalConnectionBusinessStatus;
+    private String physicalConnectionBusinessStatus;
     /**
      * @return The ID of the Physical Connection to Which the ID.
      * 
      */
-    private final String physicalConnectionId;
+    private String physicalConnectionId;
     /**
      * @return Physical Private Line Where the Account ID.
      * 
      */
-    private final String physicalConnectionOwnerUid;
+    private String physicalConnectionOwnerUid;
     /**
      * @return Physical Private Line State.
      * 
      */
-    private final String physicalConnectionStatus;
+    private String physicalConnectionStatus;
     /**
      * @return The Last from a Terminated State to the Active State of the Time.
      * 
      */
-    private final String recoveryTime;
+    private String recoveryTime;
     /**
      * @return Route Table ID.
      * 
      */
-    private final String routeTableId;
+    private String routeTableId;
     /**
      * @return The VBR state.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The Most Recent Was Aborted by the Time.
      * 
      */
-    private final String terminationTime;
+    private String terminationTime;
     /**
      * @return VBR Type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The VBR ID.
      * 
      */
-    private final String virtualBorderRouterId;
+    private String virtualBorderRouterId;
     /**
      * @return The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
      * 
      */
-    private final String virtualBorderRouterName;
+    private String virtualBorderRouterName;
     /**
      * @return The VLAN ID of the VBR. Value range: 0~2999.
      * 
      */
-    private final Integer vlanId;
+    private Integer vlanId;
     /**
      * @return The ID of the Router Interface.
      * 
      */
-    private final String vlanInterfaceId;
+    private String vlanInterfaceId;
 
-    @CustomType.Constructor
-    private GetVirtualBorderRoutersRouter(
-        @CustomType.Parameter("accessPointId") String accessPointId,
-        @CustomType.Parameter("activationTime") String activationTime,
-        @CustomType.Parameter("circuitCode") String circuitCode,
-        @CustomType.Parameter("cloudBoxInstanceId") String cloudBoxInstanceId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("detectMultiplier") Integer detectMultiplier,
-        @CustomType.Parameter("eccId") String eccId,
-        @CustomType.Parameter("enableIpv6") Boolean enableIpv6,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("localGatewayIp") String localGatewayIp,
-        @CustomType.Parameter("localIpv6GatewayIp") String localIpv6GatewayIp,
-        @CustomType.Parameter("minRxInterval") Integer minRxInterval,
-        @CustomType.Parameter("minTxInterval") Integer minTxInterval,
-        @CustomType.Parameter("paymentVbrExpireTime") String paymentVbrExpireTime,
-        @CustomType.Parameter("peerGatewayIp") String peerGatewayIp,
-        @CustomType.Parameter("peerIpv6GatewayIp") String peerIpv6GatewayIp,
-        @CustomType.Parameter("peeringIpv6SubnetMask") String peeringIpv6SubnetMask,
-        @CustomType.Parameter("peeringSubnetMask") String peeringSubnetMask,
-        @CustomType.Parameter("physicalConnectionBusinessStatus") String physicalConnectionBusinessStatus,
-        @CustomType.Parameter("physicalConnectionId") String physicalConnectionId,
-        @CustomType.Parameter("physicalConnectionOwnerUid") String physicalConnectionOwnerUid,
-        @CustomType.Parameter("physicalConnectionStatus") String physicalConnectionStatus,
-        @CustomType.Parameter("recoveryTime") String recoveryTime,
-        @CustomType.Parameter("routeTableId") String routeTableId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("terminationTime") String terminationTime,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("virtualBorderRouterId") String virtualBorderRouterId,
-        @CustomType.Parameter("virtualBorderRouterName") String virtualBorderRouterName,
-        @CustomType.Parameter("vlanId") Integer vlanId,
-        @CustomType.Parameter("vlanInterfaceId") String vlanInterfaceId) {
-        this.accessPointId = accessPointId;
-        this.activationTime = activationTime;
-        this.circuitCode = circuitCode;
-        this.cloudBoxInstanceId = cloudBoxInstanceId;
-        this.createTime = createTime;
-        this.description = description;
-        this.detectMultiplier = detectMultiplier;
-        this.eccId = eccId;
-        this.enableIpv6 = enableIpv6;
-        this.id = id;
-        this.localGatewayIp = localGatewayIp;
-        this.localIpv6GatewayIp = localIpv6GatewayIp;
-        this.minRxInterval = minRxInterval;
-        this.minTxInterval = minTxInterval;
-        this.paymentVbrExpireTime = paymentVbrExpireTime;
-        this.peerGatewayIp = peerGatewayIp;
-        this.peerIpv6GatewayIp = peerIpv6GatewayIp;
-        this.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
-        this.peeringSubnetMask = peeringSubnetMask;
-        this.physicalConnectionBusinessStatus = physicalConnectionBusinessStatus;
-        this.physicalConnectionId = physicalConnectionId;
-        this.physicalConnectionOwnerUid = physicalConnectionOwnerUid;
-        this.physicalConnectionStatus = physicalConnectionStatus;
-        this.recoveryTime = recoveryTime;
-        this.routeTableId = routeTableId;
-        this.status = status;
-        this.terminationTime = terminationTime;
-        this.type = type;
-        this.virtualBorderRouterId = virtualBorderRouterId;
-        this.virtualBorderRouterName = virtualBorderRouterName;
-        this.vlanId = vlanId;
-        this.vlanInterfaceId = vlanInterfaceId;
-    }
-
+    private GetVirtualBorderRoutersRouter() {}
     /**
      * @return The physical leased line access point ID.
      * 
@@ -472,7 +405,7 @@ public final class GetVirtualBorderRoutersRouter {
     public static Builder builder(GetVirtualBorderRoutersRouter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessPointId;
         private String activationTime;
@@ -506,11 +439,7 @@ public final class GetVirtualBorderRoutersRouter {
         private String virtualBorderRouterName;
         private Integer vlanId;
         private String vlanInterfaceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVirtualBorderRoutersRouter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointId = defaults.accessPointId;
@@ -547,135 +476,201 @@ public final class GetVirtualBorderRoutersRouter {
     	      this.vlanInterfaceId = defaults.vlanInterfaceId;
         }
 
+        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
+        @CustomType.Setter
         public Builder activationTime(String activationTime) {
             this.activationTime = Objects.requireNonNull(activationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
             this.circuitCode = Objects.requireNonNull(circuitCode);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudBoxInstanceId(String cloudBoxInstanceId) {
             this.cloudBoxInstanceId = Objects.requireNonNull(cloudBoxInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder detectMultiplier(Integer detectMultiplier) {
             this.detectMultiplier = Objects.requireNonNull(detectMultiplier);
             return this;
         }
+        @CustomType.Setter
         public Builder eccId(String eccId) {
             this.eccId = Objects.requireNonNull(eccId);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpv6(Boolean enableIpv6) {
             this.enableIpv6 = Objects.requireNonNull(enableIpv6);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder localGatewayIp(String localGatewayIp) {
             this.localGatewayIp = Objects.requireNonNull(localGatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder localIpv6GatewayIp(String localIpv6GatewayIp) {
             this.localIpv6GatewayIp = Objects.requireNonNull(localIpv6GatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder minRxInterval(Integer minRxInterval) {
             this.minRxInterval = Objects.requireNonNull(minRxInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder minTxInterval(Integer minTxInterval) {
             this.minTxInterval = Objects.requireNonNull(minTxInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentVbrExpireTime(String paymentVbrExpireTime) {
             this.paymentVbrExpireTime = Objects.requireNonNull(paymentVbrExpireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder peerGatewayIp(String peerGatewayIp) {
             this.peerGatewayIp = Objects.requireNonNull(peerGatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder peerIpv6GatewayIp(String peerIpv6GatewayIp) {
             this.peerIpv6GatewayIp = Objects.requireNonNull(peerIpv6GatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringIpv6SubnetMask(String peeringIpv6SubnetMask) {
             this.peeringIpv6SubnetMask = Objects.requireNonNull(peeringIpv6SubnetMask);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringSubnetMask(String peeringSubnetMask) {
             this.peeringSubnetMask = Objects.requireNonNull(peeringSubnetMask);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalConnectionBusinessStatus(String physicalConnectionBusinessStatus) {
             this.physicalConnectionBusinessStatus = Objects.requireNonNull(physicalConnectionBusinessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
             this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalConnectionOwnerUid(String physicalConnectionOwnerUid) {
             this.physicalConnectionOwnerUid = Objects.requireNonNull(physicalConnectionOwnerUid);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalConnectionStatus(String physicalConnectionStatus) {
             this.physicalConnectionStatus = Objects.requireNonNull(physicalConnectionStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryTime(String recoveryTime) {
             this.recoveryTime = Objects.requireNonNull(recoveryTime);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder terminationTime(String terminationTime) {
             this.terminationTime = Objects.requireNonNull(terminationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualBorderRouterId(String virtualBorderRouterId) {
             this.virtualBorderRouterId = Objects.requireNonNull(virtualBorderRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualBorderRouterName(String virtualBorderRouterName) {
             this.virtualBorderRouterName = Objects.requireNonNull(virtualBorderRouterName);
             return this;
         }
+        @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
             this.vlanId = Objects.requireNonNull(vlanId);
             return this;
         }
+        @CustomType.Setter
         public Builder vlanInterfaceId(String vlanInterfaceId) {
             this.vlanInterfaceId = Objects.requireNonNull(vlanInterfaceId);
             return this;
-        }        public GetVirtualBorderRoutersRouter build() {
-            return new GetVirtualBorderRoutersRouter(accessPointId, activationTime, circuitCode, cloudBoxInstanceId, createTime, description, detectMultiplier, eccId, enableIpv6, id, localGatewayIp, localIpv6GatewayIp, minRxInterval, minTxInterval, paymentVbrExpireTime, peerGatewayIp, peerIpv6GatewayIp, peeringIpv6SubnetMask, peeringSubnetMask, physicalConnectionBusinessStatus, physicalConnectionId, physicalConnectionOwnerUid, physicalConnectionStatus, recoveryTime, routeTableId, status, terminationTime, type, virtualBorderRouterId, virtualBorderRouterName, vlanId, vlanInterfaceId);
+        }
+        public GetVirtualBorderRoutersRouter build() {
+            final var o = new GetVirtualBorderRoutersRouter();
+            o.accessPointId = accessPointId;
+            o.activationTime = activationTime;
+            o.circuitCode = circuitCode;
+            o.cloudBoxInstanceId = cloudBoxInstanceId;
+            o.createTime = createTime;
+            o.description = description;
+            o.detectMultiplier = detectMultiplier;
+            o.eccId = eccId;
+            o.enableIpv6 = enableIpv6;
+            o.id = id;
+            o.localGatewayIp = localGatewayIp;
+            o.localIpv6GatewayIp = localIpv6GatewayIp;
+            o.minRxInterval = minRxInterval;
+            o.minTxInterval = minTxInterval;
+            o.paymentVbrExpireTime = paymentVbrExpireTime;
+            o.peerGatewayIp = peerGatewayIp;
+            o.peerIpv6GatewayIp = peerIpv6GatewayIp;
+            o.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
+            o.peeringSubnetMask = peeringSubnetMask;
+            o.physicalConnectionBusinessStatus = physicalConnectionBusinessStatus;
+            o.physicalConnectionId = physicalConnectionId;
+            o.physicalConnectionOwnerUid = physicalConnectionOwnerUid;
+            o.physicalConnectionStatus = physicalConnectionStatus;
+            o.recoveryTime = recoveryTime;
+            o.routeTableId = routeTableId;
+            o.status = status;
+            o.terminationTime = terminationTime;
+            o.type = type;
+            o.virtualBorderRouterId = virtualBorderRouterId;
+            o.virtualBorderRouterName = virtualBorderRouterName;
+            o.vlanId = vlanId;
+            o.vlanInterfaceId = vlanInterfaceId;
+            return o;
         }
     }
 }

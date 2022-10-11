@@ -10,18 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'TableDefinedColumnArgs',
     'TablePrimaryKeyArgs',
     'TunnelChannelArgs',
 ]
 
 @pulumi.input_type
-class TablePrimaryKeyArgs:
+class TableDefinedColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  type: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name for primary key.
-        :param pulumi.Input[str] type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        :param pulumi.Input[str] name: Name for defined column.
+        :param pulumi.Input[str] type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -30,7 +31,7 @@ class TablePrimaryKeyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name for primary key.
+        Name for defined column.
         """
         return pulumi.get(self, "name")
 
@@ -42,7 +43,44 @@ class TablePrimaryKeyArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class TablePrimaryKeyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name for defined column.
+        :param pulumi.Input[str] type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name for defined column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         return pulumi.get(self, "type")
 

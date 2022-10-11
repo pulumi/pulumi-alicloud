@@ -226,10 +226,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.
      */
@@ -278,6 +282,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -320,6 +325,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
@@ -465,6 +471,10 @@ export interface ClusterState {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
@@ -606,6 +616,10 @@ export interface ClusterArgs {
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.

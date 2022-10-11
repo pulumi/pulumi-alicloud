@@ -15,28 +15,19 @@ public final class KubernetesWorkerNode {
      * @return ID of the node.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The private IP address of node.
      * 
      */
-    private final @Nullable String privateIp;
+    private @Nullable String privateIp;
 
-    @CustomType.Constructor
-    private KubernetesWorkerNode(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("privateIp") @Nullable String privateIp) {
-        this.id = id;
-        this.name = name;
-        this.privateIp = privateIp;
-    }
-
+    private KubernetesWorkerNode() {}
     /**
      * @return ID of the node.
      * 
@@ -66,16 +57,12 @@ public final class KubernetesWorkerNode {
     public static Builder builder(KubernetesWorkerNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable String name;
         private @Nullable String privateIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesWorkerNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -83,19 +70,27 @@ public final class KubernetesWorkerNode {
     	      this.privateIp = defaults.privateIp;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
             this.privateIp = privateIp;
             return this;
-        }        public KubernetesWorkerNode build() {
-            return new KubernetesWorkerNode(id, name, privateIp);
+        }
+        public KubernetesWorkerNode build() {
+            final var o = new KubernetesWorkerNode();
+            o.id = id;
+            o.name = name;
+            o.privateIp = privateIp;
+            return o;
         }
     }
 }

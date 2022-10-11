@@ -15,49 +15,34 @@ public final class GetAccountsAccount {
      * @return Account description.
      * 
      */
-    private final String accountDescription;
+    private String accountDescription;
     /**
      * @return Account lock state, Valid values are `Lock`, `UnLock`.
      * 
      */
-    private final String accountLockState;
+    private String accountLockState;
     /**
      * @return Account name.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
      * 
      */
-    private final String accountStatus;
+    private String accountStatus;
     /**
      * @return Account type, Valid values are `Normal`, `Super`.
      * 
      */
-    private final String accountType;
+    private String accountType;
     /**
      * @return A list of database privilege. Each element contains the following attributes.
      * 
      */
-    private final List<GetAccountsAccountDatabasePrivilege> databasePrivileges;
+    private List<GetAccountsAccountDatabasePrivilege> databasePrivileges;
 
-    @CustomType.Constructor
-    private GetAccountsAccount(
-        @CustomType.Parameter("accountDescription") String accountDescription,
-        @CustomType.Parameter("accountLockState") String accountLockState,
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("accountStatus") String accountStatus,
-        @CustomType.Parameter("accountType") String accountType,
-        @CustomType.Parameter("databasePrivileges") List<GetAccountsAccountDatabasePrivilege> databasePrivileges) {
-        this.accountDescription = accountDescription;
-        this.accountLockState = accountLockState;
-        this.accountName = accountName;
-        this.accountStatus = accountStatus;
-        this.accountType = accountType;
-        this.databasePrivileges = databasePrivileges;
-    }
-
+    private GetAccountsAccount() {}
     /**
      * @return Account description.
      * 
@@ -108,7 +93,7 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountDescription;
         private String accountLockState;
@@ -116,11 +101,7 @@ public final class GetAccountsAccount {
         private String accountStatus;
         private String accountType;
         private List<GetAccountsAccountDatabasePrivilege> databasePrivileges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountDescription = defaults.accountDescription;
@@ -131,34 +112,48 @@ public final class GetAccountsAccount {
     	      this.databasePrivileges = defaults.databasePrivileges;
         }
 
+        @CustomType.Setter
         public Builder accountDescription(String accountDescription) {
             this.accountDescription = Objects.requireNonNull(accountDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder accountLockState(String accountLockState) {
             this.accountLockState = Objects.requireNonNull(accountLockState);
             return this;
         }
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder accountStatus(String accountStatus) {
             this.accountStatus = Objects.requireNonNull(accountStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder accountType(String accountType) {
             this.accountType = Objects.requireNonNull(accountType);
             return this;
         }
+        @CustomType.Setter
         public Builder databasePrivileges(List<GetAccountsAccountDatabasePrivilege> databasePrivileges) {
             this.databasePrivileges = Objects.requireNonNull(databasePrivileges);
             return this;
         }
         public Builder databasePrivileges(GetAccountsAccountDatabasePrivilege... databasePrivileges) {
             return databasePrivileges(List.of(databasePrivileges));
-        }        public GetAccountsAccount build() {
-            return new GetAccountsAccount(accountDescription, accountLockState, accountName, accountStatus, accountType, databasePrivileges);
+        }
+        public GetAccountsAccount build() {
+            final var o = new GetAccountsAccount();
+            o.accountDescription = accountDescription;
+            o.accountLockState = accountLockState;
+            o.accountName = accountName;
+            o.accountStatus = accountStatus;
+            o.accountType = accountType;
+            o.databasePrivileges = databasePrivileges;
+            return o;
         }
     }
 }

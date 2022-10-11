@@ -35,7 +35,8 @@ type TransitRouterRouteEntry struct {
 	TransitRouterRouteEntryDescription pulumi.StringPtrOutput `pulumi:"transitRouterRouteEntryDescription"`
 	// The CIDR of the transit router route entry.
 	TransitRouterRouteEntryDestinationCidrBlock pulumi.StringOutput `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
-	TransitRouterRouteEntryId                   pulumi.StringOutput `pulumi:"transitRouterRouteEntryId"`
+	// The ID of the route entry.
+	TransitRouterRouteEntryId pulumi.StringOutput `pulumi:"transitRouterRouteEntryId"`
 	// The name of the transit router route entry.
 	TransitRouterRouteEntryName pulumi.StringPtrOutput `pulumi:"transitRouterRouteEntryName"`
 	// The ID of the transit router route entry next hop.
@@ -92,7 +93,8 @@ type transitRouterRouteEntryState struct {
 	TransitRouterRouteEntryDescription *string `pulumi:"transitRouterRouteEntryDescription"`
 	// The CIDR of the transit router route entry.
 	TransitRouterRouteEntryDestinationCidrBlock *string `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
-	TransitRouterRouteEntryId                   *string `pulumi:"transitRouterRouteEntryId"`
+	// The ID of the route entry.
+	TransitRouterRouteEntryId *string `pulumi:"transitRouterRouteEntryId"`
 	// The name of the transit router route entry.
 	TransitRouterRouteEntryName *string `pulumi:"transitRouterRouteEntryName"`
 	// The ID of the transit router route entry next hop.
@@ -112,7 +114,8 @@ type TransitRouterRouteEntryState struct {
 	TransitRouterRouteEntryDescription pulumi.StringPtrInput
 	// The CIDR of the transit router route entry.
 	TransitRouterRouteEntryDestinationCidrBlock pulumi.StringPtrInput
-	TransitRouterRouteEntryId                   pulumi.StringPtrInput
+	// The ID of the route entry.
+	TransitRouterRouteEntryId pulumi.StringPtrInput
 	// The name of the transit router route entry.
 	TransitRouterRouteEntryName pulumi.StringPtrInput
 	// The ID of the transit router route entry next hop.
@@ -271,6 +274,7 @@ func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryDestinationCidrBlo
 	}).(pulumi.StringOutput)
 }
 
+// The ID of the route entry.
 func (o TransitRouterRouteEntryOutput) TransitRouterRouteEntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.StringOutput { return v.TransitRouterRouteEntryId }).(pulumi.StringOutput)
 }

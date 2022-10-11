@@ -16,70 +16,49 @@ public final class GetServerBackupPlansPlan {
      * @return The creation time of backup plan.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return ECS server backup plan details.
      * 
      */
-    private final List<GetServerBackupPlansPlanDetail> details;
+    private List<GetServerBackupPlansPlanDetail> details;
     /**
      * @return Whether to disable the backup task. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
     /**
      * @return The ID of the server backup plan.
      * 
      */
-    private final String ecsServerBackupPlanId;
+    private String ecsServerBackupPlanId;
     /**
      * @return The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      * 
      */
-    private final String ecsServerBackupPlanName;
+    private String ecsServerBackupPlanName;
     /**
      * @return The ID of the server backup plan.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of ECS Instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Backup retention days, the minimum is 1.
      * 
      */
-    private final String retention;
+    private String retention;
     /**
      * @return Backup strategy.
      * 
      */
-    private final String schedule;
+    private String schedule;
 
-    @CustomType.Constructor
-    private GetServerBackupPlansPlan(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("details") List<GetServerBackupPlansPlanDetail> details,
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("ecsServerBackupPlanId") String ecsServerBackupPlanId,
-        @CustomType.Parameter("ecsServerBackupPlanName") String ecsServerBackupPlanName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("retention") String retention,
-        @CustomType.Parameter("schedule") String schedule) {
-        this.createTime = createTime;
-        this.details = details;
-        this.disabled = disabled;
-        this.ecsServerBackupPlanId = ecsServerBackupPlanId;
-        this.ecsServerBackupPlanName = ecsServerBackupPlanName;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.retention = retention;
-        this.schedule = schedule;
-    }
-
+    private GetServerBackupPlansPlan() {}
     /**
      * @return The creation time of backup plan.
      * 
@@ -151,7 +130,7 @@ public final class GetServerBackupPlansPlan {
     public static Builder builder(GetServerBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private List<GetServerBackupPlansPlanDetail> details;
@@ -162,11 +141,7 @@ public final class GetServerBackupPlansPlan {
         private String instanceId;
         private String retention;
         private String schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -180,10 +155,12 @@ public final class GetServerBackupPlansPlan {
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder details(List<GetServerBackupPlansPlanDetail> details) {
             this.details = Objects.requireNonNull(details);
             return this;
@@ -191,35 +168,53 @@ public final class GetServerBackupPlansPlan {
         public Builder details(GetServerBackupPlansPlanDetail... details) {
             return details(List.of(details));
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsServerBackupPlanId(String ecsServerBackupPlanId) {
             this.ecsServerBackupPlanId = Objects.requireNonNull(ecsServerBackupPlanId);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsServerBackupPlanName(String ecsServerBackupPlanName) {
             this.ecsServerBackupPlanName = Objects.requireNonNull(ecsServerBackupPlanName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
-        }        public GetServerBackupPlansPlan build() {
-            return new GetServerBackupPlansPlan(createTime, details, disabled, ecsServerBackupPlanId, ecsServerBackupPlanName, id, instanceId, retention, schedule);
+        }
+        public GetServerBackupPlansPlan build() {
+            final var o = new GetServerBackupPlansPlan();
+            o.createTime = createTime;
+            o.details = details;
+            o.disabled = disabled;
+            o.ecsServerBackupPlanId = ecsServerBackupPlanId;
+            o.ecsServerBackupPlanName = ecsServerBackupPlanName;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.retention = retention;
+            o.schedule = schedule;
+            return o;
         }
     }
 }

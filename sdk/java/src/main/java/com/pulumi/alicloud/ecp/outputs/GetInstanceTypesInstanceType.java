@@ -14,45 +14,30 @@ public final class GetInstanceTypesInstanceType {
      * @return The cpu core count of the current instance type.
      * 
      */
-    private final Integer cpuCoreCount;
+    private Integer cpuCoreCount;
     /**
      * @return The default resolution of the current instance type.
      * 
      */
-    private final String defaultResolution;
+    private String defaultResolution;
     /**
      * @return The list of available instance type.
      * 
      */
-    private final String instanceType;
-    private final String instanceTypeFamily;
+    private String instanceType;
+    private String instanceTypeFamily;
     /**
      * @return The name of the current instance type.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The English name of the current instance type.
      * 
      */
-    private final String nameEn;
+    private String nameEn;
 
-    @CustomType.Constructor
-    private GetInstanceTypesInstanceType(
-        @CustomType.Parameter("cpuCoreCount") Integer cpuCoreCount,
-        @CustomType.Parameter("defaultResolution") String defaultResolution,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("instanceTypeFamily") String instanceTypeFamily,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nameEn") String nameEn) {
-        this.cpuCoreCount = cpuCoreCount;
-        this.defaultResolution = defaultResolution;
-        this.instanceType = instanceType;
-        this.instanceTypeFamily = instanceTypeFamily;
-        this.name = name;
-        this.nameEn = nameEn;
-    }
-
+    private GetInstanceTypesInstanceType() {}
     /**
      * @return The cpu core count of the current instance type.
      * 
@@ -99,7 +84,7 @@ public final class GetInstanceTypesInstanceType {
     public static Builder builder(GetInstanceTypesInstanceType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cpuCoreCount;
         private String defaultResolution;
@@ -107,11 +92,7 @@ public final class GetInstanceTypesInstanceType {
         private String instanceTypeFamily;
         private String name;
         private String nameEn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCoreCount = defaults.cpuCoreCount;
@@ -122,31 +103,45 @@ public final class GetInstanceTypesInstanceType {
     	      this.nameEn = defaults.nameEn;
         }
 
+        @CustomType.Setter
         public Builder cpuCoreCount(Integer cpuCoreCount) {
             this.cpuCoreCount = Objects.requireNonNull(cpuCoreCount);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultResolution(String defaultResolution) {
             this.defaultResolution = Objects.requireNonNull(defaultResolution);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTypeFamily(String instanceTypeFamily) {
             this.instanceTypeFamily = Objects.requireNonNull(instanceTypeFamily);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nameEn(String nameEn) {
             this.nameEn = Objects.requireNonNull(nameEn);
             return this;
-        }        public GetInstanceTypesInstanceType build() {
-            return new GetInstanceTypesInstanceType(cpuCoreCount, defaultResolution, instanceType, instanceTypeFamily, name, nameEn);
+        }
+        public GetInstanceTypesInstanceType build() {
+            final var o = new GetInstanceTypesInstanceType();
+            o.cpuCoreCount = cpuCoreCount;
+            o.defaultResolution = defaultResolution;
+            o.instanceType = instanceType;
+            o.instanceTypeFamily = instanceTypeFamily;
+            o.name = name;
+            o.nameEn = nameEn;
+            return o;
         }
     }
 }

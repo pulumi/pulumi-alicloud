@@ -13,42 +13,29 @@ public final class GetServerCustomImagesImage {
      * @return The first ID of the resource.
      * 
      */
-    private final String customImageId;
+    private String customImageId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String customImageName;
+    private String customImageName;
     /**
      * @return Image description information.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Custom Image.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
      * 
      */
-    private final String platform;
+    private String platform;
 
-    @CustomType.Constructor
-    private GetServerCustomImagesImage(
-        @CustomType.Parameter("customImageId") String customImageId,
-        @CustomType.Parameter("customImageName") String customImageName,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("platform") String platform) {
-        this.customImageId = customImageId;
-        this.customImageName = customImageName;
-        this.description = description;
-        this.id = id;
-        this.platform = platform;
-    }
-
+    private GetServerCustomImagesImage() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -92,18 +79,14 @@ public final class GetServerCustomImagesImage {
     public static Builder builder(GetServerCustomImagesImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String customImageId;
         private String customImageName;
         private String description;
         private String id;
         private String platform;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerCustomImagesImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customImageId = defaults.customImageId;
@@ -113,27 +96,39 @@ public final class GetServerCustomImagesImage {
     	      this.platform = defaults.platform;
         }
 
+        @CustomType.Setter
         public Builder customImageId(String customImageId) {
             this.customImageId = Objects.requireNonNull(customImageId);
             return this;
         }
+        @CustomType.Setter
         public Builder customImageName(String customImageName) {
             this.customImageName = Objects.requireNonNull(customImageName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder platform(String platform) {
             this.platform = Objects.requireNonNull(platform);
             return this;
-        }        public GetServerCustomImagesImage build() {
-            return new GetServerCustomImagesImage(customImageId, customImageName, description, id, platform);
+        }
+        public GetServerCustomImagesImage build() {
+            final var o = new GetServerCustomImagesImage();
+            o.customImageId = customImageId;
+            o.customImageName = customImageName;
+            o.description = description;
+            o.id = id;
+            o.platform = platform;
+            return o;
         }
     }
 }

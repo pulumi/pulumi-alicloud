@@ -64,6 +64,14 @@ export class Instance extends pulumi.CustomResource {
     public readonly licenseCode!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     */
+    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     */
+    public readonly renewalStatus!: pulumi.Output<string>;
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
@@ -96,6 +104,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -120,6 +130,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -155,6 +167,14 @@ export interface InstanceState {
      */
     licenseCode?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     */
+    renewPeriod?: pulumi.Input<number>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
@@ -195,6 +215,14 @@ export interface InstanceArgs {
      */
     licenseCode: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+     */
+    renewPeriod?: pulumi.Input<number>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */

@@ -17,48 +17,31 @@ public final class GetInstanceEnginesResult {
      * @return Database type.
      * 
      */
-    private final @Nullable String engine;
+    private @Nullable String engine;
     /**
      * @return KVStore Instance version.
      * 
      */
-    private final @Nullable String engineVersion;
+    private @Nullable String engineVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String instanceChargeType;
+    private String id;
+    private @Nullable String instanceChargeType;
     /**
      * @return A list of KVStore available instance engines. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstanceEnginesInstanceEngine> instanceEngines;
-    private final @Nullable String outputFile;
+    private List<GetInstanceEnginesInstanceEngine> instanceEngines;
+    private @Nullable String outputFile;
     /**
      * @return The Zone to launch the KVStore instance.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstanceEnginesResult(
-        @CustomType.Parameter("engine") @Nullable String engine,
-        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
-        @CustomType.Parameter("instanceEngines") List<GetInstanceEnginesInstanceEngine> instanceEngines,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.id = id;
-        this.instanceChargeType = instanceChargeType;
-        this.instanceEngines = instanceEngines;
-        this.outputFile = outputFile;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstanceEnginesResult() {}
     /**
      * @return Database type.
      * 
@@ -108,7 +91,7 @@ public final class GetInstanceEnginesResult {
     public static Builder builder(GetInstanceEnginesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String engine;
         private @Nullable String engineVersion;
@@ -117,11 +100,7 @@ public final class GetInstanceEnginesResult {
         private List<GetInstanceEnginesInstanceEngine> instanceEngines;
         private @Nullable String outputFile;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceEnginesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engine = defaults.engine;
@@ -133,22 +112,27 @@ public final class GetInstanceEnginesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceEngines(List<GetInstanceEnginesInstanceEngine> instanceEngines) {
             this.instanceEngines = Objects.requireNonNull(instanceEngines);
             return this;
@@ -156,15 +140,26 @@ public final class GetInstanceEnginesResult {
         public Builder instanceEngines(GetInstanceEnginesInstanceEngine... instanceEngines) {
             return instanceEngines(List.of(instanceEngines));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstanceEnginesResult build() {
-            return new GetInstanceEnginesResult(engine, engineVersion, id, instanceChargeType, instanceEngines, outputFile, zoneId);
+        }
+        public GetInstanceEnginesResult build() {
+            final var o = new GetInstanceEnginesResult();
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.id = id;
+            o.instanceChargeType = instanceChargeType;
+            o.instanceEngines = instanceEngines;
+            o.outputFile = outputFile;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

@@ -15,54 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMirrorSessionsResult {
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer priority;
-    private final List<GetTrafficMirrorSessionsSession> sessions;
-    private final @Nullable String status;
-    private final @Nullable String trafficMirrorFilterId;
-    private final @Nullable String trafficMirrorSessionName;
-    private final @Nullable String trafficMirrorSourceId;
-    private final @Nullable String trafficMirrorTargetId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer priority;
+    private List<GetTrafficMirrorSessionsSession> sessions;
+    private @Nullable String status;
+    private @Nullable String trafficMirrorFilterId;
+    private @Nullable String trafficMirrorSessionName;
+    private @Nullable String trafficMirrorSourceId;
+    private @Nullable String trafficMirrorTargetId;
 
-    @CustomType.Constructor
-    private GetTrafficMirrorSessionsResult(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("priority") @Nullable Integer priority,
-        @CustomType.Parameter("sessions") List<GetTrafficMirrorSessionsSession> sessions,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("trafficMirrorFilterId") @Nullable String trafficMirrorFilterId,
-        @CustomType.Parameter("trafficMirrorSessionName") @Nullable String trafficMirrorSessionName,
-        @CustomType.Parameter("trafficMirrorSourceId") @Nullable String trafficMirrorSourceId,
-        @CustomType.Parameter("trafficMirrorTargetId") @Nullable String trafficMirrorTargetId) {
-        this.enabled = enabled;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.priority = priority;
-        this.sessions = sessions;
-        this.status = status;
-        this.trafficMirrorFilterId = trafficMirrorFilterId;
-        this.trafficMirrorSessionName = trafficMirrorSessionName;
-        this.trafficMirrorSourceId = trafficMirrorSourceId;
-        this.trafficMirrorTargetId = trafficMirrorTargetId;
-    }
-
+    private GetTrafficMirrorSessionsResult() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -114,7 +85,7 @@ public final class GetTrafficMirrorSessionsResult {
     public static Builder builder(GetTrafficMirrorSessionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private String id;
@@ -129,11 +100,7 @@ public final class GetTrafficMirrorSessionsResult {
         private @Nullable String trafficMirrorSessionName;
         private @Nullable String trafficMirrorSourceId;
         private @Nullable String trafficMirrorTargetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrafficMirrorSessionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -151,14 +118,17 @@ public final class GetTrafficMirrorSessionsResult {
     	      this.trafficMirrorTargetId = defaults.trafficMirrorTargetId;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -166,10 +136,12 @@ public final class GetTrafficMirrorSessionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -177,14 +149,17 @@ public final class GetTrafficMirrorSessionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
             this.priority = priority;
             return this;
         }
+        @CustomType.Setter
         public Builder sessions(List<GetTrafficMirrorSessionsSession> sessions) {
             this.sessions = Objects.requireNonNull(sessions);
             return this;
@@ -192,27 +167,47 @@ public final class GetTrafficMirrorSessionsResult {
         public Builder sessions(GetTrafficMirrorSessionsSession... sessions) {
             return sessions(List.of(sessions));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorFilterId(@Nullable String trafficMirrorFilterId) {
             this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSessionName(@Nullable String trafficMirrorSessionName) {
             this.trafficMirrorSessionName = trafficMirrorSessionName;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSourceId(@Nullable String trafficMirrorSourceId) {
             this.trafficMirrorSourceId = trafficMirrorSourceId;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorTargetId(@Nullable String trafficMirrorTargetId) {
             this.trafficMirrorTargetId = trafficMirrorTargetId;
             return this;
-        }        public GetTrafficMirrorSessionsResult build() {
-            return new GetTrafficMirrorSessionsResult(enabled, id, ids, nameRegex, names, outputFile, priority, sessions, status, trafficMirrorFilterId, trafficMirrorSessionName, trafficMirrorSourceId, trafficMirrorTargetId);
+        }
+        public GetTrafficMirrorSessionsResult build() {
+            final var o = new GetTrafficMirrorSessionsResult();
+            o.enabled = enabled;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.priority = priority;
+            o.sessions = sessions;
+            o.status = status;
+            o.trafficMirrorFilterId = trafficMirrorFilterId;
+            o.trafficMirrorSessionName = trafficMirrorSessionName;
+            o.trafficMirrorSourceId = trafficMirrorSourceId;
+            o.trafficMirrorTargetId = trafficMirrorTargetId;
+            return o;
         }
     }
 }

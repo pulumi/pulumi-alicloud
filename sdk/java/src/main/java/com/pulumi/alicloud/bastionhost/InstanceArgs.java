@@ -105,6 +105,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * 
+     */
+    @Import(name="renewPeriod")
+    private @Nullable Output<Integer> renewPeriod;
+
+    /**
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+     * 
+     */
+    public Optional<Output<Integer>> renewPeriod() {
+        return Optional.ofNullable(this.renewPeriod);
+    }
+
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     * 
+     */
+    @Import(name="renewalStatus")
+    private @Nullable Output<String> renewalStatus;
+
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+     * 
+     */
+    public Optional<Output<String>> renewalStatus() {
+        return Optional.ofNullable(this.renewalStatus);
+    }
+
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      * 
      */
@@ -165,6 +195,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.ldapAuthServers = $.ldapAuthServers;
         this.licenseCode = $.licenseCode;
         this.period = $.period;
+        this.renewPeriod = $.renewPeriod;
+        this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.tags = $.tags;
@@ -321,6 +353,48 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewPeriod(@Nullable Output<Integer> renewPeriod) {
+            $.renewPeriod = renewPeriod;
+            return this;
+        }
+
+        /**
+         * @param renewPeriod Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewPeriod(Integer renewPeriod) {
+            return renewPeriod(Output.of(renewPeriod));
+        }
+
+        /**
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(@Nullable Output<String> renewalStatus) {
+            $.renewalStatus = renewalStatus;
+            return this;
+        }
+
+        /**
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(String renewalStatus) {
+            return renewalStatus(Output.of(renewalStatus));
         }
 
         /**

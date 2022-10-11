@@ -154,17 +154,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly topicQuota!: pulumi.Output<number>;
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -232,11 +232,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["specType"] = args ? args.specType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["endPoint"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["vpcId"] = undefined /*out*/;
-            resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -318,7 +318,7 @@ export interface InstanceState {
      */
     topicQuota?: pulumi.Input<number>;
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -326,7 +326,7 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -394,7 +394,15 @@ export interface InstanceArgs {
      */
     topicQuota: pulumi.Input<number>;
     /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The ID of attaching vswitch to instance.
      */
     vswitchId: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

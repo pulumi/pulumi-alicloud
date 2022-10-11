@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

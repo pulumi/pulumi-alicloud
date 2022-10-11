@@ -95,6 +95,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly specification!: pulumi.Output<string>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The VSwitch ID to launch in.
      */
     public readonly vswitchId!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["instanceSeries"] = state ? state.instanceSeries : undefined;
             resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -143,6 +148,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["instanceSeries"] = args ? args.instanceSeries : undefined;
             resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
@@ -182,6 +188,10 @@ export interface InstanceState {
      * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */
@@ -223,6 +233,10 @@ export interface InstanceArgs {
      * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */

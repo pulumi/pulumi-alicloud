@@ -51,14 +51,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The core spec.
+     * The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     @Import(name="coreSpec")
     private @Nullable Output<String> coreSpec;
 
     /**
-     * @return The core spec.
+     * @return The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     public Optional<Output<String>> coreSpec() {
@@ -81,14 +85,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     @Import(name="diskCategory", required=true)
     private Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     public Output<String> diskCategory() {
@@ -457,6 +461,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The vswitch id.
      * 
      */
@@ -517,6 +536,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.timeSeriesEngineSpecification = $.timeSeriesEngineSpecification;
         this.timeSeriresEngineSpecification = $.timeSeriresEngineSpecification;
         this.upgradeType = $.upgradeType;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -582,7 +602,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreSpec The core spec.
+         * @param coreSpec The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+         * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -593,7 +615,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreSpec The core spec.
+         * @param coreSpec The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+         * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -624,7 +648,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
          * 
          * @return builder
          * 
@@ -635,7 +659,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
          * 
          * @return builder
          * 
@@ -1151,6 +1175,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. */
         public Builder upgradeType(String upgradeType) {
             return upgradeType(Output.of(upgradeType));
+        }
+
+        /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

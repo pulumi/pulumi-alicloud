@@ -68,6 +68,7 @@ class Endpoints(dict):
                  cas: Optional[str] = None,
                  cassandra: Optional[str] = None,
                  cbn: Optional[str] = None,
+                 cbs: Optional[str] = None,
                  cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
@@ -97,6 +98,7 @@ class Endpoints(dict):
                  dts: Optional[str] = None,
                  dysms: Optional[str] = None,
                  eais: Optional[str] = None,
+                 ebs: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
                  edas: Optional[str] = None,
@@ -135,6 +137,7 @@ class Endpoints(dict):
                  mscopensubscription: Optional[str] = None,
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
+                 nlb: Optional[str] = None,
                  ons: Optional[str] = None,
                  onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
@@ -166,6 +169,7 @@ class Endpoints(dict):
                  tag: Optional[str] = None,
                  vod: Optional[str] = None,
                  vpc: Optional[str] = None,
+                 vpcpeer: Optional[str] = None,
                  vs: Optional[str] = None,
                  waf: Optional[str] = None,
                  waf_openapi: Optional[str] = None):
@@ -199,6 +203,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "cassandra", cassandra)
         if cbn is not None:
             pulumi.set(__self__, "cbn", cbn)
+        if cbs is not None:
+            pulumi.set(__self__, "cbs", cbs)
         if cddc is not None:
             pulumi.set(__self__, "cddc", cddc)
         if cdn is not None:
@@ -257,6 +263,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "dysms", dysms)
         if eais is not None:
             pulumi.set(__self__, "eais", eais)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -333,6 +341,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "mse", mse)
         if nas is not None:
             pulumi.set(__self__, "nas", nas)
+        if nlb is not None:
+            pulumi.set(__self__, "nlb", nlb)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
         if onsproxy is not None:
@@ -395,6 +405,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+        if vpcpeer is not None:
+            pulumi.set(__self__, "vpcpeer", vpcpeer)
         if vs is not None:
             pulumi.set(__self__, "vs", vs)
         if waf is not None:
@@ -476,6 +488,11 @@ class Endpoints(dict):
     @pulumi.getter
     def cbn(self) -> Optional[str]:
         return pulumi.get(self, "cbn")
+
+    @property
+    @pulumi.getter
+    def cbs(self) -> Optional[str]:
+        return pulumi.get(self, "cbs")
 
     @property
     @pulumi.getter
@@ -621,6 +638,11 @@ class Endpoints(dict):
     @pulumi.getter
     def eais(self) -> Optional[str]:
         return pulumi.get(self, "eais")
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional[str]:
+        return pulumi.get(self, "ebs")
 
     @property
     @pulumi.getter
@@ -814,6 +836,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def nlb(self) -> Optional[str]:
+        return pulumi.get(self, "nlb")
+
+    @property
+    @pulumi.getter
     def ons(self) -> Optional[str]:
         return pulumi.get(self, "ons")
 
@@ -966,6 +993,11 @@ class Endpoints(dict):
     @pulumi.getter
     def vpc(self) -> Optional[str]:
         return pulumi.get(self, "vpc")
+
+    @property
+    @pulumi.getter
+    def vpcpeer(self) -> Optional[str]:
+        return pulumi.get(self, "vpcpeer")
 
     @property
     @pulumi.getter

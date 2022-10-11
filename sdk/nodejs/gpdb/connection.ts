@@ -12,38 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Gpdb";
- * const name = config.get("name") || "gpdbConnectionBasic";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- * });
- * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
- *     vswitchId: defaultSwitch.id,
- *     engine: "gpdb",
- *     engineVersion: "4.3",
- *     instanceClass: "gpdb.group.segsdx2",
- *     instanceGroupCount: "2",
- *     description: name,
- * });
- * const defaultConnection = new alicloud.gpdb.Connection("defaultConnection", {
- *     instanceId: defaultInstance.id,
- *     connectionPrefix: "testAbc",
- * });
- * ```
- *
  * ## Import
  *
  * AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.

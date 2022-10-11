@@ -35,11 +35,13 @@ type Instance struct {
 	ColdStorage pulumi.IntOutput `pulumi:"coldStorage"`
 	// The core num.
 	CoreNum pulumi.IntPtrOutput `pulumi:"coreNum"`
-	// The core spec.
+	// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrOutput `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolOutput `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
@@ -103,6 +105,8 @@ type Instance struct {
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrOutput `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -151,11 +155,13 @@ type instanceState struct {
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The core num.
 	CoreNum *int `pulumi:"coreNum"`
-	// The core spec.
+	// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory *string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
@@ -219,6 +225,8 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -230,11 +238,13 @@ type InstanceState struct {
 	ColdStorage pulumi.IntPtrInput
 	// The core num.
 	CoreNum pulumi.IntPtrInput
-	// The core spec.
+	// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringPtrInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
@@ -298,6 +308,8 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -313,11 +325,13 @@ type instanceArgs struct {
 	ColdStorage *int `pulumi:"coldStorage"`
 	// The core num.
 	CoreNum *int `pulumi:"coreNum"`
-	// The core spec.
+	// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
@@ -369,6 +383,8 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -381,11 +397,13 @@ type InstanceArgs struct {
 	ColdStorage pulumi.IntPtrInput
 	// The core num.
 	CoreNum pulumi.IntPtrInput
-	// The core spec.
+	// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
@@ -437,6 +455,8 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringInput
 	// The zone ID of the instance.
@@ -540,7 +560,9 @@ func (o InstanceOutput) CoreNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreNum }).(pulumi.IntPtrOutput)
 }
 
-// The core spec.
+// The core spec. **NOTE:** When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 func (o InstanceOutput) CoreSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CoreSpec }).(pulumi.StringPtrOutput)
 }
@@ -550,7 +572,7 @@ func (o InstanceOutput) DeletionProection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DeletionProection }).(pulumi.BoolOutput)
 }
 
-// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 func (o InstanceOutput) DiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
 }
@@ -702,6 +724,11 @@ func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
 // Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 func (o InstanceOutput) UpgradeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeType }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID of the instance.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The vswitch id.

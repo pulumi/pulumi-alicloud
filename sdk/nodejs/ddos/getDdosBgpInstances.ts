@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.57.0+ .
+ * > **NOTE:** Available in 1.183.0+ .
  *
  * ## Example Usage
  *

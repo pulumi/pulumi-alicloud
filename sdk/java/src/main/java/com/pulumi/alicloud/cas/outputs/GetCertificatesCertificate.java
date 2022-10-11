@@ -14,47 +14,47 @@ public final class GetCertificatesCertificate {
      * @return The cert is buy from aliyun or not.
      * 
      */
-    private final Boolean buyInAliyun;
-    private final String cert;
-    private final String certId;
-    private final String certificateName;
+    private Boolean buyInAliyun;
+    private String cert;
+    private String certId;
+    private String certificateName;
     /**
      * @return The cert&#39;s city.
      * 
      */
-    private final String city;
+    private String city;
     /**
      * @return The cert&#39;s common name.
      * 
      */
-    private final String common;
+    private String common;
     /**
      * @return The cert&#39;s country.
      * 
      */
-    private final String country;
+    private String country;
     /**
      * @return The cert&#39;s not valid after time.
      * 
      */
-    private final String endDate;
+    private String endDate;
     /**
      * @return The cert is expired or not.
      * 
      */
-    private final Boolean expired;
-    private final String fingerprint;
+    private Boolean expired;
+    private String fingerprint;
     /**
      * @return The cert&#39;s id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The cert&#39;s .
      * 
      */
-    private final String issuer;
-    private final String key;
+    private String issuer;
+    private String key;
     /**
      * @return The cert&#39;s name.
      * 
@@ -63,68 +63,29 @@ public final class GetCertificatesCertificate {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
-    private final String name;
+    private String name;
     /**
      * @return The cert&#39;s organization.
      * 
      */
-    private final String orgName;
+    private String orgName;
     /**
      * @return The cert&#39;s province.
      * 
      */
-    private final String province;
+    private String province;
     /**
      * @return The cert&#39;s subject alternative name.
      * 
      */
-    private final String sans;
+    private String sans;
     /**
      * @return The cert&#39;s not valid before time.
      * 
      */
-    private final String startDate;
+    private String startDate;
 
-    @CustomType.Constructor
-    private GetCertificatesCertificate(
-        @CustomType.Parameter("buyInAliyun") Boolean buyInAliyun,
-        @CustomType.Parameter("cert") String cert,
-        @CustomType.Parameter("certId") String certId,
-        @CustomType.Parameter("certificateName") String certificateName,
-        @CustomType.Parameter("city") String city,
-        @CustomType.Parameter("common") String common,
-        @CustomType.Parameter("country") String country,
-        @CustomType.Parameter("endDate") String endDate,
-        @CustomType.Parameter("expired") Boolean expired,
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("issuer") String issuer,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("orgName") String orgName,
-        @CustomType.Parameter("province") String province,
-        @CustomType.Parameter("sans") String sans,
-        @CustomType.Parameter("startDate") String startDate) {
-        this.buyInAliyun = buyInAliyun;
-        this.cert = cert;
-        this.certId = certId;
-        this.certificateName = certificateName;
-        this.city = city;
-        this.common = common;
-        this.country = country;
-        this.endDate = endDate;
-        this.expired = expired;
-        this.fingerprint = fingerprint;
-        this.id = id;
-        this.issuer = issuer;
-        this.key = key;
-        this.name = name;
-        this.orgName = orgName;
-        this.province = province;
-        this.sans = sans;
-        this.startDate = startDate;
-    }
-
+    private GetCertificatesCertificate() {}
     /**
      * @return The cert is buy from aliyun or not.
      * 
@@ -243,7 +204,7 @@ public final class GetCertificatesCertificate {
     public static Builder builder(GetCertificatesCertificate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean buyInAliyun;
         private String cert;
@@ -263,11 +224,7 @@ public final class GetCertificatesCertificate {
         private String province;
         private String sans;
         private String startDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buyInAliyun = defaults.buyInAliyun;
@@ -290,79 +247,117 @@ public final class GetCertificatesCertificate {
     	      this.startDate = defaults.startDate;
         }
 
+        @CustomType.Setter
         public Builder buyInAliyun(Boolean buyInAliyun) {
             this.buyInAliyun = Objects.requireNonNull(buyInAliyun);
             return this;
         }
+        @CustomType.Setter
         public Builder cert(String cert) {
             this.cert = Objects.requireNonNull(cert);
             return this;
         }
+        @CustomType.Setter
         public Builder certId(String certId) {
             this.certId = Objects.requireNonNull(certId);
             return this;
         }
+        @CustomType.Setter
         public Builder certificateName(String certificateName) {
             this.certificateName = Objects.requireNonNull(certificateName);
             return this;
         }
+        @CustomType.Setter
         public Builder city(String city) {
             this.city = Objects.requireNonNull(city);
             return this;
         }
+        @CustomType.Setter
         public Builder common(String common) {
             this.common = Objects.requireNonNull(common);
             return this;
         }
+        @CustomType.Setter
         public Builder country(String country) {
             this.country = Objects.requireNonNull(country);
             return this;
         }
+        @CustomType.Setter
         public Builder endDate(String endDate) {
             this.endDate = Objects.requireNonNull(endDate);
             return this;
         }
+        @CustomType.Setter
         public Builder expired(Boolean expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder issuer(String issuer) {
             this.issuer = Objects.requireNonNull(issuer);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder orgName(String orgName) {
             this.orgName = Objects.requireNonNull(orgName);
             return this;
         }
+        @CustomType.Setter
         public Builder province(String province) {
             this.province = Objects.requireNonNull(province);
             return this;
         }
+        @CustomType.Setter
         public Builder sans(String sans) {
             this.sans = Objects.requireNonNull(sans);
             return this;
         }
+        @CustomType.Setter
         public Builder startDate(String startDate) {
             this.startDate = Objects.requireNonNull(startDate);
             return this;
-        }        public GetCertificatesCertificate build() {
-            return new GetCertificatesCertificate(buyInAliyun, cert, certId, certificateName, city, common, country, endDate, expired, fingerprint, id, issuer, key, name, orgName, province, sans, startDate);
+        }
+        public GetCertificatesCertificate build() {
+            final var o = new GetCertificatesCertificate();
+            o.buyInAliyun = buyInAliyun;
+            o.cert = cert;
+            o.certId = certId;
+            o.certificateName = certificateName;
+            o.city = city;
+            o.common = common;
+            o.country = country;
+            o.endDate = endDate;
+            o.expired = expired;
+            o.fingerprint = fingerprint;
+            o.id = id;
+            o.issuer = issuer;
+            o.key = key;
+            o.name = name;
+            o.orgName = orgName;
+            o.province = province;
+            o.sans = sans;
+            o.startDate = startDate;
+            return o;
         }
     }
 }

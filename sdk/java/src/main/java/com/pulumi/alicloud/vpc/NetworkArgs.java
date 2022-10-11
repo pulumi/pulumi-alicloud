@@ -50,14 +50,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     * @return Specifies whether to pre-check this request only. Valid values: `true` and `false`.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -103,14 +103,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the VPC belongs.
+     * The ID of resource group which the VPC belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the VPC belongs.
+     * @return The ID of resource group which the VPC belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -118,16 +118,24 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secondary CIDR blocks for the VPC.
+     * Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+     * 
+     * @deprecated
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      * 
      */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
     @Import(name="secondaryCidrBlocks")
     private @Nullable Output<List<String>> secondaryCidrBlocks;
 
     /**
-     * @return The secondary CIDR blocks for the VPC.
+     * @return Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+     * 
+     * @deprecated
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      * 
      */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
     public Optional<Output<List<String>>> secondaryCidrBlocks() {
         return Optional.ofNullable(this.secondaryCidrBlocks);
     }
@@ -148,14 +156,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user cidrs of the VPC.
+     * The user cidr blocks of the VPC.
      * 
      */
     @Import(name="userCidrs")
     private @Nullable Output<List<String>> userCidrs;
 
     /**
-     * @return The user cidrs of the VPC.
+     * @return The user cidr blocks of the VPC.
      * 
      */
     public Optional<Output<List<String>>> userCidrs() {
@@ -253,7 +261,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to precheck this request only. Valid values: `true` and `false`.
+         * @param dryRun Specifies whether to pre-check this request only. Valid values: `true` and `false`.
          * 
          * @return builder
          * 
@@ -264,7 +272,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to precheck this request only. Valid values: `true` and `false`.
+         * @param dryRun Specifies whether to pre-check this request only. Valid values: `true` and `false`.
          * 
          * @return builder
          * 
@@ -324,7 +332,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the VPC belongs.
+         * @param resourceGroupId The ID of resource group which the VPC belongs.
          * 
          * @return builder
          * 
@@ -335,7 +343,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the VPC belongs.
+         * @param resourceGroupId The ID of resource group which the VPC belongs.
          * 
          * @return builder
          * 
@@ -345,32 +353,44 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryCidrBlocks The secondary CIDR blocks for the VPC.
+         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * 
          */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(@Nullable Output<List<String>> secondaryCidrBlocks) {
             $.secondaryCidrBlocks = secondaryCidrBlocks;
             return this;
         }
 
         /**
-         * @param secondaryCidrBlocks The secondary CIDR blocks for the VPC.
+         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * 
          */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
             return secondaryCidrBlocks(Output.of(secondaryCidrBlocks));
         }
 
         /**
-         * @param secondaryCidrBlocks The secondary CIDR blocks for the VPC.
+         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * 
          */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
             return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
         }
@@ -397,7 +417,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidrs of the VPC.
+         * @param userCidrs The user cidr blocks of the VPC.
          * 
          * @return builder
          * 
@@ -408,7 +428,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidrs of the VPC.
+         * @param userCidrs The user cidr blocks of the VPC.
          * 
          * @return builder
          * 
@@ -418,7 +438,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidrs of the VPC.
+         * @param userCidrs The user cidr blocks of the VPC.
          * 
          * @return builder
          * 

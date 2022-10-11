@@ -10,10 +10,116 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type TablePrimaryKey struct {
-	// Name for primary key.
+type TableDefinedColumn struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
-	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+	Type string `pulumi:"type"`
+}
+
+// TableDefinedColumnInput is an input type that accepts TableDefinedColumnArgs and TableDefinedColumnOutput values.
+// You can construct a concrete instance of `TableDefinedColumnInput` via:
+//
+//	TableDefinedColumnArgs{...}
+type TableDefinedColumnInput interface {
+	pulumi.Input
+
+	ToTableDefinedColumnOutput() TableDefinedColumnOutput
+	ToTableDefinedColumnOutputWithContext(context.Context) TableDefinedColumnOutput
+}
+
+type TableDefinedColumnArgs struct {
+	// Name for defined column.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TableDefinedColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefinedColumn)(nil)).Elem()
+}
+
+func (i TableDefinedColumnArgs) ToTableDefinedColumnOutput() TableDefinedColumnOutput {
+	return i.ToTableDefinedColumnOutputWithContext(context.Background())
+}
+
+func (i TableDefinedColumnArgs) ToTableDefinedColumnOutputWithContext(ctx context.Context) TableDefinedColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnOutput)
+}
+
+// TableDefinedColumnArrayInput is an input type that accepts TableDefinedColumnArray and TableDefinedColumnArrayOutput values.
+// You can construct a concrete instance of `TableDefinedColumnArrayInput` via:
+//
+//	TableDefinedColumnArray{ TableDefinedColumnArgs{...} }
+type TableDefinedColumnArrayInput interface {
+	pulumi.Input
+
+	ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput
+	ToTableDefinedColumnArrayOutputWithContext(context.Context) TableDefinedColumnArrayOutput
+}
+
+type TableDefinedColumnArray []TableDefinedColumnInput
+
+func (TableDefinedColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDefinedColumn)(nil)).Elem()
+}
+
+func (i TableDefinedColumnArray) ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput {
+	return i.ToTableDefinedColumnArrayOutputWithContext(context.Background())
+}
+
+func (i TableDefinedColumnArray) ToTableDefinedColumnArrayOutputWithContext(ctx context.Context) TableDefinedColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnArrayOutput)
+}
+
+type TableDefinedColumnOutput struct{ *pulumi.OutputState }
+
+func (TableDefinedColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefinedColumn)(nil)).Elem()
+}
+
+func (o TableDefinedColumnOutput) ToTableDefinedColumnOutput() TableDefinedColumnOutput {
+	return o
+}
+
+func (o TableDefinedColumnOutput) ToTableDefinedColumnOutputWithContext(ctx context.Context) TableDefinedColumnOutput {
+	return o
+}
+
+// Name for defined column.
+func (o TableDefinedColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+func (o TableDefinedColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TableDefinedColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (TableDefinedColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDefinedColumn)(nil)).Elem()
+}
+
+func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutputWithContext(ctx context.Context) TableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o TableDefinedColumnArrayOutput) Index(i pulumi.IntInput) TableDefinedColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableDefinedColumn {
+		return vs[0].([]TableDefinedColumn)[vs[1].(int)]
+	}).(TableDefinedColumnOutput)
+}
+
+type TablePrimaryKey struct {
+	// Name for defined column.
+	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -29,9 +135,9 @@ type TablePrimaryKeyInput interface {
 }
 
 type TablePrimaryKeyArgs struct {
-	// Name for primary key.
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -86,12 +192,12 @@ func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Name for primary key.
+// Name for defined column.
 func (o TablePrimaryKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 func (o TablePrimaryKeyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -669,6 +775,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetTablesTable struct {
+	DefinedColumns []GetTablesTableDefinedColumn `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id string `pulumi:"id"`
 	// The name of OTS instance.
@@ -695,6 +802,7 @@ type GetTablesTableInput interface {
 }
 
 type GetTablesTableArgs struct {
+	DefinedColumns GetTablesTableDefinedColumnArrayInput `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of OTS instance.
@@ -760,6 +868,10 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
+	return o.ApplyT(func(v GetTablesTable) []GetTablesTableDefinedColumn { return v.DefinedColumns }).(GetTablesTableDefinedColumnArrayOutput)
+}
+
 // ID of the table. The value is `<instance_name>:<table_name>`.
 func (o GetTablesTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
@@ -808,6 +920,106 @@ func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
 		return vs[0].([]GetTablesTable)[vs[1].(int)]
 	}).(GetTablesTableOutput)
+}
+
+type GetTablesTableDefinedColumn struct {
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+}
+
+// GetTablesTableDefinedColumnInput is an input type that accepts GetTablesTableDefinedColumnArgs and GetTablesTableDefinedColumnOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnInput` via:
+//
+//	GetTablesTableDefinedColumnArgs{...}
+type GetTablesTableDefinedColumnInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput
+	ToGetTablesTableDefinedColumnOutputWithContext(context.Context) GetTablesTableDefinedColumnOutput
+}
+
+type GetTablesTableDefinedColumnArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetTablesTableDefinedColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return i.ToGetTablesTableDefinedColumnOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnOutput)
+}
+
+// GetTablesTableDefinedColumnArrayInput is an input type that accepts GetTablesTableDefinedColumnArray and GetTablesTableDefinedColumnArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnArrayInput` via:
+//
+//	GetTablesTableDefinedColumnArray{ GetTablesTableDefinedColumnArgs{...} }
+type GetTablesTableDefinedColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput
+	ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Context) GetTablesTableDefinedColumnArrayOutput
+}
+
+type GetTablesTableDefinedColumnArray []GetTablesTableDefinedColumnInput
+
+func (GetTablesTableDefinedColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return i.ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnArrayOutput)
+}
+
+type GetTablesTableDefinedColumnOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTablesTableDefinedColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetTablesTableDefinedColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTablesTableDefinedColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTableDefinedColumn {
+		return vs[0].([]GetTablesTableDefinedColumn)[vs[1].(int)]
+	}).(GetTablesTableDefinedColumnOutput)
 }
 
 type GetTablesTablePrimaryKey struct {
@@ -1231,6 +1443,8 @@ func (o GetTunnelsTunnelChannelArrayOutput) Index(i pulumi.IntInput) GetTunnelsT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefinedColumnInput)(nil)).Elem(), TableDefinedColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefinedColumnArrayInput)(nil)).Elem(), TableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyInput)(nil)).Elem(), TablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyArrayInput)(nil)).Elem(), TablePrimaryKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelChannelInput)(nil)).Elem(), TunnelChannelArgs{})
@@ -1241,12 +1455,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnInput)(nil)).Elem(), GetTablesTableDefinedColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelInput)(nil)).Elem(), GetTunnelsTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelArrayInput)(nil)).Elem(), GetTunnelsTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelInput)(nil)).Elem(), GetTunnelsTunnelChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelArrayInput)(nil)).Elem(), GetTunnelsTunnelChannelArray{})
+	pulumi.RegisterOutputType(TableDefinedColumnOutput{})
+	pulumi.RegisterOutputType(TableDefinedColumnArrayOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyArrayOutput{})
 	pulumi.RegisterOutputType(TunnelChannelOutput{})
@@ -1257,6 +1475,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTableOutput{})
 	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTunnelsTunnelOutput{})

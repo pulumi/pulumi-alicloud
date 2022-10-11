@@ -14,28 +14,19 @@ public final class GetMainVersionsMainVersion {
      * @return A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
      * 
      */
-    private final List<String> clusterTypes;
+    private List<String> clusterTypes;
     /**
      * @return The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
      * 
      */
-    private final String emrVersion;
+    private String emrVersion;
     /**
      * @return The image id of the emr cluster instance.
      * 
      */
-    private final String imageId;
+    private String imageId;
 
-    @CustomType.Constructor
-    private GetMainVersionsMainVersion(
-        @CustomType.Parameter("clusterTypes") List<String> clusterTypes,
-        @CustomType.Parameter("emrVersion") String emrVersion,
-        @CustomType.Parameter("imageId") String imageId) {
-        this.clusterTypes = clusterTypes;
-        this.emrVersion = emrVersion;
-        this.imageId = imageId;
-    }
-
+    private GetMainVersionsMainVersion() {}
     /**
      * @return A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
      * 
@@ -65,16 +56,12 @@ public final class GetMainVersionsMainVersion {
     public static Builder builder(GetMainVersionsMainVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> clusterTypes;
         private String emrVersion;
         private String imageId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMainVersionsMainVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterTypes = defaults.clusterTypes;
@@ -82,6 +69,7 @@ public final class GetMainVersionsMainVersion {
     	      this.imageId = defaults.imageId;
         }
 
+        @CustomType.Setter
         public Builder clusterTypes(List<String> clusterTypes) {
             this.clusterTypes = Objects.requireNonNull(clusterTypes);
             return this;
@@ -89,15 +77,22 @@ public final class GetMainVersionsMainVersion {
         public Builder clusterTypes(String... clusterTypes) {
             return clusterTypes(List.of(clusterTypes));
         }
+        @CustomType.Setter
         public Builder emrVersion(String emrVersion) {
             this.emrVersion = Objects.requireNonNull(emrVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
-        }        public GetMainVersionsMainVersion build() {
-            return new GetMainVersionsMainVersion(clusterTypes, emrVersion, imageId);
+        }
+        public GetMainVersionsMainVersion build() {
+            final var o = new GetMainVersionsMainVersion();
+            o.clusterTypes = clusterTypes;
+            o.emrVersion = emrVersion;
+            o.imageId = imageId;
+            return o;
         }
     }
 }

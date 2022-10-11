@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Ots.Inputs
     public sealed class TablePrimaryKeyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name for primary key.
+        /// Name for defined column.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        /// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -15,28 +15,19 @@ public final class GetContainerGroupsGroupDnsConfig {
      * @return The list of DNS server IP addresses.
      * 
      */
-    private final List<String> nameServers;
+    private List<String> nameServers;
     /**
      * @return The list of objects. Each object is a name-value pair. The value is optional.
      * 
      */
-    private final List<GetContainerGroupsGroupDnsConfigOption> options;
+    private List<GetContainerGroupsGroupDnsConfigOption> options;
     /**
      * @return The list of DNS lookup domains.
      * 
      */
-    private final List<String> searches;
+    private List<String> searches;
 
-    @CustomType.Constructor
-    private GetContainerGroupsGroupDnsConfig(
-        @CustomType.Parameter("nameServers") List<String> nameServers,
-        @CustomType.Parameter("options") List<GetContainerGroupsGroupDnsConfigOption> options,
-        @CustomType.Parameter("searches") List<String> searches) {
-        this.nameServers = nameServers;
-        this.options = options;
-        this.searches = searches;
-    }
-
+    private GetContainerGroupsGroupDnsConfig() {}
     /**
      * @return The list of DNS server IP addresses.
      * 
@@ -66,16 +57,12 @@ public final class GetContainerGroupsGroupDnsConfig {
     public static Builder builder(GetContainerGroupsGroupDnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> nameServers;
         private List<GetContainerGroupsGroupDnsConfigOption> options;
         private List<String> searches;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerGroupsGroupDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nameServers = defaults.nameServers;
@@ -83,6 +70,7 @@ public final class GetContainerGroupsGroupDnsConfig {
     	      this.searches = defaults.searches;
         }
 
+        @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
             this.nameServers = Objects.requireNonNull(nameServers);
             return this;
@@ -90,6 +78,7 @@ public final class GetContainerGroupsGroupDnsConfig {
         public Builder nameServers(String... nameServers) {
             return nameServers(List.of(nameServers));
         }
+        @CustomType.Setter
         public Builder options(List<GetContainerGroupsGroupDnsConfigOption> options) {
             this.options = Objects.requireNonNull(options);
             return this;
@@ -97,14 +86,20 @@ public final class GetContainerGroupsGroupDnsConfig {
         public Builder options(GetContainerGroupsGroupDnsConfigOption... options) {
             return options(List.of(options));
         }
+        @CustomType.Setter
         public Builder searches(List<String> searches) {
             this.searches = Objects.requireNonNull(searches);
             return this;
         }
         public Builder searches(String... searches) {
             return searches(List.of(searches));
-        }        public GetContainerGroupsGroupDnsConfig build() {
-            return new GetContainerGroupsGroupDnsConfig(nameServers, options, searches);
+        }
+        public GetContainerGroupsGroupDnsConfig build() {
+            final var o = new GetContainerGroupsGroupDnsConfig();
+            o.nameServers = nameServers;
+            o.options = options;
+            o.searches = searches;
+            return o;
         }
     }
 }

@@ -233,6 +233,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The ID of attaching vswitch to instance.
      * 
      */
@@ -245,6 +260,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
+    }
+
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private InstanceArgs() {}
@@ -264,7 +294,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.specType = $.specType;
         this.tags = $.tags;
         this.topicQuota = $.topicQuota;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -584,6 +616,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
          * @param vswitchId The ID of attaching vswitch to instance.
          * 
          * @return builder
@@ -602,6 +655,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public InstanceArgs build() {

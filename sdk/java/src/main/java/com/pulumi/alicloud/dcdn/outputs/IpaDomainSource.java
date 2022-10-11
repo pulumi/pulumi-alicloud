@@ -14,42 +14,29 @@ public final class IpaDomainSource {
      * @return The address of the origin server. You can specify an IP address or a domain name.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The custom port number. Valid values: `0` to `65535`.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
      * 
      */
-    private final String priority;
+    private String priority;
     /**
      * @return The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private IpaDomainSource(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("priority") String priority,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.content = content;
-        this.port = port;
-        this.priority = priority;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private IpaDomainSource() {}
     /**
      * @return The address of the origin server. You can specify an IP address or a domain name.
      * 
@@ -93,18 +80,14 @@ public final class IpaDomainSource {
     public static Builder builder(IpaDomainSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private Integer port;
         private String priority;
         private String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IpaDomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -114,27 +97,39 @@ public final class IpaDomainSource {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public IpaDomainSource build() {
-            return new IpaDomainSource(content, port, priority, type, weight);
+        }
+        public IpaDomainSource build() {
+            final var o = new IpaDomainSource();
+            o.content = content;
+            o.port = port;
+            o.priority = priority;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

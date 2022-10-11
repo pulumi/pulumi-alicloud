@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesRrsaMetadataArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesRuntimeArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesTaintArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesWorkerDataDiskArgs;
@@ -248,14 +249,14 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     @Import(name="enableRrsa")
     private @Nullable Output<Boolean> enableRrsa;
 
     /**
-     * @return Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * @return Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     public Optional<Output<Boolean>> enableRrsa() {
@@ -456,14 +457,22 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Import(name="kubeConfig")
     private @Nullable Output<String> kubeConfig;
 
     /**
      * @return The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     public Optional<Output<String>> kubeConfig() {
         return Optional.ofNullable(this.kubeConfig);
     }
@@ -756,7 +765,22 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    @Import(name="rrsaMetadata")
+    private @Nullable Output<ManagedKubernetesRrsaMetadataArgs> rrsaMetadata;
+
+    /**
+     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    public Optional<Output<ManagedKubernetesRrsaMetadataArgs>> rrsaMetadata() {
+        return Optional.ofNullable(this.rrsaMetadata);
+    }
+
+    /**
+     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      * @deprecated
      * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
@@ -767,7 +791,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ManagedKubernetesRuntimeArgs> runtime;
 
     /**
-     * @return (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      * @deprecated
      * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
@@ -1326,6 +1350,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
+        this.rrsaMetadata = $.rrsaMetadata;
         this.runtime = $.runtime;
         this.securityGroupId = $.securityGroupId;
         this.serviceAccountIssuer = $.serviceAccountIssuer;
@@ -1709,7 +1734,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableRrsa Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+         * @param enableRrsa Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
          * 
@@ -1720,7 +1745,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableRrsa Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+         * @param enableRrsa Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
          * 
@@ -1979,7 +2004,11 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(@Nullable Output<String> kubeConfig) {
             $.kubeConfig = kubeConfig;
             return this;
@@ -1990,7 +2019,11 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(String kubeConfig) {
             return kubeConfig(Output.of(kubeConfig));
         }
@@ -2405,7 +2438,28 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrsaMetadata(@Nullable Output<ManagedKubernetesRrsaMetadataArgs> rrsaMetadata) {
+            $.rrsaMetadata = rrsaMetadata;
+            return this;
+        }
+
+        /**
+         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrsaMetadata(ManagedKubernetesRrsaMetadataArgs rrsaMetadata) {
+            return rrsaMetadata(Output.of(rrsaMetadata));
+        }
+
+        /**
+         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
          * 
          * @return builder
          * 
@@ -2420,7 +2474,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
          * 
          * @return builder
          * 

@@ -14,35 +14,24 @@ public final class GetGroupMetricRulesRuleEscalationCritical {
      * @return The comparison operator of the threshold for warn-level alerts.
      * 
      */
-    private final String comparisonOperator;
+    private String comparisonOperator;
     /**
      * @return The statistical aggregation method for warn-level alerts.
      * 
      */
-    private final String statistics;
+    private String statistics;
     /**
      * @return The threshold for warn-level alerts.
      * 
      */
-    private final String threshold;
+    private String threshold;
     /**
      * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
      * 
      */
-    private final Integer times;
+    private Integer times;
 
-    @CustomType.Constructor
-    private GetGroupMetricRulesRuleEscalationCritical(
-        @CustomType.Parameter("comparisonOperator") String comparisonOperator,
-        @CustomType.Parameter("statistics") String statistics,
-        @CustomType.Parameter("threshold") String threshold,
-        @CustomType.Parameter("times") Integer times) {
-        this.comparisonOperator = comparisonOperator;
-        this.statistics = statistics;
-        this.threshold = threshold;
-        this.times = times;
-    }
-
+    private GetGroupMetricRulesRuleEscalationCritical() {}
     /**
      * @return The comparison operator of the threshold for warn-level alerts.
      * 
@@ -79,17 +68,13 @@ public final class GetGroupMetricRulesRuleEscalationCritical {
     public static Builder builder(GetGroupMetricRulesRuleEscalationCritical defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comparisonOperator;
         private String statistics;
         private String threshold;
         private Integer times;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMetricRulesRuleEscalationCritical defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -98,23 +83,33 @@ public final class GetGroupMetricRulesRuleEscalationCritical {
     	      this.times = defaults.times;
         }
 
+        @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
             this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
             return this;
         }
+        @CustomType.Setter
         public Builder statistics(String statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
         }
+        @CustomType.Setter
         public Builder times(Integer times) {
             this.times = Objects.requireNonNull(times);
             return this;
-        }        public GetGroupMetricRulesRuleEscalationCritical build() {
-            return new GetGroupMetricRulesRuleEscalationCritical(comparisonOperator, statistics, threshold, times);
+        }
+        public GetGroupMetricRulesRuleEscalationCritical build() {
+            final var o = new GetGroupMetricRulesRuleEscalationCritical();
+            o.comparisonOperator = comparisonOperator;
+            o.statistics = statistics;
+            o.threshold = threshold;
+            o.times = times;
+            return o;
         }
     }
 }

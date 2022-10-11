@@ -13,63 +13,44 @@ public final class GetFlowlogsFlowlog {
      * @return The ID of the CEN Instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return The description of flowlog.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the CEN flow log.
      * 
      */
-    private final String flowLogId;
+    private String flowLogId;
     /**
      * @return The name of flowlog.
      * 
      */
-    private final String flowLogName;
+    private String flowLogName;
     /**
      * @return ID of the CEN flow log.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the log store which is in the  `project_name` SLS project.
      * 
      */
-    private final String logStoreName;
+    private String logStoreName;
     /**
      * @return The name of the SLS project.
      * 
      */
-    private final String projectName;
+    private String projectName;
     /**
      * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetFlowlogsFlowlog(
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("flowLogId") String flowLogId,
-        @CustomType.Parameter("flowLogName") String flowLogName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logStoreName") String logStoreName,
-        @CustomType.Parameter("projectName") String projectName,
-        @CustomType.Parameter("status") String status) {
-        this.cenId = cenId;
-        this.description = description;
-        this.flowLogId = flowLogId;
-        this.flowLogName = flowLogName;
-        this.id = id;
-        this.logStoreName = logStoreName;
-        this.projectName = projectName;
-        this.status = status;
-    }
-
+    private GetFlowlogsFlowlog() {}
     /**
      * @return The ID of the CEN Instance.
      * 
@@ -134,7 +115,7 @@ public final class GetFlowlogsFlowlog {
     public static Builder builder(GetFlowlogsFlowlog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cenId;
         private String description;
@@ -144,11 +125,7 @@ public final class GetFlowlogsFlowlog {
         private String logStoreName;
         private String projectName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlowlogsFlowlog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -161,39 +138,57 @@ public final class GetFlowlogsFlowlog {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
             this.flowLogId = Objects.requireNonNull(flowLogId);
             return this;
         }
+        @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
             this.flowLogName = Objects.requireNonNull(flowLogName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logStoreName(String logStoreName) {
             this.logStoreName = Objects.requireNonNull(logStoreName);
             return this;
         }
+        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetFlowlogsFlowlog build() {
-            return new GetFlowlogsFlowlog(cenId, description, flowLogId, flowLogName, id, logStoreName, projectName, status);
+        }
+        public GetFlowlogsFlowlog build() {
+            final var o = new GetFlowlogsFlowlog();
+            o.cenId = cenId;
+            o.description = description;
+            o.flowLogId = flowLogId;
+            o.flowLogName = flowLogName;
+            o.id = id;
+            o.logStoreName = logStoreName;
+            o.projectName = projectName;
+            o.status = status;
+            return o;
         }
     }
 }

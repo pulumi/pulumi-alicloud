@@ -171,37 +171,6 @@ class Connection(pulumi.CustomResource):
         > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Gpdb"
-        name = config.get("name")
-        if name is None:
-            name = "gpdbConnectionBasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
-            vswitch_id=default_switch.id,
-            engine="gpdb",
-            engine_version="4.3",
-            instance_class="gpdb.group.segsdx2",
-            instance_group_count="2",
-            description=name)
-        default_connection = alicloud.gpdb.Connection("defaultConnection",
-            instance_id=default_instance.id,
-            connection_prefix="testAbc")
-        ```
-
         ## Import
 
         AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
@@ -229,37 +198,6 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Gpdb"
-        name = config.get("name")
-        if name is None:
-            name = "gpdbConnectionBasic"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
-            vswitch_id=default_switch.id,
-            engine="gpdb",
-            engine_version="4.3",
-            instance_class="gpdb.group.segsdx2",
-            instance_group_count="2",
-            description=name)
-        default_connection = alicloud.gpdb.Connection("defaultConnection",
-            instance_id=default_instance.id,
-            connection_prefix="testAbc")
-        ```
 
         ## Import
 

@@ -21,110 +21,73 @@ public final class GetSwitchesResult {
      * @return CIDR block of the VSwitch.
      * 
      */
-    private final @Nullable String cidrBlock;
-    private final @Nullable Boolean dryRun;
+    private @Nullable String cidrBlock;
+    private @Nullable Boolean dryRun;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of VSwitch IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return Whether the VSwitch is the default one in the region.
      * 
      */
-    private final @Nullable Boolean isDefault;
-    private final @Nullable String nameRegex;
+    private @Nullable Boolean isDefault;
+    private @Nullable String nameRegex;
     /**
      * @return A list of VSwitch names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The resource group ID of the VSwitch.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The route table ID of the VSwitch.
      * 
      */
-    private final @Nullable String routeTableId;
+    private @Nullable String routeTableId;
     /**
      * @return The status of the VSwitch.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The Tags of the VSwitch.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return ID of the VPC that owns the VSwitch.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
     /**
      * @return Name of the VSwitch.
      * 
      */
-    private final @Nullable String vswitchName;
-    private final @Nullable Integer vswitchOwnerId;
+    private @Nullable String vswitchName;
+    private @Nullable Integer vswitchOwnerId;
     /**
      * @return A list of VSwitches. Each element contains the following attributes:
      * 
      */
-    private final List<GetSwitchesVswitch> vswitches;
+    private List<GetSwitchesVswitch> vswitches;
     /**
      * @return ID of the availability zone where the VSwitch is located.
      * 
      */
-    private final @Nullable String zoneId;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetSwitchesResult(
-        @CustomType.Parameter("cidrBlock") @Nullable String cidrBlock,
-        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("isDefault") @Nullable Boolean isDefault,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("routeTableId") @Nullable String routeTableId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchName") @Nullable String vswitchName,
-        @CustomType.Parameter("vswitchOwnerId") @Nullable Integer vswitchOwnerId,
-        @CustomType.Parameter("vswitches") List<GetSwitchesVswitch> vswitches,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.cidrBlock = cidrBlock;
-        this.dryRun = dryRun;
-        this.id = id;
-        this.ids = ids;
-        this.isDefault = isDefault;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.routeTableId = routeTableId;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-        this.vswitchName = vswitchName;
-        this.vswitchOwnerId = vswitchOwnerId;
-        this.vswitches = vswitches;
-        this.zoneId = zoneId;
-    }
-
+    private GetSwitchesResult() {}
     /**
      * @return CIDR block of the VSwitch.
      * 
@@ -236,7 +199,7 @@ public final class GetSwitchesResult {
     public static Builder builder(GetSwitchesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cidrBlock;
         private @Nullable Boolean dryRun;
@@ -255,11 +218,7 @@ public final class GetSwitchesResult {
         private @Nullable Integer vswitchOwnerId;
         private List<GetSwitchesVswitch> vswitches;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSwitchesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -281,18 +240,22 @@ public final class GetSwitchesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
             this.cidrBlock = cidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -300,14 +263,17 @@ public final class GetSwitchesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
             this.isDefault = isDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -315,38 +281,47 @@ public final class GetSwitchesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(@Nullable String routeTableId) {
             this.routeTableId = routeTableId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchName(@Nullable String vswitchName) {
             this.vswitchName = vswitchName;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchOwnerId(@Nullable Integer vswitchOwnerId) {
             this.vswitchOwnerId = vswitchOwnerId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitches(List<GetSwitchesVswitch> vswitches) {
             this.vswitches = Objects.requireNonNull(vswitches);
             return this;
@@ -354,11 +329,31 @@ public final class GetSwitchesResult {
         public Builder vswitches(GetSwitchesVswitch... vswitches) {
             return vswitches(List.of(vswitches));
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetSwitchesResult build() {
-            return new GetSwitchesResult(cidrBlock, dryRun, id, ids, isDefault, nameRegex, names, outputFile, resourceGroupId, routeTableId, status, tags, vpcId, vswitchName, vswitchOwnerId, vswitches, zoneId);
+        }
+        public GetSwitchesResult build() {
+            final var o = new GetSwitchesResult();
+            o.cidrBlock = cidrBlock;
+            o.dryRun = dryRun;
+            o.id = id;
+            o.ids = ids;
+            o.isDefault = isDefault;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.routeTableId = routeTableId;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            o.vswitchName = vswitchName;
+            o.vswitchOwnerId = vswitchOwnerId;
+            o.vswitches = vswitches;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

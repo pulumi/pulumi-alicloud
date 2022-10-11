@@ -150,6 +150,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.specification;
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
      * The VSwitch ID to launch in.
      * 
      */

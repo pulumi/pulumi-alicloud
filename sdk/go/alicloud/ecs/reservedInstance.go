@@ -68,17 +68,23 @@ type ReservedInstance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-	OfferingType pulumi.StringPtrOutput `pulumi:"offeringType"`
-	Period       pulumi.IntPtrOutput    `pulumi:"period"`
-	// Term unit. Optional value: Year.
+	// Payment type of the RI. Default value: `All Upfront`. Valid values:
+	// - `No Upfront`: No upfront payment.
+	// - `Partial Upfront`: A portion of upfront payment.
+	// - `All Upfront`: Full upfront payment.
+	OfferingType pulumi.StringOutput `pulumi:"offeringType"`
+	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+	// - When `periodUnit` is `Month`, Valid values: `1`.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// Resource group ID.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
-	Scope pulumi.StringPtrOutput `pulumi:"scope"`
+	Scope pulumi.StringOutput `pulumi:"scope"`
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -123,10 +129,16 @@ type reservedInstanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
 	Name *string `pulumi:"name"`
-	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+	// Payment type of the RI. Default value: `All Upfront`. Valid values:
+	// - `No Upfront`: No upfront payment.
+	// - `Partial Upfront`: A portion of upfront payment.
+	// - `All Upfront`: Full upfront payment.
 	OfferingType *string `pulumi:"offeringType"`
-	Period       *int    `pulumi:"period"`
-	// Term unit. Optional value: Year.
+	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+	// - When `periodUnit` is `Month`, Valid values: `1`.
+	Period *int `pulumi:"period"`
+	// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
 	Platform *string `pulumi:"platform"`
@@ -147,10 +159,16 @@ type ReservedInstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
 	Name pulumi.StringPtrInput
-	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+	// Payment type of the RI. Default value: `All Upfront`. Valid values:
+	// - `No Upfront`: No upfront payment.
+	// - `Partial Upfront`: A portion of upfront payment.
+	// - `All Upfront`: Full upfront payment.
 	OfferingType pulumi.StringPtrInput
-	Period       pulumi.IntPtrInput
-	// Term unit. Optional value: Year.
+	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+	// - When `periodUnit` is `Month`, Valid values: `1`.
+	Period pulumi.IntPtrInput
+	// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 	PeriodUnit pulumi.StringPtrInput
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
 	Platform pulumi.StringPtrInput
@@ -175,10 +193,16 @@ type reservedInstanceArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
 	Name *string `pulumi:"name"`
-	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+	// Payment type of the RI. Default value: `All Upfront`. Valid values:
+	// - `No Upfront`: No upfront payment.
+	// - `Partial Upfront`: A portion of upfront payment.
+	// - `All Upfront`: Full upfront payment.
 	OfferingType *string `pulumi:"offeringType"`
-	Period       *int    `pulumi:"period"`
-	// Term unit. Optional value: Year.
+	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+	// - When `periodUnit` is `Month`, Valid values: `1`.
+	Period *int `pulumi:"period"`
+	// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
 	Platform *string `pulumi:"platform"`
@@ -200,10 +224,16 @@ type ReservedInstanceArgs struct {
 	InstanceType pulumi.StringInput
 	// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
 	Name pulumi.StringPtrInput
-	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+	// Payment type of the RI. Default value: `All Upfront`. Valid values:
+	// - `No Upfront`: No upfront payment.
+	// - `Partial Upfront`: A portion of upfront payment.
+	// - `All Upfront`: Full upfront payment.
 	OfferingType pulumi.StringPtrInput
-	Period       pulumi.IntPtrInput
-	// Term unit. Optional value: Year.
+	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+	// - When `periodUnit` is `Month`, Valid values: `1`.
+	Period pulumi.IntPtrInput
+	// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 	PeriodUnit pulumi.StringPtrInput
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
 	Platform pulumi.StringPtrInput
@@ -322,16 +352,22 @@ func (o ReservedInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-func (o ReservedInstanceOutput) OfferingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.OfferingType }).(pulumi.StringPtrOutput)
+// Payment type of the RI. Default value: `All Upfront`. Valid values:
+// - `No Upfront`: No upfront payment.
+// - `Partial Upfront`: A portion of upfront payment.
+// - `All Upfront`: Full upfront payment.
+func (o ReservedInstanceOutput) OfferingType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.OfferingType }).(pulumi.StringOutput)
 }
 
+// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
+// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
+// - When `periodUnit` is `Month`, Valid values: `1`.
 func (o ReservedInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReservedInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Term unit. Optional value: Year.
+// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
 func (o ReservedInstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
@@ -347,8 +383,8 @@ func (o ReservedInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
-func (o ReservedInstanceOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReservedInstance) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
+func (o ReservedInstanceOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
 
 // ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).

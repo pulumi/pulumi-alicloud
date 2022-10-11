@@ -16,21 +16,14 @@ public final class ChainChainConfig {
      * @return Each node in the delivery chain.
      * 
      */
-    private final @Nullable List<ChainChainConfigNode> nodes;
+    private @Nullable List<ChainChainConfigNode> nodes;
     /**
      * @return Execution sequence relationship between delivery chain nodes.
      * 
      */
-    private final @Nullable List<ChainChainConfigRouter> routers;
+    private @Nullable List<ChainChainConfigRouter> routers;
 
-    @CustomType.Constructor
-    private ChainChainConfig(
-        @CustomType.Parameter("nodes") @Nullable List<ChainChainConfigNode> nodes,
-        @CustomType.Parameter("routers") @Nullable List<ChainChainConfigRouter> routers) {
-        this.nodes = nodes;
-        this.routers = routers;
-    }
-
+    private ChainChainConfig() {}
     /**
      * @return Each node in the delivery chain.
      * 
@@ -53,21 +46,18 @@ public final class ChainChainConfig {
     public static Builder builder(ChainChainConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ChainChainConfigNode> nodes;
         private @Nullable List<ChainChainConfigRouter> routers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ChainChainConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodes = defaults.nodes;
     	      this.routers = defaults.routers;
         }
 
+        @CustomType.Setter
         public Builder nodes(@Nullable List<ChainChainConfigNode> nodes) {
             this.nodes = nodes;
             return this;
@@ -75,14 +65,19 @@ public final class ChainChainConfig {
         public Builder nodes(ChainChainConfigNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder routers(@Nullable List<ChainChainConfigRouter> routers) {
             this.routers = routers;
             return this;
         }
         public Builder routers(ChainChainConfigRouter... routers) {
             return routers(List.of(routers));
-        }        public ChainChainConfig build() {
-            return new ChainChainConfig(nodes, routers);
+        }
+        public ChainChainConfig build() {
+            final var o = new ChainChainConfig();
+            o.nodes = nodes;
+            o.routers = routers;
+            return o;
         }
     }
 }

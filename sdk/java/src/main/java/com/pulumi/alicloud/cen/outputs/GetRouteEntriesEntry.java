@@ -16,63 +16,44 @@ public final class GetRouteEntriesEntry {
      * @return The destination CIDR block of the route entry to query.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return A list of conflicted Route Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetRouteEntriesEntryConflict> conflicts;
+    private List<GetRouteEntriesEntryConflict> conflicts;
     /**
      * @return ID of the next hop.
      * 
      */
-    private final String nextHopId;
+    private String nextHopId;
     /**
      * @return Type of the next hop, including &#34;Instance&#34;, &#34;HaVip&#34; and &#34;RouterInterface&#34;.
      * 
      */
-    private final String nextHopType;
+    private String nextHopType;
     /**
      * @return Whether to allow the route entry to be published or removed to or from CEN.
      * 
      */
-    private final Boolean operationalMode;
+    private Boolean operationalMode;
     /**
      * @return The publish status of the route entry in CEN, including &#34;Published&#34; and &#34;NonPublished&#34;.
      * 
      */
-    private final String publishStatus;
+    private String publishStatus;
     /**
      * @return ID of the route table of the VPC or VBR.
      * 
      */
-    private final String routeTableId;
+    private String routeTableId;
     /**
      * @return Type of the route entry, including &#34;System&#34;, &#34;Custom&#34; and &#34;BGP&#34;.
      * 
      */
-    private final String routeType;
+    private String routeType;
 
-    @CustomType.Constructor
-    private GetRouteEntriesEntry(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("conflicts") List<GetRouteEntriesEntryConflict> conflicts,
-        @CustomType.Parameter("nextHopId") String nextHopId,
-        @CustomType.Parameter("nextHopType") String nextHopType,
-        @CustomType.Parameter("operationalMode") Boolean operationalMode,
-        @CustomType.Parameter("publishStatus") String publishStatus,
-        @CustomType.Parameter("routeTableId") String routeTableId,
-        @CustomType.Parameter("routeType") String routeType) {
-        this.cidrBlock = cidrBlock;
-        this.conflicts = conflicts;
-        this.nextHopId = nextHopId;
-        this.nextHopType = nextHopType;
-        this.operationalMode = operationalMode;
-        this.publishStatus = publishStatus;
-        this.routeTableId = routeTableId;
-        this.routeType = routeType;
-    }
-
+    private GetRouteEntriesEntry() {}
     /**
      * @return The destination CIDR block of the route entry to query.
      * 
@@ -137,7 +118,7 @@ public final class GetRouteEntriesEntry {
     public static Builder builder(GetRouteEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private List<GetRouteEntriesEntryConflict> conflicts;
@@ -147,11 +128,7 @@ public final class GetRouteEntriesEntry {
         private String publishStatus;
         private String routeTableId;
         private String routeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -164,10 +141,12 @@ public final class GetRouteEntriesEntry {
     	      this.routeType = defaults.routeType;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder conflicts(List<GetRouteEntriesEntryConflict> conflicts) {
             this.conflicts = Objects.requireNonNull(conflicts);
             return this;
@@ -175,31 +154,47 @@ public final class GetRouteEntriesEntry {
         public Builder conflicts(GetRouteEntriesEntryConflict... conflicts) {
             return conflicts(List.of(conflicts));
         }
+        @CustomType.Setter
         public Builder nextHopId(String nextHopId) {
             this.nextHopId = Objects.requireNonNull(nextHopId);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
             this.nextHopType = Objects.requireNonNull(nextHopType);
             return this;
         }
+        @CustomType.Setter
         public Builder operationalMode(Boolean operationalMode) {
             this.operationalMode = Objects.requireNonNull(operationalMode);
             return this;
         }
+        @CustomType.Setter
         public Builder publishStatus(String publishStatus) {
             this.publishStatus = Objects.requireNonNull(publishStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder routeType(String routeType) {
             this.routeType = Objects.requireNonNull(routeType);
             return this;
-        }        public GetRouteEntriesEntry build() {
-            return new GetRouteEntriesEntry(cidrBlock, conflicts, nextHopId, nextHopType, operationalMode, publishStatus, routeTableId, routeType);
+        }
+        public GetRouteEntriesEntry build() {
+            final var o = new GetRouteEntriesEntry();
+            o.cidrBlock = cidrBlock;
+            o.conflicts = conflicts;
+            o.nextHopId = nextHopId;
+            o.nextHopType = nextHopType;
+            o.operationalMode = operationalMode;
+            o.publishStatus = publishStatus;
+            o.routeTableId = routeTableId;
+            o.routeType = routeType;
+            return o;
         }
     }
 }

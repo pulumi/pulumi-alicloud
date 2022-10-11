@@ -53,16 +53,51 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Specifies whether to only precheck this request. Default value: `false`.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return Specifies whether to only precheck this request. Default value: `false`.
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
 
+    /**
+     * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+     * 
+     */
+    @Import(name="eipBindMode")
+    private @Nullable Output<String> eipBindMode;
+
+    /**
+     * @return The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+     * 
+     */
+    public Optional<Output<String>> eipBindMode() {
+        return Optional.ofNullable(this.eipBindMode);
+    }
+
+    /**
+     * Specifies whether to forcefully delete the NAT gateway.
+     * 
+     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
+    /**
+     * @return Specifies whether to forcefully delete the NAT gateway.
+     * 
+     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
@@ -245,6 +280,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dryRun = $.dryRun;
+        this.eipBindMode = $.eipBindMode;
         this.force = $.force;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
@@ -324,20 +360,69 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param dryRun Specifies whether to only precheck this request. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun Specifies whether to only precheck this request. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }
 
+        /**
+         * @param eipBindMode The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+         * - `MULTI_BINDED`: Multi EIP network card visible mode.
+         * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipBindMode(@Nullable Output<String> eipBindMode) {
+            $.eipBindMode = eipBindMode;
+            return this;
+        }
+
+        /**
+         * @param eipBindMode The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+         * - `MULTI_BINDED`: Multi EIP network card visible mode.
+         * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipBindMode(String eipBindMode) {
+            return eipBindMode(Output.of(eipBindMode));
+        }
+
+        /**
+         * @param force Specifies whether to forcefully delete the NAT gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
+        /**
+         * @param force Specifies whether to forcefully delete the NAT gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }

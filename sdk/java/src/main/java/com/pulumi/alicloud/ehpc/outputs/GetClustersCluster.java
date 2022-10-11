@@ -18,38 +18,38 @@ public final class GetClustersCluster {
      * @return The server type of the account.
      * 
      */
-    private final String accountType;
-    private final List<GetClustersClusterApplication> applications;
+    private String accountType;
+    private List<GetClustersClusterApplication> applications;
     /**
      * @return The version number of the client used by the cluster.
      * 
      */
-    private final String clientVersion;
+    private String clientVersion;
     /**
      * @return The id of E-HPC Cluster.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The name of E-HPC cluster.
      * 
      */
-    private final String clusterName;
+    private String clusterName;
     /**
      * @return The number of compute nodes in the cluster.
      * 
      */
-    private final Integer computeCount;
+    private Integer computeCount;
     /**
      * @return Cluster compute node specifications.
      * 
      */
-    private final String computeInstanceType;
+    private String computeInstanceType;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Cluster deployment mode. Possible values:
      * - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
@@ -59,179 +59,112 @@ public final class GetClustersCluster {
      * - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
      * 
      */
-    private final String deployMode;
+    private String deployMode;
     /**
      * @return The description of E-HPC cluster.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Whether to turn on high availability. &gt; If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
      * 
      */
-    private final Boolean haEnable;
+    private Boolean haEnable;
     /**
      * @return The ID of the Cluster.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the Image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The type of the image.
      * 
      */
-    private final String imageOwnerAlias;
+    private String imageOwnerAlias;
     /**
      * @return The number of cluster login nodes. Only configuration 1 is supported.
      * 
      */
-    private final Integer loginCount;
+    private Integer loginCount;
     /**
      * @return Cluster login node specifications.
      * 
      */
-    private final String loginInstanceType;
-    private final Integer managerCount;
+    private String loginInstanceType;
+    private Integer managerCount;
     /**
      * @return The instance type of manager nodes.
      * 
      */
-    private final String managerInstanceType;
+    private String managerInstanceType;
     /**
      * @return The image tag of the operating system.
      * 
      */
-    private final String osTag;
-    private final List<GetClustersClusterPostInstallScript> postInstallScripts;
+    private String osTag;
+    private List<GetClustersClusterPostInstallScript> postInstallScripts;
     /**
      * @return Mount the remote directory of the shared storage.
      * 
      */
-    private final String remoteDirectory;
+    private String remoteDirectory;
     /**
      * @return The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
      * 
      */
-    private final String sccClusterId;
+    private String sccClusterId;
     /**
      * @return Dispatch server type.
      * 
      */
-    private final String schedulerType;
+    private String schedulerType;
     /**
      * @return The ID of the security group.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
      * 
      */
-    private final String volumeId;
+    private String volumeId;
     /**
      * @return The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
      * 
      */
-    private final String volumeMountpoint;
+    private String volumeMountpoint;
     /**
      * @return The type of the protocol that is used by the file system.
      * 
      */
-    private final String volumeProtocol;
+    private String volumeProtocol;
     /**
      * @return The type of the network shared storage. Valid value: NAS.
      * 
      */
-    private final String volumeType;
+    private String volumeType;
     /**
      * @return The ID of the VPC network.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
-    private final String zoneId;
+    private String vswitchId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersCluster(
-        @CustomType.Parameter("accountType") String accountType,
-        @CustomType.Parameter("applications") List<GetClustersClusterApplication> applications,
-        @CustomType.Parameter("clientVersion") String clientVersion,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("computeCount") Integer computeCount,
-        @CustomType.Parameter("computeInstanceType") String computeInstanceType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deployMode") String deployMode,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("haEnable") Boolean haEnable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageOwnerAlias") String imageOwnerAlias,
-        @CustomType.Parameter("loginCount") Integer loginCount,
-        @CustomType.Parameter("loginInstanceType") String loginInstanceType,
-        @CustomType.Parameter("managerCount") Integer managerCount,
-        @CustomType.Parameter("managerInstanceType") String managerInstanceType,
-        @CustomType.Parameter("osTag") String osTag,
-        @CustomType.Parameter("postInstallScripts") List<GetClustersClusterPostInstallScript> postInstallScripts,
-        @CustomType.Parameter("remoteDirectory") String remoteDirectory,
-        @CustomType.Parameter("sccClusterId") String sccClusterId,
-        @CustomType.Parameter("schedulerType") String schedulerType,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("volumeId") String volumeId,
-        @CustomType.Parameter("volumeMountpoint") String volumeMountpoint,
-        @CustomType.Parameter("volumeProtocol") String volumeProtocol,
-        @CustomType.Parameter("volumeType") String volumeType,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.accountType = accountType;
-        this.applications = applications;
-        this.clientVersion = clientVersion;
-        this.clusterId = clusterId;
-        this.clusterName = clusterName;
-        this.computeCount = computeCount;
-        this.computeInstanceType = computeInstanceType;
-        this.createTime = createTime;
-        this.deployMode = deployMode;
-        this.description = description;
-        this.haEnable = haEnable;
-        this.id = id;
-        this.imageId = imageId;
-        this.imageOwnerAlias = imageOwnerAlias;
-        this.loginCount = loginCount;
-        this.loginInstanceType = loginInstanceType;
-        this.managerCount = managerCount;
-        this.managerInstanceType = managerInstanceType;
-        this.osTag = osTag;
-        this.postInstallScripts = postInstallScripts;
-        this.remoteDirectory = remoteDirectory;
-        this.sccClusterId = sccClusterId;
-        this.schedulerType = schedulerType;
-        this.securityGroupId = securityGroupId;
-        this.status = status;
-        this.volumeId = volumeId;
-        this.volumeMountpoint = volumeMountpoint;
-        this.volumeProtocol = volumeProtocol;
-        this.volumeType = volumeType;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersCluster() {}
     /**
      * @return The server type of the account.
      * 
@@ -453,7 +386,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountType;
         private List<GetClustersClusterApplication> applications;
@@ -487,11 +420,7 @@ public final class GetClustersCluster {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountType = defaults.accountType;
@@ -528,10 +457,12 @@ public final class GetClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder accountType(String accountType) {
             this.accountType = Objects.requireNonNull(accountType);
             return this;
         }
+        @CustomType.Setter
         public Builder applications(List<GetClustersClusterApplication> applications) {
             this.applications = Objects.requireNonNull(applications);
             return this;
@@ -539,74 +470,92 @@ public final class GetClustersCluster {
         public Builder applications(GetClustersClusterApplication... applications) {
             return applications(List.of(applications));
         }
+        @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
             this.clientVersion = Objects.requireNonNull(clientVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder computeCount(Integer computeCount) {
             this.computeCount = Objects.requireNonNull(computeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder computeInstanceType(String computeInstanceType) {
             this.computeInstanceType = Objects.requireNonNull(computeInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deployMode(String deployMode) {
             this.deployMode = Objects.requireNonNull(deployMode);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder haEnable(Boolean haEnable) {
             this.haEnable = Objects.requireNonNull(haEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageOwnerAlias(String imageOwnerAlias) {
             this.imageOwnerAlias = Objects.requireNonNull(imageOwnerAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder loginCount(Integer loginCount) {
             this.loginCount = Objects.requireNonNull(loginCount);
             return this;
         }
+        @CustomType.Setter
         public Builder loginInstanceType(String loginInstanceType) {
             this.loginInstanceType = Objects.requireNonNull(loginInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder managerCount(Integer managerCount) {
             this.managerCount = Objects.requireNonNull(managerCount);
             return this;
         }
+        @CustomType.Setter
         public Builder managerInstanceType(String managerInstanceType) {
             this.managerInstanceType = Objects.requireNonNull(managerInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder osTag(String osTag) {
             this.osTag = Objects.requireNonNull(osTag);
             return this;
         }
+        @CustomType.Setter
         public Builder postInstallScripts(List<GetClustersClusterPostInstallScript> postInstallScripts) {
             this.postInstallScripts = Objects.requireNonNull(postInstallScripts);
             return this;
@@ -614,55 +563,101 @@ public final class GetClustersCluster {
         public Builder postInstallScripts(GetClustersClusterPostInstallScript... postInstallScripts) {
             return postInstallScripts(List.of(postInstallScripts));
         }
+        @CustomType.Setter
         public Builder remoteDirectory(String remoteDirectory) {
             this.remoteDirectory = Objects.requireNonNull(remoteDirectory);
             return this;
         }
+        @CustomType.Setter
         public Builder sccClusterId(String sccClusterId) {
             this.sccClusterId = Objects.requireNonNull(sccClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder schedulerType(String schedulerType) {
             this.schedulerType = Objects.requireNonNull(schedulerType);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(String volumeId) {
             this.volumeId = Objects.requireNonNull(volumeId);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeMountpoint(String volumeMountpoint) {
             this.volumeMountpoint = Objects.requireNonNull(volumeMountpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeProtocol(String volumeProtocol) {
             this.volumeProtocol = Objects.requireNonNull(volumeProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(String volumeType) {
             this.volumeType = Objects.requireNonNull(volumeType);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersCluster build() {
-            return new GetClustersCluster(accountType, applications, clientVersion, clusterId, clusterName, computeCount, computeInstanceType, createTime, deployMode, description, haEnable, id, imageId, imageOwnerAlias, loginCount, loginInstanceType, managerCount, managerInstanceType, osTag, postInstallScripts, remoteDirectory, sccClusterId, schedulerType, securityGroupId, status, volumeId, volumeMountpoint, volumeProtocol, volumeType, vpcId, vswitchId, zoneId);
+        }
+        public GetClustersCluster build() {
+            final var o = new GetClustersCluster();
+            o.accountType = accountType;
+            o.applications = applications;
+            o.clientVersion = clientVersion;
+            o.clusterId = clusterId;
+            o.clusterName = clusterName;
+            o.computeCount = computeCount;
+            o.computeInstanceType = computeInstanceType;
+            o.createTime = createTime;
+            o.deployMode = deployMode;
+            o.description = description;
+            o.haEnable = haEnable;
+            o.id = id;
+            o.imageId = imageId;
+            o.imageOwnerAlias = imageOwnerAlias;
+            o.loginCount = loginCount;
+            o.loginInstanceType = loginInstanceType;
+            o.managerCount = managerCount;
+            o.managerInstanceType = managerInstanceType;
+            o.osTag = osTag;
+            o.postInstallScripts = postInstallScripts;
+            o.remoteDirectory = remoteDirectory;
+            o.sccClusterId = sccClusterId;
+            o.schedulerType = schedulerType;
+            o.securityGroupId = securityGroupId;
+            o.status = status;
+            o.volumeId = volumeId;
+            o.volumeMountpoint = volumeMountpoint;
+            o.volumeProtocol = volumeProtocol;
+            o.volumeType = volumeType;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

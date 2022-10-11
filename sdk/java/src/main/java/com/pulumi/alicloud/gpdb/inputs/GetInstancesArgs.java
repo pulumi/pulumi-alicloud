@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -34,18 +35,93 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of instance IDs.
+     * The db instance categories.
+     * 
+     */
+    @Import(name="dbInstanceCategories")
+    private @Nullable Output<String> dbInstanceCategories;
+
+    /**
+     * @return The db instance categories.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceCategories() {
+        return Optional.ofNullable(this.dbInstanceCategories);
+    }
+
+    /**
+     * The db instance modes.
+     * 
+     */
+    @Import(name="dbInstanceModes")
+    private @Nullable Output<String> dbInstanceModes;
+
+    /**
+     * @return The db instance modes.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceModes() {
+        return Optional.ofNullable(this.dbInstanceModes);
+    }
+
+    /**
+     * The description of the instance.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the instance.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Output<Boolean> enableDetails;
+
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
+    }
+
+    /**
+     * The ids list of AnalyticDB for PostgreSQL instances.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of instance IDs.
+     * @return The ids list of AnalyticDB for PostgreSQL instances.
      * 
      */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
+    }
+
+    /**
+     * The network type of the instance.
+     * 
+     */
+    @Import(name="instanceNetworkType")
+    private @Nullable Output<String> instanceNetworkType;
+
+    /**
+     * @return The network type of the instance.
+     * 
+     */
+    public Optional<Output<String>> instanceNetworkType() {
+        return Optional.ofNullable(this.instanceNetworkType);
     }
 
     /**
@@ -71,14 +147,44 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tags of the instance.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of the instance.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -86,14 +192,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Used to retrieve instances belong to specified `vswitch` resources.
+     * The vswitch id.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return Used to retrieve instances belong to specified `vswitch` resources.
+     * @return The vswitch id.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -104,9 +210,16 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetInstancesArgs(GetInstancesArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.dbInstanceCategories = $.dbInstanceCategories;
+        this.dbInstanceModes = $.dbInstanceModes;
+        this.description = $.description;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
+        this.instanceNetworkType = $.instanceNetworkType;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.resourceGroupId = $.resourceGroupId;
+        this.status = $.status;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
     }
@@ -151,7 +264,91 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of instance IDs.
+         * @param dbInstanceCategories The db instance categories.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceCategories(@Nullable Output<String> dbInstanceCategories) {
+            $.dbInstanceCategories = dbInstanceCategories;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceCategories The db instance categories.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceCategories(String dbInstanceCategories) {
+            return dbInstanceCategories(Output.of(dbInstanceCategories));
+        }
+
+        /**
+         * @param dbInstanceModes The db instance modes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceModes(@Nullable Output<String> dbInstanceModes) {
+            $.dbInstanceModes = dbInstanceModes;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceModes The db instance modes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceModes(String dbInstanceModes) {
+            return dbInstanceModes(Output.of(dbInstanceModes));
+        }
+
+        /**
+         * @param description The description of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
+        }
+
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(Boolean enableDetails) {
+            return enableDetails(Output.of(enableDetails));
+        }
+
+        /**
+         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
          * 
          * @return builder
          * 
@@ -162,7 +359,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of instance IDs.
+         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
          * 
          * @return builder
          * 
@@ -172,13 +369,34 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of instance IDs.
+         * @param ids The ids list of AnalyticDB for PostgreSQL instances.
          * 
          * @return builder
          * 
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param instanceNetworkType The network type of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceNetworkType(@Nullable Output<String> instanceNetworkType) {
+            $.instanceNetworkType = instanceNetworkType;
+            return this;
+        }
+
+        /**
+         * @param instanceNetworkType The network type of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceNetworkType(String instanceNetworkType) {
+            return instanceNetworkType(Output.of(instanceNetworkType));
         }
 
         /**
@@ -212,7 +430,49 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param resourceGroupId The ID of the enterprise resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the enterprise resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags of the instance.
          * 
          * @return builder
          * 
@@ -223,7 +483,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of the instance.
          * 
          * @return builder
          * 
@@ -233,7 +493,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 
@@ -244,7 +504,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 

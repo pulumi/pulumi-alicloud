@@ -64,6 +64,20 @@ public final class BastionHostInstanceArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.period);
     }
 
+    @Import(name="renewPeriod")
+    private @Nullable Output<Integer> renewPeriod;
+
+    public Optional<Output<Integer>> renewPeriod() {
+        return Optional.ofNullable(this.renewPeriod);
+    }
+
+    @Import(name="renewalStatus")
+    private @Nullable Output<String> renewalStatus;
+
+    public Optional<Output<String>> renewalStatus() {
+        return Optional.ofNullable(this.renewalStatus);
+    }
+
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
@@ -101,6 +115,8 @@ public final class BastionHostInstanceArgs extends com.pulumi.resources.Resource
         this.ldapAuthServers = $.ldapAuthServers;
         this.licenseCode = $.licenseCode;
         this.period = $.period;
+        this.renewPeriod = $.renewPeriod;
+        this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.tags = $.tags;
@@ -185,6 +201,24 @@ public final class BastionHostInstanceArgs extends com.pulumi.resources.Resource
 
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        public Builder renewPeriod(@Nullable Output<Integer> renewPeriod) {
+            $.renewPeriod = renewPeriod;
+            return this;
+        }
+
+        public Builder renewPeriod(Integer renewPeriod) {
+            return renewPeriod(Output.of(renewPeriod));
+        }
+
+        public Builder renewalStatus(@Nullable Output<String> renewalStatus) {
+            $.renewalStatus = renewalStatus;
+            return this;
+        }
+
+        public Builder renewalStatus(String renewalStatus) {
+            return renewalStatus(Output.of(renewalStatus));
         }
 
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {

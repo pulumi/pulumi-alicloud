@@ -4,30 +4,50 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceLogConfig {
     /**
+     * @return Enable instance level metrics.
+     * 
+     */
+    private @Nullable Boolean enableInstanceMetrics;
+    /**
+     * @return Enable request level metrics.
+     * 
+     */
+    private @Nullable Boolean enableRequestMetrics;
+    /**
      * @return The log store name of Alicloud Simple Log Service.
      * 
      */
-    private final String logstore;
+    private String logstore;
     /**
      * @return The project name of the Alicloud Simple Log Service.
      * 
      */
-    private final String project;
+    private String project;
 
-    @CustomType.Constructor
-    private ServiceLogConfig(
-        @CustomType.Parameter("logstore") String logstore,
-        @CustomType.Parameter("project") String project) {
-        this.logstore = logstore;
-        this.project = project;
+    private ServiceLogConfig() {}
+    /**
+     * @return Enable instance level metrics.
+     * 
+     */
+    public Optional<Boolean> enableInstanceMetrics() {
+        return Optional.ofNullable(this.enableInstanceMetrics);
     }
-
+    /**
+     * @return Enable request level metrics.
+     * 
+     */
+    public Optional<Boolean> enableRequestMetrics() {
+        return Optional.ofNullable(this.enableRequestMetrics);
+    }
     /**
      * @return The log store name of Alicloud Simple Log Service.
      * 
@@ -50,30 +70,48 @@ public final class ServiceLogConfig {
     public static Builder builder(ServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableInstanceMetrics;
+        private @Nullable Boolean enableRequestMetrics;
         private String logstore;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableInstanceMetrics = defaults.enableInstanceMetrics;
+    	      this.enableRequestMetrics = defaults.enableRequestMetrics;
     	      this.logstore = defaults.logstore;
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
+        public Builder enableInstanceMetrics(@Nullable Boolean enableInstanceMetrics) {
+            this.enableInstanceMetrics = enableInstanceMetrics;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableRequestMetrics(@Nullable Boolean enableRequestMetrics) {
+            this.enableRequestMetrics = enableRequestMetrics;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logstore(String logstore) {
             this.logstore = Objects.requireNonNull(logstore);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public ServiceLogConfig build() {
-            return new ServiceLogConfig(logstore, project);
+        }
+        public ServiceLogConfig build() {
+            final var o = new ServiceLogConfig();
+            o.enableInstanceMetrics = enableInstanceMetrics;
+            o.enableRequestMetrics = enableRequestMetrics;
+            o.logstore = logstore;
+            o.project = project;
+            return o;
         }
     }
 }

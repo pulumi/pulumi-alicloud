@@ -14,57 +14,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotasResult {
-    private final @Nullable List<GetQuotasDimension> dimensions;
-    private final @Nullable String groupCode;
+    private @Nullable List<GetQuotasDimension> dimensions;
+    private @Nullable String groupCode;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String keyWord;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final String productCode;
-    private final @Nullable String quotaActionCode;
-    private final @Nullable String quotaCategory;
-    private final List<GetQuotasQuota> quotas;
-    private final @Nullable String sortField;
-    private final @Nullable String sortOrder;
+    private String id;
+    private List<String> ids;
+    private @Nullable String keyWord;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private String productCode;
+    private @Nullable String quotaActionCode;
+    private @Nullable String quotaCategory;
+    private List<GetQuotasQuota> quotas;
+    private @Nullable String sortField;
+    private @Nullable String sortOrder;
 
-    @CustomType.Constructor
-    private GetQuotasResult(
-        @CustomType.Parameter("dimensions") @Nullable List<GetQuotasDimension> dimensions,
-        @CustomType.Parameter("groupCode") @Nullable String groupCode,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyWord") @Nullable String keyWord,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("quotaActionCode") @Nullable String quotaActionCode,
-        @CustomType.Parameter("quotaCategory") @Nullable String quotaCategory,
-        @CustomType.Parameter("quotas") List<GetQuotasQuota> quotas,
-        @CustomType.Parameter("sortField") @Nullable String sortField,
-        @CustomType.Parameter("sortOrder") @Nullable String sortOrder) {
-        this.dimensions = dimensions;
-        this.groupCode = groupCode;
-        this.id = id;
-        this.ids = ids;
-        this.keyWord = keyWord;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.productCode = productCode;
-        this.quotaActionCode = quotaActionCode;
-        this.quotaCategory = quotaCategory;
-        this.quotas = quotas;
-        this.sortField = sortField;
-        this.sortOrder = sortOrder;
-    }
-
+    private GetQuotasResult() {}
     public List<GetQuotasDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
@@ -119,7 +88,7 @@ public final class GetQuotasResult {
     public static Builder builder(GetQuotasResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetQuotasDimension> dimensions;
         private @Nullable String groupCode;
@@ -135,11 +104,7 @@ public final class GetQuotasResult {
         private List<GetQuotasQuota> quotas;
         private @Nullable String sortField;
         private @Nullable String sortOrder;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dimensions = defaults.dimensions;
@@ -158,6 +123,7 @@ public final class GetQuotasResult {
     	      this.sortOrder = defaults.sortOrder;
         }
 
+        @CustomType.Setter
         public Builder dimensions(@Nullable List<GetQuotasDimension> dimensions) {
             this.dimensions = dimensions;
             return this;
@@ -165,14 +131,17 @@ public final class GetQuotasResult {
         public Builder dimensions(GetQuotasDimension... dimensions) {
             return dimensions(List.of(dimensions));
         }
+        @CustomType.Setter
         public Builder groupCode(@Nullable String groupCode) {
             this.groupCode = groupCode;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -180,14 +149,17 @@ public final class GetQuotasResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
             this.keyWord = keyWord;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -195,22 +167,27 @@ public final class GetQuotasResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
             this.quotaActionCode = quotaActionCode;
             return this;
         }
+        @CustomType.Setter
         public Builder quotaCategory(@Nullable String quotaCategory) {
             this.quotaCategory = quotaCategory;
             return this;
         }
+        @CustomType.Setter
         public Builder quotas(List<GetQuotasQuota> quotas) {
             this.quotas = Objects.requireNonNull(quotas);
             return this;
@@ -218,15 +195,33 @@ public final class GetQuotasResult {
         public Builder quotas(GetQuotasQuota... quotas) {
             return quotas(List.of(quotas));
         }
+        @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
             this.sortField = sortField;
             return this;
         }
+        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
-        }        public GetQuotasResult build() {
-            return new GetQuotasResult(dimensions, groupCode, id, ids, keyWord, nameRegex, names, outputFile, productCode, quotaActionCode, quotaCategory, quotas, sortField, sortOrder);
+        }
+        public GetQuotasResult build() {
+            final var o = new GetQuotasResult();
+            o.dimensions = dimensions;
+            o.groupCode = groupCode;
+            o.id = id;
+            o.ids = ids;
+            o.keyWord = keyWord;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.productCode = productCode;
+            o.quotaActionCode = quotaActionCode;
+            o.quotaCategory = quotaCategory;
+            o.quotas = quotas;
+            o.sortField = sortField;
+            o.sortOrder = sortOrder;
+            return o;
         }
     }
 }

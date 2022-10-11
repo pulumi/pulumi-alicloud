@@ -1343,6 +1343,7 @@ class GetListenersSlbListenerResult(dict):
                  master_slave_server_group_id: str,
                  persistence_timeout: int,
                  protocol: str,
+                 proxy_protocol_v2_enabled: bool,
                  request_timeout: int,
                  scheduler: str,
                  security_status: str,
@@ -1383,6 +1384,7 @@ class GetListenersSlbListenerResult(dict):
         :param str master_slave_server_group_id: ID of the active/standby server group.
         :param int persistence_timeout: Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
         :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        :param bool proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param int request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param str scheduler: Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
         :param str security_status: Security status. Only available when the protocol is `https`.
@@ -1422,6 +1424,7 @@ class GetListenersSlbListenerResult(dict):
         pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
         pulumi.set(__self__, "persistence_timeout", persistence_timeout)
         pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         pulumi.set(__self__, "request_timeout", request_timeout)
         pulumi.set(__self__, "scheduler", scheduler)
         pulumi.set(__self__, "security_status", security_status)
@@ -1629,6 +1632,14 @@ class GetListenersSlbListenerResult(dict):
         Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="proxyProtocolV2Enabled")
+    def proxy_protocol_v2_enabled(self) -> bool:
+        """
+        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        """
+        return pulumi.get(self, "proxy_protocol_v2_enabled")
 
     @property
     @pulumi.getter(name="requestTimeout")

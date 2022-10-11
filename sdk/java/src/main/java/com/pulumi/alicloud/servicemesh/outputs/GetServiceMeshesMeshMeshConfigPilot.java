@@ -14,21 +14,14 @@ public final class GetServiceMeshesMeshMeshConfigPilot {
      * @return Whether to support the HTTP1.0.
      * 
      */
-    private final Boolean http10Enabled;
+    private Boolean http10Enabled;
     /**
      * @return The  percentage of the Link trace sampling.
      * 
      */
-    private final Double traceSampling;
+    private Double traceSampling;
 
-    @CustomType.Constructor
-    private GetServiceMeshesMeshMeshConfigPilot(
-        @CustomType.Parameter("http10Enabled") Boolean http10Enabled,
-        @CustomType.Parameter("traceSampling") Double traceSampling) {
-        this.http10Enabled = http10Enabled;
-        this.traceSampling = traceSampling;
-    }
-
+    private GetServiceMeshesMeshMeshConfigPilot() {}
     /**
      * @return Whether to support the HTTP1.0.
      * 
@@ -51,30 +44,32 @@ public final class GetServiceMeshesMeshMeshConfigPilot {
     public static Builder builder(GetServiceMeshesMeshMeshConfigPilot defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean http10Enabled;
         private Double traceSampling;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMeshesMeshMeshConfigPilot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.http10Enabled = defaults.http10Enabled;
     	      this.traceSampling = defaults.traceSampling;
         }
 
+        @CustomType.Setter
         public Builder http10Enabled(Boolean http10Enabled) {
             this.http10Enabled = Objects.requireNonNull(http10Enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder traceSampling(Double traceSampling) {
             this.traceSampling = Objects.requireNonNull(traceSampling);
             return this;
-        }        public GetServiceMeshesMeshMeshConfigPilot build() {
-            return new GetServiceMeshesMeshMeshConfigPilot(http10Enabled, traceSampling);
+        }
+        public GetServiceMeshesMeshMeshConfigPilot build() {
+            final var o = new GetServiceMeshesMeshMeshConfigPilot();
+            o.http10Enabled = http10Enabled;
+            o.traceSampling = traceSampling;
+            return o;
         }
     }
 }

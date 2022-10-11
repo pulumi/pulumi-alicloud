@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesAddonArgs;
+import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesRrsaMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -126,14 +127,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     @Import(name="enableRrsa")
     private @Nullable Output<Boolean> enableRrsa;
 
     /**
-     * @return Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * @return Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     public Optional<Output<Boolean>> enableRrsa() {
@@ -173,14 +174,22 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Import(name="kubeConfig")
     private @Nullable Output<String> kubeConfig;
 
     /**
      * @return The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     public Optional<Output<String>> kubeConfig() {
         return Optional.ofNullable(this.kubeConfig);
     }
@@ -295,6 +304,21 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     public Optional<Output<List<String>>> retainResources() {
         return Optional.ofNullable(this.retainResources);
+    }
+
+    /**
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    @Import(name="rrsaMetadata")
+    private @Nullable Output<ServerlessKubernetesRrsaMetadataArgs> rrsaMetadata;
+
+    /**
+     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    public Optional<Output<ServerlessKubernetesRrsaMetadataArgs>> rrsaMetadata() {
+        return Optional.ofNullable(this.rrsaMetadata);
     }
 
     /**
@@ -492,6 +516,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         this.privateZone = $.privateZone;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
+        this.rrsaMetadata = $.rrsaMetadata;
         this.securityGroupId = $.securityGroupId;
         this.serviceCidr = $.serviceCidr;
         this.serviceDiscoveryTypes = $.serviceDiscoveryTypes;
@@ -677,7 +702,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableRrsa Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+         * @param enableRrsa Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
          * 
@@ -688,7 +713,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableRrsa Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+         * @param enableRrsa Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
          * 
@@ -744,7 +769,11 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(@Nullable Output<String> kubeConfig) {
             $.kubeConfig = kubeConfig;
             return this;
@@ -755,7 +784,11 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(String kubeConfig) {
             return kubeConfig(Output.of(kubeConfig));
         }
@@ -914,6 +947,27 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         public Builder retainResources(String... retainResources) {
             return retainResources(List.of(retainResources));
+        }
+
+        /**
+         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrsaMetadata(@Nullable Output<ServerlessKubernetesRrsaMetadataArgs> rrsaMetadata) {
+            $.rrsaMetadata = rrsaMetadata;
+            return this;
+        }
+
+        /**
+         * @param rrsaMetadata (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrsaMetadata(ServerlessKubernetesRrsaMetadataArgs rrsaMetadata) {
+            return rrsaMetadata(Output.of(rrsaMetadata));
         }
 
         /**

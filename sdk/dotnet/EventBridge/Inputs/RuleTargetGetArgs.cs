@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class RuleTargetGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+        /// </summary>
+        [Input("deadLetterQueue")]
+        public Input<Inputs.RuleTargetDeadLetterQueueGetArgs>? DeadLetterQueue { get; set; }
+
+        /// <summary>
         /// The endpoint of target.
         /// </summary>
         [Input("endpoint", required: true)]
@@ -22,13 +28,21 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         private InputList<Inputs.RuleTargetParamListGetArgs>? _paramLists;
 
         /// <summary>
-        /// A list of param.
+        /// A list of param. See the following `Block param_list`.
         /// </summary>
         public InputList<Inputs.RuleTargetParamListGetArgs> ParamLists
         {
             get => _paramLists ?? (_paramLists = new InputList<Inputs.RuleTargetParamListGetArgs>());
             set => _paramLists = value;
         }
+
+        /// <summary>
+        /// The retry policy that is used to push the event. Valid values:
+        /// - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+        /// - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
+        /// </summary>
+        [Input("pushRetryStrategy")]
+        public Input<string>? PushRetryStrategy { get; set; }
 
         /// <summary>
         /// The ID of target.

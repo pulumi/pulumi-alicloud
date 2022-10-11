@@ -13,21 +13,14 @@ public final class GetLoadBalancersBalancerAccessLogConfig {
      * @return The log service that access logs are shipped to.
      * 
      */
-    private final String logProject;
+    private String logProject;
     /**
      * @return The logstore that access logs are shipped to.
      * 
      */
-    private final String logStore;
+    private String logStore;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerAccessLogConfig(
-        @CustomType.Parameter("logProject") String logProject,
-        @CustomType.Parameter("logStore") String logStore) {
-        this.logProject = logProject;
-        this.logStore = logStore;
-    }
-
+    private GetLoadBalancersBalancerAccessLogConfig() {}
     /**
      * @return The log service that access logs are shipped to.
      * 
@@ -50,30 +43,32 @@ public final class GetLoadBalancersBalancerAccessLogConfig {
     public static Builder builder(GetLoadBalancersBalancerAccessLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String logProject;
         private String logStore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerAccessLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logProject = defaults.logProject;
     	      this.logStore = defaults.logStore;
         }
 
+        @CustomType.Setter
         public Builder logProject(String logProject) {
             this.logProject = Objects.requireNonNull(logProject);
             return this;
         }
+        @CustomType.Setter
         public Builder logStore(String logStore) {
             this.logStore = Objects.requireNonNull(logStore);
             return this;
-        }        public GetLoadBalancersBalancerAccessLogConfig build() {
-            return new GetLoadBalancersBalancerAccessLogConfig(logProject, logStore);
+        }
+        public GetLoadBalancersBalancerAccessLogConfig build() {
+            final var o = new GetLoadBalancersBalancerAccessLogConfig();
+            o.logProject = logProject;
+            o.logStore = logStore;
+            return o;
         }
     }
 }

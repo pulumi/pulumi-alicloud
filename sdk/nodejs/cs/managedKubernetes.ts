@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+ * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
@@ -111,7 +111,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
     /**
@@ -166,6 +166,8 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
@@ -247,7 +249,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    public readonly rrsaMetadata!: pulumi.Output<outputs.cs.ManagedKubernetesRrsaMetadata>;
+    /**
+     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      *
      * @deprecated Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.
      */
@@ -471,6 +477,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retainResources"] = state ? state.retainResources : undefined;
+            resourceInputs["rrsaMetadata"] = state ? state.rrsaMetadata : undefined;
             resourceInputs["runtime"] = state ? state.runtime : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
@@ -550,6 +557,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
+            resourceInputs["rrsaMetadata"] = args ? args.rrsaMetadata : undefined;
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
@@ -664,7 +672,7 @@ export interface ManagedKubernetesState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
@@ -719,6 +727,8 @@ export interface ManagedKubernetesState {
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -800,7 +810,11 @@ export interface ManagedKubernetesState {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
+    /**
+     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      *
      * @deprecated Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.
      */
@@ -1032,7 +1046,7 @@ export interface ManagedKubernetesArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
@@ -1087,6 +1101,8 @@ export interface ManagedKubernetesArgs {
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path of kube config, like `~/.kube/config`.
+     *
+     * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
      */
     kubeConfig?: pulumi.Input<string>;
     /**
@@ -1164,7 +1180,11 @@ export interface ManagedKubernetesArgs {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     */
+    rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
+    /**
+     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      *
      * @deprecated Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.
      */

@@ -126,6 +126,21 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The VPN gateway IP.
+     * 
+     */
+    @Import(name="internetIp")
+    private @Nullable Output<String> internetIp;
+
+    /**
+     * @return The VPN gateway IP.
+     * 
+     */
+    public Optional<Output<String>> internetIp() {
+        return Optional.ofNullable(this.internetIp);
+    }
+
+    /**
      * Configuration negotiated in the second stage. See the following `Block ipsec_config`.
      * 
      */
@@ -225,6 +240,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         this.enableNatTraversal = $.enableNatTraversal;
         this.healthCheckConfig = $.healthCheckConfig;
         this.ikeConfig = $.ikeConfig;
+        this.internetIp = $.internetIp;
         this.ipsecConfig = $.ipsecConfig;
         this.localSubnet = $.localSubnet;
         this.networkType = $.networkType;
@@ -396,6 +412,27 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
          */
         public Builder ikeConfig(GatewayVpnAttachmentIkeConfigArgs ikeConfig) {
             return ikeConfig(Output.of(ikeConfig));
+        }
+
+        /**
+         * @param internetIp The VPN gateway IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetIp(@Nullable Output<String> internetIp) {
+            $.internetIp = internetIp;
+            return this;
+        }
+
+        /**
+         * @param internetIp The VPN gateway IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetIp(String internetIp) {
+            return internetIp(Output.of(internetIp));
         }
 
         /**

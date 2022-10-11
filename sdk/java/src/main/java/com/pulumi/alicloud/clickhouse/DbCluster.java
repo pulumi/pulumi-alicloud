@@ -328,6 +328,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.usedTime);
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
      * The vswitch id of DBCluster.
      * 
      */
@@ -340,6 +354,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
+    }
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Export(name="zoneId", type=String.class, parameters={})
+    private Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

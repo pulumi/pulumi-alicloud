@@ -17,37 +17,37 @@ public final class GetSecurityGroupsGroup {
      * @return Creation time of the security group.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return The description of the security group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the security group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether to allow inner network access.
      * 
      */
-    private final Boolean innerAccess;
+    private Boolean innerAccess;
     /**
      * @return The name of the security group.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The Id of resource group which the security_group belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The type of the security group.
      * 
      */
-    private final String securityGroupType;
+    private String securityGroupType;
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
      * ```java
@@ -83,35 +83,14 @@ public final class GetSecurityGroupsGroup {
      * ```
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return Used to retrieve security groups that belong to the specified VPC ID.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetSecurityGroupsGroup(
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("innerAccess") Boolean innerAccess,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityGroupType") String securityGroupType,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.creationTime = creationTime;
-        this.description = description;
-        this.id = id;
-        this.innerAccess = innerAccess;
-        this.name = name;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroupType = securityGroupType;
-        this.tags = tags;
-        this.vpcId = vpcId;
-    }
-
+    private GetSecurityGroupsGroup() {}
     /**
      * @return Creation time of the security group.
      * 
@@ -214,7 +193,7 @@ public final class GetSecurityGroupsGroup {
     public static Builder builder(GetSecurityGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String creationTime;
         private String description;
@@ -225,11 +204,7 @@ public final class GetSecurityGroupsGroup {
         private String securityGroupType;
         private @Nullable Map<String,Object> tags;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecurityGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTime = defaults.creationTime;
@@ -243,43 +218,63 @@ public final class GetSecurityGroupsGroup {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder innerAccess(Boolean innerAccess) {
             this.innerAccess = Objects.requireNonNull(innerAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupType(String securityGroupType) {
             this.securityGroupType = Objects.requireNonNull(securityGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetSecurityGroupsGroup build() {
-            return new GetSecurityGroupsGroup(creationTime, description, id, innerAccess, name, resourceGroupId, securityGroupType, tags, vpcId);
+        }
+        public GetSecurityGroupsGroup build() {
+            final var o = new GetSecurityGroupsGroup();
+            o.creationTime = creationTime;
+            o.description = description;
+            o.id = id;
+            o.innerAccess = innerAccess;
+            o.name = name;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroupType = securityGroupType;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

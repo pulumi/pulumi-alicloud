@@ -14,105 +14,74 @@ public final class GetGatewaysGateway {
      * @return Limit search to specific business status - valid value is &#34;Normal&#34;, &#34;FinancialLocked&#34;.
      * 
      */
-    private final String businessStatus;
+    private String businessStatus;
     /**
      * @return The creation time of the VPN gateway.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the VPN
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Indicates whether the IPsec-VPN feature is enabled.
      * 
      */
-    private final String enableIpsec;
+    private String enableIpsec;
     /**
      * @return Whether the ssl function is enabled.
      * 
      */
-    private final String enableSsl;
+    private String enableSsl;
     /**
      * @return The expiration time of the VPN gateway.
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return ID of the VPN.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The charge type of the VPN gateway.
      * 
      */
-    private final String instanceChargeType;
+    private String instanceChargeType;
     /**
      * @return The internet ip of the VPN.
      * 
      */
-    private final String internetIp;
+    private String internetIp;
     /**
      * @return The name of the VPN.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The Specification of the VPN
      * 
      */
-    private final String specification;
+    private String specification;
     /**
      * @return Total count of ssl vpn connections.
      * 
      */
-    private final Integer sslConnections;
+    private Integer sslConnections;
     /**
      * @return Limit search to specific status - valid value is &#34;Init&#34;, &#34;Provisioning&#34;, &#34;Active&#34;, &#34;Updating&#34;, &#34;Deleting&#34;.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Use the VPC ID as the search key.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetGatewaysGateway(
-        @CustomType.Parameter("businessStatus") String businessStatus,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableIpsec") String enableIpsec,
-        @CustomType.Parameter("enableSsl") String enableSsl,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
-        @CustomType.Parameter("internetIp") String internetIp,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("specification") String specification,
-        @CustomType.Parameter("sslConnections") Integer sslConnections,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.businessStatus = businessStatus;
-        this.createTime = createTime;
-        this.description = description;
-        this.enableIpsec = enableIpsec;
-        this.enableSsl = enableSsl;
-        this.endTime = endTime;
-        this.id = id;
-        this.instanceChargeType = instanceChargeType;
-        this.internetIp = internetIp;
-        this.name = name;
-        this.specification = specification;
-        this.sslConnections = sslConnections;
-        this.status = status;
-        this.vpcId = vpcId;
-    }
-
+    private GetGatewaysGateway() {}
     /**
      * @return Limit search to specific business status - valid value is &#34;Normal&#34;, &#34;FinancialLocked&#34;.
      * 
@@ -219,7 +188,7 @@ public final class GetGatewaysGateway {
     public static Builder builder(GetGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String businessStatus;
         private String createTime;
@@ -235,11 +204,7 @@ public final class GetGatewaysGateway {
         private Integer sslConnections;
         private String status;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -258,63 +223,93 @@ public final class GetGatewaysGateway {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpsec(String enableIpsec) {
             this.enableIpsec = Objects.requireNonNull(enableIpsec);
             return this;
         }
+        @CustomType.Setter
         public Builder enableSsl(String enableSsl) {
             this.enableSsl = Objects.requireNonNull(enableSsl);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
         }
+        @CustomType.Setter
         public Builder sslConnections(Integer sslConnections) {
             this.sslConnections = Objects.requireNonNull(sslConnections);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetGatewaysGateway build() {
-            return new GetGatewaysGateway(businessStatus, createTime, description, enableIpsec, enableSsl, endTime, id, instanceChargeType, internetIp, name, specification, sslConnections, status, vpcId);
+        }
+        public GetGatewaysGateway build() {
+            final var o = new GetGatewaysGateway();
+            o.businessStatus = businessStatus;
+            o.createTime = createTime;
+            o.description = description;
+            o.enableIpsec = enableIpsec;
+            o.enableSsl = enableSsl;
+            o.endTime = endTime;
+            o.id = id;
+            o.instanceChargeType = instanceChargeType;
+            o.internetIp = internetIp;
+            o.name = name;
+            o.specification = specification;
+            o.sslConnections = sslConnections;
+            o.status = status;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

@@ -149,6 +149,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.caType;
     }
     /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     * 
+     */
+    @Export(name="category", type=String.class, parameters={})
+    private Output<String> category;
+
+    /**
+     * @return The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     * 
+     */
+    public Output<String> category() {
+        return this.category;
+    }
+    /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      * 
      */
@@ -1015,6 +1037,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> upgradeTime() {
         return Codegen.optional(this.upgradeTime);
+    }
+    /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.

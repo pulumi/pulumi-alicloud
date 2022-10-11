@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -213,6 +214,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.lastModified;
     }
     /**
+     * The configuration for layers.
+     * 
+     */
+    @Export(name="layers", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> layers;
+
+    /**
+     * @return The configuration for layers.
+     * 
+     */
+    public Output<Optional<List<String>>> layers() {
+        return Codegen.optional(this.layers);
+    }
+    /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      * 
      */
@@ -283,14 +298,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ossKey);
     }
     /**
-     * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      * 
      */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
     /**
-     * @return See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * @return See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      * 
      */
     public Output<String> runtime() {

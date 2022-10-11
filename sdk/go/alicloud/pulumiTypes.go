@@ -204,6 +204,7 @@ type ProviderEndpoint struct {
 	Cas                 *string `pulumi:"cas"`
 	Cassandra           *string `pulumi:"cassandra"`
 	Cbn                 *string `pulumi:"cbn"`
+	Cbs                 *string `pulumi:"cbs"`
 	Cddc                *string `pulumi:"cddc"`
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
@@ -233,6 +234,7 @@ type ProviderEndpoint struct {
 	Dts                 *string `pulumi:"dts"`
 	Dysms               *string `pulumi:"dysms"`
 	Eais                *string `pulumi:"eais"`
+	Ebs                 *string `pulumi:"ebs"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Edas                *string `pulumi:"edas"`
@@ -271,6 +273,7 @@ type ProviderEndpoint struct {
 	Mscopensubscription *string `pulumi:"mscopensubscription"`
 	Mse                 *string `pulumi:"mse"`
 	Nas                 *string `pulumi:"nas"`
+	Nlb                 *string `pulumi:"nlb"`
 	Ons                 *string `pulumi:"ons"`
 	Onsproxy            *string `pulumi:"onsproxy"`
 	Oos                 *string `pulumi:"oos"`
@@ -302,6 +305,7 @@ type ProviderEndpoint struct {
 	Tag                 *string `pulumi:"tag"`
 	Vod                 *string `pulumi:"vod"`
 	Vpc                 *string `pulumi:"vpc"`
+	Vpcpeer             *string `pulumi:"vpcpeer"`
 	Vs                  *string `pulumi:"vs"`
 	Waf                 *string `pulumi:"waf"`
 	WafOpenapi          *string `pulumi:"wafOpenapi"`
@@ -334,6 +338,7 @@ type ProviderEndpointArgs struct {
 	Cas                 pulumi.StringPtrInput `pulumi:"cas"`
 	Cassandra           pulumi.StringPtrInput `pulumi:"cassandra"`
 	Cbn                 pulumi.StringPtrInput `pulumi:"cbn"`
+	Cbs                 pulumi.StringPtrInput `pulumi:"cbs"`
 	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
@@ -363,6 +368,7 @@ type ProviderEndpointArgs struct {
 	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
 	Dysms               pulumi.StringPtrInput `pulumi:"dysms"`
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
+	Ebs                 pulumi.StringPtrInput `pulumi:"ebs"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Edas                pulumi.StringPtrInput `pulumi:"edas"`
@@ -401,6 +407,7 @@ type ProviderEndpointArgs struct {
 	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
 	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
 	Nas                 pulumi.StringPtrInput `pulumi:"nas"`
+	Nlb                 pulumi.StringPtrInput `pulumi:"nlb"`
 	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
 	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
@@ -432,6 +439,7 @@ type ProviderEndpointArgs struct {
 	Tag                 pulumi.StringPtrInput `pulumi:"tag"`
 	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
 	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
+	Vpcpeer             pulumi.StringPtrInput `pulumi:"vpcpeer"`
 	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
 	Waf                 pulumi.StringPtrInput `pulumi:"waf"`
 	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
@@ -548,6 +556,10 @@ func (o ProviderEndpointOutput) Cbn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbn }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Cbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbs }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Cddc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cddc }).(pulumi.StringPtrOutput)
 }
@@ -662,6 +674,10 @@ func (o ProviderEndpointOutput) Dysms() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Eais() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eais }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Ebs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ebs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
@@ -816,6 +832,10 @@ func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nas }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Nlb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nlb }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Ons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
 }
@@ -938,6 +958,10 @@ func (o ProviderEndpointOutput) Vod() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Vpcpeer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpcpeer }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Vs() pulumi.StringPtrOutput {

@@ -64,6 +64,20 @@ import (
 //						Type: pulumi.String("Binary"),
 //					},
 //				},
+//				DefinedColumns: ots.TableDefinedColumnArray{
+//					&ots.TableDefinedColumnArgs{
+//						Name: pulumi.String("col1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//					&ots.TableDefinedColumnArgs{
+//						Name: pulumi.String("col2"),
+//						Type: pulumi.String("String"),
+//					},
+//					&ots.TableDefinedColumnArgs{
+//						Name: pulumi.String("col3"),
+//						Type: pulumi.String("Binary"),
+//					},
+//				},
 //				TimeToLive:                -1,
 //				MaxVersion:                pulumi.Int(1),
 //				DeviationCellVersionInSec: pulumi.String("1"),
@@ -91,6 +105,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	DefinedColumns TableDefinedColumnArrayOutput `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrOutput `pulumi:"deviationCellVersionInSec"`
 	// Whether enable OTS server side encryption. Default value is false.
@@ -153,6 +169,8 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
 	// Whether enable OTS server side encryption. Default value is false.
@@ -172,6 +190,8 @@ type tableState struct {
 }
 
 type TableState struct {
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
 	// Whether enable OTS server side encryption. Default value is false.
@@ -195,6 +215,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
 	// Whether enable OTS server side encryption. Default value is false.
@@ -215,6 +237,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
 	// Whether enable OTS server side encryption. Default value is false.
@@ -318,6 +342,11 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32.
+func (o TableOutput) DefinedColumns() TableDefinedColumnArrayOutput {
+	return o.ApplyT(func(v *Table) TableDefinedColumnArrayOutput { return v.DefinedColumns }).(TableDefinedColumnArrayOutput)
 }
 
 // The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.

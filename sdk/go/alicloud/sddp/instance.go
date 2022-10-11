@@ -81,14 +81,16 @@ type Instance struct {
 	// Whether the authorized MaxCompute (ODPS) assets.
 	OdpsSet pulumi.BoolOutput `pulumi:"odpsSet"`
 	// Whether the authorized oss assets.
-	OssBucketSet pulumi.BoolOutput   `pulumi:"ossBucketSet"`
-	OssSize      pulumi.StringOutput `pulumi:"ossSize"`
+	OssBucketSet pulumi.BoolOutput `pulumi:"ossBucketSet"`
+	// The OSS storage capacity.
+	OssSize pulumi.StringOutput `pulumi:"ossSize"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// Whether the authorized rds assets.
-	RdsSet     pulumi.BoolOutput   `pulumi:"rdsSet"`
+	RdsSet pulumi.BoolOutput `pulumi:"rdsSet"`
+	// The remaining days of the protection period of the assets in the current login account.
 	RemainDays pulumi.StringOutput `pulumi:"remainDays"`
 	// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
@@ -173,14 +175,16 @@ type instanceState struct {
 	// Whether the authorized MaxCompute (ODPS) assets.
 	OdpsSet *bool `pulumi:"odpsSet"`
 	// Whether the authorized oss assets.
-	OssBucketSet *bool   `pulumi:"ossBucketSet"`
-	OssSize      *string `pulumi:"ossSize"`
+	OssBucketSet *bool `pulumi:"ossBucketSet"`
+	// The OSS storage capacity.
+	OssSize *string `pulumi:"ossSize"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
 	Period *int `pulumi:"period"`
 	// Whether the authorized rds assets.
-	RdsSet     *bool   `pulumi:"rdsSet"`
+	RdsSet *bool `pulumi:"rdsSet"`
+	// The remaining days of the protection period of the assets in the current login account.
 	RemainDays *string `pulumi:"remainDays"`
 	// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -217,13 +221,15 @@ type InstanceState struct {
 	OdpsSet pulumi.BoolPtrInput
 	// Whether the authorized oss assets.
 	OssBucketSet pulumi.BoolPtrInput
-	OssSize      pulumi.StringPtrInput
+	// The OSS storage capacity.
+	OssSize pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
 	Period pulumi.IntPtrInput
 	// Whether the authorized rds assets.
-	RdsSet     pulumi.BoolPtrInput
+	RdsSet pulumi.BoolPtrInput
+	// The remaining days of the protection period of the assets in the current login account.
 	RemainDays pulumi.StringPtrInput
 	// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
 	RenewPeriod pulumi.IntPtrInput
@@ -256,6 +262,8 @@ type instanceArgs struct {
 	Logistics *string `pulumi:"logistics"`
 	// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
 	ModifyType *string `pulumi:"modifyType"`
+	// The OSS storage capacity.
+	OssSize *string `pulumi:"ossSize"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
@@ -286,6 +294,8 @@ type InstanceArgs struct {
 	Logistics pulumi.StringPtrInput
 	// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
 	ModifyType pulumi.StringPtrInput
+	// The OSS storage capacity.
+	OssSize pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringInput
 	// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
@@ -433,6 +443,7 @@ func (o InstanceOutput) OssBucketSet() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.OssBucketSet }).(pulumi.BoolOutput)
 }
 
+// The OSS storage capacity.
 func (o InstanceOutput) OssSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.OssSize }).(pulumi.StringOutput)
 }
@@ -452,6 +463,7 @@ func (o InstanceOutput) RdsSet() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.RdsSet }).(pulumi.BoolOutput)
 }
 
+// The remaining days of the protection period of the assets in the current login account.
 func (o InstanceOutput) RemainDays() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RemainDays }).(pulumi.StringOutput)
 }

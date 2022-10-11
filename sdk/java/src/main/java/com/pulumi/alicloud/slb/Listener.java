@@ -637,6 +637,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    @Export(name="proxyProtocolV2Enabled", type=Boolean.class, parameters={})
+    private Output<Boolean> proxyProtocolV2Enabled;
+
+    /**
+     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    public Output<Boolean> proxyProtocolV2Enabled() {
+        return this.proxyProtocolV2Enabled;
+    }
+    /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      * 
      */

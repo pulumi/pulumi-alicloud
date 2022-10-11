@@ -55,7 +55,8 @@ type Eip struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId         pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// The EIP current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -122,7 +123,8 @@ type eipState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The EIP current status.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -161,7 +163,8 @@ type EipState struct {
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId         pulumi.StringPtrInput
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The EIP current status.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -202,7 +205,8 @@ type eipArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -238,7 +242,8 @@ type EipArgs struct {
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId         pulumi.StringPtrInput
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -405,6 +410,10 @@ func (o EipOutput) Period() pulumi.IntPtrOutput {
 // The Id of resource group which the eip belongs.
 func (o EipOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
 // The EIP current status.

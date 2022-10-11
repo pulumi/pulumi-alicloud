@@ -14,59 +14,40 @@ public final class GetInstancesInstance {
      * @return The timestamp (in seconds) indicating when the WAF instance expires.
      * 
      */
-    private final Integer endDate;
+    private Integer endDate;
     /**
      * @return The ID of the WAF instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates whether the WAF instance has overdue payments.
      * 
      */
-    private final Integer inDebt;
+    private Integer inDebt;
     /**
      * @return The ID of WAF the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The number of days before the trial period of the WAF instance expires.
      * 
      */
-    private final Integer remainDay;
+    private Integer remainDay;
     /**
      * @return The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
      * 
      */
-    private final Integer status;
-    private final String subscriptionType;
+    private Integer status;
+    private String subscriptionType;
     /**
      * @return Indicates whether this is a trial instance.
      * 
      */
-    private final Integer trial;
+    private Integer trial;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("endDate") Integer endDate,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inDebt") Integer inDebt,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("remainDay") Integer remainDay,
-        @CustomType.Parameter("status") Integer status,
-        @CustomType.Parameter("subscriptionType") String subscriptionType,
-        @CustomType.Parameter("trial") Integer trial) {
-        this.endDate = endDate;
-        this.id = id;
-        this.inDebt = inDebt;
-        this.instanceId = instanceId;
-        this.remainDay = remainDay;
-        this.status = status;
-        this.subscriptionType = subscriptionType;
-        this.trial = trial;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The timestamp (in seconds) indicating when the WAF instance expires.
      * 
@@ -127,7 +108,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer endDate;
         private String id;
@@ -137,11 +118,7 @@ public final class GetInstancesInstance {
         private Integer status;
         private String subscriptionType;
         private Integer trial;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endDate = defaults.endDate;
@@ -154,39 +131,57 @@ public final class GetInstancesInstance {
     	      this.trial = defaults.trial;
         }
 
+        @CustomType.Setter
         public Builder endDate(Integer endDate) {
             this.endDate = Objects.requireNonNull(endDate);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inDebt(Integer inDebt) {
             this.inDebt = Objects.requireNonNull(inDebt);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder remainDay(Integer remainDay) {
             this.remainDay = Objects.requireNonNull(remainDay);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
             this.subscriptionType = Objects.requireNonNull(subscriptionType);
             return this;
         }
+        @CustomType.Setter
         public Builder trial(Integer trial) {
             this.trial = Objects.requireNonNull(trial);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(endDate, id, inDebt, instanceId, remainDay, status, subscriptionType, trial);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.endDate = endDate;
+            o.id = id;
+            o.inDebt = inDebt;
+            o.instanceId = instanceId;
+            o.remainDay = remainDay;
+            o.status = status;
+            o.subscriptionType = subscriptionType;
+            o.trial = trial;
+            return o;
         }
     }
 }

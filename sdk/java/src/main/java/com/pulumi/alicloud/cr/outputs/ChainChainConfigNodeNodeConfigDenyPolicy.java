@@ -15,35 +15,24 @@ public final class ChainChainConfigNodeNodeConfigDenyPolicy {
      * @return The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
      * 
      */
-    private final @Nullable String action;
+    private @Nullable String action;
     /**
      * @return The count of scanning vulnerabilities that triggers blocking.
      * 
      */
-    private final @Nullable String issueCount;
+    private @Nullable String issueCount;
     /**
      * @return The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
      * 
      */
-    private final @Nullable String issueLevel;
+    private @Nullable String issueLevel;
     /**
      * @return The logic of trigger blocking. Valid values: `AND`, `OR`.
      * 
      */
-    private final @Nullable String logic;
+    private @Nullable String logic;
 
-    @CustomType.Constructor
-    private ChainChainConfigNodeNodeConfigDenyPolicy(
-        @CustomType.Parameter("action") @Nullable String action,
-        @CustomType.Parameter("issueCount") @Nullable String issueCount,
-        @CustomType.Parameter("issueLevel") @Nullable String issueLevel,
-        @CustomType.Parameter("logic") @Nullable String logic) {
-        this.action = action;
-        this.issueCount = issueCount;
-        this.issueLevel = issueLevel;
-        this.logic = logic;
-    }
-
+    private ChainChainConfigNodeNodeConfigDenyPolicy() {}
     /**
      * @return The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
      * 
@@ -80,17 +69,13 @@ public final class ChainChainConfigNodeNodeConfigDenyPolicy {
     public static Builder builder(ChainChainConfigNodeNodeConfigDenyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
         private @Nullable String issueCount;
         private @Nullable String issueLevel;
         private @Nullable String logic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ChainChainConfigNodeNodeConfigDenyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -99,23 +84,33 @@ public final class ChainChainConfigNodeNodeConfigDenyPolicy {
     	      this.logic = defaults.logic;
         }
 
+        @CustomType.Setter
         public Builder action(@Nullable String action) {
             this.action = action;
             return this;
         }
+        @CustomType.Setter
         public Builder issueCount(@Nullable String issueCount) {
             this.issueCount = issueCount;
             return this;
         }
+        @CustomType.Setter
         public Builder issueLevel(@Nullable String issueLevel) {
             this.issueLevel = issueLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder logic(@Nullable String logic) {
             this.logic = logic;
             return this;
-        }        public ChainChainConfigNodeNodeConfigDenyPolicy build() {
-            return new ChainChainConfigNodeNodeConfigDenyPolicy(action, issueCount, issueLevel, logic);
+        }
+        public ChainChainConfigNodeNodeConfigDenyPolicy build() {
+            final var o = new ChainChainConfigNodeNodeConfigDenyPolicy();
+            o.action = action;
+            o.issueCount = issueCount;
+            o.issueLevel = issueLevel;
+            o.logic = logic;
+            return o;
         }
     }
 }

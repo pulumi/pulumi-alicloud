@@ -77,36 +77,54 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Import(name="offeringType")
     private @Nullable Output<String> offeringType;
 
     /**
-     * @return Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     public Optional<Output<String>> offeringType() {
         return Optional.ofNullable(this.offeringType);
     }
 
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return Term unit. Optional value: Year.
+     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -292,7 +310,10 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param offeringType Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+         * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
+         * - `No Upfront`: No upfront payment.
+         * - `Partial Upfront`: A portion of upfront payment.
+         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 
@@ -303,7 +324,10 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param offeringType Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+         * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
+         * - `No Upfront`: No upfront payment.
+         * - `Partial Upfront`: A portion of upfront payment.
+         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 
@@ -312,17 +336,33 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
             return offeringType(Output.of(offeringType));
         }
 
+        /**
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `period_unit` is `Month`, Valid values: `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `period_unit` is `Month`, Valid values: `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
         /**
-         * @param periodUnit Term unit. Optional value: Year.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
          * 
          * @return builder
          * 
@@ -333,7 +373,7 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param periodUnit Term unit. Optional value: Year.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
          * 
          * @return builder
          * 

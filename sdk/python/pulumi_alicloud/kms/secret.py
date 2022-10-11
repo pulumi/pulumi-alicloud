@@ -18,6 +18,7 @@ class SecretArgs:
                  secret_name: pulumi.Input[str],
                  version_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
@@ -32,6 +33,7 @@ class SecretArgs:
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -46,6 +48,8 @@ class SecretArgs:
         pulumi.set(__self__, "version_id", version_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dkms_instance_id is not None:
+            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
         if enable_automatic_rotation is not None:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
@@ -110,6 +114,18 @@ class SecretArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance ID of the exclusive KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
+
+    @dkms_instance_id.setter
+    def dkms_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkms_instance_id", value)
 
     @property
     @pulumi.getter(name="enableAutomaticRotation")
@@ -213,6 +229,7 @@ class _SecretState:
     def __init__(__self__, *,
                  arn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
@@ -229,6 +246,7 @@ class _SecretState:
         Input properties used for looking up and filtering Secret resources.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the secret.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -246,6 +264,8 @@ class _SecretState:
             pulumi.set(__self__, "arn", arn)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dkms_instance_id is not None:
+            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
         if enable_automatic_rotation is not None:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
@@ -294,6 +314,18 @@ class _SecretState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance ID of the exclusive KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
+
+    @dkms_instance_id.setter
+    def dkms_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkms_instance_id", value)
 
     @property
     @pulumi.getter(name="enableAutomaticRotation")
@@ -446,6 +478,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
@@ -490,6 +523,7 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -553,6 +587,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
@@ -574,6 +609,7 @@ class Secret(pulumi.CustomResource):
             __props__ = SecretArgs.__new__(SecretArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["dkms_instance_id"] = dkms_instance_id
             __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
             __props__.__dict__["encryption_key_id"] = encryption_key_id
             __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
@@ -605,6 +641,7 @@ class Secret(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dkms_instance_id: Optional[pulumi.Input[str]] = None,
             enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
             encryption_key_id: Optional[pulumi.Input[str]] = None,
             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
@@ -626,6 +663,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the secret.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -645,6 +683,7 @@ class Secret(pulumi.CustomResource):
 
         __props__.__dict__["arn"] = arn
         __props__.__dict__["description"] = description
+        __props__.__dict__["dkms_instance_id"] = dkms_instance_id
         __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
         __props__.__dict__["encryption_key_id"] = encryption_key_id
         __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
@@ -674,6 +713,14 @@ class Secret(pulumi.CustomResource):
         The description of the secret.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The instance ID of the exclusive KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
 
     @property
     @pulumi.getter(name="enableAutomaticRotation")

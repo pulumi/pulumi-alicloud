@@ -76,16 +76,24 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Output("offeringType")]
-        public Output<string?> OfferingType { get; private set; } = null!;
+        public Output<string> OfferingType { get; private set; } = null!;
 
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -106,7 +114,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         /// </summary>
         [Output("scope")]
-        public Output<string?> Scope { get; private set; } = null!;
+        public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
         /// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
@@ -185,16 +193,24 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }
 
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -255,16 +271,24 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }
 
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }

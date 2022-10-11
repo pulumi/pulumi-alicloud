@@ -270,6 +270,12 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Output("proxyProtocolV2Enabled")]
+        public Output<bool> ProxyProtocolV2Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         [Output("requestTimeout")]
@@ -572,6 +578,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Input("proxyProtocolV2Enabled")]
+        public Input<bool>? ProxyProtocolV2Enabled { get; set; }
+
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         [Input("requestTimeout")]
@@ -833,6 +845,12 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Input("proxyProtocolV2Enabled")]
+        public Input<bool>? ProxyProtocolV2Enabled { get; set; }
 
         /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.

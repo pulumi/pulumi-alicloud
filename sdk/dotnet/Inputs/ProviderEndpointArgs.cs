@@ -57,6 +57,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cbn")]
         public Input<string>? Cbn { get; set; }
 
+        [Input("cbs")]
+        public Input<string>? Cbs { get; set; }
+
         [Input("cddc")]
         public Input<string>? Cddc { get; set; }
 
@@ -143,6 +146,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("eais")]
         public Input<string>? Eais { get; set; }
+
+        [Input("ebs")]
+        public Input<string>? Ebs { get; set; }
 
         [Input("eci")]
         public Input<string>? Eci { get; set; }
@@ -258,6 +264,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("nas")]
         public Input<string>? Nas { get; set; }
 
+        [Input("nlb")]
+        public Input<string>? Nlb { get; set; }
+
         [Input("ons")]
         public Input<string>? Ons { get; set; }
 
@@ -350,6 +359,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
+
+        [Input("vpcpeer")]
+        public Input<string>? Vpcpeer { get; set; }
 
         [Input("vs")]
         public Input<string>? Vs { get; set; }

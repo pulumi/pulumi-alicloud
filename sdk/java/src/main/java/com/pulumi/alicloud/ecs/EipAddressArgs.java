@@ -9,6 +9,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -248,6 +249,21 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    @Import(name="securityProtectionTypes")
+    private @Nullable Output<List<String>> securityProtectionTypes;
+
+    /**
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    public Optional<Output<List<String>>> securityProtectionTypes() {
+        return Optional.ofNullable(this.securityProtectionTypes);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -279,6 +295,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityProtectionTypes = $.securityProtectionTypes;
         this.tags = $.tags;
     }
 
@@ -610,6 +627,37 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
+            $.securityProtectionTypes = securityProtectionTypes;
+            return this;
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
+            return securityProtectionTypes(Output.of(securityProtectionTypes));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(String... securityProtectionTypes) {
+            return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**

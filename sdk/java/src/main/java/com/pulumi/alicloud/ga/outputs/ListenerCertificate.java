@@ -15,13 +15,9 @@ public final class ListenerCertificate {
      * @return The id of the certificate.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
 
-    @CustomType.Constructor
-    private ListenerCertificate(@CustomType.Parameter("id") @Nullable String id) {
-        this.id = id;
-    }
-
+    private ListenerCertificate() {}
     /**
      * @return The id of the certificate.
      * 
@@ -37,24 +33,24 @@ public final class ListenerCertificate {
     public static Builder builder(ListenerCertificate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ListenerCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
-        }        public ListenerCertificate build() {
-            return new ListenerCertificate(id);
+        }
+        public ListenerCertificate build() {
+            final var o = new ListenerCertificate();
+            o.id = id;
+            return o;
         }
     }
 }

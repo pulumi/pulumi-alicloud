@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// &gt; **NOTE:** Available in 1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// &gt; **NOTE:** Available in 1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage

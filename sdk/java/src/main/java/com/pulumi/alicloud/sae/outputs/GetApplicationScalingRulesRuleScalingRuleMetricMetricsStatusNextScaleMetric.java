@@ -14,28 +14,19 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusN
      * @return The name of the trigger condition.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
      * 
      */
-    private final Integer nextScaleInAverageUtilization;
+    private Integer nextScaleInAverageUtilization;
     /**
      * @return The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
      * 
      */
-    private final Integer nextScaleOutAverageUtilization;
+    private Integer nextScaleOutAverageUtilization;
 
-    @CustomType.Constructor
-    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nextScaleInAverageUtilization") Integer nextScaleInAverageUtilization,
-        @CustomType.Parameter("nextScaleOutAverageUtilization") Integer nextScaleOutAverageUtilization) {
-        this.name = name;
-        this.nextScaleInAverageUtilization = nextScaleInAverageUtilization;
-        this.nextScaleOutAverageUtilization = nextScaleOutAverageUtilization;
-    }
-
+    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric() {}
     /**
      * @return The name of the trigger condition.
      * 
@@ -65,16 +56,12 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusN
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer nextScaleInAverageUtilization;
         private Integer nextScaleOutAverageUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -82,19 +69,27 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusN
     	      this.nextScaleOutAverageUtilization = defaults.nextScaleOutAverageUtilization;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nextScaleInAverageUtilization(Integer nextScaleInAverageUtilization) {
             this.nextScaleInAverageUtilization = Objects.requireNonNull(nextScaleInAverageUtilization);
             return this;
         }
+        @CustomType.Setter
         public Builder nextScaleOutAverageUtilization(Integer nextScaleOutAverageUtilization) {
             this.nextScaleOutAverageUtilization = Objects.requireNonNull(nextScaleOutAverageUtilization);
             return this;
-        }        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric build() {
-            return new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric(name, nextScaleInAverageUtilization, nextScaleOutAverageUtilization);
+        }
+        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric build() {
+            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric();
+            o.name = name;
+            o.nextScaleInAverageUtilization = nextScaleInAverageUtilization;
+            o.nextScaleOutAverageUtilization = nextScaleOutAverageUtilization;
+            return o;
         }
     }
 }

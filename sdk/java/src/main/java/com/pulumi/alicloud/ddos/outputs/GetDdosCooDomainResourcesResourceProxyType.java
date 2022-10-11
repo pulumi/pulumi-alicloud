@@ -15,21 +15,14 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
      * @return The forwarding port.
      * 
      */
-    private final List<Integer> proxyPorts;
+    private List<Integer> proxyPorts;
     /**
      * @return Protocol type.
      * 
      */
-    private final String proxyType;
+    private String proxyType;
 
-    @CustomType.Constructor
-    private GetDdosCooDomainResourcesResourceProxyType(
-        @CustomType.Parameter("proxyPorts") List<Integer> proxyPorts,
-        @CustomType.Parameter("proxyType") String proxyType) {
-        this.proxyPorts = proxyPorts;
-        this.proxyType = proxyType;
-    }
-
+    private GetDdosCooDomainResourcesResourceProxyType() {}
     /**
      * @return The forwarding port.
      * 
@@ -52,21 +45,18 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
     public static Builder builder(GetDdosCooDomainResourcesResourceProxyType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> proxyPorts;
         private String proxyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosCooDomainResourcesResourceProxyType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyPorts = defaults.proxyPorts;
     	      this.proxyType = defaults.proxyType;
         }
 
+        @CustomType.Setter
         public Builder proxyPorts(List<Integer> proxyPorts) {
             this.proxyPorts = Objects.requireNonNull(proxyPorts);
             return this;
@@ -74,11 +64,16 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
         public Builder proxyPorts(Integer... proxyPorts) {
             return proxyPorts(List.of(proxyPorts));
         }
+        @CustomType.Setter
         public Builder proxyType(String proxyType) {
             this.proxyType = Objects.requireNonNull(proxyType);
             return this;
-        }        public GetDdosCooDomainResourcesResourceProxyType build() {
-            return new GetDdosCooDomainResourcesResourceProxyType(proxyPorts, proxyType);
+        }
+        public GetDdosCooDomainResourcesResourceProxyType build() {
+            final var o = new GetDdosCooDomainResourcesResourceProxyType();
+            o.proxyPorts = proxyPorts;
+            o.proxyType = proxyType;
+            return o;
         }
     }
 }

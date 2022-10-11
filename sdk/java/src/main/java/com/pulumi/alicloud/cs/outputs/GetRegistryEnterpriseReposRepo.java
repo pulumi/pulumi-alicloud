@@ -15,56 +15,39 @@ public final class GetRegistryEnterpriseReposRepo {
      * @return ID of Container Registry Enterprise Edition repository.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of Container Registry Enterprise Edition instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Name of Container Registry Enterprise Edition repository.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Name of Container Registry Enterprise Edition namespace where the repositories are located in.
      * 
      */
-    private final String namespace;
+    private String namespace;
     /**
      * @return `PUBLIC` or `PRIVATE`, repository&#39;s visibility.
      * 
      */
-    private final String repoType;
+    private String repoType;
     /**
      * @return The repository general information.
      * 
      */
-    private final String summary;
+    private String summary;
     /**
      * @return A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
      * 
      */
-    private final List<GetRegistryEnterpriseReposRepoTag> tags;
+    private List<GetRegistryEnterpriseReposRepoTag> tags;
 
-    @CustomType.Constructor
-    private GetRegistryEnterpriseReposRepo(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("repoType") String repoType,
-        @CustomType.Parameter("summary") String summary,
-        @CustomType.Parameter("tags") List<GetRegistryEnterpriseReposRepoTag> tags) {
-        this.id = id;
-        this.instanceId = instanceId;
-        this.name = name;
-        this.namespace = namespace;
-        this.repoType = repoType;
-        this.summary = summary;
-        this.tags = tags;
-    }
-
+    private GetRegistryEnterpriseReposRepo() {}
     /**
      * @return ID of Container Registry Enterprise Edition repository.
      * 
@@ -122,7 +105,7 @@ public final class GetRegistryEnterpriseReposRepo {
     public static Builder builder(GetRegistryEnterpriseReposRepo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String instanceId;
@@ -131,11 +114,7 @@ public final class GetRegistryEnterpriseReposRepo {
         private String repoType;
         private String summary;
         private List<GetRegistryEnterpriseReposRepoTag> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryEnterpriseReposRepo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -147,38 +126,54 @@ public final class GetRegistryEnterpriseReposRepo {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder repoType(String repoType) {
             this.repoType = Objects.requireNonNull(repoType);
             return this;
         }
+        @CustomType.Setter
         public Builder summary(String summary) {
             this.summary = Objects.requireNonNull(summary);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<GetRegistryEnterpriseReposRepoTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(GetRegistryEnterpriseReposRepoTag... tags) {
             return tags(List.of(tags));
-        }        public GetRegistryEnterpriseReposRepo build() {
-            return new GetRegistryEnterpriseReposRepo(id, instanceId, name, namespace, repoType, summary, tags);
+        }
+        public GetRegistryEnterpriseReposRepo build() {
+            final var o = new GetRegistryEnterpriseReposRepo();
+            o.id = id;
+            o.instanceId = instanceId;
+            o.name = name;
+            o.namespace = namespace;
+            o.repoType = repoType;
+            o.summary = summary;
+            o.tags = tags;
+            return o;
         }
     }
 }

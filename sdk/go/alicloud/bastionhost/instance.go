@@ -34,6 +34,10 @@ type Instance struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
+	// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
@@ -95,6 +99,10 @@ type instanceState struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
 	Period      *int    `pulumi:"period"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+	RenewPeriod *int `pulumi:"renewPeriod"`
+	// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -116,6 +124,10 @@ type InstanceState struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+	RenewPeriod pulumi.IntPtrInput
+	// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
@@ -141,6 +153,10 @@ type instanceArgs struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
 	Period      *int   `pulumi:"period"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+	RenewPeriod *int `pulumi:"renewPeriod"`
+	// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -163,6 +179,10 @@ type InstanceArgs struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
 	Period      pulumi.IntPtrInput
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+	RenewPeriod pulumi.IntPtrInput
+	// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
@@ -286,6 +306,16 @@ func (o InstanceOutput) LicenseCode() pulumi.StringOutput {
 
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
+func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`.
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.

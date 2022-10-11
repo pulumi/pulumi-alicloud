@@ -68,14 +68,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.coreNum);
     }
     /**
-     * The core spec.
+     * The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     @Export(name="coreSpec", type=String.class, parameters={})
     private Output</* @Nullable */ String> coreSpec;
 
     /**
-     * @return The core spec.
+     * @return The core spec. **NOTE:** When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     public Output<Optional<String>> coreSpec() {
@@ -96,14 +100,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.deletionProection;
     }
     /**
-     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     @Export(name="diskCategory", type=String.class, parameters={})
     private Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     public Output<String> diskCategory() {
@@ -522,6 +526,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> upgradeType() {
         return Codegen.optional(this.upgradeType);
+    }
+    /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The vswitch id.

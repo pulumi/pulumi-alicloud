@@ -16,54 +16,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetParametersResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String parameterName;
-    private final List<GetParametersParameter> parameters;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String sortField;
-    private final @Nullable String sortOrder;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String type;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String parameterName;
+    private List<GetParametersParameter> parameters;
+    private @Nullable String resourceGroupId;
+    private @Nullable String sortField;
+    private @Nullable String sortOrder;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetParametersResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("parameterName") @Nullable String parameterName,
-        @CustomType.Parameter("parameters") List<GetParametersParameter> parameters,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("sortField") @Nullable String sortField,
-        @CustomType.Parameter("sortOrder") @Nullable String sortOrder,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.parameterName = parameterName;
-        this.parameters = parameters;
-        this.resourceGroupId = resourceGroupId;
-        this.sortField = sortField;
-        this.sortOrder = sortOrder;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private GetParametersResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -115,7 +86,7 @@ public final class GetParametersResult {
     public static Builder builder(GetParametersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -130,11 +101,7 @@ public final class GetParametersResult {
         private @Nullable String sortOrder;
         private @Nullable Map<String,Object> tags;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetParametersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -152,14 +119,17 @@ public final class GetParametersResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -167,10 +137,12 @@ public final class GetParametersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -178,14 +150,17 @@ public final class GetParametersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterName(@Nullable String parameterName) {
             this.parameterName = parameterName;
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(List<GetParametersParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -193,27 +168,47 @@ public final class GetParametersResult {
         public Builder parameters(GetParametersParameter... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
             this.sortField = sortField;
             return this;
         }
+        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetParametersResult build() {
-            return new GetParametersResult(enableDetails, id, ids, nameRegex, names, outputFile, parameterName, parameters, resourceGroupId, sortField, sortOrder, tags, type);
+        }
+        public GetParametersResult build() {
+            final var o = new GetParametersResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.parameterName = parameterName;
+            o.parameters = parameters;
+            o.resourceGroupId = resourceGroupId;
+            o.sortField = sortField;
+            o.sortOrder = sortOrder;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

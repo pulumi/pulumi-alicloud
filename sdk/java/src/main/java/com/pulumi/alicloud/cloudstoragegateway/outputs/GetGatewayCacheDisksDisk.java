@@ -15,84 +15,59 @@ public final class GetGatewayCacheDisksDisk {
      * @return The category of eht cache disk.
      * 
      */
-    private final String cacheDiskCategory;
+    private String cacheDiskCategory;
     /**
      * @return The size of the cache disk.
      * 
      */
-    private final Integer cacheDiskSizeInGb;
+    private Integer cacheDiskSizeInGb;
     /**
      * @return The ID of the cache disk.
      * 
      */
-    private final String cacheId;
+    private String cacheId;
     /**
      * @return The expiration time. Time stamp in seconds (s).
      * 
      */
-    private final Integer expiredTime;
+    private Integer expiredTime;
     /**
      * @return The ID of the gateway.
      * 
      */
-    private final String gatewayId;
+    private String gatewayId;
     /**
      * @return The ID of the Gateway Cache Disk.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Per second of the input output.
      * 
      */
-    private final Integer iops;
+    private Integer iops;
     /**
      * @return Whether it is used.
      * 
      */
-    private final Boolean isUsed;
+    private Boolean isUsed;
     /**
      * @return The cache disk inside the device name.
      * 
      */
-    private final String localFilePath;
+    private String localFilePath;
     /**
      * @return A renewal link of the cache disk.
      * 
      */
-    private final String renewUrl;
+    private String renewUrl;
     /**
      * @return The status of the resource.
      * 
      */
-    private final Integer status;
+    private Integer status;
 
-    @CustomType.Constructor
-    private GetGatewayCacheDisksDisk(
-        @CustomType.Parameter("cacheDiskCategory") String cacheDiskCategory,
-        @CustomType.Parameter("cacheDiskSizeInGb") Integer cacheDiskSizeInGb,
-        @CustomType.Parameter("cacheId") String cacheId,
-        @CustomType.Parameter("expiredTime") Integer expiredTime,
-        @CustomType.Parameter("gatewayId") String gatewayId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("iops") Integer iops,
-        @CustomType.Parameter("isUsed") Boolean isUsed,
-        @CustomType.Parameter("localFilePath") String localFilePath,
-        @CustomType.Parameter("renewUrl") String renewUrl,
-        @CustomType.Parameter("status") Integer status) {
-        this.cacheDiskCategory = cacheDiskCategory;
-        this.cacheDiskSizeInGb = cacheDiskSizeInGb;
-        this.cacheId = cacheId;
-        this.expiredTime = expiredTime;
-        this.gatewayId = gatewayId;
-        this.id = id;
-        this.iops = iops;
-        this.isUsed = isUsed;
-        this.localFilePath = localFilePath;
-        this.renewUrl = renewUrl;
-        this.status = status;
-    }
-
+    private GetGatewayCacheDisksDisk() {}
     /**
      * @return The category of eht cache disk.
      * 
@@ -178,7 +153,7 @@ public final class GetGatewayCacheDisksDisk {
     public static Builder builder(GetGatewayCacheDisksDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cacheDiskCategory;
         private Integer cacheDiskSizeInGb;
@@ -191,11 +166,7 @@ public final class GetGatewayCacheDisksDisk {
         private String localFilePath;
         private String renewUrl;
         private Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayCacheDisksDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheDiskCategory = defaults.cacheDiskCategory;
@@ -211,51 +182,75 @@ public final class GetGatewayCacheDisksDisk {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder cacheDiskCategory(String cacheDiskCategory) {
             this.cacheDiskCategory = Objects.requireNonNull(cacheDiskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheDiskSizeInGb(Integer cacheDiskSizeInGb) {
             this.cacheDiskSizeInGb = Objects.requireNonNull(cacheDiskSizeInGb);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheId(String cacheId) {
             this.cacheId = Objects.requireNonNull(cacheId);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder iops(Integer iops) {
             this.iops = Objects.requireNonNull(iops);
             return this;
         }
+        @CustomType.Setter
         public Builder isUsed(Boolean isUsed) {
             this.isUsed = Objects.requireNonNull(isUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder localFilePath(String localFilePath) {
             this.localFilePath = Objects.requireNonNull(localFilePath);
             return this;
         }
+        @CustomType.Setter
         public Builder renewUrl(String renewUrl) {
             this.renewUrl = Objects.requireNonNull(renewUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetGatewayCacheDisksDisk build() {
-            return new GetGatewayCacheDisksDisk(cacheDiskCategory, cacheDiskSizeInGb, cacheId, expiredTime, gatewayId, id, iops, isUsed, localFilePath, renewUrl, status);
+        }
+        public GetGatewayCacheDisksDisk build() {
+            final var o = new GetGatewayCacheDisksDisk();
+            o.cacheDiskCategory = cacheDiskCategory;
+            o.cacheDiskSizeInGb = cacheDiskSizeInGb;
+            o.cacheId = cacheId;
+            o.expiredTime = expiredTime;
+            o.gatewayId = gatewayId;
+            o.id = id;
+            o.iops = iops;
+            o.isUsed = isUsed;
+            o.localFilePath = localFilePath;
+            o.renewUrl = renewUrl;
+            o.status = status;
+            return o;
         }
     }
 }

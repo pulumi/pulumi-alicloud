@@ -137,9 +137,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ossBucketSet);
     }
 
+    /**
+     * The OSS storage capacity.
+     * 
+     */
     @Import(name="ossSize")
     private @Nullable Output<String> ossSize;
 
+    /**
+     * @return The OSS storage capacity.
+     * 
+     */
     public Optional<Output<String>> ossSize() {
         return Optional.ofNullable(this.ossSize);
     }
@@ -189,9 +197,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rdsSet);
     }
 
+    /**
+     * The remaining days of the protection period of the assets in the current login account.
+     * 
+     */
     @Import(name="remainDays")
     private @Nullable Output<String> remainDays;
 
+    /**
+     * @return The remaining days of the protection period of the assets in the current login account.
+     * 
+     */
     public Optional<Output<String>> remainDays() {
         return Optional.ofNullable(this.remainDays);
     }
@@ -528,11 +544,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return ossBucketSet(Output.of(ossBucketSet));
         }
 
+        /**
+         * @param ossSize The OSS storage capacity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ossSize(@Nullable Output<String> ossSize) {
             $.ossSize = ossSize;
             return this;
         }
 
+        /**
+         * @param ossSize The OSS storage capacity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ossSize(String ossSize) {
             return ossSize(Output.of(ossSize));
         }
@@ -600,11 +628,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return rdsSet(Output.of(rdsSet));
         }
 
+        /**
+         * @param remainDays The remaining days of the protection period of the assets in the current login account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder remainDays(@Nullable Output<String> remainDays) {
             $.remainDays = remainDays;
             return this;
         }
 
+        /**
+         * @param remainDays The remaining days of the protection period of the assets in the current login account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder remainDays(String remainDays) {
             return remainDays(Output.of(remainDays));
         }

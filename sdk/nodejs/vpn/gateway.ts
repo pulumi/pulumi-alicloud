@@ -43,10 +43,16 @@ export class Gateway extends pulumi.CustomResource {
 
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
+     * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * - `true`: Enable automatic payment, automatic payment order.
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * - `true`: Enable.
+     * - `false`: Disable.
+     */
+    public readonly autoPropagate!: pulumi.Output<boolean | undefined>;
     public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The business status of the VPN gateway.
@@ -117,6 +123,7 @@ export class Gateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoPropagate"] = state ? state.autoPropagate : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -140,6 +147,7 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoPropagate"] = args ? args.autoPropagate : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableIpsec"] = args ? args.enableIpsec : undefined;
@@ -166,10 +174,16 @@ export class Gateway extends pulumi.CustomResource {
 export interface GatewayState {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
+     * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * - `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * - `true`: Enable.
+     * - `false`: Disable.
+     */
+    autoPropagate?: pulumi.Input<boolean>;
     bandwidth?: pulumi.Input<number>;
     /**
      * The business status of the VPN gateway.
@@ -233,10 +247,16 @@ export interface GatewayState {
 export interface GatewayArgs {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
+     * - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * - `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * - `true`: Enable.
+     * - `false`: Disable.
+     */
+    autoPropagate?: pulumi.Input<boolean>;
     bandwidth: pulumi.Input<number>;
     /**
      * The description of the VPN instance.

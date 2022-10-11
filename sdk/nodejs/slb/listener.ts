@@ -232,6 +232,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     */
+    public readonly proxyProtocolV2Enabled!: pulumi.Output<boolean>;
+    /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      */
     public readonly requestTimeout!: pulumi.Output<number | undefined>;
@@ -322,6 +326,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["masterSlaveServerGroupId"] = state ? state.masterSlaveServerGroupId : undefined;
             resourceInputs["persistenceTimeout"] = state ? state.persistenceTimeout : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["proxyProtocolV2Enabled"] = state ? state.proxyProtocolV2Enabled : undefined;
             resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
             resourceInputs["scheduler"] = state ? state.scheduler : undefined;
             resourceInputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
@@ -377,6 +382,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["masterSlaveServerGroupId"] = args ? args.masterSlaveServerGroupId : undefined;
             resourceInputs["persistenceTimeout"] = args ? args.persistenceTimeout : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["proxyProtocolV2Enabled"] = args ? args.proxyProtocolV2Enabled : undefined;
             resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             resourceInputs["scheduler"] = args ? args.scheduler : undefined;
             resourceInputs["serverCertificateId"] = args ? args.serverCertificateId : undefined;
@@ -533,6 +539,10 @@ export interface ListenerState {
      * The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
      */
     protocol?: pulumi.Input<string>;
+    /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     */
+    proxyProtocolV2Enabled?: pulumi.Input<boolean>;
     /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      */
@@ -718,6 +728,10 @@ export interface ListenerArgs {
      * The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
      */
     protocol: pulumi.Input<string>;
+    /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     */
+    proxyProtocolV2Enabled?: pulumi.Input<boolean>;
     /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      */

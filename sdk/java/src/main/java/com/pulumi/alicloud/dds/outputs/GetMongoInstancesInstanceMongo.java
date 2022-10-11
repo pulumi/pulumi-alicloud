@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMongoInstancesInstanceMongo {
-    private final String class_;
-    private final String description;
-    private final String nodeId;
+    private String class_;
+    private String description;
+    private String nodeId;
 
-    @CustomType.Constructor
-    private GetMongoInstancesInstanceMongo(
-        @CustomType.Parameter("class") String class_,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("nodeId") String nodeId) {
-        this.class_ = class_;
-        this.description = description;
-        this.nodeId = nodeId;
-    }
-
+    private GetMongoInstancesInstanceMongo() {}
     public String class_() {
         return this.class_;
     }
@@ -40,16 +31,12 @@ public final class GetMongoInstancesInstanceMongo {
     public static Builder builder(GetMongoInstancesInstanceMongo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String class_;
         private String description;
         private String nodeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMongoInstancesInstanceMongo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.class_ = defaults.class_;
@@ -57,19 +44,27 @@ public final class GetMongoInstancesInstanceMongo {
     	      this.nodeId = defaults.nodeId;
         }
 
+        @CustomType.Setter("class")
         public Builder class_(String class_) {
             this.class_ = Objects.requireNonNull(class_);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
-        }        public GetMongoInstancesInstanceMongo build() {
-            return new GetMongoInstancesInstanceMongo(class_, description, nodeId);
+        }
+        public GetMongoInstancesInstanceMongo build() {
+            final var o = new GetMongoInstancesInstanceMongo();
+            o.class_ = class_;
+            o.description = description;
+            o.nodeId = nodeId;
+            return o;
         }
     }
 }

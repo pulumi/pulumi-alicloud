@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
-    private final String allocationId;
-    private final String bandwidthPackageIpRelationStatus;
-    private final String ipAddress;
+    private String allocationId;
+    private String bandwidthPackageIpRelationStatus;
+    private String ipAddress;
 
-    @CustomType.Constructor
-    private GetCommonBandwidthPackagesPackagePublicIpAddress(
-        @CustomType.Parameter("allocationId") String allocationId,
-        @CustomType.Parameter("bandwidthPackageIpRelationStatus") String bandwidthPackageIpRelationStatus,
-        @CustomType.Parameter("ipAddress") String ipAddress) {
-        this.allocationId = allocationId;
-        this.bandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
-        this.ipAddress = ipAddress;
-    }
-
+    private GetCommonBandwidthPackagesPackagePublicIpAddress() {}
     public String allocationId() {
         return this.allocationId;
     }
@@ -40,16 +31,12 @@ public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
     public static Builder builder(GetCommonBandwidthPackagesPackagePublicIpAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocationId;
         private String bandwidthPackageIpRelationStatus;
         private String ipAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCommonBandwidthPackagesPackagePublicIpAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationId = defaults.allocationId;
@@ -57,19 +44,27 @@ public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
     	      this.ipAddress = defaults.ipAddress;
         }
 
+        @CustomType.Setter
         public Builder allocationId(String allocationId) {
             this.allocationId = Objects.requireNonNull(allocationId);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageIpRelationStatus(String bandwidthPackageIpRelationStatus) {
             this.bandwidthPackageIpRelationStatus = Objects.requireNonNull(bandwidthPackageIpRelationStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
-        }        public GetCommonBandwidthPackagesPackagePublicIpAddress build() {
-            return new GetCommonBandwidthPackagesPackagePublicIpAddress(allocationId, bandwidthPackageIpRelationStatus, ipAddress);
+        }
+        public GetCommonBandwidthPackagesPackagePublicIpAddress build() {
+            final var o = new GetCommonBandwidthPackagesPackagePublicIpAddress();
+            o.allocationId = allocationId;
+            o.bandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
+            o.ipAddress = ipAddress;
+            return o;
         }
     }
 }

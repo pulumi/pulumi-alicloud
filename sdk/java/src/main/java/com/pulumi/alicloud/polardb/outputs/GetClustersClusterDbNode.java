@@ -14,70 +14,49 @@ public final class GetClustersClusterDbNode {
      * @return The create_time of the db_nodes.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The db_node_class of the db_nodes.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
     /**
      * @return The db_node_id of the db_nodes.
      * 
      */
-    private final String dbNodeId;
+    private String dbNodeId;
     /**
      * @return The db_node_role of the db_nodes.
      * 
      */
-    private final String dbNodeRole;
+    private String dbNodeRole;
     /**
      * @return The db_node_status of the db_nodes.
      * 
      */
-    private final String dbNodeStatus;
+    private String dbNodeStatus;
     /**
      * @return The max_connections of the db_nodes.
      * 
      */
-    private final Integer maxConnections;
+    private Integer maxConnections;
     /**
      * @return The max_iops of the db_nodes.
      * 
      */
-    private final Integer maxIops;
+    private Integer maxIops;
     /**
      * @return The region_id of the db_nodes.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The zone_id of the db_nodes.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersClusterDbNode(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbNodeClass") String dbNodeClass,
-        @CustomType.Parameter("dbNodeId") String dbNodeId,
-        @CustomType.Parameter("dbNodeRole") String dbNodeRole,
-        @CustomType.Parameter("dbNodeStatus") String dbNodeStatus,
-        @CustomType.Parameter("maxConnections") Integer maxConnections,
-        @CustomType.Parameter("maxIops") Integer maxIops,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.createTime = createTime;
-        this.dbNodeClass = dbNodeClass;
-        this.dbNodeId = dbNodeId;
-        this.dbNodeRole = dbNodeRole;
-        this.dbNodeStatus = dbNodeStatus;
-        this.maxConnections = maxConnections;
-        this.maxIops = maxIops;
-        this.regionId = regionId;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersClusterDbNode() {}
     /**
      * @return The create_time of the db_nodes.
      * 
@@ -149,7 +128,7 @@ public final class GetClustersClusterDbNode {
     public static Builder builder(GetClustersClusterDbNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String dbNodeClass;
@@ -160,11 +139,7 @@ public final class GetClustersClusterDbNode {
         private Integer maxIops;
         private String regionId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterDbNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -178,43 +153,63 @@ public final class GetClustersClusterDbNode {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeId(String dbNodeId) {
             this.dbNodeId = Objects.requireNonNull(dbNodeId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeRole(String dbNodeRole) {
             this.dbNodeRole = Objects.requireNonNull(dbNodeRole);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeStatus(String dbNodeStatus) {
             this.dbNodeStatus = Objects.requireNonNull(dbNodeStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
+        @CustomType.Setter
         public Builder maxIops(Integer maxIops) {
             this.maxIops = Objects.requireNonNull(maxIops);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersClusterDbNode build() {
-            return new GetClustersClusterDbNode(createTime, dbNodeClass, dbNodeId, dbNodeRole, dbNodeStatus, maxConnections, maxIops, regionId, zoneId);
+        }
+        public GetClustersClusterDbNode build() {
+            final var o = new GetClustersClusterDbNode();
+            o.createTime = createTime;
+            o.dbNodeClass = dbNodeClass;
+            o.dbNodeId = dbNodeId;
+            o.dbNodeRole = dbNodeRole;
+            o.dbNodeStatus = dbNodeStatus;
+            o.maxConnections = maxConnections;
+            o.maxIops = maxIops;
+            o.regionId = regionId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

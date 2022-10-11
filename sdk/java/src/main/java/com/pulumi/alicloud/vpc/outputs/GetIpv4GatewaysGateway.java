@@ -14,70 +14,49 @@ public final class GetIpv4GatewaysGateway {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Indicates whether the IPv4 gateway is activated.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The ID of the Ipv4 Gateway.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The description of the IPv4 gateway.
      * 
      */
-    private final String ipv4GatewayDescription;
+    private String ipv4GatewayDescription;
     /**
      * @return The resource attribute field that represents the resource level 1 ID.
      * 
      */
-    private final String ipv4GatewayId;
+    private String ipv4GatewayId;
     /**
      * @return The name of the IPv4 gateway.
      * 
      */
-    private final String ipv4GatewayName;
+    private String ipv4GatewayName;
     /**
      * @return ID of the route table associated with IPv4 Gateway.
      * 
      */
-    private final String ipv4GatewayRouteTableId;
+    private String ipv4GatewayRouteTableId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VPC associated with the IPv4 Gateway.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetIpv4GatewaysGateway(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipv4GatewayDescription") String ipv4GatewayDescription,
-        @CustomType.Parameter("ipv4GatewayId") String ipv4GatewayId,
-        @CustomType.Parameter("ipv4GatewayName") String ipv4GatewayName,
-        @CustomType.Parameter("ipv4GatewayRouteTableId") String ipv4GatewayRouteTableId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.createTime = createTime;
-        this.enabled = enabled;
-        this.id = id;
-        this.ipv4GatewayDescription = ipv4GatewayDescription;
-        this.ipv4GatewayId = ipv4GatewayId;
-        this.ipv4GatewayName = ipv4GatewayName;
-        this.ipv4GatewayRouteTableId = ipv4GatewayRouteTableId;
-        this.status = status;
-        this.vpcId = vpcId;
-    }
-
+    private GetIpv4GatewaysGateway() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -149,7 +128,7 @@ public final class GetIpv4GatewaysGateway {
     public static Builder builder(GetIpv4GatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private Boolean enabled;
@@ -160,11 +139,7 @@ public final class GetIpv4GatewaysGateway {
         private String ipv4GatewayRouteTableId;
         private String status;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIpv4GatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -178,43 +153,63 @@ public final class GetIpv4GatewaysGateway {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4GatewayDescription(String ipv4GatewayDescription) {
             this.ipv4GatewayDescription = Objects.requireNonNull(ipv4GatewayDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4GatewayId(String ipv4GatewayId) {
             this.ipv4GatewayId = Objects.requireNonNull(ipv4GatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4GatewayName(String ipv4GatewayName) {
             this.ipv4GatewayName = Objects.requireNonNull(ipv4GatewayName);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4GatewayRouteTableId(String ipv4GatewayRouteTableId) {
             this.ipv4GatewayRouteTableId = Objects.requireNonNull(ipv4GatewayRouteTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetIpv4GatewaysGateway build() {
-            return new GetIpv4GatewaysGateway(createTime, enabled, id, ipv4GatewayDescription, ipv4GatewayId, ipv4GatewayName, ipv4GatewayRouteTableId, status, vpcId);
+        }
+        public GetIpv4GatewaysGateway build() {
+            final var o = new GetIpv4GatewaysGateway();
+            o.createTime = createTime;
+            o.enabled = enabled;
+            o.id = id;
+            o.ipv4GatewayDescription = ipv4GatewayDescription;
+            o.ipv4GatewayId = ipv4GatewayId;
+            o.ipv4GatewayName = ipv4GatewayName;
+            o.ipv4GatewayRouteTableId = ipv4GatewayRouteTableId;
+            o.status = status;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

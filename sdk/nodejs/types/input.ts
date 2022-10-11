@@ -27,6 +27,7 @@ export interface ProviderEndpoint {
     cas?: pulumi.Input<string>;
     cassandra?: pulumi.Input<string>;
     cbn?: pulumi.Input<string>;
+    cbs?: pulumi.Input<string>;
     cddc?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cds?: pulumi.Input<string>;
@@ -56,6 +57,7 @@ export interface ProviderEndpoint {
     dts?: pulumi.Input<string>;
     dysms?: pulumi.Input<string>;
     eais?: pulumi.Input<string>;
+    ebs?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
     edas?: pulumi.Input<string>;
@@ -94,6 +96,7 @@ export interface ProviderEndpoint {
     mscopensubscription?: pulumi.Input<string>;
     mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
+    nlb?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
     onsproxy?: pulumi.Input<string>;
     oos?: pulumi.Input<string>;
@@ -125,6 +128,7 @@ export interface ProviderEndpoint {
     tag?: pulumi.Input<string>;
     vod?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
+    vpcpeer?: pulumi.Input<string>;
     vs?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
@@ -1975,15 +1979,44 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesConnections {
+        /**
+         * API Server Internet endpoint.
+         */
         apiServerInternet?: pulumi.Input<string>;
+        /**
+         * API Server Intranet endpoint.
+         */
         apiServerIntranet?: pulumi.Input<string>;
+        /**
+         * Master node SSH IP address.
+         */
         masterPublicIp?: pulumi.Input<string>;
+        /**
+         * Service Access Domain.
+         */
         serviceDomain?: pulumi.Input<string>;
     }
 
     export interface EdgeKubernetesLogConfig {
+        /**
+         * Log Service project name, cluster logs will output to this project.
+         */
         project?: pulumi.Input<string>;
+        /**
+         * Type of collecting logs, only `SLS` are supported currently.
+         */
         type: pulumi.Input<string>;
+    }
+
+    export interface EdgeKubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface EdgeKubernetesWorkerDataDisk {
@@ -2342,6 +2375,25 @@ export namespace cs {
         weeklyPeriod: pulumi.Input<string>;
     }
 
+    export interface ManagedKubernetesRrsaMetadata {
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The arn of OIDC provider that was registered in RAM.
+         */
+        ramOidcProviderArn?: pulumi.Input<string>;
+        /**
+         * The name of OIDC Provider that was registered in RAM.
+         */
+        ramOidcProviderName?: pulumi.Input<string>;
+        /**
+         * The issuer URL of RRSA OIDC Token.
+         */
+        rrsaOidcIssuerUrl?: pulumi.Input<string>;
+    }
+
     export interface ManagedKubernetesRuntime {
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -2523,6 +2575,13 @@ export namespace cs {
         surgePercentage?: pulumi.Input<number>;
     }
 
+    export interface NodePoolRollingPolicy {
+        /**
+         * Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+         */
+        maxParallelism?: pulumi.Input<number>;
+    }
+
     export interface NodePoolRolloutPolicy {
         /**
          * Max number of unavailable nodes. Default to `1`.
@@ -2593,6 +2652,25 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
+    }
+
+    export interface ServerlessKubernetesRrsaMetadata {
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The arn of OIDC provider that was registered in RAM.
+         */
+        ramOidcProviderArn?: pulumi.Input<string>;
+        /**
+         * The name of OIDC Provider that was registered in RAM.
+         */
+        ramOidcProviderName?: pulumi.Input<string>;
+        /**
+         * The issuer URL of RRSA OIDC Token.
+         */
+        rrsaOidcIssuerUrl?: pulumi.Input<string>;
     }
 
     export interface SwarmNode {
@@ -3499,6 +3577,10 @@ export namespace ecs {
          */
         description?: pulumi.Input<string>;
         /**
+         * The mount point of the data disk.
+         */
+        device?: pulumi.Input<string>;
+        /**
          * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
          */
         encrypted?: pulumi.Input<boolean>;
@@ -4278,13 +4360,23 @@ export namespace ess {
 export namespace eventbridge {
     export interface RuleTarget {
         /**
+         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+         */
+        deadLetterQueue?: pulumi.Input<inputs.eventbridge.RuleTargetDeadLetterQueue>;
+        /**
          * The endpoint of target.
          */
         endpoint: pulumi.Input<string>;
         /**
-         * A list of param.
+         * A list of param. See the following `Block paramList`.
          */
         paramLists: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTargetParamList>[]>;
+        /**
+         * The retry policy that is used to push the event. Valid values:
+         * - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+         * - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
+         */
+        pushRetryStrategy?: pulumi.Input<string>;
         /**
          * The ID of target.
          */
@@ -4293,6 +4385,13 @@ export namespace eventbridge {
          * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface RuleTargetDeadLetterQueue {
+        /**
+         * The srn of the dead letter queue.
+         */
+        arn?: pulumi.Input<string>;
     }
 
     export interface RuleTargetParamList {
@@ -4427,6 +4526,14 @@ export namespace fc {
 
     export interface ServiceLogConfig {
         /**
+         * Enable instance level metrics.
+         */
+        enableInstanceMetrics?: pulumi.Input<boolean>;
+        /**
+         * Enable request level metrics.
+         */
+        enableRequestMetrics?: pulumi.Input<boolean>;
+        /**
          * The log store name of Alicloud Simple Log Service.
          */
         logstore: pulumi.Input<string>;
@@ -4462,6 +4569,17 @@ export namespace fc {
         serverAddr: pulumi.Input<string>;
     }
 
+    export interface ServiceTracingConfig {
+        /**
+         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         */
+        params: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Tracing protocol type. Currently, only Jaeger is supported.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface ServiceVpcConfig {
         /**
          * A security group ID associated with the Function Compute Service.
@@ -4473,7 +4591,6 @@ export namespace fc {
          */
         vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     }
-
 }
 
 export namespace fnf {
@@ -4599,6 +4716,20 @@ export namespace ga {
 }
 
 export namespace gpdb {
+    export interface InstanceIpWhitelist {
+        /**
+         * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         */
+        ipGroupAttribute?: pulumi.Input<string>;
+        /**
+         * IP whitelist group name
+         */
+        ipGroupName?: pulumi.Input<string>;
+        /**
+         * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+         */
+        securityIpList: pulumi.Input<string>;
+    }
 }
 
 export namespace graphdatabase {
@@ -4671,17 +4802,6 @@ export namespace hbr {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface GetServerBackupPlansFilterArgs {
-        /**
-         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * Set of values that are accepted for the given field.
-         */
-        values?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
     export interface GetServerBackupPlansFilter {
         /**
          * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -4691,6 +4811,17 @@ export namespace hbr {
          * Set of values that are accepted for the given field.
          */
         values?: string[];
+    }
+
+    export interface GetServerBackupPlansFilterArgs {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OtsBackupPlanOtsDetail {
@@ -4721,6 +4852,13 @@ export namespace hbr {
          * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         schedule?: pulumi.Input<string>;
+    }
+
+    export interface RestoreJobOtsDetail {
+        /**
+         * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+         */
+        overwriteExisting?: pulumi.Input<boolean>;
     }
 
     export interface ServerBackupPlanDetail {
@@ -5687,13 +5825,24 @@ export namespace oss {
 }
 
 export namespace ots {
-    export interface TablePrimaryKey {
+    export interface TableDefinedColumn {
         /**
-         * Name for primary key.
+         * Name for defined column.
          */
         name: pulumi.Input<string>;
         /**
-         * Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+         * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface TablePrimaryKey {
+        /**
+         * Name for defined column.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
          */
         type: pulumi.Input<string>;
     }

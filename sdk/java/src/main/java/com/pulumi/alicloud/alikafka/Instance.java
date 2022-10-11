@@ -343,14 +343,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.topicQuota;
     }
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The ID of attaching VPC to instance.
+     * @return The VPC ID of the instance.
      * 
      */
     public Output<String> vpcId() {
@@ -371,14 +371,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the kafka instance.
+     * @return The zone ID of the instance.
      * 
      */
     public Output<String> zoneId() {

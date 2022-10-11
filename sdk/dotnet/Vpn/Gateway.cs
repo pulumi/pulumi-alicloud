@@ -23,11 +23,19 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
+        /// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// - `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// - `true`: Enable.
+        /// - `false`: Disable.
+        /// </summary>
+        [Output("autoPropagate")]
+        public Output<bool?> AutoPropagate { get; private set; } = null!;
 
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -160,11 +168,19 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
+        /// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// - `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// - `true`: Enable.
+        /// - `false`: Disable.
+        /// </summary>
+        [Input("autoPropagate")]
+        public Input<bool>? AutoPropagate { get; set; }
 
         [Input("bandwidth", required: true)]
         public Input<int> Bandwidth { get; set; } = null!;
@@ -246,11 +262,19 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
+        /// - `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// - `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// - `true`: Enable.
+        /// - `false`: Disable.
+        /// </summary>
+        [Input("autoPropagate")]
+        public Input<bool>? AutoPropagate { get; set; }
 
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }

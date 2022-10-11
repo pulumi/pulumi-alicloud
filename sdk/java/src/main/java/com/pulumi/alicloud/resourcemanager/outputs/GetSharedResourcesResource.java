@@ -13,42 +13,29 @@ public final class GetSharedResourcesResource {
      * @return The ID of the Shared Resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the shared resource.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return The resource share ID of resource manager.
      * 
      */
-    private final String resourceShareId;
+    private String resourceShareId;
     /**
      * @return The type of shared resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
     /**
      * @return The status of shared resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSharedResourcesResource(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceShareId") String resourceShareId,
-        @CustomType.Parameter("resourceType") String resourceType,
-        @CustomType.Parameter("status") String status) {
-        this.id = id;
-        this.resourceId = resourceId;
-        this.resourceShareId = resourceShareId;
-        this.resourceType = resourceType;
-        this.status = status;
-    }
-
+    private GetSharedResourcesResource() {}
     /**
      * @return The ID of the Shared Resource.
      * 
@@ -92,18 +79,14 @@ public final class GetSharedResourcesResource {
     public static Builder builder(GetSharedResourcesResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String resourceId;
         private String resourceShareId;
         private String resourceType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSharedResourcesResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -113,27 +96,39 @@ public final class GetSharedResourcesResource {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceShareId(String resourceShareId) {
             this.resourceShareId = Objects.requireNonNull(resourceShareId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSharedResourcesResource build() {
-            return new GetSharedResourcesResource(id, resourceId, resourceShareId, resourceType, status);
+        }
+        public GetSharedResourcesResource build() {
+            final var o = new GetSharedResourcesResource();
+            o.id = id;
+            o.resourceId = resourceId;
+            o.resourceShareId = resourceShareId;
+            o.resourceType = resourceType;
+            o.status = status;
+            return o;
         }
     }
 }

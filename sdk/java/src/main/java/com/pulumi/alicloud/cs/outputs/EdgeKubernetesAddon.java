@@ -12,24 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EdgeKubernetesAddon {
-    private final @Nullable String config;
-    private final @Nullable Boolean disabled;
+    private @Nullable String config;
+    private @Nullable Boolean disabled;
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private EdgeKubernetesAddon(
-        @CustomType.Parameter("config") @Nullable String config,
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.config = config;
-        this.disabled = disabled;
-        this.name = name;
-    }
-
+    private EdgeKubernetesAddon() {}
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
@@ -51,16 +42,12 @@ public final class EdgeKubernetesAddon {
     public static Builder builder(EdgeKubernetesAddon defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeKubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -68,19 +55,27 @@ public final class EdgeKubernetesAddon {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public EdgeKubernetesAddon build() {
-            return new EdgeKubernetesAddon(config, disabled, name);
+        }
+        public EdgeKubernetesAddon build() {
+            final var o = new EdgeKubernetesAddon();
+            o.config = config;
+            o.disabled = disabled;
+            o.name = name;
+            return o;
         }
     }
 }

@@ -8845,6 +8845,7 @@ export namespace config {
         cas?: string;
         cassandra?: string;
         cbn?: string;
+        cbs?: string;
         cddc?: string;
         cdn?: string;
         cds?: string;
@@ -8874,6 +8875,7 @@ export namespace config {
         dts?: string;
         dysms?: string;
         eais?: string;
+        ebs?: string;
         eci?: string;
         ecs?: string;
         edas?: string;
@@ -8912,6 +8914,7 @@ export namespace config {
         mscopensubscription?: string;
         mse?: string;
         nas?: string;
+        nlb?: string;
         ons?: string;
         onsproxy?: string;
         oos?: string;
@@ -8943,6 +8946,7 @@ export namespace config {
         tag?: string;
         vod?: string;
         vpc?: string;
+        vpcpeer?: string;
         vs?: string;
         waf?: string;
         wafOpenapi?: string;
@@ -9378,15 +9382,44 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesConnections {
+        /**
+         * API Server Internet endpoint.
+         */
         apiServerInternet: string;
+        /**
+         * API Server Intranet endpoint.
+         */
         apiServerIntranet: string;
+        /**
+         * Master node SSH IP address.
+         */
         masterPublicIp: string;
+        /**
+         * Service Access Domain.
+         */
         serviceDomain: string;
     }
 
     export interface EdgeKubernetesLogConfig {
+        /**
+         * Log Service project name, cluster logs will output to this project.
+         */
         project?: string;
+        /**
+         * Type of collecting logs, only `SLS` are supported currently.
+         */
         type: string;
+    }
+
+    export interface EdgeKubernetesRuntime {
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+        /**
+         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         */
+        version?: string;
     }
 
     export interface EdgeKubernetesWorkerDataDisk {
@@ -10318,6 +10351,25 @@ export namespace cs {
         weeklyPeriod: string;
     }
 
+    export interface ManagedKubernetesRrsaMetadata {
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled: boolean;
+        /**
+         * The arn of OIDC provider that was registered in RAM.
+         */
+        ramOidcProviderArn: string;
+        /**
+         * The name of OIDC Provider that was registered in RAM.
+         */
+        ramOidcProviderName: string;
+        /**
+         * The issuer URL of RRSA OIDC Token.
+         */
+        rrsaOidcIssuerUrl: string;
+    }
+
     export interface ManagedKubernetesRuntime {
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -10499,6 +10551,13 @@ export namespace cs {
         surgePercentage?: number;
     }
 
+    export interface NodePoolRollingPolicy {
+        /**
+         * Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+         */
+        maxParallelism?: number;
+    }
+
     export interface NodePoolRolloutPolicy {
         /**
          * Max number of unavailable nodes. Default to `1`.
@@ -10569,6 +10628,25 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
+    }
+
+    export interface ServerlessKubernetesRrsaMetadata {
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled: boolean;
+        /**
+         * The arn of OIDC provider that was registered in RAM.
+         */
+        ramOidcProviderArn: string;
+        /**
+         * The name of OIDC Provider that was registered in RAM.
+         */
+        ramOidcProviderName: string;
+        /**
+         * The issuer URL of RRSA OIDC Token.
+         */
+        rrsaOidcIssuerUrl: string;
     }
 
     export interface SwarmNode {
@@ -11083,6 +11161,10 @@ export namespace ddos {
          * The instance's remark.
          */
         name: string;
+        /**
+         * Normal defend bandwidth of the instance. The unit is Gbps.
+         */
+        normalBandwidth: number;
         /**
          * A region of instance.
          */
@@ -17385,6 +17467,10 @@ export namespace ecs {
          */
         description?: string;
         /**
+         * The mount point of the data disk.
+         */
+        device?: string;
+        /**
          * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
          */
         encrypted?: boolean;
@@ -20850,13 +20936,23 @@ export namespace eventbridge {
 
     export interface RuleTarget {
         /**
+         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+         */
+        deadLetterQueue?: outputs.eventbridge.RuleTargetDeadLetterQueue;
+        /**
          * The endpoint of target.
          */
         endpoint: string;
         /**
-         * A list of param.
+         * A list of param. See the following `Block paramList`.
          */
         paramLists: outputs.eventbridge.RuleTargetParamList[];
+        /**
+         * The retry policy that is used to push the event. Valid values:
+         * - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+         * - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
+         */
+        pushRetryStrategy: string;
         /**
          * The ID of target.
          */
@@ -20865,6 +20961,13 @@ export namespace eventbridge {
          * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
          */
         type: string;
+    }
+
+    export interface RuleTargetDeadLetterQueue {
+        /**
+         * The srn of the dead letter queue.
+         */
+        arn?: string;
     }
 
     export interface RuleTargetParamList {
@@ -21580,6 +21683,14 @@ export namespace fc {
 
     export interface ServiceLogConfig {
         /**
+         * Enable instance level metrics.
+         */
+        enableInstanceMetrics?: boolean;
+        /**
+         * Enable request level metrics.
+         */
+        enableRequestMetrics?: boolean;
+        /**
          * The log store name of Alicloud Simple Log Service.
          */
         logstore: string;
@@ -21615,6 +21726,17 @@ export namespace fc {
         serverAddr: string;
     }
 
+    export interface ServiceTracingConfig {
+        /**
+         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         */
+        params: {[key: string]: any};
+        /**
+         * Tracing protocol type. Currently, only Jaeger is supported.
+         */
+        type: string;
+    }
+
     export interface ServiceVpcConfig {
         /**
          * A security group ID associated with the Function Compute Service.
@@ -21626,6 +21748,7 @@ export namespace fc {
          */
         vswitchIds: string[];
     }
+
 }
 
 export namespace fnf {
@@ -22365,46 +22488,136 @@ export namespace gpdb {
          */
         availabilityZone: string;
         /**
-         * Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+         * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
          */
         chargeType: string;
         /**
-         * The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+         * The endpoint of the instance.
+         */
+        connectionString: string;
+        /**
+         * The number of CPU cores of the computing node. Unit: Core.
+         */
+        cpuCores: string;
+        /**
+         * The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+         */
+        createTime: string;
+        /**
+         * The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
          */
         creationTime: string;
         /**
-         * The description of an instance.
+         * The db instance category. Valid values: `HighAvailability`, `Basic`.
+         */
+        dbInstanceCategory: string;
+        /**
+         * The db instance class.
+         */
+        dbInstanceClass: string;
+        /**
+         * The db instance id.
+         */
+        dbInstanceId: string;
+        /**
+         * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+         */
+        dbInstanceMode: string;
+        /**
+         * The description of the instance.
          */
         description: string;
         /**
-         * Database engine type. Supported option is `gpdb`.
+         * The database engine used by the instance.
          */
         engine: string;
         /**
-         * Database engine version.
+         * The version of the database engine used by the instance.
          */
         engineVersion: string;
         /**
-         * The instance id.
+         * The ID of the db Instance.
          */
         id: string;
         /**
-         * The group type.
+         * The network type of the instance.
          */
-        instanceClass: string;
-        /**
-         * The number of groups.
-         */
-        instanceGroupCount: string;
         instanceNetworkType: string;
+        /**
+         * The ip whitelist.
+         */
+        ipWhitelists: outputs.gpdb.GetInstancesInstanceIpWhitelist[];
+        /**
+         * The end time of the maintenance window for the instance.
+         */
+        maintainEndTime: string;
+        /**
+         * The start time of the maintenance window for the instance.
+         */
+        maintainStartTime: string;
+        /**
+         * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+         */
+        masterNodeNum: string;
+        /**
+         * The memory size of the compute node.
+         */
+        memorySize: string;
+        /**
+         * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+         */
+        paymentType: string;
         /**
          * Region ID the instance belongs to.
          */
         regionId: string;
         /**
-         * Status of the instance.
+         * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+         */
+        segNodeNum: string;
+        /**
+         * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
          */
         status: string;
+        /**
+         * The storage capacity. Unit: GB. Value: `50` to `4000`.
+         */
+        storageSize: number;
+        /**
+         * The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+         */
+        storageType: string;
+        /**
+         * The tags of the instance.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The ID of the VPC。.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID of the instance.
+         */
+        zoneId: string;
+    }
+
+    export interface GetInstancesInstanceIpWhitelist {
+        /**
+         * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         */
+        ipGroupAttribute: string;
+        /**
+         * IP whitelist group name
+         */
+        ipGroupName: string;
+        /**
+         * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+         */
+        securityIpList: string;
     }
 
     export interface GetZonesZone {
@@ -22416,6 +22629,21 @@ export namespace gpdb {
          * A list of zone ids in which the multi zone.
          */
         multiZoneIds: string[];
+    }
+
+    export interface InstanceIpWhitelist {
+        /**
+         * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         */
+        ipGroupAttribute: string;
+        /**
+         * IP whitelist group name
+         */
+        ipGroupName: string;
+        /**
+         * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+         */
+        securityIpList: string;
     }
 
 }
@@ -23899,6 +24127,13 @@ export namespace hbr {
          * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         schedule?: string;
+    }
+
+    export interface RestoreJobOtsDetail {
+        /**
+         * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+         */
+        overwriteExisting: boolean;
     }
 
     export interface ServerBackupPlanDetail {
@@ -27856,6 +28091,7 @@ export namespace oss {
     }
 
     export interface GetTablesTable {
+        definedColumns: outputs.oss.GetTablesTableDefinedColumn[];
         /**
          * ID of the table. The value is `<instance_name>:<table_name>`.
          */
@@ -27880,6 +28116,11 @@ export namespace oss {
          * The retention time of data stored in this table.
          */
         timeToLive: number;
+    }
+
+    export interface GetTablesTableDefinedColumn {
+        name: string;
+        type: string;
     }
 
     export interface GetTablesTablePrimaryKey {
@@ -27984,6 +28225,7 @@ export namespace ots {
     }
 
     export interface GetTablesTable {
+        definedColumns: outputs.ots.GetTablesTableDefinedColumn[];
         /**
          * ID of the table. The value is `<instance_name>:<table_name>`.
          */
@@ -28008,6 +28250,11 @@ export namespace ots {
          * The retention time of data stored in this table.
          */
         timeToLive: number;
+    }
+
+    export interface GetTablesTableDefinedColumn {
+        name: string;
+        type: string;
     }
 
     export interface GetTablesTablePrimaryKey {
@@ -28085,13 +28332,24 @@ export namespace ots {
         clientId: string;
     }
 
-    export interface TablePrimaryKey {
+    export interface TableDefinedColumn {
         /**
-         * Name for primary key.
+         * Name for defined column.
          */
         name: string;
         /**
-         * Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+         * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+         */
+        type: string;
+    }
+
+    export interface TablePrimaryKey {
+        /**
+         * Name for defined column.
+         */
+        name: string;
+        /**
+         * Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
          */
         type: string;
     }
@@ -33105,7 +33363,7 @@ export namespace servicemesh {
         /**
          * The configuration of the access logging.
          */
-        accessLog?: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
+        accessLog: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
         /**
          * The configuration of the audit. See the following `Block audit`.
          */
@@ -33113,11 +33371,11 @@ export namespace servicemesh {
         /**
          * The configuration of the control plane logging.
          */
-        controlPlaneLog?: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
+        controlPlaneLog: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
         /**
          * Whether to enable the use of a custom zipkin.
          */
-        customizedZipkin?: boolean;
+        customizedZipkin: boolean;
         /**
          * The enable locality lb.
          */
@@ -33193,7 +33451,7 @@ export namespace servicemesh {
         /**
          * Whether to enable Service grid audit.
          */
-        enabled?: boolean;
+        enabled: boolean;
     }
 
     export interface ServiceMeshMeshConfigOpa {
@@ -33265,19 +33523,19 @@ export namespace servicemesh {
         /**
          * The CPU resource  of the limitsOPA proxy container.
          */
-        limitCpu?: string;
+        limitCpu: string;
         /**
          * The memory resource limit of the OPA proxy container.
          */
-        limitMemory?: string;
+        limitMemory: string;
         /**
          * The CPU resource request of the OPA proxy container.
          */
-        requestCpu?: string;
+        requestCpu: string;
         /**
          * The memory resource request of the OPA proxy container.
          */
-        requestMemory?: string;
+        requestMemory: string;
     }
 
     export interface ServiceMeshNetwork {
@@ -34036,6 +34294,10 @@ export namespace slb {
          * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
          */
         protocol: string;
+        /**
+         * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+         */
+        proxyProtocolV2Enabled: boolean;
         /**
          * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
          */

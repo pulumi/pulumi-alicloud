@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class GetTablesTableResult
     {
+        public readonly ImmutableArray<Outputs.GetTablesTableDefinedColumnResult> DefinedColumns;
         /// <summary>
         /// ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
         /// </summary>
@@ -40,6 +41,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
         [OutputConstructor]
         private GetTablesTableResult(
+            ImmutableArray<Outputs.GetTablesTableDefinedColumnResult> definedColumns,
+
             string id,
 
             string instanceName,
@@ -52,6 +55,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             int timeToLive)
         {
+            DefinedColumns = definedColumns;
             Id = id;
             InstanceName = instanceName;
             MaxVersion = maxVersion;

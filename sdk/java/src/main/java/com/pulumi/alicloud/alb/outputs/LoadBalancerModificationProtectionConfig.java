@@ -15,21 +15,14 @@ public final class LoadBalancerModificationProtectionConfig {
      * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
      * 
      */
-    private final @Nullable String reason;
+    private @Nullable String reason;
     /**
      * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private LoadBalancerModificationProtectionConfig(
-        @CustomType.Parameter("reason") @Nullable String reason,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.reason = reason;
-        this.status = status;
-    }
-
+    private LoadBalancerModificationProtectionConfig() {}
     /**
      * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
      * 
@@ -52,30 +45,32 @@ public final class LoadBalancerModificationProtectionConfig {
     public static Builder builder(LoadBalancerModificationProtectionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String reason;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerModificationProtectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.reason = defaults.reason;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder reason(@Nullable String reason) {
             this.reason = reason;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public LoadBalancerModificationProtectionConfig build() {
-            return new LoadBalancerModificationProtectionConfig(reason, status);
+        }
+        public LoadBalancerModificationProtectionConfig build() {
+            final var o = new LoadBalancerModificationProtectionConfig();
+            o.reason = reason;
+            o.status = status;
+            return o;
         }
     }
 }

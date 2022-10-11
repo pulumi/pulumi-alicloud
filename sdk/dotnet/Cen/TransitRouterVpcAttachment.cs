@@ -14,6 +14,76 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available in 1.126.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var transitRouterAttachmentName = config.Get("transitRouterAttachmentName") ?? "sdk_rebot_cen_tr_yaochi";
+    ///         var transitRouterAttachmentDescription = config.Get("transitRouterAttachmentDescription") ?? "sdk_rebot_cen_tr_yaochi";
+    ///         var defaultTransitRouterAvailableResources = Output.Create(AliCloud.Cen.GetTransitRouterAvailableResources.InvokeAsync());
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             VpcName = "sdk_rebot_cen_tr_yaochi",
+    ///             CidrBlock = "192.168.0.0/16",
+    ///         });
+    ///         var defaultMaster = new AliCloud.Vpc.Switch("defaultMaster", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VswitchName = "sdk_rebot_cen_tr_yaochi",
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "192.168.1.0/24",
+    ///             ZoneId = defaultTransitRouterAvailableResources.Apply(defaultTransitRouterAvailableResources =&gt; defaultTransitRouterAvailableResources.Resources?[0]?.MasterZones?[0]),
+    ///         });
+    ///         var defaultSlave = new AliCloud.Vpc.Switch("defaultSlave", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VswitchName = "sdk_rebot_cen_tr_yaochi",
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "192.168.2.0/24",
+    ///             ZoneId = defaultTransitRouterAvailableResources.Apply(defaultTransitRouterAvailableResources =&gt; defaultTransitRouterAvailableResources.Resources?[0]?.SlaveZones?[0]),
+    ///         });
+    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///             CenInstanceName = "sdk_rebot_cen_tr_yaochi",
+    ///             ProtectionLevel = "REDUCED",
+    ///         });
+    ///         var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new AliCloud.Cen.TransitRouterArgs
+    ///         {
+    ///             CenId = defaultInstance.Id,
+    ///         });
+    ///         var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", new AliCloud.Cen.TransitRouterVpcAttachmentArgs
+    ///         {
+    ///             CenId = defaultInstance.Id,
+    ///             TransitRouterId = defaultTransitRouter.Id,
+    ///             VpcId = defaultNetwork.Id,
+    ///             ZoneMappings = 
+    ///             {
+    ///                 new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///                 {
+    ///                     ZoneId = data.Alicloud_cen_transit_router_available_resource.Default.Zones[0].Master_zones[0],
+    ///                     VswitchId = defaultMaster.Id,
+    ///                 },
+    ///                 new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///                 {
+    ///                     ZoneId = data.Alicloud_cen_transit_router_available_resource.Default.Zones[0].Slave_zones[0],
+    ///                     VswitchId = defaultSlave.Id,
+    ///                 },
+    ///             },
+    ///             TransitRouterAttachmentName = transitRouterAttachmentName,
+    ///             TransitRouterAttachmentDescription = transitRouterAttachmentDescription,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CEN instance can be imported using the id, e.g.
@@ -104,7 +174,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.TransitRouterVpcAttachmentZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -225,7 +295,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
         {
@@ -322,7 +392,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings
         {
