@@ -14,71 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceClassesResult {
-    private final @Nullable String category;
-    private final @Nullable String commodityCode;
-    private final @Nullable String dbInstanceClass;
-    private final @Nullable String dbInstanceId;
-    private final @Nullable String dbInstanceStorageType;
-    private final @Nullable String engine;
-    private final @Nullable String engineVersion;
+    private @Nullable String category;
+    private @Nullable String commodityCode;
+    private @Nullable String dbInstanceClass;
+    private @Nullable String dbInstanceId;
+    private @Nullable String dbInstanceStorageType;
+    private @Nullable String engine;
+    private @Nullable String engineVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Available in 1.60.0+) A list of Rds instance class codes.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String instanceChargeType;
+    private List<String> ids;
+    private @Nullable String instanceChargeType;
     /**
      * @return A list of Rds available resource. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstanceClassesInstanceClass> instanceClasses;
-    private final @Nullable Boolean multiZone;
-    private final @Nullable String outputFile;
-    private final @Nullable String sortedBy;
-    private final @Nullable String storageType;
-    private final @Nullable String zoneId;
+    private List<GetInstanceClassesInstanceClass> instanceClasses;
+    private @Nullable Boolean multiZone;
+    private @Nullable String outputFile;
+    private @Nullable String sortedBy;
+    private @Nullable String storageType;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetInstanceClassesResult(
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("commodityCode") @Nullable String commodityCode,
-        @CustomType.Parameter("dbInstanceClass") @Nullable String dbInstanceClass,
-        @CustomType.Parameter("dbInstanceId") @Nullable String dbInstanceId,
-        @CustomType.Parameter("dbInstanceStorageType") @Nullable String dbInstanceStorageType,
-        @CustomType.Parameter("engine") @Nullable String engine,
-        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
-        @CustomType.Parameter("instanceClasses") List<GetInstanceClassesInstanceClass> instanceClasses,
-        @CustomType.Parameter("multiZone") @Nullable Boolean multiZone,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("sortedBy") @Nullable String sortedBy,
-        @CustomType.Parameter("storageType") @Nullable String storageType,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.category = category;
-        this.commodityCode = commodityCode;
-        this.dbInstanceClass = dbInstanceClass;
-        this.dbInstanceId = dbInstanceId;
-        this.dbInstanceStorageType = dbInstanceStorageType;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.id = id;
-        this.ids = ids;
-        this.instanceChargeType = instanceChargeType;
-        this.instanceClasses = instanceClasses;
-        this.multiZone = multiZone;
-        this.outputFile = outputFile;
-        this.sortedBy = sortedBy;
-        this.storageType = storageType;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstanceClassesResult() {}
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -147,7 +112,7 @@ public final class GetInstanceClassesResult {
     public static Builder builder(GetInstanceClassesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
         private @Nullable String commodityCode;
@@ -165,11 +130,7 @@ public final class GetInstanceClassesResult {
         private @Nullable String sortedBy;
         private @Nullable String storageType;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceClassesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -190,38 +151,47 @@ public final class GetInstanceClassesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder commodityCode(@Nullable String commodityCode) {
             this.commodityCode = commodityCode;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
             this.dbInstanceClass = dbInstanceClass;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(@Nullable String dbInstanceId) {
             this.dbInstanceId = dbInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceStorageType(@Nullable String dbInstanceStorageType) {
             this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
+        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -229,10 +199,12 @@ public final class GetInstanceClassesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceClasses(List<GetInstanceClassesInstanceClass> instanceClasses) {
             this.instanceClasses = Objects.requireNonNull(instanceClasses);
             return this;
@@ -240,27 +212,50 @@ public final class GetInstanceClassesResult {
         public Builder instanceClasses(GetInstanceClassesInstanceClass... instanceClasses) {
             return instanceClasses(List.of(instanceClasses));
         }
+        @CustomType.Setter
         public Builder multiZone(@Nullable Boolean multiZone) {
             this.multiZone = multiZone;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder sortedBy(@Nullable String sortedBy) {
             this.sortedBy = sortedBy;
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetInstanceClassesResult build() {
-            return new GetInstanceClassesResult(category, commodityCode, dbInstanceClass, dbInstanceId, dbInstanceStorageType, engine, engineVersion, id, ids, instanceChargeType, instanceClasses, multiZone, outputFile, sortedBy, storageType, zoneId);
+        }
+        public GetInstanceClassesResult build() {
+            final var o = new GetInstanceClassesResult();
+            o.category = category;
+            o.commodityCode = commodityCode;
+            o.dbInstanceClass = dbInstanceClass;
+            o.dbInstanceId = dbInstanceId;
+            o.dbInstanceStorageType = dbInstanceStorageType;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.id = id;
+            o.ids = ids;
+            o.instanceChargeType = instanceChargeType;
+            o.instanceClasses = instanceClasses;
+            o.multiZone = multiZone;
+            o.outputFile = outputFile;
+            o.sortedBy = sortedBy;
+            o.storageType = storageType;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

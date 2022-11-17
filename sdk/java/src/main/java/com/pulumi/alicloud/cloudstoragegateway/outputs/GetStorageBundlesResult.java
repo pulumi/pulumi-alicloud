@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageBundlesResult {
-    private final String backendBucketRegionId;
-    private final List<GetStorageBundlesBundle> bundles;
+    private String backendBucketRegionId;
+    private List<GetStorageBundlesBundle> bundles;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final Integer totalCount;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private Integer totalCount;
 
-    @CustomType.Constructor
-    private GetStorageBundlesResult(
-        @CustomType.Parameter("backendBucketRegionId") String backendBucketRegionId,
-        @CustomType.Parameter("bundles") List<GetStorageBundlesBundle> bundles,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("totalCount") Integer totalCount) {
-        this.backendBucketRegionId = backendBucketRegionId;
-        this.bundles = bundles;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.totalCount = totalCount;
-    }
-
+    private GetStorageBundlesResult() {}
     public String backendBucketRegionId() {
         return this.backendBucketRegionId;
     }
@@ -95,7 +72,7 @@ public final class GetStorageBundlesResult {
     public static Builder builder(GetStorageBundlesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendBucketRegionId;
         private List<GetStorageBundlesBundle> bundles;
@@ -107,11 +84,7 @@ public final class GetStorageBundlesResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private Integer totalCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStorageBundlesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendBucketRegionId = defaults.backendBucketRegionId;
@@ -126,10 +99,12 @@ public final class GetStorageBundlesResult {
     	      this.totalCount = defaults.totalCount;
         }
 
+        @CustomType.Setter
         public Builder backendBucketRegionId(String backendBucketRegionId) {
             this.backendBucketRegionId = Objects.requireNonNull(backendBucketRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder bundles(List<GetStorageBundlesBundle> bundles) {
             this.bundles = Objects.requireNonNull(bundles);
             return this;
@@ -137,10 +112,12 @@ public final class GetStorageBundlesResult {
         public Builder bundles(GetStorageBundlesBundle... bundles) {
             return bundles(List.of(bundles));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -148,10 +125,12 @@ public final class GetStorageBundlesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -159,23 +138,39 @@ public final class GetStorageBundlesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }        public GetStorageBundlesResult build() {
-            return new GetStorageBundlesResult(backendBucketRegionId, bundles, id, ids, nameRegex, names, outputFile, pageNumber, pageSize, totalCount);
+        }
+        public GetStorageBundlesResult build() {
+            final var o = new GetStorageBundlesResult();
+            o.backendBucketRegionId = backendBucketRegionId;
+            o.bundles = bundles;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.totalCount = totalCount;
+            return o;
         }
     }
 }

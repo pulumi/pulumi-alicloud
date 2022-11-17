@@ -15,56 +15,39 @@ public final class GetIpSetsSet {
      * @return The ID of an acceleration region.
      * 
      */
-    private final String accelerateRegionId;
+    private String accelerateRegionId;
     /**
      * @return The bandwidth allocated to the acceleration region.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The ID of the Ip Set.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The list of accelerated IP addresses in the acceleration region.
      * 
      */
-    private final List<String> ipAddressLists;
+    private List<String> ipAddressLists;
     /**
      * @return Accelerated area ID.
      * 
      */
-    private final String ipSetId;
+    private String ipSetId;
     /**
      * @return The IP protocol used by the GA instance.
      * 
      */
-    private final String ipVersion;
+    private String ipVersion;
     /**
      * @return The status of the acceleration region.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetIpSetsSet(
-        @CustomType.Parameter("accelerateRegionId") String accelerateRegionId,
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddressLists") List<String> ipAddressLists,
-        @CustomType.Parameter("ipSetId") String ipSetId,
-        @CustomType.Parameter("ipVersion") String ipVersion,
-        @CustomType.Parameter("status") String status) {
-        this.accelerateRegionId = accelerateRegionId;
-        this.bandwidth = bandwidth;
-        this.id = id;
-        this.ipAddressLists = ipAddressLists;
-        this.ipSetId = ipSetId;
-        this.ipVersion = ipVersion;
-        this.status = status;
-    }
-
+    private GetIpSetsSet() {}
     /**
      * @return The ID of an acceleration region.
      * 
@@ -122,7 +105,7 @@ public final class GetIpSetsSet {
     public static Builder builder(GetIpSetsSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accelerateRegionId;
         private Integer bandwidth;
@@ -131,11 +114,7 @@ public final class GetIpSetsSet {
         private String ipSetId;
         private String ipVersion;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIpSetsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerateRegionId = defaults.accelerateRegionId;
@@ -147,18 +126,22 @@ public final class GetIpSetsSet {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accelerateRegionId(String accelerateRegionId) {
             this.accelerateRegionId = Objects.requireNonNull(accelerateRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddressLists(List<String> ipAddressLists) {
             this.ipAddressLists = Objects.requireNonNull(ipAddressLists);
             return this;
@@ -166,19 +149,31 @@ public final class GetIpSetsSet {
         public Builder ipAddressLists(String... ipAddressLists) {
             return ipAddressLists(List.of(ipAddressLists));
         }
+        @CustomType.Setter
         public Builder ipSetId(String ipSetId) {
             this.ipSetId = Objects.requireNonNull(ipSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetIpSetsSet build() {
-            return new GetIpSetsSet(accelerateRegionId, bandwidth, id, ipAddressLists, ipSetId, ipVersion, status);
+        }
+        public GetIpSetsSet build() {
+            final var o = new GetIpSetsSet();
+            o.accelerateRegionId = accelerateRegionId;
+            o.bandwidth = bandwidth;
+            o.id = id;
+            o.ipAddressLists = ipAddressLists;
+            o.ipSetId = ipSetId;
+            o.ipVersion = ipVersion;
+            o.status = status;
+            return o;
         }
     }
 }

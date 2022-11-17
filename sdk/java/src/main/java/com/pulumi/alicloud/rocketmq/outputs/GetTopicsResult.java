@@ -16,54 +16,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTopicsResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String nameRegex;
     /**
      * @return A list of topic names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return A list of topics. Each element contains the following attributes:
      * 
      */
-    private final List<GetTopicsTopic> topics;
+    private List<GetTopicsTopic> topics;
 
-    @CustomType.Constructor
-    private GetTopicsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("topics") List<GetTopicsTopic> topics) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.tags = tags;
-        this.topics = topics;
-    }
-
+    private GetTopicsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -115,7 +94,7 @@ public final class GetTopicsResult {
     public static Builder builder(GetTopicsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -126,11 +105,7 @@ public final class GetTopicsResult {
         private @Nullable String outputFile;
         private @Nullable Map<String,Object> tags;
         private List<GetTopicsTopic> topics;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -144,14 +119,17 @@ public final class GetTopicsResult {
     	      this.topics = defaults.topics;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -159,14 +137,17 @@ public final class GetTopicsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -174,22 +155,36 @@ public final class GetTopicsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder topics(List<GetTopicsTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
         }
         public Builder topics(GetTopicsTopic... topics) {
             return topics(List.of(topics));
-        }        public GetTopicsResult build() {
-            return new GetTopicsResult(enableDetails, id, ids, instanceId, nameRegex, names, outputFile, tags, topics);
+        }
+        public GetTopicsResult build() {
+            final var o = new GetTopicsResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.tags = tags;
+            o.topics = topics;
+            return o;
         }
     }
 }

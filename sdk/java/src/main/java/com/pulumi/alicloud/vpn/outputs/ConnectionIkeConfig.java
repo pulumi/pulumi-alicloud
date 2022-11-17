@@ -16,70 +16,49 @@ public final class ConnectionIkeConfig {
      * @return The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
      * 
      */
-    private final @Nullable String ikeAuthAlg;
+    private @Nullable String ikeAuthAlg;
     /**
      * @return The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
      * 
      */
-    private final @Nullable String ikeEncAlg;
+    private @Nullable String ikeEncAlg;
     /**
      * @return The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
      * 
      */
-    private final @Nullable Integer ikeLifetime;
+    private @Nullable Integer ikeLifetime;
     /**
      * @return The identification of the VPN gateway.
      * 
      */
-    private final @Nullable String ikeLocalId;
+    private @Nullable String ikeLocalId;
     /**
      * @return The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
      * 
      */
-    private final @Nullable String ikeMode;
+    private @Nullable String ikeMode;
     /**
      * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
      * 
      */
-    private final @Nullable String ikePfs;
+    private @Nullable String ikePfs;
     /**
      * @return The identification of the customer gateway.
      * 
      */
-    private final @Nullable String ikeRemoteId;
+    private @Nullable String ikeRemoteId;
     /**
      * @return The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
      * 
      */
-    private final @Nullable String ikeVersion;
+    private @Nullable String ikeVersion;
     /**
      * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
      * 
      */
-    private final @Nullable String psk;
+    private @Nullable String psk;
 
-    @CustomType.Constructor
-    private ConnectionIkeConfig(
-        @CustomType.Parameter("ikeAuthAlg") @Nullable String ikeAuthAlg,
-        @CustomType.Parameter("ikeEncAlg") @Nullable String ikeEncAlg,
-        @CustomType.Parameter("ikeLifetime") @Nullable Integer ikeLifetime,
-        @CustomType.Parameter("ikeLocalId") @Nullable String ikeLocalId,
-        @CustomType.Parameter("ikeMode") @Nullable String ikeMode,
-        @CustomType.Parameter("ikePfs") @Nullable String ikePfs,
-        @CustomType.Parameter("ikeRemoteId") @Nullable String ikeRemoteId,
-        @CustomType.Parameter("ikeVersion") @Nullable String ikeVersion,
-        @CustomType.Parameter("psk") @Nullable String psk) {
-        this.ikeAuthAlg = ikeAuthAlg;
-        this.ikeEncAlg = ikeEncAlg;
-        this.ikeLifetime = ikeLifetime;
-        this.ikeLocalId = ikeLocalId;
-        this.ikeMode = ikeMode;
-        this.ikePfs = ikePfs;
-        this.ikeRemoteId = ikeRemoteId;
-        this.ikeVersion = ikeVersion;
-        this.psk = psk;
-    }
-
+    private ConnectionIkeConfig() {}
     /**
      * @return The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
      * 
@@ -151,7 +130,7 @@ public final class ConnectionIkeConfig {
     public static Builder builder(ConnectionIkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ikeAuthAlg;
         private @Nullable String ikeEncAlg;
@@ -162,11 +141,7 @@ public final class ConnectionIkeConfig {
         private @Nullable String ikeRemoteId;
         private @Nullable String ikeVersion;
         private @Nullable String psk;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -180,43 +155,63 @@ public final class ConnectionIkeConfig {
     	      this.psk = defaults.psk;
         }
 
+        @CustomType.Setter
         public Builder ikeAuthAlg(@Nullable String ikeAuthAlg) {
             this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeEncAlg(@Nullable String ikeEncAlg) {
             this.ikeEncAlg = ikeEncAlg;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeLifetime(@Nullable Integer ikeLifetime) {
             this.ikeLifetime = ikeLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeLocalId(@Nullable String ikeLocalId) {
             this.ikeLocalId = ikeLocalId;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeMode(@Nullable String ikeMode) {
             this.ikeMode = ikeMode;
             return this;
         }
+        @CustomType.Setter
         public Builder ikePfs(@Nullable String ikePfs) {
             this.ikePfs = ikePfs;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeRemoteId(@Nullable String ikeRemoteId) {
             this.ikeRemoteId = ikeRemoteId;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeVersion(@Nullable String ikeVersion) {
             this.ikeVersion = ikeVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder psk(@Nullable String psk) {
             this.psk = psk;
             return this;
-        }        public ConnectionIkeConfig build() {
-            return new ConnectionIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeLocalId, ikeMode, ikePfs, ikeRemoteId, ikeVersion, psk);
+        }
+        public ConnectionIkeConfig build() {
+            final var o = new ConnectionIkeConfig();
+            o.ikeAuthAlg = ikeAuthAlg;
+            o.ikeEncAlg = ikeEncAlg;
+            o.ikeLifetime = ikeLifetime;
+            o.ikeLocalId = ikeLocalId;
+            o.ikeMode = ikeMode;
+            o.ikePfs = ikePfs;
+            o.ikeRemoteId = ikeRemoteId;
+            o.ikeVersion = ikeVersion;
+            o.psk = psk;
+            return o;
         }
     }
 }

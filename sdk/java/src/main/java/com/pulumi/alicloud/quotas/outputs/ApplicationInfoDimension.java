@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationInfoDimension {
-    private final @Nullable String key;
-    private final @Nullable String value;
+    private @Nullable String key;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ApplicationInfoDimension(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private ApplicationInfoDimension() {}
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
@@ -36,30 +29,32 @@ public final class ApplicationInfoDimension {
     public static Builder builder(ApplicationInfoDimension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationInfoDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ApplicationInfoDimension build() {
-            return new ApplicationInfoDimension(key, value);
+        }
+        public ApplicationInfoDimension build() {
+            final var o = new ApplicationInfoDimension();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

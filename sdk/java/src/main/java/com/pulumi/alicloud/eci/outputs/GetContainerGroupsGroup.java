@@ -25,213 +25,150 @@ public final class GetContainerGroupsGroup {
      * @return The id if ContainerGroup.
      * 
      */
-    private final String containerGroupId;
+    private String containerGroupId;
     /**
      * @return The name of ContainerGroup.
      * 
      */
-    private final String containerGroupName;
+    private String containerGroupName;
     /**
      * @return A list of containers. Each element contains the following attributes:
      * 
      */
-    private final List<GetContainerGroupsGroupContainer> containers;
+    private List<GetContainerGroupsGroupContainer> containers;
     /**
      * @return The amount of CPU resources allocated to the container.
      * 
      */
-    private final Double cpu;
-    private final Integer discount;
+    private Double cpu;
+    private Integer discount;
     /**
      * @return The DNS settings.
      * 
      */
-    private final List<GetContainerGroupsGroupDnsConfig> dnsConfigs;
+    private List<GetContainerGroupsGroupDnsConfig> dnsConfigs;
     /**
      * @return The security context of the container group.
      * 
      */
-    private final List<GetContainerGroupsGroupEciSecurityContext> eciSecurityContexts;
+    private List<GetContainerGroupsGroupEciSecurityContext> eciSecurityContexts;
     /**
      * @return The ID of the ENI instance.
      * 
      */
-    private final String eniInstanceId;
+    private String eniInstanceId;
     /**
      * @return The events of the container group. Maximum: `50`.
      * 
      */
-    private final List<GetContainerGroupsGroupEvent> events;
+    private List<GetContainerGroupsGroupEvent> events;
     /**
      * @return The time when the container group failed to run due to overdue payments. The timestamp follows the UTC and RFC3339 formats.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The time when the container failed to run tasks. The timestamp follows the UTC and RFC3339 formats.
      * 
      */
-    private final String failedTime;
+    private String failedTime;
     /**
      * @return The mapping between host names and IP addresses for a container in the container group.
      * 
      */
-    private final List<GetContainerGroupsGroupHostAlias> hostAliases;
+    private List<GetContainerGroupsGroupHostAlias> hostAliases;
     /**
      * @return The ID of the Container Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of init containers. Each element contains the following attributes:
      * 
      */
-    private final List<GetContainerGroupsGroupInitContainer> initContainers;
+    private List<GetContainerGroupsGroupInitContainer> initContainers;
     /**
      * @return The type of the ECS instance.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return The public IP address of the container group.
      * 
      */
-    private final String internetIp;
+    private String internetIp;
     /**
      * @return The internal IP address of the container group.
      * 
      */
-    private final String intranetIp;
+    private String intranetIp;
     /**
      * @return The IPv6 address.
      * 
      */
-    private final String ipv6Address;
+    private String ipv6Address;
     /**
      * @return The amount of memory resources allocated to the container group.
      * 
      */
-    private final Double memory;
+    private Double memory;
     /**
      * @return The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      * 
      */
-    private final String ramRoleName;
+    private String ramRoleName;
     /**
      * @return The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The restart policy of the container group.
      * 
      */
-    private final String restartPolicy;
+    private String restartPolicy;
     /**
      * @return The ID of the security group.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The status of container.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
      * 
      */
-    private final String succeededTime;
+    private String succeededTime;
     /**
      * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The information about the mounted volume. You can mount up to 20 volumes.
      * 
      */
-    private final List<GetContainerGroupsGroupVolume> volumes;
+    private List<GetContainerGroupsGroupVolume> volumes;
     /**
      * @return The if of vpc.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetContainerGroupsGroup(
-        @CustomType.Parameter("containerGroupId") String containerGroupId,
-        @CustomType.Parameter("containerGroupName") String containerGroupName,
-        @CustomType.Parameter("containers") List<GetContainerGroupsGroupContainer> containers,
-        @CustomType.Parameter("cpu") Double cpu,
-        @CustomType.Parameter("discount") Integer discount,
-        @CustomType.Parameter("dnsConfigs") List<GetContainerGroupsGroupDnsConfig> dnsConfigs,
-        @CustomType.Parameter("eciSecurityContexts") List<GetContainerGroupsGroupEciSecurityContext> eciSecurityContexts,
-        @CustomType.Parameter("eniInstanceId") String eniInstanceId,
-        @CustomType.Parameter("events") List<GetContainerGroupsGroupEvent> events,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("failedTime") String failedTime,
-        @CustomType.Parameter("hostAliases") List<GetContainerGroupsGroupHostAlias> hostAliases,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("initContainers") List<GetContainerGroupsGroupInitContainer> initContainers,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("internetIp") String internetIp,
-        @CustomType.Parameter("intranetIp") String intranetIp,
-        @CustomType.Parameter("ipv6Address") String ipv6Address,
-        @CustomType.Parameter("memory") Double memory,
-        @CustomType.Parameter("ramRoleName") String ramRoleName,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("restartPolicy") String restartPolicy,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("succeededTime") String succeededTime,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("volumes") List<GetContainerGroupsGroupVolume> volumes,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.containerGroupId = containerGroupId;
-        this.containerGroupName = containerGroupName;
-        this.containers = containers;
-        this.cpu = cpu;
-        this.discount = discount;
-        this.dnsConfigs = dnsConfigs;
-        this.eciSecurityContexts = eciSecurityContexts;
-        this.eniInstanceId = eniInstanceId;
-        this.events = events;
-        this.expiredTime = expiredTime;
-        this.failedTime = failedTime;
-        this.hostAliases = hostAliases;
-        this.id = id;
-        this.initContainers = initContainers;
-        this.instanceType = instanceType;
-        this.internetIp = internetIp;
-        this.intranetIp = intranetIp;
-        this.ipv6Address = ipv6Address;
-        this.memory = memory;
-        this.ramRoleName = ramRoleName;
-        this.resourceGroupId = resourceGroupId;
-        this.restartPolicy = restartPolicy;
-        this.securityGroupId = securityGroupId;
-        this.status = status;
-        this.succeededTime = succeededTime;
-        this.tags = tags;
-        this.volumes = volumes;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetContainerGroupsGroup() {}
     /**
      * @return The id if ContainerGroup.
      * 
@@ -446,7 +383,7 @@ public final class GetContainerGroupsGroup {
     public static Builder builder(GetContainerGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String containerGroupId;
         private String containerGroupName;
@@ -478,11 +415,7 @@ public final class GetContainerGroupsGroup {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerGroupId = defaults.containerGroupId;
@@ -517,14 +450,17 @@ public final class GetContainerGroupsGroup {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder containerGroupId(String containerGroupId) {
             this.containerGroupId = Objects.requireNonNull(containerGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder containerGroupName(String containerGroupName) {
             this.containerGroupName = Objects.requireNonNull(containerGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder containers(List<GetContainerGroupsGroupContainer> containers) {
             this.containers = Objects.requireNonNull(containers);
             return this;
@@ -532,14 +468,17 @@ public final class GetContainerGroupsGroup {
         public Builder containers(GetContainerGroupsGroupContainer... containers) {
             return containers(List.of(containers));
         }
+        @CustomType.Setter
         public Builder cpu(Double cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
+        @CustomType.Setter
         public Builder discount(Integer discount) {
             this.discount = Objects.requireNonNull(discount);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsConfigs(List<GetContainerGroupsGroupDnsConfig> dnsConfigs) {
             this.dnsConfigs = Objects.requireNonNull(dnsConfigs);
             return this;
@@ -547,6 +486,7 @@ public final class GetContainerGroupsGroup {
         public Builder dnsConfigs(GetContainerGroupsGroupDnsConfig... dnsConfigs) {
             return dnsConfigs(List.of(dnsConfigs));
         }
+        @CustomType.Setter
         public Builder eciSecurityContexts(List<GetContainerGroupsGroupEciSecurityContext> eciSecurityContexts) {
             this.eciSecurityContexts = Objects.requireNonNull(eciSecurityContexts);
             return this;
@@ -554,10 +494,12 @@ public final class GetContainerGroupsGroup {
         public Builder eciSecurityContexts(GetContainerGroupsGroupEciSecurityContext... eciSecurityContexts) {
             return eciSecurityContexts(List.of(eciSecurityContexts));
         }
+        @CustomType.Setter
         public Builder eniInstanceId(String eniInstanceId) {
             this.eniInstanceId = Objects.requireNonNull(eniInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder events(List<GetContainerGroupsGroupEvent> events) {
             this.events = Objects.requireNonNull(events);
             return this;
@@ -565,14 +507,17 @@ public final class GetContainerGroupsGroup {
         public Builder events(GetContainerGroupsGroupEvent... events) {
             return events(List.of(events));
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder failedTime(String failedTime) {
             this.failedTime = Objects.requireNonNull(failedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder hostAliases(List<GetContainerGroupsGroupHostAlias> hostAliases) {
             this.hostAliases = Objects.requireNonNull(hostAliases);
             return this;
@@ -580,10 +525,12 @@ public final class GetContainerGroupsGroup {
         public Builder hostAliases(GetContainerGroupsGroupHostAlias... hostAliases) {
             return hostAliases(List.of(hostAliases));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder initContainers(List<GetContainerGroupsGroupInitContainer> initContainers) {
             this.initContainers = Objects.requireNonNull(initContainers);
             return this;
@@ -591,54 +538,67 @@ public final class GetContainerGroupsGroup {
         public Builder initContainers(GetContainerGroupsGroupInitContainer... initContainers) {
             return initContainers(List.of(initContainers));
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
+        @CustomType.Setter
         public Builder intranetIp(String intranetIp) {
             this.intranetIp = Objects.requireNonNull(intranetIp);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
             this.ipv6Address = Objects.requireNonNull(ipv6Address);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Double memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
             this.ramRoleName = Objects.requireNonNull(ramRoleName);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder restartPolicy(String restartPolicy) {
             this.restartPolicy = Objects.requireNonNull(restartPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder succeededTime(String succeededTime) {
             this.succeededTime = Objects.requireNonNull(succeededTime);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(List<GetContainerGroupsGroupVolume> volumes) {
             this.volumes = Objects.requireNonNull(volumes);
             return this;
@@ -646,19 +606,54 @@ public final class GetContainerGroupsGroup {
         public Builder volumes(GetContainerGroupsGroupVolume... volumes) {
             return volumes(List.of(volumes));
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetContainerGroupsGroup build() {
-            return new GetContainerGroupsGroup(containerGroupId, containerGroupName, containers, cpu, discount, dnsConfigs, eciSecurityContexts, eniInstanceId, events, expiredTime, failedTime, hostAliases, id, initContainers, instanceType, internetIp, intranetIp, ipv6Address, memory, ramRoleName, resourceGroupId, restartPolicy, securityGroupId, status, succeededTime, tags, volumes, vpcId, vswitchId, zoneId);
+        }
+        public GetContainerGroupsGroup build() {
+            final var o = new GetContainerGroupsGroup();
+            o.containerGroupId = containerGroupId;
+            o.containerGroupName = containerGroupName;
+            o.containers = containers;
+            o.cpu = cpu;
+            o.discount = discount;
+            o.dnsConfigs = dnsConfigs;
+            o.eciSecurityContexts = eciSecurityContexts;
+            o.eniInstanceId = eniInstanceId;
+            o.events = events;
+            o.expiredTime = expiredTime;
+            o.failedTime = failedTime;
+            o.hostAliases = hostAliases;
+            o.id = id;
+            o.initContainers = initContainers;
+            o.instanceType = instanceType;
+            o.internetIp = internetIp;
+            o.intranetIp = intranetIp;
+            o.ipv6Address = ipv6Address;
+            o.memory = memory;
+            o.ramRoleName = ramRoleName;
+            o.resourceGroupId = resourceGroupId;
+            o.restartPolicy = restartPolicy;
+            o.securityGroupId = securityGroupId;
+            o.status = status;
+            o.succeededTime = succeededTime;
+            o.tags = tags;
+            o.volumes = volumes;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

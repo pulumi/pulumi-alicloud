@@ -13,42 +13,29 @@ public final class GetRegionRouteEntriesEntry {
      * @return The destination CIDR block of the route entry.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return ID of the next hop.
      * 
      */
-    private final String nextHopId;
+    private String nextHopId;
     /**
      * @return ID of the region where the next hop is located.
      * 
      */
-    private final String nextHopRegionId;
+    private String nextHopRegionId;
     /**
      * @return Type of the next hop.
      * 
      */
-    private final String nextHopType;
+    private String nextHopType;
     /**
      * @return Type of the route entry.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetRegionRouteEntriesEntry(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("nextHopId") String nextHopId,
-        @CustomType.Parameter("nextHopRegionId") String nextHopRegionId,
-        @CustomType.Parameter("nextHopType") String nextHopType,
-        @CustomType.Parameter("type") String type) {
-        this.cidrBlock = cidrBlock;
-        this.nextHopId = nextHopId;
-        this.nextHopRegionId = nextHopRegionId;
-        this.nextHopType = nextHopType;
-        this.type = type;
-    }
-
+    private GetRegionRouteEntriesEntry() {}
     /**
      * @return The destination CIDR block of the route entry.
      * 
@@ -92,18 +79,14 @@ public final class GetRegionRouteEntriesEntry {
     public static Builder builder(GetRegionRouteEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private String nextHopId;
         private String nextHopRegionId;
         private String nextHopType;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionRouteEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -113,27 +96,39 @@ public final class GetRegionRouteEntriesEntry {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopId(String nextHopId) {
             this.nextHopId = Objects.requireNonNull(nextHopId);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopRegionId(String nextHopRegionId) {
             this.nextHopRegionId = Objects.requireNonNull(nextHopRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
             this.nextHopType = Objects.requireNonNull(nextHopType);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetRegionRouteEntriesEntry build() {
-            return new GetRegionRouteEntriesEntry(cidrBlock, nextHopId, nextHopRegionId, nextHopType, type);
+        }
+        public GetRegionRouteEntriesEntry build() {
+            final var o = new GetRegionRouteEntriesEntry();
+            o.cidrBlock = cidrBlock;
+            o.nextHopId = nextHopId;
+            o.nextHopRegionId = nextHopRegionId;
+            o.nextHopType = nextHopType;
+            o.type = type;
+            return o;
         }
     }
 }

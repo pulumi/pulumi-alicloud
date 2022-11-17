@@ -13,28 +13,19 @@ public final class GetFunctionsFunctionCustomContainerConfig {
      * @return The args field specifies the arguments passed to the command.
      * 
      */
-    private final String args;
+    private String args;
     /**
      * @return The entry point of the container, which specifies the actual command run by the container.
      * 
      */
-    private final String command;
+    private String command;
     /**
      * @return The container image address.
      * 
      */
-    private final String image;
+    private String image;
 
-    @CustomType.Constructor
-    private GetFunctionsFunctionCustomContainerConfig(
-        @CustomType.Parameter("args") String args,
-        @CustomType.Parameter("command") String command,
-        @CustomType.Parameter("image") String image) {
-        this.args = args;
-        this.command = command;
-        this.image = image;
-    }
-
+    private GetFunctionsFunctionCustomContainerConfig() {}
     /**
      * @return The args field specifies the arguments passed to the command.
      * 
@@ -64,16 +55,12 @@ public final class GetFunctionsFunctionCustomContainerConfig {
     public static Builder builder(GetFunctionsFunctionCustomContainerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String args;
         private String command;
         private String image;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionsFunctionCustomContainerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -81,19 +68,27 @@ public final class GetFunctionsFunctionCustomContainerConfig {
     	      this.image = defaults.image;
         }
 
+        @CustomType.Setter
         public Builder args(String args) {
             this.args = Objects.requireNonNull(args);
             return this;
         }
+        @CustomType.Setter
         public Builder command(String command) {
             this.command = Objects.requireNonNull(command);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
-        }        public GetFunctionsFunctionCustomContainerConfig build() {
-            return new GetFunctionsFunctionCustomContainerConfig(args, command, image);
+        }
+        public GetFunctionsFunctionCustomContainerConfig build() {
+            final var o = new GetFunctionsFunctionCustomContainerConfig();
+            o.args = args;
+            o.command = command;
+            o.image = image;
+            return o;
         }
     }
 }

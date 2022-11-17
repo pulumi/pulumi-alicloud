@@ -13,47 +13,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypeFamiliesResult {
-    private final List<GetInstanceTypeFamiliesFamily> families;
+    private List<GetInstanceTypeFamiliesFamily> families;
     /**
      * @return The generation of the instance type family.
      * 
      */
-    private final @Nullable String generation;
+    private @Nullable String generation;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of instance type family IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String instanceChargeType;
-    private final @Nullable String outputFile;
-    private final @Nullable String spotStrategy;
-    private final @Nullable String zoneId;
+    private List<String> ids;
+    private @Nullable String instanceChargeType;
+    private @Nullable String outputFile;
+    private @Nullable String spotStrategy;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetInstanceTypeFamiliesResult(
-        @CustomType.Parameter("families") List<GetInstanceTypeFamiliesFamily> families,
-        @CustomType.Parameter("generation") @Nullable String generation,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("spotStrategy") @Nullable String spotStrategy,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.families = families;
-        this.generation = generation;
-        this.id = id;
-        this.ids = ids;
-        this.instanceChargeType = instanceChargeType;
-        this.outputFile = outputFile;
-        this.spotStrategy = spotStrategy;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstanceTypeFamiliesResult() {}
     public List<GetInstanceTypeFamiliesFamily> families() {
         return this.families;
     }
@@ -98,7 +79,7 @@ public final class GetInstanceTypeFamiliesResult {
     public static Builder builder(GetInstanceTypeFamiliesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTypeFamiliesFamily> families;
         private @Nullable String generation;
@@ -108,11 +89,7 @@ public final class GetInstanceTypeFamiliesResult {
         private @Nullable String outputFile;
         private @Nullable String spotStrategy;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypeFamiliesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.families = defaults.families;
@@ -125,6 +102,7 @@ public final class GetInstanceTypeFamiliesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder families(List<GetInstanceTypeFamiliesFamily> families) {
             this.families = Objects.requireNonNull(families);
             return this;
@@ -132,14 +110,17 @@ public final class GetInstanceTypeFamiliesResult {
         public Builder families(GetInstanceTypeFamiliesFamily... families) {
             return families(List.of(families));
         }
+        @CustomType.Setter
         public Builder generation(@Nullable String generation) {
             this.generation = generation;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -147,23 +128,37 @@ public final class GetInstanceTypeFamiliesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
             this.spotStrategy = spotStrategy;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetInstanceTypeFamiliesResult build() {
-            return new GetInstanceTypeFamiliesResult(families, generation, id, ids, instanceChargeType, outputFile, spotStrategy, zoneId);
+        }
+        public GetInstanceTypeFamiliesResult build() {
+            final var o = new GetInstanceTypeFamiliesResult();
+            o.families = families;
+            o.generation = generation;
+            o.id = id;
+            o.ids = ids;
+            o.instanceChargeType = instanceChargeType;
+            o.outputFile = outputFile;
+            o.spotStrategy = spotStrategy;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

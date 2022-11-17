@@ -18,33 +18,18 @@ public final class GetDomainExtensionsResult {
      * @return A list of SLB domain extension. Each element contains the following attributes:
      * 
      */
-    private final List<GetDomainExtensionsExtension> extensions;
-    private final Integer frontendPort;
+    private List<GetDomainExtensionsExtension> extensions;
+    private Integer frontendPort;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String loadBalancerId;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private String loadBalancerId;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetDomainExtensionsResult(
-        @CustomType.Parameter("extensions") List<GetDomainExtensionsExtension> extensions,
-        @CustomType.Parameter("frontendPort") Integer frontendPort,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.extensions = extensions;
-        this.frontendPort = frontendPort;
-        this.id = id;
-        this.ids = ids;
-        this.loadBalancerId = loadBalancerId;
-        this.outputFile = outputFile;
-    }
-
+    private GetDomainExtensionsResult() {}
     /**
      * @return A list of SLB domain extension. Each element contains the following attributes:
      * 
@@ -79,7 +64,7 @@ public final class GetDomainExtensionsResult {
     public static Builder builder(GetDomainExtensionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDomainExtensionsExtension> extensions;
         private Integer frontendPort;
@@ -87,11 +72,7 @@ public final class GetDomainExtensionsResult {
         private List<String> ids;
         private String loadBalancerId;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainExtensionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.extensions = defaults.extensions;
@@ -102,6 +83,7 @@ public final class GetDomainExtensionsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder extensions(List<GetDomainExtensionsExtension> extensions) {
             this.extensions = Objects.requireNonNull(extensions);
             return this;
@@ -109,14 +91,17 @@ public final class GetDomainExtensionsResult {
         public Builder extensions(GetDomainExtensionsExtension... extensions) {
             return extensions(List.of(extensions));
         }
+        @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
             this.frontendPort = Objects.requireNonNull(frontendPort);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -124,15 +109,25 @@ public final class GetDomainExtensionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetDomainExtensionsResult build() {
-            return new GetDomainExtensionsResult(extensions, frontendPort, id, ids, loadBalancerId, outputFile);
+        }
+        public GetDomainExtensionsResult build() {
+            final var o = new GetDomainExtensionsResult();
+            o.extensions = extensions;
+            o.frontendPort = frontendPort;
+            o.id = id;
+            o.ids = ids;
+            o.loadBalancerId = loadBalancerId;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

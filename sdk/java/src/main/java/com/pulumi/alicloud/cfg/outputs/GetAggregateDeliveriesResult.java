@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAggregateDeliveriesResult {
-    private final String aggregatorId;
-    private final List<GetAggregateDeliveriesDelivery> deliveries;
+    private String aggregatorId;
+    private List<GetAggregateDeliveriesDelivery> deliveries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer status;
 
-    @CustomType.Constructor
-    private GetAggregateDeliveriesResult(
-        @CustomType.Parameter("aggregatorId") String aggregatorId,
-        @CustomType.Parameter("deliveries") List<GetAggregateDeliveriesDelivery> deliveries,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable Integer status) {
-        this.aggregatorId = aggregatorId;
-        this.deliveries = deliveries;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetAggregateDeliveriesResult() {}
     public String aggregatorId() {
         return this.aggregatorId;
     }
@@ -83,7 +64,7 @@ public final class GetAggregateDeliveriesResult {
     public static Builder builder(GetAggregateDeliveriesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String aggregatorId;
         private List<GetAggregateDeliveriesDelivery> deliveries;
@@ -93,11 +74,7 @@ public final class GetAggregateDeliveriesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateDeliveriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregatorId = defaults.aggregatorId;
@@ -110,10 +87,12 @@ public final class GetAggregateDeliveriesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
             this.aggregatorId = Objects.requireNonNull(aggregatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveries(List<GetAggregateDeliveriesDelivery> deliveries) {
             this.deliveries = Objects.requireNonNull(deliveries);
             return this;
@@ -121,10 +100,12 @@ public final class GetAggregateDeliveriesResult {
         public Builder deliveries(GetAggregateDeliveriesDelivery... deliveries) {
             return deliveries(List.of(deliveries));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,10 +113,12 @@ public final class GetAggregateDeliveriesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,15 +126,27 @@ public final class GetAggregateDeliveriesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable Integer status) {
             this.status = status;
             return this;
-        }        public GetAggregateDeliveriesResult build() {
-            return new GetAggregateDeliveriesResult(aggregatorId, deliveries, id, ids, nameRegex, names, outputFile, status);
+        }
+        public GetAggregateDeliveriesResult build() {
+            final var o = new GetAggregateDeliveriesResult();
+            o.aggregatorId = aggregatorId;
+            o.deliveries = deliveries;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

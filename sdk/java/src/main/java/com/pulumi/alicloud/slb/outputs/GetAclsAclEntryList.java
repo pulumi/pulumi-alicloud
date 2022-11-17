@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclsAclEntryList {
-    private final String comment;
-    private final String entry;
+    private String comment;
+    private String entry;
 
-    @CustomType.Constructor
-    private GetAclsAclEntryList(
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("entry") String entry) {
-        this.comment = comment;
-        this.entry = entry;
-    }
-
+    private GetAclsAclEntryList() {}
     public String comment() {
         return this.comment;
     }
@@ -34,30 +27,32 @@ public final class GetAclsAclEntryList {
     public static Builder builder(GetAclsAclEntryList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comment;
         private String entry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAclsAclEntryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
     	      this.entry = defaults.entry;
         }
 
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder entry(String entry) {
             this.entry = Objects.requireNonNull(entry);
             return this;
-        }        public GetAclsAclEntryList build() {
-            return new GetAclsAclEntryList(comment, entry);
+        }
+        public GetAclsAclEntryList build() {
+            final var o = new GetAclsAclEntryList();
+            o.comment = comment;
+            o.entry = entry;
+            return o;
         }
     }
 }

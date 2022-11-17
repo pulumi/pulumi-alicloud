@@ -16,21 +16,14 @@ public final class ContainerGroupHostAlias {
      * @return Adds a host name.
      * 
      */
-    private final @Nullable List<String> hostnames;
+    private @Nullable List<String> hostnames;
     /**
      * @return Adds an IP address.
      * 
      */
-    private final @Nullable String ip;
+    private @Nullable String ip;
 
-    @CustomType.Constructor
-    private ContainerGroupHostAlias(
-        @CustomType.Parameter("hostnames") @Nullable List<String> hostnames,
-        @CustomType.Parameter("ip") @Nullable String ip) {
-        this.hostnames = hostnames;
-        this.ip = ip;
-    }
-
+    private ContainerGroupHostAlias() {}
     /**
      * @return Adds a host name.
      * 
@@ -53,21 +46,18 @@ public final class ContainerGroupHostAlias {
     public static Builder builder(ContainerGroupHostAlias defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> hostnames;
         private @Nullable String ip;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupHostAlias defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostnames = defaults.hostnames;
     	      this.ip = defaults.ip;
         }
 
+        @CustomType.Setter
         public Builder hostnames(@Nullable List<String> hostnames) {
             this.hostnames = hostnames;
             return this;
@@ -75,11 +65,16 @@ public final class ContainerGroupHostAlias {
         public Builder hostnames(String... hostnames) {
             return hostnames(List.of(hostnames));
         }
+        @CustomType.Setter
         public Builder ip(@Nullable String ip) {
             this.ip = ip;
             return this;
-        }        public ContainerGroupHostAlias build() {
-            return new ContainerGroupHostAlias(hostnames, ip);
+        }
+        public ContainerGroupHostAlias build() {
+            final var o = new ContainerGroupHostAlias();
+            o.hostnames = hostnames;
+            o.ip = ip;
+            return o;
         }
     }
 }

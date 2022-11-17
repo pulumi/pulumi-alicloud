@@ -15,42 +15,29 @@ public final class GetAlarmContactGroupsGroup {
      * @return The name of Alarm Contact Group.
      * 
      */
-    private final String alarmContactGroupName;
+    private String alarmContactGroupName;
     /**
      * @return The alarm contacts in the alarm group.
      * 
      */
-    private final List<String> contacts;
+    private List<String> contacts;
     /**
      * @return The description of the Alarm Group.
      * 
      */
-    private final String describe;
+    private String describe;
     /**
      * @return Indicates whether the alarm group subscribes to weekly reports.
      * 
      */
-    private final Boolean enableSubscribed;
+    private Boolean enableSubscribed;
     /**
      * @return The ID of the CMS.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetAlarmContactGroupsGroup(
-        @CustomType.Parameter("alarmContactGroupName") String alarmContactGroupName,
-        @CustomType.Parameter("contacts") List<String> contacts,
-        @CustomType.Parameter("describe") String describe,
-        @CustomType.Parameter("enableSubscribed") Boolean enableSubscribed,
-        @CustomType.Parameter("id") String id) {
-        this.alarmContactGroupName = alarmContactGroupName;
-        this.contacts = contacts;
-        this.describe = describe;
-        this.enableSubscribed = enableSubscribed;
-        this.id = id;
-    }
-
+    private GetAlarmContactGroupsGroup() {}
     /**
      * @return The name of Alarm Contact Group.
      * 
@@ -94,18 +81,14 @@ public final class GetAlarmContactGroupsGroup {
     public static Builder builder(GetAlarmContactGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alarmContactGroupName;
         private List<String> contacts;
         private String describe;
         private Boolean enableSubscribed;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlarmContactGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarmContactGroupName = defaults.alarmContactGroupName;
@@ -115,10 +98,12 @@ public final class GetAlarmContactGroupsGroup {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder alarmContactGroupName(String alarmContactGroupName) {
             this.alarmContactGroupName = Objects.requireNonNull(alarmContactGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder contacts(List<String> contacts) {
             this.contacts = Objects.requireNonNull(contacts);
             return this;
@@ -126,19 +111,29 @@ public final class GetAlarmContactGroupsGroup {
         public Builder contacts(String... contacts) {
             return contacts(List.of(contacts));
         }
+        @CustomType.Setter
         public Builder describe(String describe) {
             this.describe = Objects.requireNonNull(describe);
             return this;
         }
+        @CustomType.Setter
         public Builder enableSubscribed(Boolean enableSubscribed) {
             this.enableSubscribed = Objects.requireNonNull(enableSubscribed);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetAlarmContactGroupsGroup build() {
-            return new GetAlarmContactGroupsGroup(alarmContactGroupName, contacts, describe, enableSubscribed, id);
+        }
+        public GetAlarmContactGroupsGroup build() {
+            final var o = new GetAlarmContactGroupsGroup();
+            o.alarmContactGroupName = alarmContactGroupName;
+            o.contacts = contacts;
+            o.describe = describe;
+            o.enableSubscribed = enableSubscribed;
+            o.id = id;
+            return o;
         }
     }
 }

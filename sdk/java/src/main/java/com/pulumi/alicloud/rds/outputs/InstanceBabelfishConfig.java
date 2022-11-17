@@ -13,35 +13,24 @@ public final class InstanceBabelfishConfig {
      * @return specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
      * 
      */
-    private final String babelfishEnabled;
+    private String babelfishEnabled;
     /**
      * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ &amp; * () _ + - =
      * 
      */
-    private final String masterUserPassword;
+    private String masterUserPassword;
     /**
      * @return The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
      * 
      */
-    private final String masterUsername;
+    private String masterUsername;
     /**
      * @return The migration mode of the instance. Valid values: **single-db** and **multi-db**.
      * 
      */
-    private final String migrationMode;
+    private String migrationMode;
 
-    @CustomType.Constructor
-    private InstanceBabelfishConfig(
-        @CustomType.Parameter("babelfishEnabled") String babelfishEnabled,
-        @CustomType.Parameter("masterUserPassword") String masterUserPassword,
-        @CustomType.Parameter("masterUsername") String masterUsername,
-        @CustomType.Parameter("migrationMode") String migrationMode) {
-        this.babelfishEnabled = babelfishEnabled;
-        this.masterUserPassword = masterUserPassword;
-        this.masterUsername = masterUsername;
-        this.migrationMode = migrationMode;
-    }
-
+    private InstanceBabelfishConfig() {}
     /**
      * @return specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
      * 
@@ -78,17 +67,13 @@ public final class InstanceBabelfishConfig {
     public static Builder builder(InstanceBabelfishConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String babelfishEnabled;
         private String masterUserPassword;
         private String masterUsername;
         private String migrationMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBabelfishConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.babelfishEnabled = defaults.babelfishEnabled;
@@ -97,23 +82,33 @@ public final class InstanceBabelfishConfig {
     	      this.migrationMode = defaults.migrationMode;
         }
 
+        @CustomType.Setter
         public Builder babelfishEnabled(String babelfishEnabled) {
             this.babelfishEnabled = Objects.requireNonNull(babelfishEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder masterUserPassword(String masterUserPassword) {
             this.masterUserPassword = Objects.requireNonNull(masterUserPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder masterUsername(String masterUsername) {
             this.masterUsername = Objects.requireNonNull(masterUsername);
             return this;
         }
+        @CustomType.Setter
         public Builder migrationMode(String migrationMode) {
             this.migrationMode = Objects.requireNonNull(migrationMode);
             return this;
-        }        public InstanceBabelfishConfig build() {
-            return new InstanceBabelfishConfig(babelfishEnabled, masterUserPassword, masterUsername, migrationMode);
+        }
+        public InstanceBabelfishConfig build() {
+            final var o = new InstanceBabelfishConfig();
+            o.babelfishEnabled = babelfishEnabled;
+            o.masterUserPassword = masterUserPassword;
+            o.masterUsername = masterUsername;
+            o.migrationMode = migrationMode;
+            return o;
         }
     }
 }

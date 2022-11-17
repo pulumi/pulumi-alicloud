@@ -16,35 +16,24 @@ public final class ShardingInstanceMongoList {
      * @return The connection address of the Config Server node.
      * 
      */
-    private final @Nullable String connectString;
+    private @Nullable String connectString;
     /**
      * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
-    private final String nodeClass;
+    private String nodeClass;
     /**
      * @return The ID of the Config Server node.
      * 
      */
-    private final @Nullable String nodeId;
+    private @Nullable String nodeId;
     /**
      * @return The connection port of the Config Server node.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
 
-    @CustomType.Constructor
-    private ShardingInstanceMongoList(
-        @CustomType.Parameter("connectString") @Nullable String connectString,
-        @CustomType.Parameter("nodeClass") String nodeClass,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("port") @Nullable Integer port) {
-        this.connectString = connectString;
-        this.nodeClass = nodeClass;
-        this.nodeId = nodeId;
-        this.port = port;
-    }
-
+    private ShardingInstanceMongoList() {}
     /**
      * @return The connection address of the Config Server node.
      * 
@@ -81,17 +70,13 @@ public final class ShardingInstanceMongoList {
     public static Builder builder(ShardingInstanceMongoList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectString;
         private String nodeClass;
         private @Nullable String nodeId;
         private @Nullable Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ShardingInstanceMongoList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectString = defaults.connectString;
@@ -100,23 +85,33 @@ public final class ShardingInstanceMongoList {
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder connectString(@Nullable String connectString) {
             this.connectString = connectString;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeClass(String nodeClass) {
             this.nodeClass = Objects.requireNonNull(nodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
-        }        public ShardingInstanceMongoList build() {
-            return new ShardingInstanceMongoList(connectString, nodeClass, nodeId, port);
+        }
+        public ShardingInstanceMongoList build() {
+            final var o = new ShardingInstanceMongoList();
+            o.connectString = connectString;
+            o.nodeClass = nodeClass;
+            o.nodeId = nodeId;
+            o.port = port;
+            return o;
         }
     }
 }

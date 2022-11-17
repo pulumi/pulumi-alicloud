@@ -16,61 +16,38 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsResult {
-    private final @Nullable Boolean enableDetails;
-    private final @Nullable Boolean fetchTags;
-    private final @Nullable String filters;
+    private @Nullable Boolean enableDetails;
+    private @Nullable Boolean fetchTags;
+    private @Nullable String filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Kms Secret ids. The value is same as KMS secret_name.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of KMS Secret names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of KMS Secrets. Each element contains the following attributes:
      * 
      */
-    private final List<GetSecretsSecret> secrets;
+    private List<GetSecretsSecret> secrets;
     /**
      * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetSecretsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("fetchTags") @Nullable Boolean fetchTags,
-        @CustomType.Parameter("filters") @Nullable String filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("secrets") List<GetSecretsSecret> secrets,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.enableDetails = enableDetails;
-        this.fetchTags = fetchTags;
-        this.filters = filters;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.secrets = secrets;
-        this.tags = tags;
-    }
-
+    private GetSecretsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -129,7 +106,7 @@ public final class GetSecretsResult {
     public static Builder builder(GetSecretsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private @Nullable Boolean fetchTags;
@@ -141,11 +118,7 @@ public final class GetSecretsResult {
         private @Nullable String outputFile;
         private List<GetSecretsSecret> secrets;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -160,22 +133,27 @@ public final class GetSecretsResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder fetchTags(@Nullable Boolean fetchTags) {
             this.fetchTags = fetchTags;
             return this;
         }
+        @CustomType.Setter
         public Builder filters(@Nullable String filters) {
             this.filters = filters;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -183,10 +161,12 @@ public final class GetSecretsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -194,10 +174,12 @@ public final class GetSecretsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder secrets(List<GetSecretsSecret> secrets) {
             this.secrets = Objects.requireNonNull(secrets);
             return this;
@@ -205,11 +187,24 @@ public final class GetSecretsResult {
         public Builder secrets(GetSecretsSecret... secrets) {
             return secrets(List.of(secrets));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetSecretsResult build() {
-            return new GetSecretsResult(enableDetails, fetchTags, filters, id, ids, nameRegex, names, outputFile, secrets, tags);
+        }
+        public GetSecretsResult build() {
+            final var o = new GetSecretsResult();
+            o.enableDetails = enableDetails;
+            o.fetchTags = fetchTags;
+            o.filters = filters;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.secrets = secrets;
+            o.tags = tags;
+            return o;
         }
     }
 }

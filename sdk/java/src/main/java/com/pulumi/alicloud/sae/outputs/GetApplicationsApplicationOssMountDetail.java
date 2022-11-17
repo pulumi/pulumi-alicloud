@@ -14,35 +14,24 @@ public final class GetApplicationsApplicationOssMountDetail {
      * @return The name of the bucket.
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return The path of the bucket.
      * 
      */
-    private final String bucketPath;
+    private String bucketPath;
     /**
      * @return The Container mount path.
      * 
      */
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return Whether the container path has readable permission to mount directory resources.
      * 
      */
-    private final Boolean readOnly;
+    private Boolean readOnly;
 
-    @CustomType.Constructor
-    private GetApplicationsApplicationOssMountDetail(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("bucketPath") String bucketPath,
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("readOnly") Boolean readOnly) {
-        this.bucketName = bucketName;
-        this.bucketPath = bucketPath;
-        this.mountPath = mountPath;
-        this.readOnly = readOnly;
-    }
-
+    private GetApplicationsApplicationOssMountDetail() {}
     /**
      * @return The name of the bucket.
      * 
@@ -79,17 +68,13 @@ public final class GetApplicationsApplicationOssMountDetail {
     public static Builder builder(GetApplicationsApplicationOssMountDetail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private String bucketPath;
         private String mountPath;
         private Boolean readOnly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationsApplicationOssMountDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -98,23 +83,33 @@ public final class GetApplicationsApplicationOssMountDetail {
     	      this.readOnly = defaults.readOnly;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder bucketPath(String bucketPath) {
             this.bucketPath = Objects.requireNonNull(bucketPath);
             return this;
         }
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             this.readOnly = Objects.requireNonNull(readOnly);
             return this;
-        }        public GetApplicationsApplicationOssMountDetail build() {
-            return new GetApplicationsApplicationOssMountDetail(bucketName, bucketPath, mountPath, readOnly);
+        }
+        public GetApplicationsApplicationOssMountDetail build() {
+            final var o = new GetApplicationsApplicationOssMountDetail();
+            o.bucketName = bucketName;
+            o.bucketPath = bucketPath;
+            o.mountPath = mountPath;
+            o.readOnly = readOnly;
+            return o;
         }
     }
 }

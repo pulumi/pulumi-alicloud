@@ -16,126 +16,89 @@ public final class GetGtmInstancesInstance {
      * @return The alert notification methods.
      * 
      */
-    private final List<GetGtmInstancesInstanceAlertConfig> alertConfigs;
+    private List<GetGtmInstancesInstanceAlertConfig> alertConfigs;
     /**
      * @return The alert group.
      * 
      */
-    private final List<String> alertGroups;
+    private List<String> alertGroups;
     /**
      * @return The access type of the CNAME domain name.
      * 
      */
-    private final String cnameType;
+    private String cnameType;
     /**
      * @return The CreateTime of the Gtm Instance.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ExpireTime of the Gtm Instance.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The ID of the Gtm Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the Gtm Instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the Gtm Instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The version of the instance.
      * 
      */
-    private final String packageEdition;
+    private String packageEdition;
     /**
      * @return The paymentype of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The Public Network domain name access method.
      * 
      */
-    private final String publicCnameMode;
+    private String publicCnameMode;
     /**
      * @return The CNAME access domain name.
      * 
      */
-    private final String publicRr;
+    private String publicRr;
     /**
      * @return The website domain name that the user uses on the Internet.
      * 
      */
-    private final String publicUserDomainName;
+    private String publicUserDomainName;
     /**
      * @return The domain name that is used to access GTM over the Internet.
      * 
      */
-    private final String publicZoneName;
+    private String publicZoneName;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The type of the access policy.
      * 
      */
-    private final String strategyMode;
+    private String strategyMode;
     /**
      * @return The global time to live.
      * 
      */
-    private final Integer ttl;
+    private Integer ttl;
 
-    @CustomType.Constructor
-    private GetGtmInstancesInstance(
-        @CustomType.Parameter("alertConfigs") List<GetGtmInstancesInstanceAlertConfig> alertConfigs,
-        @CustomType.Parameter("alertGroups") List<String> alertGroups,
-        @CustomType.Parameter("cnameType") String cnameType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("packageEdition") String packageEdition,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("publicCnameMode") String publicCnameMode,
-        @CustomType.Parameter("publicRr") String publicRr,
-        @CustomType.Parameter("publicUserDomainName") String publicUserDomainName,
-        @CustomType.Parameter("publicZoneName") String publicZoneName,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("strategyMode") String strategyMode,
-        @CustomType.Parameter("ttl") Integer ttl) {
-        this.alertConfigs = alertConfigs;
-        this.alertGroups = alertGroups;
-        this.cnameType = cnameType;
-        this.createTime = createTime;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.packageEdition = packageEdition;
-        this.paymentType = paymentType;
-        this.publicCnameMode = publicCnameMode;
-        this.publicRr = publicRr;
-        this.publicUserDomainName = publicUserDomainName;
-        this.publicZoneName = publicZoneName;
-        this.resourceGroupId = resourceGroupId;
-        this.strategyMode = strategyMode;
-        this.ttl = ttl;
-    }
-
+    private GetGtmInstancesInstance() {}
     /**
      * @return The alert notification methods.
      * 
@@ -263,7 +226,7 @@ public final class GetGtmInstancesInstance {
     public static Builder builder(GetGtmInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGtmInstancesInstanceAlertConfig> alertConfigs;
         private List<String> alertGroups;
@@ -282,11 +245,7 @@ public final class GetGtmInstancesInstance {
         private String resourceGroupId;
         private String strategyMode;
         private Integer ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGtmInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertConfigs = defaults.alertConfigs;
@@ -308,6 +267,7 @@ public final class GetGtmInstancesInstance {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder alertConfigs(List<GetGtmInstancesInstanceAlertConfig> alertConfigs) {
             this.alertConfigs = Objects.requireNonNull(alertConfigs);
             return this;
@@ -315,6 +275,7 @@ public final class GetGtmInstancesInstance {
         public Builder alertConfigs(GetGtmInstancesInstanceAlertConfig... alertConfigs) {
             return alertConfigs(List.of(alertConfigs));
         }
+        @CustomType.Setter
         public Builder alertGroups(List<String> alertGroups) {
             this.alertGroups = Objects.requireNonNull(alertGroups);
             return this;
@@ -322,67 +283,101 @@ public final class GetGtmInstancesInstance {
         public Builder alertGroups(String... alertGroups) {
             return alertGroups(List.of(alertGroups));
         }
+        @CustomType.Setter
         public Builder cnameType(String cnameType) {
             this.cnameType = Objects.requireNonNull(cnameType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder packageEdition(String packageEdition) {
             this.packageEdition = Objects.requireNonNull(packageEdition);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder publicCnameMode(String publicCnameMode) {
             this.publicCnameMode = Objects.requireNonNull(publicCnameMode);
             return this;
         }
+        @CustomType.Setter
         public Builder publicRr(String publicRr) {
             this.publicRr = Objects.requireNonNull(publicRr);
             return this;
         }
+        @CustomType.Setter
         public Builder publicUserDomainName(String publicUserDomainName) {
             this.publicUserDomainName = Objects.requireNonNull(publicUserDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder publicZoneName(String publicZoneName) {
             this.publicZoneName = Objects.requireNonNull(publicZoneName);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
             this.strategyMode = Objects.requireNonNull(strategyMode);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
-        }        public GetGtmInstancesInstance build() {
-            return new GetGtmInstancesInstance(alertConfigs, alertGroups, cnameType, createTime, expireTime, id, instanceId, instanceName, packageEdition, paymentType, publicCnameMode, publicRr, publicUserDomainName, publicZoneName, resourceGroupId, strategyMode, ttl);
+        }
+        public GetGtmInstancesInstance build() {
+            final var o = new GetGtmInstancesInstance();
+            o.alertConfigs = alertConfigs;
+            o.alertGroups = alertGroups;
+            o.cnameType = cnameType;
+            o.createTime = createTime;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.packageEdition = packageEdition;
+            o.paymentType = paymentType;
+            o.publicCnameMode = publicCnameMode;
+            o.publicRr = publicRr;
+            o.publicUserDomainName = publicUserDomainName;
+            o.publicZoneName = publicZoneName;
+            o.resourceGroupId = resourceGroupId;
+            o.strategyMode = strategyMode;
+            o.ttl = ttl;
+            return o;
         }
     }
 }

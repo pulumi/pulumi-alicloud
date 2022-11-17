@@ -13,31 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProductResult {
-    private final @Nullable String availableRegion;
+    private @Nullable String availableRegion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String productCode;
+    private String id;
+    private String productCode;
     /**
      * @return A product. It contains the following attributes:
      * 
      */
-    private final List<GetProductProduct> products;
+    private List<GetProductProduct> products;
 
-    @CustomType.Constructor
-    private GetProductResult(
-        @CustomType.Parameter("availableRegion") @Nullable String availableRegion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("products") List<GetProductProduct> products) {
-        this.availableRegion = availableRegion;
-        this.id = id;
-        this.productCode = productCode;
-        this.products = products;
-    }
-
+    private GetProductResult() {}
     public Optional<String> availableRegion() {
         return Optional.ofNullable(this.availableRegion);
     }
@@ -66,17 +55,13 @@ public final class GetProductResult {
     public static Builder builder(GetProductResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availableRegion;
         private String id;
         private String productCode;
         private List<GetProductProduct> products;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProductResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableRegion = defaults.availableRegion;
@@ -85,26 +70,36 @@ public final class GetProductResult {
     	      this.products = defaults.products;
         }
 
+        @CustomType.Setter
         public Builder availableRegion(@Nullable String availableRegion) {
             this.availableRegion = availableRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder products(List<GetProductProduct> products) {
             this.products = Objects.requireNonNull(products);
             return this;
         }
         public Builder products(GetProductProduct... products) {
             return products(List.of(products));
-        }        public GetProductResult build() {
-            return new GetProductResult(availableRegion, id, productCode, products);
+        }
+        public GetProductResult build() {
+            final var o = new GetProductResult();
+            o.availableRegion = availableRegion;
+            o.id = id;
+            o.productCode = productCode;
+            o.products = products;
+            return o;
         }
     }
 }

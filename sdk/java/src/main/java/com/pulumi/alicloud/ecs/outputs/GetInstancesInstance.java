@@ -19,107 +19,107 @@ public final class GetInstancesInstance {
      * @return Availability zone where instances are located.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return Instance creation time.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Instance description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Description of the attached disks.
      * 
      */
-    private final List<GetInstancesInstanceDiskDeviceMapping> diskDeviceMappings;
+    private List<GetInstancesInstanceDiskDeviceMapping> diskDeviceMappings;
     /**
      * @return EIP address the VPC instance is using.
      * 
      */
-    private final String eip;
+    private String eip;
     /**
      * @return ID of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The image ID of some ECS instance used.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return Instance charge type.
      * 
      */
-    private final String instanceChargeType;
+    private String instanceChargeType;
     /**
      * @return Instance type.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return Instance network charge type.
      * 
      */
-    private final String internetChargeType;
+    private String internetChargeType;
     /**
      * @return Max output bandwidth for internet.
      * 
      */
-    private final Integer internetMaxBandwidthOut;
+    private Integer internetMaxBandwidthOut;
     /**
      * @return Key pair the instance is using.
      * 
      */
-    private final String keyName;
+    private String keyName;
     /**
      * @return Instance name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Instance private IP address.
      * 
      */
-    private final String privateIp;
+    private String privateIp;
     /**
      * @return Instance public IP address.
      * 
      */
-    private final String publicIp;
+    private String publicIp;
     /**
      * @return The RAM role name which the instance attaches.
      * 
      */
-    private final String ramRoleName;
+    private String ramRoleName;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The Id of resource group which the instance belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return List of security group IDs the instance belongs to.
      * 
      */
-    private final List<String> securityGroups;
+    private List<String> securityGroups;
     /**
      * @return Spot strategy the instance is using.
      * 
      */
-    private final String spotStrategy;
+    private String spotStrategy;
     /**
      * @return Instance status. Valid values: &#34;Creating&#34;, &#34;Starting&#34;, &#34;Running&#34;, &#34;Stopping&#34; and &#34;Stopped&#34;. If undefined, all statuses are considered.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
      * ```java
@@ -152,70 +152,19 @@ public final class GetInstancesInstance {
      * ```
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return ID of the VPC linked to the instances.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return ID of the VSwitch linked to the instances.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("diskDeviceMappings") List<GetInstancesInstanceDiskDeviceMapping> diskDeviceMappings,
-        @CustomType.Parameter("eip") String eip,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("internetChargeType") String internetChargeType,
-        @CustomType.Parameter("internetMaxBandwidthOut") Integer internetMaxBandwidthOut,
-        @CustomType.Parameter("keyName") String keyName,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("privateIp") String privateIp,
-        @CustomType.Parameter("publicIp") String publicIp,
-        @CustomType.Parameter("ramRoleName") String ramRoleName,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityGroups") List<String> securityGroups,
-        @CustomType.Parameter("spotStrategy") String spotStrategy,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.availabilityZone = availabilityZone;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.diskDeviceMappings = diskDeviceMappings;
-        this.eip = eip;
-        this.id = id;
-        this.imageId = imageId;
-        this.instanceChargeType = instanceChargeType;
-        this.instanceType = instanceType;
-        this.internetChargeType = internetChargeType;
-        this.internetMaxBandwidthOut = internetMaxBandwidthOut;
-        this.keyName = keyName;
-        this.name = name;
-        this.privateIp = privateIp;
-        this.publicIp = publicIp;
-        this.ramRoleName = ramRoleName;
-        this.regionId = regionId;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroups = securityGroups;
-        this.spotStrategy = spotStrategy;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Availability zone where instances are located.
      * 
@@ -420,7 +369,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String creationTime;
@@ -446,11 +395,7 @@ public final class GetInstancesInstance {
         private @Nullable Map<String,Object> tags;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -479,18 +424,22 @@ public final class GetInstancesInstance {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder diskDeviceMappings(List<GetInstancesInstanceDiskDeviceMapping> diskDeviceMappings) {
             this.diskDeviceMappings = Objects.requireNonNull(diskDeviceMappings);
             return this;
@@ -498,62 +447,77 @@ public final class GetInstancesInstance {
         public Builder diskDeviceMappings(GetInstancesInstanceDiskDeviceMapping... diskDeviceMappings) {
             return diskDeviceMappings(List.of(diskDeviceMappings));
         }
+        @CustomType.Setter
         public Builder eip(String eip) {
             this.eip = Objects.requireNonNull(eip);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
             this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
             return this;
         }
+        @CustomType.Setter
         public Builder keyName(String keyName) {
             this.keyName = Objects.requireNonNull(keyName);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(String privateIp) {
             this.privateIp = Objects.requireNonNull(privateIp);
             return this;
         }
+        @CustomType.Setter
         public Builder publicIp(String publicIp) {
             this.publicIp = Objects.requireNonNull(publicIp);
             return this;
         }
+        @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
             this.ramRoleName = Objects.requireNonNull(ramRoleName);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
@@ -561,27 +525,58 @@ public final class GetInstancesInstance {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder spotStrategy(String spotStrategy) {
             this.spotStrategy = Objects.requireNonNull(spotStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(availabilityZone, creationTime, description, diskDeviceMappings, eip, id, imageId, instanceChargeType, instanceType, internetChargeType, internetMaxBandwidthOut, keyName, name, privateIp, publicIp, ramRoleName, regionId, resourceGroupId, securityGroups, spotStrategy, status, tags, vpcId, vswitchId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.availabilityZone = availabilityZone;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.diskDeviceMappings = diskDeviceMappings;
+            o.eip = eip;
+            o.id = id;
+            o.imageId = imageId;
+            o.instanceChargeType = instanceChargeType;
+            o.instanceType = instanceType;
+            o.internetChargeType = internetChargeType;
+            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            o.keyName = keyName;
+            o.name = name;
+            o.privateIp = privateIp;
+            o.publicIp = publicIp;
+            o.ramRoleName = ramRoleName;
+            o.regionId = regionId;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroups = securityGroups;
+            o.spotStrategy = spotStrategy;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

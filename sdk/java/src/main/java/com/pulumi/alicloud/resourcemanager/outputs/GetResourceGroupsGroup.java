@@ -15,52 +15,35 @@ public final class GetResourceGroupsGroup {
      * @return The ID of the Alibaba Cloud account to which the resource group belongs.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The display name of the resource group.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The unique identifier of the resource group.
      * 
      */
-    private final String name;
-    private final List<GetResourceGroupsGroupRegionStatus> regionStatuses;
+    private String name;
+    private List<GetResourceGroupsGroupRegionStatus> regionStatuses;
     /**
      * @return (Available in v1.114.0+) The unique identifier of the resource group.
      * 
      */
-    private final String resourceGroupName;
+    private String resourceGroupName;
     /**
      * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetResourceGroupsGroup(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("regionStatuses") List<GetResourceGroupsGroupRegionStatus> regionStatuses,
-        @CustomType.Parameter("resourceGroupName") String resourceGroupName,
-        @CustomType.Parameter("status") String status) {
-        this.accountId = accountId;
-        this.displayName = displayName;
-        this.id = id;
-        this.name = name;
-        this.regionStatuses = regionStatuses;
-        this.resourceGroupName = resourceGroupName;
-        this.status = status;
-    }
-
+    private GetResourceGroupsGroup() {}
     /**
      * @return The ID of the Alibaba Cloud account to which the resource group belongs.
      * 
@@ -114,7 +97,7 @@ public final class GetResourceGroupsGroup {
     public static Builder builder(GetResourceGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String displayName;
@@ -123,11 +106,7 @@ public final class GetResourceGroupsGroup {
         private List<GetResourceGroupsGroupRegionStatus> regionStatuses;
         private String resourceGroupName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourceGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -139,22 +118,27 @@ public final class GetResourceGroupsGroup {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder regionStatuses(List<GetResourceGroupsGroupRegionStatus> regionStatuses) {
             this.regionStatuses = Objects.requireNonNull(regionStatuses);
             return this;
@@ -162,15 +146,26 @@ public final class GetResourceGroupsGroup {
         public Builder regionStatuses(GetResourceGroupsGroupRegionStatus... regionStatuses) {
             return regionStatuses(List.of(regionStatuses));
         }
+        @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
             this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetResourceGroupsGroup build() {
-            return new GetResourceGroupsGroup(accountId, displayName, id, name, regionStatuses, resourceGroupName, status);
+        }
+        public GetResourceGroupsGroup build() {
+            final var o = new GetResourceGroupsGroup();
+            o.accountId = accountId;
+            o.displayName = displayName;
+            o.id = id;
+            o.name = name;
+            o.regionStatuses = regionStatuses;
+            o.resourceGroupName = resourceGroupName;
+            o.status = status;
+            return o;
         }
     }
 }

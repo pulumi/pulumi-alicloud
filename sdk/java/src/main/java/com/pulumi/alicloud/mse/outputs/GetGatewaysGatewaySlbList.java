@@ -13,63 +13,44 @@ public final class GetGatewaysGatewaySlbList {
      * @return The associate id.
      * 
      */
-    private final String associateId;
+    private String associateId;
     /**
      * @return The Mode of the gateway slb.
      * 
      */
-    private final String gatewaySlbMode;
+    private String gatewaySlbMode;
     /**
      * @return The Status of the gateway slb.
      * 
      */
-    private final String gatewaySlbStatus;
+    private String gatewaySlbStatus;
     /**
      * @return The creation time of the gateway slb.
      * 
      */
-    private final String gmtCreate;
+    private String gmtCreate;
     /**
      * @return The ID of the gateway slb.
      * 
      */
-    private final String slbId;
+    private String slbId;
     /**
      * @return The ip of the gateway slb.
      * 
      */
-    private final String slbIp;
+    private String slbIp;
     /**
      * @return The port of the gateway slb.
      * 
      */
-    private final String slbPort;
+    private String slbPort;
     /**
      * @return The type of the gateway slb.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetGatewaysGatewaySlbList(
-        @CustomType.Parameter("associateId") String associateId,
-        @CustomType.Parameter("gatewaySlbMode") String gatewaySlbMode,
-        @CustomType.Parameter("gatewaySlbStatus") String gatewaySlbStatus,
-        @CustomType.Parameter("gmtCreate") String gmtCreate,
-        @CustomType.Parameter("slbId") String slbId,
-        @CustomType.Parameter("slbIp") String slbIp,
-        @CustomType.Parameter("slbPort") String slbPort,
-        @CustomType.Parameter("type") String type) {
-        this.associateId = associateId;
-        this.gatewaySlbMode = gatewaySlbMode;
-        this.gatewaySlbStatus = gatewaySlbStatus;
-        this.gmtCreate = gmtCreate;
-        this.slbId = slbId;
-        this.slbIp = slbIp;
-        this.slbPort = slbPort;
-        this.type = type;
-    }
-
+    private GetGatewaysGatewaySlbList() {}
     /**
      * @return The associate id.
      * 
@@ -134,7 +115,7 @@ public final class GetGatewaysGatewaySlbList {
     public static Builder builder(GetGatewaysGatewaySlbList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String associateId;
         private String gatewaySlbMode;
@@ -144,11 +125,7 @@ public final class GetGatewaysGatewaySlbList {
         private String slbIp;
         private String slbPort;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGatewaySlbList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associateId = defaults.associateId;
@@ -161,39 +138,57 @@ public final class GetGatewaysGatewaySlbList {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder associateId(String associateId) {
             this.associateId = Objects.requireNonNull(associateId);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewaySlbMode(String gatewaySlbMode) {
             this.gatewaySlbMode = Objects.requireNonNull(gatewaySlbMode);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewaySlbStatus(String gatewaySlbStatus) {
             this.gatewaySlbStatus = Objects.requireNonNull(gatewaySlbStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder gmtCreate(String gmtCreate) {
             this.gmtCreate = Objects.requireNonNull(gmtCreate);
             return this;
         }
+        @CustomType.Setter
         public Builder slbId(String slbId) {
             this.slbId = Objects.requireNonNull(slbId);
             return this;
         }
+        @CustomType.Setter
         public Builder slbIp(String slbIp) {
             this.slbIp = Objects.requireNonNull(slbIp);
             return this;
         }
+        @CustomType.Setter
         public Builder slbPort(String slbPort) {
             this.slbPort = Objects.requireNonNull(slbPort);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetGatewaysGatewaySlbList build() {
-            return new GetGatewaysGatewaySlbList(associateId, gatewaySlbMode, gatewaySlbStatus, gmtCreate, slbId, slbIp, slbPort, type);
+        }
+        public GetGatewaysGatewaySlbList build() {
+            final var o = new GetGatewaysGatewaySlbList();
+            o.associateId = associateId;
+            o.gatewaySlbMode = gatewaySlbMode;
+            o.gatewaySlbStatus = gatewaySlbStatus;
+            o.gmtCreate = gmtCreate;
+            o.slbId = slbId;
+            o.slbIp = slbIp;
+            o.slbPort = slbPort;
+            o.type = type;
+            return o;
         }
     }
 }

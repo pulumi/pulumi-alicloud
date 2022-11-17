@@ -13,13 +13,9 @@ public final class GetZonesZone {
      * @return ID of the zone.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetZonesZone(@CustomType.Parameter("id") String id) {
-        this.id = id;
-    }
-
+    private GetZonesZone() {}
     /**
      * @return ID of the zone.
      * 
@@ -35,24 +31,24 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetZonesZone build() {
-            return new GetZonesZone(id);
+        }
+        public GetZonesZone build() {
+            final var o = new GetZonesZone();
+            o.id = id;
+            return o;
         }
     }
 }

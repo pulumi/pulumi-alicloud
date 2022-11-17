@@ -15,48 +15,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationInfosResult {
-    private final List<GetApplicationInfosApplication> applications;
-    private final @Nullable List<GetApplicationInfosDimension> dimensions;
-    private final @Nullable Boolean enableDetails;
+    private List<GetApplicationInfosApplication> applications;
+    private @Nullable List<GetApplicationInfosDimension> dimensions;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String keyWord;
-    private final @Nullable String outputFile;
-    private final String productCode;
-    private final @Nullable String quotaActionCode;
-    private final @Nullable String quotaCategory;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String keyWord;
+    private @Nullable String outputFile;
+    private String productCode;
+    private @Nullable String quotaActionCode;
+    private @Nullable String quotaCategory;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetApplicationInfosResult(
-        @CustomType.Parameter("applications") List<GetApplicationInfosApplication> applications,
-        @CustomType.Parameter("dimensions") @Nullable List<GetApplicationInfosDimension> dimensions,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyWord") @Nullable String keyWord,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("quotaActionCode") @Nullable String quotaActionCode,
-        @CustomType.Parameter("quotaCategory") @Nullable String quotaCategory,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.applications = applications;
-        this.dimensions = dimensions;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.keyWord = keyWord;
-        this.outputFile = outputFile;
-        this.productCode = productCode;
-        this.quotaActionCode = quotaActionCode;
-        this.quotaCategory = quotaCategory;
-        this.status = status;
-    }
-
+    private GetApplicationInfosResult() {}
     public List<GetApplicationInfosApplication> applications() {
         return this.applications;
     }
@@ -102,7 +77,7 @@ public final class GetApplicationInfosResult {
     public static Builder builder(GetApplicationInfosResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetApplicationInfosApplication> applications;
         private @Nullable List<GetApplicationInfosDimension> dimensions;
@@ -115,11 +90,7 @@ public final class GetApplicationInfosResult {
         private @Nullable String quotaActionCode;
         private @Nullable String quotaCategory;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applications = defaults.applications;
@@ -135,6 +106,7 @@ public final class GetApplicationInfosResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder applications(List<GetApplicationInfosApplication> applications) {
             this.applications = Objects.requireNonNull(applications);
             return this;
@@ -142,6 +114,7 @@ public final class GetApplicationInfosResult {
         public Builder applications(GetApplicationInfosApplication... applications) {
             return applications(List.of(applications));
         }
+        @CustomType.Setter
         public Builder dimensions(@Nullable List<GetApplicationInfosDimension> dimensions) {
             this.dimensions = dimensions;
             return this;
@@ -149,14 +122,17 @@ public final class GetApplicationInfosResult {
         public Builder dimensions(GetApplicationInfosDimension... dimensions) {
             return dimensions(List.of(dimensions));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -164,31 +140,50 @@ public final class GetApplicationInfosResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
             this.keyWord = keyWord;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
             this.quotaActionCode = quotaActionCode;
             return this;
         }
+        @CustomType.Setter
         public Builder quotaCategory(@Nullable String quotaCategory) {
             this.quotaCategory = quotaCategory;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetApplicationInfosResult build() {
-            return new GetApplicationInfosResult(applications, dimensions, enableDetails, id, ids, keyWord, outputFile, productCode, quotaActionCode, quotaCategory, status);
+        }
+        public GetApplicationInfosResult build() {
+            final var o = new GetApplicationInfosResult();
+            o.applications = applications;
+            o.dimensions = dimensions;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.keyWord = keyWord;
+            o.outputFile = outputFile;
+            o.productCode = productCode;
+            o.quotaActionCode = quotaActionCode;
+            o.quotaCategory = quotaCategory;
+            o.status = status;
+            return o;
         }
     }
 }

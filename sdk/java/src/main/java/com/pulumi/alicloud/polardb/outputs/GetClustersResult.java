@@ -19,58 +19,37 @@ public final class GetClustersResult {
      * @return A list of PolarDB clusters. Each element contains the following attributes:
      * 
      */
-    private final List<GetClustersCluster> clusters;
+    private List<GetClustersCluster> clusters;
     /**
      * @return `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
      * 
      */
-    private final @Nullable String dbType;
-    private final @Nullable String descriptionRegex;
+    private @Nullable String dbType;
+    private @Nullable String descriptionRegex;
     /**
      * @return A list of RDS cluster descriptions.
      * 
      */
-    private final List<String> descriptions;
+    private List<String> descriptions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of RDS cluster IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return Status of the cluster.
      * 
      */
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetClustersResult(
-        @CustomType.Parameter("clusters") List<GetClustersCluster> clusters,
-        @CustomType.Parameter("dbType") @Nullable String dbType,
-        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
-        @CustomType.Parameter("descriptions") List<String> descriptions,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.clusters = clusters;
-        this.dbType = dbType;
-        this.descriptionRegex = descriptionRegex;
-        this.descriptions = descriptions;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetClustersResult() {}
     /**
      * @return A list of PolarDB clusters. Each element contains the following attributes:
      * 
@@ -130,7 +109,7 @@ public final class GetClustersResult {
     public static Builder builder(GetClustersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClustersCluster> clusters;
         private @Nullable String dbType;
@@ -141,11 +120,7 @@ public final class GetClustersResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
@@ -159,6 +134,7 @@ public final class GetClustersResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder clusters(List<GetClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -166,14 +142,17 @@ public final class GetClustersResult {
         public Builder clusters(GetClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
+        @CustomType.Setter
         public Builder dbType(@Nullable String dbType) {
             this.dbType = dbType;
             return this;
         }
+        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
             this.descriptions = Objects.requireNonNull(descriptions);
             return this;
@@ -181,10 +160,12 @@ public final class GetClustersResult {
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -192,19 +173,33 @@ public final class GetClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetClustersResult build() {
-            return new GetClustersResult(clusters, dbType, descriptionRegex, descriptions, id, ids, outputFile, status, tags);
+        }
+        public GetClustersResult build() {
+            final var o = new GetClustersResult();
+            o.clusters = clusters;
+            o.dbType = dbType;
+            o.descriptionRegex = descriptionRegex;
+            o.descriptions = descriptions;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

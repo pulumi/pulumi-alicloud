@@ -15,42 +15,29 @@ public final class GetClustersClusterSoftwareInfoSoftware {
      * @return The name of the service.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The internal name of the service.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Whether it shows.
      * 
      */
-    private final Boolean onlyDisplay;
+    private Boolean onlyDisplay;
     /**
      * @return Startup type.
      * 
      */
-    private final Integer startTpe;
+    private Integer startTpe;
     /**
      * @return Service version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetClustersClusterSoftwareInfoSoftware(
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("onlyDisplay") Boolean onlyDisplay,
-        @CustomType.Parameter("startTpe") Integer startTpe,
-        @CustomType.Parameter("version") String version) {
-        this.displayName = displayName;
-        this.name = name;
-        this.onlyDisplay = onlyDisplay;
-        this.startTpe = startTpe;
-        this.version = version;
-    }
-
+    private GetClustersClusterSoftwareInfoSoftware() {}
     /**
      * @return The name of the service.
      * 
@@ -94,18 +81,14 @@ public final class GetClustersClusterSoftwareInfoSoftware {
     public static Builder builder(GetClustersClusterSoftwareInfoSoftware defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
         private String name;
         private Boolean onlyDisplay;
         private Integer startTpe;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterSoftwareInfoSoftware defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -115,27 +98,39 @@ public final class GetClustersClusterSoftwareInfoSoftware {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder onlyDisplay(Boolean onlyDisplay) {
             this.onlyDisplay = Objects.requireNonNull(onlyDisplay);
             return this;
         }
+        @CustomType.Setter
         public Builder startTpe(Integer startTpe) {
             this.startTpe = Objects.requireNonNull(startTpe);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetClustersClusterSoftwareInfoSoftware build() {
-            return new GetClustersClusterSoftwareInfoSoftware(displayName, name, onlyDisplay, startTpe, version);
+        }
+        public GetClustersClusterSoftwareInfoSoftware build() {
+            final var o = new GetClustersClusterSoftwareInfoSoftware();
+            o.displayName = displayName;
+            o.name = name;
+            o.onlyDisplay = onlyDisplay;
+            o.startTpe = startTpe;
+            o.version = version;
+            return o;
         }
     }
 }

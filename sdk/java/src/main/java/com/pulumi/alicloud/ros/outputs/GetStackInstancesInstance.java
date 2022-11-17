@@ -15,37 +15,37 @@ public final class GetStackInstancesInstance {
      * @return The ID of the Stack Instance. The value formats as `&lt;stack_group_name&gt;:&lt;stack_instance_account_id&gt;:&lt;stack_instance_region_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ParameterOverrides.
      * 
      */
-    private final List<GetStackInstancesInstanceParameterOverride> parameterOverrides;
+    private List<GetStackInstancesInstanceParameterOverride> parameterOverrides;
     /**
      * @return The ID of the stack group.
      * 
      */
-    private final String stackGroupId;
+    private String stackGroupId;
     /**
      * @return The name of the stack group.
      * 
      */
-    private final String stackGroupName;
+    private String stackGroupName;
     /**
      * @return The ID of the stack corresponding to the stack instance.
      * 
      */
-    private final String stackId;
+    private String stackId;
     /**
      * @return The account to which the stack instance belongs.
      * 
      */
-    private final String stackInstanceAccountId;
+    private String stackInstanceAccountId;
     /**
      * @return The region of the stack instance.
      * 
      */
-    private final String stackInstanceRegionId;
+    private String stackInstanceRegionId;
     /**
      * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
@@ -55,35 +55,14 @@ public final class GetStackInstancesInstance {
      * * The create or update operation is not complete.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The reason why the stack is in its current state.
      * 
      */
-    private final String statusReason;
+    private String statusReason;
 
-    @CustomType.Constructor
-    private GetStackInstancesInstance(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parameterOverrides") List<GetStackInstancesInstanceParameterOverride> parameterOverrides,
-        @CustomType.Parameter("stackGroupId") String stackGroupId,
-        @CustomType.Parameter("stackGroupName") String stackGroupName,
-        @CustomType.Parameter("stackId") String stackId,
-        @CustomType.Parameter("stackInstanceAccountId") String stackInstanceAccountId,
-        @CustomType.Parameter("stackInstanceRegionId") String stackInstanceRegionId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("statusReason") String statusReason) {
-        this.id = id;
-        this.parameterOverrides = parameterOverrides;
-        this.stackGroupId = stackGroupId;
-        this.stackGroupName = stackGroupName;
-        this.stackId = stackId;
-        this.stackInstanceAccountId = stackInstanceAccountId;
-        this.stackInstanceRegionId = stackInstanceRegionId;
-        this.status = status;
-        this.statusReason = statusReason;
-    }
-
+    private GetStackInstancesInstance() {}
     /**
      * @return The ID of the Stack Instance. The value formats as `&lt;stack_group_name&gt;:&lt;stack_instance_account_id&gt;:&lt;stack_instance_region_id&gt;`.
      * 
@@ -160,7 +139,7 @@ public final class GetStackInstancesInstance {
     public static Builder builder(GetStackInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetStackInstancesInstanceParameterOverride> parameterOverrides;
@@ -171,11 +150,7 @@ public final class GetStackInstancesInstance {
         private String stackInstanceRegionId;
         private String status;
         private String statusReason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStackInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -189,10 +164,12 @@ public final class GetStackInstancesInstance {
     	      this.statusReason = defaults.statusReason;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterOverrides(List<GetStackInstancesInstanceParameterOverride> parameterOverrides) {
             this.parameterOverrides = Objects.requireNonNull(parameterOverrides);
             return this;
@@ -200,35 +177,53 @@ public final class GetStackInstancesInstance {
         public Builder parameterOverrides(GetStackInstancesInstanceParameterOverride... parameterOverrides) {
             return parameterOverrides(List.of(parameterOverrides));
         }
+        @CustomType.Setter
         public Builder stackGroupId(String stackGroupId) {
             this.stackGroupId = Objects.requireNonNull(stackGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
             this.stackGroupName = Objects.requireNonNull(stackGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
+        @CustomType.Setter
         public Builder stackInstanceAccountId(String stackInstanceAccountId) {
             this.stackInstanceAccountId = Objects.requireNonNull(stackInstanceAccountId);
             return this;
         }
+        @CustomType.Setter
         public Builder stackInstanceRegionId(String stackInstanceRegionId) {
             this.stackInstanceRegionId = Objects.requireNonNull(stackInstanceRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder statusReason(String statusReason) {
             this.statusReason = Objects.requireNonNull(statusReason);
             return this;
-        }        public GetStackInstancesInstance build() {
-            return new GetStackInstancesInstance(id, parameterOverrides, stackGroupId, stackGroupName, stackId, stackInstanceAccountId, stackInstanceRegionId, status, statusReason);
+        }
+        public GetStackInstancesInstance build() {
+            final var o = new GetStackInstancesInstance();
+            o.id = id;
+            o.parameterOverrides = parameterOverrides;
+            o.stackGroupId = stackGroupId;
+            o.stackGroupName = stackGroupName;
+            o.stackId = stackId;
+            o.stackInstanceAccountId = stackInstanceAccountId;
+            o.stackInstanceRegionId = stackInstanceRegionId;
+            o.status = status;
+            o.statusReason = statusReason;
+            return o;
         }
     }
 }

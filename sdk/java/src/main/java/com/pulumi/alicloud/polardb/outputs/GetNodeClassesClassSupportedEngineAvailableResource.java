@@ -13,13 +13,9 @@ public final class GetNodeClassesClassSupportedEngineAvailableResource {
      * @return The PolarDB node class type by the user.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
 
-    @CustomType.Constructor
-    private GetNodeClassesClassSupportedEngineAvailableResource(@CustomType.Parameter("dbNodeClass") String dbNodeClass) {
-        this.dbNodeClass = dbNodeClass;
-    }
-
+    private GetNodeClassesClassSupportedEngineAvailableResource() {}
     /**
      * @return The PolarDB node class type by the user.
      * 
@@ -35,24 +31,24 @@ public final class GetNodeClassesClassSupportedEngineAvailableResource {
     public static Builder builder(GetNodeClassesClassSupportedEngineAvailableResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbNodeClass;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeClassesClassSupportedEngineAvailableResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbNodeClass = defaults.dbNodeClass;
         }
 
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
-        }        public GetNodeClassesClassSupportedEngineAvailableResource build() {
-            return new GetNodeClassesClassSupportedEngineAvailableResource(dbNodeClass);
+        }
+        public GetNodeClassesClassSupportedEngineAvailableResource build() {
+            final var o = new GetNodeClassesClassSupportedEngineAvailableResource();
+            o.dbNodeClass = dbNodeClass;
+            return o;
         }
     }
 }

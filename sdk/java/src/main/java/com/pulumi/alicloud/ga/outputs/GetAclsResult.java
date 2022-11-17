@@ -14,42 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAclsResult {
-    private final @Nullable String aclName;
-    private final List<GetAclsAcl> acls;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String aclName;
+    private List<GetAclsAcl> acls;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetAclsResult(
-        @CustomType.Parameter("aclName") @Nullable String aclName,
-        @CustomType.Parameter("acls") List<GetAclsAcl> acls,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.aclName = aclName;
-        this.acls = acls;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetAclsResult() {}
     public Optional<String> aclName() {
         return Optional.ofNullable(this.aclName);
     }
@@ -89,7 +68,7 @@ public final class GetAclsResult {
     public static Builder builder(GetAclsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aclName;
         private List<GetAclsAcl> acls;
@@ -100,11 +79,7 @@ public final class GetAclsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAclsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclName = defaults.aclName;
@@ -118,10 +93,12 @@ public final class GetAclsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder aclName(@Nullable String aclName) {
             this.aclName = aclName;
             return this;
         }
+        @CustomType.Setter
         public Builder acls(List<GetAclsAcl> acls) {
             this.acls = Objects.requireNonNull(acls);
             return this;
@@ -129,14 +106,17 @@ public final class GetAclsResult {
         public Builder acls(GetAclsAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -144,10 +124,12 @@ public final class GetAclsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -155,15 +137,28 @@ public final class GetAclsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetAclsResult build() {
-            return new GetAclsResult(aclName, acls, enableDetails, id, ids, nameRegex, names, outputFile, status);
+        }
+        public GetAclsResult build() {
+            final var o = new GetAclsResult();
+            o.aclName = aclName;
+            o.acls = acls;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

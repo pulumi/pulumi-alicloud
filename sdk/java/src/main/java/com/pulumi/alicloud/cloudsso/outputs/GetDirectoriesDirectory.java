@@ -16,70 +16,49 @@ public final class GetDirectoriesDirectory {
      * @return Saml identifies the creation time of the provider configuration.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The DirectoryId of the CloudSSO directory.
      * 
      */
-    private final String directoryId;
+    private String directoryId;
     /**
      * @return The name of the CloudSSO directory.
      * 
      */
-    private final String directoryName;
+    private String directoryName;
     /**
      * @return The ID of the Directory.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
      */
-    private final String mfaAuthenticationStatus;
+    private String mfaAuthenticationStatus;
     /**
      * @return The Region of the CloudSSO directory.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The saml identity provider configuration.
      * 
      */
-    private final List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations;
+    private List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations;
     /**
      * @return The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
      */
-    private final String scimSynchronizationStatus;
+    private String scimSynchronizationStatus;
     /**
      * @return Asynchronous Task Information Array.
      * 
      */
-    private final List<GetDirectoriesDirectoryTask> tasks;
+    private List<GetDirectoriesDirectoryTask> tasks;
 
-    @CustomType.Constructor
-    private GetDirectoriesDirectory(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("directoryId") String directoryId,
-        @CustomType.Parameter("directoryName") String directoryName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mfaAuthenticationStatus") String mfaAuthenticationStatus,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("samlIdentityProviderConfigurations") List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations,
-        @CustomType.Parameter("scimSynchronizationStatus") String scimSynchronizationStatus,
-        @CustomType.Parameter("tasks") List<GetDirectoriesDirectoryTask> tasks) {
-        this.createTime = createTime;
-        this.directoryId = directoryId;
-        this.directoryName = directoryName;
-        this.id = id;
-        this.mfaAuthenticationStatus = mfaAuthenticationStatus;
-        this.region = region;
-        this.samlIdentityProviderConfigurations = samlIdentityProviderConfigurations;
-        this.scimSynchronizationStatus = scimSynchronizationStatus;
-        this.tasks = tasks;
-    }
-
+    private GetDirectoriesDirectory() {}
     /**
      * @return Saml identifies the creation time of the provider configuration.
      * 
@@ -151,7 +130,7 @@ public final class GetDirectoriesDirectory {
     public static Builder builder(GetDirectoriesDirectory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String directoryId;
@@ -162,11 +141,7 @@ public final class GetDirectoriesDirectory {
         private List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations;
         private String scimSynchronizationStatus;
         private List<GetDirectoriesDirectoryTask> tasks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDirectoriesDirectory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -180,30 +155,37 @@ public final class GetDirectoriesDirectory {
     	      this.tasks = defaults.tasks;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryName(String directoryName) {
             this.directoryName = Objects.requireNonNull(directoryName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mfaAuthenticationStatus(String mfaAuthenticationStatus) {
             this.mfaAuthenticationStatus = Objects.requireNonNull(mfaAuthenticationStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder samlIdentityProviderConfigurations(List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations) {
             this.samlIdentityProviderConfigurations = Objects.requireNonNull(samlIdentityProviderConfigurations);
             return this;
@@ -211,18 +193,31 @@ public final class GetDirectoriesDirectory {
         public Builder samlIdentityProviderConfigurations(GetDirectoriesDirectorySamlIdentityProviderConfiguration... samlIdentityProviderConfigurations) {
             return samlIdentityProviderConfigurations(List.of(samlIdentityProviderConfigurations));
         }
+        @CustomType.Setter
         public Builder scimSynchronizationStatus(String scimSynchronizationStatus) {
             this.scimSynchronizationStatus = Objects.requireNonNull(scimSynchronizationStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder tasks(List<GetDirectoriesDirectoryTask> tasks) {
             this.tasks = Objects.requireNonNull(tasks);
             return this;
         }
         public Builder tasks(GetDirectoriesDirectoryTask... tasks) {
             return tasks(List.of(tasks));
-        }        public GetDirectoriesDirectory build() {
-            return new GetDirectoriesDirectory(createTime, directoryId, directoryName, id, mfaAuthenticationStatus, region, samlIdentityProviderConfigurations, scimSynchronizationStatus, tasks);
+        }
+        public GetDirectoriesDirectory build() {
+            final var o = new GetDirectoriesDirectory();
+            o.createTime = createTime;
+            o.directoryId = directoryId;
+            o.directoryName = directoryName;
+            o.id = id;
+            o.mfaAuthenticationStatus = mfaAuthenticationStatus;
+            o.region = region;
+            o.samlIdentityProviderConfigurations = samlIdentityProviderConfigurations;
+            o.scimSynchronizationStatus = scimSynchronizationStatus;
+            o.tasks = tasks;
+            return o;
         }
     }
 }

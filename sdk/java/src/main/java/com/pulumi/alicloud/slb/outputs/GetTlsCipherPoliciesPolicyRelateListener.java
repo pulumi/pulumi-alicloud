@@ -14,28 +14,19 @@ public final class GetTlsCipherPoliciesPolicyRelateListener {
      * @return The ID of SLB instance.
      * 
      */
-    private final String loadBalancerId;
+    private String loadBalancerId;
     /**
      * @return Listening port. Valid value: 1 to 65535.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private GetTlsCipherPoliciesPolicyRelateListener(
-        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.loadBalancerId = loadBalancerId;
-        this.port = port;
-        this.protocol = protocol;
-    }
-
+    private GetTlsCipherPoliciesPolicyRelateListener() {}
     /**
      * @return The ID of SLB instance.
      * 
@@ -65,16 +56,12 @@ public final class GetTlsCipherPoliciesPolicyRelateListener {
     public static Builder builder(GetTlsCipherPoliciesPolicyRelateListener defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String loadBalancerId;
         private Integer port;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTlsCipherPoliciesPolicyRelateListener defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.loadBalancerId = defaults.loadBalancerId;
@@ -82,19 +69,27 @@ public final class GetTlsCipherPoliciesPolicyRelateListener {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public GetTlsCipherPoliciesPolicyRelateListener build() {
-            return new GetTlsCipherPoliciesPolicyRelateListener(loadBalancerId, port, protocol);
+        }
+        public GetTlsCipherPoliciesPolicyRelateListener build() {
+            final var o = new GetTlsCipherPoliciesPolicyRelateListener();
+            o.loadBalancerId = loadBalancerId;
+            o.port = port;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

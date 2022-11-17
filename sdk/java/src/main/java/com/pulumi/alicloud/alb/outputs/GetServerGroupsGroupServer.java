@@ -14,56 +14,39 @@ public final class GetServerGroupsGroupServer {
      * @return The description of the server.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The port that is used by the server. Valid values: `1` to `65535`.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The ID of the ECS instance, ENI instance or ECI instance.
      * 
      */
-    private final String serverId;
+    private String serverId;
     /**
      * @return The IP address of the ENI instance when it is in the inclusive ENI mode.
      * 
      */
-    private final String serverIp;
+    private String serverIp;
     /**
      * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
      * 
      */
-    private final String serverType;
+    private String serverType;
     /**
      * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetServerGroupsGroupServer(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("serverId") String serverId,
-        @CustomType.Parameter("serverIp") String serverIp,
-        @CustomType.Parameter("serverType") String serverType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.description = description;
-        this.port = port;
-        this.serverId = serverId;
-        this.serverIp = serverIp;
-        this.serverType = serverType;
-        this.status = status;
-        this.weight = weight;
-    }
-
+    private GetServerGroupsGroupServer() {}
     /**
      * @return The description of the server.
      * 
@@ -121,7 +104,7 @@ public final class GetServerGroupsGroupServer {
     public static Builder builder(GetServerGroupsGroupServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private Integer port;
@@ -130,11 +113,7 @@ public final class GetServerGroupsGroupServer {
         private String serverType;
         private String status;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupsGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -146,35 +125,51 @@ public final class GetServerGroupsGroupServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
+        @CustomType.Setter
         public Builder serverIp(String serverIp) {
             this.serverIp = Objects.requireNonNull(serverIp);
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetServerGroupsGroupServer build() {
-            return new GetServerGroupsGroupServer(description, port, serverId, serverIp, serverType, status, weight);
+        }
+        public GetServerGroupsGroupServer build() {
+            final var o = new GetServerGroupsGroupServer();
+            o.description = description;
+            o.port = port;
+            o.serverId = serverId;
+            o.serverIp = serverIp;
+            o.serverType = serverType;
+            o.status = status;
+            o.weight = weight;
+            return o;
         }
     }
 }

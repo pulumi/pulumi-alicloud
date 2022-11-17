@@ -23,70 +23,49 @@ public final class RuleRuleAction {
      * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
      * 
      */
-    private final @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
+    private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
     /**
      * @return The forward response action within ALB. See the following `Block forward_group_config`.
      * 
      */
-    private final @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
+    private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
     /**
      * @return The configuration of the inserted header field. See the following `Block insert_header_config`.
      * 
      */
-    private final @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
+    private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
     /**
      * @return The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
      * 
      */
-    private final Integer order;
+    private Integer order;
     /**
      * @return The configuration of the external redirect action. See the following `Block redirect_config`.
      * 
      */
-    private final @Nullable RuleRuleActionRedirectConfig redirectConfig;
+    private @Nullable RuleRuleActionRedirectConfig redirectConfig;
     /**
      * @return The redirect action within ALB. See the following `Block rewrite_config`.
      * 
      */
-    private final @Nullable RuleRuleActionRewriteConfig rewriteConfig;
+    private @Nullable RuleRuleActionRewriteConfig rewriteConfig;
     /**
      * @return The Flow speed limit. See the following `Block traffic_limit_config`.
      * 
      */
-    private final @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
+    private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
     /**
      * @return The Traffic mirroring. See the following `Block traffic_mirror_config`.
      * 
      */
-    private final @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
+    private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
     /**
      * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private RuleRuleAction(
-        @CustomType.Parameter("fixedResponseConfig") @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig,
-        @CustomType.Parameter("forwardGroupConfig") @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig,
-        @CustomType.Parameter("insertHeaderConfig") @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig,
-        @CustomType.Parameter("order") Integer order,
-        @CustomType.Parameter("redirectConfig") @Nullable RuleRuleActionRedirectConfig redirectConfig,
-        @CustomType.Parameter("rewriteConfig") @Nullable RuleRuleActionRewriteConfig rewriteConfig,
-        @CustomType.Parameter("trafficLimitConfig") @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig,
-        @CustomType.Parameter("trafficMirrorConfig") @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig,
-        @CustomType.Parameter("type") String type) {
-        this.fixedResponseConfig = fixedResponseConfig;
-        this.forwardGroupConfig = forwardGroupConfig;
-        this.insertHeaderConfig = insertHeaderConfig;
-        this.order = order;
-        this.redirectConfig = redirectConfig;
-        this.rewriteConfig = rewriteConfig;
-        this.trafficLimitConfig = trafficLimitConfig;
-        this.trafficMirrorConfig = trafficMirrorConfig;
-        this.type = type;
-    }
-
+    private RuleRuleAction() {}
     /**
      * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
      * 
@@ -158,7 +137,7 @@ public final class RuleRuleAction {
     public static Builder builder(RuleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
         private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
@@ -169,11 +148,7 @@ public final class RuleRuleAction {
         private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
         private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedResponseConfig = defaults.fixedResponseConfig;
@@ -187,43 +162,63 @@ public final class RuleRuleAction {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder fixedResponseConfig(@Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig) {
             this.fixedResponseConfig = fixedResponseConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder forwardGroupConfig(@Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig) {
             this.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder insertHeaderConfig(@Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig) {
             this.insertHeaderConfig = insertHeaderConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
+        @CustomType.Setter
         public Builder redirectConfig(@Nullable RuleRuleActionRedirectConfig redirectConfig) {
             this.redirectConfig = redirectConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder rewriteConfig(@Nullable RuleRuleActionRewriteConfig rewriteConfig) {
             this.rewriteConfig = rewriteConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficLimitConfig(@Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig) {
             this.trafficLimitConfig = trafficLimitConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorConfig(@Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig) {
             this.trafficMirrorConfig = trafficMirrorConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public RuleRuleAction build() {
-            return new RuleRuleAction(fixedResponseConfig, forwardGroupConfig, insertHeaderConfig, order, redirectConfig, rewriteConfig, trafficLimitConfig, trafficMirrorConfig, type);
+        }
+        public RuleRuleAction build() {
+            final var o = new RuleRuleAction();
+            o.fixedResponseConfig = fixedResponseConfig;
+            o.forwardGroupConfig = forwardGroupConfig;
+            o.insertHeaderConfig = insertHeaderConfig;
+            o.order = order;
+            o.redirectConfig = redirectConfig;
+            o.rewriteConfig = rewriteConfig;
+            o.trafficLimitConfig = trafficLimitConfig;
+            o.trafficMirrorConfig = trafficMirrorConfig;
+            o.type = type;
+            return o;
         }
     }
 }

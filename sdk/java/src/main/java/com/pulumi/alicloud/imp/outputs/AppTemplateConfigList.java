@@ -15,21 +15,14 @@ public final class AppTemplateConfigList {
      * @return Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return Configuration item content.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private AppTemplateConfigList(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private AppTemplateConfigList() {}
     /**
      * @return Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
      * 
@@ -52,30 +45,32 @@ public final class AppTemplateConfigList {
     public static Builder builder(AppTemplateConfigList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppTemplateConfigList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public AppTemplateConfigList build() {
-            return new AppTemplateConfigList(key, value);
+        }
+        public AppTemplateConfigList build() {
+            final var o = new AppTemplateConfigList();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

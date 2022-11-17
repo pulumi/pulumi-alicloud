@@ -14,54 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFoldersResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return A list of folders. Each element contains the following attributes:
      * 
      */
-    private final List<GetFoldersFolder> folders;
+    private List<GetFoldersFolder> folders;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of folder IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of folder names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String parentFolderId;
-    private final @Nullable String queryKeyword;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String parentFolderId;
+    private @Nullable String queryKeyword;
 
-    @CustomType.Constructor
-    private GetFoldersResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("folders") List<GetFoldersFolder> folders,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("parentFolderId") @Nullable String parentFolderId,
-        @CustomType.Parameter("queryKeyword") @Nullable String queryKeyword) {
-        this.enableDetails = enableDetails;
-        this.folders = folders;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.parentFolderId = parentFolderId;
-        this.queryKeyword = queryKeyword;
-    }
-
+    private GetFoldersResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -113,7 +92,7 @@ public final class GetFoldersResult {
     public static Builder builder(GetFoldersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetFoldersFolder> folders;
@@ -124,11 +103,7 @@ public final class GetFoldersResult {
         private @Nullable String outputFile;
         private @Nullable String parentFolderId;
         private @Nullable String queryKeyword;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFoldersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -142,10 +117,12 @@ public final class GetFoldersResult {
     	      this.queryKeyword = defaults.queryKeyword;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder folders(List<GetFoldersFolder> folders) {
             this.folders = Objects.requireNonNull(folders);
             return this;
@@ -153,10 +130,12 @@ public final class GetFoldersResult {
         public Builder folders(GetFoldersFolder... folders) {
             return folders(List.of(folders));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -164,10 +143,12 @@ public final class GetFoldersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -175,19 +156,33 @@ public final class GetFoldersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder parentFolderId(@Nullable String parentFolderId) {
             this.parentFolderId = parentFolderId;
             return this;
         }
+        @CustomType.Setter
         public Builder queryKeyword(@Nullable String queryKeyword) {
             this.queryKeyword = queryKeyword;
             return this;
-        }        public GetFoldersResult build() {
-            return new GetFoldersResult(enableDetails, folders, id, ids, nameRegex, names, outputFile, parentFolderId, queryKeyword);
+        }
+        public GetFoldersResult build() {
+            final var o = new GetFoldersResult();
+            o.enableDetails = enableDetails;
+            o.folders = folders;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.parentFolderId = parentFolderId;
+            o.queryKeyword = queryKeyword;
+            return o;
         }
     }
 }

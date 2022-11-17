@@ -15,21 +15,14 @@ public final class ContainerGroupInitContainerEnvironmentVar {
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The variable value of the security context that the container group runs.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ContainerGroupInitContainerEnvironmentVar(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private ContainerGroupInitContainerEnvironmentVar() {}
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
      * 
@@ -52,30 +45,32 @@ public final class ContainerGroupInitContainerEnvironmentVar {
     public static Builder builder(ContainerGroupInitContainerEnvironmentVar defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupInitContainerEnvironmentVar defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ContainerGroupInitContainerEnvironmentVar build() {
-            return new ContainerGroupInitContainerEnvironmentVar(key, value);
+        }
+        public ContainerGroupInitContainerEnvironmentVar build() {
+            final var o = new ContainerGroupInitContainerEnvironmentVar();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

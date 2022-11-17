@@ -13,28 +13,19 @@ public final class GetSubscriptionJobsJobSubscriptionHost {
      * @return Classic network address.
      * 
      */
-    private final String privateHost;
+    private String privateHost;
     /**
      * @return Public network address.
      * 
      */
-    private final String publicHost;
+    private String publicHost;
     /**
      * @return VPC network address.
      * 
      */
-    private final String vpcHost;
+    private String vpcHost;
 
-    @CustomType.Constructor
-    private GetSubscriptionJobsJobSubscriptionHost(
-        @CustomType.Parameter("privateHost") String privateHost,
-        @CustomType.Parameter("publicHost") String publicHost,
-        @CustomType.Parameter("vpcHost") String vpcHost) {
-        this.privateHost = privateHost;
-        this.publicHost = publicHost;
-        this.vpcHost = vpcHost;
-    }
-
+    private GetSubscriptionJobsJobSubscriptionHost() {}
     /**
      * @return Classic network address.
      * 
@@ -64,16 +55,12 @@ public final class GetSubscriptionJobsJobSubscriptionHost {
     public static Builder builder(GetSubscriptionJobsJobSubscriptionHost defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String privateHost;
         private String publicHost;
         private String vpcHost;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubscriptionJobsJobSubscriptionHost defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateHost = defaults.privateHost;
@@ -81,19 +68,27 @@ public final class GetSubscriptionJobsJobSubscriptionHost {
     	      this.vpcHost = defaults.vpcHost;
         }
 
+        @CustomType.Setter
         public Builder privateHost(String privateHost) {
             this.privateHost = Objects.requireNonNull(privateHost);
             return this;
         }
+        @CustomType.Setter
         public Builder publicHost(String publicHost) {
             this.publicHost = Objects.requireNonNull(publicHost);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcHost(String vpcHost) {
             this.vpcHost = Objects.requireNonNull(vpcHost);
             return this;
-        }        public GetSubscriptionJobsJobSubscriptionHost build() {
-            return new GetSubscriptionJobsJobSubscriptionHost(privateHost, publicHost, vpcHost);
+        }
+        public GetSubscriptionJobsJobSubscriptionHost build() {
+            final var o = new GetSubscriptionJobsJobSubscriptionHost();
+            o.privateHost = privateHost;
+            o.publicHost = publicHost;
+            o.vpcHost = vpcHost;
+            return o;
         }
     }
 }

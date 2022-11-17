@@ -15,106 +15,73 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
      * @return The start time of the execution.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
      * 
      */
-    private final Integer dropped;
-    private final String errorCode;
+    private Integer dropped;
+    private String errorCode;
     /**
      * @return Details about the reason why the command failed to be sent or run.
      * 
      */
-    private final String errorInfo;
+    private String errorInfo;
     /**
      * @return The exit code of the execution.
      * 
      */
-    private final Integer exitCode;
+    private Integer exitCode;
     /**
      * @return The end time of the execution.
      * 
      */
-    private final String finishTime;
+    private String finishTime;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
-    private final String instanceInvokeStatus;
+    private String instanceId;
+    private String instanceInvokeStatus;
     /**
      * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
      * 
      */
-    private final String invocationStatus;
+    private String invocationStatus;
     /**
      * @return The output of the command.
      * 
      */
-    private final String output;
+    private String output;
     /**
      * @return The number of times that the command is run on the instance.
      * 
      */
-    private final Integer repeats;
+    private Integer repeats;
     /**
      * @return The time when the command started to be run on the instance.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
      * 
      */
-    private final String stopTime;
+    private String stopTime;
     /**
      * @return Indicates whether the commands are to be automatically run.
      * * `error_code	` - The code that indicates why the command failed to be sent or run.
      * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
      * 
      */
-    private final Boolean timed;
+    private Boolean timed;
     /**
      * @return The time when the execution state was updated.
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetEcsInvocationsInvocationInvokeInstance(
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("dropped") Integer dropped,
-        @CustomType.Parameter("errorCode") String errorCode,
-        @CustomType.Parameter("errorInfo") String errorInfo,
-        @CustomType.Parameter("exitCode") Integer exitCode,
-        @CustomType.Parameter("finishTime") String finishTime,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceInvokeStatus") String instanceInvokeStatus,
-        @CustomType.Parameter("invocationStatus") String invocationStatus,
-        @CustomType.Parameter("output") String output,
-        @CustomType.Parameter("repeats") Integer repeats,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("stopTime") String stopTime,
-        @CustomType.Parameter("timed") Boolean timed,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.creationTime = creationTime;
-        this.dropped = dropped;
-        this.errorCode = errorCode;
-        this.errorInfo = errorInfo;
-        this.exitCode = exitCode;
-        this.finishTime = finishTime;
-        this.instanceId = instanceId;
-        this.instanceInvokeStatus = instanceInvokeStatus;
-        this.invocationStatus = invocationStatus;
-        this.output = output;
-        this.repeats = repeats;
-        this.startTime = startTime;
-        this.stopTime = stopTime;
-        this.timed = timed;
-        this.updateTime = updateTime;
-    }
-
+    private GetEcsInvocationsInvocationInvokeInstance() {}
     /**
      * @return The start time of the execution.
      * 
@@ -222,7 +189,7 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     public static Builder builder(GetEcsInvocationsInvocationInvokeInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String creationTime;
         private Integer dropped;
@@ -239,11 +206,7 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
         private String stopTime;
         private Boolean timed;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsInvocationsInvocationInvokeInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTime = defaults.creationTime;
@@ -263,67 +226,99 @@ public final class GetEcsInvocationsInvocationInvokeInstance {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dropped(Integer dropped) {
             this.dropped = Objects.requireNonNull(dropped);
             return this;
         }
+        @CustomType.Setter
         public Builder errorCode(String errorCode) {
             this.errorCode = Objects.requireNonNull(errorCode);
             return this;
         }
+        @CustomType.Setter
         public Builder errorInfo(String errorInfo) {
             this.errorInfo = Objects.requireNonNull(errorInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder exitCode(Integer exitCode) {
             this.exitCode = Objects.requireNonNull(exitCode);
             return this;
         }
+        @CustomType.Setter
         public Builder finishTime(String finishTime) {
             this.finishTime = Objects.requireNonNull(finishTime);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceInvokeStatus(String instanceInvokeStatus) {
             this.instanceInvokeStatus = Objects.requireNonNull(instanceInvokeStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder invocationStatus(String invocationStatus) {
             this.invocationStatus = Objects.requireNonNull(invocationStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder output(String output) {
             this.output = Objects.requireNonNull(output);
             return this;
         }
+        @CustomType.Setter
         public Builder repeats(Integer repeats) {
             this.repeats = Objects.requireNonNull(repeats);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder stopTime(String stopTime) {
             this.stopTime = Objects.requireNonNull(stopTime);
             return this;
         }
+        @CustomType.Setter
         public Builder timed(Boolean timed) {
             this.timed = Objects.requireNonNull(timed);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetEcsInvocationsInvocationInvokeInstance build() {
-            return new GetEcsInvocationsInvocationInvokeInstance(creationTime, dropped, errorCode, errorInfo, exitCode, finishTime, instanceId, instanceInvokeStatus, invocationStatus, output, repeats, startTime, stopTime, timed, updateTime);
+        }
+        public GetEcsInvocationsInvocationInvokeInstance build() {
+            final var o = new GetEcsInvocationsInvocationInvokeInstance();
+            o.creationTime = creationTime;
+            o.dropped = dropped;
+            o.errorCode = errorCode;
+            o.errorInfo = errorInfo;
+            o.exitCode = exitCode;
+            o.finishTime = finishTime;
+            o.instanceId = instanceId;
+            o.instanceInvokeStatus = instanceInvokeStatus;
+            o.invocationStatus = invocationStatus;
+            o.output = output;
+            o.repeats = repeats;
+            o.startTime = startTime;
+            o.stopTime = stopTime;
+            o.timed = timed;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

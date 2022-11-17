@@ -13,21 +13,14 @@ public final class GetServicesServiceLogConfig {
      * @return Log Service store name.
      * 
      */
-    private final String logstore;
+    private String logstore;
     /**
      * @return Log Service project name.
      * 
      */
-    private final String project;
+    private String project;
 
-    @CustomType.Constructor
-    private GetServicesServiceLogConfig(
-        @CustomType.Parameter("logstore") String logstore,
-        @CustomType.Parameter("project") String project) {
-        this.logstore = logstore;
-        this.project = project;
-    }
-
+    private GetServicesServiceLogConfig() {}
     /**
      * @return Log Service store name.
      * 
@@ -50,30 +43,32 @@ public final class GetServicesServiceLogConfig {
     public static Builder builder(GetServicesServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String logstore;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicesServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logstore = defaults.logstore;
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder logstore(String logstore) {
             this.logstore = Objects.requireNonNull(logstore);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public GetServicesServiceLogConfig build() {
-            return new GetServicesServiceLogConfig(logstore, project);
+        }
+        public GetServicesServiceLogConfig build() {
+            final var o = new GetServicesServiceLogConfig();
+            o.logstore = logstore;
+            o.project = project;
+            return o;
         }
     }
 }

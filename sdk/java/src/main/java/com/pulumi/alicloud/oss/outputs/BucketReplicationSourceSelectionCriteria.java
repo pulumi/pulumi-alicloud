@@ -15,13 +15,9 @@ public final class BucketReplicationSourceSelectionCriteria {
      * @return Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
      * 
      */
-    private final @Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects;
+    private @Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects;
 
-    @CustomType.Constructor
-    private BucketReplicationSourceSelectionCriteria(@CustomType.Parameter("sseKmsEncryptedObjects") @Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects) {
-        this.sseKmsEncryptedObjects = sseKmsEncryptedObjects;
-    }
-
+    private BucketReplicationSourceSelectionCriteria() {}
     /**
      * @return Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
      * 
@@ -37,24 +33,24 @@ public final class BucketReplicationSourceSelectionCriteria {
     public static Builder builder(BucketReplicationSourceSelectionCriteria defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketReplicationSourceSelectionCriteria defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sseKmsEncryptedObjects = defaults.sseKmsEncryptedObjects;
         }
 
+        @CustomType.Setter
         public Builder sseKmsEncryptedObjects(@Nullable BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects sseKmsEncryptedObjects) {
             this.sseKmsEncryptedObjects = sseKmsEncryptedObjects;
             return this;
-        }        public BucketReplicationSourceSelectionCriteria build() {
-            return new BucketReplicationSourceSelectionCriteria(sseKmsEncryptedObjects);
+        }
+        public BucketReplicationSourceSelectionCriteria build() {
+            final var o = new BucketReplicationSourceSelectionCriteria();
+            o.sseKmsEncryptedObjects = sseKmsEncryptedObjects;
+            return o;
         }
     }
 }

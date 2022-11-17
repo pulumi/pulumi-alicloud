@@ -18,217 +18,154 @@ public final class GetAdConnectorOfficeSitesSite {
      * @return The Name of the ad connector office site.
      * 
      */
-    private final String adConnectorOfficeSiteName;
+    private String adConnectorOfficeSiteName;
     /**
      * @return AD Connector Collection of Information.
      * 
      */
-    private final List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors;
+    private List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors;
     /**
      * @return The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return Cloud Enterprise Network Instance Id.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return Workspace Corresponds to the Security Office Network of IPv4 Segment.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return Workspace Creation Time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Security Group ID.
      * 
      */
-    private final String customSecurityGroupId;
+    private String customSecurityGroupId;
     /**
      * @return The method that is used to connect the client to cloud desktops.
      * 
      */
-    private final String desktopAccessType;
+    private String desktopAccessType;
     /**
      * @return The endpoint that is used to connect to cloud desktops over a VPC.
      * 
      */
-    private final String desktopVpcEndpoint;
+    private String desktopVpcEndpoint;
     /**
      * @return Enterprise Ad Corresponding DNS Address.
      * 
      */
-    private final List<String> dnsAddresses;
+    private List<String> dnsAddresses;
     /**
      * @return The Easy-to-Use DNS Name.
      * 
      */
-    private final String dnsUserName;
+    private String dnsUserName;
     /**
      * @return Enterprise of Ad Domain Name.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return The Domain Administrator&#39;s Username.
      * 
      */
-    private final String domainUserName;
+    private String domainUserName;
     /**
      * @return Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      * 
      */
-    private final Boolean enableAdminAccess;
+    private Boolean enableAdminAccess;
     /**
      * @return Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
      * 
      */
-    private final Boolean enableCrossDesktopAccess;
+    private Boolean enableCrossDesktopAccess;
     /**
      * @return Whether the Open Internet Access Function.
      * 
      */
-    private final Boolean enableInternetAccess;
+    private Boolean enableInternetAccess;
     /**
      * @return NAS File System ID.
      * 
      */
-    private final List<String> fileSystemIds;
+    private List<String> fileSystemIds;
     /**
      * @return The ID of the Ad Connector Office Site.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Registered Log Information.
      * 
      */
-    private final List<GetAdConnectorOfficeSitesSiteLog> logs;
+    private List<GetAdConnectorOfficeSitesSiteLog> logs;
     /**
      * @return Whether to Enable Multi-Factor Authentication MFA.
      * 
      */
-    private final Boolean mfaEnabled;
+    private Boolean mfaEnabled;
     /**
      * @return The ID of the Internet Access.
      * 
      */
-    private final String networkPackageId;
+    private String networkPackageId;
     /**
      * @return The ID of the Workspace.
      * 
      */
-    private final String officeSiteId;
+    private String officeSiteId;
     /**
      * @return Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
      * 
      */
-    private final String officeSiteType;
+    private String officeSiteType;
     /**
      * @return Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      * 
      */
-    private final Boolean ssoEnabled;
+    private Boolean ssoEnabled;
     /**
      * @return The workspace status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Sub-Domain DNS Address.
      * 
      */
-    private final List<String> subDomainDnsAddresses;
+    private List<String> subDomainDnsAddresses;
     /**
      * @return The AD Domain DNS Name.
      * 
      */
-    private final String subDomainName;
+    private String subDomainName;
     /**
      * @return The AD Trust Password.
      * 
      */
-    private final String trustPassword;
+    private String trustPassword;
     /**
      * @return Security Office VPC ID.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch ids.
      * 
      */
-    private final List<String> vswitchIds;
+    private List<String> vswitchIds;
 
-    @CustomType.Constructor
-    private GetAdConnectorOfficeSitesSite(
-        @CustomType.Parameter("adConnectorOfficeSiteName") String adConnectorOfficeSiteName,
-        @CustomType.Parameter("adConnectors") List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors,
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("customSecurityGroupId") String customSecurityGroupId,
-        @CustomType.Parameter("desktopAccessType") String desktopAccessType,
-        @CustomType.Parameter("desktopVpcEndpoint") String desktopVpcEndpoint,
-        @CustomType.Parameter("dnsAddresses") List<String> dnsAddresses,
-        @CustomType.Parameter("dnsUserName") String dnsUserName,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("domainUserName") String domainUserName,
-        @CustomType.Parameter("enableAdminAccess") Boolean enableAdminAccess,
-        @CustomType.Parameter("enableCrossDesktopAccess") Boolean enableCrossDesktopAccess,
-        @CustomType.Parameter("enableInternetAccess") Boolean enableInternetAccess,
-        @CustomType.Parameter("fileSystemIds") List<String> fileSystemIds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logs") List<GetAdConnectorOfficeSitesSiteLog> logs,
-        @CustomType.Parameter("mfaEnabled") Boolean mfaEnabled,
-        @CustomType.Parameter("networkPackageId") String networkPackageId,
-        @CustomType.Parameter("officeSiteId") String officeSiteId,
-        @CustomType.Parameter("officeSiteType") String officeSiteType,
-        @CustomType.Parameter("ssoEnabled") Boolean ssoEnabled,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("subDomainDnsAddresses") List<String> subDomainDnsAddresses,
-        @CustomType.Parameter("subDomainName") String subDomainName,
-        @CustomType.Parameter("trustPassword") String trustPassword,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
-        this.adConnectorOfficeSiteName = adConnectorOfficeSiteName;
-        this.adConnectors = adConnectors;
-        this.bandwidth = bandwidth;
-        this.cenId = cenId;
-        this.cidrBlock = cidrBlock;
-        this.createTime = createTime;
-        this.customSecurityGroupId = customSecurityGroupId;
-        this.desktopAccessType = desktopAccessType;
-        this.desktopVpcEndpoint = desktopVpcEndpoint;
-        this.dnsAddresses = dnsAddresses;
-        this.dnsUserName = dnsUserName;
-        this.domainName = domainName;
-        this.domainUserName = domainUserName;
-        this.enableAdminAccess = enableAdminAccess;
-        this.enableCrossDesktopAccess = enableCrossDesktopAccess;
-        this.enableInternetAccess = enableInternetAccess;
-        this.fileSystemIds = fileSystemIds;
-        this.id = id;
-        this.logs = logs;
-        this.mfaEnabled = mfaEnabled;
-        this.networkPackageId = networkPackageId;
-        this.officeSiteId = officeSiteId;
-        this.officeSiteType = officeSiteType;
-        this.ssoEnabled = ssoEnabled;
-        this.status = status;
-        this.subDomainDnsAddresses = subDomainDnsAddresses;
-        this.subDomainName = subDomainName;
-        this.trustPassword = trustPassword;
-        this.vpcId = vpcId;
-        this.vswitchIds = vswitchIds;
-    }
-
+    private GetAdConnectorOfficeSitesSite() {}
     /**
      * @return The Name of the ad connector office site.
      * 
@@ -447,7 +384,7 @@ public final class GetAdConnectorOfficeSitesSite {
     public static Builder builder(GetAdConnectorOfficeSitesSite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String adConnectorOfficeSiteName;
         private List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors;
@@ -479,11 +416,7 @@ public final class GetAdConnectorOfficeSitesSite {
         private String trustPassword;
         private String vpcId;
         private List<String> vswitchIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAdConnectorOfficeSitesSite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adConnectorOfficeSiteName = defaults.adConnectorOfficeSiteName;
@@ -518,10 +451,12 @@ public final class GetAdConnectorOfficeSitesSite {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
+        @CustomType.Setter
         public Builder adConnectorOfficeSiteName(String adConnectorOfficeSiteName) {
             this.adConnectorOfficeSiteName = Objects.requireNonNull(adConnectorOfficeSiteName);
             return this;
         }
+        @CustomType.Setter
         public Builder adConnectors(List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors) {
             this.adConnectors = Objects.requireNonNull(adConnectors);
             return this;
@@ -529,34 +464,42 @@ public final class GetAdConnectorOfficeSitesSite {
         public Builder adConnectors(GetAdConnectorOfficeSitesSiteAdConnector... adConnectors) {
             return adConnectors(List.of(adConnectors));
         }
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
             this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
             this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
             this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
             this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
             return this;
@@ -564,30 +507,37 @@ public final class GetAdConnectorOfficeSitesSite {
         public Builder dnsAddresses(String... dnsAddresses) {
             return dnsAddresses(List.of(dnsAddresses));
         }
+        @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
             this.dnsUserName = Objects.requireNonNull(dnsUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
             this.domainUserName = Objects.requireNonNull(domainUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
             this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
             this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
             this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
             this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
             return this;
@@ -595,10 +545,12 @@ public final class GetAdConnectorOfficeSitesSite {
         public Builder fileSystemIds(String... fileSystemIds) {
             return fileSystemIds(List.of(fileSystemIds));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logs(List<GetAdConnectorOfficeSitesSiteLog> logs) {
             this.logs = Objects.requireNonNull(logs);
             return this;
@@ -606,30 +558,37 @@ public final class GetAdConnectorOfficeSitesSite {
         public Builder logs(GetAdConnectorOfficeSitesSiteLog... logs) {
             return logs(List.of(logs));
         }
+        @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
             this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
             this.networkPackageId = Objects.requireNonNull(networkPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
             this.officeSiteId = Objects.requireNonNull(officeSiteId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteType(String officeSiteType) {
             this.officeSiteType = Objects.requireNonNull(officeSiteType);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
             this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder subDomainDnsAddresses(List<String> subDomainDnsAddresses) {
             this.subDomainDnsAddresses = Objects.requireNonNull(subDomainDnsAddresses);
             return this;
@@ -637,26 +596,62 @@ public final class GetAdConnectorOfficeSitesSite {
         public Builder subDomainDnsAddresses(String... subDomainDnsAddresses) {
             return subDomainDnsAddresses(List.of(subDomainDnsAddresses));
         }
+        @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
             this.subDomainName = Objects.requireNonNull(subDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
             this.trustPassword = Objects.requireNonNull(trustPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }        public GetAdConnectorOfficeSitesSite build() {
-            return new GetAdConnectorOfficeSitesSite(adConnectorOfficeSiteName, adConnectors, bandwidth, cenId, cidrBlock, createTime, customSecurityGroupId, desktopAccessType, desktopVpcEndpoint, dnsAddresses, dnsUserName, domainName, domainUserName, enableAdminAccess, enableCrossDesktopAccess, enableInternetAccess, fileSystemIds, id, logs, mfaEnabled, networkPackageId, officeSiteId, officeSiteType, ssoEnabled, status, subDomainDnsAddresses, subDomainName, trustPassword, vpcId, vswitchIds);
+        }
+        public GetAdConnectorOfficeSitesSite build() {
+            final var o = new GetAdConnectorOfficeSitesSite();
+            o.adConnectorOfficeSiteName = adConnectorOfficeSiteName;
+            o.adConnectors = adConnectors;
+            o.bandwidth = bandwidth;
+            o.cenId = cenId;
+            o.cidrBlock = cidrBlock;
+            o.createTime = createTime;
+            o.customSecurityGroupId = customSecurityGroupId;
+            o.desktopAccessType = desktopAccessType;
+            o.desktopVpcEndpoint = desktopVpcEndpoint;
+            o.dnsAddresses = dnsAddresses;
+            o.dnsUserName = dnsUserName;
+            o.domainName = domainName;
+            o.domainUserName = domainUserName;
+            o.enableAdminAccess = enableAdminAccess;
+            o.enableCrossDesktopAccess = enableCrossDesktopAccess;
+            o.enableInternetAccess = enableInternetAccess;
+            o.fileSystemIds = fileSystemIds;
+            o.id = id;
+            o.logs = logs;
+            o.mfaEnabled = mfaEnabled;
+            o.networkPackageId = networkPackageId;
+            o.officeSiteId = officeSiteId;
+            o.officeSiteType = officeSiteType;
+            o.ssoEnabled = ssoEnabled;
+            o.status = status;
+            o.subDomainDnsAddresses = subDomainDnsAddresses;
+            o.subDomainName = subDomainName;
+            o.trustPassword = trustPassword;
+            o.vpcId = vpcId;
+            o.vswitchIds = vswitchIds;
+            return o;
         }
     }
 }

@@ -15,35 +15,24 @@ public final class EndpointIpConfig {
      * @return The Subnet mask.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
      * 
      */
-    private final @Nullable String ip;
+    private @Nullable String ip;
     /**
      * @return The Vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The Zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private EndpointIpConfig(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("ip") @Nullable String ip,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.cidrBlock = cidrBlock;
-        this.ip = ip;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private EndpointIpConfig() {}
     /**
      * @return The Subnet mask.
      * 
@@ -80,17 +69,13 @@ public final class EndpointIpConfig {
     public static Builder builder(EndpointIpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private @Nullable String ip;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EndpointIpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -99,23 +84,33 @@ public final class EndpointIpConfig {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder ip(@Nullable String ip) {
             this.ip = ip;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public EndpointIpConfig build() {
-            return new EndpointIpConfig(cidrBlock, ip, vswitchId, zoneId);
+        }
+        public EndpointIpConfig build() {
+            final var o = new EndpointIpConfig();
+            o.cidrBlock = cidrBlock;
+            o.ip = ip;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

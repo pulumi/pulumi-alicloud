@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetShardingNetworkPublicAddressesResult {
-    private final List<GetShardingNetworkPublicAddressesAddress> addresses;
-    private final String dbInstanceId;
+    private List<GetShardingNetworkPublicAddressesAddress> addresses;
+    private String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String nodeId;
-    private final @Nullable String outputFile;
-    private final @Nullable String role;
+    private String id;
+    private @Nullable String nodeId;
+    private @Nullable String outputFile;
+    private @Nullable String role;
 
-    @CustomType.Constructor
-    private GetShardingNetworkPublicAddressesResult(
-        @CustomType.Parameter("addresses") List<GetShardingNetworkPublicAddressesAddress> addresses,
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("role") @Nullable String role) {
-        this.addresses = addresses;
-        this.dbInstanceId = dbInstanceId;
-        this.id = id;
-        this.nodeId = nodeId;
-        this.outputFile = outputFile;
-        this.role = role;
-    }
-
+    private GetShardingNetworkPublicAddressesResult() {}
     public List<GetShardingNetworkPublicAddressesAddress> addresses() {
         return this.addresses;
     }
@@ -70,7 +55,7 @@ public final class GetShardingNetworkPublicAddressesResult {
     public static Builder builder(GetShardingNetworkPublicAddressesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetShardingNetworkPublicAddressesAddress> addresses;
         private String dbInstanceId;
@@ -78,11 +63,7 @@ public final class GetShardingNetworkPublicAddressesResult {
         private @Nullable String nodeId;
         private @Nullable String outputFile;
         private @Nullable String role;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetShardingNetworkPublicAddressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
@@ -93,6 +74,7 @@ public final class GetShardingNetworkPublicAddressesResult {
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
         public Builder addresses(List<GetShardingNetworkPublicAddressesAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -100,27 +82,40 @@ public final class GetShardingNetworkPublicAddressesResult {
         public Builder addresses(GetShardingNetworkPublicAddressesAddress... addresses) {
             return addresses(List.of(addresses));
         }
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
-        }        public GetShardingNetworkPublicAddressesResult build() {
-            return new GetShardingNetworkPublicAddressesResult(addresses, dbInstanceId, id, nodeId, outputFile, role);
+        }
+        public GetShardingNetworkPublicAddressesResult build() {
+            final var o = new GetShardingNetworkPublicAddressesResult();
+            o.addresses = addresses;
+            o.dbInstanceId = dbInstanceId;
+            o.id = id;
+            o.nodeId = nodeId;
+            o.outputFile = outputFile;
+            o.role = role;
+            return o;
         }
     }
 }

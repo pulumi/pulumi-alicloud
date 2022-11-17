@@ -14,63 +14,44 @@ public final class GetAccessGroupsGroup {
      * @return The length of `description` does not exceed 100 bytes.
      * 
      */
-    private final String accessGroupId;
+    private String accessGroupId;
     /**
      * @return The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
      * 
      */
-    private final String accessGroupName;
+    private String accessGroupName;
     /**
      * @return The CreateTime of Access Group.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The Description of Access Group. The length Of `description` does not exceed 100 bytes.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Access Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Number of attached mountpoint.
      * 
      */
-    private final Integer mountPointCount;
+    private Integer mountPointCount;
     /**
      * @return The NetworkType of Access Group. Valid values: `VPC`.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The Number of access rule.
      * 
      */
-    private final Integer ruleCount;
+    private Integer ruleCount;
 
-    @CustomType.Constructor
-    private GetAccessGroupsGroup(
-        @CustomType.Parameter("accessGroupId") String accessGroupId,
-        @CustomType.Parameter("accessGroupName") String accessGroupName,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mountPointCount") Integer mountPointCount,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("ruleCount") Integer ruleCount) {
-        this.accessGroupId = accessGroupId;
-        this.accessGroupName = accessGroupName;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.mountPointCount = mountPointCount;
-        this.networkType = networkType;
-        this.ruleCount = ruleCount;
-    }
-
+    private GetAccessGroupsGroup() {}
     /**
      * @return The length of `description` does not exceed 100 bytes.
      * 
@@ -135,7 +116,7 @@ public final class GetAccessGroupsGroup {
     public static Builder builder(GetAccessGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessGroupId;
         private String accessGroupName;
@@ -145,11 +126,7 @@ public final class GetAccessGroupsGroup {
         private Integer mountPointCount;
         private String networkType;
         private Integer ruleCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupId = defaults.accessGroupId;
@@ -162,39 +139,57 @@ public final class GetAccessGroupsGroup {
     	      this.ruleCount = defaults.ruleCount;
         }
 
+        @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
             this.accessGroupId = Objects.requireNonNull(accessGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
             this.accessGroupName = Objects.requireNonNull(accessGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mountPointCount(Integer mountPointCount) {
             this.mountPointCount = Objects.requireNonNull(mountPointCount);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleCount(Integer ruleCount) {
             this.ruleCount = Objects.requireNonNull(ruleCount);
             return this;
-        }        public GetAccessGroupsGroup build() {
-            return new GetAccessGroupsGroup(accessGroupId, accessGroupName, createTime, description, id, mountPointCount, networkType, ruleCount);
+        }
+        public GetAccessGroupsGroup build() {
+            final var o = new GetAccessGroupsGroup();
+            o.accessGroupId = accessGroupId;
+            o.accessGroupName = accessGroupName;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.mountPointCount = mountPointCount;
+            o.networkType = networkType;
+            o.ruleCount = ruleCount;
+            return o;
         }
     }
 }

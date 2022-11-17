@@ -14,33 +14,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIngressesResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetIngressesIngress> ingresses;
-    private final String namespaceId;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private List<GetIngressesIngress> ingresses;
+    private String namespaceId;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetIngressesResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("ingresses") List<GetIngressesIngress> ingresses,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.ingresses = ingresses;
-        this.namespaceId = namespaceId;
-        this.outputFile = outputFile;
-    }
-
+    private GetIngressesResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -71,7 +56,7 @@ public final class GetIngressesResult {
     public static Builder builder(GetIngressesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -79,11 +64,7 @@ public final class GetIngressesResult {
         private List<GetIngressesIngress> ingresses;
         private String namespaceId;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIngressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -94,14 +75,17 @@ public final class GetIngressesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -109,6 +93,7 @@ public final class GetIngressesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder ingresses(List<GetIngressesIngress> ingresses) {
             this.ingresses = Objects.requireNonNull(ingresses);
             return this;
@@ -116,15 +101,25 @@ public final class GetIngressesResult {
         public Builder ingresses(GetIngressesIngress... ingresses) {
             return ingresses(List.of(ingresses));
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetIngressesResult build() {
-            return new GetIngressesResult(enableDetails, id, ids, ingresses, namespaceId, outputFile);
+        }
+        public GetIngressesResult build() {
+            final var o = new GetIngressesResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.ingresses = ingresses;
+            o.namespaceId = namespaceId;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

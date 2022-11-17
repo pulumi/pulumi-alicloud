@@ -17,49 +17,34 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
      * @return The destination IP address that is used for health checks.
      * 
      */
-    private final @Nullable String dip;
+    private @Nullable String dip;
     /**
      * @return Whether to enable BGP.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds.
      * 
      */
-    private final @Nullable Integer interval;
+    private @Nullable Integer interval;
     /**
      * @return Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
      * 
      */
-    private final @Nullable String policy;
+    private @Nullable String policy;
     /**
      * @return The maximum number of health check retries.
      * 
      */
-    private final @Nullable Integer retry;
+    private @Nullable Integer retry;
     /**
      * @return The source IP address that is used for health checks.
      * 
      */
-    private final @Nullable String sip;
+    private @Nullable String sip;
 
-    @CustomType.Constructor
-    private GatewayVpnAttachmentHealthCheckConfig(
-        @CustomType.Parameter("dip") @Nullable String dip,
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("interval") @Nullable Integer interval,
-        @CustomType.Parameter("policy") @Nullable String policy,
-        @CustomType.Parameter("retry") @Nullable Integer retry,
-        @CustomType.Parameter("sip") @Nullable String sip) {
-        this.dip = dip;
-        this.enable = enable;
-        this.interval = interval;
-        this.policy = policy;
-        this.retry = retry;
-        this.sip = sip;
-    }
-
+    private GatewayVpnAttachmentHealthCheckConfig() {}
     /**
      * @return The destination IP address that is used for health checks.
      * 
@@ -110,7 +95,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
     public static Builder builder(GatewayVpnAttachmentHealthCheckConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dip;
         private @Nullable Boolean enable;
@@ -118,11 +103,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
         private @Nullable String policy;
         private @Nullable Integer retry;
         private @Nullable String sip;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GatewayVpnAttachmentHealthCheckConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dip = defaults.dip;
@@ -133,31 +114,45 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
     	      this.sip = defaults.sip;
         }
 
+        @CustomType.Setter
         public Builder dip(@Nullable String dip) {
             this.dip = dip;
             return this;
         }
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
         }
+        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
+        @CustomType.Setter
         public Builder retry(@Nullable Integer retry) {
             this.retry = retry;
             return this;
         }
+        @CustomType.Setter
         public Builder sip(@Nullable String sip) {
             this.sip = sip;
             return this;
-        }        public GatewayVpnAttachmentHealthCheckConfig build() {
-            return new GatewayVpnAttachmentHealthCheckConfig(dip, enable, interval, policy, retry, sip);
+        }
+        public GatewayVpnAttachmentHealthCheckConfig build() {
+            final var o = new GatewayVpnAttachmentHealthCheckConfig();
+            o.dip = dip;
+            o.enable = enable;
+            o.interval = interval;
+            o.policy = policy;
+            o.retry = retry;
+            o.sip = sip;
+            return o;
         }
     }
 }

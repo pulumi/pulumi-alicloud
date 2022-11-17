@@ -14,42 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDedicatedHostAccountsResult {
-    private final List<GetDedicatedHostAccountsAccount> accounts;
-    private final @Nullable String dedicatedHostId;
+    private List<GetDedicatedHostAccountsAccount> accounts;
+    private @Nullable String dedicatedHostId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetDedicatedHostAccountsResult(
-        @CustomType.Parameter("accounts") List<GetDedicatedHostAccountsAccount> accounts,
-        @CustomType.Parameter("dedicatedHostId") @Nullable String dedicatedHostId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.accounts = accounts;
-        this.dedicatedHostId = dedicatedHostId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetDedicatedHostAccountsResult() {}
     public List<GetDedicatedHostAccountsAccount> accounts() {
         return this.accounts;
     }
@@ -89,7 +68,7 @@ public final class GetDedicatedHostAccountsResult {
     public static Builder builder(GetDedicatedHostAccountsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDedicatedHostAccountsAccount> accounts;
         private @Nullable String dedicatedHostId;
@@ -100,11 +79,7 @@ public final class GetDedicatedHostAccountsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
@@ -118,6 +93,7 @@ public final class GetDedicatedHostAccountsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder accounts(List<GetDedicatedHostAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -125,14 +101,17 @@ public final class GetDedicatedHostAccountsResult {
         public Builder accounts(GetDedicatedHostAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
+        @CustomType.Setter
         public Builder dedicatedHostId(@Nullable String dedicatedHostId) {
             this.dedicatedHostId = dedicatedHostId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -140,10 +119,12 @@ public final class GetDedicatedHostAccountsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -151,19 +132,33 @@ public final class GetDedicatedHostAccountsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetDedicatedHostAccountsResult build() {
-            return new GetDedicatedHostAccountsResult(accounts, dedicatedHostId, id, ids, nameRegex, names, outputFile, pageNumber, pageSize);
+        }
+        public GetDedicatedHostAccountsResult build() {
+            final var o = new GetDedicatedHostAccountsResult();
+            o.accounts = accounts;
+            o.dedicatedHostId = dedicatedHostId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

@@ -15,58 +15,37 @@ public final class EdgeKubernetesWorkerDataDisk {
      * @return Worker node data disk auto snapshot policy.
      * 
      */
-    private final @Nullable String autoSnapshotPolicyId;
+    private @Nullable String autoSnapshotPolicyId;
     /**
      * @return The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
-    private final @Nullable String category;
-    private final @Nullable String device;
+    private @Nullable String category;
+    private @Nullable String device;
     /**
      * @return Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
      * 
      */
-    private final @Nullable String encrypted;
-    private final @Nullable String kmsKeyId;
+    private @Nullable String encrypted;
+    private @Nullable String kmsKeyId;
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
-    private final @Nullable String performanceLevel;
+    private @Nullable String performanceLevel;
     /**
      * @return The size of a data disk, at least 40. Unit: GiB.
      * 
      */
-    private final @Nullable String size;
-    private final @Nullable String snapshotId;
+    private @Nullable String size;
+    private @Nullable String snapshotId;
 
-    @CustomType.Constructor
-    private EdgeKubernetesWorkerDataDisk(
-        @CustomType.Parameter("autoSnapshotPolicyId") @Nullable String autoSnapshotPolicyId,
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("device") @Nullable String device,
-        @CustomType.Parameter("encrypted") @Nullable String encrypted,
-        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
-        @CustomType.Parameter("size") @Nullable String size,
-        @CustomType.Parameter("snapshotId") @Nullable String snapshotId) {
-        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
-        this.category = category;
-        this.device = device;
-        this.encrypted = encrypted;
-        this.kmsKeyId = kmsKeyId;
-        this.name = name;
-        this.performanceLevel = performanceLevel;
-        this.size = size;
-        this.snapshotId = snapshotId;
-    }
-
+    private EdgeKubernetesWorkerDataDisk() {}
     /**
      * @return Worker node data disk auto snapshot policy.
      * 
@@ -126,7 +105,7 @@ public final class EdgeKubernetesWorkerDataDisk {
     public static Builder builder(EdgeKubernetesWorkerDataDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
         private @Nullable String category;
@@ -137,11 +116,7 @@ public final class EdgeKubernetesWorkerDataDisk {
         private @Nullable String performanceLevel;
         private @Nullable String size;
         private @Nullable String snapshotId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeKubernetesWorkerDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -155,43 +130,63 @@ public final class EdgeKubernetesWorkerDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
+        @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
+        @CustomType.Setter
         public Builder encrypted(@Nullable String encrypted) {
             this.encrypted = encrypted;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable String size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
-        }        public EdgeKubernetesWorkerDataDisk build() {
-            return new EdgeKubernetesWorkerDataDisk(autoSnapshotPolicyId, category, device, encrypted, kmsKeyId, name, performanceLevel, size, snapshotId);
+        }
+        public EdgeKubernetesWorkerDataDisk build() {
+            final var o = new EdgeKubernetesWorkerDataDisk();
+            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            o.category = category;
+            o.device = device;
+            o.encrypted = encrypted;
+            o.kmsKeyId = kmsKeyId;
+            o.name = name;
+            o.performanceLevel = performanceLevel;
+            o.size = size;
+            o.snapshotId = snapshotId;
+            return o;
         }
     }
 }

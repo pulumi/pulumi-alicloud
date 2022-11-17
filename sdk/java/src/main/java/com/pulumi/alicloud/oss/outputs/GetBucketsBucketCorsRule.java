@@ -15,42 +15,29 @@ public final class GetBucketsBucketCorsRule {
      * @return Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
      * 
      */
-    private final List<String> allowedHeaders;
+    private List<String> allowedHeaders;
     /**
      * @return Specify the allowed methods for cross-domain requests. Possible values: `GET`, `PUT`, `DELETE`, `POST` and `HEAD`.
      * 
      */
-    private final List<String> allowedMethods;
+    private List<String> allowedMethods;
     /**
      * @return The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard &#34;\*&#34;. If &#34;\*&#34; is specified, cross-domain requests of all origins are allowed.
      * 
      */
-    private final List<String> allowedOrigins;
+    private List<String> allowedOrigins;
     /**
      * @return Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard &#34;\*&#34; is not allowed.
      * 
      */
-    private final List<String> exposeHeaders;
+    private List<String> exposeHeaders;
     /**
      * @return Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
      * 
      */
-    private final Integer maxAgeSeconds;
+    private Integer maxAgeSeconds;
 
-    @CustomType.Constructor
-    private GetBucketsBucketCorsRule(
-        @CustomType.Parameter("allowedHeaders") List<String> allowedHeaders,
-        @CustomType.Parameter("allowedMethods") List<String> allowedMethods,
-        @CustomType.Parameter("allowedOrigins") List<String> allowedOrigins,
-        @CustomType.Parameter("exposeHeaders") List<String> exposeHeaders,
-        @CustomType.Parameter("maxAgeSeconds") Integer maxAgeSeconds) {
-        this.allowedHeaders = allowedHeaders;
-        this.allowedMethods = allowedMethods;
-        this.allowedOrigins = allowedOrigins;
-        this.exposeHeaders = exposeHeaders;
-        this.maxAgeSeconds = maxAgeSeconds;
-    }
-
+    private GetBucketsBucketCorsRule() {}
     /**
      * @return Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
      * 
@@ -94,18 +81,14 @@ public final class GetBucketsBucketCorsRule {
     public static Builder builder(GetBucketsBucketCorsRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedHeaders;
         private List<String> allowedMethods;
         private List<String> allowedOrigins;
         private List<String> exposeHeaders;
         private Integer maxAgeSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketsBucketCorsRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedHeaders = defaults.allowedHeaders;
@@ -115,6 +98,7 @@ public final class GetBucketsBucketCorsRule {
     	      this.maxAgeSeconds = defaults.maxAgeSeconds;
         }
 
+        @CustomType.Setter
         public Builder allowedHeaders(List<String> allowedHeaders) {
             this.allowedHeaders = Objects.requireNonNull(allowedHeaders);
             return this;
@@ -122,6 +106,7 @@ public final class GetBucketsBucketCorsRule {
         public Builder allowedHeaders(String... allowedHeaders) {
             return allowedHeaders(List.of(allowedHeaders));
         }
+        @CustomType.Setter
         public Builder allowedMethods(List<String> allowedMethods) {
             this.allowedMethods = Objects.requireNonNull(allowedMethods);
             return this;
@@ -129,6 +114,7 @@ public final class GetBucketsBucketCorsRule {
         public Builder allowedMethods(String... allowedMethods) {
             return allowedMethods(List.of(allowedMethods));
         }
+        @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
             this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
             return this;
@@ -136,6 +122,7 @@ public final class GetBucketsBucketCorsRule {
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
         }
+        @CustomType.Setter
         public Builder exposeHeaders(List<String> exposeHeaders) {
             this.exposeHeaders = Objects.requireNonNull(exposeHeaders);
             return this;
@@ -143,11 +130,19 @@ public final class GetBucketsBucketCorsRule {
         public Builder exposeHeaders(String... exposeHeaders) {
             return exposeHeaders(List.of(exposeHeaders));
         }
+        @CustomType.Setter
         public Builder maxAgeSeconds(Integer maxAgeSeconds) {
             this.maxAgeSeconds = Objects.requireNonNull(maxAgeSeconds);
             return this;
-        }        public GetBucketsBucketCorsRule build() {
-            return new GetBucketsBucketCorsRule(allowedHeaders, allowedMethods, allowedOrigins, exposeHeaders, maxAgeSeconds);
+        }
+        public GetBucketsBucketCorsRule build() {
+            final var o = new GetBucketsBucketCorsRule();
+            o.allowedHeaders = allowedHeaders;
+            o.allowedMethods = allowedMethods;
+            o.allowedOrigins = allowedOrigins;
+            o.exposeHeaders = exposeHeaders;
+            o.maxAgeSeconds = maxAgeSeconds;
+            return o;
         }
     }
 }

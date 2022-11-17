@@ -15,13 +15,9 @@ public final class ClusterApplication {
      * @return The tag of the software.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
 
-    @CustomType.Constructor
-    private ClusterApplication(@CustomType.Parameter("tag") @Nullable String tag) {
-        this.tag = tag;
-    }
-
+    private ClusterApplication() {}
     /**
      * @return The tag of the software.
      * 
@@ -37,24 +33,24 @@ public final class ClusterApplication {
     public static Builder builder(ClusterApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
-        }        public ClusterApplication build() {
-            return new ClusterApplication(tag);
+        }
+        public ClusterApplication build() {
+            final var o = new ClusterApplication();
+            o.tag = tag;
+            return o;
         }
     }
 }

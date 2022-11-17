@@ -13,28 +13,19 @@ public final class GetVpcEndpointServiceResourcesResource {
      * @return The ID of the Vpc Endpoint Service Resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of Resource.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return The type of Resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private GetVpcEndpointServiceResourcesResource(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.id = id;
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-    }
-
+    private GetVpcEndpointServiceResourcesResource() {}
     /**
      * @return The ID of the Vpc Endpoint Service Resource.
      * 
@@ -64,16 +55,12 @@ public final class GetVpcEndpointServiceResourcesResource {
     public static Builder builder(GetVpcEndpointServiceResourcesResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String resourceId;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointServiceResourcesResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -81,19 +68,27 @@ public final class GetVpcEndpointServiceResourcesResource {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public GetVpcEndpointServiceResourcesResource build() {
-            return new GetVpcEndpointServiceResourcesResource(id, resourceId, resourceType);
+        }
+        public GetVpcEndpointServiceResourcesResource build() {
+            final var o = new GetVpcEndpointServiceResourcesResource();
+            o.id = id;
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

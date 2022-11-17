@@ -17,63 +17,44 @@ public final class GetApplicationScalingRulesRule {
      * @return The ID of the Application.
      * 
      */
-    private final String appId;
+    private String appId;
     /**
      * @return The CreateTime of the Application Scaling Rule.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Application Scaling Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether to enable the auto scaling policy.
      * 
      */
-    private final Boolean scalingRuleEnable;
+    private Boolean scalingRuleEnable;
     /**
      * @return Monitoring indicators for elastic scaling.
      * 
      */
-    private final List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics;
+    private List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics;
     /**
      * @return The name of the scaling rule.
      * 
      */
-    private final String scalingRuleName;
+    private String scalingRuleName;
     /**
      * @return Timing elastic expansion.
      * 
      */
-    private final List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers;
+    private List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers;
     /**
      * @return Flexible strategy type.
      * 
      */
-    private final String scalingRuleType;
+    private String scalingRuleType;
 
-    @CustomType.Constructor
-    private GetApplicationScalingRulesRule(
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("scalingRuleEnable") Boolean scalingRuleEnable,
-        @CustomType.Parameter("scalingRuleMetrics") List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics,
-        @CustomType.Parameter("scalingRuleName") String scalingRuleName,
-        @CustomType.Parameter("scalingRuleTimers") List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers,
-        @CustomType.Parameter("scalingRuleType") String scalingRuleType) {
-        this.appId = appId;
-        this.createTime = createTime;
-        this.id = id;
-        this.scalingRuleEnable = scalingRuleEnable;
-        this.scalingRuleMetrics = scalingRuleMetrics;
-        this.scalingRuleName = scalingRuleName;
-        this.scalingRuleTimers = scalingRuleTimers;
-        this.scalingRuleType = scalingRuleType;
-    }
-
+    private GetApplicationScalingRulesRule() {}
     /**
      * @return The ID of the Application.
      * 
@@ -138,7 +119,7 @@ public final class GetApplicationScalingRulesRule {
     public static Builder builder(GetApplicationScalingRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appId;
         private String createTime;
@@ -148,11 +129,7 @@ public final class GetApplicationScalingRulesRule {
         private String scalingRuleName;
         private List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers;
         private String scalingRuleType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScalingRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -165,22 +142,27 @@ public final class GetApplicationScalingRulesRule {
     	      this.scalingRuleType = defaults.scalingRuleType;
         }
 
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder scalingRuleEnable(Boolean scalingRuleEnable) {
             this.scalingRuleEnable = Objects.requireNonNull(scalingRuleEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder scalingRuleMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics) {
             this.scalingRuleMetrics = Objects.requireNonNull(scalingRuleMetrics);
             return this;
@@ -188,10 +170,12 @@ public final class GetApplicationScalingRulesRule {
         public Builder scalingRuleMetrics(GetApplicationScalingRulesRuleScalingRuleMetric... scalingRuleMetrics) {
             return scalingRuleMetrics(List.of(scalingRuleMetrics));
         }
+        @CustomType.Setter
         public Builder scalingRuleName(String scalingRuleName) {
             this.scalingRuleName = Objects.requireNonNull(scalingRuleName);
             return this;
         }
+        @CustomType.Setter
         public Builder scalingRuleTimers(List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers) {
             this.scalingRuleTimers = Objects.requireNonNull(scalingRuleTimers);
             return this;
@@ -199,11 +183,22 @@ public final class GetApplicationScalingRulesRule {
         public Builder scalingRuleTimers(GetApplicationScalingRulesRuleScalingRuleTimer... scalingRuleTimers) {
             return scalingRuleTimers(List.of(scalingRuleTimers));
         }
+        @CustomType.Setter
         public Builder scalingRuleType(String scalingRuleType) {
             this.scalingRuleType = Objects.requireNonNull(scalingRuleType);
             return this;
-        }        public GetApplicationScalingRulesRule build() {
-            return new GetApplicationScalingRulesRule(appId, createTime, id, scalingRuleEnable, scalingRuleMetrics, scalingRuleName, scalingRuleTimers, scalingRuleType);
+        }
+        public GetApplicationScalingRulesRule build() {
+            final var o = new GetApplicationScalingRulesRule();
+            o.appId = appId;
+            o.createTime = createTime;
+            o.id = id;
+            o.scalingRuleEnable = scalingRuleEnable;
+            o.scalingRuleMetrics = scalingRuleMetrics;
+            o.scalingRuleName = scalingRuleName;
+            o.scalingRuleTimers = scalingRuleTimers;
+            o.scalingRuleType = scalingRuleType;
+            return o;
         }
     }
 }

@@ -14,42 +14,29 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
      * @return The description of protocol.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The forward port.
      * 
      */
-    private final Integer forwardPort;
+    private Integer forwardPort;
     /**
      * @return The listener forward.
      * 
      */
-    private final String listenerForward;
+    private String listenerForward;
     /**
      * @return The listener port.
      * 
      */
-    private final Integer listenerPort;
+    private Integer listenerPort;
     /**
      * @return The listener protocol.
      * 
      */
-    private final String listenerProtocol;
+    private String listenerProtocol;
 
-    @CustomType.Constructor
-    private GetApplicationLoadBalancersBalancerListenerPortsAndProtocol(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("forwardPort") Integer forwardPort,
-        @CustomType.Parameter("listenerForward") String listenerForward,
-        @CustomType.Parameter("listenerPort") Integer listenerPort,
-        @CustomType.Parameter("listenerProtocol") String listenerProtocol) {
-        this.description = description;
-        this.forwardPort = forwardPort;
-        this.listenerForward = listenerForward;
-        this.listenerPort = listenerPort;
-        this.listenerProtocol = listenerProtocol;
-    }
-
+    private GetApplicationLoadBalancersBalancerListenerPortsAndProtocol() {}
     /**
      * @return The description of protocol.
      * 
@@ -93,18 +80,14 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
     public static Builder builder(GetApplicationLoadBalancersBalancerListenerPortsAndProtocol defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private Integer forwardPort;
         private String listenerForward;
         private Integer listenerPort;
         private String listenerProtocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationLoadBalancersBalancerListenerPortsAndProtocol defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -114,27 +97,39 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
     	      this.listenerProtocol = defaults.listenerProtocol;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardPort(Integer forwardPort) {
             this.forwardPort = Objects.requireNonNull(forwardPort);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerForward(String listenerForward) {
             this.listenerForward = Objects.requireNonNull(listenerForward);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
             this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
             return this;
-        }        public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {
-            return new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol(description, forwardPort, listenerForward, listenerPort, listenerProtocol);
+        }
+        public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {
+            final var o = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol();
+            o.description = description;
+            o.forwardPort = forwardPort;
+            o.listenerForward = listenerForward;
+            o.listenerPort = listenerPort;
+            o.listenerProtocol = listenerProtocol;
+            return o;
         }
     }
 }

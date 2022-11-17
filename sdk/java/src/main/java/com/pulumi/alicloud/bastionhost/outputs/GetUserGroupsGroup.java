@@ -13,42 +13,29 @@ public final class GetUserGroupsGroup {
      * @return Specify the New Group of Remark Information. Supports up to 500 Characters.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return The ID of the User Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Specify the New Group of the Bastion Host of Instance Id.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The User Group ID.
      * 
      */
-    private final String userGroupId;
+    private String userGroupId;
     /**
      * @return Specify the New Group Name. Supports up to 128 Characters.
      * 
      */
-    private final String userGroupName;
+    private String userGroupName;
 
-    @CustomType.Constructor
-    private GetUserGroupsGroup(
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("userGroupId") String userGroupId,
-        @CustomType.Parameter("userGroupName") String userGroupName) {
-        this.comment = comment;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.userGroupId = userGroupId;
-        this.userGroupName = userGroupName;
-    }
-
+    private GetUserGroupsGroup() {}
     /**
      * @return Specify the New Group of Remark Information. Supports up to 500 Characters.
      * 
@@ -92,18 +79,14 @@ public final class GetUserGroupsGroup {
     public static Builder builder(GetUserGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comment;
         private String id;
         private String instanceId;
         private String userGroupId;
         private String userGroupName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -113,27 +96,39 @@ public final class GetUserGroupsGroup {
     	      this.userGroupName = defaults.userGroupName;
         }
 
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder userGroupId(String userGroupId) {
             this.userGroupId = Objects.requireNonNull(userGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder userGroupName(String userGroupName) {
             this.userGroupName = Objects.requireNonNull(userGroupName);
             return this;
-        }        public GetUserGroupsGroup build() {
-            return new GetUserGroupsGroup(comment, id, instanceId, userGroupId, userGroupName);
+        }
+        public GetUserGroupsGroup build() {
+            final var o = new GetUserGroupsGroup();
+            o.comment = comment;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.userGroupId = userGroupId;
+            o.userGroupName = userGroupName;
+            return o;
         }
     }
 }

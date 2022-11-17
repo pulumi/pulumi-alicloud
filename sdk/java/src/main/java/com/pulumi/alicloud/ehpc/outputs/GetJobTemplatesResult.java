@@ -17,23 +17,12 @@ public final class GetJobTemplatesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetJobTemplatesTemplate> templates;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetJobTemplatesTemplate> templates;
 
-    @CustomType.Constructor
-    private GetJobTemplatesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("templates") List<GetJobTemplatesTemplate> templates) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.templates = templates;
-    }
-
+    private GetJobTemplatesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,17 +47,13 @@ public final class GetJobTemplatesResult {
     public static Builder builder(GetJobTemplatesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetJobTemplatesTemplate> templates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetJobTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -77,10 +62,12 @@ public final class GetJobTemplatesResult {
     	      this.templates = defaults.templates;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -88,18 +75,26 @@ public final class GetJobTemplatesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder templates(List<GetJobTemplatesTemplate> templates) {
             this.templates = Objects.requireNonNull(templates);
             return this;
         }
         public Builder templates(GetJobTemplatesTemplate... templates) {
             return templates(List.of(templates));
-        }        public GetJobTemplatesResult build() {
-            return new GetJobTemplatesResult(id, ids, outputFile, templates);
+        }
+        public GetJobTemplatesResult build() {
+            final var o = new GetJobTemplatesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.templates = templates;
+            return o;
         }
     }
 }

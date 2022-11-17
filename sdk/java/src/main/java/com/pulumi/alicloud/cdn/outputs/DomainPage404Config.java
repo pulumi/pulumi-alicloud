@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainPage404Config {
-    private final @Nullable String customPageUrl;
-    private final @Nullable String errorCode;
-    private final @Nullable String pageType;
+    private @Nullable String customPageUrl;
+    private @Nullable String errorCode;
+    private @Nullable String pageType;
 
-    @CustomType.Constructor
-    private DomainPage404Config(
-        @CustomType.Parameter("customPageUrl") @Nullable String customPageUrl,
-        @CustomType.Parameter("errorCode") @Nullable String errorCode,
-        @CustomType.Parameter("pageType") @Nullable String pageType) {
-        this.customPageUrl = customPageUrl;
-        this.errorCode = errorCode;
-        this.pageType = pageType;
-    }
-
+    private DomainPage404Config() {}
     public Optional<String> customPageUrl() {
         return Optional.ofNullable(this.customPageUrl);
     }
@@ -42,16 +33,12 @@ public final class DomainPage404Config {
     public static Builder builder(DomainPage404Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customPageUrl;
         private @Nullable String errorCode;
         private @Nullable String pageType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainPage404Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customPageUrl = defaults.customPageUrl;
@@ -59,19 +46,27 @@ public final class DomainPage404Config {
     	      this.pageType = defaults.pageType;
         }
 
+        @CustomType.Setter
         public Builder customPageUrl(@Nullable String customPageUrl) {
             this.customPageUrl = customPageUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder errorCode(@Nullable String errorCode) {
             this.errorCode = errorCode;
             return this;
         }
+        @CustomType.Setter
         public Builder pageType(@Nullable String pageType) {
             this.pageType = pageType;
             return this;
-        }        public DomainPage404Config build() {
-            return new DomainPage404Config(customPageUrl, errorCode, pageType);
+        }
+        public DomainPage404Config build() {
+            final var o = new DomainPage404Config();
+            o.customPageUrl = customPageUrl;
+            o.errorCode = errorCode;
+            o.pageType = pageType;
+            return o;
         }
     }
 }

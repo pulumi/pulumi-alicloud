@@ -18,68 +18,43 @@ public final class GetCommonBandwidthPackagesResult {
      * @return The name of bandwidth package.
      * 
      */
-    private final @Nullable String bandwidthPackageName;
-    private final @Nullable Boolean dryRun;
+    private @Nullable String bandwidthPackageName;
+    private @Nullable Boolean dryRun;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Optional) A list of Common Bandwidth Packages IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable Boolean includeReservationData;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable Boolean includeReservationData;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Common Bandwidth Packages names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of Common Bandwidth Packages. Each element contains the following attributes:
      * 
      */
-    private final List<GetCommonBandwidthPackagesPackage> packages;
+    private List<GetCommonBandwidthPackagesPackage> packages;
     /**
      * @return The Id of resource group which the common bandwidth package belongs.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return Status of the Common Bandwidth Package.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetCommonBandwidthPackagesResult(
-        @CustomType.Parameter("bandwidthPackageName") @Nullable String bandwidthPackageName,
-        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("includeReservationData") @Nullable Boolean includeReservationData,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("packages") List<GetCommonBandwidthPackagesPackage> packages,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.bandwidthPackageName = bandwidthPackageName;
-        this.dryRun = dryRun;
-        this.id = id;
-        this.ids = ids;
-        this.includeReservationData = includeReservationData;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.packages = packages;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-    }
-
+    private GetCommonBandwidthPackagesResult() {}
     /**
      * @return The name of bandwidth package.
      * 
@@ -149,7 +124,7 @@ public final class GetCommonBandwidthPackagesResult {
     public static Builder builder(GetCommonBandwidthPackagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bandwidthPackageName;
         private @Nullable Boolean dryRun;
@@ -162,11 +137,7 @@ public final class GetCommonBandwidthPackagesResult {
         private List<GetCommonBandwidthPackagesPackage> packages;
         private @Nullable String resourceGroupId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCommonBandwidthPackagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidthPackageName = defaults.bandwidthPackageName;
@@ -182,18 +153,22 @@ public final class GetCommonBandwidthPackagesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidthPackageName(@Nullable String bandwidthPackageName) {
             this.bandwidthPackageName = bandwidthPackageName;
             return this;
         }
+        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -201,14 +176,17 @@ public final class GetCommonBandwidthPackagesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -216,10 +194,12 @@ public final class GetCommonBandwidthPackagesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder packages(List<GetCommonBandwidthPackagesPackage> packages) {
             this.packages = Objects.requireNonNull(packages);
             return this;
@@ -227,15 +207,30 @@ public final class GetCommonBandwidthPackagesResult {
         public Builder packages(GetCommonBandwidthPackagesPackage... packages) {
             return packages(List.of(packages));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetCommonBandwidthPackagesResult build() {
-            return new GetCommonBandwidthPackagesResult(bandwidthPackageName, dryRun, id, ids, includeReservationData, nameRegex, names, outputFile, packages, resourceGroupId, status);
+        }
+        public GetCommonBandwidthPackagesResult build() {
+            final var o = new GetCommonBandwidthPackagesResult();
+            o.bandwidthPackageName = bandwidthPackageName;
+            o.dryRun = dryRun;
+            o.id = id;
+            o.ids = ids;
+            o.includeReservationData = includeReservationData;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.packages = packages;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            return o;
         }
     }
 }

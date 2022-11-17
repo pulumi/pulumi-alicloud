@@ -16,28 +16,19 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
      * @return Whether shrinkage is prohibited.
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
      * 
      */
-    private final @Nullable Integer stabilizationWindowSeconds;
+    private @Nullable Integer stabilizationWindowSeconds;
     /**
      * @return Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
      * 
      */
-    private final @Nullable Integer step;
+    private @Nullable Integer step;
 
-    @CustomType.Constructor
-    private ApplicationScalingRuleScalingRuleMetricScaleDownRules(
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("stabilizationWindowSeconds") @Nullable Integer stabilizationWindowSeconds,
-        @CustomType.Parameter("step") @Nullable Integer step) {
-        this.disabled = disabled;
-        this.stabilizationWindowSeconds = stabilizationWindowSeconds;
-        this.step = step;
-    }
-
+    private ApplicationScalingRuleScalingRuleMetricScaleDownRules() {}
     /**
      * @return Whether shrinkage is prohibited.
      * 
@@ -67,16 +58,12 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
     public static Builder builder(ApplicationScalingRuleScalingRuleMetricScaleDownRules defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disabled;
         private @Nullable Integer stabilizationWindowSeconds;
         private @Nullable Integer step;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScalingRuleScalingRuleMetricScaleDownRules defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
@@ -84,19 +71,27 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
     	      this.step = defaults.step;
         }
 
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder stabilizationWindowSeconds(@Nullable Integer stabilizationWindowSeconds) {
             this.stabilizationWindowSeconds = stabilizationWindowSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder step(@Nullable Integer step) {
             this.step = step;
             return this;
-        }        public ApplicationScalingRuleScalingRuleMetricScaleDownRules build() {
-            return new ApplicationScalingRuleScalingRuleMetricScaleDownRules(disabled, stabilizationWindowSeconds, step);
+        }
+        public ApplicationScalingRuleScalingRuleMetricScaleDownRules build() {
+            final var o = new ApplicationScalingRuleScalingRuleMetricScaleDownRules();
+            o.disabled = disabled;
+            o.stabilizationWindowSeconds = stabilizationWindowSeconds;
+            o.step = step;
+            return o;
         }
     }
 }

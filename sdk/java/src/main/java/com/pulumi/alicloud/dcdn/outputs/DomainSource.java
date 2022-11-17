@@ -16,17 +16,17 @@ public final class DomainSource {
      * @return The origin address.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The port number. Valid values: `443` and `80`. Default to `80`.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return The priority of the origin if multiple origins are specified. Default to `20`.
      * 
      */
-    private final @Nullable String priority;
+    private @Nullable String priority;
     /**
      * @return The type of the origin. Valid values:
      * `ipaddr`: The origin is configured using an IP address.
@@ -34,27 +34,14 @@ public final class DomainSource {
      * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The weight of the origin if multiple origins are specified. Default to `10`.
      * 
      */
-    private final @Nullable String weight;
+    private @Nullable String weight;
 
-    @CustomType.Constructor
-    private DomainSource(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("priority") @Nullable String priority,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") @Nullable String weight) {
-        this.content = content;
-        this.port = port;
-        this.priority = priority;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private DomainSource() {}
     /**
      * @return The origin address.
      * 
@@ -101,18 +88,14 @@ public final class DomainSource {
     public static Builder builder(DomainSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private @Nullable Integer port;
         private @Nullable String priority;
         private String type;
         private @Nullable String weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -122,27 +105,39 @@ public final class DomainSource {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder priority(@Nullable String priority) {
             this.priority = priority;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable String weight) {
             this.weight = weight;
             return this;
-        }        public DomainSource build() {
-            return new DomainSource(content, port, priority, type, weight);
+        }
+        public DomainSource build() {
+            final var o = new DomainSource();
+            o.content = content;
+            o.port = port;
+            o.priority = priority;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

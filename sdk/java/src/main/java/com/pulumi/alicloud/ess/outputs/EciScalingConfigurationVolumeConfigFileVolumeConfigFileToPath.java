@@ -15,21 +15,14 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
      */
-    private final @Nullable String content;
+    private @Nullable String content;
     /**
      * @return The relative file path.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.content = content;
-        this.path = path;
-    }
-
+    private EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath() {}
     /**
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
@@ -52,30 +45,32 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
     public static Builder builder(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath build() {
-            return new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(content, path);
+        }
+        public EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath build() {
+            final var o = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath();
+            o.content = content;
+            o.path = path;
+            return o;
         }
     }
 }

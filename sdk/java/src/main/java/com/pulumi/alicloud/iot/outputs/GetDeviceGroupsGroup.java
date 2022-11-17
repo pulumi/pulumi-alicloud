@@ -14,77 +14,54 @@ public final class GetDeviceGroupsGroup {
      * @return The Group CreateTime.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The Group Number of activated devices.
      * 
      */
-    private final String deviceActive;
+    private String deviceActive;
     /**
      * @return The Group Total number of devices.
      * 
      */
-    private final String deviceCount;
+    private String deviceCount;
     /**
      * @return The Group Number of online devices.
      * 
      */
-    private final String deviceOnline;
+    private String deviceOnline;
     /**
      * @return The Error_Message of the device group.
      * 
      */
-    private final String errorMessage;
+    private String errorMessage;
     /**
      * @return The GroupDesc of the device group.
      * 
      */
-    private final String groupDesc;
+    private String groupDesc;
     /**
      * @return The GroupId of the device group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The GroupName of the device group.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The ID of the device group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether the call is successful.
      * 
      */
-    private final Boolean success;
+    private Boolean success;
 
-    @CustomType.Constructor
-    private GetDeviceGroupsGroup(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deviceActive") String deviceActive,
-        @CustomType.Parameter("deviceCount") String deviceCount,
-        @CustomType.Parameter("deviceOnline") String deviceOnline,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("groupDesc") String groupDesc,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("success") Boolean success) {
-        this.createTime = createTime;
-        this.deviceActive = deviceActive;
-        this.deviceCount = deviceCount;
-        this.deviceOnline = deviceOnline;
-        this.errorMessage = errorMessage;
-        this.groupDesc = groupDesc;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.id = id;
-        this.success = success;
-    }
-
+    private GetDeviceGroupsGroup() {}
     /**
      * @return The Group CreateTime.
      * 
@@ -163,7 +140,7 @@ public final class GetDeviceGroupsGroup {
     public static Builder builder(GetDeviceGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String deviceActive;
@@ -175,11 +152,7 @@ public final class GetDeviceGroupsGroup {
         private String groupName;
         private String id;
         private Boolean success;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDeviceGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -194,47 +167,69 @@ public final class GetDeviceGroupsGroup {
     	      this.success = defaults.success;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceActive(String deviceActive) {
             this.deviceActive = Objects.requireNonNull(deviceActive);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceCount(String deviceCount) {
             this.deviceCount = Objects.requireNonNull(deviceCount);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceOnline(String deviceOnline) {
             this.deviceOnline = Objects.requireNonNull(deviceOnline);
             return this;
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder groupDesc(String groupDesc) {
             this.groupDesc = Objects.requireNonNull(groupDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder success(Boolean success) {
             this.success = Objects.requireNonNull(success);
             return this;
-        }        public GetDeviceGroupsGroup build() {
-            return new GetDeviceGroupsGroup(createTime, deviceActive, deviceCount, deviceOnline, errorMessage, groupDesc, groupId, groupName, id, success);
+        }
+        public GetDeviceGroupsGroup build() {
+            final var o = new GetDeviceGroupsGroup();
+            o.createTime = createTime;
+            o.deviceActive = deviceActive;
+            o.deviceCount = deviceCount;
+            o.deviceOnline = deviceOnline;
+            o.errorMessage = errorMessage;
+            o.groupDesc = groupDesc;
+            o.groupId = groupId;
+            o.groupName = groupName;
+            o.id = id;
+            o.success = success;
+            return o;
         }
     }
 }

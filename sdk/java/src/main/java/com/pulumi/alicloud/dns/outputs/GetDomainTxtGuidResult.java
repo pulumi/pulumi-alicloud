@@ -11,44 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainTxtGuidResult {
-    private final String domainName;
+    private String domainName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String lang;
-    private final @Nullable String outputFile;
+    private String id;
+    private @Nullable String lang;
+    private @Nullable String outputFile;
     /**
      * @return Host record.
      * 
      */
-    private final String rr;
-    private final String type;
+    private String rr;
+    private String type;
     /**
      * @return Record the value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetDomainTxtGuidResult(
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("rr") String rr,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") String value) {
-        this.domainName = domainName;
-        this.id = id;
-        this.lang = lang;
-        this.outputFile = outputFile;
-        this.rr = rr;
-        this.type = type;
-        this.value = value;
-    }
-
+    private GetDomainTxtGuidResult() {}
     public String domainName() {
         return this.domainName;
     }
@@ -90,7 +73,7 @@ public final class GetDomainTxtGuidResult {
     public static Builder builder(GetDomainTxtGuidResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainName;
         private String id;
@@ -99,11 +82,7 @@ public final class GetDomainTxtGuidResult {
         private String rr;
         private String type;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainTxtGuidResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -115,35 +94,51 @@ public final class GetDomainTxtGuidResult {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder rr(String rr) {
             this.rr = Objects.requireNonNull(rr);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetDomainTxtGuidResult build() {
-            return new GetDomainTxtGuidResult(domainName, id, lang, outputFile, rr, type, value);
+        }
+        public GetDomainTxtGuidResult build() {
+            final var o = new GetDomainTxtGuidResult();
+            o.domainName = domainName;
+            o.id = id;
+            o.lang = lang;
+            o.outputFile = outputFile;
+            o.rr = rr;
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

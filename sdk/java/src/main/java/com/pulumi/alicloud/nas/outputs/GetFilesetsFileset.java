@@ -13,63 +13,44 @@ public final class GetFilesetsFileset {
      * @return The time when Fileset was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Description of Fileset.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the file system.
      * 
      */
-    private final String fileSystemId;
+    private String fileSystemId;
     /**
      * @return The path of Fileset.
      * 
      */
-    private final String fileSystemPath;
+    private String fileSystemPath;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String filesetId;
+    private String filesetId;
     /**
      * @return The ID of the Fileset.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the fileset.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The latest update time of Fileset.
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetFilesetsFileset(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("fileSystemId") String fileSystemId,
-        @CustomType.Parameter("fileSystemPath") String fileSystemPath,
-        @CustomType.Parameter("filesetId") String filesetId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.createTime = createTime;
-        this.description = description;
-        this.fileSystemId = fileSystemId;
-        this.fileSystemPath = fileSystemPath;
-        this.filesetId = filesetId;
-        this.id = id;
-        this.status = status;
-        this.updateTime = updateTime;
-    }
-
+    private GetFilesetsFileset() {}
     /**
      * @return The time when Fileset was created.
      * 
@@ -134,7 +115,7 @@ public final class GetFilesetsFileset {
     public static Builder builder(GetFilesetsFileset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -144,11 +125,7 @@ public final class GetFilesetsFileset {
         private String id;
         private String status;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFilesetsFileset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -161,39 +138,57 @@ public final class GetFilesetsFileset {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemPath(String fileSystemPath) {
             this.fileSystemPath = Objects.requireNonNull(fileSystemPath);
             return this;
         }
+        @CustomType.Setter
         public Builder filesetId(String filesetId) {
             this.filesetId = Objects.requireNonNull(filesetId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetFilesetsFileset build() {
-            return new GetFilesetsFileset(createTime, description, fileSystemId, fileSystemPath, filesetId, id, status, updateTime);
+        }
+        public GetFilesetsFileset build() {
+            final var o = new GetFilesetsFileset();
+            o.createTime = createTime;
+            o.description = description;
+            o.fileSystemId = fileSystemId;
+            o.fileSystemPath = fileSystemPath;
+            o.filesetId = filesetId;
+            o.id = id;
+            o.status = status;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

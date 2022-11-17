@@ -13,87 +13,60 @@ public final class GetInstancesInstance {
      * @return Instance availability zone.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
      * 
      */
-    private final String chargeType;
+    private String chargeType;
     /**
      * @return The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return The description of an instance.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Database engine type. Supported option is `gpdb`.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database engine version.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return The instance id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The group type.
      * 
      */
-    private final String instanceClass;
+    private String instanceClass;
     /**
      * @return The number of groups.
      * 
      */
-    private final String instanceGroupCount;
-    private final String instanceNetworkType;
+    private String instanceGroupCount;
+    private String instanceNetworkType;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return Status of the instance.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceClass") String instanceClass,
-        @CustomType.Parameter("instanceGroupCount") String instanceGroupCount,
-        @CustomType.Parameter("instanceNetworkType") String instanceNetworkType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("status") String status) {
-        this.availabilityZone = availabilityZone;
-        this.chargeType = chargeType;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.id = id;
-        this.instanceClass = instanceClass;
-        this.instanceGroupCount = instanceGroupCount;
-        this.instanceNetworkType = instanceNetworkType;
-        this.regionId = regionId;
-        this.status = status;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Instance availability zone.
      * 
@@ -182,7 +155,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String chargeType;
@@ -196,11 +169,7 @@ public final class GetInstancesInstance {
         private String instanceNetworkType;
         private String regionId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -217,55 +186,81 @@ public final class GetInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceGroupCount(String instanceGroupCount) {
             this.instanceGroupCount = Objects.requireNonNull(instanceGroupCount);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNetworkType(String instanceNetworkType) {
             this.instanceNetworkType = Objects.requireNonNull(instanceNetworkType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(availabilityZone, chargeType, creationTime, description, engine, engineVersion, id, instanceClass, instanceGroupCount, instanceNetworkType, regionId, status);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.availabilityZone = availabilityZone;
+            o.chargeType = chargeType;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.id = id;
+            o.instanceClass = instanceClass;
+            o.instanceGroupCount = instanceGroupCount;
+            o.instanceNetworkType = instanceNetworkType;
+            o.regionId = regionId;
+            o.status = status;
+            return o;
         }
     }
 }

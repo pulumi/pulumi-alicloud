@@ -13,36 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressBooksResult {
-    private final List<GetAddressBooksBook> books;
-    private final @Nullable String groupType;
+    private List<GetAddressBooksBook> books;
+    private @Nullable String groupType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetAddressBooksResult(
-        @CustomType.Parameter("books") List<GetAddressBooksBook> books,
-        @CustomType.Parameter("groupType") @Nullable String groupType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.books = books;
-        this.groupType = groupType;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetAddressBooksResult() {}
     public List<GetAddressBooksBook> books() {
         return this.books;
     }
@@ -76,7 +59,7 @@ public final class GetAddressBooksResult {
     public static Builder builder(GetAddressBooksResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAddressBooksBook> books;
         private @Nullable String groupType;
@@ -85,11 +68,7 @@ public final class GetAddressBooksResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAddressBooksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.books = defaults.books;
@@ -101,6 +80,7 @@ public final class GetAddressBooksResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder books(List<GetAddressBooksBook> books) {
             this.books = Objects.requireNonNull(books);
             return this;
@@ -108,14 +88,17 @@ public final class GetAddressBooksResult {
         public Builder books(GetAddressBooksBook... books) {
             return books(List.of(books));
         }
+        @CustomType.Setter
         public Builder groupType(@Nullable String groupType) {
             this.groupType = groupType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -123,10 +106,12 @@ public final class GetAddressBooksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -134,11 +119,21 @@ public final class GetAddressBooksResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetAddressBooksResult build() {
-            return new GetAddressBooksResult(books, groupType, id, ids, nameRegex, names, outputFile);
+        }
+        public GetAddressBooksResult build() {
+            final var o = new GetAddressBooksResult();
+            o.books = books;
+            o.groupType = groupType;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

@@ -16,245 +16,174 @@ public final class GetInstancesInstance {
      * @return AutoRenew.
      * 
      */
-    private final String autoRenew;
+    private String autoRenew;
     /**
      * @return The cold storage capacity of the instance. Unit: GB.
      * 
      */
-    private final Integer coldStorage;
+    private Integer coldStorage;
     /**
      * @return The creation date of Instance.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The deletion protection of instance.
      * 
      */
-    private final Boolean deletionProection;
+    private Boolean deletionProection;
     /**
      * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
      * 
      */
-    private final String diskCategory;
+    private String diskCategory;
     /**
      * @return The usage of disk.
      * 
      */
-    private final String diskUsage;
+    private String diskUsage;
     /**
      * @return The threshold of disk.
      * 
      */
-    private final String diskWarningThreshold;
+    private String diskWarningThreshold;
     /**
      * @return The type of Instance engine .
      * 
      */
-    private final Integer engineType;
+    private Integer engineType;
     /**
      * @return The expiration time of Instance.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The count of file engine.
      * 
      */
-    private final Integer fileEngineNodeCount;
+    private Integer fileEngineNodeCount;
     /**
      * @return The specification of file engine. Valid values: `lindorm.c.xlarge`.
      * 
      */
-    private final String fileEngineSpecification;
+    private String fileEngineSpecification;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      * 
      */
-    private final String instanceStorage;
+    private String instanceStorage;
     /**
      * @return The ip white list of instance.
      * 
      */
-    private final List<String> ipWhiteLists;
+    private List<String> ipWhiteLists;
     /**
      * @return The count of lindorm tunnel service.
      * 
      */
-    private final Integer ltsNodeCount;
+    private Integer ltsNodeCount;
     /**
      * @return The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    private final String ltsNodeSpecification;
+    private String ltsNodeSpecification;
     /**
      * @return Instance network type, enumerative.VPC.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The billing method. Valid values: `PayAsYouGo` and `Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The count of phoenix.
      * 
      */
-    private final Integer phoenixNodeCount;
+    private Integer phoenixNodeCount;
     /**
      * @return The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    private final String phoenixNodeSpecification;
+    private String phoenixNodeSpecification;
     /**
      * @return The owner id of resource.
      * 
      */
-    private final String resourceOwnerId;
+    private String resourceOwnerId;
     /**
      * @return The count of search engine.
      * 
      */
-    private final Integer searchEngineNodeCount;
+    private Integer searchEngineNodeCount;
     /**
      * @return The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    private final String searchEngineSpecification;
+    private String searchEngineSpecification;
     /**
      * @return The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
      * 
      */
-    private final String serviceType;
+    private String serviceType;
     /**
      * @return The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The count of table engine.
      * 
      */
-    private final Integer tableEngineNodeCount;
+    private Integer tableEngineNodeCount;
     /**
      * @return The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    private final String tableEngineSpecification;
+    private String tableEngineSpecification;
     /**
      * @return The count of time series engine.
      * 
      */
-    private final Integer timeSeriesEngineNodeCount;
+    private Integer timeSeriesEngineNodeCount;
     /**
      * @return The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    private final String timeSeriresEngineSpecification;
+    private String timeSeriresEngineSpecification;
     /**
      * @return The ID of the virtual private cloud (VPC) that is connected to the instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone ID of the instance.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("autoRenew") String autoRenew,
-        @CustomType.Parameter("coldStorage") Integer coldStorage,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deletionProection") Boolean deletionProection,
-        @CustomType.Parameter("diskCategory") String diskCategory,
-        @CustomType.Parameter("diskUsage") String diskUsage,
-        @CustomType.Parameter("diskWarningThreshold") String diskWarningThreshold,
-        @CustomType.Parameter("engineType") Integer engineType,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("fileEngineNodeCount") Integer fileEngineNodeCount,
-        @CustomType.Parameter("fileEngineSpecification") String fileEngineSpecification,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("instanceStorage") String instanceStorage,
-        @CustomType.Parameter("ipWhiteLists") List<String> ipWhiteLists,
-        @CustomType.Parameter("ltsNodeCount") Integer ltsNodeCount,
-        @CustomType.Parameter("ltsNodeSpecification") String ltsNodeSpecification,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("phoenixNodeCount") Integer phoenixNodeCount,
-        @CustomType.Parameter("phoenixNodeSpecification") String phoenixNodeSpecification,
-        @CustomType.Parameter("resourceOwnerId") String resourceOwnerId,
-        @CustomType.Parameter("searchEngineNodeCount") Integer searchEngineNodeCount,
-        @CustomType.Parameter("searchEngineSpecification") String searchEngineSpecification,
-        @CustomType.Parameter("serviceType") String serviceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tableEngineNodeCount") Integer tableEngineNodeCount,
-        @CustomType.Parameter("tableEngineSpecification") String tableEngineSpecification,
-        @CustomType.Parameter("timeSeriesEngineNodeCount") Integer timeSeriesEngineNodeCount,
-        @CustomType.Parameter("timeSeriresEngineSpecification") String timeSeriresEngineSpecification,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.autoRenew = autoRenew;
-        this.coldStorage = coldStorage;
-        this.createTime = createTime;
-        this.deletionProection = deletionProection;
-        this.diskCategory = diskCategory;
-        this.diskUsage = diskUsage;
-        this.diskWarningThreshold = diskWarningThreshold;
-        this.engineType = engineType;
-        this.expiredTime = expiredTime;
-        this.fileEngineNodeCount = fileEngineNodeCount;
-        this.fileEngineSpecification = fileEngineSpecification;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.instanceStorage = instanceStorage;
-        this.ipWhiteLists = ipWhiteLists;
-        this.ltsNodeCount = ltsNodeCount;
-        this.ltsNodeSpecification = ltsNodeSpecification;
-        this.networkType = networkType;
-        this.paymentType = paymentType;
-        this.phoenixNodeCount = phoenixNodeCount;
-        this.phoenixNodeSpecification = phoenixNodeSpecification;
-        this.resourceOwnerId = resourceOwnerId;
-        this.searchEngineNodeCount = searchEngineNodeCount;
-        this.searchEngineSpecification = searchEngineSpecification;
-        this.serviceType = serviceType;
-        this.status = status;
-        this.tableEngineNodeCount = tableEngineNodeCount;
-        this.tableEngineSpecification = tableEngineSpecification;
-        this.timeSeriesEngineNodeCount = timeSeriesEngineNodeCount;
-        this.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return AutoRenew.
      * 
@@ -501,7 +430,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String autoRenew;
         private Integer coldStorage;
@@ -537,11 +466,7 @@ public final class GetInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenew = defaults.autoRenew;
@@ -580,66 +505,82 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder autoRenew(String autoRenew) {
             this.autoRenew = Objects.requireNonNull(autoRenew);
             return this;
         }
+        @CustomType.Setter
         public Builder coldStorage(Integer coldStorage) {
             this.coldStorage = Objects.requireNonNull(coldStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deletionProection(Boolean deletionProection) {
             this.deletionProection = Objects.requireNonNull(deletionProection);
             return this;
         }
+        @CustomType.Setter
         public Builder diskCategory(String diskCategory) {
             this.diskCategory = Objects.requireNonNull(diskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder diskUsage(String diskUsage) {
             this.diskUsage = Objects.requireNonNull(diskUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder diskWarningThreshold(String diskWarningThreshold) {
             this.diskWarningThreshold = Objects.requireNonNull(diskWarningThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder engineType(Integer engineType) {
             this.engineType = Objects.requireNonNull(engineType);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder fileEngineNodeCount(Integer fileEngineNodeCount) {
             this.fileEngineNodeCount = Objects.requireNonNull(fileEngineNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder fileEngineSpecification(String fileEngineSpecification) {
             this.fileEngineSpecification = Objects.requireNonNull(fileEngineSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceStorage(String instanceStorage) {
             this.instanceStorage = Objects.requireNonNull(instanceStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder ipWhiteLists(List<String> ipWhiteLists) {
             this.ipWhiteLists = Objects.requireNonNull(ipWhiteLists);
             return this;
@@ -647,79 +588,133 @@ public final class GetInstancesInstance {
         public Builder ipWhiteLists(String... ipWhiteLists) {
             return ipWhiteLists(List.of(ipWhiteLists));
         }
+        @CustomType.Setter
         public Builder ltsNodeCount(Integer ltsNodeCount) {
             this.ltsNodeCount = Objects.requireNonNull(ltsNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder ltsNodeSpecification(String ltsNodeSpecification) {
             this.ltsNodeSpecification = Objects.requireNonNull(ltsNodeSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder phoenixNodeCount(Integer phoenixNodeCount) {
             this.phoenixNodeCount = Objects.requireNonNull(phoenixNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder phoenixNodeSpecification(String phoenixNodeSpecification) {
             this.phoenixNodeSpecification = Objects.requireNonNull(phoenixNodeSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceOwnerId(String resourceOwnerId) {
             this.resourceOwnerId = Objects.requireNonNull(resourceOwnerId);
             return this;
         }
+        @CustomType.Setter
         public Builder searchEngineNodeCount(Integer searchEngineNodeCount) {
             this.searchEngineNodeCount = Objects.requireNonNull(searchEngineNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder searchEngineSpecification(String searchEngineSpecification) {
             this.searchEngineSpecification = Objects.requireNonNull(searchEngineSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceType(String serviceType) {
             this.serviceType = Objects.requireNonNull(serviceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tableEngineNodeCount(Integer tableEngineNodeCount) {
             this.tableEngineNodeCount = Objects.requireNonNull(tableEngineNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder tableEngineSpecification(String tableEngineSpecification) {
             this.tableEngineSpecification = Objects.requireNonNull(tableEngineSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder timeSeriesEngineNodeCount(Integer timeSeriesEngineNodeCount) {
             this.timeSeriesEngineNodeCount = Objects.requireNonNull(timeSeriesEngineNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             this.timeSeriresEngineSpecification = Objects.requireNonNull(timeSeriresEngineSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(autoRenew, coldStorage, createTime, deletionProection, diskCategory, diskUsage, diskWarningThreshold, engineType, expiredTime, fileEngineNodeCount, fileEngineSpecification, id, instanceId, instanceName, instanceStorage, ipWhiteLists, ltsNodeCount, ltsNodeSpecification, networkType, paymentType, phoenixNodeCount, phoenixNodeSpecification, resourceOwnerId, searchEngineNodeCount, searchEngineSpecification, serviceType, status, tableEngineNodeCount, tableEngineSpecification, timeSeriesEngineNodeCount, timeSeriresEngineSpecification, vpcId, vswitchId, zoneId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.autoRenew = autoRenew;
+            o.coldStorage = coldStorage;
+            o.createTime = createTime;
+            o.deletionProection = deletionProection;
+            o.diskCategory = diskCategory;
+            o.diskUsage = diskUsage;
+            o.diskWarningThreshold = diskWarningThreshold;
+            o.engineType = engineType;
+            o.expiredTime = expiredTime;
+            o.fileEngineNodeCount = fileEngineNodeCount;
+            o.fileEngineSpecification = fileEngineSpecification;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.instanceStorage = instanceStorage;
+            o.ipWhiteLists = ipWhiteLists;
+            o.ltsNodeCount = ltsNodeCount;
+            o.ltsNodeSpecification = ltsNodeSpecification;
+            o.networkType = networkType;
+            o.paymentType = paymentType;
+            o.phoenixNodeCount = phoenixNodeCount;
+            o.phoenixNodeSpecification = phoenixNodeSpecification;
+            o.resourceOwnerId = resourceOwnerId;
+            o.searchEngineNodeCount = searchEngineNodeCount;
+            o.searchEngineSpecification = searchEngineSpecification;
+            o.serviceType = serviceType;
+            o.status = status;
+            o.tableEngineNodeCount = tableEngineNodeCount;
+            o.tableEngineSpecification = tableEngineSpecification;
+            o.timeSeriesEngineNodeCount = timeSeriesEngineNodeCount;
+            o.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

@@ -13,105 +13,74 @@ public final class GetRegistryEnterpriseSyncRulesRule {
      * @return ID of Container Registry Enterprise Edition sync rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of Container Registry Enterprise Edition local instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Name of Container Registry Enterprise Edition sync rule.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Name of Container Registry Enterprise Edition local namespace.
      * 
      */
-    private final String namespaceName;
+    private String namespaceName;
     /**
      * @return Region of Container Registry Enterprise Edition local instance.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return Name of Container Registry Enterprise Edition local repo.
      * 
      */
-    private final String repoName;
+    private String repoName;
     /**
      * @return `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
      * 
      */
-    private final String syncDirection;
+    private String syncDirection;
     /**
      * @return `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
      * 
      */
-    private final String syncScope;
+    private String syncScope;
     /**
      * @return `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
      * 
      */
-    private final String syncTrigger;
+    private String syncTrigger;
     /**
      * @return The regular expression used to filter image tags for synchronization in the source repository.
      * 
      */
-    private final String tagFilter;
+    private String tagFilter;
     /**
      * @return ID of Container Registry Enterprise Edition target instance.
      * 
      */
-    private final String targetInstanceId;
+    private String targetInstanceId;
     /**
      * @return Name of Container Registry Enterprise Edition target namespace.
      * 
      */
-    private final String targetNamespaceName;
+    private String targetNamespaceName;
     /**
      * @return Region of Container Registry Enterprise Edition target instance.
      * 
      */
-    private final String targetRegionId;
+    private String targetRegionId;
     /**
      * @return Name of Container Registry Enterprise Edition target repo.
      * 
      */
-    private final String targetRepoName;
+    private String targetRepoName;
 
-    @CustomType.Constructor
-    private GetRegistryEnterpriseSyncRulesRule(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespaceName") String namespaceName,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("repoName") String repoName,
-        @CustomType.Parameter("syncDirection") String syncDirection,
-        @CustomType.Parameter("syncScope") String syncScope,
-        @CustomType.Parameter("syncTrigger") String syncTrigger,
-        @CustomType.Parameter("tagFilter") String tagFilter,
-        @CustomType.Parameter("targetInstanceId") String targetInstanceId,
-        @CustomType.Parameter("targetNamespaceName") String targetNamespaceName,
-        @CustomType.Parameter("targetRegionId") String targetRegionId,
-        @CustomType.Parameter("targetRepoName") String targetRepoName) {
-        this.id = id;
-        this.instanceId = instanceId;
-        this.name = name;
-        this.namespaceName = namespaceName;
-        this.regionId = regionId;
-        this.repoName = repoName;
-        this.syncDirection = syncDirection;
-        this.syncScope = syncScope;
-        this.syncTrigger = syncTrigger;
-        this.tagFilter = tagFilter;
-        this.targetInstanceId = targetInstanceId;
-        this.targetNamespaceName = targetNamespaceName;
-        this.targetRegionId = targetRegionId;
-        this.targetRepoName = targetRepoName;
-    }
-
+    private GetRegistryEnterpriseSyncRulesRule() {}
     /**
      * @return ID of Container Registry Enterprise Edition sync rule.
      * 
@@ -218,7 +187,7 @@ public final class GetRegistryEnterpriseSyncRulesRule {
     public static Builder builder(GetRegistryEnterpriseSyncRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String instanceId;
@@ -234,11 +203,7 @@ public final class GetRegistryEnterpriseSyncRulesRule {
         private String targetNamespaceName;
         private String targetRegionId;
         private String targetRepoName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryEnterpriseSyncRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -257,63 +222,93 @@ public final class GetRegistryEnterpriseSyncRulesRule {
     	      this.targetRepoName = defaults.targetRepoName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
             this.namespaceName = Objects.requireNonNull(namespaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder repoName(String repoName) {
             this.repoName = Objects.requireNonNull(repoName);
             return this;
         }
+        @CustomType.Setter
         public Builder syncDirection(String syncDirection) {
             this.syncDirection = Objects.requireNonNull(syncDirection);
             return this;
         }
+        @CustomType.Setter
         public Builder syncScope(String syncScope) {
             this.syncScope = Objects.requireNonNull(syncScope);
             return this;
         }
+        @CustomType.Setter
         public Builder syncTrigger(String syncTrigger) {
             this.syncTrigger = Objects.requireNonNull(syncTrigger);
             return this;
         }
+        @CustomType.Setter
         public Builder tagFilter(String tagFilter) {
             this.tagFilter = Objects.requireNonNull(tagFilter);
             return this;
         }
+        @CustomType.Setter
         public Builder targetInstanceId(String targetInstanceId) {
             this.targetInstanceId = Objects.requireNonNull(targetInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetNamespaceName(String targetNamespaceName) {
             this.targetNamespaceName = Objects.requireNonNull(targetNamespaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder targetRegionId(String targetRegionId) {
             this.targetRegionId = Objects.requireNonNull(targetRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetRepoName(String targetRepoName) {
             this.targetRepoName = Objects.requireNonNull(targetRepoName);
             return this;
-        }        public GetRegistryEnterpriseSyncRulesRule build() {
-            return new GetRegistryEnterpriseSyncRulesRule(id, instanceId, name, namespaceName, regionId, repoName, syncDirection, syncScope, syncTrigger, tagFilter, targetInstanceId, targetNamespaceName, targetRegionId, targetRepoName);
+        }
+        public GetRegistryEnterpriseSyncRulesRule build() {
+            final var o = new GetRegistryEnterpriseSyncRulesRule();
+            o.id = id;
+            o.instanceId = instanceId;
+            o.name = name;
+            o.namespaceName = namespaceName;
+            o.regionId = regionId;
+            o.repoName = repoName;
+            o.syncDirection = syncDirection;
+            o.syncScope = syncScope;
+            o.syncTrigger = syncTrigger;
+            o.tagFilter = tagFilter;
+            o.targetInstanceId = targetInstanceId;
+            o.targetNamespaceName = targetNamespaceName;
+            o.targetRegionId = targetRegionId;
+            o.targetRepoName = targetRepoName;
+            return o;
         }
     }
 }

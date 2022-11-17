@@ -13,42 +13,29 @@ public final class GetKeyPairsPair {
      * @return The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Key Pair.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Fingerprint of the key pair.
      * 
      */
-    private final String keyPairFingerPrint;
+    private String keyPairFingerPrint;
     /**
      * @return The name of the key pair.
      * 
      */
-    private final String keyPairName;
+    private String keyPairName;
     /**
      * @return The version number.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetKeyPairsPair(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keyPairFingerPrint") String keyPairFingerPrint,
-        @CustomType.Parameter("keyPairName") String keyPairName,
-        @CustomType.Parameter("version") String version) {
-        this.createTime = createTime;
-        this.id = id;
-        this.keyPairFingerPrint = keyPairFingerPrint;
-        this.keyPairName = keyPairName;
-        this.version = version;
-    }
-
+    private GetKeyPairsPair() {}
     /**
      * @return The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
      * 
@@ -92,18 +79,14 @@ public final class GetKeyPairsPair {
     public static Builder builder(GetKeyPairsPair defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String id;
         private String keyPairFingerPrint;
         private String keyPairName;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeyPairsPair defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -113,27 +96,39 @@ public final class GetKeyPairsPair {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairFingerPrint(String keyPairFingerPrint) {
             this.keyPairFingerPrint = Objects.requireNonNull(keyPairFingerPrint);
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetKeyPairsPair build() {
-            return new GetKeyPairsPair(createTime, id, keyPairFingerPrint, keyPairName, version);
+        }
+        public GetKeyPairsPair build() {
+            final var o = new GetKeyPairsPair();
+            o.createTime = createTime;
+            o.id = id;
+            o.keyPairFingerPrint = keyPairFingerPrint;
+            o.keyPairName = keyPairName;
+            o.version = version;
+            return o;
         }
     }
 }

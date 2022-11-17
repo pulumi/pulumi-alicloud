@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleAction {
-    private final List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
-    private final Integer order;
-    private final String ruleActionType;
+    private List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
+    private Integer order;
+    private String ruleActionType;
 
-    @CustomType.Constructor
-    private GetForwardingRulesForwardingRuleRuleAction(
-        @CustomType.Parameter("forwardGroupConfigs") List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs,
-        @CustomType.Parameter("order") Integer order,
-        @CustomType.Parameter("ruleActionType") String ruleActionType) {
-        this.forwardGroupConfigs = forwardGroupConfigs;
-        this.order = order;
-        this.ruleActionType = ruleActionType;
-    }
-
+    private GetForwardingRulesForwardingRuleRuleAction() {}
     public List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs() {
         return this.forwardGroupConfigs;
     }
@@ -43,16 +34,12 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
     public static Builder builder(GetForwardingRulesForwardingRuleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
         private Integer order;
         private String ruleActionType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetForwardingRulesForwardingRuleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardGroupConfigs = defaults.forwardGroupConfigs;
@@ -60,6 +47,7 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
     	      this.ruleActionType = defaults.ruleActionType;
         }
 
+        @CustomType.Setter
         public Builder forwardGroupConfigs(List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs) {
             this.forwardGroupConfigs = Objects.requireNonNull(forwardGroupConfigs);
             return this;
@@ -67,15 +55,22 @@ public final class GetForwardingRulesForwardingRuleRuleAction {
         public Builder forwardGroupConfigs(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig... forwardGroupConfigs) {
             return forwardGroupConfigs(List.of(forwardGroupConfigs));
         }
+        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleActionType(String ruleActionType) {
             this.ruleActionType = Objects.requireNonNull(ruleActionType);
             return this;
-        }        public GetForwardingRulesForwardingRuleRuleAction build() {
-            return new GetForwardingRulesForwardingRuleRuleAction(forwardGroupConfigs, order, ruleActionType);
+        }
+        public GetForwardingRulesForwardingRuleRuleAction build() {
+            final var o = new GetForwardingRulesForwardingRuleRuleAction();
+            o.forwardGroupConfigs = forwardGroupConfigs;
+            o.order = order;
+            o.ruleActionType = ruleActionType;
+            return o;
         }
     }
 }

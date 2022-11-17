@@ -13,21 +13,14 @@ public final class GetClustersClusterHostPoolInfo {
      * @return Machine pool ID.
      * 
      */
-    private final String hpBizId;
+    private String hpBizId;
     /**
      * @return The name of the machine pool.
      * 
      */
-    private final String hpName;
+    private String hpName;
 
-    @CustomType.Constructor
-    private GetClustersClusterHostPoolInfo(
-        @CustomType.Parameter("hpBizId") String hpBizId,
-        @CustomType.Parameter("hpName") String hpName) {
-        this.hpBizId = hpBizId;
-        this.hpName = hpName;
-    }
-
+    private GetClustersClusterHostPoolInfo() {}
     /**
      * @return Machine pool ID.
      * 
@@ -50,30 +43,32 @@ public final class GetClustersClusterHostPoolInfo {
     public static Builder builder(GetClustersClusterHostPoolInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String hpBizId;
         private String hpName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterHostPoolInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hpBizId = defaults.hpBizId;
     	      this.hpName = defaults.hpName;
         }
 
+        @CustomType.Setter
         public Builder hpBizId(String hpBizId) {
             this.hpBizId = Objects.requireNonNull(hpBizId);
             return this;
         }
+        @CustomType.Setter
         public Builder hpName(String hpName) {
             this.hpName = Objects.requireNonNull(hpName);
             return this;
-        }        public GetClustersClusterHostPoolInfo build() {
-            return new GetClustersClusterHostPoolInfo(hpBizId, hpName);
+        }
+        public GetClustersClusterHostPoolInfo build() {
+            final var o = new GetClustersClusterHostPoolInfo();
+            o.hpBizId = hpBizId;
+            o.hpName = hpName;
+            return o;
         }
     }
 }

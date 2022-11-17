@@ -17,37 +17,22 @@ public final class GetTopicSubscriptionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String namePrefix;
+    private String id;
+    private @Nullable String namePrefix;
     /**
      * @return A list of subscription names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of subscriptions. Each element contains the following attributes:
      * 
      */
-    private final List<GetTopicSubscriptionsSubscription> subscriptions;
-    private final String topicName;
+    private List<GetTopicSubscriptionsSubscription> subscriptions;
+    private String topicName;
 
-    @CustomType.Constructor
-    private GetTopicSubscriptionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namePrefix") @Nullable String namePrefix,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("subscriptions") List<GetTopicSubscriptionsSubscription> subscriptions,
-        @CustomType.Parameter("topicName") String topicName) {
-        this.id = id;
-        this.namePrefix = namePrefix;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.subscriptions = subscriptions;
-        this.topicName = topicName;
-    }
-
+    private GetTopicSubscriptionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -86,7 +71,7 @@ public final class GetTopicSubscriptionsResult {
     public static Builder builder(GetTopicSubscriptionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String namePrefix;
@@ -94,11 +79,7 @@ public final class GetTopicSubscriptionsResult {
         private @Nullable String outputFile;
         private List<GetTopicSubscriptionsSubscription> subscriptions;
         private String topicName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicSubscriptionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,14 +90,17 @@ public final class GetTopicSubscriptionsResult {
     	      this.topicName = defaults.topicName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
             this.namePrefix = namePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -124,10 +108,12 @@ public final class GetTopicSubscriptionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptions(List<GetTopicSubscriptionsSubscription> subscriptions) {
             this.subscriptions = Objects.requireNonNull(subscriptions);
             return this;
@@ -135,11 +121,20 @@ public final class GetTopicSubscriptionsResult {
         public Builder subscriptions(GetTopicSubscriptionsSubscription... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }
+        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
-        }        public GetTopicSubscriptionsResult build() {
-            return new GetTopicSubscriptionsResult(id, namePrefix, names, outputFile, subscriptions, topicName);
+        }
+        public GetTopicSubscriptionsResult build() {
+            final var o = new GetTopicSubscriptionsResult();
+            o.id = id;
+            o.namePrefix = namePrefix;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.subscriptions = subscriptions;
+            o.topicName = topicName;
+            return o;
         }
     }
 }

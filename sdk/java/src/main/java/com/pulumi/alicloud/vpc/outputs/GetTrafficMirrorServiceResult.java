@@ -11,28 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMirrorServiceResult {
-    private final @Nullable String enable;
+    private @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetTrafficMirrorServiceResult(
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.enable = enable;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetTrafficMirrorServiceResult() {}
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -58,16 +49,12 @@ public final class GetTrafficMirrorServiceResult {
     public static Builder builder(GetTrafficMirrorServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String enable;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrafficMirrorServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -75,19 +62,27 @@ public final class GetTrafficMirrorServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetTrafficMirrorServiceResult build() {
-            return new GetTrafficMirrorServiceResult(enable, id, status);
+        }
+        public GetTrafficMirrorServiceResult build() {
+            final var o = new GetTrafficMirrorServiceResult();
+            o.enable = enable;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class RuleAttachmentVpc {
      * @return The region of the vpc. If not set, the current region will instead of.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private RuleAttachmentVpc(
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.regionId = regionId;
-        this.vpcId = vpcId;
-    }
-
+    private RuleAttachmentVpc() {}
     /**
      * @return The region of the vpc. If not set, the current region will instead of.
      * 
@@ -50,30 +43,32 @@ public final class RuleAttachmentVpc {
     public static Builder builder(RuleAttachmentVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String regionId;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleAttachmentVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public RuleAttachmentVpc build() {
-            return new RuleAttachmentVpc(regionId, vpcId);
+        }
+        public RuleAttachmentVpc build() {
+            final var o = new RuleAttachmentVpc();
+            o.regionId = regionId;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

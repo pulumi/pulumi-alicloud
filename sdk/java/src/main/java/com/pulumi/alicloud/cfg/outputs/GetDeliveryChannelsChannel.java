@@ -14,70 +14,49 @@ public final class GetDeliveryChannelsChannel {
      * @return The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
      * 
      */
-    private final String deliveryChannelAssumeRoleArn;
+    private String deliveryChannelAssumeRoleArn;
     /**
      * @return The rule attached to the delivery method. This parameter is applicable only to delivery methods of the Message Service (MNS) type.
      * 
      */
-    private final String deliveryChannelCondition;
+    private String deliveryChannelCondition;
     /**
      * @return The ID of the delivery channel.
      * 
      */
-    private final String deliveryChannelId;
+    private String deliveryChannelId;
     /**
      * @return The name of the delivery channel.
      * 
      */
-    private final String deliveryChannelName;
+    private String deliveryChannelName;
     /**
      * @return The ARN of the delivery destination.
      * 
      */
-    private final String deliveryChannelTargetArn;
+    private String deliveryChannelTargetArn;
     /**
      * @return The type of the delivery channel.
      * 
      */
-    private final String deliveryChannelType;
+    private String deliveryChannelType;
     /**
      * @return The description of the delivery channel.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Config Delivery Channel.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
      * 
      */
-    private final Integer status;
+    private Integer status;
 
-    @CustomType.Constructor
-    private GetDeliveryChannelsChannel(
-        @CustomType.Parameter("deliveryChannelAssumeRoleArn") String deliveryChannelAssumeRoleArn,
-        @CustomType.Parameter("deliveryChannelCondition") String deliveryChannelCondition,
-        @CustomType.Parameter("deliveryChannelId") String deliveryChannelId,
-        @CustomType.Parameter("deliveryChannelName") String deliveryChannelName,
-        @CustomType.Parameter("deliveryChannelTargetArn") String deliveryChannelTargetArn,
-        @CustomType.Parameter("deliveryChannelType") String deliveryChannelType,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") Integer status) {
-        this.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
-        this.deliveryChannelCondition = deliveryChannelCondition;
-        this.deliveryChannelId = deliveryChannelId;
-        this.deliveryChannelName = deliveryChannelName;
-        this.deliveryChannelTargetArn = deliveryChannelTargetArn;
-        this.deliveryChannelType = deliveryChannelType;
-        this.description = description;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetDeliveryChannelsChannel() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
      * 
@@ -149,7 +128,7 @@ public final class GetDeliveryChannelsChannel {
     public static Builder builder(GetDeliveryChannelsChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String deliveryChannelAssumeRoleArn;
         private String deliveryChannelCondition;
@@ -160,11 +139,7 @@ public final class GetDeliveryChannelsChannel {
         private String description;
         private String id;
         private Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDeliveryChannelsChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deliveryChannelAssumeRoleArn = defaults.deliveryChannelAssumeRoleArn;
@@ -178,43 +153,63 @@ public final class GetDeliveryChannelsChannel {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder deliveryChannelAssumeRoleArn(String deliveryChannelAssumeRoleArn) {
             this.deliveryChannelAssumeRoleArn = Objects.requireNonNull(deliveryChannelAssumeRoleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelCondition(String deliveryChannelCondition) {
             this.deliveryChannelCondition = Objects.requireNonNull(deliveryChannelCondition);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelId(String deliveryChannelId) {
             this.deliveryChannelId = Objects.requireNonNull(deliveryChannelId);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelName(String deliveryChannelName) {
             this.deliveryChannelName = Objects.requireNonNull(deliveryChannelName);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelTargetArn(String deliveryChannelTargetArn) {
             this.deliveryChannelTargetArn = Objects.requireNonNull(deliveryChannelTargetArn);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelType(String deliveryChannelType) {
             this.deliveryChannelType = Objects.requireNonNull(deliveryChannelType);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDeliveryChannelsChannel build() {
-            return new GetDeliveryChannelsChannel(deliveryChannelAssumeRoleArn, deliveryChannelCondition, deliveryChannelId, deliveryChannelName, deliveryChannelTargetArn, deliveryChannelType, description, id, status);
+        }
+        public GetDeliveryChannelsChannel build() {
+            final var o = new GetDeliveryChannelsChannel();
+            o.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
+            o.deliveryChannelCondition = deliveryChannelCondition;
+            o.deliveryChannelId = deliveryChannelId;
+            o.deliveryChannelName = deliveryChannelName;
+            o.deliveryChannelTargetArn = deliveryChannelTargetArn;
+            o.deliveryChannelType = deliveryChannelType;
+            o.description = description;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

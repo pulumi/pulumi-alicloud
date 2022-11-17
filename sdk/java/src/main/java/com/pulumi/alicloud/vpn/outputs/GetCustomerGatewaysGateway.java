@@ -13,42 +13,29 @@ public final class GetCustomerGatewaysGateway {
      * @return The creation time of the VPN customer gateway.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the VPN customer gateway.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the VPN customer gateway .
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ip address of the VPN customer gateway.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return The name of the VPN customer gateway.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetCustomerGatewaysGateway(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("name") String name) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.name = name;
-    }
-
+    private GetCustomerGatewaysGateway() {}
     /**
      * @return The creation time of the VPN customer gateway.
      * 
@@ -92,18 +79,14 @@ public final class GetCustomerGatewaysGateway {
     public static Builder builder(GetCustomerGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
         private String id;
         private String ipAddress;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomerGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -113,27 +96,39 @@ public final class GetCustomerGatewaysGateway {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetCustomerGatewaysGateway build() {
-            return new GetCustomerGatewaysGateway(createTime, description, id, ipAddress, name);
+        }
+        public GetCustomerGatewaysGateway build() {
+            final var o = new GetCustomerGatewaysGateway();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.name = name;
+            return o;
         }
     }
 }

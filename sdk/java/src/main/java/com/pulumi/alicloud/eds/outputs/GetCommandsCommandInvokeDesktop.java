@@ -14,84 +14,59 @@ public final class GetCommandsCommandInvokeDesktop {
      * @return The desktop id of the Desktop.
      * 
      */
-    private final String desktopId;
+    private String desktopId;
     /**
      * @return Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
      * 
      */
-    private final Integer dropped;
+    private Integer dropped;
     /**
      * @return Command of the Failure Or Perform the Reason for the Failure of the Code.
      * 
      */
-    private final String errorCode;
+    private String errorCode;
     /**
      * @return Command of the Failure Or Perform the Reason for the Failure of the Details.
      * 
      */
-    private final String errorInfo;
+    private String errorInfo;
     /**
      * @return Command of the Failure Or Perform the Reason for the Failure of the Details.
      * 
      */
-    private final String exitCode;
+    private String exitCode;
     /**
      * @return The Script Process until the End of Time.
      * 
      */
-    private final String finishTime;
+    private String finishTime;
     /**
      * @return A Single Cloud Desktop Script Progress Status.
      * 
      */
-    private final String invocationStatus;
+    private String invocationStatus;
     /**
      * @return Script the Output of the Process.
      * 
      */
-    private final String output;
+    private String output;
     /**
      * @return Command in the Desktop Implementation.
      * 
      */
-    private final Integer repeats;
+    private Integer repeats;
     /**
      * @return The Script Process on the Desktop, in the Start Timing of the Execution.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return If You Use the invocation Indicates That the Call of the Time.
      * 
      */
-    private final String stopTime;
+    private String stopTime;
 
-    @CustomType.Constructor
-    private GetCommandsCommandInvokeDesktop(
-        @CustomType.Parameter("desktopId") String desktopId,
-        @CustomType.Parameter("dropped") Integer dropped,
-        @CustomType.Parameter("errorCode") String errorCode,
-        @CustomType.Parameter("errorInfo") String errorInfo,
-        @CustomType.Parameter("exitCode") String exitCode,
-        @CustomType.Parameter("finishTime") String finishTime,
-        @CustomType.Parameter("invocationStatus") String invocationStatus,
-        @CustomType.Parameter("output") String output,
-        @CustomType.Parameter("repeats") Integer repeats,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("stopTime") String stopTime) {
-        this.desktopId = desktopId;
-        this.dropped = dropped;
-        this.errorCode = errorCode;
-        this.errorInfo = errorInfo;
-        this.exitCode = exitCode;
-        this.finishTime = finishTime;
-        this.invocationStatus = invocationStatus;
-        this.output = output;
-        this.repeats = repeats;
-        this.startTime = startTime;
-        this.stopTime = stopTime;
-    }
-
+    private GetCommandsCommandInvokeDesktop() {}
     /**
      * @return The desktop id of the Desktop.
      * 
@@ -177,7 +152,7 @@ public final class GetCommandsCommandInvokeDesktop {
     public static Builder builder(GetCommandsCommandInvokeDesktop defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String desktopId;
         private Integer dropped;
@@ -190,11 +165,7 @@ public final class GetCommandsCommandInvokeDesktop {
         private Integer repeats;
         private String startTime;
         private String stopTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCommandsCommandInvokeDesktop defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desktopId = defaults.desktopId;
@@ -210,51 +181,75 @@ public final class GetCommandsCommandInvokeDesktop {
     	      this.stopTime = defaults.stopTime;
         }
 
+        @CustomType.Setter
         public Builder desktopId(String desktopId) {
             this.desktopId = Objects.requireNonNull(desktopId);
             return this;
         }
+        @CustomType.Setter
         public Builder dropped(Integer dropped) {
             this.dropped = Objects.requireNonNull(dropped);
             return this;
         }
+        @CustomType.Setter
         public Builder errorCode(String errorCode) {
             this.errorCode = Objects.requireNonNull(errorCode);
             return this;
         }
+        @CustomType.Setter
         public Builder errorInfo(String errorInfo) {
             this.errorInfo = Objects.requireNonNull(errorInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder exitCode(String exitCode) {
             this.exitCode = Objects.requireNonNull(exitCode);
             return this;
         }
+        @CustomType.Setter
         public Builder finishTime(String finishTime) {
             this.finishTime = Objects.requireNonNull(finishTime);
             return this;
         }
+        @CustomType.Setter
         public Builder invocationStatus(String invocationStatus) {
             this.invocationStatus = Objects.requireNonNull(invocationStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder output(String output) {
             this.output = Objects.requireNonNull(output);
             return this;
         }
+        @CustomType.Setter
         public Builder repeats(Integer repeats) {
             this.repeats = Objects.requireNonNull(repeats);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder stopTime(String stopTime) {
             this.stopTime = Objects.requireNonNull(stopTime);
             return this;
-        }        public GetCommandsCommandInvokeDesktop build() {
-            return new GetCommandsCommandInvokeDesktop(desktopId, dropped, errorCode, errorInfo, exitCode, finishTime, invocationStatus, output, repeats, startTime, stopTime);
+        }
+        public GetCommandsCommandInvokeDesktop build() {
+            final var o = new GetCommandsCommandInvokeDesktop();
+            o.desktopId = desktopId;
+            o.dropped = dropped;
+            o.errorCode = errorCode;
+            o.errorInfo = errorInfo;
+            o.exitCode = exitCode;
+            o.finishTime = finishTime;
+            o.invocationStatus = invocationStatus;
+            o.output = output;
+            o.repeats = repeats;
+            o.startTime = startTime;
+            o.stopTime = stopTime;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class GetCustomPropertiesPropertyPropertyValue {
      * @return The value of an attribute.
      * 
      */
-    private final String propertyValue;
+    private String propertyValue;
     /**
      * @return The value of an attribute id.
      * 
      */
-    private final String propertyValueId;
+    private String propertyValueId;
 
-    @CustomType.Constructor
-    private GetCustomPropertiesPropertyPropertyValue(
-        @CustomType.Parameter("propertyValue") String propertyValue,
-        @CustomType.Parameter("propertyValueId") String propertyValueId) {
-        this.propertyValue = propertyValue;
-        this.propertyValueId = propertyValueId;
-    }
-
+    private GetCustomPropertiesPropertyPropertyValue() {}
     /**
      * @return The value of an attribute.
      * 
@@ -50,30 +43,32 @@ public final class GetCustomPropertiesPropertyPropertyValue {
     public static Builder builder(GetCustomPropertiesPropertyPropertyValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String propertyValue;
         private String propertyValueId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomPropertiesPropertyPropertyValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.propertyValue = defaults.propertyValue;
     	      this.propertyValueId = defaults.propertyValueId;
         }
 
+        @CustomType.Setter
         public Builder propertyValue(String propertyValue) {
             this.propertyValue = Objects.requireNonNull(propertyValue);
             return this;
         }
+        @CustomType.Setter
         public Builder propertyValueId(String propertyValueId) {
             this.propertyValueId = Objects.requireNonNull(propertyValueId);
             return this;
-        }        public GetCustomPropertiesPropertyPropertyValue build() {
-            return new GetCustomPropertiesPropertyPropertyValue(propertyValue, propertyValueId);
+        }
+        public GetCustomPropertiesPropertyPropertyValue build() {
+            final var o = new GetCustomPropertiesPropertyPropertyValue();
+            o.propertyValue = propertyValue;
+            o.propertyValueId = propertyValueId;
+            return o;
         }
     }
 }

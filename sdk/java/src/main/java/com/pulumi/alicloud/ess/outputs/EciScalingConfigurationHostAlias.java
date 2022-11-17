@@ -16,21 +16,14 @@ public final class EciScalingConfigurationHostAlias {
      * @return Adds a host name.
      * 
      */
-    private final @Nullable List<String> hostnames;
+    private @Nullable List<String> hostnames;
     /**
      * @return Adds an IP address.
      * 
      */
-    private final @Nullable String ip;
+    private @Nullable String ip;
 
-    @CustomType.Constructor
-    private EciScalingConfigurationHostAlias(
-        @CustomType.Parameter("hostnames") @Nullable List<String> hostnames,
-        @CustomType.Parameter("ip") @Nullable String ip) {
-        this.hostnames = hostnames;
-        this.ip = ip;
-    }
-
+    private EciScalingConfigurationHostAlias() {}
     /**
      * @return Adds a host name.
      * 
@@ -53,21 +46,18 @@ public final class EciScalingConfigurationHostAlias {
     public static Builder builder(EciScalingConfigurationHostAlias defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> hostnames;
         private @Nullable String ip;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EciScalingConfigurationHostAlias defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostnames = defaults.hostnames;
     	      this.ip = defaults.ip;
         }
 
+        @CustomType.Setter
         public Builder hostnames(@Nullable List<String> hostnames) {
             this.hostnames = hostnames;
             return this;
@@ -75,11 +65,16 @@ public final class EciScalingConfigurationHostAlias {
         public Builder hostnames(String... hostnames) {
             return hostnames(List.of(hostnames));
         }
+        @CustomType.Setter
         public Builder ip(@Nullable String ip) {
             this.ip = ip;
             return this;
-        }        public EciScalingConfigurationHostAlias build() {
-            return new EciScalingConfigurationHostAlias(hostnames, ip);
+        }
+        public EciScalingConfigurationHostAlias build() {
+            final var o = new EciScalingConfigurationHostAlias();
+            o.hostnames = hostnames;
+            o.ip = ip;
+            return o;
         }
     }
 }

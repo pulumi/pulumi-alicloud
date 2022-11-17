@@ -14,21 +14,14 @@ public final class GetZonesZone {
      * @return The endpoint of the region.
      * 
      */
-    private final String regionEndpoint;
+    private String regionEndpoint;
     /**
      * @return The list of available zone ids.
      * 
      */
-    private final List<String> zoneIds;
+    private List<String> zoneIds;
 
-    @CustomType.Constructor
-    private GetZonesZone(
-        @CustomType.Parameter("regionEndpoint") String regionEndpoint,
-        @CustomType.Parameter("zoneIds") List<String> zoneIds) {
-        this.regionEndpoint = regionEndpoint;
-        this.zoneIds = zoneIds;
-    }
-
+    private GetZonesZone() {}
     /**
      * @return The endpoint of the region.
      * 
@@ -51,33 +44,35 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String regionEndpoint;
         private List<String> zoneIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionEndpoint = defaults.regionEndpoint;
     	      this.zoneIds = defaults.zoneIds;
         }
 
+        @CustomType.Setter
         public Builder regionEndpoint(String regionEndpoint) {
             this.regionEndpoint = Objects.requireNonNull(regionEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(String... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }        public GetZonesZone build() {
-            return new GetZonesZone(regionEndpoint, zoneIds);
+        }
+        public GetZonesZone build() {
+            final var o = new GetZonesZone();
+            o.regionEndpoint = regionEndpoint;
+            o.zoneIds = zoneIds;
+            return o;
         }
     }
 }

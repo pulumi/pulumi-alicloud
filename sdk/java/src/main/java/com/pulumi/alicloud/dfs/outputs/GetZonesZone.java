@@ -15,21 +15,14 @@ public final class GetZonesZone {
      * @return A list of available configurations of the Zone.
      * 
      */
-    private final List<GetZonesZoneOption> options;
+    private List<GetZonesZoneOption> options;
     /**
      * @return The zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetZonesZone(
-        @CustomType.Parameter("options") List<GetZonesZoneOption> options,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.options = options;
-        this.zoneId = zoneId;
-    }
-
+    private GetZonesZone() {}
     /**
      * @return A list of available configurations of the Zone.
      * 
@@ -52,21 +45,18 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetZonesZoneOption> options;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.options = defaults.options;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder options(List<GetZonesZoneOption> options) {
             this.options = Objects.requireNonNull(options);
             return this;
@@ -74,11 +64,16 @@ public final class GetZonesZone {
         public Builder options(GetZonesZoneOption... options) {
             return options(List.of(options));
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetZonesZone build() {
-            return new GetZonesZone(options, zoneId);
+        }
+        public GetZonesZone build() {
+            final var o = new GetZonesZone();
+            o.options = options;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

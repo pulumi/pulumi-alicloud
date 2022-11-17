@@ -14,42 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsInvocationsResult {
-    private final @Nullable String commandId;
-    private final @Nullable String contentEncoding;
+    private @Nullable String commandId;
+    private @Nullable String contentEncoding;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetEcsInvocationsInvocation> invocations;
-    private final @Nullable String invokeStatus;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private List<GetEcsInvocationsInvocation> invocations;
+    private @Nullable String invokeStatus;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetEcsInvocationsResult(
-        @CustomType.Parameter("commandId") @Nullable String commandId,
-        @CustomType.Parameter("contentEncoding") @Nullable String contentEncoding,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("invocations") List<GetEcsInvocationsInvocation> invocations,
-        @CustomType.Parameter("invokeStatus") @Nullable String invokeStatus,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.commandId = commandId;
-        this.contentEncoding = contentEncoding;
-        this.id = id;
-        this.ids = ids;
-        this.invocations = invocations;
-        this.invokeStatus = invokeStatus;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetEcsInvocationsResult() {}
     public Optional<String> commandId() {
         return Optional.ofNullable(this.commandId);
     }
@@ -89,7 +68,7 @@ public final class GetEcsInvocationsResult {
     public static Builder builder(GetEcsInvocationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String commandId;
         private @Nullable String contentEncoding;
@@ -100,11 +79,7 @@ public final class GetEcsInvocationsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsInvocationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commandId = defaults.commandId;
@@ -118,18 +93,22 @@ public final class GetEcsInvocationsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder commandId(@Nullable String commandId) {
             this.commandId = commandId;
             return this;
         }
+        @CustomType.Setter
         public Builder contentEncoding(@Nullable String contentEncoding) {
             this.contentEncoding = contentEncoding;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,6 +116,7 @@ public final class GetEcsInvocationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder invocations(List<GetEcsInvocationsInvocation> invocations) {
             this.invocations = Objects.requireNonNull(invocations);
             return this;
@@ -144,23 +124,38 @@ public final class GetEcsInvocationsResult {
         public Builder invocations(GetEcsInvocationsInvocation... invocations) {
             return invocations(List.of(invocations));
         }
+        @CustomType.Setter
         public Builder invokeStatus(@Nullable String invokeStatus) {
             this.invokeStatus = invokeStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetEcsInvocationsResult build() {
-            return new GetEcsInvocationsResult(commandId, contentEncoding, id, ids, invocations, invokeStatus, outputFile, pageNumber, pageSize);
+        }
+        public GetEcsInvocationsResult build() {
+            final var o = new GetEcsInvocationsResult();
+            o.commandId = commandId;
+            o.contentEncoding = contentEncoding;
+            o.id = id;
+            o.ids = ids;
+            o.invocations = invocations;
+            o.invokeStatus = invokeStatus;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

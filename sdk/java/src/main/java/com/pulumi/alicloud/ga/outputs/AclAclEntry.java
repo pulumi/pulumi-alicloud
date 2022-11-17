@@ -15,21 +15,14 @@ public final class AclAclEntry {
      * @return The IP entry that you want to add to the ACL.
      * 
      */
-    private final @Nullable String entry;
+    private @Nullable String entry;
     /**
      * @return The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
      * 
      */
-    private final @Nullable String entryDescription;
+    private @Nullable String entryDescription;
 
-    @CustomType.Constructor
-    private AclAclEntry(
-        @CustomType.Parameter("entry") @Nullable String entry,
-        @CustomType.Parameter("entryDescription") @Nullable String entryDescription) {
-        this.entry = entry;
-        this.entryDescription = entryDescription;
-    }
-
+    private AclAclEntry() {}
     /**
      * @return The IP entry that you want to add to the ACL.
      * 
@@ -52,30 +45,32 @@ public final class AclAclEntry {
     public static Builder builder(AclAclEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String entry;
         private @Nullable String entryDescription;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AclAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entry = defaults.entry;
     	      this.entryDescription = defaults.entryDescription;
         }
 
+        @CustomType.Setter
         public Builder entry(@Nullable String entry) {
             this.entry = entry;
             return this;
         }
+        @CustomType.Setter
         public Builder entryDescription(@Nullable String entryDescription) {
             this.entryDescription = entryDescription;
             return this;
-        }        public AclAclEntry build() {
-            return new AclAclEntry(entry, entryDescription);
+        }
+        public AclAclEntry build() {
+            final var o = new AclAclEntry();
+            o.entry = entry;
+            o.entryDescription = entryDescription;
+            return o;
         }
     }
 }

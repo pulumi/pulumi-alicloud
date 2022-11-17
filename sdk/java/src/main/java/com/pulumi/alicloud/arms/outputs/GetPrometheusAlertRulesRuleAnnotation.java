@@ -13,21 +13,14 @@ public final class GetPrometheusAlertRulesRuleAnnotation {
      * @return The name of the label.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The value of the label.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetPrometheusAlertRulesRuleAnnotation(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetPrometheusAlertRulesRuleAnnotation() {}
     /**
      * @return The name of the label.
      * 
@@ -50,30 +43,32 @@ public final class GetPrometheusAlertRulesRuleAnnotation {
     public static Builder builder(GetPrometheusAlertRulesRuleAnnotation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPrometheusAlertRulesRuleAnnotation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetPrometheusAlertRulesRuleAnnotation build() {
-            return new GetPrometheusAlertRulesRuleAnnotation(name, value);
+        }
+        public GetPrometheusAlertRulesRuleAnnotation build() {
+            final var o = new GetPrometheusAlertRulesRuleAnnotation();
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

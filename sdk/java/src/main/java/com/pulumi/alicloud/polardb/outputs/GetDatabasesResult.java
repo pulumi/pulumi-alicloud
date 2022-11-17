@@ -17,34 +17,21 @@ public final class GetDatabasesResult {
      * @return A list of PolarDB cluster databases. Each element contains the following attributes:
      * 
      */
-    private final List<GetDatabasesDatabase> databases;
-    private final String dbClusterId;
+    private List<GetDatabasesDatabase> databases;
+    private String dbClusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String nameRegex;
+    private String id;
+    private @Nullable String nameRegex;
     /**
      * @return database name of the cluster.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
 
-    @CustomType.Constructor
-    private GetDatabasesResult(
-        @CustomType.Parameter("databases") List<GetDatabasesDatabase> databases,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names) {
-        this.databases = databases;
-        this.dbClusterId = dbClusterId;
-        this.id = id;
-        this.nameRegex = nameRegex;
-        this.names = names;
-    }
-
+    private GetDatabasesResult() {}
     /**
      * @return A list of PolarDB cluster databases. Each element contains the following attributes:
      * 
@@ -80,18 +67,14 @@ public final class GetDatabasesResult {
     public static Builder builder(GetDatabasesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDatabasesDatabase> databases;
         private String dbClusterId;
         private String id;
         private @Nullable String nameRegex;
         private List<String> names;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
@@ -101,6 +84,7 @@ public final class GetDatabasesResult {
     	      this.names = defaults.names;
         }
 
+        @CustomType.Setter
         public Builder databases(List<GetDatabasesDatabase> databases) {
             this.databases = Objects.requireNonNull(databases);
             return this;
@@ -108,26 +92,37 @@ public final class GetDatabasesResult {
         public Builder databases(GetDatabasesDatabase... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
         }
         public Builder names(String... names) {
             return names(List.of(names));
-        }        public GetDatabasesResult build() {
-            return new GetDatabasesResult(databases, dbClusterId, id, nameRegex, names);
+        }
+        public GetDatabasesResult build() {
+            final var o = new GetDatabasesResult();
+            o.databases = databases;
+            o.dbClusterId = dbClusterId;
+            o.id = id;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            return o;
         }
     }
 }

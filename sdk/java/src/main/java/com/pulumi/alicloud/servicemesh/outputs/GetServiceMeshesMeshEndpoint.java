@@ -13,35 +13,24 @@ public final class GetServiceMeshesMeshEndpoint {
      * @return The internal address of the API Server.
      * 
      */
-    private final String intranetApiServerEndpoint;
+    private String intranetApiServerEndpoint;
     /**
      * @return The internal address of the Istio Pilot.
      * 
      */
-    private final String intranetPilotEndpoint;
+    private String intranetPilotEndpoint;
     /**
      * @return The public address of the API Server.
      * 
      */
-    private final String publicApiServerEndpoint;
+    private String publicApiServerEndpoint;
     /**
      * @return The public address of the Istio Pilot.
      * 
      */
-    private final String publicPilotEndpoint;
+    private String publicPilotEndpoint;
 
-    @CustomType.Constructor
-    private GetServiceMeshesMeshEndpoint(
-        @CustomType.Parameter("intranetApiServerEndpoint") String intranetApiServerEndpoint,
-        @CustomType.Parameter("intranetPilotEndpoint") String intranetPilotEndpoint,
-        @CustomType.Parameter("publicApiServerEndpoint") String publicApiServerEndpoint,
-        @CustomType.Parameter("publicPilotEndpoint") String publicPilotEndpoint) {
-        this.intranetApiServerEndpoint = intranetApiServerEndpoint;
-        this.intranetPilotEndpoint = intranetPilotEndpoint;
-        this.publicApiServerEndpoint = publicApiServerEndpoint;
-        this.publicPilotEndpoint = publicPilotEndpoint;
-    }
-
+    private GetServiceMeshesMeshEndpoint() {}
     /**
      * @return The internal address of the API Server.
      * 
@@ -78,17 +67,13 @@ public final class GetServiceMeshesMeshEndpoint {
     public static Builder builder(GetServiceMeshesMeshEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String intranetApiServerEndpoint;
         private String intranetPilotEndpoint;
         private String publicApiServerEndpoint;
         private String publicPilotEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMeshesMeshEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.intranetApiServerEndpoint = defaults.intranetApiServerEndpoint;
@@ -97,23 +82,33 @@ public final class GetServiceMeshesMeshEndpoint {
     	      this.publicPilotEndpoint = defaults.publicPilotEndpoint;
         }
 
+        @CustomType.Setter
         public Builder intranetApiServerEndpoint(String intranetApiServerEndpoint) {
             this.intranetApiServerEndpoint = Objects.requireNonNull(intranetApiServerEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder intranetPilotEndpoint(String intranetPilotEndpoint) {
             this.intranetPilotEndpoint = Objects.requireNonNull(intranetPilotEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder publicApiServerEndpoint(String publicApiServerEndpoint) {
             this.publicApiServerEndpoint = Objects.requireNonNull(publicApiServerEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPilotEndpoint(String publicPilotEndpoint) {
             this.publicPilotEndpoint = Objects.requireNonNull(publicPilotEndpoint);
             return this;
-        }        public GetServiceMeshesMeshEndpoint build() {
-            return new GetServiceMeshesMeshEndpoint(intranetApiServerEndpoint, intranetPilotEndpoint, publicApiServerEndpoint, publicPilotEndpoint);
+        }
+        public GetServiceMeshesMeshEndpoint build() {
+            final var o = new GetServiceMeshesMeshEndpoint();
+            o.intranetApiServerEndpoint = intranetApiServerEndpoint;
+            o.intranetPilotEndpoint = intranetPilotEndpoint;
+            o.publicApiServerEndpoint = publicApiServerEndpoint;
+            o.publicPilotEndpoint = publicPilotEndpoint;
+            return o;
         }
     }
 }

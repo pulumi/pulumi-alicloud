@@ -13,21 +13,14 @@ public final class GetZonesZoneSupportedResource {
      * @return The type of IP address.
      * 
      */
-    private final String addressIpVersion;
+    private String addressIpVersion;
     /**
      * @return The type of network.
      * 
      */
-    private final String addressType;
+    private String addressType;
 
-    @CustomType.Constructor
-    private GetZonesZoneSupportedResource(
-        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
-        @CustomType.Parameter("addressType") String addressType) {
-        this.addressIpVersion = addressIpVersion;
-        this.addressType = addressType;
-    }
-
+    private GetZonesZoneSupportedResource() {}
     /**
      * @return The type of IP address.
      * 
@@ -50,30 +43,32 @@ public final class GetZonesZoneSupportedResource {
     public static Builder builder(GetZonesZoneSupportedResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addressIpVersion;
         private String addressType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZoneSupportedResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressIpVersion = defaults.addressIpVersion;
     	      this.addressType = defaults.addressType;
         }
 
+        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder addressType(String addressType) {
             this.addressType = Objects.requireNonNull(addressType);
             return this;
-        }        public GetZonesZoneSupportedResource build() {
-            return new GetZonesZoneSupportedResource(addressIpVersion, addressType);
+        }
+        public GetZonesZoneSupportedResource build() {
+            final var o = new GetZonesZoneSupportedResource();
+            o.addressIpVersion = addressIpVersion;
+            o.addressType = addressType;
+            return o;
         }
     }
 }

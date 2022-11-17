@@ -14,21 +14,14 @@ public final class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private final String serverGroupId;
+    private String serverGroupId;
     /**
      * @return The Weight of server group.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple(
-        @CustomType.Parameter("serverGroupId") String serverGroupId,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.serverGroupId = serverGroupId;
-        this.weight = weight;
-    }
-
+    private GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple() {}
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -51,30 +44,32 @@ public final class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
     public static Builder builder(GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String serverGroupId;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            return new GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple(serverGroupId, weight);
+        }
+        public GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple build() {
+            final var o = new GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple();
+            o.serverGroupId = serverGroupId;
+            o.weight = weight;
+            return o;
         }
     }
 }

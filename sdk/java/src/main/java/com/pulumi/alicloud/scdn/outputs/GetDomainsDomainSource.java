@@ -14,42 +14,29 @@ public final class GetDomainsDomainSource {
      * @return The Back-to-Source Address.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return State.
      * 
      */
-    private final String enabled;
+    private String enabled;
     /**
      * @return Port.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Priority.
      * 
      */
-    private final String priority;
+    private String priority;
     /**
      * @return the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetDomainsDomainSource(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("enabled") String enabled,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("priority") String priority,
-        @CustomType.Parameter("type") String type) {
-        this.content = content;
-        this.enabled = enabled;
-        this.port = port;
-        this.priority = priority;
-        this.type = type;
-    }
-
+    private GetDomainsDomainSource() {}
     /**
      * @return The Back-to-Source Address.
      * 
@@ -93,18 +80,14 @@ public final class GetDomainsDomainSource {
     public static Builder builder(GetDomainsDomainSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private String enabled;
         private Integer port;
         private String priority;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -114,27 +97,39 @@ public final class GetDomainsDomainSource {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(String enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetDomainsDomainSource build() {
-            return new GetDomainsDomainSource(content, enabled, port, priority, type);
+        }
+        public GetDomainsDomainSource build() {
+            final var o = new GetDomainsDomainSource();
+            o.content = content;
+            o.enabled = enabled;
+            o.port = port;
+            o.priority = priority;
+            o.type = type;
+            return o;
         }
     }
 }

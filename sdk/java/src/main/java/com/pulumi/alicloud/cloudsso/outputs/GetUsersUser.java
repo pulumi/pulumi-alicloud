@@ -15,98 +15,69 @@ public final class GetUsersUser {
      * @return The create time of the user.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of user.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Directory.
      * 
      */
-    private final String directoryId;
+    private String directoryId;
     /**
      * @return The display name of user.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The User&#39;s Contact Email Address.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The first name of user.
      * 
      */
-    private final String firstName;
+    private String firstName;
     /**
      * @return The ID of the User.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The last name of user.
      * 
      */
-    private final String lastName;
+    private String lastName;
     /**
      * @return The List of MFA Device for User.
      * 
      */
-    private final List<GetUsersUserMfaDevice> mfaDevices;
+    private List<GetUsersUserMfaDevice> mfaDevices;
     /**
      * @return ProvisionType.
      * 
      */
-    private final String provisionType;
+    private String provisionType;
     /**
      * @return User status. Valid values: `Enabled` and `Disabled`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The User ID of the group.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return The name of user.
      * 
      */
-    private final String userName;
+    private String userName;
 
-    @CustomType.Constructor
-    private GetUsersUser(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("directoryId") String directoryId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("firstName") String firstName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lastName") String lastName,
-        @CustomType.Parameter("mfaDevices") List<GetUsersUserMfaDevice> mfaDevices,
-        @CustomType.Parameter("provisionType") String provisionType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("userName") String userName) {
-        this.createTime = createTime;
-        this.description = description;
-        this.directoryId = directoryId;
-        this.displayName = displayName;
-        this.email = email;
-        this.firstName = firstName;
-        this.id = id;
-        this.lastName = lastName;
-        this.mfaDevices = mfaDevices;
-        this.provisionType = provisionType;
-        this.status = status;
-        this.userId = userId;
-        this.userName = userName;
-    }
-
+    private GetUsersUser() {}
     /**
      * @return The create time of the user.
      * 
@@ -206,7 +177,7 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -221,11 +192,7 @@ public final class GetUsersUser {
         private String status;
         private String userId;
         private String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -243,38 +210,47 @@ public final class GetUsersUser {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder firstName(String firstName) {
             this.firstName = Objects.requireNonNull(firstName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lastName(String lastName) {
             this.lastName = Objects.requireNonNull(lastName);
             return this;
         }
+        @CustomType.Setter
         public Builder mfaDevices(List<GetUsersUserMfaDevice> mfaDevices) {
             this.mfaDevices = Objects.requireNonNull(mfaDevices);
             return this;
@@ -282,23 +258,42 @@ public final class GetUsersUser {
         public Builder mfaDevices(GetUsersUserMfaDevice... mfaDevices) {
             return mfaDevices(List.of(mfaDevices));
         }
+        @CustomType.Setter
         public Builder provisionType(String provisionType) {
             this.provisionType = Objects.requireNonNull(provisionType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }        public GetUsersUser build() {
-            return new GetUsersUser(createTime, description, directoryId, displayName, email, firstName, id, lastName, mfaDevices, provisionType, status, userId, userName);
+        }
+        public GetUsersUser build() {
+            final var o = new GetUsersUser();
+            o.createTime = createTime;
+            o.description = description;
+            o.directoryId = directoryId;
+            o.displayName = displayName;
+            o.email = email;
+            o.firstName = firstName;
+            o.id = id;
+            o.lastName = lastName;
+            o.mfaDevices = mfaDevices;
+            o.provisionType = provisionType;
+            o.status = status;
+            o.userId = userId;
+            o.userName = userName;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class LoadBalancerIntranetIntranet {
      * @return The SSL certificate. `https_cert_id` is required when HTTPS is selected
      * 
      */
-    private final @Nullable String httpsCertId;
+    private @Nullable String httpsCertId;
     /**
      * @return The SLB Port.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
      * 
      */
-    private final @Nullable String protocol;
+    private @Nullable String protocol;
     /**
      * @return The Container port.
      * 
      */
-    private final @Nullable Integer targetPort;
+    private @Nullable Integer targetPort;
 
-    @CustomType.Constructor
-    private LoadBalancerIntranetIntranet(
-        @CustomType.Parameter("httpsCertId") @Nullable String httpsCertId,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("protocol") @Nullable String protocol,
-        @CustomType.Parameter("targetPort") @Nullable Integer targetPort) {
-        this.httpsCertId = httpsCertId;
-        this.port = port;
-        this.protocol = protocol;
-        this.targetPort = targetPort;
-    }
-
+    private LoadBalancerIntranetIntranet() {}
     /**
      * @return The SSL certificate. `https_cert_id` is required when HTTPS is selected
      * 
@@ -81,17 +70,13 @@ public final class LoadBalancerIntranetIntranet {
     public static Builder builder(LoadBalancerIntranetIntranet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String httpsCertId;
         private @Nullable Integer port;
         private @Nullable String protocol;
         private @Nullable Integer targetPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerIntranetIntranet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpsCertId = defaults.httpsCertId;
@@ -100,23 +85,33 @@ public final class LoadBalancerIntranetIntranet {
     	      this.targetPort = defaults.targetPort;
         }
 
+        @CustomType.Setter
         public Builder httpsCertId(@Nullable String httpsCertId) {
             this.httpsCertId = httpsCertId;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
         }
+        @CustomType.Setter
         public Builder targetPort(@Nullable Integer targetPort) {
             this.targetPort = targetPort;
             return this;
-        }        public LoadBalancerIntranetIntranet build() {
-            return new LoadBalancerIntranetIntranet(httpsCertId, port, protocol, targetPort);
+        }
+        public LoadBalancerIntranetIntranet build() {
+            final var o = new LoadBalancerIntranetIntranet();
+            o.httpsCertId = httpsCertId;
+            o.port = port;
+            o.protocol = protocol;
+            o.targetPort = targetPort;
+            return o;
         }
     }
 }

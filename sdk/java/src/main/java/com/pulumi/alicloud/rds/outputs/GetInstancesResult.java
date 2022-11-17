@@ -21,98 +21,61 @@ public final class GetInstancesResult {
      * @return `Standard` for standard access mode and `Safe` for high security access mode.
      * 
      */
-    private final @Nullable String connectionMode;
+    private @Nullable String connectionMode;
     /**
      * @return `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      * 
      */
-    private final @Nullable String dbType;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String dbType;
+    private @Nullable Boolean enableDetails;
     /**
      * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
      * 
      */
-    private final @Nullable String engine;
+    private @Nullable String engine;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of RDS instance IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of RDS instances. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String nameRegex;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String nameRegex;
     /**
      * @return A list of RDS instance names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return Status of the instance.
      * 
      */
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final Integer totalCount;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private Integer totalCount;
     /**
      * @return ID of the VPC the instance belongs to.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
     /**
      * @return ID of the VSwitch the instance belongs to.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("connectionMode") @Nullable String connectionMode,
-        @CustomType.Parameter("dbType") @Nullable String dbType,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("engine") @Nullable String engine,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCount") Integer totalCount,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.connectionMode = connectionMode;
-        this.dbType = dbType;
-        this.enableDetails = enableDetails;
-        this.engine = engine;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.status = status;
-        this.tags = tags;
-        this.totalCount = totalCount;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetInstancesResult() {}
     /**
      * @return `Standard` for standard access mode and `Safe` for high security access mode.
      * 
@@ -212,7 +175,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionMode;
         private @Nullable String dbType;
@@ -231,11 +194,7 @@ public final class GetInstancesResult {
         private Integer totalCount;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionMode = defaults.connectionMode;
@@ -257,26 +216,32 @@ public final class GetInstancesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder connectionMode(@Nullable String connectionMode) {
             this.connectionMode = connectionMode;
             return this;
         }
+        @CustomType.Setter
         public Builder dbType(@Nullable String dbType) {
             this.dbType = dbType;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -284,6 +249,7 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -291,10 +257,12 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -302,39 +270,66 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(connectionMode, dbType, enableDetails, engine, id, ids, instances, nameRegex, names, outputFile, pageNumber, pageSize, status, tags, totalCount, vpcId, vswitchId);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.connectionMode = connectionMode;
+            o.dbType = dbType;
+            o.enableDetails = enableDetails;
+            o.engine = engine;
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.status = status;
+            o.tags = tags;
+            o.totalCount = totalCount;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

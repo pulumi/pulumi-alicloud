@@ -14,98 +14,69 @@ public final class GetSnapshotsSnapshot {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the snapshot.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The type of the encryption.
      * 
      */
-    private final Integer encryptType;
+    private Integer encryptType;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The remaining time that is required to create the snapshot. Unit: seconds.
      * 
      */
-    private final Integer remainTime;
+    private Integer remainTime;
     /**
      * @return The retention period of the automatic snapshot. Unit: days.
      * 
      */
-    private final Integer retentionDays;
+    private Integer retentionDays;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return The name of the snapshot.
      * 
      */
-    private final String snapshotName;
+    private String snapshotName;
     /**
      * @return The ID of the source file system.
      * 
      */
-    private final String sourceFileSystemId;
+    private String sourceFileSystemId;
     /**
      * @return The capacity of the source file system. Unit: GiB.
      * 
      */
-    private final String sourceFileSystemSize;
+    private String sourceFileSystemSize;
     /**
      * @return The version of the source file system.
      * 
      */
-    private final String sourceFileSystemVersion;
+    private String sourceFileSystemVersion;
     /**
      * @return The status of the snapshot.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSnapshotsSnapshot(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encryptType") Integer encryptType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("remainTime") Integer remainTime,
-        @CustomType.Parameter("retentionDays") Integer retentionDays,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("snapshotName") String snapshotName,
-        @CustomType.Parameter("sourceFileSystemId") String sourceFileSystemId,
-        @CustomType.Parameter("sourceFileSystemSize") String sourceFileSystemSize,
-        @CustomType.Parameter("sourceFileSystemVersion") String sourceFileSystemVersion,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.description = description;
-        this.encryptType = encryptType;
-        this.id = id;
-        this.progress = progress;
-        this.remainTime = remainTime;
-        this.retentionDays = retentionDays;
-        this.snapshotId = snapshotId;
-        this.snapshotName = snapshotName;
-        this.sourceFileSystemId = sourceFileSystemId;
-        this.sourceFileSystemSize = sourceFileSystemSize;
-        this.sourceFileSystemVersion = sourceFileSystemVersion;
-        this.status = status;
-    }
-
+    private GetSnapshotsSnapshot() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -205,7 +176,7 @@ public final class GetSnapshotsSnapshot {
     public static Builder builder(GetSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -220,11 +191,7 @@ public final class GetSnapshotsSnapshot {
         private String sourceFileSystemSize;
         private String sourceFileSystemVersion;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -242,59 +209,87 @@ public final class GetSnapshotsSnapshot {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptType(Integer encryptType) {
             this.encryptType = Objects.requireNonNull(encryptType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
             this.remainTime = Objects.requireNonNull(remainTime);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             this.snapshotName = Objects.requireNonNull(snapshotName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFileSystemId(String sourceFileSystemId) {
             this.sourceFileSystemId = Objects.requireNonNull(sourceFileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFileSystemSize(String sourceFileSystemSize) {
             this.sourceFileSystemSize = Objects.requireNonNull(sourceFileSystemSize);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFileSystemVersion(String sourceFileSystemVersion) {
             this.sourceFileSystemVersion = Objects.requireNonNull(sourceFileSystemVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSnapshotsSnapshot build() {
-            return new GetSnapshotsSnapshot(createTime, description, encryptType, id, progress, remainTime, retentionDays, snapshotId, snapshotName, sourceFileSystemId, sourceFileSystemSize, sourceFileSystemVersion, status);
+        }
+        public GetSnapshotsSnapshot build() {
+            final var o = new GetSnapshotsSnapshot();
+            o.createTime = createTime;
+            o.description = description;
+            o.encryptType = encryptType;
+            o.id = id;
+            o.progress = progress;
+            o.remainTime = remainTime;
+            o.retentionDays = retentionDays;
+            o.snapshotId = snapshotId;
+            o.snapshotName = snapshotName;
+            o.sourceFileSystemId = sourceFileSystemId;
+            o.sourceFileSystemSize = sourceFileSystemSize;
+            o.sourceFileSystemVersion = sourceFileSystemVersion;
+            o.status = status;
+            return o;
         }
     }
 }

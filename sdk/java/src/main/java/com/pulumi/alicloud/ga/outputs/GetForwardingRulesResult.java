@@ -13,36 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetForwardingRulesResult {
-    private final String acceleratorId;
-    private final List<GetForwardingRulesForwardingRule> forwardingRules;
+    private String acceleratorId;
+    private List<GetForwardingRulesForwardingRule> forwardingRules;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String listenerId;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private String listenerId;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetForwardingRulesResult(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("forwardingRules") List<GetForwardingRulesForwardingRule> forwardingRules,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.acceleratorId = acceleratorId;
-        this.forwardingRules = forwardingRules;
-        this.id = id;
-        this.ids = ids;
-        this.listenerId = listenerId;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetForwardingRulesResult() {}
     public String acceleratorId() {
         return this.acceleratorId;
     }
@@ -76,7 +59,7 @@ public final class GetForwardingRulesResult {
     public static Builder builder(GetForwardingRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private List<GetForwardingRulesForwardingRule> forwardingRules;
@@ -85,11 +68,7 @@ public final class GetForwardingRulesResult {
         private String listenerId;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetForwardingRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -101,10 +80,12 @@ public final class GetForwardingRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardingRules(List<GetForwardingRulesForwardingRule> forwardingRules) {
             this.forwardingRules = Objects.requireNonNull(forwardingRules);
             return this;
@@ -112,10 +93,12 @@ public final class GetForwardingRulesResult {
         public Builder forwardingRules(GetForwardingRulesForwardingRule... forwardingRules) {
             return forwardingRules(List.of(forwardingRules));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -123,19 +106,31 @@ public final class GetForwardingRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetForwardingRulesResult build() {
-            return new GetForwardingRulesResult(acceleratorId, forwardingRules, id, ids, listenerId, outputFile, status);
+        }
+        public GetForwardingRulesResult build() {
+            final var o = new GetForwardingRulesResult();
+            o.acceleratorId = acceleratorId;
+            o.forwardingRules = forwardingRules;
+            o.id = id;
+            o.ids = ids;
+            o.listenerId = listenerId;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

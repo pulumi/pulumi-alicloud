@@ -24,307 +24,216 @@ public final class GetClustersCluster {
      * @return Cluster connection information.
      * 
      */
-    private final List<GetClustersClusterAccessInfo> accessInfos;
+    private List<GetClustersClusterAccessInfo> accessInfos;
     /**
      * @return Whether flexible expansion is allowed.
      * 
      */
-    private final Boolean autoScalingAllowed;
+    private Boolean autoScalingAllowed;
     /**
      * @return Whether to allow expansion by load.
      * 
      */
-    private final Boolean autoScalingByLoadAllowed;
+    private Boolean autoScalingByLoadAllowed;
     /**
      * @return Whether to enable elastic expansion.
      * 
      */
-    private final Boolean autoScalingEnable;
+    private Boolean autoScalingEnable;
     /**
      * @return Whether to allow the use of elastic scaling bidding instances.
      * 
      */
-    private final Boolean autoScalingSpotWithLimitAllowed;
+    private Boolean autoScalingSpotWithLimitAllowed;
     /**
      * @return List of boot actions.
      * 
      */
-    private final List<GetClustersClusterBootstrapActionList> bootstrapActionLists;
+    private List<GetClustersClusterBootstrapActionList> bootstrapActionLists;
     /**
      * @return The result of the boot operation.
      * 
      */
-    private final Boolean bootstrapFailed;
+    private Boolean bootstrapFailed;
     /**
      * @return The ID of the associated cluster.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The name of the associated cluster.
      * 
      */
-    private final String clusterName;
+    private String clusterName;
     /**
      * @return Cluster tag, no need to pay attention.
      * 
      */
-    private final String createResource;
+    private String createResource;
     /**
      * @return Creation time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return How to create a cluster.
      * 
      */
-    private final String createType;
+    private String createType;
     /**
      * @return The hosting type of the cluster.
      * 
      */
-    private final String depositType;
+    private String depositType;
     /**
      * @return High security cluster.
      * 
      */
-    private final Boolean easEnable;
+    private Boolean easEnable;
     /**
      * @return Timeout time.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return Additional information for Stack.
      * 
      */
-    private final String extraInfo;
-    private final Boolean hasUncompletedOrder;
+    private String extraInfo;
+    private Boolean hasUncompletedOrder;
     /**
      * @return High availability cluster.
      * 
      */
-    private final Boolean highAvailabilityEnable;
+    private Boolean highAvailabilityEnable;
     /**
      * @return List of cluster machine groups.
      * 
      */
-    private final List<GetClustersClusterHostGroupList> hostGroupLists;
+    private List<GetClustersClusterHostGroupList> hostGroupLists;
     /**
      * @return Machine pool information.
      * 
      */
-    private final List<GetClustersClusterHostPoolInfo> hostPoolInfos;
-    private final String id;
+    private List<GetClustersClusterHostPoolInfo> hostPoolInfos;
+    private String id;
     /**
      * @return The ID of the image used to create the cluster.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return Whether to use Hive local Metabase.
      * 
      */
-    private final Boolean localMetaDb;
+    private Boolean localMetaDb;
     /**
      * @return The host type of the cluster. The default is ECS.
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return Metadata type:
      * 
      */
-    private final String metaStoreType;
+    private String metaStoreType;
     /**
      * @return Cluster network type.
      * 
      */
-    private final String netType;
+    private String netType;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
-    private final Integer period;
+    private Integer period;
     /**
      * @return The information of the primary cluster associated with the Gateway.
      * 
      */
-    private final List<GetClustersClusterRelateClusterInfo> relateClusterInfos;
+    private List<GetClustersClusterRelateClusterInfo> relateClusterInfos;
     /**
      * @return Whether to allow disk expansion:
      * 
      */
-    private final Boolean resizeDiskEnable;
+    private Boolean resizeDiskEnable;
     /**
      * @return The time (in seconds) that has been running.
      * 
      */
-    private final Integer runningTime;
+    private Integer runningTime;
     /**
      * @return The ID of the security group.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The name of the security group.
      * 
      */
-    private final String securityGroupName;
+    private String securityGroupName;
     /**
      * @return Service list.
      * 
      */
-    private final List<GetClustersClusterSoftwareInfo> softwareInfos;
+    private List<GetClustersClusterSoftwareInfo> softwareInfos;
     /**
      * @return Cluster startup time.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The cluster status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Cluster stop time.
      * 
      */
-    private final String stopTime;
+    private String stopTime;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return Disk type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The EMR permission name used.
      * 
      */
-    private final String userDefinedEmrEcsRole;
+    private String userDefinedEmrEcsRole;
     /**
      * @return The user ID.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return The VPC ID.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersCluster(
-        @CustomType.Parameter("accessInfos") List<GetClustersClusterAccessInfo> accessInfos,
-        @CustomType.Parameter("autoScalingAllowed") Boolean autoScalingAllowed,
-        @CustomType.Parameter("autoScalingByLoadAllowed") Boolean autoScalingByLoadAllowed,
-        @CustomType.Parameter("autoScalingEnable") Boolean autoScalingEnable,
-        @CustomType.Parameter("autoScalingSpotWithLimitAllowed") Boolean autoScalingSpotWithLimitAllowed,
-        @CustomType.Parameter("bootstrapActionLists") List<GetClustersClusterBootstrapActionList> bootstrapActionLists,
-        @CustomType.Parameter("bootstrapFailed") Boolean bootstrapFailed,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("createResource") String createResource,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createType") String createType,
-        @CustomType.Parameter("depositType") String depositType,
-        @CustomType.Parameter("easEnable") Boolean easEnable,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("extraInfo") String extraInfo,
-        @CustomType.Parameter("hasUncompletedOrder") Boolean hasUncompletedOrder,
-        @CustomType.Parameter("highAvailabilityEnable") Boolean highAvailabilityEnable,
-        @CustomType.Parameter("hostGroupLists") List<GetClustersClusterHostGroupList> hostGroupLists,
-        @CustomType.Parameter("hostPoolInfos") List<GetClustersClusterHostPoolInfo> hostPoolInfos,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("localMetaDb") Boolean localMetaDb,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("metaStoreType") String metaStoreType,
-        @CustomType.Parameter("netType") String netType,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("period") Integer period,
-        @CustomType.Parameter("relateClusterInfos") List<GetClustersClusterRelateClusterInfo> relateClusterInfos,
-        @CustomType.Parameter("resizeDiskEnable") Boolean resizeDiskEnable,
-        @CustomType.Parameter("runningTime") Integer runningTime,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("securityGroupName") String securityGroupName,
-        @CustomType.Parameter("softwareInfos") List<GetClustersClusterSoftwareInfo> softwareInfos,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("stopTime") String stopTime,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("userDefinedEmrEcsRole") String userDefinedEmrEcsRole,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.accessInfos = accessInfos;
-        this.autoScalingAllowed = autoScalingAllowed;
-        this.autoScalingByLoadAllowed = autoScalingByLoadAllowed;
-        this.autoScalingEnable = autoScalingEnable;
-        this.autoScalingSpotWithLimitAllowed = autoScalingSpotWithLimitAllowed;
-        this.bootstrapActionLists = bootstrapActionLists;
-        this.bootstrapFailed = bootstrapFailed;
-        this.clusterId = clusterId;
-        this.clusterName = clusterName;
-        this.createResource = createResource;
-        this.createTime = createTime;
-        this.createType = createType;
-        this.depositType = depositType;
-        this.easEnable = easEnable;
-        this.expiredTime = expiredTime;
-        this.extraInfo = extraInfo;
-        this.hasUncompletedOrder = hasUncompletedOrder;
-        this.highAvailabilityEnable = highAvailabilityEnable;
-        this.hostGroupLists = hostGroupLists;
-        this.hostPoolInfos = hostPoolInfos;
-        this.id = id;
-        this.imageId = imageId;
-        this.localMetaDb = localMetaDb;
-        this.machineType = machineType;
-        this.metaStoreType = metaStoreType;
-        this.netType = netType;
-        this.paymentType = paymentType;
-        this.period = period;
-        this.relateClusterInfos = relateClusterInfos;
-        this.resizeDiskEnable = resizeDiskEnable;
-        this.runningTime = runningTime;
-        this.securityGroupId = securityGroupId;
-        this.securityGroupName = securityGroupName;
-        this.softwareInfos = softwareInfos;
-        this.startTime = startTime;
-        this.status = status;
-        this.stopTime = stopTime;
-        this.tags = tags;
-        this.type = type;
-        this.userDefinedEmrEcsRole = userDefinedEmrEcsRole;
-        this.userId = userId;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersCluster() {}
     /**
      * @return Cluster connection information.
      * 
@@ -633,7 +542,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClustersClusterAccessInfo> accessInfos;
         private Boolean autoScalingAllowed;
@@ -679,11 +588,7 @@ public final class GetClustersCluster {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessInfos = defaults.accessInfos;
@@ -732,6 +637,7 @@ public final class GetClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder accessInfos(List<GetClustersClusterAccessInfo> accessInfos) {
             this.accessInfos = Objects.requireNonNull(accessInfos);
             return this;
@@ -739,22 +645,27 @@ public final class GetClustersCluster {
         public Builder accessInfos(GetClustersClusterAccessInfo... accessInfos) {
             return accessInfos(List.of(accessInfos));
         }
+        @CustomType.Setter
         public Builder autoScalingAllowed(Boolean autoScalingAllowed) {
             this.autoScalingAllowed = Objects.requireNonNull(autoScalingAllowed);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScalingByLoadAllowed(Boolean autoScalingByLoadAllowed) {
             this.autoScalingByLoadAllowed = Objects.requireNonNull(autoScalingByLoadAllowed);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScalingEnable(Boolean autoScalingEnable) {
             this.autoScalingEnable = Objects.requireNonNull(autoScalingEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScalingSpotWithLimitAllowed(Boolean autoScalingSpotWithLimitAllowed) {
             this.autoScalingSpotWithLimitAllowed = Objects.requireNonNull(autoScalingSpotWithLimitAllowed);
             return this;
         }
+        @CustomType.Setter
         public Builder bootstrapActionLists(List<GetClustersClusterBootstrapActionList> bootstrapActionLists) {
             this.bootstrapActionLists = Objects.requireNonNull(bootstrapActionLists);
             return this;
@@ -762,54 +673,67 @@ public final class GetClustersCluster {
         public Builder bootstrapActionLists(GetClustersClusterBootstrapActionList... bootstrapActionLists) {
             return bootstrapActionLists(List.of(bootstrapActionLists));
         }
+        @CustomType.Setter
         public Builder bootstrapFailed(Boolean bootstrapFailed) {
             this.bootstrapFailed = Objects.requireNonNull(bootstrapFailed);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder createResource(String createResource) {
             this.createResource = Objects.requireNonNull(createResource);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createType(String createType) {
             this.createType = Objects.requireNonNull(createType);
             return this;
         }
+        @CustomType.Setter
         public Builder depositType(String depositType) {
             this.depositType = Objects.requireNonNull(depositType);
             return this;
         }
+        @CustomType.Setter
         public Builder easEnable(Boolean easEnable) {
             this.easEnable = Objects.requireNonNull(easEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder extraInfo(String extraInfo) {
             this.extraInfo = Objects.requireNonNull(extraInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder hasUncompletedOrder(Boolean hasUncompletedOrder) {
             this.hasUncompletedOrder = Objects.requireNonNull(hasUncompletedOrder);
             return this;
         }
+        @CustomType.Setter
         public Builder highAvailabilityEnable(Boolean highAvailabilityEnable) {
             this.highAvailabilityEnable = Objects.requireNonNull(highAvailabilityEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupLists(List<GetClustersClusterHostGroupList> hostGroupLists) {
             this.hostGroupLists = Objects.requireNonNull(hostGroupLists);
             return this;
@@ -817,6 +741,7 @@ public final class GetClustersCluster {
         public Builder hostGroupLists(GetClustersClusterHostGroupList... hostGroupLists) {
             return hostGroupLists(List.of(hostGroupLists));
         }
+        @CustomType.Setter
         public Builder hostPoolInfos(List<GetClustersClusterHostPoolInfo> hostPoolInfos) {
             this.hostPoolInfos = Objects.requireNonNull(hostPoolInfos);
             return this;
@@ -824,38 +749,47 @@ public final class GetClustersCluster {
         public Builder hostPoolInfos(GetClustersClusterHostPoolInfo... hostPoolInfos) {
             return hostPoolInfos(List.of(hostPoolInfos));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder localMetaDb(Boolean localMetaDb) {
             this.localMetaDb = Objects.requireNonNull(localMetaDb);
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder metaStoreType(String metaStoreType) {
             this.metaStoreType = Objects.requireNonNull(metaStoreType);
             return this;
         }
+        @CustomType.Setter
         public Builder netType(String netType) {
             this.netType = Objects.requireNonNull(netType);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder period(Integer period) {
             this.period = Objects.requireNonNull(period);
             return this;
         }
+        @CustomType.Setter
         public Builder relateClusterInfos(List<GetClustersClusterRelateClusterInfo> relateClusterInfos) {
             this.relateClusterInfos = Objects.requireNonNull(relateClusterInfos);
             return this;
@@ -863,22 +797,27 @@ public final class GetClustersCluster {
         public Builder relateClusterInfos(GetClustersClusterRelateClusterInfo... relateClusterInfos) {
             return relateClusterInfos(List.of(relateClusterInfos));
         }
+        @CustomType.Setter
         public Builder resizeDiskEnable(Boolean resizeDiskEnable) {
             this.resizeDiskEnable = Objects.requireNonNull(resizeDiskEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder runningTime(Integer runningTime) {
             this.runningTime = Objects.requireNonNull(runningTime);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupName(String securityGroupName) {
             this.securityGroupName = Objects.requireNonNull(securityGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder softwareInfos(List<GetClustersClusterSoftwareInfo> softwareInfos) {
             this.softwareInfos = Objects.requireNonNull(softwareInfos);
             return this;
@@ -886,47 +825,103 @@ public final class GetClustersCluster {
         public Builder softwareInfos(GetClustersClusterSoftwareInfo... softwareInfos) {
             return softwareInfos(List.of(softwareInfos));
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder stopTime(String stopTime) {
             this.stopTime = Objects.requireNonNull(stopTime);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder userDefinedEmrEcsRole(String userDefinedEmrEcsRole) {
             this.userDefinedEmrEcsRole = Objects.requireNonNull(userDefinedEmrEcsRole);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersCluster build() {
-            return new GetClustersCluster(accessInfos, autoScalingAllowed, autoScalingByLoadAllowed, autoScalingEnable, autoScalingSpotWithLimitAllowed, bootstrapActionLists, bootstrapFailed, clusterId, clusterName, createResource, createTime, createType, depositType, easEnable, expiredTime, extraInfo, hasUncompletedOrder, highAvailabilityEnable, hostGroupLists, hostPoolInfos, id, imageId, localMetaDb, machineType, metaStoreType, netType, paymentType, period, relateClusterInfos, resizeDiskEnable, runningTime, securityGroupId, securityGroupName, softwareInfos, startTime, status, stopTime, tags, type, userDefinedEmrEcsRole, userId, vpcId, vswitchId, zoneId);
+        }
+        public GetClustersCluster build() {
+            final var o = new GetClustersCluster();
+            o.accessInfos = accessInfos;
+            o.autoScalingAllowed = autoScalingAllowed;
+            o.autoScalingByLoadAllowed = autoScalingByLoadAllowed;
+            o.autoScalingEnable = autoScalingEnable;
+            o.autoScalingSpotWithLimitAllowed = autoScalingSpotWithLimitAllowed;
+            o.bootstrapActionLists = bootstrapActionLists;
+            o.bootstrapFailed = bootstrapFailed;
+            o.clusterId = clusterId;
+            o.clusterName = clusterName;
+            o.createResource = createResource;
+            o.createTime = createTime;
+            o.createType = createType;
+            o.depositType = depositType;
+            o.easEnable = easEnable;
+            o.expiredTime = expiredTime;
+            o.extraInfo = extraInfo;
+            o.hasUncompletedOrder = hasUncompletedOrder;
+            o.highAvailabilityEnable = highAvailabilityEnable;
+            o.hostGroupLists = hostGroupLists;
+            o.hostPoolInfos = hostPoolInfos;
+            o.id = id;
+            o.imageId = imageId;
+            o.localMetaDb = localMetaDb;
+            o.machineType = machineType;
+            o.metaStoreType = metaStoreType;
+            o.netType = netType;
+            o.paymentType = paymentType;
+            o.period = period;
+            o.relateClusterInfos = relateClusterInfos;
+            o.resizeDiskEnable = resizeDiskEnable;
+            o.runningTime = runningTime;
+            o.securityGroupId = securityGroupId;
+            o.securityGroupName = securityGroupName;
+            o.softwareInfos = softwareInfos;
+            o.startTime = startTime;
+            o.status = status;
+            o.stopTime = stopTime;
+            o.tags = tags;
+            o.type = type;
+            o.userDefinedEmrEcsRole = userDefinedEmrEcsRole;
+            o.userId = userId;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

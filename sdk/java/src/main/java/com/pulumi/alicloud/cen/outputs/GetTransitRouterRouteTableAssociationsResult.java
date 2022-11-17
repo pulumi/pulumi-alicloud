@@ -17,45 +17,30 @@ public final class GetTransitRouterRouteTableAssociationsResult {
      * @return A list of CEN Transit Router Route Table Associations. Each element contains the following attributes:
      * 
      */
-    private final List<GetTransitRouterRouteTableAssociationsAssociation> associations;
+    private List<GetTransitRouterRouteTableAssociationsAssociation> associations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of CEN Transit Router Route Table Association IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return The status of the route table.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return ID of the transit router route table.
      * 
      */
-    private final String transitRouterRouteTableId;
+    private String transitRouterRouteTableId;
 
-    @CustomType.Constructor
-    private GetTransitRouterRouteTableAssociationsResult(
-        @CustomType.Parameter("associations") List<GetTransitRouterRouteTableAssociationsAssociation> associations,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterRouteTableId") String transitRouterRouteTableId) {
-        this.associations = associations;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.transitRouterRouteTableId = transitRouterRouteTableId;
-    }
-
+    private GetTransitRouterRouteTableAssociationsResult() {}
     /**
      * @return A list of CEN Transit Router Route Table Associations. Each element contains the following attributes:
      * 
@@ -102,7 +87,7 @@ public final class GetTransitRouterRouteTableAssociationsResult {
     public static Builder builder(GetTransitRouterRouteTableAssociationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterRouteTableAssociationsAssociation> associations;
         private String id;
@@ -110,11 +95,7 @@ public final class GetTransitRouterRouteTableAssociationsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private String transitRouterRouteTableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterRouteTableAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associations = defaults.associations;
@@ -125,6 +106,7 @@ public final class GetTransitRouterRouteTableAssociationsResult {
     	      this.transitRouterRouteTableId = defaults.transitRouterRouteTableId;
         }
 
+        @CustomType.Setter
         public Builder associations(List<GetTransitRouterRouteTableAssociationsAssociation> associations) {
             this.associations = Objects.requireNonNull(associations);
             return this;
@@ -132,10 +114,12 @@ public final class GetTransitRouterRouteTableAssociationsResult {
         public Builder associations(GetTransitRouterRouteTableAssociationsAssociation... associations) {
             return associations(List.of(associations));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -143,19 +127,30 @@ public final class GetTransitRouterRouteTableAssociationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
             this.transitRouterRouteTableId = Objects.requireNonNull(transitRouterRouteTableId);
             return this;
-        }        public GetTransitRouterRouteTableAssociationsResult build() {
-            return new GetTransitRouterRouteTableAssociationsResult(associations, id, ids, outputFile, status, transitRouterRouteTableId);
+        }
+        public GetTransitRouterRouteTableAssociationsResult build() {
+            final var o = new GetTransitRouterRouteTableAssociationsResult();
+            o.associations = associations;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.transitRouterRouteTableId = transitRouterRouteTableId;
+            return o;
         }
     }
 }

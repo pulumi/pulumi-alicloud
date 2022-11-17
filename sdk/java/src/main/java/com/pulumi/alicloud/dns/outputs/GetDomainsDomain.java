@@ -19,152 +19,103 @@ public final class GetDomainsDomain {
      * @return Specifies whether the domain is from Alibaba Cloud or not.
      * 
      */
-    private final Boolean aliDomain;
-    private final List<Integer> availableTtls;
+    private Boolean aliDomain;
+    private List<Integer> availableTtls;
     /**
      * @return DNS list of domain names in the resolution system.
      * 
      */
-    private final List<String> dnsServers;
+    private List<String> dnsServers;
     /**
      * @return ID of the domain.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return Name of the domain.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return Domain group ID, if not filled, the default is all groups.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return Name of group that contains the domain.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The Id of resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether it is in black hole.
      * 
      */
-    private final Boolean inBlackHole;
+    private Boolean inBlackHole;
     /**
      * @return Whether it is cleaning.
      * 
      */
-    private final Boolean inClean;
+    private Boolean inClean;
     /**
      * @return Cloud analysis product ID.
      * 
      */
-    private final String instanceId;
-    private final String lineType;
+    private String instanceId;
+    private String lineType;
     /**
      * @return Minimum TTL.
      * 
      */
-    private final Integer minTtl;
+    private Integer minTtl;
     /**
      * @return Punycode of the Chinese domain.
      * 
      */
-    private final String punyCode;
+    private String punyCode;
     /**
      * @return Tree-like analytical line list.
      * 
      */
-    private final String recordLineTreeJson;
-    private final List<GetDomainsDomainRecordLine> recordLines;
+    private String recordLineTreeJson;
+    private List<GetDomainsDomainRecordLine> recordLines;
     /**
      * @return Whether it is a regional route.
      * 
      */
-    private final Boolean regionLines;
+    private Boolean regionLines;
     /**
      * @return The Id of resource group which the dns belongs.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return The Id of resource group which the dns belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return Whether to allow auxiliary dns.
      * 
      */
-    private final Boolean slaveDns;
+    private Boolean slaveDns;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return Cloud analysis version code.
      * 
      */
-    private final String versionCode;
-    private final String versionName;
+    private String versionCode;
+    private String versionName;
 
-    @CustomType.Constructor
-    private GetDomainsDomain(
-        @CustomType.Parameter("aliDomain") Boolean aliDomain,
-        @CustomType.Parameter("availableTtls") List<Integer> availableTtls,
-        @CustomType.Parameter("dnsServers") List<String> dnsServers,
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inBlackHole") Boolean inBlackHole,
-        @CustomType.Parameter("inClean") Boolean inClean,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("lineType") String lineType,
-        @CustomType.Parameter("minTtl") Integer minTtl,
-        @CustomType.Parameter("punyCode") String punyCode,
-        @CustomType.Parameter("recordLineTreeJson") String recordLineTreeJson,
-        @CustomType.Parameter("recordLines") List<GetDomainsDomainRecordLine> recordLines,
-        @CustomType.Parameter("regionLines") Boolean regionLines,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("slaveDns") Boolean slaveDns,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("versionCode") String versionCode,
-        @CustomType.Parameter("versionName") String versionName) {
-        this.aliDomain = aliDomain;
-        this.availableTtls = availableTtls;
-        this.dnsServers = dnsServers;
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.id = id;
-        this.inBlackHole = inBlackHole;
-        this.inClean = inClean;
-        this.instanceId = instanceId;
-        this.lineType = lineType;
-        this.minTtl = minTtl;
-        this.punyCode = punyCode;
-        this.recordLineTreeJson = recordLineTreeJson;
-        this.recordLines = recordLines;
-        this.regionLines = regionLines;
-        this.remark = remark;
-        this.resourceGroupId = resourceGroupId;
-        this.slaveDns = slaveDns;
-        this.tags = tags;
-        this.versionCode = versionCode;
-        this.versionName = versionName;
-    }
-
+    private GetDomainsDomain() {}
     /**
      * @return Specifies whether the domain is from Alibaba Cloud or not.
      * 
@@ -318,7 +269,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean aliDomain;
         private List<Integer> availableTtls;
@@ -343,11 +294,7 @@ public final class GetDomainsDomain {
         private Map<String,Object> tags;
         private String versionCode;
         private String versionName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliDomain = defaults.aliDomain;
@@ -375,10 +322,12 @@ public final class GetDomainsDomain {
     	      this.versionName = defaults.versionName;
         }
 
+        @CustomType.Setter
         public Builder aliDomain(Boolean aliDomain) {
             this.aliDomain = Objects.requireNonNull(aliDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder availableTtls(List<Integer> availableTtls) {
             this.availableTtls = Objects.requireNonNull(availableTtls);
             return this;
@@ -386,6 +335,7 @@ public final class GetDomainsDomain {
         public Builder availableTtls(Integer... availableTtls) {
             return availableTtls(List.of(availableTtls));
         }
+        @CustomType.Setter
         public Builder dnsServers(List<String> dnsServers) {
             this.dnsServers = Objects.requireNonNull(dnsServers);
             return this;
@@ -393,54 +343,67 @@ public final class GetDomainsDomain {
         public Builder dnsServers(String... dnsServers) {
             return dnsServers(List.of(dnsServers));
         }
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inBlackHole(Boolean inBlackHole) {
             this.inBlackHole = Objects.requireNonNull(inBlackHole);
             return this;
         }
+        @CustomType.Setter
         public Builder inClean(Boolean inClean) {
             this.inClean = Objects.requireNonNull(inClean);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder lineType(String lineType) {
             this.lineType = Objects.requireNonNull(lineType);
             return this;
         }
+        @CustomType.Setter
         public Builder minTtl(Integer minTtl) {
             this.minTtl = Objects.requireNonNull(minTtl);
             return this;
         }
+        @CustomType.Setter
         public Builder punyCode(String punyCode) {
             this.punyCode = Objects.requireNonNull(punyCode);
             return this;
         }
+        @CustomType.Setter
         public Builder recordLineTreeJson(String recordLineTreeJson) {
             this.recordLineTreeJson = Objects.requireNonNull(recordLineTreeJson);
             return this;
         }
+        @CustomType.Setter
         public Builder recordLines(List<GetDomainsDomainRecordLine> recordLines) {
             this.recordLines = Objects.requireNonNull(recordLines);
             return this;
@@ -448,35 +411,67 @@ public final class GetDomainsDomain {
         public Builder recordLines(GetDomainsDomainRecordLine... recordLines) {
             return recordLines(List.of(recordLines));
         }
+        @CustomType.Setter
         public Builder regionLines(Boolean regionLines) {
             this.regionLines = Objects.requireNonNull(regionLines);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder slaveDns(Boolean slaveDns) {
             this.slaveDns = Objects.requireNonNull(slaveDns);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder versionCode(String versionCode) {
             this.versionCode = Objects.requireNonNull(versionCode);
             return this;
         }
+        @CustomType.Setter
         public Builder versionName(String versionName) {
             this.versionName = Objects.requireNonNull(versionName);
             return this;
-        }        public GetDomainsDomain build() {
-            return new GetDomainsDomain(aliDomain, availableTtls, dnsServers, domainId, domainName, groupId, groupName, id, inBlackHole, inClean, instanceId, lineType, minTtl, punyCode, recordLineTreeJson, recordLines, regionLines, remark, resourceGroupId, slaveDns, tags, versionCode, versionName);
+        }
+        public GetDomainsDomain build() {
+            final var o = new GetDomainsDomain();
+            o.aliDomain = aliDomain;
+            o.availableTtls = availableTtls;
+            o.dnsServers = dnsServers;
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.groupId = groupId;
+            o.groupName = groupName;
+            o.id = id;
+            o.inBlackHole = inBlackHole;
+            o.inClean = inClean;
+            o.instanceId = instanceId;
+            o.lineType = lineType;
+            o.minTtl = minTtl;
+            o.punyCode = punyCode;
+            o.recordLineTreeJson = recordLineTreeJson;
+            o.recordLines = recordLines;
+            o.regionLines = regionLines;
+            o.remark = remark;
+            o.resourceGroupId = resourceGroupId;
+            o.slaveDns = slaveDns;
+            o.tags = tags;
+            o.versionCode = versionCode;
+            o.versionName = versionName;
+            return o;
         }
     }
 }

@@ -20,95 +20,60 @@ public final class GetRouteTablesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Optional) A list of Route Tables IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Route Tables names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return The Id of resource group which route tables belongs.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The route table name.
      * 
      */
-    private final @Nullable String routeTableName;
+    private @Nullable String routeTableName;
     /**
      * @return Router Id of the route table.
      * 
      */
-    private final @Nullable String routerId;
+    private @Nullable String routerId;
     /**
      * @return The route type.
      * 
      */
-    private final @Nullable String routerType;
+    private @Nullable String routerType;
     /**
      * @return The status of route table.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A list of Route Tables. Each element contains the following attributes:
      * 
      */
-    private final List<GetRouteTablesTable> tables;
-    private final @Nullable Map<String,Object> tags;
-    private final Integer totalCount;
+    private List<GetRouteTablesTable> tables;
+    private @Nullable Map<String,Object> tags;
+    private Integer totalCount;
     /**
      * @return The VPC ID.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private GetRouteTablesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("routeTableName") @Nullable String routeTableName,
-        @CustomType.Parameter("routerId") @Nullable String routerId,
-        @CustomType.Parameter("routerType") @Nullable String routerType,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tables") List<GetRouteTablesTable> tables,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCount") Integer totalCount,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.resourceGroupId = resourceGroupId;
-        this.routeTableName = routeTableName;
-        this.routerId = routerId;
-        this.routerType = routerType;
-        this.status = status;
-        this.tables = tables;
-        this.tags = tags;
-        this.totalCount = totalCount;
-        this.vpcId = vpcId;
-    }
-
+    private GetRouteTablesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -205,7 +170,7 @@ public final class GetRouteTablesResult {
     public static Builder builder(GetRouteTablesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -223,11 +188,7 @@ public final class GetRouteTablesResult {
         private @Nullable Map<String,Object> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -248,10 +209,12 @@ public final class GetRouteTablesResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -259,10 +222,12 @@ public final class GetRouteTablesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -270,38 +235,47 @@ public final class GetRouteTablesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableName(@Nullable String routeTableName) {
             this.routeTableName = routeTableName;
             return this;
         }
+        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
             this.routerId = routerId;
             return this;
         }
+        @CustomType.Setter
         public Builder routerType(@Nullable String routerType) {
             this.routerType = routerType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tables(List<GetRouteTablesTable> tables) {
             this.tables = Objects.requireNonNull(tables);
             return this;
@@ -309,19 +283,40 @@ public final class GetRouteTablesResult {
         public Builder tables(GetRouteTablesTable... tables) {
             return tables(List.of(tables));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public GetRouteTablesResult build() {
-            return new GetRouteTablesResult(id, ids, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId, routeTableName, routerId, routerType, status, tables, tags, totalCount, vpcId);
+        }
+        public GetRouteTablesResult build() {
+            final var o = new GetRouteTablesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.resourceGroupId = resourceGroupId;
+            o.routeTableName = routeTableName;
+            o.routerId = routerId;
+            o.routerType = routerType;
+            o.status = status;
+            o.tables = tables;
+            o.tags = tags;
+            o.totalCount = totalCount;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

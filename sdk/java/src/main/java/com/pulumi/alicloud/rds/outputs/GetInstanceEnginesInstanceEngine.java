@@ -15,35 +15,24 @@ public final class GetInstanceEnginesInstanceEngine {
      * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return Database type. Valid values: &#34;MySQL&#34;, &#34;SQLServer&#34;, &#34;PostgreSQL&#34;, &#34;PPAS&#34;, &#34;MariaDB&#34;. If not set, it will match all of engines.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return A list of Zone to launch the DB instance.
      * 
      */
-    private final List<GetInstanceEnginesInstanceEngineZoneId> zoneIds;
+    private List<GetInstanceEnginesInstanceEngineZoneId> zoneIds;
 
-    @CustomType.Constructor
-    private GetInstanceEnginesInstanceEngine(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("zoneIds") List<GetInstanceEnginesInstanceEngineZoneId> zoneIds) {
-        this.category = category;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.zoneIds = zoneIds;
-    }
-
+    private GetInstanceEnginesInstanceEngine() {}
     /**
      * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
@@ -80,17 +69,13 @@ public final class GetInstanceEnginesInstanceEngine {
     public static Builder builder(GetInstanceEnginesInstanceEngine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String engine;
         private String engineVersion;
         private List<GetInstanceEnginesInstanceEngineZoneId> zoneIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceEnginesInstanceEngine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -99,26 +84,36 @@ public final class GetInstanceEnginesInstanceEngine {
     	      this.zoneIds = defaults.zoneIds;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIds(List<GetInstanceEnginesInstanceEngineZoneId> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(GetInstanceEnginesInstanceEngineZoneId... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }        public GetInstanceEnginesInstanceEngine build() {
-            return new GetInstanceEnginesInstanceEngine(category, engine, engineVersion, zoneIds);
+        }
+        public GetInstanceEnginesInstanceEngine build() {
+            final var o = new GetInstanceEnginesInstanceEngine();
+            o.category = category;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.zoneIds = zoneIds;
+            return o;
         }
     }
 }

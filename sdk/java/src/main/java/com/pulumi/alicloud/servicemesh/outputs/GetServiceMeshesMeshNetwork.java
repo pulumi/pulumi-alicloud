@@ -14,28 +14,19 @@ public final class GetServiceMeshesMeshNetwork {
      * @return The ID of the Security group
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The list of Virtual Switch.
      * 
      */
-    private final List<String> vswitcheLists;
+    private List<String> vswitcheLists;
 
-    @CustomType.Constructor
-    private GetServiceMeshesMeshNetwork(
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitcheLists") List<String> vswitcheLists) {
-        this.securityGroupId = securityGroupId;
-        this.vpcId = vpcId;
-        this.vswitcheLists = vswitcheLists;
-    }
-
+    private GetServiceMeshesMeshNetwork() {}
     /**
      * @return The ID of the Security group
      * 
@@ -65,16 +56,12 @@ public final class GetServiceMeshesMeshNetwork {
     public static Builder builder(GetServiceMeshesMeshNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String securityGroupId;
         private String vpcId;
         private List<String> vswitcheLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMeshesMeshNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityGroupId = defaults.securityGroupId;
@@ -82,22 +69,30 @@ public final class GetServiceMeshesMeshNetwork {
     	      this.vswitcheLists = defaults.vswitcheLists;
         }
 
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitcheLists(List<String> vswitcheLists) {
             this.vswitcheLists = Objects.requireNonNull(vswitcheLists);
             return this;
         }
         public Builder vswitcheLists(String... vswitcheLists) {
             return vswitcheLists(List.of(vswitcheLists));
-        }        public GetServiceMeshesMeshNetwork build() {
-            return new GetServiceMeshesMeshNetwork(securityGroupId, vpcId, vswitcheLists);
+        }
+        public GetServiceMeshesMeshNetwork build() {
+            final var o = new GetServiceMeshesMeshNetwork();
+            o.securityGroupId = securityGroupId;
+            o.vpcId = vpcId;
+            o.vswitcheLists = vswitcheLists;
+            return o;
         }
     }
 }

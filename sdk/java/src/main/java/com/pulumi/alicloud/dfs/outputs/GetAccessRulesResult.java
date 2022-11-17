@@ -13,30 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessRulesResult {
-    private final String accessGroupId;
+    private String accessGroupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetAccessRulesRule> rules;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetAccessRulesRule> rules;
 
-    @CustomType.Constructor
-    private GetAccessRulesResult(
-        @CustomType.Parameter("accessGroupId") String accessGroupId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("rules") List<GetAccessRulesRule> rules) {
-        this.accessGroupId = accessGroupId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.rules = rules;
-    }
-
+    private GetAccessRulesResult() {}
     public String accessGroupId() {
         return this.accessGroupId;
     }
@@ -64,18 +51,14 @@ public final class GetAccessRulesResult {
     public static Builder builder(GetAccessRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessGroupId;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetAccessRulesRule> rules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupId = defaults.accessGroupId;
@@ -85,14 +68,17 @@ public final class GetAccessRulesResult {
     	      this.rules = defaults.rules;
         }
 
+        @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
             this.accessGroupId = Objects.requireNonNull(accessGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -100,18 +86,27 @@ public final class GetAccessRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetAccessRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetAccessRulesRule... rules) {
             return rules(List.of(rules));
-        }        public GetAccessRulesResult build() {
-            return new GetAccessRulesResult(accessGroupId, id, ids, outputFile, rules);
+        }
+        public GetAccessRulesResult build() {
+            final var o = new GetAccessRulesResult();
+            o.accessGroupId = accessGroupId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.rules = rules;
+            return o;
         }
     }
 }

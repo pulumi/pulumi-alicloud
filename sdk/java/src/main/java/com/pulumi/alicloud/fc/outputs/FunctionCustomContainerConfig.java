@@ -15,28 +15,19 @@ public final class FunctionCustomContainerConfig {
      * @return The args field specifies the arguments passed to the command.
      * 
      */
-    private final @Nullable String args;
+    private @Nullable String args;
     /**
      * @return The entry point of the container, which specifies the actual command run by the container.
      * 
      */
-    private final @Nullable String command;
+    private @Nullable String command;
     /**
      * @return The container image address.
      * 
      */
-    private final String image;
+    private String image;
 
-    @CustomType.Constructor
-    private FunctionCustomContainerConfig(
-        @CustomType.Parameter("args") @Nullable String args,
-        @CustomType.Parameter("command") @Nullable String command,
-        @CustomType.Parameter("image") String image) {
-        this.args = args;
-        this.command = command;
-        this.image = image;
-    }
-
+    private FunctionCustomContainerConfig() {}
     /**
      * @return The args field specifies the arguments passed to the command.
      * 
@@ -66,16 +57,12 @@ public final class FunctionCustomContainerConfig {
     public static Builder builder(FunctionCustomContainerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String args;
         private @Nullable String command;
         private String image;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionCustomContainerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -83,19 +70,27 @@ public final class FunctionCustomContainerConfig {
     	      this.image = defaults.image;
         }
 
+        @CustomType.Setter
         public Builder args(@Nullable String args) {
             this.args = args;
             return this;
         }
+        @CustomType.Setter
         public Builder command(@Nullable String command) {
             this.command = command;
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
-        }        public FunctionCustomContainerConfig build() {
-            return new FunctionCustomContainerConfig(args, command, image);
+        }
+        public FunctionCustomContainerConfig build() {
+            final var o = new FunctionCustomContainerConfig();
+            o.args = args;
+            o.command = command;
+            o.image = image;
+            return o;
         }
     }
 }

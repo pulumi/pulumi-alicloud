@@ -18,276 +18,195 @@ public final class GetDbClustersCluster {
      * @return Alibaba Cloud account Id.
      * 
      */
-    private final String aliUid;
+    private String aliUid;
     /**
      * @return The ID of the business process flow.
      * 
      */
-    private final String bid;
+    private String bid;
     /**
      * @return Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The Commodity Code of the DBCluster.
      * 
      */
-    private final String commodityCode;
+    private String commodityCode;
     /**
      * @return Connection string.
      * 
      */
-    private final String connectionString;
+    private String connectionString;
     /**
      * @return The control version of the DBCluster.
      * 
      */
-    private final String controlVersion;
+    private String controlVersion;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The db cluster access white list.
      * 
      */
-    private final List<GetDbClustersClusterDbClusterAccessWhiteList> dbClusterAccessWhiteLists;
+    private List<GetDbClustersClusterDbClusterAccessWhiteList> dbClusterAccessWhiteLists;
     /**
      * @return The DBCluster description.
      * 
      */
-    private final String dbClusterDescription;
-    private final String dbClusterId;
+    private String dbClusterDescription;
+    private String dbClusterId;
     /**
      * @return The DBCluster network type.
      * 
      */
-    private final String dbClusterNetworkType;
+    private String dbClusterNetworkType;
     /**
      * @return The DBCluster type.
      * 
      */
-    private final String dbClusterType;
+    private String dbClusterType;
     /**
      * @return The node class of the DBCluster.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
     /**
      * @return The node count of the DBCluster.
      * 
      */
-    private final String dbNodeCount;
+    private String dbNodeCount;
     /**
      * @return The node storage of the DBCluster.
      * 
      */
-    private final String dbNodeStorage;
+    private String dbNodeStorage;
     /**
      * @return Key management service KMS key ID.
      * 
      */
-    private final String encryptionKey;
+    private String encryptionKey;
     /**
      * @return Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      * 
      */
-    private final String encryptionType;
+    private String encryptionType;
     /**
      * @return The Engine of the DBCluster.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return The engine version of the DBCluster.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return The expiration time of the DBCluster.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The ID of the DBCluster.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return If the instance has expired.
      * 
      */
-    private final String isExpired;
+    private String isExpired;
     /**
      * @return The lock mode of the DBCluster.
      * 
      */
-    private final String lockMode;
+    private String lockMode;
     /**
      * @return Lock reason of the DBCluster.
      * 
      */
-    private final String lockReason;
+    private String lockReason;
     /**
      * @return Examples of the maintenance window, in the format of hh:mmZ-hh:mm Z.
      * 
      */
-    private final String maintainTime;
+    private String maintainTime;
     /**
      * @return The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Connection port.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return A public IP address for the connection.
      * 
      */
-    private final String publicConnectionString;
+    private String publicConnectionString;
     /**
      * @return Public network port.
      * 
      */
-    private final String publicPort;
+    private String publicPort;
     /**
      * @return Scale state.
      * 
      */
-    private final List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses;
+    private List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses;
     /**
      * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
      * 
      */
-    private final String storageType;
+    private String storageType;
     /**
      * @return Support fallback scheme.
      * 
      */
-    private final Integer supportBackup;
+    private Integer supportBackup;
     /**
      * @return The system supports http port number.
      * 
      */
-    private final Boolean supportHttpsPort;
+    private Boolean supportHttpsPort;
     /**
      * @return Supports Mysql, and those of the ports.
      * 
      */
-    private final Boolean supportMysqlPort;
+    private Boolean supportMysqlPort;
     /**
      * @return Virtual Private Cloud (VPC cloud instance ID.
      * 
      */
-    private final String vpcCloudInstanceId;
+    private String vpcCloudInstanceId;
     /**
      * @return The VPC ID of the DBCluster.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id of the DBCluster.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone ID of the DBCluster.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetDbClustersCluster(
-        @CustomType.Parameter("aliUid") String aliUid,
-        @CustomType.Parameter("bid") String bid,
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("commodityCode") String commodityCode,
-        @CustomType.Parameter("connectionString") String connectionString,
-        @CustomType.Parameter("controlVersion") String controlVersion,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbClusterAccessWhiteLists") List<GetDbClustersClusterDbClusterAccessWhiteList> dbClusterAccessWhiteLists,
-        @CustomType.Parameter("dbClusterDescription") String dbClusterDescription,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("dbClusterNetworkType") String dbClusterNetworkType,
-        @CustomType.Parameter("dbClusterType") String dbClusterType,
-        @CustomType.Parameter("dbNodeClass") String dbNodeClass,
-        @CustomType.Parameter("dbNodeCount") String dbNodeCount,
-        @CustomType.Parameter("dbNodeStorage") String dbNodeStorage,
-        @CustomType.Parameter("encryptionKey") String encryptionKey,
-        @CustomType.Parameter("encryptionType") String encryptionType,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isExpired") String isExpired,
-        @CustomType.Parameter("lockMode") String lockMode,
-        @CustomType.Parameter("lockReason") String lockReason,
-        @CustomType.Parameter("maintainTime") String maintainTime,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("publicConnectionString") String publicConnectionString,
-        @CustomType.Parameter("publicPort") String publicPort,
-        @CustomType.Parameter("scaleOutStatuses") List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storageType") String storageType,
-        @CustomType.Parameter("supportBackup") Integer supportBackup,
-        @CustomType.Parameter("supportHttpsPort") Boolean supportHttpsPort,
-        @CustomType.Parameter("supportMysqlPort") Boolean supportMysqlPort,
-        @CustomType.Parameter("vpcCloudInstanceId") String vpcCloudInstanceId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.aliUid = aliUid;
-        this.bid = bid;
-        this.category = category;
-        this.commodityCode = commodityCode;
-        this.connectionString = connectionString;
-        this.controlVersion = controlVersion;
-        this.createTime = createTime;
-        this.dbClusterAccessWhiteLists = dbClusterAccessWhiteLists;
-        this.dbClusterDescription = dbClusterDescription;
-        this.dbClusterId = dbClusterId;
-        this.dbClusterNetworkType = dbClusterNetworkType;
-        this.dbClusterType = dbClusterType;
-        this.dbNodeClass = dbNodeClass;
-        this.dbNodeCount = dbNodeCount;
-        this.dbNodeStorage = dbNodeStorage;
-        this.encryptionKey = encryptionKey;
-        this.encryptionType = encryptionType;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.isExpired = isExpired;
-        this.lockMode = lockMode;
-        this.lockReason = lockReason;
-        this.maintainTime = maintainTime;
-        this.paymentType = paymentType;
-        this.port = port;
-        this.publicConnectionString = publicConnectionString;
-        this.publicPort = publicPort;
-        this.scaleOutStatuses = scaleOutStatuses;
-        this.status = status;
-        this.storageType = storageType;
-        this.supportBackup = supportBackup;
-        this.supportHttpsPort = supportHttpsPort;
-        this.supportMysqlPort = supportMysqlPort;
-        this.vpcCloudInstanceId = vpcCloudInstanceId;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetDbClustersCluster() {}
     /**
      * @return Alibaba Cloud account Id.
      * 
@@ -565,7 +484,7 @@ public final class GetDbClustersCluster {
     public static Builder builder(GetDbClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String aliUid;
         private String bid;
@@ -606,11 +525,7 @@ public final class GetDbClustersCluster {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliUid = defaults.aliUid;
@@ -654,34 +569,42 @@ public final class GetDbClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder aliUid(String aliUid) {
             this.aliUid = Objects.requireNonNull(aliUid);
             return this;
         }
+        @CustomType.Setter
         public Builder bid(String bid) {
             this.bid = Objects.requireNonNull(bid);
             return this;
         }
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder controlVersion(String controlVersion) {
             this.controlVersion = Objects.requireNonNull(controlVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterAccessWhiteLists(List<GetDbClustersClusterDbClusterAccessWhiteList> dbClusterAccessWhiteLists) {
             this.dbClusterAccessWhiteLists = Objects.requireNonNull(dbClusterAccessWhiteLists);
             return this;
@@ -689,90 +612,112 @@ public final class GetDbClustersCluster {
         public Builder dbClusterAccessWhiteLists(GetDbClustersClusterDbClusterAccessWhiteList... dbClusterAccessWhiteLists) {
             return dbClusterAccessWhiteLists(List.of(dbClusterAccessWhiteLists));
         }
+        @CustomType.Setter
         public Builder dbClusterDescription(String dbClusterDescription) {
             this.dbClusterDescription = Objects.requireNonNull(dbClusterDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterNetworkType(String dbClusterNetworkType) {
             this.dbClusterNetworkType = Objects.requireNonNull(dbClusterNetworkType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterType(String dbClusterType) {
             this.dbClusterType = Objects.requireNonNull(dbClusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeCount(String dbNodeCount) {
             this.dbNodeCount = Objects.requireNonNull(dbNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeStorage(String dbNodeStorage) {
             this.dbNodeStorage = Objects.requireNonNull(dbNodeStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
             this.encryptionKey = Objects.requireNonNull(encryptionKey);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionType(String encryptionType) {
             this.encryptionType = Objects.requireNonNull(encryptionType);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isExpired(String isExpired) {
             this.isExpired = Objects.requireNonNull(isExpired);
             return this;
         }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
+        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
         }
+        @CustomType.Setter
         public Builder maintainTime(String maintainTime) {
             this.maintainTime = Objects.requireNonNull(maintainTime);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder publicConnectionString(String publicConnectionString) {
             this.publicConnectionString = Objects.requireNonNull(publicConnectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPort(String publicPort) {
             this.publicPort = Objects.requireNonNull(publicPort);
             return this;
         }
+        @CustomType.Setter
         public Builder scaleOutStatuses(List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses) {
             this.scaleOutStatuses = Objects.requireNonNull(scaleOutStatuses);
             return this;
@@ -780,43 +725,93 @@ public final class GetDbClustersCluster {
         public Builder scaleOutStatuses(GetDbClustersClusterScaleOutStatus... scaleOutStatuses) {
             return scaleOutStatuses(List.of(scaleOutStatuses));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
+        @CustomType.Setter
         public Builder supportBackup(Integer supportBackup) {
             this.supportBackup = Objects.requireNonNull(supportBackup);
             return this;
         }
+        @CustomType.Setter
         public Builder supportHttpsPort(Boolean supportHttpsPort) {
             this.supportHttpsPort = Objects.requireNonNull(supportHttpsPort);
             return this;
         }
+        @CustomType.Setter
         public Builder supportMysqlPort(Boolean supportMysqlPort) {
             this.supportMysqlPort = Objects.requireNonNull(supportMysqlPort);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcCloudInstanceId(String vpcCloudInstanceId) {
             this.vpcCloudInstanceId = Objects.requireNonNull(vpcCloudInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetDbClustersCluster build() {
-            return new GetDbClustersCluster(aliUid, bid, category, commodityCode, connectionString, controlVersion, createTime, dbClusterAccessWhiteLists, dbClusterDescription, dbClusterId, dbClusterNetworkType, dbClusterType, dbNodeClass, dbNodeCount, dbNodeStorage, encryptionKey, encryptionType, engine, engineVersion, expireTime, id, isExpired, lockMode, lockReason, maintainTime, paymentType, port, publicConnectionString, publicPort, scaleOutStatuses, status, storageType, supportBackup, supportHttpsPort, supportMysqlPort, vpcCloudInstanceId, vpcId, vswitchId, zoneId);
+        }
+        public GetDbClustersCluster build() {
+            final var o = new GetDbClustersCluster();
+            o.aliUid = aliUid;
+            o.bid = bid;
+            o.category = category;
+            o.commodityCode = commodityCode;
+            o.connectionString = connectionString;
+            o.controlVersion = controlVersion;
+            o.createTime = createTime;
+            o.dbClusterAccessWhiteLists = dbClusterAccessWhiteLists;
+            o.dbClusterDescription = dbClusterDescription;
+            o.dbClusterId = dbClusterId;
+            o.dbClusterNetworkType = dbClusterNetworkType;
+            o.dbClusterType = dbClusterType;
+            o.dbNodeClass = dbNodeClass;
+            o.dbNodeCount = dbNodeCount;
+            o.dbNodeStorage = dbNodeStorage;
+            o.encryptionKey = encryptionKey;
+            o.encryptionType = encryptionType;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.isExpired = isExpired;
+            o.lockMode = lockMode;
+            o.lockReason = lockReason;
+            o.maintainTime = maintainTime;
+            o.paymentType = paymentType;
+            o.port = port;
+            o.publicConnectionString = publicConnectionString;
+            o.publicPort = publicPort;
+            o.scaleOutStatuses = scaleOutStatuses;
+            o.status = status;
+            o.storageType = storageType;
+            o.supportBackup = supportBackup;
+            o.supportHttpsPort = supportHttpsPort;
+            o.supportMysqlPort = supportMysqlPort;
+            o.vpcCloudInstanceId = vpcCloudInstanceId;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

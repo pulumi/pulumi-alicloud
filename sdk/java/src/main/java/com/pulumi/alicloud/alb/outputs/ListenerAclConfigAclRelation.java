@@ -15,21 +15,14 @@ public final class ListenerAclConfigAclRelation {
      * @return Snooping Binding of the Access Policy Group ID List.
      * 
      */
-    private final @Nullable String aclId;
+    private @Nullable String aclId;
     /**
      * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private ListenerAclConfigAclRelation(
-        @CustomType.Parameter("aclId") @Nullable String aclId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.aclId = aclId;
-        this.status = status;
-    }
-
+    private ListenerAclConfigAclRelation() {}
     /**
      * @return Snooping Binding of the Access Policy Group ID List.
      * 
@@ -52,30 +45,32 @@ public final class ListenerAclConfigAclRelation {
     public static Builder builder(ListenerAclConfigAclRelation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aclId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ListenerAclConfigAclRelation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclId = defaults.aclId;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder aclId(@Nullable String aclId) {
             this.aclId = aclId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public ListenerAclConfigAclRelation build() {
-            return new ListenerAclConfigAclRelation(aclId, status);
+        }
+        public ListenerAclConfigAclRelation build() {
+            final var o = new ListenerAclConfigAclRelation();
+            o.aclId = aclId;
+            o.status = status;
+            return o;
         }
     }
 }

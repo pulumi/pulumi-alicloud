@@ -13,21 +13,14 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
-    private final String alias;
+    private String alias;
     /**
      * @return The name of the key that is used to filter logs imported from Log Service.
      * 
      */
-    private final String slsKeyName;
+    private String slsKeyName;
 
-    @CustomType.Constructor
-    private GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy(
-        @CustomType.Parameter("alias") String alias,
-        @CustomType.Parameter("slsKeyName") String slsKeyName) {
-        this.alias = alias;
-        this.slsKeyName = slsKeyName;
-    }
-
+    private GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy() {}
     /**
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
@@ -50,30 +43,32 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
     public static Builder builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alias;
         private String slsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
     	      this.slsKeyName = defaults.slsKeyName;
         }
 
+        @CustomType.Setter
         public Builder alias(String alias) {
             this.alias = Objects.requireNonNull(alias);
             return this;
         }
+        @CustomType.Setter
         public Builder slsKeyName(String slsKeyName) {
             this.slsKeyName = Objects.requireNonNull(slsKeyName);
             return this;
-        }        public GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy build() {
-            return new GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy(alias, slsKeyName);
+        }
+        public GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy build() {
+            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy();
+            o.alias = alias;
+            o.slsKeyName = slsKeyName;
+            return o;
         }
     }
 }

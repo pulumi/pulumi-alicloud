@@ -15,28 +15,19 @@ public final class GetServicesServiceNasConfig {
      * @return The group id of the NAS file system.
      * 
      */
-    private final Integer groupId;
+    private Integer groupId;
     /**
      * @return The mount points configuration, including following attributes:
      * 
      */
-    private final List<GetServicesServiceNasConfigMountPoint> mountPoints;
+    private List<GetServicesServiceNasConfigMountPoint> mountPoints;
     /**
      * @return The user id of the NAS file system.
      * 
      */
-    private final Integer userId;
+    private Integer userId;
 
-    @CustomType.Constructor
-    private GetServicesServiceNasConfig(
-        @CustomType.Parameter("groupId") Integer groupId,
-        @CustomType.Parameter("mountPoints") List<GetServicesServiceNasConfigMountPoint> mountPoints,
-        @CustomType.Parameter("userId") Integer userId) {
-        this.groupId = groupId;
-        this.mountPoints = mountPoints;
-        this.userId = userId;
-    }
-
+    private GetServicesServiceNasConfig() {}
     /**
      * @return The group id of the NAS file system.
      * 
@@ -66,16 +57,12 @@ public final class GetServicesServiceNasConfig {
     public static Builder builder(GetServicesServiceNasConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer groupId;
         private List<GetServicesServiceNasConfigMountPoint> mountPoints;
         private Integer userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicesServiceNasConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupId = defaults.groupId;
@@ -83,10 +70,12 @@ public final class GetServicesServiceNasConfig {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder groupId(Integer groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder mountPoints(List<GetServicesServiceNasConfigMountPoint> mountPoints) {
             this.mountPoints = Objects.requireNonNull(mountPoints);
             return this;
@@ -94,11 +83,17 @@ public final class GetServicesServiceNasConfig {
         public Builder mountPoints(GetServicesServiceNasConfigMountPoint... mountPoints) {
             return mountPoints(List.of(mountPoints));
         }
+        @CustomType.Setter
         public Builder userId(Integer userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetServicesServiceNasConfig build() {
-            return new GetServicesServiceNasConfig(groupId, mountPoints, userId);
+        }
+        public GetServicesServiceNasConfig build() {
+            final var o = new GetServicesServiceNasConfig();
+            o.groupId = groupId;
+            o.mountPoints = mountPoints;
+            o.userId = userId;
+            return o;
         }
     }
 }

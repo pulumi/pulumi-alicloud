@@ -15,21 +15,14 @@ public final class GetBucketsBucketRefererConfig {
      * @return Indicate whether the access request referer field can be empty.
      * 
      */
-    private final Boolean allowEmpty;
+    private Boolean allowEmpty;
     /**
      * @return Referer access whitelist.
      * 
      */
-    private final List<String> referers;
+    private List<String> referers;
 
-    @CustomType.Constructor
-    private GetBucketsBucketRefererConfig(
-        @CustomType.Parameter("allowEmpty") Boolean allowEmpty,
-        @CustomType.Parameter("referers") List<String> referers) {
-        this.allowEmpty = allowEmpty;
-        this.referers = referers;
-    }
-
+    private GetBucketsBucketRefererConfig() {}
     /**
      * @return Indicate whether the access request referer field can be empty.
      * 
@@ -52,33 +45,35 @@ public final class GetBucketsBucketRefererConfig {
     public static Builder builder(GetBucketsBucketRefererConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowEmpty;
         private List<String> referers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketsBucketRefererConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowEmpty = defaults.allowEmpty;
     	      this.referers = defaults.referers;
         }
 
+        @CustomType.Setter
         public Builder allowEmpty(Boolean allowEmpty) {
             this.allowEmpty = Objects.requireNonNull(allowEmpty);
             return this;
         }
+        @CustomType.Setter
         public Builder referers(List<String> referers) {
             this.referers = Objects.requireNonNull(referers);
             return this;
         }
         public Builder referers(String... referers) {
             return referers(List.of(referers));
-        }        public GetBucketsBucketRefererConfig build() {
-            return new GetBucketsBucketRefererConfig(allowEmpty, referers);
+        }
+        public GetBucketsBucketRefererConfig build() {
+            final var o = new GetBucketsBucketRefererConfig();
+            o.allowEmpty = allowEmpty;
+            o.referers = referers;
+            return o;
         }
     }
 }

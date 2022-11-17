@@ -17,49 +17,34 @@ public final class GreyTagRouteDubboRule {
      * @return The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
      * 
      */
-    private final @Nullable String condition;
+    private @Nullable String condition;
     /**
      * @return The service group.
      * 
      */
-    private final @Nullable String group;
+    private @Nullable String group;
     /**
      * @return A list of conditions items. The details see Block `dubbo_rules_items`.
      * 
      */
-    private final @Nullable List<GreyTagRouteDubboRuleItem> items;
+    private @Nullable List<GreyTagRouteDubboRuleItem> items;
     /**
      * @return The method name
      * 
      */
-    private final @Nullable String methodName;
+    private @Nullable String methodName;
     /**
      * @return The service name.
      * 
      */
-    private final @Nullable String serviceName;
+    private @Nullable String serviceName;
     /**
      * @return The service version.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private GreyTagRouteDubboRule(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("group") @Nullable String group,
-        @CustomType.Parameter("items") @Nullable List<GreyTagRouteDubboRuleItem> items,
-        @CustomType.Parameter("methodName") @Nullable String methodName,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.condition = condition;
-        this.group = group;
-        this.items = items;
-        this.methodName = methodName;
-        this.serviceName = serviceName;
-        this.version = version;
-    }
-
+    private GreyTagRouteDubboRule() {}
     /**
      * @return The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
      * 
@@ -110,7 +95,7 @@ public final class GreyTagRouteDubboRule {
     public static Builder builder(GreyTagRouteDubboRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private @Nullable String group;
@@ -118,11 +103,7 @@ public final class GreyTagRouteDubboRule {
         private @Nullable String methodName;
         private @Nullable String serviceName;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GreyTagRouteDubboRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -133,14 +114,17 @@ public final class GreyTagRouteDubboRule {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder group(@Nullable String group) {
             this.group = group;
             return this;
         }
+        @CustomType.Setter
         public Builder items(@Nullable List<GreyTagRouteDubboRuleItem> items) {
             this.items = items;
             return this;
@@ -148,19 +132,30 @@ public final class GreyTagRouteDubboRule {
         public Builder items(GreyTagRouteDubboRuleItem... items) {
             return items(List.of(items));
         }
+        @CustomType.Setter
         public Builder methodName(@Nullable String methodName) {
             this.methodName = methodName;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public GreyTagRouteDubboRule build() {
-            return new GreyTagRouteDubboRule(condition, group, items, methodName, serviceName, version);
+        }
+        public GreyTagRouteDubboRule build() {
+            final var o = new GreyTagRouteDubboRule();
+            o.condition = condition;
+            o.group = group;
+            o.items = items;
+            o.methodName = methodName;
+            o.serviceName = serviceName;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -15,84 +15,59 @@ public final class GetEcsImageComponentsComponent {
      * @return The type of the image component.
      * 
      */
-    private final String componentType;
+    private String componentType;
     /**
      * @return The content of the image component.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The time when the image component was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the image component.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Image Component.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the image component.
      * 
      */
-    private final String imageComponentId;
+    private String imageComponentId;
     /**
      * @return The name of the image component.
      * 
      */
-    private final String imageComponentName;
+    private String imageComponentName;
     /**
      * @return The type of the image component.
      * 
      */
-    private final String owner;
+    private String owner;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The operating system type supported by the image component.
      * 
      */
-    private final String systemType;
+    private String systemType;
     /**
      * @return List of label key-value pairs.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEcsImageComponentsComponent(
-        @CustomType.Parameter("componentType") String componentType,
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageComponentId") String imageComponentId,
-        @CustomType.Parameter("imageComponentName") String imageComponentName,
-        @CustomType.Parameter("owner") String owner,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("systemType") String systemType,
-        @CustomType.Parameter("tags") Map<String,Object> tags) {
-        this.componentType = componentType;
-        this.content = content;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.imageComponentId = imageComponentId;
-        this.imageComponentName = imageComponentName;
-        this.owner = owner;
-        this.resourceGroupId = resourceGroupId;
-        this.systemType = systemType;
-        this.tags = tags;
-    }
-
+    private GetEcsImageComponentsComponent() {}
     /**
      * @return The type of the image component.
      * 
@@ -178,7 +153,7 @@ public final class GetEcsImageComponentsComponent {
     public static Builder builder(GetEcsImageComponentsComponent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String componentType;
         private String content;
@@ -191,11 +166,7 @@ public final class GetEcsImageComponentsComponent {
         private String resourceGroupId;
         private String systemType;
         private Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsImageComponentsComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.componentType = defaults.componentType;
@@ -211,51 +182,75 @@ public final class GetEcsImageComponentsComponent {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder componentType(String componentType) {
             this.componentType = Objects.requireNonNull(componentType);
             return this;
         }
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageComponentId(String imageComponentId) {
             this.imageComponentId = Objects.requireNonNull(imageComponentId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageComponentName(String imageComponentName) {
             this.imageComponentName = Objects.requireNonNull(imageComponentName);
             return this;
         }
+        @CustomType.Setter
         public Builder owner(String owner) {
             this.owner = Objects.requireNonNull(owner);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder systemType(String systemType) {
             this.systemType = Objects.requireNonNull(systemType);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }        public GetEcsImageComponentsComponent build() {
-            return new GetEcsImageComponentsComponent(componentType, content, createTime, description, id, imageComponentId, imageComponentName, owner, resourceGroupId, systemType, tags);
+        }
+        public GetEcsImageComponentsComponent build() {
+            final var o = new GetEcsImageComponentsComponent();
+            o.componentType = componentType;
+            o.content = content;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.imageComponentId = imageComponentId;
+            o.imageComponentName = imageComponentName;
+            o.owner = owner;
+            o.resourceGroupId = resourceGroupId;
+            o.systemType = systemType;
+            o.tags = tags;
+            return o;
         }
     }
 }

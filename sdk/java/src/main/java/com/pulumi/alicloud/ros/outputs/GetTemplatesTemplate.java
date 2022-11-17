@@ -15,84 +15,59 @@ public final class GetTemplatesTemplate {
      * @return The ID of the change set.
      * 
      */
-    private final String changeSetId;
+    private String changeSetId;
     /**
      * @return The description of the template. The description can be up to 256 characters in length.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Template.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Share Type.
      * 
      */
-    private final String shareType;
+    private String shareType;
     /**
      * @return The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    private final String stackGroupName;
+    private String stackGroupName;
     /**
      * @return The ID of the stack.
      * 
      */
-    private final String stackId;
+    private String stackId;
     /**
      * @return Tags.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
      * 
      */
-    private final String templateBody;
+    private String templateBody;
     /**
      * @return The ID of the template.
      * 
      */
-    private final String templateId;
+    private String templateId;
     /**
      * @return The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    private final String templateName;
+    private String templateName;
     /**
      * @return Template Version.
      * 
      */
-    private final String templateVersion;
+    private String templateVersion;
 
-    @CustomType.Constructor
-    private GetTemplatesTemplate(
-        @CustomType.Parameter("changeSetId") String changeSetId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("shareType") String shareType,
-        @CustomType.Parameter("stackGroupName") String stackGroupName,
-        @CustomType.Parameter("stackId") String stackId,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("templateBody") String templateBody,
-        @CustomType.Parameter("templateId") String templateId,
-        @CustomType.Parameter("templateName") String templateName,
-        @CustomType.Parameter("templateVersion") String templateVersion) {
-        this.changeSetId = changeSetId;
-        this.description = description;
-        this.id = id;
-        this.shareType = shareType;
-        this.stackGroupName = stackGroupName;
-        this.stackId = stackId;
-        this.tags = tags;
-        this.templateBody = templateBody;
-        this.templateId = templateId;
-        this.templateName = templateName;
-        this.templateVersion = templateVersion;
-    }
-
+    private GetTemplatesTemplate() {}
     /**
      * @return The ID of the change set.
      * 
@@ -178,7 +153,7 @@ public final class GetTemplatesTemplate {
     public static Builder builder(GetTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String changeSetId;
         private String description;
@@ -191,11 +166,7 @@ public final class GetTemplatesTemplate {
         private String templateId;
         private String templateName;
         private String templateVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.changeSetId = defaults.changeSetId;
@@ -211,51 +182,75 @@ public final class GetTemplatesTemplate {
     	      this.templateVersion = defaults.templateVersion;
         }
 
+        @CustomType.Setter
         public Builder changeSetId(String changeSetId) {
             this.changeSetId = Objects.requireNonNull(changeSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
         }
+        @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
             this.stackGroupName = Objects.requireNonNull(stackGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder templateBody(String templateBody) {
             this.templateBody = Objects.requireNonNull(templateBody);
             return this;
         }
+        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
         }
+        @CustomType.Setter
         public Builder templateName(String templateName) {
             this.templateName = Objects.requireNonNull(templateName);
             return this;
         }
+        @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
             this.templateVersion = Objects.requireNonNull(templateVersion);
             return this;
-        }        public GetTemplatesTemplate build() {
-            return new GetTemplatesTemplate(changeSetId, description, id, shareType, stackGroupName, stackId, tags, templateBody, templateId, templateName, templateVersion);
+        }
+        public GetTemplatesTemplate build() {
+            final var o = new GetTemplatesTemplate();
+            o.changeSetId = changeSetId;
+            o.description = description;
+            o.id = id;
+            o.shareType = shareType;
+            o.stackGroupName = stackGroupName;
+            o.stackId = stackId;
+            o.tags = tags;
+            o.templateBody = templateBody;
+            o.templateId = templateId;
+            o.templateName = templateName;
+            o.templateVersion = templateVersion;
+            return o;
         }
     }
 }

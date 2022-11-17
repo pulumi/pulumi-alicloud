@@ -14,73 +14,50 @@ public final class GetInstancesInstance {
      * @return Whether the required RAM authorization is configured.
      * 
      */
-    private final Boolean authed;
-    private final String id;
+    private Boolean authed;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The number of instances.
      * 
      */
-    private final String instanceNum;
+    private String instanceNum;
     /**
      * @return Whether the authorized MaxCompute (ODPS) assets.
      * 
      */
-    private final Boolean odpsSet;
+    private Boolean odpsSet;
     /**
      * @return Whether the authorized oss assets.
      * 
      */
-    private final Boolean ossBucketSet;
+    private Boolean ossBucketSet;
     /**
      * @return The OSS size of the instance.
      * 
      */
-    private final String ossSize;
+    private String ossSize;
     /**
      * @return The payment type of the resource. Valid values: `Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Whether the authorized rds assets.
      * 
      */
-    private final Boolean rdsSet;
+    private Boolean rdsSet;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("authed") Boolean authed,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceNum") String instanceNum,
-        @CustomType.Parameter("odpsSet") Boolean odpsSet,
-        @CustomType.Parameter("ossBucketSet") Boolean ossBucketSet,
-        @CustomType.Parameter("ossSize") String ossSize,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("rdsSet") Boolean rdsSet,
-        @CustomType.Parameter("status") String status) {
-        this.authed = authed;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceNum = instanceNum;
-        this.odpsSet = odpsSet;
-        this.ossBucketSet = ossBucketSet;
-        this.ossSize = ossSize;
-        this.paymentType = paymentType;
-        this.rdsSet = rdsSet;
-        this.status = status;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Whether the required RAM authorization is configured.
      * 
@@ -155,7 +132,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean authed;
         private String id;
@@ -167,11 +144,7 @@ public final class GetInstancesInstance {
         private String paymentType;
         private Boolean rdsSet;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authed = defaults.authed;
@@ -186,47 +159,69 @@ public final class GetInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder authed(Boolean authed) {
             this.authed = Objects.requireNonNull(authed);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNum(String instanceNum) {
             this.instanceNum = Objects.requireNonNull(instanceNum);
             return this;
         }
+        @CustomType.Setter
         public Builder odpsSet(Boolean odpsSet) {
             this.odpsSet = Objects.requireNonNull(odpsSet);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketSet(Boolean ossBucketSet) {
             this.ossBucketSet = Objects.requireNonNull(ossBucketSet);
             return this;
         }
+        @CustomType.Setter
         public Builder ossSize(String ossSize) {
             this.ossSize = Objects.requireNonNull(ossSize);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder rdsSet(Boolean rdsSet) {
             this.rdsSet = Objects.requireNonNull(rdsSet);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(authed, id, instanceId, instanceNum, odpsSet, ossBucketSet, ossSize, paymentType, rdsSet, status);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.authed = authed;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceNum = instanceNum;
+            o.odpsSet = odpsSet;
+            o.ossBucketSet = ossBucketSet;
+            o.ossSize = ossSize;
+            o.paymentType = paymentType;
+            o.rdsSet = rdsSet;
+            o.status = status;
+            return o;
         }
     }
 }

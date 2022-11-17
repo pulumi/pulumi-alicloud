@@ -17,34 +17,21 @@ public final class GetBucketsResult {
      * @return A list of buckets. Each element contains the following attributes:
      * 
      */
-    private final List<GetBucketsBucket> buckets;
+    private List<GetBucketsBucket> buckets;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String nameRegex;
+    private String id;
+    private @Nullable String nameRegex;
     /**
      * @return A list of bucket names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetBucketsResult(
-        @CustomType.Parameter("buckets") List<GetBucketsBucket> buckets,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.buckets = buckets;
-        this.id = id;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetBucketsResult() {}
     /**
      * @return A list of buckets. Each element contains the following attributes:
      * 
@@ -80,18 +67,14 @@ public final class GetBucketsResult {
     public static Builder builder(GetBucketsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetBucketsBucket> buckets;
         private String id;
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buckets = defaults.buckets;
@@ -101,6 +84,7 @@ public final class GetBucketsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder buckets(List<GetBucketsBucket> buckets) {
             this.buckets = Objects.requireNonNull(buckets);
             return this;
@@ -108,14 +92,17 @@ public final class GetBucketsResult {
         public Builder buckets(GetBucketsBucket... buckets) {
             return buckets(List.of(buckets));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,11 +110,19 @@ public final class GetBucketsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetBucketsResult build() {
-            return new GetBucketsResult(buckets, id, nameRegex, names, outputFile);
+        }
+        public GetBucketsResult build() {
+            final var o = new GetBucketsResult();
+            o.buckets = buckets;
+            o.id = id;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

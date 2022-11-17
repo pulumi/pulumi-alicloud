@@ -15,49 +15,34 @@ public final class GetBackupPoliciesPolicy {
      * @return Data backup days. Valid values: `7` to `730`.
      * 
      */
-    private final Integer backupRetentionPeriod;
+    private Integer backupRetentionPeriod;
     /**
      * @return The db cluster id.
      * 
      */
-    private final String dbClusterId;
+    private String dbClusterId;
     /**
      * @return The ID of the Backup Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return DBCluster Backup period.
      * 
      */
-    private final List<String> preferredBackupPeriods;
+    private List<String> preferredBackupPeriods;
     /**
      * @return Backup Time, UTC time.
      * 
      */
-    private final String preferredBackupTime;
+    private String preferredBackupTime;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBackupPoliciesPolicy(
-        @CustomType.Parameter("backupRetentionPeriod") Integer backupRetentionPeriod,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("preferredBackupPeriods") List<String> preferredBackupPeriods,
-        @CustomType.Parameter("preferredBackupTime") String preferredBackupTime,
-        @CustomType.Parameter("status") String status) {
-        this.backupRetentionPeriod = backupRetentionPeriod;
-        this.dbClusterId = dbClusterId;
-        this.id = id;
-        this.preferredBackupPeriods = preferredBackupPeriods;
-        this.preferredBackupTime = preferredBackupTime;
-        this.status = status;
-    }
-
+    private GetBackupPoliciesPolicy() {}
     /**
      * @return Data backup days. Valid values: `7` to `730`.
      * 
@@ -108,7 +93,7 @@ public final class GetBackupPoliciesPolicy {
     public static Builder builder(GetBackupPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer backupRetentionPeriod;
         private String dbClusterId;
@@ -116,11 +101,7 @@ public final class GetBackupPoliciesPolicy {
         private List<String> preferredBackupPeriods;
         private String preferredBackupTime;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupRetentionPeriod = defaults.backupRetentionPeriod;
@@ -131,18 +112,22 @@ public final class GetBackupPoliciesPolicy {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
             this.backupRetentionPeriod = Objects.requireNonNull(backupRetentionPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder preferredBackupPeriods(List<String> preferredBackupPeriods) {
             this.preferredBackupPeriods = Objects.requireNonNull(preferredBackupPeriods);
             return this;
@@ -150,15 +135,25 @@ public final class GetBackupPoliciesPolicy {
         public Builder preferredBackupPeriods(String... preferredBackupPeriods) {
             return preferredBackupPeriods(List.of(preferredBackupPeriods));
         }
+        @CustomType.Setter
         public Builder preferredBackupTime(String preferredBackupTime) {
             this.preferredBackupTime = Objects.requireNonNull(preferredBackupTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBackupPoliciesPolicy build() {
-            return new GetBackupPoliciesPolicy(backupRetentionPeriod, dbClusterId, id, preferredBackupPeriods, preferredBackupTime, status);
+        }
+        public GetBackupPoliciesPolicy build() {
+            final var o = new GetBackupPoliciesPolicy();
+            o.backupRetentionPeriod = backupRetentionPeriod;
+            o.dbClusterId = dbClusterId;
+            o.id = id;
+            o.preferredBackupPeriods = preferredBackupPeriods;
+            o.preferredBackupTime = preferredBackupTime;
+            o.status = status;
+            return o;
         }
     }
 }

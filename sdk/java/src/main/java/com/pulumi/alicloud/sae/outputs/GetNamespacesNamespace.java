@@ -13,35 +13,24 @@ public final class GetNamespacesNamespace {
      * @return The ID of the Namespace.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Description of Namespace.
      * 
      */
-    private final String namespaceDescription;
+    private String namespaceDescription;
     /**
      * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return The Name of Namespace.
      * 
      */
-    private final String namespaceName;
+    private String namespaceName;
 
-    @CustomType.Constructor
-    private GetNamespacesNamespace(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespaceDescription") String namespaceDescription,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("namespaceName") String namespaceName) {
-        this.id = id;
-        this.namespaceDescription = namespaceDescription;
-        this.namespaceId = namespaceId;
-        this.namespaceName = namespaceName;
-    }
-
+    private GetNamespacesNamespace() {}
     /**
      * @return The ID of the Namespace.
      * 
@@ -78,17 +67,13 @@ public final class GetNamespacesNamespace {
     public static Builder builder(GetNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String namespaceDescription;
         private String namespaceId;
         private String namespaceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -97,23 +82,33 @@ public final class GetNamespacesNamespace {
     	      this.namespaceName = defaults.namespaceName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceDescription(String namespaceDescription) {
             this.namespaceDescription = Objects.requireNonNull(namespaceDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
             this.namespaceName = Objects.requireNonNull(namespaceName);
             return this;
-        }        public GetNamespacesNamespace build() {
-            return new GetNamespacesNamespace(id, namespaceDescription, namespaceId, namespaceName);
+        }
+        public GetNamespacesNamespace build() {
+            final var o = new GetNamespacesNamespace();
+            o.id = id;
+            o.namespaceDescription = namespaceDescription;
+            o.namespaceId = namespaceId;
+            o.namespaceName = namespaceName;
+            return o;
         }
     }
 }

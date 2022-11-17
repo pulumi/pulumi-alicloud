@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BackendServerBackendServer {
-    private final String serverId;
-    private final @Nullable String serverIp;
-    private final @Nullable String type;
-    private final Integer weight;
+    private String serverId;
+    private @Nullable String serverIp;
+    private @Nullable String type;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private BackendServerBackendServer(
-        @CustomType.Parameter("serverId") String serverId,
-        @CustomType.Parameter("serverIp") @Nullable String serverIp,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.serverId = serverId;
-        this.serverIp = serverIp;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private BackendServerBackendServer() {}
     public String serverId() {
         return this.serverId;
     }
@@ -49,17 +38,13 @@ public final class BackendServerBackendServer {
     public static Builder builder(BackendServerBackendServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String serverId;
         private @Nullable String serverIp;
         private @Nullable String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServerBackendServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverId = defaults.serverId;
@@ -68,23 +53,33 @@ public final class BackendServerBackendServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
+        @CustomType.Setter
         public Builder serverIp(@Nullable String serverIp) {
             this.serverIp = serverIp;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public BackendServerBackendServer build() {
-            return new BackendServerBackendServer(serverId, serverIp, type, weight);
+        }
+        public BackendServerBackendServer build() {
+            final var o = new BackendServerBackendServer();
+            o.serverId = serverId;
+            o.serverIp = serverIp;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

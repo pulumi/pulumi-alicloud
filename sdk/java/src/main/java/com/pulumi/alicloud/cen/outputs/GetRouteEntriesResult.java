@@ -17,45 +17,30 @@ public final class GetRouteEntriesResult {
      * @return The destination CIDR block of the conflicted route entry.
      * 
      */
-    private final @Nullable String cidrBlock;
+    private @Nullable String cidrBlock;
     /**
      * @return A list of CEN Route Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetRouteEntriesEntry> entries;
+    private List<GetRouteEntriesEntry> entries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of the CEN child instance.
      * 
      */
-    private final String instanceId;
-    private final @Nullable String outputFile;
+    private String instanceId;
+    private @Nullable String outputFile;
     /**
      * @return ID of the route table.
      * 
      */
-    private final String routeTableId;
+    private String routeTableId;
 
-    @CustomType.Constructor
-    private GetRouteEntriesResult(
-        @CustomType.Parameter("cidrBlock") @Nullable String cidrBlock,
-        @CustomType.Parameter("entries") List<GetRouteEntriesEntry> entries,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("routeTableId") String routeTableId) {
-        this.cidrBlock = cidrBlock;
-        this.entries = entries;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.routeTableId = routeTableId;
-    }
-
+    private GetRouteEntriesResult() {}
     /**
      * @return The destination CIDR block of the conflicted route entry.
      * 
@@ -102,7 +87,7 @@ public final class GetRouteEntriesResult {
     public static Builder builder(GetRouteEntriesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cidrBlock;
         private List<GetRouteEntriesEntry> entries;
@@ -110,11 +95,7 @@ public final class GetRouteEntriesResult {
         private String instanceId;
         private @Nullable String outputFile;
         private String routeTableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -125,10 +106,12 @@ public final class GetRouteEntriesResult {
     	      this.routeTableId = defaults.routeTableId;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
             this.cidrBlock = cidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder entries(List<GetRouteEntriesEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -136,23 +119,35 @@ public final class GetRouteEntriesResult {
         public Builder entries(GetRouteEntriesEntry... entries) {
             return entries(List.of(entries));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
-        }        public GetRouteEntriesResult build() {
-            return new GetRouteEntriesResult(cidrBlock, entries, id, instanceId, outputFile, routeTableId);
+        }
+        public GetRouteEntriesResult build() {
+            final var o = new GetRouteEntriesResult();
+            o.cidrBlock = cidrBlock;
+            o.entries = entries;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.routeTableId = routeTableId;
+            return o;
         }
     }
 }

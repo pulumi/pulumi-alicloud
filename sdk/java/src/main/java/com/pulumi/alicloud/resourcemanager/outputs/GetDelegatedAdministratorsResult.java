@@ -14,36 +14,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDelegatedAdministratorsResult {
-    private final List<GetDelegatedAdministratorsAdministrator> administrators;
+    private List<GetDelegatedAdministratorsAdministrator> administrators;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String servicePrincipal;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String servicePrincipal;
 
-    @CustomType.Constructor
-    private GetDelegatedAdministratorsResult(
-        @CustomType.Parameter("administrators") List<GetDelegatedAdministratorsAdministrator> administrators,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("servicePrincipal") @Nullable String servicePrincipal) {
-        this.administrators = administrators;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.servicePrincipal = servicePrincipal;
-    }
-
+    private GetDelegatedAdministratorsResult() {}
     public List<GetDelegatedAdministratorsAdministrator> administrators() {
         return this.administrators;
     }
@@ -77,7 +60,7 @@ public final class GetDelegatedAdministratorsResult {
     public static Builder builder(GetDelegatedAdministratorsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDelegatedAdministratorsAdministrator> administrators;
         private String id;
@@ -86,11 +69,7 @@ public final class GetDelegatedAdministratorsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String servicePrincipal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDelegatedAdministratorsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.administrators = defaults.administrators;
@@ -102,6 +81,7 @@ public final class GetDelegatedAdministratorsResult {
     	      this.servicePrincipal = defaults.servicePrincipal;
         }
 
+        @CustomType.Setter
         public Builder administrators(List<GetDelegatedAdministratorsAdministrator> administrators) {
             this.administrators = Objects.requireNonNull(administrators);
             return this;
@@ -109,10 +89,12 @@ public final class GetDelegatedAdministratorsResult {
         public Builder administrators(GetDelegatedAdministratorsAdministrator... administrators) {
             return administrators(List.of(administrators));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,23 +102,36 @@ public final class GetDelegatedAdministratorsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder servicePrincipal(@Nullable String servicePrincipal) {
             this.servicePrincipal = servicePrincipal;
             return this;
-        }        public GetDelegatedAdministratorsResult build() {
-            return new GetDelegatedAdministratorsResult(administrators, id, ids, outputFile, pageNumber, pageSize, servicePrincipal);
+        }
+        public GetDelegatedAdministratorsResult build() {
+            final var o = new GetDelegatedAdministratorsResult();
+            o.administrators = administrators;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.servicePrincipal = servicePrincipal;
+            return o;
         }
     }
 }

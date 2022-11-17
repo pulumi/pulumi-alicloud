@@ -13,28 +13,19 @@ public final class ApiSystemParameter {
      * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
      */
-    private final String in;
+    private String in;
     /**
      * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Backend service&#39;s parameter name.
      * 
      */
-    private final String nameService;
+    private String nameService;
 
-    @CustomType.Constructor
-    private ApiSystemParameter(
-        @CustomType.Parameter("in") String in,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nameService") String nameService) {
-        this.in = in;
-        this.name = name;
-        this.nameService = nameService;
-    }
-
+    private ApiSystemParameter() {}
     /**
      * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
      * 
@@ -64,16 +55,12 @@ public final class ApiSystemParameter {
     public static Builder builder(ApiSystemParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String in;
         private String name;
         private String nameService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiSystemParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.in = defaults.in;
@@ -81,19 +68,27 @@ public final class ApiSystemParameter {
     	      this.nameService = defaults.nameService;
         }
 
+        @CustomType.Setter
         public Builder in(String in) {
             this.in = Objects.requireNonNull(in);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nameService(String nameService) {
             this.nameService = Objects.requireNonNull(nameService);
             return this;
-        }        public ApiSystemParameter build() {
-            return new ApiSystemParameter(in, name, nameService);
+        }
+        public ApiSystemParameter build() {
+            final var o = new ApiSystemParameter();
+            o.in = in;
+            o.name = name;
+            o.nameService = nameService;
+            return o;
         }
     }
 }

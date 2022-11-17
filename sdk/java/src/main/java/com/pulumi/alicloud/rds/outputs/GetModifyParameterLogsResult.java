@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetModifyParameterLogsResult {
-    private final String dbInstanceId;
-    private final String endTime;
+    private String dbInstanceId;
+    private String endTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetModifyParameterLogsLog> logs;
-    private final @Nullable String outputFile;
-    private final String startTime;
+    private String id;
+    private List<GetModifyParameterLogsLog> logs;
+    private @Nullable String outputFile;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetModifyParameterLogsResult(
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logs") List<GetModifyParameterLogsLog> logs,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.dbInstanceId = dbInstanceId;
-        this.endTime = endTime;
-        this.id = id;
-        this.logs = logs;
-        this.outputFile = outputFile;
-        this.startTime = startTime;
-    }
-
+    private GetModifyParameterLogsResult() {}
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -70,7 +55,7 @@ public final class GetModifyParameterLogsResult {
     public static Builder builder(GetModifyParameterLogsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbInstanceId;
         private String endTime;
@@ -78,11 +63,7 @@ public final class GetModifyParameterLogsResult {
         private List<GetModifyParameterLogsLog> logs;
         private @Nullable String outputFile;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetModifyParameterLogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceId = defaults.dbInstanceId;
@@ -93,18 +74,22 @@ public final class GetModifyParameterLogsResult {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logs(List<GetModifyParameterLogsLog> logs) {
             this.logs = Objects.requireNonNull(logs);
             return this;
@@ -112,15 +97,25 @@ public final class GetModifyParameterLogsResult {
         public Builder logs(GetModifyParameterLogsLog... logs) {
             return logs(List.of(logs));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetModifyParameterLogsResult build() {
-            return new GetModifyParameterLogsResult(dbInstanceId, endTime, id, logs, outputFile, startTime);
+        }
+        public GetModifyParameterLogsResult build() {
+            final var o = new GetModifyParameterLogsResult();
+            o.dbInstanceId = dbInstanceId;
+            o.endTime = endTime;
+            o.id = id;
+            o.logs = logs;
+            o.outputFile = outputFile;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

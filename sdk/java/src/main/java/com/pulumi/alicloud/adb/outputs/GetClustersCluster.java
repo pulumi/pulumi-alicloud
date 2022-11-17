@@ -13,206 +13,117 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersCluster {
-    private final Integer autoRenewPeriod;
+    private Integer autoRenewPeriod;
     /**
      * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
      * 
      */
-    private final String chargeType;
-    private final String commodityCode;
-    private final String computeResource;
-    private final String connectionString;
+    private String chargeType;
+    private String commodityCode;
+    private String computeResource;
+    private String connectionString;
     /**
      * @return The CreateTime of the ADB cluster.
      * 
      */
-    private final String createTime;
-    private final String dbClusterCategory;
-    private final String dbClusterId;
-    private final String dbClusterNetworkType;
-    private final String dbClusterType;
-    private final String dbClusterVersion;
+    private String createTime;
+    private String dbClusterCategory;
+    private String dbClusterId;
+    private String dbClusterNetworkType;
+    private String dbClusterType;
+    private String dbClusterVersion;
     /**
      * @return The DBNodeClass of the ADB cluster.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
     /**
      * @return The DBNodeCount of the ADB cluster.
      * 
      */
-    private final Integer dbNodeCount;
+    private Integer dbNodeCount;
     /**
      * @return The DBNodeStorage of the ADB cluster.
      * 
      */
-    private final Integer dbNodeStorage;
+    private Integer dbNodeStorage;
     /**
      * @return The description of the ADB cluster.
      * 
      */
-    private final String description;
-    private final String diskType;
-    private final String dtsJobId;
-    private final Integer elasticIoResource;
-    private final String engine;
-    private final String engineVersion;
-    private final String executorCount;
+    private String description;
+    private String diskType;
+    private String dtsJobId;
+    private Integer elasticIoResource;
+    private String engine;
+    private String engineVersion;
+    private String executorCount;
     /**
      * @return Expiration time. Pay-As-You-Go clusters never expire.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The expired of the ADB cluster.
      * 
      */
-    private final String expired;
+    private String expired;
     /**
      * @return The ID of the ADB cluster.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The LockMode of the ADB cluster.
      * 
      */
-    private final String lockMode;
-    private final String lockReason;
-    private final String maintainTime;
-    private final String mode;
+    private String lockMode;
+    private String lockReason;
+    private String maintainTime;
+    private String mode;
     /**
      * @return The DBClusterNetworkType of the ADB cluster.
      * 
      */
-    private final String networkType;
-    private final String paymentType;
-    private final Integer port;
-    private final String rdsInstanceId;
+    private String networkType;
+    private String paymentType;
+    private Integer port;
+    private String rdsInstanceId;
     /**
      * @return Region ID the cluster belongs to.
      * 
      */
-    private final String regionId;
-    private final String renewalStatus;
-    private final String resourceGroupId;
-    private final List<String> securityIps;
+    private String regionId;
+    private String renewalStatus;
+    private String resourceGroupId;
+    private List<String> securityIps;
     /**
      * @return The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
      * 
      */
-    private final String status;
-    private final String storageResource;
+    private String status;
+    private String storageResource;
     /**
      * @return A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    private final Map<String,Object> tags;
-    private final String vpcCloudInstanceId;
+    private Map<String,Object> tags;
+    private String vpcCloudInstanceId;
     /**
      * @return ID of the VPC the cluster belongs to.
      * 
      */
-    private final String vpcId;
-    private final String vswitchId;
+    private String vpcId;
+    private String vswitchId;
     /**
      * @return The ZoneId of the ADB cluster.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersCluster(
-        @CustomType.Parameter("autoRenewPeriod") Integer autoRenewPeriod,
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("commodityCode") String commodityCode,
-        @CustomType.Parameter("computeResource") String computeResource,
-        @CustomType.Parameter("connectionString") String connectionString,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbClusterCategory") String dbClusterCategory,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("dbClusterNetworkType") String dbClusterNetworkType,
-        @CustomType.Parameter("dbClusterType") String dbClusterType,
-        @CustomType.Parameter("dbClusterVersion") String dbClusterVersion,
-        @CustomType.Parameter("dbNodeClass") String dbNodeClass,
-        @CustomType.Parameter("dbNodeCount") Integer dbNodeCount,
-        @CustomType.Parameter("dbNodeStorage") Integer dbNodeStorage,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("dtsJobId") String dtsJobId,
-        @CustomType.Parameter("elasticIoResource") Integer elasticIoResource,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("executorCount") String executorCount,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("expired") String expired,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lockMode") String lockMode,
-        @CustomType.Parameter("lockReason") String lockReason,
-        @CustomType.Parameter("maintainTime") String maintainTime,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("rdsInstanceId") String rdsInstanceId,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("renewalStatus") String renewalStatus,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityIps") List<String> securityIps,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storageResource") String storageResource,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("vpcCloudInstanceId") String vpcCloudInstanceId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.autoRenewPeriod = autoRenewPeriod;
-        this.chargeType = chargeType;
-        this.commodityCode = commodityCode;
-        this.computeResource = computeResource;
-        this.connectionString = connectionString;
-        this.createTime = createTime;
-        this.dbClusterCategory = dbClusterCategory;
-        this.dbClusterId = dbClusterId;
-        this.dbClusterNetworkType = dbClusterNetworkType;
-        this.dbClusterType = dbClusterType;
-        this.dbClusterVersion = dbClusterVersion;
-        this.dbNodeClass = dbNodeClass;
-        this.dbNodeCount = dbNodeCount;
-        this.dbNodeStorage = dbNodeStorage;
-        this.description = description;
-        this.diskType = diskType;
-        this.dtsJobId = dtsJobId;
-        this.elasticIoResource = elasticIoResource;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.executorCount = executorCount;
-        this.expireTime = expireTime;
-        this.expired = expired;
-        this.id = id;
-        this.lockMode = lockMode;
-        this.lockReason = lockReason;
-        this.maintainTime = maintainTime;
-        this.mode = mode;
-        this.networkType = networkType;
-        this.paymentType = paymentType;
-        this.port = port;
-        this.rdsInstanceId = rdsInstanceId;
-        this.regionId = regionId;
-        this.renewalStatus = renewalStatus;
-        this.resourceGroupId = resourceGroupId;
-        this.securityIps = securityIps;
-        this.status = status;
-        this.storageResource = storageResource;
-        this.tags = tags;
-        this.vpcCloudInstanceId = vpcCloudInstanceId;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersCluster() {}
     public Integer autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
@@ -416,7 +327,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer autoRenewPeriod;
         private String chargeType;
@@ -461,11 +372,7 @@ public final class GetClustersCluster {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenewPeriod = defaults.autoRenewPeriod;
@@ -513,146 +420,182 @@ public final class GetClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder autoRenewPeriod(Integer autoRenewPeriod) {
             this.autoRenewPeriod = Objects.requireNonNull(autoRenewPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
+        @CustomType.Setter
         public Builder computeResource(String computeResource) {
             this.computeResource = Objects.requireNonNull(computeResource);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterCategory(String dbClusterCategory) {
             this.dbClusterCategory = Objects.requireNonNull(dbClusterCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterNetworkType(String dbClusterNetworkType) {
             this.dbClusterNetworkType = Objects.requireNonNull(dbClusterNetworkType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterType(String dbClusterType) {
             this.dbClusterType = Objects.requireNonNull(dbClusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterVersion(String dbClusterVersion) {
             this.dbClusterVersion = Objects.requireNonNull(dbClusterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeCount(Integer dbNodeCount) {
             this.dbNodeCount = Objects.requireNonNull(dbNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeStorage(Integer dbNodeStorage) {
             this.dbNodeStorage = Objects.requireNonNull(dbNodeStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
             this.dtsJobId = Objects.requireNonNull(dtsJobId);
             return this;
         }
+        @CustomType.Setter
         public Builder elasticIoResource(Integer elasticIoResource) {
             this.elasticIoResource = Objects.requireNonNull(elasticIoResource);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder executorCount(String executorCount) {
             this.executorCount = Objects.requireNonNull(executorCount);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expired(String expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
+        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
         }
+        @CustomType.Setter
         public Builder maintainTime(String maintainTime) {
             this.maintainTime = Objects.requireNonNull(maintainTime);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder rdsInstanceId(String rdsInstanceId) {
             this.rdsInstanceId = Objects.requireNonNull(rdsInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
             this.renewalStatus = Objects.requireNonNull(renewalStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityIps(List<String> securityIps) {
             this.securityIps = Objects.requireNonNull(securityIps);
             return this;
@@ -660,35 +603,87 @@ public final class GetClustersCluster {
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storageResource(String storageResource) {
             this.storageResource = Objects.requireNonNull(storageResource);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcCloudInstanceId(String vpcCloudInstanceId) {
             this.vpcCloudInstanceId = Objects.requireNonNull(vpcCloudInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersCluster build() {
-            return new GetClustersCluster(autoRenewPeriod, chargeType, commodityCode, computeResource, connectionString, createTime, dbClusterCategory, dbClusterId, dbClusterNetworkType, dbClusterType, dbClusterVersion, dbNodeClass, dbNodeCount, dbNodeStorage, description, diskType, dtsJobId, elasticIoResource, engine, engineVersion, executorCount, expireTime, expired, id, lockMode, lockReason, maintainTime, mode, networkType, paymentType, port, rdsInstanceId, regionId, renewalStatus, resourceGroupId, securityIps, status, storageResource, tags, vpcCloudInstanceId, vpcId, vswitchId, zoneId);
+        }
+        public GetClustersCluster build() {
+            final var o = new GetClustersCluster();
+            o.autoRenewPeriod = autoRenewPeriod;
+            o.chargeType = chargeType;
+            o.commodityCode = commodityCode;
+            o.computeResource = computeResource;
+            o.connectionString = connectionString;
+            o.createTime = createTime;
+            o.dbClusterCategory = dbClusterCategory;
+            o.dbClusterId = dbClusterId;
+            o.dbClusterNetworkType = dbClusterNetworkType;
+            o.dbClusterType = dbClusterType;
+            o.dbClusterVersion = dbClusterVersion;
+            o.dbNodeClass = dbNodeClass;
+            o.dbNodeCount = dbNodeCount;
+            o.dbNodeStorage = dbNodeStorage;
+            o.description = description;
+            o.diskType = diskType;
+            o.dtsJobId = dtsJobId;
+            o.elasticIoResource = elasticIoResource;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.executorCount = executorCount;
+            o.expireTime = expireTime;
+            o.expired = expired;
+            o.id = id;
+            o.lockMode = lockMode;
+            o.lockReason = lockReason;
+            o.maintainTime = maintainTime;
+            o.mode = mode;
+            o.networkType = networkType;
+            o.paymentType = paymentType;
+            o.port = port;
+            o.rdsInstanceId = rdsInstanceId;
+            o.regionId = regionId;
+            o.renewalStatus = renewalStatus;
+            o.resourceGroupId = resourceGroupId;
+            o.securityIps = securityIps;
+            o.status = status;
+            o.storageResource = storageResource;
+            o.tags = tags;
+            o.vpcCloudInstanceId = vpcCloudInstanceId;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

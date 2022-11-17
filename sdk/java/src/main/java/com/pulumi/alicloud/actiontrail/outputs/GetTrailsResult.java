@@ -23,61 +23,38 @@ public final class GetTrailsResult {
      * 
      */
     @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
-    private final List<GetTrailsActiontrail> actiontrails;
+    private List<GetTrailsActiontrail> actiontrails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of ActionTrail Trail ids. It is the same as trail name.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable Boolean includeOrganizationTrail;
-    private final @Nullable Boolean includeShadowTrails;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable Boolean includeOrganizationTrail;
+    private @Nullable Boolean includeShadowTrails;
+    private @Nullable String nameRegex;
     /**
      * @return A list of trail names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the ActionTrail Trail.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A list of ActionTrail Trails. Each element contains the following attributes:
      * 
      */
-    private final List<GetTrailsTrail> trails;
+    private List<GetTrailsTrail> trails;
 
-    @CustomType.Constructor
-    private GetTrailsResult(
-        @CustomType.Parameter("actiontrails") List<GetTrailsActiontrail> actiontrails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("includeOrganizationTrail") @Nullable Boolean includeOrganizationTrail,
-        @CustomType.Parameter("includeShadowTrails") @Nullable Boolean includeShadowTrails,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("trails") List<GetTrailsTrail> trails) {
-        this.actiontrails = actiontrails;
-        this.id = id;
-        this.ids = ids;
-        this.includeOrganizationTrail = includeOrganizationTrail;
-        this.includeShadowTrails = includeShadowTrails;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.trails = trails;
-    }
-
+    private GetTrailsResult() {}
     /**
      * @return Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead.&#34;
      * 
@@ -144,7 +121,7 @@ public final class GetTrailsResult {
     public static Builder builder(GetTrailsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTrailsActiontrail> actiontrails;
         private String id;
@@ -156,11 +133,7 @@ public final class GetTrailsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetTrailsTrail> trails;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrailsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actiontrails = defaults.actiontrails;
@@ -175,6 +148,7 @@ public final class GetTrailsResult {
     	      this.trails = defaults.trails;
         }
 
+        @CustomType.Setter
         public Builder actiontrails(List<GetTrailsActiontrail> actiontrails) {
             this.actiontrails = Objects.requireNonNull(actiontrails);
             return this;
@@ -182,10 +156,12 @@ public final class GetTrailsResult {
         public Builder actiontrails(GetTrailsActiontrail... actiontrails) {
             return actiontrails(List.of(actiontrails));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -193,18 +169,22 @@ public final class GetTrailsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder includeOrganizationTrail(@Nullable Boolean includeOrganizationTrail) {
             this.includeOrganizationTrail = includeOrganizationTrail;
             return this;
         }
+        @CustomType.Setter
         public Builder includeShadowTrails(@Nullable Boolean includeShadowTrails) {
             this.includeShadowTrails = includeShadowTrails;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -212,22 +192,37 @@ public final class GetTrailsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder trails(List<GetTrailsTrail> trails) {
             this.trails = Objects.requireNonNull(trails);
             return this;
         }
         public Builder trails(GetTrailsTrail... trails) {
             return trails(List.of(trails));
-        }        public GetTrailsResult build() {
-            return new GetTrailsResult(actiontrails, id, ids, includeOrganizationTrail, includeShadowTrails, nameRegex, names, outputFile, status, trails);
+        }
+        public GetTrailsResult build() {
+            final var o = new GetTrailsResult();
+            o.actiontrails = actiontrails;
+            o.id = id;
+            o.ids = ids;
+            o.includeOrganizationTrail = includeOrganizationTrail;
+            o.includeShadowTrails = includeShadowTrails;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.trails = trails;
+            return o;
         }
     }
 }

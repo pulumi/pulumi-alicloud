@@ -20,214 +20,137 @@ public final class GetKubernetesClustersCluster {
      * @return The ID of availability zone.
      * 
      */
-    private final String availabilityZone;
-    private final String clusterNetworkType;
+    private String availabilityZone;
+    private String clusterNetworkType;
     /**
      * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      * 
      */
-    private final GetKubernetesClustersClusterConnections connections;
+    private GetKubernetesClustersClusterConnections connections;
     /**
      * @return ID of the node.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of node image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The keypair of ssh login cluster node, you have to create it first.
      * 
      */
-    private final String keyName;
+    private String keyName;
     /**
      * @return A list of one element containing information about the associated log store. It contains the following attributes:
      * 
      */
-    private final List<GetKubernetesClustersClusterLogConfig> logConfigs;
-    private final Boolean masterAutoRenew;
-    private final Integer masterAutoRenewPeriod;
+    private List<GetKubernetesClustersClusterLogConfig> logConfigs;
+    private Boolean masterAutoRenew;
+    private Integer masterAutoRenewPeriod;
     /**
      * @return The system disk category of master node.
      * 
      */
-    private final String masterDiskCategory;
+    private String masterDiskCategory;
     /**
      * @return The system disk size of master node.
      * 
      */
-    private final Integer masterDiskSize;
-    private final String masterInstanceChargeType;
+    private Integer masterDiskSize;
+    private String masterInstanceChargeType;
     /**
      * @return The instance type of master node.
      * 
      */
-    private final List<String> masterInstanceTypes;
+    private List<String> masterInstanceTypes;
     /**
      * @return List of cluster master nodes. It contains several attributes to `Block Nodes`.
      * 
      */
-    private final List<GetKubernetesClustersClusterMasterNode> masterNodes;
-    private final Integer masterPeriod;
-    private final String masterPeriodUnit;
+    private List<GetKubernetesClustersClusterMasterNode> masterNodes;
+    private Integer masterPeriod;
+    private String masterPeriodUnit;
     /**
      * @return Node name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The ID of nat gateway used to launch kubernetes cluster.
      * 
      */
-    private final String natGatewayId;
+    private String natGatewayId;
     /**
      * @return The network mask used on pods for each node.
      * 
      */
-    private final Integer nodeCidrMask;
-    private final String podCidr;
+    private Integer nodeCidrMask;
+    private String podCidr;
     /**
      * @return The ID of security group where the current cluster worker node is located.
      * 
      */
-    private final String securityGroupId;
-    private final String serviceCidr;
+    private String securityGroupId;
+    private String serviceCidr;
     /**
      * @return Whether internet load balancer for API Server is created
      * 
      */
-    private final Boolean slbInternetEnabled;
+    private Boolean slbInternetEnabled;
     /**
      * @return The ID of VPC where the current cluster is located.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of VSwitches where the current cluster is located.
      * 
      */
-    private final List<String> vswitchIds;
-    private final Boolean workerAutoRenew;
-    private final Integer workerAutoRenewPeriod;
+    private List<String> vswitchIds;
+    private Boolean workerAutoRenew;
+    private Integer workerAutoRenewPeriod;
     /**
      * @return The data disk size of worker node.
      * 
      */
-    private final String workerDataDiskCategory;
+    private String workerDataDiskCategory;
     /**
      * @return The data disk category of worker node.
      * 
      */
-    private final Integer workerDataDiskSize;
+    private Integer workerDataDiskSize;
     /**
      * @return The system disk category of worker node.
      * 
      */
-    private final String workerDiskCategory;
+    private String workerDiskCategory;
     /**
      * @return The system disk size of worker node.
      * 
      */
-    private final Integer workerDiskSize;
-    private final String workerInstanceChargeType;
+    private Integer workerDiskSize;
+    private String workerInstanceChargeType;
     /**
      * @return The instance type of worker node.
      * 
      */
-    private final List<String> workerInstanceTypes;
+    private List<String> workerInstanceTypes;
     /**
      * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
      * 
      */
-    private final List<GetKubernetesClustersClusterWorkerNode> workerNodes;
+    private List<GetKubernetesClustersClusterWorkerNode> workerNodes;
     /**
      * @return The ECS instance node number in the current container cluster.
      * 
      */
-    private final List<Integer> workerNumbers;
-    private final Integer workerPeriod;
-    private final String workerPeriodUnit;
+    private List<Integer> workerNumbers;
+    private Integer workerPeriod;
+    private String workerPeriodUnit;
 
-    @CustomType.Constructor
-    private GetKubernetesClustersCluster(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("clusterNetworkType") String clusterNetworkType,
-        @CustomType.Parameter("connections") GetKubernetesClustersClusterConnections connections,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("keyName") String keyName,
-        @CustomType.Parameter("logConfigs") List<GetKubernetesClustersClusterLogConfig> logConfigs,
-        @CustomType.Parameter("masterAutoRenew") Boolean masterAutoRenew,
-        @CustomType.Parameter("masterAutoRenewPeriod") Integer masterAutoRenewPeriod,
-        @CustomType.Parameter("masterDiskCategory") String masterDiskCategory,
-        @CustomType.Parameter("masterDiskSize") Integer masterDiskSize,
-        @CustomType.Parameter("masterInstanceChargeType") String masterInstanceChargeType,
-        @CustomType.Parameter("masterInstanceTypes") List<String> masterInstanceTypes,
-        @CustomType.Parameter("masterNodes") List<GetKubernetesClustersClusterMasterNode> masterNodes,
-        @CustomType.Parameter("masterPeriod") Integer masterPeriod,
-        @CustomType.Parameter("masterPeriodUnit") String masterPeriodUnit,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("natGatewayId") String natGatewayId,
-        @CustomType.Parameter("nodeCidrMask") Integer nodeCidrMask,
-        @CustomType.Parameter("podCidr") String podCidr,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("serviceCidr") String serviceCidr,
-        @CustomType.Parameter("slbInternetEnabled") Boolean slbInternetEnabled,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds,
-        @CustomType.Parameter("workerAutoRenew") Boolean workerAutoRenew,
-        @CustomType.Parameter("workerAutoRenewPeriod") Integer workerAutoRenewPeriod,
-        @CustomType.Parameter("workerDataDiskCategory") String workerDataDiskCategory,
-        @CustomType.Parameter("workerDataDiskSize") Integer workerDataDiskSize,
-        @CustomType.Parameter("workerDiskCategory") String workerDiskCategory,
-        @CustomType.Parameter("workerDiskSize") Integer workerDiskSize,
-        @CustomType.Parameter("workerInstanceChargeType") String workerInstanceChargeType,
-        @CustomType.Parameter("workerInstanceTypes") List<String> workerInstanceTypes,
-        @CustomType.Parameter("workerNodes") List<GetKubernetesClustersClusterWorkerNode> workerNodes,
-        @CustomType.Parameter("workerNumbers") List<Integer> workerNumbers,
-        @CustomType.Parameter("workerPeriod") Integer workerPeriod,
-        @CustomType.Parameter("workerPeriodUnit") String workerPeriodUnit) {
-        this.availabilityZone = availabilityZone;
-        this.clusterNetworkType = clusterNetworkType;
-        this.connections = connections;
-        this.id = id;
-        this.imageId = imageId;
-        this.keyName = keyName;
-        this.logConfigs = logConfigs;
-        this.masterAutoRenew = masterAutoRenew;
-        this.masterAutoRenewPeriod = masterAutoRenewPeriod;
-        this.masterDiskCategory = masterDiskCategory;
-        this.masterDiskSize = masterDiskSize;
-        this.masterInstanceChargeType = masterInstanceChargeType;
-        this.masterInstanceTypes = masterInstanceTypes;
-        this.masterNodes = masterNodes;
-        this.masterPeriod = masterPeriod;
-        this.masterPeriodUnit = masterPeriodUnit;
-        this.name = name;
-        this.natGatewayId = natGatewayId;
-        this.nodeCidrMask = nodeCidrMask;
-        this.podCidr = podCidr;
-        this.securityGroupId = securityGroupId;
-        this.serviceCidr = serviceCidr;
-        this.slbInternetEnabled = slbInternetEnabled;
-        this.vpcId = vpcId;
-        this.vswitchIds = vswitchIds;
-        this.workerAutoRenew = workerAutoRenew;
-        this.workerAutoRenewPeriod = workerAutoRenewPeriod;
-        this.workerDataDiskCategory = workerDataDiskCategory;
-        this.workerDataDiskSize = workerDataDiskSize;
-        this.workerDiskCategory = workerDiskCategory;
-        this.workerDiskSize = workerDiskSize;
-        this.workerInstanceChargeType = workerInstanceChargeType;
-        this.workerInstanceTypes = workerInstanceTypes;
-        this.workerNodes = workerNodes;
-        this.workerNumbers = workerNumbers;
-        this.workerPeriod = workerPeriod;
-        this.workerPeriodUnit = workerPeriodUnit;
-    }
-
+    private GetKubernetesClustersCluster() {}
     /**
      * @return The ID of availability zone.
      * 
@@ -443,7 +366,7 @@ public final class GetKubernetesClustersCluster {
     public static Builder builder(GetKubernetesClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String clusterNetworkType;
@@ -482,11 +405,7 @@ public final class GetKubernetesClustersCluster {
         private List<Integer> workerNumbers;
         private Integer workerPeriod;
         private String workerPeriodUnit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -528,30 +447,37 @@ public final class GetKubernetesClustersCluster {
     	      this.workerPeriodUnit = defaults.workerPeriodUnit;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterNetworkType(String clusterNetworkType) {
             this.clusterNetworkType = Objects.requireNonNull(clusterNetworkType);
             return this;
         }
+        @CustomType.Setter
         public Builder connections(GetKubernetesClustersClusterConnections connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder keyName(String keyName) {
             this.keyName = Objects.requireNonNull(keyName);
             return this;
         }
+        @CustomType.Setter
         public Builder logConfigs(List<GetKubernetesClustersClusterLogConfig> logConfigs) {
             this.logConfigs = Objects.requireNonNull(logConfigs);
             return this;
@@ -559,26 +485,32 @@ public final class GetKubernetesClustersCluster {
         public Builder logConfigs(GetKubernetesClustersClusterLogConfig... logConfigs) {
             return logConfigs(List.of(logConfigs));
         }
+        @CustomType.Setter
         public Builder masterAutoRenew(Boolean masterAutoRenew) {
             this.masterAutoRenew = Objects.requireNonNull(masterAutoRenew);
             return this;
         }
+        @CustomType.Setter
         public Builder masterAutoRenewPeriod(Integer masterAutoRenewPeriod) {
             this.masterAutoRenewPeriod = Objects.requireNonNull(masterAutoRenewPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder masterDiskCategory(String masterDiskCategory) {
             this.masterDiskCategory = Objects.requireNonNull(masterDiskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder masterDiskSize(Integer masterDiskSize) {
             this.masterDiskSize = Objects.requireNonNull(masterDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder masterInstanceChargeType(String masterInstanceChargeType) {
             this.masterInstanceChargeType = Objects.requireNonNull(masterInstanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder masterInstanceTypes(List<String> masterInstanceTypes) {
             this.masterInstanceTypes = Objects.requireNonNull(masterInstanceTypes);
             return this;
@@ -586,6 +518,7 @@ public final class GetKubernetesClustersCluster {
         public Builder masterInstanceTypes(String... masterInstanceTypes) {
             return masterInstanceTypes(List.of(masterInstanceTypes));
         }
+        @CustomType.Setter
         public Builder masterNodes(List<GetKubernetesClustersClusterMasterNode> masterNodes) {
             this.masterNodes = Objects.requireNonNull(masterNodes);
             return this;
@@ -593,46 +526,57 @@ public final class GetKubernetesClustersCluster {
         public Builder masterNodes(GetKubernetesClustersClusterMasterNode... masterNodes) {
             return masterNodes(List.of(masterNodes));
         }
+        @CustomType.Setter
         public Builder masterPeriod(Integer masterPeriod) {
             this.masterPeriod = Objects.requireNonNull(masterPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder masterPeriodUnit(String masterPeriodUnit) {
             this.masterPeriodUnit = Objects.requireNonNull(masterPeriodUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCidrMask(Integer nodeCidrMask) {
             this.nodeCidrMask = Objects.requireNonNull(nodeCidrMask);
             return this;
         }
+        @CustomType.Setter
         public Builder podCidr(String podCidr) {
             this.podCidr = Objects.requireNonNull(podCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceCidr(String serviceCidr) {
             this.serviceCidr = Objects.requireNonNull(serviceCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder slbInternetEnabled(Boolean slbInternetEnabled) {
             this.slbInternetEnabled = Objects.requireNonNull(slbInternetEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
@@ -640,34 +584,42 @@ public final class GetKubernetesClustersCluster {
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
         }
+        @CustomType.Setter
         public Builder workerAutoRenew(Boolean workerAutoRenew) {
             this.workerAutoRenew = Objects.requireNonNull(workerAutoRenew);
             return this;
         }
+        @CustomType.Setter
         public Builder workerAutoRenewPeriod(Integer workerAutoRenewPeriod) {
             this.workerAutoRenewPeriod = Objects.requireNonNull(workerAutoRenewPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder workerDataDiskCategory(String workerDataDiskCategory) {
             this.workerDataDiskCategory = Objects.requireNonNull(workerDataDiskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder workerDataDiskSize(Integer workerDataDiskSize) {
             this.workerDataDiskSize = Objects.requireNonNull(workerDataDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder workerDiskCategory(String workerDiskCategory) {
             this.workerDiskCategory = Objects.requireNonNull(workerDiskCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder workerDiskSize(Integer workerDiskSize) {
             this.workerDiskSize = Objects.requireNonNull(workerDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder workerInstanceChargeType(String workerInstanceChargeType) {
             this.workerInstanceChargeType = Objects.requireNonNull(workerInstanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder workerInstanceTypes(List<String> workerInstanceTypes) {
             this.workerInstanceTypes = Objects.requireNonNull(workerInstanceTypes);
             return this;
@@ -675,6 +627,7 @@ public final class GetKubernetesClustersCluster {
         public Builder workerInstanceTypes(String... workerInstanceTypes) {
             return workerInstanceTypes(List.of(workerInstanceTypes));
         }
+        @CustomType.Setter
         public Builder workerNodes(List<GetKubernetesClustersClusterWorkerNode> workerNodes) {
             this.workerNodes = Objects.requireNonNull(workerNodes);
             return this;
@@ -682,6 +635,7 @@ public final class GetKubernetesClustersCluster {
         public Builder workerNodes(GetKubernetesClustersClusterWorkerNode... workerNodes) {
             return workerNodes(List.of(workerNodes));
         }
+        @CustomType.Setter
         public Builder workerNumbers(List<Integer> workerNumbers) {
             this.workerNumbers = Objects.requireNonNull(workerNumbers);
             return this;
@@ -689,15 +643,56 @@ public final class GetKubernetesClustersCluster {
         public Builder workerNumbers(Integer... workerNumbers) {
             return workerNumbers(List.of(workerNumbers));
         }
+        @CustomType.Setter
         public Builder workerPeriod(Integer workerPeriod) {
             this.workerPeriod = Objects.requireNonNull(workerPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder workerPeriodUnit(String workerPeriodUnit) {
             this.workerPeriodUnit = Objects.requireNonNull(workerPeriodUnit);
             return this;
-        }        public GetKubernetesClustersCluster build() {
-            return new GetKubernetesClustersCluster(availabilityZone, clusterNetworkType, connections, id, imageId, keyName, logConfigs, masterAutoRenew, masterAutoRenewPeriod, masterDiskCategory, masterDiskSize, masterInstanceChargeType, masterInstanceTypes, masterNodes, masterPeriod, masterPeriodUnit, name, natGatewayId, nodeCidrMask, podCidr, securityGroupId, serviceCidr, slbInternetEnabled, vpcId, vswitchIds, workerAutoRenew, workerAutoRenewPeriod, workerDataDiskCategory, workerDataDiskSize, workerDiskCategory, workerDiskSize, workerInstanceChargeType, workerInstanceTypes, workerNodes, workerNumbers, workerPeriod, workerPeriodUnit);
+        }
+        public GetKubernetesClustersCluster build() {
+            final var o = new GetKubernetesClustersCluster();
+            o.availabilityZone = availabilityZone;
+            o.clusterNetworkType = clusterNetworkType;
+            o.connections = connections;
+            o.id = id;
+            o.imageId = imageId;
+            o.keyName = keyName;
+            o.logConfigs = logConfigs;
+            o.masterAutoRenew = masterAutoRenew;
+            o.masterAutoRenewPeriod = masterAutoRenewPeriod;
+            o.masterDiskCategory = masterDiskCategory;
+            o.masterDiskSize = masterDiskSize;
+            o.masterInstanceChargeType = masterInstanceChargeType;
+            o.masterInstanceTypes = masterInstanceTypes;
+            o.masterNodes = masterNodes;
+            o.masterPeriod = masterPeriod;
+            o.masterPeriodUnit = masterPeriodUnit;
+            o.name = name;
+            o.natGatewayId = natGatewayId;
+            o.nodeCidrMask = nodeCidrMask;
+            o.podCidr = podCidr;
+            o.securityGroupId = securityGroupId;
+            o.serviceCidr = serviceCidr;
+            o.slbInternetEnabled = slbInternetEnabled;
+            o.vpcId = vpcId;
+            o.vswitchIds = vswitchIds;
+            o.workerAutoRenew = workerAutoRenew;
+            o.workerAutoRenewPeriod = workerAutoRenewPeriod;
+            o.workerDataDiskCategory = workerDataDiskCategory;
+            o.workerDataDiskSize = workerDataDiskSize;
+            o.workerDiskCategory = workerDiskCategory;
+            o.workerDiskSize = workerDiskSize;
+            o.workerInstanceChargeType = workerInstanceChargeType;
+            o.workerInstanceTypes = workerInstanceTypes;
+            o.workerNodes = workerNodes;
+            o.workerNumbers = workerNumbers;
+            o.workerPeriod = workerPeriod;
+            o.workerPeriodUnit = workerPeriodUnit;
+            return o;
         }
     }
 }

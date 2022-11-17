@@ -13,42 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
-    private final String eventBusName;
+    private String eventBusName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String ruleNamePrefix;
-    private final List<GetRulesRule> rules;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String ruleNamePrefix;
+    private List<GetRulesRule> rules;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetRulesResult(
-        @CustomType.Parameter("eventBusName") String eventBusName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("ruleNamePrefix") @Nullable String ruleNamePrefix,
-        @CustomType.Parameter("rules") List<GetRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.eventBusName = eventBusName;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.ruleNamePrefix = ruleNamePrefix;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetRulesResult() {}
     public String eventBusName() {
         return this.eventBusName;
     }
@@ -88,7 +67,7 @@ public final class GetRulesResult {
     public static Builder builder(GetRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String eventBusName;
         private String id;
@@ -99,11 +78,7 @@ public final class GetRulesResult {
         private @Nullable String ruleNamePrefix;
         private List<GetRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventBusName = defaults.eventBusName;
@@ -117,14 +92,17 @@ public final class GetRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder eventBusName(String eventBusName) {
             this.eventBusName = Objects.requireNonNull(eventBusName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,10 +110,12 @@ public final class GetRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,14 +123,17 @@ public final class GetRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleNamePrefix(@Nullable String ruleNamePrefix) {
             this.ruleNamePrefix = ruleNamePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -158,11 +141,23 @@ public final class GetRulesResult {
         public Builder rules(GetRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetRulesResult build() {
-            return new GetRulesResult(eventBusName, id, ids, nameRegex, names, outputFile, ruleNamePrefix, rules, status);
+        }
+        public GetRulesResult build() {
+            final var o = new GetRulesResult();
+            o.eventBusName = eventBusName;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.ruleNamePrefix = ruleNamePrefix;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

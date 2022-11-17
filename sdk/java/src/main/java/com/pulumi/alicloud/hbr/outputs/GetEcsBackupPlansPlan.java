@@ -15,132 +15,91 @@ public final class GetEcsBackupPlansPlan {
      * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
-    private final String backupType;
-    private final String createTime;
+    private String backupType;
+    private String createTime;
     /**
      * @return The creation time of the backup plan. UNIX time in seconds.
      * 
      */
-    private final String createdTime;
-    private final String detail;
+    private String createdTime;
+    private String detail;
     /**
      * @return Whether to be suspended. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
     /**
      * @return The ID of ecs backup plan.
      * 
      */
-    private final String ecsBackupPlanId;
+    private String ecsBackupPlanId;
     /**
      * @return The name of the backup plan.
      * 
      */
-    private final String ecsBackupPlanName;
+    private String ecsBackupPlanName;
     /**
      * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
      * 
      */
-    private final String exclude;
+    private String exclude;
     /**
      * @return The ID of ecs backup plan.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
      * 
      */
-    private final String include;
+    private String include;
     /**
      * @return The ID of ECS instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
      * 
      */
-    private final String options;
+    private String options;
     /**
      * @return Backup path. e.g. `[&#34;/home&#34;, &#34;/var&#34;]`
      * 
      */
-    private final List<String> paths;
+    private List<String> paths;
     /**
      * @return Backup retention days, the minimum is 1.
      * 
      */
-    private final String retention;
+    private String retention;
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
-    private final String schedule;
+    private String schedule;
     /**
      * @return The type of backup source.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      * 
      */
-    private final String speedLimit;
+    private String speedLimit;
     /**
      * @return The update time of the backup plan. UNIX time in seconds.
      * 
      */
-    private final String updatedTime;
+    private String updatedTime;
     /**
      * @return The ID of Backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetEcsBackupPlansPlan(
-        @CustomType.Parameter("backupType") String backupType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createdTime") String createdTime,
-        @CustomType.Parameter("detail") String detail,
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("ecsBackupPlanId") String ecsBackupPlanId,
-        @CustomType.Parameter("ecsBackupPlanName") String ecsBackupPlanName,
-        @CustomType.Parameter("exclude") String exclude,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("include") String include,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("options") String options,
-        @CustomType.Parameter("paths") List<String> paths,
-        @CustomType.Parameter("retention") String retention,
-        @CustomType.Parameter("schedule") String schedule,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("speedLimit") String speedLimit,
-        @CustomType.Parameter("updatedTime") String updatedTime,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.backupType = backupType;
-        this.createTime = createTime;
-        this.createdTime = createdTime;
-        this.detail = detail;
-        this.disabled = disabled;
-        this.ecsBackupPlanId = ecsBackupPlanId;
-        this.ecsBackupPlanName = ecsBackupPlanName;
-        this.exclude = exclude;
-        this.id = id;
-        this.include = include;
-        this.instanceId = instanceId;
-        this.options = options;
-        this.paths = paths;
-        this.retention = retention;
-        this.schedule = schedule;
-        this.sourceType = sourceType;
-        this.speedLimit = speedLimit;
-        this.updatedTime = updatedTime;
-        this.vaultId = vaultId;
-    }
-
+    private GetEcsBackupPlansPlan() {}
     /**
      * @return Backup type. Valid values: `COMPLETE`.
      * 
@@ -274,7 +233,7 @@ public final class GetEcsBackupPlansPlan {
     public static Builder builder(GetEcsBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backupType;
         private String createTime;
@@ -295,11 +254,7 @@ public final class GetEcsBackupPlansPlan {
         private String speedLimit;
         private String updatedTime;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupType = defaults.backupType;
@@ -323,54 +278,67 @@ public final class GetEcsBackupPlansPlan {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
+        @CustomType.Setter
         public Builder detail(String detail) {
             this.detail = Objects.requireNonNull(detail);
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsBackupPlanId(String ecsBackupPlanId) {
             this.ecsBackupPlanId = Objects.requireNonNull(ecsBackupPlanId);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsBackupPlanName(String ecsBackupPlanName) {
             this.ecsBackupPlanName = Objects.requireNonNull(ecsBackupPlanName);
             return this;
         }
+        @CustomType.Setter
         public Builder exclude(String exclude) {
             this.exclude = Objects.requireNonNull(exclude);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder include(String include) {
             this.include = Objects.requireNonNull(include);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder options(String options) {
             this.options = Objects.requireNonNull(options);
             return this;
         }
+        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -378,31 +346,58 @@ public final class GetEcsBackupPlansPlan {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
+        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder speedLimit(String speedLimit) {
             this.speedLimit = Objects.requireNonNull(speedLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetEcsBackupPlansPlan build() {
-            return new GetEcsBackupPlansPlan(backupType, createTime, createdTime, detail, disabled, ecsBackupPlanId, ecsBackupPlanName, exclude, id, include, instanceId, options, paths, retention, schedule, sourceType, speedLimit, updatedTime, vaultId);
+        }
+        public GetEcsBackupPlansPlan build() {
+            final var o = new GetEcsBackupPlansPlan();
+            o.backupType = backupType;
+            o.createTime = createTime;
+            o.createdTime = createdTime;
+            o.detail = detail;
+            o.disabled = disabled;
+            o.ecsBackupPlanId = ecsBackupPlanId;
+            o.ecsBackupPlanName = ecsBackupPlanName;
+            o.exclude = exclude;
+            o.id = id;
+            o.include = include;
+            o.instanceId = instanceId;
+            o.options = options;
+            o.paths = paths;
+            o.retention = retention;
+            o.schedule = schedule;
+            o.sourceType = sourceType;
+            o.speedLimit = speedLimit;
+            o.updatedTime = updatedTime;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }
