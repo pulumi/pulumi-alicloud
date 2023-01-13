@@ -13,21 +13,14 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
-    private final String alias;
+    private String alias;
     /**
      * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
-    private final String express;
+    private String express;
 
-    @CustomType.Constructor
-    private GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress(
-        @CustomType.Parameter("alias") String alias,
-        @CustomType.Parameter("express") String express) {
-        this.alias = alias;
-        this.express = express;
-    }
-
+    private GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress() {}
     /**
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
@@ -50,30 +43,32 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
     public static Builder builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alias;
         private String express;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
     	      this.express = defaults.express;
         }
 
+        @CustomType.Setter
         public Builder alias(String alias) {
             this.alias = Objects.requireNonNull(alias);
             return this;
         }
+        @CustomType.Setter
         public Builder express(String express) {
             this.express = Objects.requireNonNull(express);
             return this;
-        }        public GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress build() {
-            return new GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress(alias, express);
+        }
+        public GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress build() {
+            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress();
+            o.alias = alias;
+            o.express = express;
+            return o;
         }
     }
 }

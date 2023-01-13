@@ -16,28 +16,19 @@ public final class BucketLifecycleRuleTransition {
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
      * 
      */
-    private final @Nullable String createdBeforeDate;
+    private @Nullable String createdBeforeDate;
     /**
      * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
     /**
      * @return Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
      * 
      */
-    private final @Nullable String storageClass;
+    private @Nullable String storageClass;
 
-    @CustomType.Constructor
-    private BucketLifecycleRuleTransition(
-        @CustomType.Parameter("createdBeforeDate") @Nullable String createdBeforeDate,
-        @CustomType.Parameter("days") @Nullable Integer days,
-        @CustomType.Parameter("storageClass") @Nullable String storageClass) {
-        this.createdBeforeDate = createdBeforeDate;
-        this.days = days;
-        this.storageClass = storageClass;
-    }
-
+    private BucketLifecycleRuleTransition() {}
     /**
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
      * 
@@ -67,16 +58,12 @@ public final class BucketLifecycleRuleTransition {
     public static Builder builder(BucketLifecycleRuleTransition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createdBeforeDate;
         private @Nullable Integer days;
         private @Nullable String storageClass;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRuleTransition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdBeforeDate = defaults.createdBeforeDate;
@@ -84,19 +71,27 @@ public final class BucketLifecycleRuleTransition {
     	      this.storageClass = defaults.storageClass;
         }
 
+        @CustomType.Setter
         public Builder createdBeforeDate(@Nullable String createdBeforeDate) {
             this.createdBeforeDate = createdBeforeDate;
             return this;
         }
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(@Nullable String storageClass) {
             this.storageClass = storageClass;
             return this;
-        }        public BucketLifecycleRuleTransition build() {
-            return new BucketLifecycleRuleTransition(createdBeforeDate, days, storageClass);
+        }
+        public BucketLifecycleRuleTransition build() {
+            final var o = new BucketLifecycleRuleTransition();
+            o.createdBeforeDate = createdBeforeDate;
+            o.days = days;
+            o.storageClass = storageClass;
+            return o;
         }
     }
 }

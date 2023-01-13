@@ -13,21 +13,14 @@ public final class GetDhcpOptionsSetsSetAssociateVpc {
      * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
      * 
      */
-    private final String associateStatus;
+    private String associateStatus;
     /**
      * @return The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetDhcpOptionsSetsSetAssociateVpc(
-        @CustomType.Parameter("associateStatus") String associateStatus,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.associateStatus = associateStatus;
-        this.vpcId = vpcId;
-    }
-
+    private GetDhcpOptionsSetsSetAssociateVpc() {}
     /**
      * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
      * 
@@ -50,30 +43,32 @@ public final class GetDhcpOptionsSetsSetAssociateVpc {
     public static Builder builder(GetDhcpOptionsSetsSetAssociateVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String associateStatus;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDhcpOptionsSetsSetAssociateVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associateStatus = defaults.associateStatus;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder associateStatus(String associateStatus) {
             this.associateStatus = Objects.requireNonNull(associateStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetDhcpOptionsSetsSetAssociateVpc build() {
-            return new GetDhcpOptionsSetsSetAssociateVpc(associateStatus, vpcId);
+        }
+        public GetDhcpOptionsSetsSetAssociateVpc build() {
+            final var o = new GetDhcpOptionsSetsSetAssociateVpc();
+            o.associateStatus = associateStatus;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

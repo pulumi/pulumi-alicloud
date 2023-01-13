@@ -16,25 +16,16 @@ public final class EciScalingConfigurationImageRegistryCredential {
      * when `image_registry_credential` is configured.
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return The address of the image repository. It is required when `image_registry_credential` is
      * configured.
      * 
      */
-    private final @Nullable String server;
-    private final @Nullable String username;
+    private @Nullable String server;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private EciScalingConfigurationImageRegistryCredential(
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("server") @Nullable String server,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.password = password;
-        this.server = server;
-        this.username = username;
-    }
-
+    private EciScalingConfigurationImageRegistryCredential() {}
     /**
      * @return The password used to log on to the image repository. It is required
      * when `image_registry_credential` is configured.
@@ -62,16 +53,12 @@ public final class EciScalingConfigurationImageRegistryCredential {
     public static Builder builder(EciScalingConfigurationImageRegistryCredential defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String password;
         private @Nullable String server;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EciScalingConfigurationImageRegistryCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
@@ -79,19 +66,27 @@ public final class EciScalingConfigurationImageRegistryCredential {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder server(@Nullable String server) {
             this.server = server;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public EciScalingConfigurationImageRegistryCredential build() {
-            return new EciScalingConfigurationImageRegistryCredential(password, server, username);
+        }
+        public EciScalingConfigurationImageRegistryCredential build() {
+            final var o = new EciScalingConfigurationImageRegistryCredential();
+            o.password = password;
+            o.server = server;
+            o.username = username;
+            return o;
         }
     }
 }

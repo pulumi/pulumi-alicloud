@@ -17,52 +17,35 @@ public final class GetKeyPairsKeyPair {
      * @return A finger print used to retrieve specified key pair.
      * 
      */
-    private final String fingerPrint;
+    private String fingerPrint;
     /**
      * @return ID of the key pair.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of ECS instances that has been bound this key pair.
      * 
      */
-    private final List<GetKeyPairsKeyPairInstance> instances;
+    private List<GetKeyPairsKeyPairInstance> instances;
     /**
      * @return Name of the key pair.
      * 
      */
-    private final String keyName;
-    private final String keyPairName;
+    private String keyName;
+    private String keyPairName;
     /**
      * @return The Id of resource group which the key pair belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetKeyPairsKeyPair(
-        @CustomType.Parameter("fingerPrint") String fingerPrint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instances") List<GetKeyPairsKeyPairInstance> instances,
-        @CustomType.Parameter("keyName") String keyName,
-        @CustomType.Parameter("keyPairName") String keyPairName,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("tags") Map<String,Object> tags) {
-        this.fingerPrint = fingerPrint;
-        this.id = id;
-        this.instances = instances;
-        this.keyName = keyName;
-        this.keyPairName = keyPairName;
-        this.resourceGroupId = resourceGroupId;
-        this.tags = tags;
-    }
-
+    private GetKeyPairsKeyPair() {}
     /**
      * @return A finger print used to retrieve specified key pair.
      * 
@@ -116,7 +99,7 @@ public final class GetKeyPairsKeyPair {
     public static Builder builder(GetKeyPairsKeyPair defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fingerPrint;
         private String id;
@@ -125,11 +108,7 @@ public final class GetKeyPairsKeyPair {
         private String keyPairName;
         private String resourceGroupId;
         private Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeyPairsKeyPair defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fingerPrint = defaults.fingerPrint;
@@ -141,14 +120,17 @@ public final class GetKeyPairsKeyPair {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder fingerPrint(String fingerPrint) {
             this.fingerPrint = Objects.requireNonNull(fingerPrint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetKeyPairsKeyPairInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -156,23 +138,36 @@ public final class GetKeyPairsKeyPair {
         public Builder instances(GetKeyPairsKeyPairInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder keyName(String keyName) {
             this.keyName = Objects.requireNonNull(keyName);
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }        public GetKeyPairsKeyPair build() {
-            return new GetKeyPairsKeyPair(fingerPrint, id, instances, keyName, keyPairName, resourceGroupId, tags);
+        }
+        public GetKeyPairsKeyPair build() {
+            final var o = new GetKeyPairsKeyPair();
+            o.fingerPrint = fingerPrint;
+            o.id = id;
+            o.instances = instances;
+            o.keyName = keyName;
+            o.keyPairName = keyPairName;
+            o.resourceGroupId = resourceGroupId;
+            o.tags = tags;
+            return o;
         }
     }
 }

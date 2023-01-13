@@ -15,63 +15,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
-    private final @Nullable Integer category;
-    private final @Nullable String contentCategory;
-    private final @Nullable Integer customType;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Integer category;
+    private @Nullable String contentCategory;
+    private @Nullable Integer customType;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String productId;
-    private final @Nullable String riskLevelId;
-    private final @Nullable Integer ruleType;
-    private final List<GetRulesRule> rules;
-    private final @Nullable String status;
-    private final @Nullable Integer warnLevel;
+    private String id;
+    private List<String> ids;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String productId;
+    private @Nullable String riskLevelId;
+    private @Nullable Integer ruleType;
+    private List<GetRulesRule> rules;
+    private @Nullable String status;
+    private @Nullable Integer warnLevel;
 
-    @CustomType.Constructor
-    private GetRulesResult(
-        @CustomType.Parameter("category") @Nullable Integer category,
-        @CustomType.Parameter("contentCategory") @Nullable String contentCategory,
-        @CustomType.Parameter("customType") @Nullable Integer customType,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("productId") @Nullable String productId,
-        @CustomType.Parameter("riskLevelId") @Nullable String riskLevelId,
-        @CustomType.Parameter("ruleType") @Nullable Integer ruleType,
-        @CustomType.Parameter("rules") List<GetRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("warnLevel") @Nullable Integer warnLevel) {
-        this.category = category;
-        this.contentCategory = contentCategory;
-        this.customType = customType;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.productId = productId;
-        this.riskLevelId = riskLevelId;
-        this.ruleType = ruleType;
-        this.rules = rules;
-        this.status = status;
-        this.warnLevel = warnLevel;
-    }
-
+    private GetRulesResult() {}
     public Optional<Integer> category() {
         return Optional.ofNullable(this.category);
     }
@@ -132,7 +97,7 @@ public final class GetRulesResult {
     public static Builder builder(GetRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer category;
         private @Nullable String contentCategory;
@@ -150,11 +115,7 @@ public final class GetRulesResult {
         private List<GetRulesRule> rules;
         private @Nullable String status;
         private @Nullable Integer warnLevel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -175,26 +136,32 @@ public final class GetRulesResult {
     	      this.warnLevel = defaults.warnLevel;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable Integer category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder contentCategory(@Nullable String contentCategory) {
             this.contentCategory = contentCategory;
             return this;
         }
+        @CustomType.Setter
         public Builder customType(@Nullable Integer customType) {
             this.customType = customType;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -202,14 +169,17 @@ public final class GetRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -217,22 +187,27 @@ public final class GetRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder productId(@Nullable String productId) {
             this.productId = productId;
             return this;
         }
+        @CustomType.Setter
         public Builder riskLevelId(@Nullable String riskLevelId) {
             this.riskLevelId = riskLevelId;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleType(@Nullable Integer ruleType) {
             this.ruleType = ruleType;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -240,15 +215,35 @@ public final class GetRulesResult {
         public Builder rules(GetRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder warnLevel(@Nullable Integer warnLevel) {
             this.warnLevel = warnLevel;
             return this;
-        }        public GetRulesResult build() {
-            return new GetRulesResult(category, contentCategory, customType, enableDetails, id, ids, name, nameRegex, names, outputFile, productId, riskLevelId, ruleType, rules, status, warnLevel);
+        }
+        public GetRulesResult build() {
+            final var o = new GetRulesResult();
+            o.category = category;
+            o.contentCategory = contentCategory;
+            o.customType = customType;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.productId = productId;
+            o.riskLevelId = riskLevelId;
+            o.ruleType = ruleType;
+            o.rules = rules;
+            o.status = status;
+            o.warnLevel = warnLevel;
+            return o;
         }
     }
 }

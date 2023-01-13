@@ -17,29 +17,14 @@ public final class GetSharedTargetsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceShareId;
-    private final @Nullable String status;
-    private final List<GetSharedTargetsTarget> targets;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String resourceShareId;
+    private @Nullable String status;
+    private List<GetSharedTargetsTarget> targets;
 
-    @CustomType.Constructor
-    private GetSharedTargetsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceShareId") @Nullable String resourceShareId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("targets") List<GetSharedTargetsTarget> targets) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.resourceShareId = resourceShareId;
-        this.status = status;
-        this.targets = targets;
-    }
-
+    private GetSharedTargetsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetSharedTargetsResult {
     public static Builder builder(GetSharedTargetsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetSharedTargetsResult {
         private @Nullable String resourceShareId;
         private @Nullable String status;
         private List<GetSharedTargetsTarget> targets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSharedTargetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetSharedTargetsResult {
     	      this.targets = defaults.targets;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,26 +87,38 @@ public final class GetSharedTargetsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceShareId(@Nullable String resourceShareId) {
             this.resourceShareId = resourceShareId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder targets(List<GetSharedTargetsTarget> targets) {
             this.targets = Objects.requireNonNull(targets);
             return this;
         }
         public Builder targets(GetSharedTargetsTarget... targets) {
             return targets(List.of(targets));
-        }        public GetSharedTargetsResult build() {
-            return new GetSharedTargetsResult(id, ids, outputFile, resourceShareId, status, targets);
+        }
+        public GetSharedTargetsResult build() {
+            final var o = new GetSharedTargetsResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.resourceShareId = resourceShareId;
+            o.status = status;
+            o.targets = targets;
+            return o;
         }
     }
 }

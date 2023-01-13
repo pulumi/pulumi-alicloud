@@ -15,36 +15,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDBAuditInstanceResult {
-    private final @Nullable String descriptionRegex;
-    private final List<String> descriptions;
+    private @Nullable String descriptionRegex;
+    private List<String> descriptions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetDBAuditInstanceInstance> instances;
-    private final @Nullable String outputFile;
-    private final @Nullable Map<String,Object> tags;
+    private String id;
+    private List<String> ids;
+    private List<GetDBAuditInstanceInstance> instances;
+    private @Nullable String outputFile;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetDBAuditInstanceResult(
-        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
-        @CustomType.Parameter("descriptions") List<String> descriptions,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetDBAuditInstanceInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.descriptionRegex = descriptionRegex;
-        this.descriptions = descriptions;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.outputFile = outputFile;
-        this.tags = tags;
-    }
-
+    private GetDBAuditInstanceResult() {}
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
@@ -78,7 +61,7 @@ public final class GetDBAuditInstanceResult {
     public static Builder builder(GetDBAuditInstanceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private List<String> descriptions;
@@ -87,11 +70,7 @@ public final class GetDBAuditInstanceResult {
         private List<GetDBAuditInstanceInstance> instances;
         private @Nullable String outputFile;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDBAuditInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
@@ -103,10 +82,12 @@ public final class GetDBAuditInstanceResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
             this.descriptions = Objects.requireNonNull(descriptions);
             return this;
@@ -114,10 +95,12 @@ public final class GetDBAuditInstanceResult {
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,6 +108,7 @@ public final class GetDBAuditInstanceResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetDBAuditInstanceInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -132,15 +116,26 @@ public final class GetDBAuditInstanceResult {
         public Builder instances(GetDBAuditInstanceInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetDBAuditInstanceResult build() {
-            return new GetDBAuditInstanceResult(descriptionRegex, descriptions, id, ids, instances, outputFile, tags);
+        }
+        public GetDBAuditInstanceResult build() {
+            final var o = new GetDBAuditInstanceResult();
+            o.descriptionRegex = descriptionRegex;
+            o.descriptions = descriptions;
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            o.tags = tags;
+            return o;
         }
     }
 }

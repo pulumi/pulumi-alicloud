@@ -18,54 +18,33 @@ public final class GetDomainsResult {
      * @return A list of Domains. Each element contains the following attributes:
      * 
      */
-    private final List<GetDomainsDomain> domains;
-    private final @Nullable Boolean enableDetails;
+    private List<GetDomainsDomain> domains;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of WAF domain self ID, value as `domain_name`.
      * 
      */
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String nameRegex;
     /**
      * @return A list of WAF domain names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the resource group to which the queried domain belongs in Resource Management.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
 
-    @CustomType.Constructor
-    private GetDomainsResult(
-        @CustomType.Parameter("domains") List<GetDomainsDomain> domains,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId) {
-        this.domains = domains;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-    }
-
+    private GetDomainsResult() {}
     /**
      * @return A list of Domains. Each element contains the following attributes:
      * 
@@ -121,7 +100,7 @@ public final class GetDomainsResult {
     public static Builder builder(GetDomainsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDomainsDomain> domains;
         private @Nullable Boolean enableDetails;
@@ -132,11 +111,7 @@ public final class GetDomainsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -150,6 +125,7 @@ public final class GetDomainsResult {
     	      this.resourceGroupId = defaults.resourceGroupId;
         }
 
+        @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -157,14 +133,17 @@ public final class GetDomainsResult {
         public Builder domains(GetDomainsDomain... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -172,14 +151,17 @@ public final class GetDomainsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -187,15 +169,28 @@ public final class GetDomainsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
-        }        public GetDomainsResult build() {
-            return new GetDomainsResult(domains, enableDetails, id, ids, instanceId, nameRegex, names, outputFile, resourceGroupId);
+        }
+        public GetDomainsResult build() {
+            final var o = new GetDomainsResult();
+            o.domains = domains;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            return o;
         }
     }
 }

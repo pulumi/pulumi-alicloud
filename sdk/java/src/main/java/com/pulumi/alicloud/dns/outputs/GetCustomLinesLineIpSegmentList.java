@@ -13,21 +13,14 @@ public final class GetCustomLinesLineIpSegmentList {
      * @return The end IP address of the CIDR block.
      * 
      */
-    private final String endIp;
+    private String endIp;
     /**
      * @return The start IP address of the CIDR block.
      * 
      */
-    private final String startIp;
+    private String startIp;
 
-    @CustomType.Constructor
-    private GetCustomLinesLineIpSegmentList(
-        @CustomType.Parameter("endIp") String endIp,
-        @CustomType.Parameter("startIp") String startIp) {
-        this.endIp = endIp;
-        this.startIp = startIp;
-    }
-
+    private GetCustomLinesLineIpSegmentList() {}
     /**
      * @return The end IP address of the CIDR block.
      * 
@@ -50,30 +43,32 @@ public final class GetCustomLinesLineIpSegmentList {
     public static Builder builder(GetCustomLinesLineIpSegmentList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endIp;
         private String startIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomLinesLineIpSegmentList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endIp = defaults.endIp;
     	      this.startIp = defaults.startIp;
         }
 
+        @CustomType.Setter
         public Builder endIp(String endIp) {
             this.endIp = Objects.requireNonNull(endIp);
             return this;
         }
+        @CustomType.Setter
         public Builder startIp(String startIp) {
             this.startIp = Objects.requireNonNull(startIp);
             return this;
-        }        public GetCustomLinesLineIpSegmentList build() {
-            return new GetCustomLinesLineIpSegmentList(endIp, startIp);
+        }
+        public GetCustomLinesLineIpSegmentList build() {
+            final var o = new GetCustomLinesLineIpSegmentList();
+            o.endIp = endIp;
+            o.startIp = startIp;
+            return o;
         }
     }
 }

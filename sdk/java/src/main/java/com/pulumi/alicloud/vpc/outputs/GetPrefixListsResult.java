@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPrefixListsResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetPrefixListsList> lists;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String prefixListName;
+    private String id;
+    private List<String> ids;
+    private List<GetPrefixListsList> lists;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String prefixListName;
 
-    @CustomType.Constructor
-    private GetPrefixListsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lists") List<GetPrefixListsList> lists,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("prefixListName") @Nullable String prefixListName) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.lists = lists;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.prefixListName = prefixListName;
-    }
-
+    private GetPrefixListsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -83,7 +64,7 @@ public final class GetPrefixListsResult {
     public static Builder builder(GetPrefixListsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -93,11 +74,7 @@ public final class GetPrefixListsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String prefixListName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPrefixListsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -110,14 +87,17 @@ public final class GetPrefixListsResult {
     	      this.prefixListName = defaults.prefixListName;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,6 +105,7 @@ public final class GetPrefixListsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lists(List<GetPrefixListsList> lists) {
             this.lists = Objects.requireNonNull(lists);
             return this;
@@ -132,10 +113,12 @@ public final class GetPrefixListsResult {
         public Builder lists(GetPrefixListsList... lists) {
             return lists(List.of(lists));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,15 +126,27 @@ public final class GetPrefixListsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder prefixListName(@Nullable String prefixListName) {
             this.prefixListName = prefixListName;
             return this;
-        }        public GetPrefixListsResult build() {
-            return new GetPrefixListsResult(enableDetails, id, ids, lists, nameRegex, names, outputFile, prefixListName);
+        }
+        public GetPrefixListsResult build() {
+            final var o = new GetPrefixListsResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.lists = lists;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.prefixListName = prefixListName;
+            return o;
         }
     }
 }

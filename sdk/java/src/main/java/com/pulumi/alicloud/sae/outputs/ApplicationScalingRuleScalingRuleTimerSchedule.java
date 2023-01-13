@@ -16,35 +16,24 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
      * @return Trigger point in time. When supporting format: minutes, for example: `08:00`.
      * 
      */
-    private final @Nullable String atTime;
+    private @Nullable String atTime;
     /**
      * @return Maximum number of instances applied.
      * 
      */
-    private final @Nullable Integer maxReplicas;
+    private @Nullable Integer maxReplicas;
     /**
      * @return Minimum number of instances applied.
      * 
      */
-    private final @Nullable Integer minReplicas;
+    private @Nullable Integer minReplicas;
     /**
      * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
      * 
      */
-    private final @Nullable Integer targetReplicas;
+    private @Nullable Integer targetReplicas;
 
-    @CustomType.Constructor
-    private ApplicationScalingRuleScalingRuleTimerSchedule(
-        @CustomType.Parameter("atTime") @Nullable String atTime,
-        @CustomType.Parameter("maxReplicas") @Nullable Integer maxReplicas,
-        @CustomType.Parameter("minReplicas") @Nullable Integer minReplicas,
-        @CustomType.Parameter("targetReplicas") @Nullable Integer targetReplicas) {
-        this.atTime = atTime;
-        this.maxReplicas = maxReplicas;
-        this.minReplicas = minReplicas;
-        this.targetReplicas = targetReplicas;
-    }
-
+    private ApplicationScalingRuleScalingRuleTimerSchedule() {}
     /**
      * @return Trigger point in time. When supporting format: minutes, for example: `08:00`.
      * 
@@ -81,17 +70,13 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
     public static Builder builder(ApplicationScalingRuleScalingRuleTimerSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String atTime;
         private @Nullable Integer maxReplicas;
         private @Nullable Integer minReplicas;
         private @Nullable Integer targetReplicas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScalingRuleScalingRuleTimerSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.atTime = defaults.atTime;
@@ -100,23 +85,33 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
     	      this.targetReplicas = defaults.targetReplicas;
         }
 
+        @CustomType.Setter
         public Builder atTime(@Nullable String atTime) {
             this.atTime = atTime;
             return this;
         }
+        @CustomType.Setter
         public Builder maxReplicas(@Nullable Integer maxReplicas) {
             this.maxReplicas = maxReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder minReplicas(@Nullable Integer minReplicas) {
             this.minReplicas = minReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder targetReplicas(@Nullable Integer targetReplicas) {
             this.targetReplicas = targetReplicas;
             return this;
-        }        public ApplicationScalingRuleScalingRuleTimerSchedule build() {
-            return new ApplicationScalingRuleScalingRuleTimerSchedule(atTime, maxReplicas, minReplicas, targetReplicas);
+        }
+        public ApplicationScalingRuleScalingRuleTimerSchedule build() {
+            final var o = new ApplicationScalingRuleScalingRuleTimerSchedule();
+            o.atTime = atTime;
+            o.maxReplicas = maxReplicas;
+            o.minReplicas = minReplicas;
+            o.targetReplicas = targetReplicas;
+            return o;
         }
     }
 }

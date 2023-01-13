@@ -15,13 +15,9 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private final @Nullable String serverGroupId;
+    private @Nullable String serverGroupId;
 
-    @CustomType.Constructor
-    private RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") @Nullable String serverGroupId) {
-        this.serverGroupId = serverGroupId;
-    }
-
+    private RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple() {}
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -37,24 +33,24 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
     public static Builder builder(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String serverGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
+        @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
             this.serverGroupId = serverGroupId;
             return this;
-        }        public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
-            return new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(serverGroupId);
+        }
+        public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
+            final var o = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple();
+            o.serverGroupId = serverGroupId;
+            return o;
         }
     }
 }

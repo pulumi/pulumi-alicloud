@@ -17,29 +17,20 @@ public final class ClusterDbClusterIpArray {
      * **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
      * 
      */
-    private final @Nullable String dbClusterIpArrayName;
+    private @Nullable String dbClusterIpArrayName;
     /**
      * @return The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
      * **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
      * 
      */
-    private final @Nullable String modifyMode;
+    private @Nullable String modifyMode;
     /**
      * @return List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    private final @Nullable List<String> securityIps;
+    private @Nullable List<String> securityIps;
 
-    @CustomType.Constructor
-    private ClusterDbClusterIpArray(
-        @CustomType.Parameter("dbClusterIpArrayName") @Nullable String dbClusterIpArrayName,
-        @CustomType.Parameter("modifyMode") @Nullable String modifyMode,
-        @CustomType.Parameter("securityIps") @Nullable List<String> securityIps) {
-        this.dbClusterIpArrayName = dbClusterIpArrayName;
-        this.modifyMode = modifyMode;
-        this.securityIps = securityIps;
-    }
-
+    private ClusterDbClusterIpArray() {}
     /**
      * @return The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
      * **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
@@ -71,16 +62,12 @@ public final class ClusterDbClusterIpArray {
     public static Builder builder(ClusterDbClusterIpArray defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbClusterIpArrayName;
         private @Nullable String modifyMode;
         private @Nullable List<String> securityIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterDbClusterIpArray defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterIpArrayName = defaults.dbClusterIpArrayName;
@@ -88,22 +75,30 @@ public final class ClusterDbClusterIpArray {
     	      this.securityIps = defaults.securityIps;
         }
 
+        @CustomType.Setter
         public Builder dbClusterIpArrayName(@Nullable String dbClusterIpArrayName) {
             this.dbClusterIpArrayName = dbClusterIpArrayName;
             return this;
         }
+        @CustomType.Setter
         public Builder modifyMode(@Nullable String modifyMode) {
             this.modifyMode = modifyMode;
             return this;
         }
+        @CustomType.Setter
         public Builder securityIps(@Nullable List<String> securityIps) {
             this.securityIps = securityIps;
             return this;
         }
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
-        }        public ClusterDbClusterIpArray build() {
-            return new ClusterDbClusterIpArray(dbClusterIpArrayName, modifyMode, securityIps);
+        }
+        public ClusterDbClusterIpArray build() {
+            final var o = new ClusterDbClusterIpArray();
+            o.dbClusterIpArrayName = dbClusterIpArrayName;
+            o.modifyMode = modifyMode;
+            o.securityIps = securityIps;
+            return o;
         }
     }
 }

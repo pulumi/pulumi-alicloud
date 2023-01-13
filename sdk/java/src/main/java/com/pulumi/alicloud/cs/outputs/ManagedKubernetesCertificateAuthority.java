@@ -15,28 +15,19 @@ public final class ManagedKubernetesCertificateAuthority {
      * @return The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
      */
-    private final @Nullable String clientCert;
+    private @Nullable String clientCert;
     /**
      * @return The path of client key, like `~/.kube/client-key.pem`.
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
      * 
      */
-    private final @Nullable String clusterCert;
+    private @Nullable String clusterCert;
 
-    @CustomType.Constructor
-    private ManagedKubernetesCertificateAuthority(
-        @CustomType.Parameter("clientCert") @Nullable String clientCert,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clusterCert") @Nullable String clusterCert) {
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clusterCert = clusterCert;
-    }
-
+    private ManagedKubernetesCertificateAuthority() {}
     /**
      * @return The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
@@ -66,16 +57,12 @@ public final class ManagedKubernetesCertificateAuthority {
     public static Builder builder(ManagedKubernetesCertificateAuthority defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clientCert;
         private @Nullable String clientKey;
         private @Nullable String clusterCert;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedKubernetesCertificateAuthority defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCert = defaults.clientCert;
@@ -83,19 +70,27 @@ public final class ManagedKubernetesCertificateAuthority {
     	      this.clusterCert = defaults.clusterCert;
         }
 
+        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCert(@Nullable String clusterCert) {
             this.clusterCert = clusterCert;
             return this;
-        }        public ManagedKubernetesCertificateAuthority build() {
-            return new ManagedKubernetesCertificateAuthority(clientCert, clientKey, clusterCert);
+        }
+        public ManagedKubernetesCertificateAuthority build() {
+            final var o = new ManagedKubernetesCertificateAuthority();
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clusterCert = clusterCert;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class AlarmEscalationsInfo {
      * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
      * 
      */
-    private final @Nullable String comparisonOperator;
+    private @Nullable String comparisonOperator;
     /**
      * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
      * 
      */
-    private final @Nullable String statistics;
+    private @Nullable String statistics;
     /**
      * @return Critical level alarm threshold value, which must be a numeric value currently.
      * 
      */
-    private final @Nullable String threshold;
+    private @Nullable String threshold;
     /**
      * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
      * 
      */
-    private final @Nullable Integer times;
+    private @Nullable Integer times;
 
-    @CustomType.Constructor
-    private AlarmEscalationsInfo(
-        @CustomType.Parameter("comparisonOperator") @Nullable String comparisonOperator,
-        @CustomType.Parameter("statistics") @Nullable String statistics,
-        @CustomType.Parameter("threshold") @Nullable String threshold,
-        @CustomType.Parameter("times") @Nullable Integer times) {
-        this.comparisonOperator = comparisonOperator;
-        this.statistics = statistics;
-        this.threshold = threshold;
-        this.times = times;
-    }
-
+    private AlarmEscalationsInfo() {}
     /**
      * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
      * 
@@ -81,17 +70,13 @@ public final class AlarmEscalationsInfo {
     public static Builder builder(AlarmEscalationsInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comparisonOperator;
         private @Nullable String statistics;
         private @Nullable String threshold;
         private @Nullable Integer times;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlarmEscalationsInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -100,23 +85,33 @@ public final class AlarmEscalationsInfo {
     	      this.times = defaults.times;
         }
 
+        @CustomType.Setter
         public Builder comparisonOperator(@Nullable String comparisonOperator) {
             this.comparisonOperator = comparisonOperator;
             return this;
         }
+        @CustomType.Setter
         public Builder statistics(@Nullable String statistics) {
             this.statistics = statistics;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable String threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder times(@Nullable Integer times) {
             this.times = times;
             return this;
-        }        public AlarmEscalationsInfo build() {
-            return new AlarmEscalationsInfo(comparisonOperator, statistics, threshold, times);
+        }
+        public AlarmEscalationsInfo build() {
+            final var o = new AlarmEscalationsInfo();
+            o.comparisonOperator = comparisonOperator;
+            o.statistics = statistics;
+            o.threshold = threshold;
+            o.times = times;
+            return o;
         }
     }
 }

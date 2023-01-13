@@ -13,49 +13,34 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
      * @return The address of AD connector.
      * 
      */
-    private final String adConnectorAddress;
+    private String adConnectorAddress;
     /**
      * @return The status of connector.
      * 
      */
-    private final String connectorStatus;
+    private String connectorStatus;
     /**
      * @return The ID of the network interface.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return The AD Connector specifications.
      * 
      */
-    private final String specification;
+    private String specification;
     /**
      * @return The AD Connector control trust password.
      * 
      */
-    private final String trustKey;
+    private String trustKey;
     /**
      * @return The ID of VSwitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetAdConnectorDirectoriesDirectoryAdConnector(
-        @CustomType.Parameter("adConnectorAddress") String adConnectorAddress,
-        @CustomType.Parameter("connectorStatus") String connectorStatus,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("specification") String specification,
-        @CustomType.Parameter("trustKey") String trustKey,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.adConnectorAddress = adConnectorAddress;
-        this.connectorStatus = connectorStatus;
-        this.networkInterfaceId = networkInterfaceId;
-        this.specification = specification;
-        this.trustKey = trustKey;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetAdConnectorDirectoriesDirectoryAdConnector() {}
     /**
      * @return The address of AD connector.
      * 
@@ -106,7 +91,7 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
     public static Builder builder(GetAdConnectorDirectoriesDirectoryAdConnector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String adConnectorAddress;
         private String connectorStatus;
@@ -114,11 +99,7 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
         private String specification;
         private String trustKey;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAdConnectorDirectoriesDirectoryAdConnector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adConnectorAddress = defaults.adConnectorAddress;
@@ -129,31 +110,45 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder adConnectorAddress(String adConnectorAddress) {
             this.adConnectorAddress = Objects.requireNonNull(adConnectorAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder connectorStatus(String connectorStatus) {
             this.connectorStatus = Objects.requireNonNull(connectorStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
         }
+        @CustomType.Setter
         public Builder trustKey(String trustKey) {
             this.trustKey = Objects.requireNonNull(trustKey);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetAdConnectorDirectoriesDirectoryAdConnector build() {
-            return new GetAdConnectorDirectoriesDirectoryAdConnector(adConnectorAddress, connectorStatus, networkInterfaceId, specification, trustKey, vswitchId);
+        }
+        public GetAdConnectorDirectoriesDirectoryAdConnector build() {
+            final var o = new GetAdConnectorDirectoriesDirectoryAdConnector();
+            o.adConnectorAddress = adConnectorAddress;
+            o.connectorStatus = connectorStatus;
+            o.networkInterfaceId = networkInterfaceId;
+            o.specification = specification;
+            o.trustKey = trustKey;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

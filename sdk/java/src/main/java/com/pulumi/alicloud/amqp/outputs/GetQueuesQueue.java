@@ -16,70 +16,49 @@ public final class GetQueuesQueue {
      * @return The attributes for the Queue.
      * 
      */
-    private final Map<String,Object> attributes;
+    private Map<String,Object> attributes;
     /**
      * @return Specifies whether the Auto Delete attribute is configured.
      * 
      */
-    private final Boolean autoDeleteState;
+    private Boolean autoDeleteState;
     /**
      * @return CreateTime.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Specifies whether the queue is an exclusive queue.
      * 
      */
-    private final Boolean exclusiveState;
+    private Boolean exclusiveState;
     /**
      * @return The ID of the Queue. Its value is same as Queue Name.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The last consume time.
      * 
      */
-    private final String lastConsumeTime;
+    private String lastConsumeTime;
     /**
      * @return The queue name.
      * 
      */
-    private final String queueName;
+    private String queueName;
     /**
      * @return The name of the virtual host.
      * 
      */
-    private final String virtualHostName;
+    private String virtualHostName;
 
-    @CustomType.Constructor
-    private GetQueuesQueue(
-        @CustomType.Parameter("attributes") Map<String,Object> attributes,
-        @CustomType.Parameter("autoDeleteState") Boolean autoDeleteState,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("exclusiveState") Boolean exclusiveState,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("lastConsumeTime") String lastConsumeTime,
-        @CustomType.Parameter("queueName") String queueName,
-        @CustomType.Parameter("virtualHostName") String virtualHostName) {
-        this.attributes = attributes;
-        this.autoDeleteState = autoDeleteState;
-        this.createTime = createTime;
-        this.exclusiveState = exclusiveState;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.lastConsumeTime = lastConsumeTime;
-        this.queueName = queueName;
-        this.virtualHostName = virtualHostName;
-    }
-
+    private GetQueuesQueue() {}
     /**
      * @return The attributes for the Queue.
      * 
@@ -151,7 +130,7 @@ public final class GetQueuesQueue {
     public static Builder builder(GetQueuesQueue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> attributes;
         private Boolean autoDeleteState;
@@ -162,11 +141,7 @@ public final class GetQueuesQueue {
         private String lastConsumeTime;
         private String queueName;
         private String virtualHostName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQueuesQueue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
@@ -180,43 +155,63 @@ public final class GetQueuesQueue {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
+        @CustomType.Setter
         public Builder attributes(Map<String,Object> attributes) {
             this.attributes = Objects.requireNonNull(attributes);
             return this;
         }
+        @CustomType.Setter
         public Builder autoDeleteState(Boolean autoDeleteState) {
             this.autoDeleteState = Objects.requireNonNull(autoDeleteState);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusiveState(Boolean exclusiveState) {
             this.exclusiveState = Objects.requireNonNull(exclusiveState);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder lastConsumeTime(String lastConsumeTime) {
             this.lastConsumeTime = Objects.requireNonNull(lastConsumeTime);
             return this;
         }
+        @CustomType.Setter
         public Builder queueName(String queueName) {
             this.queueName = Objects.requireNonNull(queueName);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }        public GetQueuesQueue build() {
-            return new GetQueuesQueue(attributes, autoDeleteState, createTime, exclusiveState, id, instanceId, lastConsumeTime, queueName, virtualHostName);
+        }
+        public GetQueuesQueue build() {
+            final var o = new GetQueuesQueue();
+            o.attributes = attributes;
+            o.autoDeleteState = autoDeleteState;
+            o.createTime = createTime;
+            o.exclusiveState = exclusiveState;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.lastConsumeTime = lastConsumeTime;
+            o.queueName = queueName;
+            o.virtualHostName = virtualHostName;
+            return o;
         }
     }
 }

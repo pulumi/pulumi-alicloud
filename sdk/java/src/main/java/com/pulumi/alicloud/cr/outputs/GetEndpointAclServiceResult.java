@@ -12,33 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointAclServiceResult {
-    private final Boolean enable;
-    private final String endpointType;
+    private Boolean enable;
+    private String endpointType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String instanceId;
-    private final @Nullable String moduleName;
-    private final String status;
+    private String id;
+    private String instanceId;
+    private @Nullable String moduleName;
+    private String status;
 
-    @CustomType.Constructor
-    private GetEndpointAclServiceResult(
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("endpointType") String endpointType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("moduleName") @Nullable String moduleName,
-        @CustomType.Parameter("status") String status) {
-        this.enable = enable;
-        this.endpointType = endpointType;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.moduleName = moduleName;
-        this.status = status;
-    }
-
+    private GetEndpointAclServiceResult() {}
     public Boolean enable() {
         return this.enable;
     }
@@ -69,7 +54,7 @@ public final class GetEndpointAclServiceResult {
     public static Builder builder(GetEndpointAclServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enable;
         private String endpointType;
@@ -77,11 +62,7 @@ public final class GetEndpointAclServiceResult {
         private String instanceId;
         private @Nullable String moduleName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointAclServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -92,31 +73,45 @@ public final class GetEndpointAclServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder moduleName(@Nullable String moduleName) {
             this.moduleName = moduleName;
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetEndpointAclServiceResult build() {
-            return new GetEndpointAclServiceResult(enable, endpointType, id, instanceId, moduleName, status);
+        }
+        public GetEndpointAclServiceResult build() {
+            final var o = new GetEndpointAclServiceResult();
+            o.enable = enable;
+            o.endpointType = endpointType;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.moduleName = moduleName;
+            o.status = status;
+            return o;
         }
     }
 }

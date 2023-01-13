@@ -15,28 +15,19 @@ public final class RuleRuleActionRewriteConfig {
      * @return The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: &#34; % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
      * 
      */
-    private final @Nullable String query;
+    private @Nullable String query;
 
-    @CustomType.Constructor
-    private RuleRuleActionRewriteConfig(
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("query") @Nullable String query) {
-        this.host = host;
-        this.path = path;
-        this.query = query;
-    }
-
+    private RuleRuleActionRewriteConfig() {}
     /**
      * @return The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
@@ -66,16 +57,12 @@ public final class RuleRuleActionRewriteConfig {
     public static Builder builder(RuleRuleActionRewriteConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
         private @Nullable String path;
         private @Nullable String query;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleActionRewriteConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -83,19 +70,27 @@ public final class RuleRuleActionRewriteConfig {
     	      this.query = defaults.query;
         }
 
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder query(@Nullable String query) {
             this.query = query;
             return this;
-        }        public RuleRuleActionRewriteConfig build() {
-            return new RuleRuleActionRewriteConfig(host, path, query);
+        }
+        public RuleRuleActionRewriteConfig build() {
+            final var o = new RuleRuleActionRewriteConfig();
+            o.host = host;
+            o.path = path;
+            o.query = query;
+            return o;
         }
     }
 }

@@ -13,13 +13,13 @@ public final class GetKeysKey {
      * @return The Alibaba Cloud Resource Name (ARN) of the key.
      * 
      */
-    private final String arn;
-    private final String automaticRotation;
+    private String arn;
+    private String automaticRotation;
     /**
      * @return Creation date of key.
      * 
      */
-    private final String creationDate;
+    private String creationDate;
     /**
      * @return The owner of the key.
      * * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
@@ -35,78 +35,39 @@ public final class GetKeysKey {
      * * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
      * 
      */
-    private final String creator;
+    private String creator;
     /**
      * @return Deletion date of key.
      * 
      */
-    private final String deleteDate;
+    private String deleteDate;
     /**
      * @return Description of the key.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the key.
      * 
      */
-    private final String id;
-    private final String keyId;
-    private final String keySpec;
-    private final String keyUsage;
-    private final String lastRotationDate;
-    private final String materialExpireTime;
-    private final String nextRotationDate;
-    private final String origin;
-    private final String primaryKeyVersion;
-    private final String protectionLevel;
-    private final String rotationInterval;
+    private String id;
+    private String keyId;
+    private String keySpec;
+    private String keyUsage;
+    private String lastRotationDate;
+    private String materialExpireTime;
+    private String nextRotationDate;
+    private String origin;
+    private String primaryKeyVersion;
+    private String protectionLevel;
+    private String rotationInterval;
     /**
      * @return Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetKeysKey(
-        @CustomType.Parameter("arn") String arn,
-        @CustomType.Parameter("automaticRotation") String automaticRotation,
-        @CustomType.Parameter("creationDate") String creationDate,
-        @CustomType.Parameter("creator") String creator,
-        @CustomType.Parameter("deleteDate") String deleteDate,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keyId") String keyId,
-        @CustomType.Parameter("keySpec") String keySpec,
-        @CustomType.Parameter("keyUsage") String keyUsage,
-        @CustomType.Parameter("lastRotationDate") String lastRotationDate,
-        @CustomType.Parameter("materialExpireTime") String materialExpireTime,
-        @CustomType.Parameter("nextRotationDate") String nextRotationDate,
-        @CustomType.Parameter("origin") String origin,
-        @CustomType.Parameter("primaryKeyVersion") String primaryKeyVersion,
-        @CustomType.Parameter("protectionLevel") String protectionLevel,
-        @CustomType.Parameter("rotationInterval") String rotationInterval,
-        @CustomType.Parameter("status") String status) {
-        this.arn = arn;
-        this.automaticRotation = automaticRotation;
-        this.creationDate = creationDate;
-        this.creator = creator;
-        this.deleteDate = deleteDate;
-        this.description = description;
-        this.id = id;
-        this.keyId = keyId;
-        this.keySpec = keySpec;
-        this.keyUsage = keyUsage;
-        this.lastRotationDate = lastRotationDate;
-        this.materialExpireTime = materialExpireTime;
-        this.nextRotationDate = nextRotationDate;
-        this.origin = origin;
-        this.primaryKeyVersion = primaryKeyVersion;
-        this.protectionLevel = protectionLevel;
-        this.rotationInterval = rotationInterval;
-        this.status = status;
-    }
-
+    private GetKeysKey() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the key.
      * 
@@ -208,7 +169,7 @@ public final class GetKeysKey {
     public static Builder builder(GetKeysKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arn;
         private String automaticRotation;
@@ -228,11 +189,7 @@ public final class GetKeysKey {
         private String protectionLevel;
         private String rotationInterval;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -255,79 +212,117 @@ public final class GetKeysKey {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
+        @CustomType.Setter
         public Builder automaticRotation(String automaticRotation) {
             this.automaticRotation = Objects.requireNonNull(automaticRotation);
             return this;
         }
+        @CustomType.Setter
         public Builder creationDate(String creationDate) {
             this.creationDate = Objects.requireNonNull(creationDate);
             return this;
         }
+        @CustomType.Setter
         public Builder creator(String creator) {
             this.creator = Objects.requireNonNull(creator);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteDate(String deleteDate) {
             this.deleteDate = Objects.requireNonNull(deleteDate);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
         }
+        @CustomType.Setter
         public Builder keySpec(String keySpec) {
             this.keySpec = Objects.requireNonNull(keySpec);
             return this;
         }
+        @CustomType.Setter
         public Builder keyUsage(String keyUsage) {
             this.keyUsage = Objects.requireNonNull(keyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder lastRotationDate(String lastRotationDate) {
             this.lastRotationDate = Objects.requireNonNull(lastRotationDate);
             return this;
         }
+        @CustomType.Setter
         public Builder materialExpireTime(String materialExpireTime) {
             this.materialExpireTime = Objects.requireNonNull(materialExpireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder nextRotationDate(String nextRotationDate) {
             this.nextRotationDate = Objects.requireNonNull(nextRotationDate);
             return this;
         }
+        @CustomType.Setter
         public Builder origin(String origin) {
             this.origin = Objects.requireNonNull(origin);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryKeyVersion(String primaryKeyVersion) {
             this.primaryKeyVersion = Objects.requireNonNull(primaryKeyVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
             this.protectionLevel = Objects.requireNonNull(protectionLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder rotationInterval(String rotationInterval) {
             this.rotationInterval = Objects.requireNonNull(rotationInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetKeysKey build() {
-            return new GetKeysKey(arn, automaticRotation, creationDate, creator, deleteDate, description, id, keyId, keySpec, keyUsage, lastRotationDate, materialExpireTime, nextRotationDate, origin, primaryKeyVersion, protectionLevel, rotationInterval, status);
+        }
+        public GetKeysKey build() {
+            final var o = new GetKeysKey();
+            o.arn = arn;
+            o.automaticRotation = automaticRotation;
+            o.creationDate = creationDate;
+            o.creator = creator;
+            o.deleteDate = deleteDate;
+            o.description = description;
+            o.id = id;
+            o.keyId = keyId;
+            o.keySpec = keySpec;
+            o.keyUsage = keyUsage;
+            o.lastRotationDate = lastRotationDate;
+            o.materialExpireTime = materialExpireTime;
+            o.nextRotationDate = nextRotationDate;
+            o.origin = origin;
+            o.primaryKeyVersion = primaryKeyVersion;
+            o.protectionLevel = protectionLevel;
+            o.rotationInterval = rotationInterval;
+            o.status = status;
+            return o;
         }
     }
 }

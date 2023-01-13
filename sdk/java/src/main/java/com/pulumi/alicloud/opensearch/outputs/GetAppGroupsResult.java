@@ -14,48 +14,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppGroupsResult {
-    private final @Nullable Boolean enableDetails;
-    private final List<GetAppGroupsGroup> groups;
+    private @Nullable Boolean enableDetails;
+    private List<GetAppGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceId;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String type;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceId;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetAppGroupsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("groups") List<GetAppGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.enableDetails = enableDetails;
-        this.groups = groups;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.type = type;
-    }
-
+    private GetAppGroupsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -101,7 +76,7 @@ public final class GetAppGroupsResult {
     public static Builder builder(GetAppGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetAppGroupsGroup> groups;
@@ -114,11 +89,7 @@ public final class GetAppGroupsResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -134,10 +105,12 @@ public final class GetAppGroupsResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<GetAppGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -145,10 +118,12 @@ public final class GetAppGroupsResult {
         public Builder groups(GetAppGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -156,18 +131,22 @@ public final class GetAppGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -175,19 +154,35 @@ public final class GetAppGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetAppGroupsResult build() {
-            return new GetAppGroupsResult(enableDetails, groups, id, ids, instanceId, name, nameRegex, names, outputFile, resourceGroupId, type);
+        }
+        public GetAppGroupsResult build() {
+            final var o = new GetAppGroupsResult();
+            o.enableDetails = enableDetails;
+            o.groups = groups;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.type = type;
+            return o;
         }
     }
 }

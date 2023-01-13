@@ -14,35 +14,24 @@ public final class GetGroupsGroup {
      * @return GroupFlag, &#39;0&#39; mean default group(created by system), &#39;1&#39; means customer defined group.
      * 
      */
-    private final Integer groupFlag;
+    private Integer groupFlag;
     /**
      * @return The ID of Group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The name of Group.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The ID of the Group(same as the group_id).
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetGroupsGroup(
-        @CustomType.Parameter("groupFlag") Integer groupFlag,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("id") String id) {
-        this.groupFlag = groupFlag;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.id = id;
-    }
-
+    private GetGroupsGroup() {}
     /**
      * @return GroupFlag, &#39;0&#39; mean default group(created by system), &#39;1&#39; means customer defined group.
      * 
@@ -79,17 +68,13 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer groupFlag;
         private String groupId;
         private String groupName;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupFlag = defaults.groupFlag;
@@ -98,23 +83,33 @@ public final class GetGroupsGroup {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder groupFlag(Integer groupFlag) {
             this.groupFlag = Objects.requireNonNull(groupFlag);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetGroupsGroup build() {
-            return new GetGroupsGroup(groupFlag, groupId, groupName, id);
+        }
+        public GetGroupsGroup build() {
+            final var o = new GetGroupsGroup();
+            o.groupFlag = groupFlag;
+            o.groupId = groupId;
+            o.groupName = groupName;
+            o.id = id;
+            return o;
         }
     }
 }

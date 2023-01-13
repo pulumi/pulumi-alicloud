@@ -15,48 +15,31 @@ public final class GetServiceResult {
      * @return The time when the change of the billing method starts to take effect. The time is displayed in GMT.
      * 
      */
-    private final String changingAffectTime;
+    private String changingAffectTime;
     /**
      * @return The billing method to be effective.
      * 
      */
-    private final String changingChargeType;
-    private final @Nullable String enable;
+    private String changingChargeType;
+    private @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String internetChargeType;
+    private String id;
+    private @Nullable String internetChargeType;
     /**
      * @return The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
      * 
      */
-    private final String openingTime;
+    private String openingTime;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("changingAffectTime") String changingAffectTime,
-        @CustomType.Parameter("changingChargeType") String changingChargeType,
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("internetChargeType") @Nullable String internetChargeType,
-        @CustomType.Parameter("openingTime") String openingTime,
-        @CustomType.Parameter("status") String status) {
-        this.changingAffectTime = changingAffectTime;
-        this.changingChargeType = changingChargeType;
-        this.enable = enable;
-        this.id = id;
-        this.internetChargeType = internetChargeType;
-        this.openingTime = openingTime;
-        this.status = status;
-    }
-
+    private GetServiceResult() {}
     /**
      * @return The time when the change of the billing method starts to take effect. The time is displayed in GMT.
      * 
@@ -106,7 +89,7 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String changingAffectTime;
         private String changingChargeType;
@@ -115,11 +98,7 @@ public final class GetServiceResult {
         private @Nullable String internetChargeType;
         private String openingTime;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.changingAffectTime = defaults.changingAffectTime;
@@ -131,35 +110,51 @@ public final class GetServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder changingAffectTime(String changingAffectTime) {
             this.changingAffectTime = Objects.requireNonNull(changingAffectTime);
             return this;
         }
+        @CustomType.Setter
         public Builder changingChargeType(String changingChargeType) {
             this.changingChargeType = Objects.requireNonNull(changingChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder internetChargeType(@Nullable String internetChargeType) {
             this.internetChargeType = internetChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder openingTime(String openingTime) {
             this.openingTime = Objects.requireNonNull(openingTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetServiceResult build() {
-            return new GetServiceResult(changingAffectTime, changingChargeType, enable, id, internetChargeType, openingTime, status);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.changingAffectTime = changingAffectTime;
+            o.changingChargeType = changingChargeType;
+            o.enable = enable;
+            o.id = id;
+            o.internetChargeType = internetChargeType;
+            o.openingTime = openingTime;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class NodePoolRolloutPolicy {
      * @return Max number of unavailable nodes. Default to `1`.
      * 
      */
-    private final @Nullable Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private NodePoolRolloutPolicy(@CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private NodePoolRolloutPolicy() {}
     /**
      * @return Max number of unavailable nodes. Default to `1`.
      * 
@@ -37,24 +33,24 @@ public final class NodePoolRolloutPolicy {
     public static Builder builder(NodePoolRolloutPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolRolloutPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }        public NodePoolRolloutPolicy build() {
-            return new NodePoolRolloutPolicy(maxUnavailable);
+        }
+        public NodePoolRolloutPolicy build() {
+            final var o = new NodePoolRolloutPolicy();
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

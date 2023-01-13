@@ -14,21 +14,14 @@ public final class GetContainerGroupsGroupContainerPort {
      * @return The port number. Valid values: 1 to 65535.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Valid values: `TCP` and `UDP`.
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private GetContainerGroupsGroupContainerPort(
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.port = port;
-        this.protocol = protocol;
-    }
-
+    private GetContainerGroupsGroupContainerPort() {}
     /**
      * @return The port number. Valid values: 1 to 65535.
      * 
@@ -51,30 +44,32 @@ public final class GetContainerGroupsGroupContainerPort {
     public static Builder builder(GetContainerGroupsGroupContainerPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerGroupsGroupContainerPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public GetContainerGroupsGroupContainerPort build() {
-            return new GetContainerGroupsGroupContainerPort(port, protocol);
+        }
+        public GetContainerGroupsGroupContainerPort build() {
+            final var o = new GetContainerGroupsGroupContainerPort();
+            o.port = port;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

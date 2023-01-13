@@ -14,42 +14,29 @@ public final class GetBandwidthLimitsLimit {
      * @return The bandwidth limit configured for the interconnected regions communication.
      * 
      */
-    private final Integer bandwidthLimit;
+    private Integer bandwidthLimit;
     /**
      * @return ID of the CEN instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return ID of local region.
      * 
      */
-    private final String localRegionId;
+    private String localRegionId;
     /**
      * @return ID of opposite region.
      * 
      */
-    private final String oppositeRegionId;
+    private String oppositeRegionId;
     /**
      * @return Status of the CEN Bandwidth Limit, including &#34;Active&#34; and &#34;Modifying&#34;.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBandwidthLimitsLimit(
-        @CustomType.Parameter("bandwidthLimit") Integer bandwidthLimit,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("localRegionId") String localRegionId,
-        @CustomType.Parameter("oppositeRegionId") String oppositeRegionId,
-        @CustomType.Parameter("status") String status) {
-        this.bandwidthLimit = bandwidthLimit;
-        this.instanceId = instanceId;
-        this.localRegionId = localRegionId;
-        this.oppositeRegionId = oppositeRegionId;
-        this.status = status;
-    }
-
+    private GetBandwidthLimitsLimit() {}
     /**
      * @return The bandwidth limit configured for the interconnected regions communication.
      * 
@@ -93,18 +80,14 @@ public final class GetBandwidthLimitsLimit {
     public static Builder builder(GetBandwidthLimitsLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidthLimit;
         private String instanceId;
         private String localRegionId;
         private String oppositeRegionId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBandwidthLimitsLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidthLimit = defaults.bandwidthLimit;
@@ -114,27 +97,39 @@ public final class GetBandwidthLimitsLimit {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidthLimit(Integer bandwidthLimit) {
             this.bandwidthLimit = Objects.requireNonNull(bandwidthLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder localRegionId(String localRegionId) {
             this.localRegionId = Objects.requireNonNull(localRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder oppositeRegionId(String oppositeRegionId) {
             this.oppositeRegionId = Objects.requireNonNull(oppositeRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBandwidthLimitsLimit build() {
-            return new GetBandwidthLimitsLimit(bandwidthLimit, instanceId, localRegionId, oppositeRegionId, status);
+        }
+        public GetBandwidthLimitsLimit build() {
+            final var o = new GetBandwidthLimitsLimit();
+            o.bandwidthLimit = bandwidthLimit;
+            o.instanceId = instanceId;
+            o.localRegionId = localRegionId;
+            o.oppositeRegionId = oppositeRegionId;
+            o.status = status;
+            return o;
         }
     }
 }

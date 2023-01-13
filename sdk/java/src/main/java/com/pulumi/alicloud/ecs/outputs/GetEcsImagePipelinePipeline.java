@@ -19,133 +19,94 @@ public final class GetEcsImagePipelinePipeline {
      * @return The IDs of Alibaba Cloud accounts to which the image was shared.
      * 
      */
-    private final List<String> addAccounts;
+    private List<String> addAccounts;
     /**
      * @return The source image.
      * 
      */
-    private final String baseImage;
+    private String baseImage;
     /**
      * @return The type of the source image.
      * 
      */
-    private final String baseImageType;
+    private String baseImageType;
     /**
      * @return The content of the image template.
      * 
      */
-    private final String buildContent;
+    private String buildContent;
     /**
      * @return The time when the image template was created.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Indicates whether the intermediate instance was released when the image failed to be created.
      * 
      */
-    private final Boolean deleteInstanceOnFailure;
+    private Boolean deleteInstanceOnFailure;
     /**
      * @return The description of the image template.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Image Pipeline.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name prefix of the created image.
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return The ID of the image template.
      * 
      */
-    private final String imagePipelineId;
+    private String imagePipelineId;
     /**
      * @return The instance type of the intermediate instance.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
      * 
      */
-    private final Integer internetMaxBandwidthOut;
+    private Integer internetMaxBandwidthOut;
     /**
      * @return The name of the image template.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The ID of the resource group to which the image template belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The system disk size of the intermediate instance. Unit: `GiB`.
      * 
      */
-    private final Integer systemDiskSize;
+    private Integer systemDiskSize;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return The IDs of regions to which to distribute the created image.
      * 
      */
-    private final List<String> toRegionIds;
+    private List<String> toRegionIds;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetEcsImagePipelinePipeline(
-        @CustomType.Parameter("addAccounts") List<String> addAccounts,
-        @CustomType.Parameter("baseImage") String baseImage,
-        @CustomType.Parameter("baseImageType") String baseImageType,
-        @CustomType.Parameter("buildContent") String buildContent,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("deleteInstanceOnFailure") Boolean deleteInstanceOnFailure,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("imagePipelineId") String imagePipelineId,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("internetMaxBandwidthOut") Integer internetMaxBandwidthOut,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("systemDiskSize") Integer systemDiskSize,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("toRegionIds") List<String> toRegionIds,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.addAccounts = addAccounts;
-        this.baseImage = baseImage;
-        this.baseImageType = baseImageType;
-        this.buildContent = buildContent;
-        this.creationTime = creationTime;
-        this.deleteInstanceOnFailure = deleteInstanceOnFailure;
-        this.description = description;
-        this.id = id;
-        this.imageName = imageName;
-        this.imagePipelineId = imagePipelineId;
-        this.instanceType = instanceType;
-        this.internetMaxBandwidthOut = internetMaxBandwidthOut;
-        this.name = name;
-        this.resourceGroupId = resourceGroupId;
-        this.systemDiskSize = systemDiskSize;
-        this.tags = tags;
-        this.toRegionIds = toRegionIds;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetEcsImagePipelinePipeline() {}
     /**
      * @return The IDs of Alibaba Cloud accounts to which the image was shared.
      * 
@@ -280,7 +241,7 @@ public final class GetEcsImagePipelinePipeline {
     public static Builder builder(GetEcsImagePipelinePipeline defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> addAccounts;
         private String baseImage;
@@ -300,11 +261,7 @@ public final class GetEcsImagePipelinePipeline {
         private @Nullable Map<String,Object> tags;
         private List<String> toRegionIds;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsImagePipelinePipeline defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addAccounts = defaults.addAccounts;
@@ -327,6 +284,7 @@ public final class GetEcsImagePipelinePipeline {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder addAccounts(List<String> addAccounts) {
             this.addAccounts = Objects.requireNonNull(addAccounts);
             return this;
@@ -334,66 +292,82 @@ public final class GetEcsImagePipelinePipeline {
         public Builder addAccounts(String... addAccounts) {
             return addAccounts(List.of(addAccounts));
         }
+        @CustomType.Setter
         public Builder baseImage(String baseImage) {
             this.baseImage = Objects.requireNonNull(baseImage);
             return this;
         }
+        @CustomType.Setter
         public Builder baseImageType(String baseImageType) {
             this.baseImageType = Objects.requireNonNull(baseImageType);
             return this;
         }
+        @CustomType.Setter
         public Builder buildContent(String buildContent) {
             this.buildContent = Objects.requireNonNull(buildContent);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteInstanceOnFailure(Boolean deleteInstanceOnFailure) {
             this.deleteInstanceOnFailure = Objects.requireNonNull(deleteInstanceOnFailure);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder imagePipelineId(String imagePipelineId) {
             this.imagePipelineId = Objects.requireNonNull(imagePipelineId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
             this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder systemDiskSize(Integer systemDiskSize) {
             this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder toRegionIds(List<String> toRegionIds) {
             this.toRegionIds = Objects.requireNonNull(toRegionIds);
             return this;
@@ -401,11 +375,32 @@ public final class GetEcsImagePipelinePipeline {
         public Builder toRegionIds(String... toRegionIds) {
             return toRegionIds(List.of(toRegionIds));
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetEcsImagePipelinePipeline build() {
-            return new GetEcsImagePipelinePipeline(addAccounts, baseImage, baseImageType, buildContent, creationTime, deleteInstanceOnFailure, description, id, imageName, imagePipelineId, instanceType, internetMaxBandwidthOut, name, resourceGroupId, systemDiskSize, tags, toRegionIds, vswitchId);
+        }
+        public GetEcsImagePipelinePipeline build() {
+            final var o = new GetEcsImagePipelinePipeline();
+            o.addAccounts = addAccounts;
+            o.baseImage = baseImage;
+            o.baseImageType = baseImageType;
+            o.buildContent = buildContent;
+            o.creationTime = creationTime;
+            o.deleteInstanceOnFailure = deleteInstanceOnFailure;
+            o.description = description;
+            o.id = id;
+            o.imageName = imageName;
+            o.imagePipelineId = imagePipelineId;
+            o.instanceType = instanceType;
+            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            o.name = name;
+            o.resourceGroupId = resourceGroupId;
+            o.systemDiskSize = systemDiskSize;
+            o.tags = tags;
+            o.toRegionIds = toRegionIds;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

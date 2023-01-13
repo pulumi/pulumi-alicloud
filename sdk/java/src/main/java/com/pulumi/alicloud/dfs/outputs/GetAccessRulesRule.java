@@ -14,63 +14,44 @@ public final class GetAccessRulesRule {
      * @return The resource ID of the Access Group.
      * 
      */
-    private final String accessGroupId;
+    private String accessGroupId;
     /**
      * @return The ID of the Access Rule.
      * 
      */
-    private final String accessRuleId;
+    private String accessRuleId;
     /**
      * @return The created time of the Access Rule.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the Access Rule.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The resource ID of Access Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The NetworkSegment of the Access Rule.
      * 
      */
-    private final String networkSegment;
+    private String networkSegment;
     /**
      * @return The priority of the Access Rule.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
      * 
      */
-    private final String rwAccessType;
+    private String rwAccessType;
 
-    @CustomType.Constructor
-    private GetAccessRulesRule(
-        @CustomType.Parameter("accessGroupId") String accessGroupId,
-        @CustomType.Parameter("accessRuleId") String accessRuleId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("networkSegment") String networkSegment,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("rwAccessType") String rwAccessType) {
-        this.accessGroupId = accessGroupId;
-        this.accessRuleId = accessRuleId;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.networkSegment = networkSegment;
-        this.priority = priority;
-        this.rwAccessType = rwAccessType;
-    }
-
+    private GetAccessRulesRule() {}
     /**
      * @return The resource ID of the Access Group.
      * 
@@ -135,7 +116,7 @@ public final class GetAccessRulesRule {
     public static Builder builder(GetAccessRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessGroupId;
         private String accessRuleId;
@@ -145,11 +126,7 @@ public final class GetAccessRulesRule {
         private String networkSegment;
         private Integer priority;
         private String rwAccessType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupId = defaults.accessGroupId;
@@ -162,39 +139,57 @@ public final class GetAccessRulesRule {
     	      this.rwAccessType = defaults.rwAccessType;
         }
 
+        @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
             this.accessGroupId = Objects.requireNonNull(accessGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder accessRuleId(String accessRuleId) {
             this.accessRuleId = Objects.requireNonNull(accessRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder networkSegment(String networkSegment) {
             this.networkSegment = Objects.requireNonNull(networkSegment);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder rwAccessType(String rwAccessType) {
             this.rwAccessType = Objects.requireNonNull(rwAccessType);
             return this;
-        }        public GetAccessRulesRule build() {
-            return new GetAccessRulesRule(accessGroupId, accessRuleId, createTime, description, id, networkSegment, priority, rwAccessType);
+        }
+        public GetAccessRulesRule build() {
+            final var o = new GetAccessRulesRule();
+            o.accessGroupId = accessGroupId;
+            o.accessRuleId = accessRuleId;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.networkSegment = networkSegment;
+            o.priority = priority;
+            o.rwAccessType = rwAccessType;
+            return o;
         }
     }
 }

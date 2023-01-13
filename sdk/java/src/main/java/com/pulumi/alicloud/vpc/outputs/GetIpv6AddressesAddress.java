@@ -13,91 +13,64 @@ public final class GetIpv6AddressesAddress {
      * @return The ID of the instance that is assigned the IPv6 address.
      * 
      */
-    private final String associatedInstanceId;
+    private String associatedInstanceId;
     /**
      * @return The type of the instance that is assigned the IPv6 address.
      * 
      */
-    private final String associatedInstanceType;
+    private String associatedInstanceType;
     /**
      * @return The time when the IPv6 address was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Ipv6 Address.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The address of the Ipv6 Address.
      * 
      */
-    private final String ipv6Address;
+    private String ipv6Address;
     /**
      * @return The ID of the IPv6 address.
      * 
      */
-    private final String ipv6AddressId;
+    private String ipv6AddressId;
     /**
      * @return The name of the IPv6 address.
      * 
      */
-    private final String ipv6AddressName;
+    private String ipv6AddressName;
     /**
      * @return The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
-    private final String ipv6GatewayId;
+    private String ipv6GatewayId;
     /**
      * @return The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The status of the IPv6 address. Valid values:`Pending` or `Available`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VPC to which the IPv6 address belongs.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of the vSwitch to which the IPv6 address belongs.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetIpv6AddressesAddress(
-        @CustomType.Parameter("associatedInstanceId") String associatedInstanceId,
-        @CustomType.Parameter("associatedInstanceType") String associatedInstanceType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipv6Address") String ipv6Address,
-        @CustomType.Parameter("ipv6AddressId") String ipv6AddressId,
-        @CustomType.Parameter("ipv6AddressName") String ipv6AddressName,
-        @CustomType.Parameter("ipv6GatewayId") String ipv6GatewayId,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.associatedInstanceId = associatedInstanceId;
-        this.associatedInstanceType = associatedInstanceType;
-        this.createTime = createTime;
-        this.id = id;
-        this.ipv6Address = ipv6Address;
-        this.ipv6AddressId = ipv6AddressId;
-        this.ipv6AddressName = ipv6AddressName;
-        this.ipv6GatewayId = ipv6GatewayId;
-        this.networkType = networkType;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetIpv6AddressesAddress() {}
     /**
      * @return The ID of the instance that is assigned the IPv6 address.
      * 
@@ -190,7 +163,7 @@ public final class GetIpv6AddressesAddress {
     public static Builder builder(GetIpv6AddressesAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String associatedInstanceId;
         private String associatedInstanceType;
@@ -204,11 +177,7 @@ public final class GetIpv6AddressesAddress {
         private String status;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIpv6AddressesAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associatedInstanceId = defaults.associatedInstanceId;
@@ -225,55 +194,81 @@ public final class GetIpv6AddressesAddress {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder associatedInstanceId(String associatedInstanceId) {
             this.associatedInstanceId = Objects.requireNonNull(associatedInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder associatedInstanceType(String associatedInstanceType) {
             this.associatedInstanceType = Objects.requireNonNull(associatedInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
             this.ipv6Address = Objects.requireNonNull(ipv6Address);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6AddressId(String ipv6AddressId) {
             this.ipv6AddressId = Objects.requireNonNull(ipv6AddressId);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6AddressName(String ipv6AddressName) {
             this.ipv6AddressName = Objects.requireNonNull(ipv6AddressName);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
             this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetIpv6AddressesAddress build() {
-            return new GetIpv6AddressesAddress(associatedInstanceId, associatedInstanceType, createTime, id, ipv6Address, ipv6AddressId, ipv6AddressName, ipv6GatewayId, networkType, status, vpcId, vswitchId);
+        }
+        public GetIpv6AddressesAddress build() {
+            final var o = new GetIpv6AddressesAddress();
+            o.associatedInstanceId = associatedInstanceId;
+            o.associatedInstanceType = associatedInstanceType;
+            o.createTime = createTime;
+            o.id = id;
+            o.ipv6Address = ipv6Address;
+            o.ipv6AddressId = ipv6AddressId;
+            o.ipv6AddressName = ipv6AddressName;
+            o.ipv6GatewayId = ipv6GatewayId;
+            o.networkType = networkType;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

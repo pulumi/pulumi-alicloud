@@ -17,48 +17,31 @@ public final class GetSaslAclsResult {
      * @return The resource name of the sasl acl.
      * 
      */
-    private final String aclResourceName;
+    private String aclResourceName;
     /**
      * @return The resource type of the sasl acl.
      * 
      */
-    private final String aclResourceType;
+    private String aclResourceType;
     /**
      * @return A list of sasl acls. Each element contains the following attributes:
      * 
      */
-    private final List<GetSaslAclsAcl> acls;
+    private List<GetSaslAclsAcl> acls;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String instanceId;
-    private final @Nullable String outputFile;
+    private String id;
+    private String instanceId;
+    private @Nullable String outputFile;
     /**
      * @return The username of the sasl acl.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetSaslAclsResult(
-        @CustomType.Parameter("aclResourceName") String aclResourceName,
-        @CustomType.Parameter("aclResourceType") String aclResourceType,
-        @CustomType.Parameter("acls") List<GetSaslAclsAcl> acls,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("username") String username) {
-        this.aclResourceName = aclResourceName;
-        this.aclResourceType = aclResourceType;
-        this.acls = acls;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.username = username;
-    }
-
+    private GetSaslAclsResult() {}
     /**
      * @return The resource name of the sasl acl.
      * 
@@ -108,7 +91,7 @@ public final class GetSaslAclsResult {
     public static Builder builder(GetSaslAclsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String aclResourceName;
         private String aclResourceType;
@@ -117,11 +100,7 @@ public final class GetSaslAclsResult {
         private String instanceId;
         private @Nullable String outputFile;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSaslAclsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclResourceName = defaults.aclResourceName;
@@ -133,14 +112,17 @@ public final class GetSaslAclsResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder aclResourceName(String aclResourceName) {
             this.aclResourceName = Objects.requireNonNull(aclResourceName);
             return this;
         }
+        @CustomType.Setter
         public Builder aclResourceType(String aclResourceType) {
             this.aclResourceType = Objects.requireNonNull(aclResourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder acls(List<GetSaslAclsAcl> acls) {
             this.acls = Objects.requireNonNull(acls);
             return this;
@@ -148,23 +130,36 @@ public final class GetSaslAclsResult {
         public Builder acls(GetSaslAclsAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetSaslAclsResult build() {
-            return new GetSaslAclsResult(aclResourceName, aclResourceType, acls, id, instanceId, outputFile, username);
+        }
+        public GetSaslAclsResult build() {
+            final var o = new GetSaslAclsResult();
+            o.aclResourceName = aclResourceName;
+            o.aclResourceType = aclResourceType;
+            o.acls = acls;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.username = username;
+            return o;
         }
     }
 }

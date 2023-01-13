@@ -13,55 +13,36 @@ public final class GetInstancesInstance {
      * @return DNS security level.
      * 
      */
-    private final String dnsSecurity;
-    private final String domain;
+    private String dnsSecurity;
+    private String domain;
     /**
      * @return Number of domain names bound.
      * 
      */
-    private final String domainNumbers;
+    private String domainNumbers;
     /**
      * @return Id of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Id of the instance resource.
      * 
      */
-    private final String instanceId;
-    private final String paymentType;
+    private String instanceId;
+    private String paymentType;
     /**
      * @return Paid package version.
      * 
      */
-    private final String versionCode;
+    private String versionCode;
     /**
      * @return Paid package version name.
      * 
      */
-    private final String versionName;
+    private String versionName;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("dnsSecurity") String dnsSecurity,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("domainNumbers") String domainNumbers,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("versionCode") String versionCode,
-        @CustomType.Parameter("versionName") String versionName) {
-        this.dnsSecurity = dnsSecurity;
-        this.domain = domain;
-        this.domainNumbers = domainNumbers;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.paymentType = paymentType;
-        this.versionCode = versionCode;
-        this.versionName = versionName;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return DNS security level.
      * 
@@ -118,7 +99,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dnsSecurity;
         private String domain;
@@ -128,11 +109,7 @@ public final class GetInstancesInstance {
         private String paymentType;
         private String versionCode;
         private String versionName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsSecurity = defaults.dnsSecurity;
@@ -145,39 +122,57 @@ public final class GetInstancesInstance {
     	      this.versionName = defaults.versionName;
         }
 
+        @CustomType.Setter
         public Builder dnsSecurity(String dnsSecurity) {
             this.dnsSecurity = Objects.requireNonNull(dnsSecurity);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder domainNumbers(String domainNumbers) {
             this.domainNumbers = Objects.requireNonNull(domainNumbers);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder versionCode(String versionCode) {
             this.versionCode = Objects.requireNonNull(versionCode);
             return this;
         }
+        @CustomType.Setter
         public Builder versionName(String versionName) {
             this.versionName = Objects.requireNonNull(versionName);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(dnsSecurity, domain, domainNumbers, id, instanceId, paymentType, versionCode, versionName);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.dnsSecurity = dnsSecurity;
+            o.domain = domain;
+            o.domainNumbers = domainNumbers;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.paymentType = paymentType;
+            o.versionCode = versionCode;
+            o.versionName = versionName;
+            return o;
         }
     }
 }

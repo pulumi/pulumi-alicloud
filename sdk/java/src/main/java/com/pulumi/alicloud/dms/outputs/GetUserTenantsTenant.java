@@ -13,35 +13,24 @@ public final class GetUserTenantsTenant {
      * @return The user tenant id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the user tenant.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The name of the user tenant.
      * 
      */
-    private final String tenantName;
+    private String tenantName;
     /**
      * @return The user tenant id. Same as id.
      * 
      */
-    private final String tid;
+    private String tid;
 
-    @CustomType.Constructor
-    private GetUserTenantsTenant(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tenantName") String tenantName,
-        @CustomType.Parameter("tid") String tid) {
-        this.id = id;
-        this.status = status;
-        this.tenantName = tenantName;
-        this.tid = tid;
-    }
-
+    private GetUserTenantsTenant() {}
     /**
      * @return The user tenant id.
      * 
@@ -78,17 +67,13 @@ public final class GetUserTenantsTenant {
     public static Builder builder(GetUserTenantsTenant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String status;
         private String tenantName;
         private String tid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserTenantsTenant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -97,23 +82,33 @@ public final class GetUserTenantsTenant {
     	      this.tid = defaults.tid;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantName(String tenantName) {
             this.tenantName = Objects.requireNonNull(tenantName);
             return this;
         }
+        @CustomType.Setter
         public Builder tid(String tid) {
             this.tid = Objects.requireNonNull(tid);
             return this;
-        }        public GetUserTenantsTenant build() {
-            return new GetUserTenantsTenant(id, status, tenantName, tid);
+        }
+        public GetUserTenantsTenant build() {
+            final var o = new GetUserTenantsTenant();
+            o.id = id;
+            o.status = status;
+            o.tenantName = tenantName;
+            o.tid = tid;
+            return o;
         }
     }
 }

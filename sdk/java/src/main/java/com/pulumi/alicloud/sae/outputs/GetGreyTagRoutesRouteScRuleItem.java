@@ -13,42 +13,29 @@ public final class GetGreyTagRoutesRouteScRuleItem {
      * @return The comparison operator.
      * 
      */
-    private final String cond;
+    private String cond;
     /**
      * @return The name of the parameter.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The operator.
      * 
      */
-    private final String operator;
+    private String operator;
     /**
      * @return The Compare types.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The value of the parameter.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetGreyTagRoutesRouteScRuleItem(
-        @CustomType.Parameter("cond") String cond,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") String value) {
-        this.cond = cond;
-        this.name = name;
-        this.operator = operator;
-        this.type = type;
-        this.value = value;
-    }
-
+    private GetGreyTagRoutesRouteScRuleItem() {}
     /**
      * @return The comparison operator.
      * 
@@ -92,18 +79,14 @@ public final class GetGreyTagRoutesRouteScRuleItem {
     public static Builder builder(GetGreyTagRoutesRouteScRuleItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cond;
         private String name;
         private String operator;
         private String type;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGreyTagRoutesRouteScRuleItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cond = defaults.cond;
@@ -113,27 +96,39 @@ public final class GetGreyTagRoutesRouteScRuleItem {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder cond(String cond) {
             this.cond = Objects.requireNonNull(cond);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetGreyTagRoutesRouteScRuleItem build() {
-            return new GetGreyTagRoutesRouteScRuleItem(cond, name, operator, type, value);
+        }
+        public GetGreyTagRoutesRouteScRuleItem build() {
+            final var o = new GetGreyTagRoutesRouteScRuleItem();
+            o.cond = cond;
+            o.name = name;
+            o.operator = operator;
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

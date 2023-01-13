@@ -13,35 +13,24 @@ public final class GetAccessConfigurationsConfigurationPermissionPolicy {
      * @return The Creation time of policy.
      * 
      */
-    private final String addTime;
+    private String addTime;
     /**
      * @return The Content of Policy.
      * 
      */
-    private final String permissionPolicyDocument;
+    private String permissionPolicyDocument;
     /**
      * @return The Policy Name of policy.
      * 
      */
-    private final String permissionPolicyName;
+    private String permissionPolicyName;
     /**
      * @return The Policy Type of policy. Valid values: `System`, `Inline`.
      * 
      */
-    private final String permissionPolicyType;
+    private String permissionPolicyType;
 
-    @CustomType.Constructor
-    private GetAccessConfigurationsConfigurationPermissionPolicy(
-        @CustomType.Parameter("addTime") String addTime,
-        @CustomType.Parameter("permissionPolicyDocument") String permissionPolicyDocument,
-        @CustomType.Parameter("permissionPolicyName") String permissionPolicyName,
-        @CustomType.Parameter("permissionPolicyType") String permissionPolicyType) {
-        this.addTime = addTime;
-        this.permissionPolicyDocument = permissionPolicyDocument;
-        this.permissionPolicyName = permissionPolicyName;
-        this.permissionPolicyType = permissionPolicyType;
-    }
-
+    private GetAccessConfigurationsConfigurationPermissionPolicy() {}
     /**
      * @return The Creation time of policy.
      * 
@@ -78,17 +67,13 @@ public final class GetAccessConfigurationsConfigurationPermissionPolicy {
     public static Builder builder(GetAccessConfigurationsConfigurationPermissionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addTime;
         private String permissionPolicyDocument;
         private String permissionPolicyName;
         private String permissionPolicyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessConfigurationsConfigurationPermissionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addTime = defaults.addTime;
@@ -97,23 +82,33 @@ public final class GetAccessConfigurationsConfigurationPermissionPolicy {
     	      this.permissionPolicyType = defaults.permissionPolicyType;
         }
 
+        @CustomType.Setter
         public Builder addTime(String addTime) {
             this.addTime = Objects.requireNonNull(addTime);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionPolicyDocument(String permissionPolicyDocument) {
             this.permissionPolicyDocument = Objects.requireNonNull(permissionPolicyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionPolicyName(String permissionPolicyName) {
             this.permissionPolicyName = Objects.requireNonNull(permissionPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionPolicyType(String permissionPolicyType) {
             this.permissionPolicyType = Objects.requireNonNull(permissionPolicyType);
             return this;
-        }        public GetAccessConfigurationsConfigurationPermissionPolicy build() {
-            return new GetAccessConfigurationsConfigurationPermissionPolicy(addTime, permissionPolicyDocument, permissionPolicyName, permissionPolicyType);
+        }
+        public GetAccessConfigurationsConfigurationPermissionPolicy build() {
+            final var o = new GetAccessConfigurationsConfigurationPermissionPolicy();
+            o.addTime = addTime;
+            o.permissionPolicyDocument = permissionPolicyDocument;
+            o.permissionPolicyName = permissionPolicyName;
+            o.permissionPolicyType = permissionPolicyType;
+            return o;
         }
     }
 }

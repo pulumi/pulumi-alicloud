@@ -15,28 +15,19 @@ public final class GetListenersListenerAccessLogTracingConfig {
      * @return Xtrace Function. Value: True Or False. Default Value: False.
      * 
      */
-    private final Boolean tracingEnabled;
+    private Boolean tracingEnabled;
     /**
      * @return Xtrace Sampling Rate. Value: **1~10000**.
      * 
      */
-    private final Integer tracingSample;
+    private Integer tracingSample;
     /**
      * @return Xtrace Type Value Is **Zipkin**.
      * 
      */
-    private final String tracingType;
+    private String tracingType;
 
-    @CustomType.Constructor
-    private GetListenersListenerAccessLogTracingConfig(
-        @CustomType.Parameter("tracingEnabled") Boolean tracingEnabled,
-        @CustomType.Parameter("tracingSample") Integer tracingSample,
-        @CustomType.Parameter("tracingType") String tracingType) {
-        this.tracingEnabled = tracingEnabled;
-        this.tracingSample = tracingSample;
-        this.tracingType = tracingType;
-    }
-
+    private GetListenersListenerAccessLogTracingConfig() {}
     /**
      * @return Xtrace Function. Value: True Or False. Default Value: False.
      * 
@@ -66,16 +57,12 @@ public final class GetListenersListenerAccessLogTracingConfig {
     public static Builder builder(GetListenersListenerAccessLogTracingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean tracingEnabled;
         private Integer tracingSample;
         private String tracingType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListenerAccessLogTracingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tracingEnabled = defaults.tracingEnabled;
@@ -83,19 +70,27 @@ public final class GetListenersListenerAccessLogTracingConfig {
     	      this.tracingType = defaults.tracingType;
         }
 
+        @CustomType.Setter
         public Builder tracingEnabled(Boolean tracingEnabled) {
             this.tracingEnabled = Objects.requireNonNull(tracingEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder tracingSample(Integer tracingSample) {
             this.tracingSample = Objects.requireNonNull(tracingSample);
             return this;
         }
+        @CustomType.Setter
         public Builder tracingType(String tracingType) {
             this.tracingType = Objects.requireNonNull(tracingType);
             return this;
-        }        public GetListenersListenerAccessLogTracingConfig build() {
-            return new GetListenersListenerAccessLogTracingConfig(tracingEnabled, tracingSample, tracingType);
+        }
+        public GetListenersListenerAccessLogTracingConfig build() {
+            final var o = new GetListenersListenerAccessLogTracingConfig();
+            o.tracingEnabled = tracingEnabled;
+            o.tracingSample = tracingSample;
+            o.tracingType = tracingType;
+            return o;
         }
     }
 }

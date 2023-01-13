@@ -16,112 +16,79 @@ public final class GetClustersClusterHostGroupList {
      * @return Bandwidth.
      * 
      */
-    private final String bandWidth;
+    private String bandWidth;
     /**
      * @return Payment Type.
      * 
      */
-    private final String chargeType;
+    private String chargeType;
     /**
      * @return The number of CPU cores.
      * 
      */
-    private final Integer cpuCore;
+    private Integer cpuCore;
     /**
      * @return Data disk capacity.
      * 
      */
-    private final Integer diskCapacity;
+    private Integer diskCapacity;
     /**
      * @return The number of data disks.
      * 
      */
-    private final Integer diskCount;
+    private Integer diskCount;
     /**
      * @return System disk type:
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return The current operation type of the machine Group:
      * 
      */
-    private final String hostGroupChangeType;
+    private String hostGroupChangeType;
     /**
      * @return The ID of the machine group.
      * 
      */
-    private final String hostGroupId;
+    private String hostGroupId;
     /**
      * @return The name of the machine group.
      * 
      */
-    private final String hostGroupName;
+    private String hostGroupName;
     /**
      * @return Role of host in cluster:
      * 
      */
-    private final String hostGroupType;
+    private String hostGroupType;
     /**
      * @return Machine Group instance.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return Memory size.
      * 
      */
-    private final Integer memoryCapacity;
+    private Integer memoryCapacity;
     /**
      * @return The number of machine group nodes.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return Machine node.
      * 
      */
-    private final List<GetClustersClusterHostGroupListNode> nodes;
+    private List<GetClustersClusterHostGroupListNode> nodes;
     /**
      * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
      * 
      */
-    private final String period;
+    private String period;
 
-    @CustomType.Constructor
-    private GetClustersClusterHostGroupList(
-        @CustomType.Parameter("bandWidth") String bandWidth,
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("cpuCore") Integer cpuCore,
-        @CustomType.Parameter("diskCapacity") Integer diskCapacity,
-        @CustomType.Parameter("diskCount") Integer diskCount,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("hostGroupChangeType") String hostGroupChangeType,
-        @CustomType.Parameter("hostGroupId") String hostGroupId,
-        @CustomType.Parameter("hostGroupName") String hostGroupName,
-        @CustomType.Parameter("hostGroupType") String hostGroupType,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("memoryCapacity") Integer memoryCapacity,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("nodes") List<GetClustersClusterHostGroupListNode> nodes,
-        @CustomType.Parameter("period") String period) {
-        this.bandWidth = bandWidth;
-        this.chargeType = chargeType;
-        this.cpuCore = cpuCore;
-        this.diskCapacity = diskCapacity;
-        this.diskCount = diskCount;
-        this.diskType = diskType;
-        this.hostGroupChangeType = hostGroupChangeType;
-        this.hostGroupId = hostGroupId;
-        this.hostGroupName = hostGroupName;
-        this.hostGroupType = hostGroupType;
-        this.instanceType = instanceType;
-        this.memoryCapacity = memoryCapacity;
-        this.nodeCount = nodeCount;
-        this.nodes = nodes;
-        this.period = period;
-    }
-
+    private GetClustersClusterHostGroupList() {}
     /**
      * @return Bandwidth.
      * 
@@ -235,7 +202,7 @@ public final class GetClustersClusterHostGroupList {
     public static Builder builder(GetClustersClusterHostGroupList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bandWidth;
         private String chargeType;
@@ -252,11 +219,7 @@ public final class GetClustersClusterHostGroupList {
         private Integer nodeCount;
         private List<GetClustersClusterHostGroupListNode> nodes;
         private String period;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterHostGroupList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandWidth = defaults.bandWidth;
@@ -276,58 +239,72 @@ public final class GetClustersClusterHostGroupList {
     	      this.period = defaults.period;
         }
 
+        @CustomType.Setter
         public Builder bandWidth(String bandWidth) {
             this.bandWidth = Objects.requireNonNull(bandWidth);
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCore(Integer cpuCore) {
             this.cpuCore = Objects.requireNonNull(cpuCore);
             return this;
         }
+        @CustomType.Setter
         public Builder diskCapacity(Integer diskCapacity) {
             this.diskCapacity = Objects.requireNonNull(diskCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder diskCount(Integer diskCount) {
             this.diskCount = Objects.requireNonNull(diskCount);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupChangeType(String hostGroupChangeType) {
             this.hostGroupChangeType = Objects.requireNonNull(hostGroupChangeType);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupId(String hostGroupId) {
             this.hostGroupId = Objects.requireNonNull(hostGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupName(String hostGroupName) {
             this.hostGroupName = Objects.requireNonNull(hostGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupType(String hostGroupType) {
             this.hostGroupType = Objects.requireNonNull(hostGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder memoryCapacity(Integer memoryCapacity) {
             this.memoryCapacity = Objects.requireNonNull(memoryCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(List<GetClustersClusterHostGroupListNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -335,11 +312,29 @@ public final class GetClustersClusterHostGroupList {
         public Builder nodes(GetClustersClusterHostGroupListNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder period(String period) {
             this.period = Objects.requireNonNull(period);
             return this;
-        }        public GetClustersClusterHostGroupList build() {
-            return new GetClustersClusterHostGroupList(bandWidth, chargeType, cpuCore, diskCapacity, diskCount, diskType, hostGroupChangeType, hostGroupId, hostGroupName, hostGroupType, instanceType, memoryCapacity, nodeCount, nodes, period);
+        }
+        public GetClustersClusterHostGroupList build() {
+            final var o = new GetClustersClusterHostGroupList();
+            o.bandWidth = bandWidth;
+            o.chargeType = chargeType;
+            o.cpuCore = cpuCore;
+            o.diskCapacity = diskCapacity;
+            o.diskCount = diskCount;
+            o.diskType = diskType;
+            o.hostGroupChangeType = hostGroupChangeType;
+            o.hostGroupId = hostGroupId;
+            o.hostGroupName = hostGroupName;
+            o.hostGroupType = hostGroupType;
+            o.instanceType = instanceType;
+            o.memoryCapacity = memoryCapacity;
+            o.nodeCount = nodeCount;
+            o.nodes = nodes;
+            o.period = period;
+            return o;
         }
     }
 }

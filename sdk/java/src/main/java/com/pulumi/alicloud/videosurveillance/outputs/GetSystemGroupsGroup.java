@@ -16,112 +16,79 @@ public final class GetSystemGroupsGroup {
      * @return The App Name of Group.
      * 
      */
-    private final String app;
+    private String app;
     /**
      * @return The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      * 
      */
-    private final String callback;
+    private String callback;
     /**
      * @return The creation time of the Group.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the Group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Whether to open Group.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Space of national standard ID. **NOTE:** Available only in the national standard access space.
      * 
      */
-    private final String gbId;
+    private String gbId;
     /**
      * @return Space of national standard signaling server address. **NOTE:** Available only in the national standard access space.
      * 
      */
-    private final String gbIp;
+    private String gbIp;
     /**
      * @return The ID of Group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The name of Group.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The ID of the Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
      * 
      */
-    private final String inProtocol;
+    private String inProtocol;
     /**
      * @return The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
      * 
      */
-    private final String outProtocol;
+    private String outProtocol;
     /**
      * @return -The domain name of plan streaming used by the group.
      * 
      */
-    private final String playDomain;
+    private String playDomain;
     /**
      * @return The domain name of push streaming used by the group.
      * 
      */
-    private final String pushDomain;
+    private String pushDomain;
     /**
      * @return The Device statistics of Group.
      * 
      */
-    private final List<GetSystemGroupsGroupStat> stats;
+    private List<GetSystemGroupsGroupStat> stats;
 
-    @CustomType.Constructor
-    private GetSystemGroupsGroup(
-        @CustomType.Parameter("app") String app,
-        @CustomType.Parameter("callback") String callback,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("gbId") String gbId,
-        @CustomType.Parameter("gbIp") String gbIp,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inProtocol") String inProtocol,
-        @CustomType.Parameter("outProtocol") String outProtocol,
-        @CustomType.Parameter("playDomain") String playDomain,
-        @CustomType.Parameter("pushDomain") String pushDomain,
-        @CustomType.Parameter("stats") List<GetSystemGroupsGroupStat> stats) {
-        this.app = app;
-        this.callback = callback;
-        this.createTime = createTime;
-        this.description = description;
-        this.enabled = enabled;
-        this.gbId = gbId;
-        this.gbIp = gbIp;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.id = id;
-        this.inProtocol = inProtocol;
-        this.outProtocol = outProtocol;
-        this.playDomain = playDomain;
-        this.pushDomain = pushDomain;
-        this.stats = stats;
-    }
-
+    private GetSystemGroupsGroup() {}
     /**
      * @return The App Name of Group.
      * 
@@ -235,7 +202,7 @@ public final class GetSystemGroupsGroup {
     public static Builder builder(GetSystemGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String app;
         private String callback;
@@ -252,11 +219,7 @@ public final class GetSystemGroupsGroup {
         private String playDomain;
         private String pushDomain;
         private List<GetSystemGroupsGroupStat> stats;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSystemGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.app = defaults.app;
@@ -276,70 +239,102 @@ public final class GetSystemGroupsGroup {
     	      this.stats = defaults.stats;
         }
 
+        @CustomType.Setter
         public Builder app(String app) {
             this.app = Objects.requireNonNull(app);
             return this;
         }
+        @CustomType.Setter
         public Builder callback(String callback) {
             this.callback = Objects.requireNonNull(callback);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder gbId(String gbId) {
             this.gbId = Objects.requireNonNull(gbId);
             return this;
         }
+        @CustomType.Setter
         public Builder gbIp(String gbIp) {
             this.gbIp = Objects.requireNonNull(gbIp);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inProtocol(String inProtocol) {
             this.inProtocol = Objects.requireNonNull(inProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder outProtocol(String outProtocol) {
             this.outProtocol = Objects.requireNonNull(outProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder playDomain(String playDomain) {
             this.playDomain = Objects.requireNonNull(playDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder pushDomain(String pushDomain) {
             this.pushDomain = Objects.requireNonNull(pushDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder stats(List<GetSystemGroupsGroupStat> stats) {
             this.stats = Objects.requireNonNull(stats);
             return this;
         }
         public Builder stats(GetSystemGroupsGroupStat... stats) {
             return stats(List.of(stats));
-        }        public GetSystemGroupsGroup build() {
-            return new GetSystemGroupsGroup(app, callback, createTime, description, enabled, gbId, gbIp, groupId, groupName, id, inProtocol, outProtocol, playDomain, pushDomain, stats);
+        }
+        public GetSystemGroupsGroup build() {
+            final var o = new GetSystemGroupsGroup();
+            o.app = app;
+            o.callback = callback;
+            o.createTime = createTime;
+            o.description = description;
+            o.enabled = enabled;
+            o.gbId = gbId;
+            o.gbIp = gbIp;
+            o.groupId = groupId;
+            o.groupName = groupName;
+            o.id = id;
+            o.inProtocol = inProtocol;
+            o.outProtocol = outProtocol;
+            o.playDomain = playDomain;
+            o.pushDomain = pushDomain;
+            o.stats = stats;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetLoadBalancersBalancerDeletionProtectionConfig {
      * @return Remove the Protection Status.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
      * 
      */
-    private final String enabledTime;
+    private String enabledTime;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerDeletionProtectionConfig(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("enabledTime") String enabledTime) {
-        this.enabled = enabled;
-        this.enabledTime = enabledTime;
-    }
-
+    private GetLoadBalancersBalancerDeletionProtectionConfig() {}
     /**
      * @return Remove the Protection Status.
      * 
@@ -51,30 +44,32 @@ public final class GetLoadBalancersBalancerDeletionProtectionConfig {
     public static Builder builder(GetLoadBalancersBalancerDeletionProtectionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String enabledTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerDeletionProtectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.enabledTime = defaults.enabledTime;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enabledTime(String enabledTime) {
             this.enabledTime = Objects.requireNonNull(enabledTime);
             return this;
-        }        public GetLoadBalancersBalancerDeletionProtectionConfig build() {
-            return new GetLoadBalancersBalancerDeletionProtectionConfig(enabled, enabledTime);
+        }
+        public GetLoadBalancersBalancerDeletionProtectionConfig build() {
+            final var o = new GetLoadBalancersBalancerDeletionProtectionConfig();
+            o.enabled = enabled;
+            o.enabledTime = enabledTime;
+            return o;
         }
     }
 }

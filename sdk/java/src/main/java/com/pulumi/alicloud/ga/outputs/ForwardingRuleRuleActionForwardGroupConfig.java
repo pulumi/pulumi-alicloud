@@ -14,13 +14,9 @@ public final class ForwardingRuleRuleActionForwardGroupConfig {
      * @return Terminal node group configuration.
      * 
      */
-    private final List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
+    private List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
-    @CustomType.Constructor
-    private ForwardingRuleRuleActionForwardGroupConfig(@CustomType.Parameter("serverGroupTuples") List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
-        this.serverGroupTuples = serverGroupTuples;
-    }
-
+    private ForwardingRuleRuleActionForwardGroupConfig() {}
     /**
      * @return Terminal node group configuration.
      * 
@@ -36,27 +32,27 @@ public final class ForwardingRuleRuleActionForwardGroupConfig {
     public static Builder builder(ForwardingRuleRuleActionForwardGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ForwardingRuleRuleActionForwardGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        @CustomType.Setter
         public Builder serverGroupTuples(List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = Objects.requireNonNull(serverGroupTuples);
             return this;
         }
         public Builder serverGroupTuples(ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
-        }        public ForwardingRuleRuleActionForwardGroupConfig build() {
-            return new ForwardingRuleRuleActionForwardGroupConfig(serverGroupTuples);
+        }
+        public ForwardingRuleRuleActionForwardGroupConfig build() {
+            final var o = new ForwardingRuleRuleActionForwardGroupConfig();
+            o.serverGroupTuples = serverGroupTuples;
+            return o;
         }
     }
 }

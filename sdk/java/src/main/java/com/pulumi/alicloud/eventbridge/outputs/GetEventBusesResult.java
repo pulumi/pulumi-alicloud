@@ -13,39 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEventBusesResult {
-    private final List<GetEventBusesBus> buses;
-    private final @Nullable String eventBusType;
+    private List<GetEventBusesBus> buses;
+    private @Nullable String eventBusType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String namePrefix;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String namePrefix;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetEventBusesResult(
-        @CustomType.Parameter("buses") List<GetEventBusesBus> buses,
-        @CustomType.Parameter("eventBusType") @Nullable String eventBusType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("namePrefix") @Nullable String namePrefix,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.buses = buses;
-        this.eventBusType = eventBusType;
-        this.id = id;
-        this.ids = ids;
-        this.namePrefix = namePrefix;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetEventBusesResult() {}
     public List<GetEventBusesBus> buses() {
         return this.buses;
     }
@@ -82,7 +63,7 @@ public final class GetEventBusesResult {
     public static Builder builder(GetEventBusesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEventBusesBus> buses;
         private @Nullable String eventBusType;
@@ -92,11 +73,7 @@ public final class GetEventBusesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEventBusesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buses = defaults.buses;
@@ -109,6 +86,7 @@ public final class GetEventBusesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder buses(List<GetEventBusesBus> buses) {
             this.buses = Objects.requireNonNull(buses);
             return this;
@@ -116,14 +94,17 @@ public final class GetEventBusesResult {
         public Builder buses(GetEventBusesBus... buses) {
             return buses(List.of(buses));
         }
+        @CustomType.Setter
         public Builder eventBusType(@Nullable String eventBusType) {
             this.eventBusType = eventBusType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,14 +112,17 @@ public final class GetEventBusesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
             this.namePrefix = namePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -146,11 +130,22 @@ public final class GetEventBusesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetEventBusesResult build() {
-            return new GetEventBusesResult(buses, eventBusType, id, ids, namePrefix, nameRegex, names, outputFile);
+        }
+        public GetEventBusesResult build() {
+            final var o = new GetEventBusesResult();
+            o.buses = buses;
+            o.eventBusType = eventBusType;
+            o.id = id;
+            o.ids = ids;
+            o.namePrefix = namePrefix;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

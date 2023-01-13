@@ -13,63 +13,44 @@ public final class GetInstancesInstance {
      * @return The Creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The end time of the resource..
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The payment type of the resource. Valid values: `Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Automatic renewal period unit. Valid values: `Month`,`Year`.
      * 
      */
-    private final String renewalDurationUnit;
+    private String renewalDurationUnit;
     /**
      * @return Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      * 
      */
-    private final String renewalStatus;
+    private String renewalStatus;
     /**
      * @return The Status of Instance.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("renewalDurationUnit") String renewalDurationUnit,
-        @CustomType.Parameter("renewalStatus") String renewalStatus,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.endTime = endTime;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.paymentType = paymentType;
-        this.renewalDurationUnit = renewalDurationUnit;
-        this.renewalStatus = renewalStatus;
-        this.status = status;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The Creation time of the resource.
      * 
@@ -134,7 +115,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String endTime;
@@ -144,11 +125,7 @@ public final class GetInstancesInstance {
         private String renewalDurationUnit;
         private String renewalStatus;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -161,39 +138,57 @@ public final class GetInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder renewalDurationUnit(String renewalDurationUnit) {
             this.renewalDurationUnit = Objects.requireNonNull(renewalDurationUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
             this.renewalStatus = Objects.requireNonNull(renewalStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(createTime, endTime, id, instanceId, paymentType, renewalDurationUnit, renewalStatus, status);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.createTime = createTime;
+            o.endTime = endTime;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.paymentType = paymentType;
+            o.renewalDurationUnit = renewalDurationUnit;
+            o.renewalStatus = renewalStatus;
+            o.status = status;
+            return o;
         }
     }
 }

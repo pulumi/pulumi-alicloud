@@ -14,28 +14,19 @@ public final class GetHostsHostProtocol {
      * @return Host fingerprint information, it is possible to uniquely identify a host.
      * 
      */
-    private final String hostFingerPrint;
+    private String hostFingerPrint;
     /**
      * @return Host the service port of the RDS.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The host uses the protocol name.
      * 
      */
-    private final String protocolName;
+    private String protocolName;
 
-    @CustomType.Constructor
-    private GetHostsHostProtocol(
-        @CustomType.Parameter("hostFingerPrint") String hostFingerPrint,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocolName") String protocolName) {
-        this.hostFingerPrint = hostFingerPrint;
-        this.port = port;
-        this.protocolName = protocolName;
-    }
-
+    private GetHostsHostProtocol() {}
     /**
      * @return Host fingerprint information, it is possible to uniquely identify a host.
      * 
@@ -65,16 +56,12 @@ public final class GetHostsHostProtocol {
     public static Builder builder(GetHostsHostProtocol defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String hostFingerPrint;
         private Integer port;
         private String protocolName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostsHostProtocol defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostFingerPrint = defaults.hostFingerPrint;
@@ -82,19 +69,27 @@ public final class GetHostsHostProtocol {
     	      this.protocolName = defaults.protocolName;
         }
 
+        @CustomType.Setter
         public Builder hostFingerPrint(String hostFingerPrint) {
             this.hostFingerPrint = Objects.requireNonNull(hostFingerPrint);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocolName(String protocolName) {
             this.protocolName = Objects.requireNonNull(protocolName);
             return this;
-        }        public GetHostsHostProtocol build() {
-            return new GetHostsHostProtocol(hostFingerPrint, port, protocolName);
+        }
+        public GetHostsHostProtocol build() {
+            final var o = new GetHostsHostProtocol();
+            o.hostFingerPrint = hostFingerPrint;
+            o.port = port;
+            o.protocolName = protocolName;
+            return o;
         }
     }
 }

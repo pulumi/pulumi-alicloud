@@ -14,49 +14,34 @@ public final class GetSslVpnClientCertsCert {
      * @return The time of creation.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The expiration time of the client certificate.
      * 
      */
-    private final Integer endTime;
+    private Integer endTime;
     /**
      * @return ID of the SSL-VPN client certificate.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the SSL-VPN client certificate.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Use the SSL-VPN server ID as the search key.
      * 
      */
-    private final String sslVpnServerId;
+    private String sslVpnServerId;
     /**
      * @return The status of the client certificate. valid value:expiring-soon, normal, expired.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSslVpnClientCertsCert(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("endTime") Integer endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sslVpnServerId") String sslVpnServerId,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.endTime = endTime;
-        this.id = id;
-        this.name = name;
-        this.sslVpnServerId = sslVpnServerId;
-        this.status = status;
-    }
-
+    private GetSslVpnClientCertsCert() {}
     /**
      * @return The time of creation.
      * 
@@ -107,7 +92,7 @@ public final class GetSslVpnClientCertsCert {
     public static Builder builder(GetSslVpnClientCertsCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private Integer endTime;
@@ -115,11 +100,7 @@ public final class GetSslVpnClientCertsCert {
         private String name;
         private String sslVpnServerId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSslVpnClientCertsCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -130,31 +111,45 @@ public final class GetSslVpnClientCertsCert {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(Integer endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sslVpnServerId(String sslVpnServerId) {
             this.sslVpnServerId = Objects.requireNonNull(sslVpnServerId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSslVpnClientCertsCert build() {
-            return new GetSslVpnClientCertsCert(createTime, endTime, id, name, sslVpnServerId, status);
+        }
+        public GetSslVpnClientCertsCert build() {
+            final var o = new GetSslVpnClientCertsCert();
+            o.createTime = createTime;
+            o.endTime = endTime;
+            o.id = id;
+            o.name = name;
+            o.sslVpnServerId = sslVpnServerId;
+            o.status = status;
+            return o;
         }
     }
 }

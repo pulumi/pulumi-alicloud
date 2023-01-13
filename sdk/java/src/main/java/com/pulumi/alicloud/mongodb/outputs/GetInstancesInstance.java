@@ -19,140 +19,99 @@ public final class GetInstancesInstance {
      * @return Instance availability zone.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
      * 
      */
-    private final String chargeType;
+    private String chargeType;
     /**
      * @return Creation time of the instance in RFC3339 format.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Database engine type. Supported option is `MongoDB`.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database engine version.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
      * 
      */
-    private final String expirationTime;
+    private String expirationTime;
     /**
      * @return The ID of the MongoDB instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Sizing of the instance to be queried.
      * 
      */
-    private final String instanceClass;
+    private String instanceClass;
     /**
      * @return Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return Lock status of the instance.
      * 
      */
-    private final String lockMode;
+    private String lockMode;
     /**
      * @return Array composed of Mongos.
      * 
      */
-    private final List<GetInstancesInstanceMongo> mongos;
+    private List<GetInstancesInstanceMongo> mongos;
     /**
      * @return The name of the MongoDB instance.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Classic network or VPC.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
      * 
      */
-    private final String replication;
+    private String replication;
     /**
      * @return Array composed of shards.
      * 
      */
-    private final List<GetInstancesInstanceShard> shards;
+    private List<GetInstancesInstanceShard> shards;
     /**
      * @return Status of the instance.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Shard disk.
      * 
      */
-    private final Integer storage;
+    private Integer storage;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("expirationTime") String expirationTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceClass") String instanceClass,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("lockMode") String lockMode,
-        @CustomType.Parameter("mongos") List<GetInstancesInstanceMongo> mongos,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("replication") String replication,
-        @CustomType.Parameter("shards") List<GetInstancesInstanceShard> shards,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storage") Integer storage,
-        @CustomType.Parameter("tags") Map<String,Object> tags) {
-        this.availabilityZone = availabilityZone;
-        this.chargeType = chargeType;
-        this.creationTime = creationTime;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.expirationTime = expirationTime;
-        this.id = id;
-        this.instanceClass = instanceClass;
-        this.instanceType = instanceType;
-        this.lockMode = lockMode;
-        this.mongos = mongos;
-        this.name = name;
-        this.networkType = networkType;
-        this.regionId = regionId;
-        this.replication = replication;
-        this.shards = shards;
-        this.status = status;
-        this.storage = storage;
-        this.tags = tags;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Instance availability zone.
      * 
@@ -294,7 +253,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String chargeType;
@@ -315,11 +274,7 @@ public final class GetInstancesInstance {
         private String status;
         private Integer storage;
         private Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -343,46 +298,57 @@ public final class GetInstancesInstance {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
             this.expirationTime = Objects.requireNonNull(expirationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
+        @CustomType.Setter
         public Builder mongos(List<GetInstancesInstanceMongo> mongos) {
             this.mongos = Objects.requireNonNull(mongos);
             return this;
@@ -390,22 +356,27 @@ public final class GetInstancesInstance {
         public Builder mongos(GetInstancesInstanceMongo... mongos) {
             return mongos(List.of(mongos));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder replication(String replication) {
             this.replication = Objects.requireNonNull(replication);
             return this;
         }
+        @CustomType.Setter
         public Builder shards(List<GetInstancesInstanceShard> shards) {
             this.shards = Objects.requireNonNull(shards);
             return this;
@@ -413,19 +384,43 @@ public final class GetInstancesInstance {
         public Builder shards(GetInstancesInstanceShard... shards) {
             return shards(List.of(shards));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storage(Integer storage) {
             this.storage = Objects.requireNonNull(storage);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(availabilityZone, chargeType, creationTime, engine, engineVersion, expirationTime, id, instanceClass, instanceType, lockMode, mongos, name, networkType, regionId, replication, shards, status, storage, tags);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.availabilityZone = availabilityZone;
+            o.chargeType = chargeType;
+            o.creationTime = creationTime;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.expirationTime = expirationTime;
+            o.id = id;
+            o.instanceClass = instanceClass;
+            o.instanceType = instanceType;
+            o.lockMode = lockMode;
+            o.mongos = mongos;
+            o.name = name;
+            o.networkType = networkType;
+            o.regionId = regionId;
+            o.replication = replication;
+            o.shards = shards;
+            o.status = status;
+            o.storage = storage;
+            o.tags = tags;
+            return o;
         }
     }
 }

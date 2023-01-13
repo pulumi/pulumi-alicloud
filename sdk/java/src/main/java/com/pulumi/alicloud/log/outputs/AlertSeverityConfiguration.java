@@ -15,21 +15,14 @@ public final class AlertSeverityConfiguration {
      * @return Severity when this condition is met.
      * 
      */
-    private final Map<String,String> evalCondition;
+    private Map<String,String> evalCondition;
     /**
      * @return Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
      * 
      */
-    private final Integer severity;
+    private Integer severity;
 
-    @CustomType.Constructor
-    private AlertSeverityConfiguration(
-        @CustomType.Parameter("evalCondition") Map<String,String> evalCondition,
-        @CustomType.Parameter("severity") Integer severity) {
-        this.evalCondition = evalCondition;
-        this.severity = severity;
-    }
-
+    private AlertSeverityConfiguration() {}
     /**
      * @return Severity when this condition is met.
      * 
@@ -52,30 +45,32 @@ public final class AlertSeverityConfiguration {
     public static Builder builder(AlertSeverityConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> evalCondition;
         private Integer severity;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertSeverityConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.evalCondition = defaults.evalCondition;
     	      this.severity = defaults.severity;
         }
 
+        @CustomType.Setter
         public Builder evalCondition(Map<String,String> evalCondition) {
             this.evalCondition = Objects.requireNonNull(evalCondition);
             return this;
         }
+        @CustomType.Setter
         public Builder severity(Integer severity) {
             this.severity = Objects.requireNonNull(severity);
             return this;
-        }        public AlertSeverityConfiguration build() {
-            return new AlertSeverityConfiguration(evalCondition, severity);
+        }
+        public AlertSeverityConfiguration build() {
+            final var o = new AlertSeverityConfiguration();
+            o.evalCondition = evalCondition;
+            o.severity = severity;
+            return o;
         }
     }
 }

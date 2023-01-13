@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkInterfacesInterfaceAssociatedPublicIp {
-    private final String publicIpAddress;
+    private String publicIpAddress;
 
-    @CustomType.Constructor
-    private GetNetworkInterfacesInterfaceAssociatedPublicIp(@CustomType.Parameter("publicIpAddress") String publicIpAddress) {
-        this.publicIpAddress = publicIpAddress;
-    }
-
+    private GetNetworkInterfacesInterfaceAssociatedPublicIp() {}
     public String publicIpAddress() {
         return this.publicIpAddress;
     }
@@ -27,24 +23,24 @@ public final class GetNetworkInterfacesInterfaceAssociatedPublicIp {
     public static Builder builder(GetNetworkInterfacesInterfaceAssociatedPublicIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String publicIpAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkInterfacesInterfaceAssociatedPublicIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicIpAddress = defaults.publicIpAddress;
         }
 
+        @CustomType.Setter
         public Builder publicIpAddress(String publicIpAddress) {
             this.publicIpAddress = Objects.requireNonNull(publicIpAddress);
             return this;
-        }        public GetNetworkInterfacesInterfaceAssociatedPublicIp build() {
-            return new GetNetworkInterfacesInterfaceAssociatedPublicIp(publicIpAddress);
+        }
+        public GetNetworkInterfacesInterfaceAssociatedPublicIp build() {
+            final var o = new GetNetworkInterfacesInterfaceAssociatedPublicIp();
+            o.publicIpAddress = publicIpAddress;
+            return o;
         }
     }
 }

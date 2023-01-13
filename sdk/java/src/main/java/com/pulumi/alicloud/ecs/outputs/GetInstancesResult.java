@@ -20,106 +20,69 @@ public final class GetInstancesResult {
      * @return Availability zone the instance belongs to.
      * 
      */
-    private final @Nullable String availabilityZone;
+    private @Nullable String availabilityZone;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of ECS instance IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return Image ID the instance is using.
      * 
      */
-    private final @Nullable String imageId;
+    private @Nullable String imageId;
     /**
      * @return A list of instances. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String nameRegex;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String nameRegex;
     /**
      * @return A list of instances names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return The Ram role name.
      * 
      */
-    private final @Nullable String ramRoleName;
+    private @Nullable String ramRoleName;
     /**
      * @return The Id of resource group.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return Instance current status.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A map of tags assigned to the ECS instance.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
-    private final Integer totalCount;
+    private @Nullable Map<String,Object> tags;
+    private Integer totalCount;
     /**
      * @return ID of the VPC the instance belongs to.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
     /**
      * @return ID of the VSwitch the instance belongs to.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("availabilityZone") @Nullable String availabilityZone,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("imageId") @Nullable String imageId,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("ramRoleName") @Nullable String ramRoleName,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCount") Integer totalCount,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.availabilityZone = availabilityZone;
-        this.id = id;
-        this.ids = ids;
-        this.imageId = imageId;
-        this.instances = instances;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.ramRoleName = ramRoleName;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.tags = tags;
-        this.totalCount = totalCount;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetInstancesResult() {}
     /**
      * @return Availability zone the instance belongs to.
      * 
@@ -227,7 +190,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
         private String id;
@@ -246,11 +209,7 @@ public final class GetInstancesResult {
         private Integer totalCount;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -272,14 +231,17 @@ public final class GetInstancesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -287,10 +249,12 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -298,10 +262,12 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -309,47 +275,76 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder ramRoleName(@Nullable String ramRoleName) {
             this.ramRoleName = ramRoleName;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(availabilityZone, id, ids, imageId, instances, nameRegex, names, outputFile, pageNumber, pageSize, ramRoleName, resourceGroupId, status, tags, totalCount, vpcId, vswitchId);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.availabilityZone = availabilityZone;
+            o.id = id;
+            o.ids = ids;
+            o.imageId = imageId;
+            o.instances = instances;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.ramRoleName = ramRoleName;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.totalCount = totalCount;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

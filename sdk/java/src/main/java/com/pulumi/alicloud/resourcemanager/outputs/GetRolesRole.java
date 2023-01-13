@@ -10,9 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesRole {
-    private final String arn;
-    private final String assumeRolePolicyDocument;
-    private final String description;
+    private String arn;
+    private String assumeRolePolicyDocument;
+    private String description;
     /**
      * @return The ID of the role.
      * * `role_id`- The ID of the role.
@@ -25,32 +25,13 @@ public final class GetRolesRole {
      * * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
      * 
      */
-    private final String id;
-    private final Integer maxSessionDuration;
-    private final String roleId;
-    private final String roleName;
-    private final String updateDate;
+    private String id;
+    private Integer maxSessionDuration;
+    private String roleId;
+    private String roleName;
+    private String updateDate;
 
-    @CustomType.Constructor
-    private GetRolesRole(
-        @CustomType.Parameter("arn") String arn,
-        @CustomType.Parameter("assumeRolePolicyDocument") String assumeRolePolicyDocument,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("maxSessionDuration") Integer maxSessionDuration,
-        @CustomType.Parameter("roleId") String roleId,
-        @CustomType.Parameter("roleName") String roleName,
-        @CustomType.Parameter("updateDate") String updateDate) {
-        this.arn = arn;
-        this.assumeRolePolicyDocument = assumeRolePolicyDocument;
-        this.description = description;
-        this.id = id;
-        this.maxSessionDuration = maxSessionDuration;
-        this.roleId = roleId;
-        this.roleName = roleName;
-        this.updateDate = updateDate;
-    }
-
+    private GetRolesRole() {}
     public String arn() {
         return this.arn;
     }
@@ -95,7 +76,7 @@ public final class GetRolesRole {
     public static Builder builder(GetRolesRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arn;
         private String assumeRolePolicyDocument;
@@ -105,11 +86,7 @@ public final class GetRolesRole {
         private String roleId;
         private String roleName;
         private String updateDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -122,39 +99,57 @@ public final class GetRolesRole {
     	      this.updateDate = defaults.updateDate;
         }
 
+        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
+        @CustomType.Setter
         public Builder assumeRolePolicyDocument(String assumeRolePolicyDocument) {
             this.assumeRolePolicyDocument = Objects.requireNonNull(assumeRolePolicyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder maxSessionDuration(Integer maxSessionDuration) {
             this.maxSessionDuration = Objects.requireNonNull(maxSessionDuration);
             return this;
         }
+        @CustomType.Setter
         public Builder roleId(String roleId) {
             this.roleId = Objects.requireNonNull(roleId);
             return this;
         }
+        @CustomType.Setter
         public Builder roleName(String roleName) {
             this.roleName = Objects.requireNonNull(roleName);
             return this;
         }
+        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             this.updateDate = Objects.requireNonNull(updateDate);
             return this;
-        }        public GetRolesRole build() {
-            return new GetRolesRole(arn, assumeRolePolicyDocument, description, id, maxSessionDuration, roleId, roleName, updateDate);
+        }
+        public GetRolesRole build() {
+            final var o = new GetRolesRole();
+            o.arn = arn;
+            o.assumeRolePolicyDocument = assumeRolePolicyDocument;
+            o.description = description;
+            o.id = id;
+            o.maxSessionDuration = maxSessionDuration;
+            o.roleId = roleId;
+            o.roleName = roleName;
+            o.updateDate = updateDate;
+            return o;
         }
     }
 }

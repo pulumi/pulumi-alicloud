@@ -15,70 +15,49 @@ public final class GetDedicatedHostsHostCapacity {
      * @return The remaining local disk capacity. Unit: GiB.
      * 
      */
-    private final Integer availableLocalStorage;
+    private Integer availableLocalStorage;
     /**
      * @return The remaining memory capacity, unit: GiB.
      * 
      */
-    private final Double availableMemory;
+    private Double availableMemory;
     /**
      * @return The number of remaining vCPU cores.
      * 
      */
-    private final Integer availableVcpus;
+    private Integer availableVcpus;
     /**
      * @return The number of available virtual GPUs.
      * 
      */
-    private final Integer availableVgpus;
+    private Integer availableVgpus;
     /**
      * @return Local disk type.
      * 
      */
-    private final String localStorageCategory;
+    private String localStorageCategory;
     /**
      * @return The total capacity of the local disk, in GiB.
      * 
      */
-    private final Integer totalLocalStorage;
+    private Integer totalLocalStorage;
     /**
      * @return The total memory capacity, unit: GiB.
      * 
      */
-    private final Double totalMemory;
+    private Double totalMemory;
     /**
      * @return The total number of vCPU cores.
      * 
      */
-    private final Integer totalVcpus;
+    private Integer totalVcpus;
     /**
      * @return The total number of virtual GPUs.
      * 
      */
-    private final Integer totalVgpus;
+    private Integer totalVgpus;
 
-    @CustomType.Constructor
-    private GetDedicatedHostsHostCapacity(
-        @CustomType.Parameter("availableLocalStorage") Integer availableLocalStorage,
-        @CustomType.Parameter("availableMemory") Double availableMemory,
-        @CustomType.Parameter("availableVcpus") Integer availableVcpus,
-        @CustomType.Parameter("availableVgpus") Integer availableVgpus,
-        @CustomType.Parameter("localStorageCategory") String localStorageCategory,
-        @CustomType.Parameter("totalLocalStorage") Integer totalLocalStorage,
-        @CustomType.Parameter("totalMemory") Double totalMemory,
-        @CustomType.Parameter("totalVcpus") Integer totalVcpus,
-        @CustomType.Parameter("totalVgpus") Integer totalVgpus) {
-        this.availableLocalStorage = availableLocalStorage;
-        this.availableMemory = availableMemory;
-        this.availableVcpus = availableVcpus;
-        this.availableVgpus = availableVgpus;
-        this.localStorageCategory = localStorageCategory;
-        this.totalLocalStorage = totalLocalStorage;
-        this.totalMemory = totalMemory;
-        this.totalVcpus = totalVcpus;
-        this.totalVgpus = totalVgpus;
-    }
-
+    private GetDedicatedHostsHostCapacity() {}
     /**
      * @return The remaining local disk capacity. Unit: GiB.
      * 
@@ -150,7 +129,7 @@ public final class GetDedicatedHostsHostCapacity {
     public static Builder builder(GetDedicatedHostsHostCapacity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer availableLocalStorage;
         private Double availableMemory;
@@ -161,11 +140,7 @@ public final class GetDedicatedHostsHostCapacity {
         private Double totalMemory;
         private Integer totalVcpus;
         private Integer totalVgpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostsHostCapacity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableLocalStorage = defaults.availableLocalStorage;
@@ -179,43 +154,63 @@ public final class GetDedicatedHostsHostCapacity {
     	      this.totalVgpus = defaults.totalVgpus;
         }
 
+        @CustomType.Setter
         public Builder availableLocalStorage(Integer availableLocalStorage) {
             this.availableLocalStorage = Objects.requireNonNull(availableLocalStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder availableMemory(Double availableMemory) {
             this.availableMemory = Objects.requireNonNull(availableMemory);
             return this;
         }
+        @CustomType.Setter
         public Builder availableVcpus(Integer availableVcpus) {
             this.availableVcpus = Objects.requireNonNull(availableVcpus);
             return this;
         }
+        @CustomType.Setter
         public Builder availableVgpus(Integer availableVgpus) {
             this.availableVgpus = Objects.requireNonNull(availableVgpus);
             return this;
         }
+        @CustomType.Setter
         public Builder localStorageCategory(String localStorageCategory) {
             this.localStorageCategory = Objects.requireNonNull(localStorageCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder totalLocalStorage(Integer totalLocalStorage) {
             this.totalLocalStorage = Objects.requireNonNull(totalLocalStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder totalMemory(Double totalMemory) {
             this.totalMemory = Objects.requireNonNull(totalMemory);
             return this;
         }
+        @CustomType.Setter
         public Builder totalVcpus(Integer totalVcpus) {
             this.totalVcpus = Objects.requireNonNull(totalVcpus);
             return this;
         }
+        @CustomType.Setter
         public Builder totalVgpus(Integer totalVgpus) {
             this.totalVgpus = Objects.requireNonNull(totalVgpus);
             return this;
-        }        public GetDedicatedHostsHostCapacity build() {
-            return new GetDedicatedHostsHostCapacity(availableLocalStorage, availableMemory, availableVcpus, availableVgpus, localStorageCategory, totalLocalStorage, totalMemory, totalVcpus, totalVgpus);
+        }
+        public GetDedicatedHostsHostCapacity build() {
+            final var o = new GetDedicatedHostsHostCapacity();
+            o.availableLocalStorage = availableLocalStorage;
+            o.availableMemory = availableMemory;
+            o.availableVcpus = availableVcpus;
+            o.availableVgpus = availableVgpus;
+            o.localStorageCategory = localStorageCategory;
+            o.totalLocalStorage = totalLocalStorage;
+            o.totalMemory = totalMemory;
+            o.totalVcpus = totalVcpus;
+            o.totalVgpus = totalVgpus;
+            return o;
         }
     }
 }

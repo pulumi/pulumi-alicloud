@@ -16,28 +16,19 @@ public final class IngressDefaultRule {
      * @return Target application ID.
      * 
      */
-    private final @Nullable String appId;
+    private @Nullable String appId;
     /**
      * @return Target application name.
      * 
      */
-    private final @Nullable String appName;
+    private @Nullable String appName;
     /**
      * @return Application backend port.
      * 
      */
-    private final @Nullable Integer containerPort;
+    private @Nullable Integer containerPort;
 
-    @CustomType.Constructor
-    private IngressDefaultRule(
-        @CustomType.Parameter("appId") @Nullable String appId,
-        @CustomType.Parameter("appName") @Nullable String appName,
-        @CustomType.Parameter("containerPort") @Nullable Integer containerPort) {
-        this.appId = appId;
-        this.appName = appName;
-        this.containerPort = containerPort;
-    }
-
+    private IngressDefaultRule() {}
     /**
      * @return Target application ID.
      * 
@@ -67,16 +58,12 @@ public final class IngressDefaultRule {
     public static Builder builder(IngressDefaultRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appId;
         private @Nullable String appName;
         private @Nullable Integer containerPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IngressDefaultRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -84,19 +71,27 @@ public final class IngressDefaultRule {
     	      this.containerPort = defaults.containerPort;
         }
 
+        @CustomType.Setter
         public Builder appId(@Nullable String appId) {
             this.appId = appId;
             return this;
         }
+        @CustomType.Setter
         public Builder appName(@Nullable String appName) {
             this.appName = appName;
             return this;
         }
+        @CustomType.Setter
         public Builder containerPort(@Nullable Integer containerPort) {
             this.containerPort = containerPort;
             return this;
-        }        public IngressDefaultRule build() {
-            return new IngressDefaultRule(appId, appName, containerPort);
+        }
+        public IngressDefaultRule build() {
+            final var o = new IngressDefaultRule();
+            o.appId = appId;
+            o.appName = appName;
+            o.containerPort = containerPort;
+            return o;
         }
     }
 }

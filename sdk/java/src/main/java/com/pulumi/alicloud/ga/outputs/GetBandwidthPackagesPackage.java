@@ -14,91 +14,64 @@ public final class GetBandwidthPackagesPackage {
      * @return The bandwidth value of bandwidth packet.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The Resource ID of the bandwidth.
      * 
      */
-    private final String bandwidthPackageId;
+    private String bandwidthPackageId;
     /**
      * @return The name of the bandwidth packet.
      * 
      */
-    private final String bandwidthPackageName;
+    private String bandwidthPackageName;
     /**
      * @return The bandwidth type of the bandwidth.
      * 
      */
-    private final String bandwidthType;
+    private String bandwidthType;
     /**
      * @return Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
      * 
      */
-    private final String cbnGeographicRegionIda;
+    private String cbnGeographicRegionIda;
     /**
      * @return Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
      * 
      */
-    private final String cbnGeographicRegionIdb;
+    private String cbnGeographicRegionIdb;
     /**
      * @return The description of bandwidth package.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Bandwidth package expiration time.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The ID of the Bandwidth Package.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The payment type of the bandwidth.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The status of the bandwidth plan.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the bandwidth packet. China station only supports return to basic.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetBandwidthPackagesPackage(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("bandwidthPackageId") String bandwidthPackageId,
-        @CustomType.Parameter("bandwidthPackageName") String bandwidthPackageName,
-        @CustomType.Parameter("bandwidthType") String bandwidthType,
-        @CustomType.Parameter("cbnGeographicRegionIda") String cbnGeographicRegionIda,
-        @CustomType.Parameter("cbnGeographicRegionIdb") String cbnGeographicRegionIdb,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type) {
-        this.bandwidth = bandwidth;
-        this.bandwidthPackageId = bandwidthPackageId;
-        this.bandwidthPackageName = bandwidthPackageName;
-        this.bandwidthType = bandwidthType;
-        this.cbnGeographicRegionIda = cbnGeographicRegionIda;
-        this.cbnGeographicRegionIdb = cbnGeographicRegionIdb;
-        this.description = description;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.paymentType = paymentType;
-        this.status = status;
-        this.type = type;
-    }
-
+    private GetBandwidthPackagesPackage() {}
     /**
      * @return The bandwidth value of bandwidth packet.
      * 
@@ -191,7 +164,7 @@ public final class GetBandwidthPackagesPackage {
     public static Builder builder(GetBandwidthPackagesPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String bandwidthPackageId;
@@ -205,11 +178,7 @@ public final class GetBandwidthPackagesPackage {
         private String paymentType;
         private String status;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBandwidthPackagesPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -226,55 +195,81 @@ public final class GetBandwidthPackagesPackage {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageName(String bandwidthPackageName) {
             this.bandwidthPackageName = Objects.requireNonNull(bandwidthPackageName);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthType(String bandwidthType) {
             this.bandwidthType = Objects.requireNonNull(bandwidthType);
             return this;
         }
+        @CustomType.Setter
         public Builder cbnGeographicRegionIda(String cbnGeographicRegionIda) {
             this.cbnGeographicRegionIda = Objects.requireNonNull(cbnGeographicRegionIda);
             return this;
         }
+        @CustomType.Setter
         public Builder cbnGeographicRegionIdb(String cbnGeographicRegionIdb) {
             this.cbnGeographicRegionIdb = Objects.requireNonNull(cbnGeographicRegionIdb);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetBandwidthPackagesPackage build() {
-            return new GetBandwidthPackagesPackage(bandwidth, bandwidthPackageId, bandwidthPackageName, bandwidthType, cbnGeographicRegionIda, cbnGeographicRegionIdb, description, expiredTime, id, paymentType, status, type);
+        }
+        public GetBandwidthPackagesPackage build() {
+            final var o = new GetBandwidthPackagesPackage();
+            o.bandwidth = bandwidth;
+            o.bandwidthPackageId = bandwidthPackageId;
+            o.bandwidthPackageName = bandwidthPackageName;
+            o.bandwidthType = bandwidthType;
+            o.cbnGeographicRegionIda = cbnGeographicRegionIda;
+            o.cbnGeographicRegionIdb = cbnGeographicRegionIdb;
+            o.description = description;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.paymentType = paymentType;
+            o.status = status;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetAttachmentsSlbAttachment {
      * @return ID of the attached ECS instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Weight associated to the ECS instance.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetAttachmentsSlbAttachment(
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.instanceId = instanceId;
-        this.weight = weight;
-    }
-
+    private GetAttachmentsSlbAttachment() {}
     /**
      * @return ID of the attached ECS instance.
      * 
@@ -51,30 +44,32 @@ public final class GetAttachmentsSlbAttachment {
     public static Builder builder(GetAttachmentsSlbAttachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceId;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAttachmentsSlbAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceId = defaults.instanceId;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetAttachmentsSlbAttachment build() {
-            return new GetAttachmentsSlbAttachment(instanceId, weight);
+        }
+        public GetAttachmentsSlbAttachment build() {
+            final var o = new GetAttachmentsSlbAttachment();
+            o.instanceId = instanceId;
+            o.weight = weight;
+            return o;
         }
     }
 }

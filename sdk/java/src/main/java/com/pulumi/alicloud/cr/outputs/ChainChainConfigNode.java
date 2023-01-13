@@ -18,28 +18,19 @@ public final class ChainChainConfigNode {
      * @return Whether to enable the delivery chain node. Valid values: `true`, `false`.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return The configuration of delivery chain node.
      * 
      */
-    private final @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs;
+    private @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs;
     /**
      * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
      * 
      */
-    private final @Nullable String nodeName;
+    private @Nullable String nodeName;
 
-    @CustomType.Constructor
-    private ChainChainConfigNode(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("nodeConfigs") @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs,
-        @CustomType.Parameter("nodeName") @Nullable String nodeName) {
-        this.enable = enable;
-        this.nodeConfigs = nodeConfigs;
-        this.nodeName = nodeName;
-    }
-
+    private ChainChainConfigNode() {}
     /**
      * @return Whether to enable the delivery chain node. Valid values: `true`, `false`.
      * 
@@ -69,16 +60,12 @@ public final class ChainChainConfigNode {
     public static Builder builder(ChainChainConfigNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs;
         private @Nullable String nodeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ChainChainConfigNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -86,10 +73,12 @@ public final class ChainChainConfigNode {
     	      this.nodeName = defaults.nodeName;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeConfigs(@Nullable List<ChainChainConfigNodeNodeConfig> nodeConfigs) {
             this.nodeConfigs = nodeConfigs;
             return this;
@@ -97,11 +86,17 @@ public final class ChainChainConfigNode {
         public Builder nodeConfigs(ChainChainConfigNodeNodeConfig... nodeConfigs) {
             return nodeConfigs(List.of(nodeConfigs));
         }
+        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
-        }        public ChainChainConfigNode build() {
-            return new ChainChainConfigNode(enable, nodeConfigs, nodeName);
+        }
+        public ChainChainConfigNode build() {
+            final var o = new ChainChainConfigNode();
+            o.enable = enable;
+            o.nodeConfigs = nodeConfigs;
+            o.nodeName = nodeName;
+            return o;
         }
     }
 }

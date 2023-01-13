@@ -15,75 +15,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
-    private final @Nullable String clusterName;
-    private final @Nullable List<String> clusterTypeLists;
-    private final List<GetClustersCluster> clusters;
-    private final @Nullable String createType;
-    private final @Nullable Boolean defaultStatus;
-    private final @Nullable String depositType;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String clusterName;
+    private @Nullable List<String> clusterTypeLists;
+    private List<GetClustersCluster> clusters;
+    private @Nullable String createType;
+    private @Nullable Boolean defaultStatus;
+    private @Nullable String depositType;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Boolean isDesc;
-    private final @Nullable String machineType;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable List<String> statusLists;
-    private final Integer totalCount;
-    private final @Nullable String vpcId;
+    private String id;
+    private List<String> ids;
+    private @Nullable Boolean isDesc;
+    private @Nullable String machineType;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String resourceGroupId;
+    private @Nullable List<String> statusLists;
+    private Integer totalCount;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private GetClustersResult(
-        @CustomType.Parameter("clusterName") @Nullable String clusterName,
-        @CustomType.Parameter("clusterTypeLists") @Nullable List<String> clusterTypeLists,
-        @CustomType.Parameter("clusters") List<GetClustersCluster> clusters,
-        @CustomType.Parameter("createType") @Nullable String createType,
-        @CustomType.Parameter("defaultStatus") @Nullable Boolean defaultStatus,
-        @CustomType.Parameter("depositType") @Nullable String depositType,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("isDesc") @Nullable Boolean isDesc,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("statusLists") @Nullable List<String> statusLists,
-        @CustomType.Parameter("totalCount") Integer totalCount,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.clusterName = clusterName;
-        this.clusterTypeLists = clusterTypeLists;
-        this.clusters = clusters;
-        this.createType = createType;
-        this.defaultStatus = defaultStatus;
-        this.depositType = depositType;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.isDesc = isDesc;
-        this.machineType = machineType;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.resourceGroupId = resourceGroupId;
-        this.statusLists = statusLists;
-        this.totalCount = totalCount;
-        this.vpcId = vpcId;
-    }
-
+    private GetClustersResult() {}
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
@@ -156,7 +113,7 @@ public final class GetClustersResult {
     public static Builder builder(GetClustersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterName;
         private @Nullable List<String> clusterTypeLists;
@@ -178,11 +135,7 @@ public final class GetClustersResult {
         private @Nullable List<String> statusLists;
         private Integer totalCount;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterName = defaults.clusterName;
@@ -207,10 +160,12 @@ public final class GetClustersResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
             this.clusterName = clusterName;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTypeLists(@Nullable List<String> clusterTypeLists) {
             this.clusterTypeLists = clusterTypeLists;
             return this;
@@ -218,6 +173,7 @@ public final class GetClustersResult {
         public Builder clusterTypeLists(String... clusterTypeLists) {
             return clusterTypeLists(List.of(clusterTypeLists));
         }
+        @CustomType.Setter
         public Builder clusters(List<GetClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -225,26 +181,32 @@ public final class GetClustersResult {
         public Builder clusters(GetClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
+        @CustomType.Setter
         public Builder createType(@Nullable String createType) {
             this.createType = createType;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultStatus(@Nullable Boolean defaultStatus) {
             this.defaultStatus = defaultStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder depositType(@Nullable String depositType) {
             this.depositType = depositType;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -252,18 +214,22 @@ public final class GetClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder isDesc(@Nullable Boolean isDesc) {
             this.isDesc = isDesc;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -271,22 +237,27 @@ public final class GetClustersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder statusLists(@Nullable List<String> statusLists) {
             this.statusLists = statusLists;
             return this;
@@ -294,15 +265,39 @@ public final class GetClustersResult {
         public Builder statusLists(String... statusLists) {
             return statusLists(List.of(statusLists));
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public GetClustersResult build() {
-            return new GetClustersResult(clusterName, clusterTypeLists, clusters, createType, defaultStatus, depositType, enableDetails, id, ids, isDesc, machineType, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId, statusLists, totalCount, vpcId);
+        }
+        public GetClustersResult build() {
+            final var o = new GetClustersResult();
+            o.clusterName = clusterName;
+            o.clusterTypeLists = clusterTypeLists;
+            o.clusters = clusters;
+            o.createType = createType;
+            o.defaultStatus = defaultStatus;
+            o.depositType = depositType;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.isDesc = isDesc;
+            o.machineType = machineType;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.resourceGroupId = resourceGroupId;
+            o.statusLists = statusLists;
+            o.totalCount = totalCount;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

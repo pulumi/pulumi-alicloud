@@ -13,21 +13,14 @@ public final class GetAccessPointsPointAccessPointFeatureModel {
      * @return The Access Point Properties.
      * 
      */
-    private final String featureKey;
+    private String featureKey;
     /**
      * @return The Access Point Characteristic Value.
      * 
      */
-    private final String featureValue;
+    private String featureValue;
 
-    @CustomType.Constructor
-    private GetAccessPointsPointAccessPointFeatureModel(
-        @CustomType.Parameter("featureKey") String featureKey,
-        @CustomType.Parameter("featureValue") String featureValue) {
-        this.featureKey = featureKey;
-        this.featureValue = featureValue;
-    }
-
+    private GetAccessPointsPointAccessPointFeatureModel() {}
     /**
      * @return The Access Point Properties.
      * 
@@ -50,30 +43,32 @@ public final class GetAccessPointsPointAccessPointFeatureModel {
     public static Builder builder(GetAccessPointsPointAccessPointFeatureModel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String featureKey;
         private String featureValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessPointsPointAccessPointFeatureModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.featureKey = defaults.featureKey;
     	      this.featureValue = defaults.featureValue;
         }
 
+        @CustomType.Setter
         public Builder featureKey(String featureKey) {
             this.featureKey = Objects.requireNonNull(featureKey);
             return this;
         }
+        @CustomType.Setter
         public Builder featureValue(String featureValue) {
             this.featureValue = Objects.requireNonNull(featureValue);
             return this;
-        }        public GetAccessPointsPointAccessPointFeatureModel build() {
-            return new GetAccessPointsPointAccessPointFeatureModel(featureKey, featureValue);
+        }
+        public GetAccessPointsPointAccessPointFeatureModel build() {
+            final var o = new GetAccessPointsPointAccessPointFeatureModel();
+            o.featureKey = featureKey;
+            o.featureValue = featureValue;
+            return o;
         }
     }
 }

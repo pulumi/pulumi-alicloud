@@ -13,30 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConsumerChannelsResult {
-    private final List<GetConsumerChannelsChannel> channels;
-    private final String dtsInstanceId;
+    private List<GetConsumerChannelsChannel> channels;
+    private String dtsInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetConsumerChannelsResult(
-        @CustomType.Parameter("channels") List<GetConsumerChannelsChannel> channels,
-        @CustomType.Parameter("dtsInstanceId") String dtsInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.channels = channels;
-        this.dtsInstanceId = dtsInstanceId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-    }
-
+    private GetConsumerChannelsResult() {}
     public List<GetConsumerChannelsChannel> channels() {
         return this.channels;
     }
@@ -64,18 +51,14 @@ public final class GetConsumerChannelsResult {
     public static Builder builder(GetConsumerChannelsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetConsumerChannelsChannel> channels;
         private String dtsInstanceId;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConsumerChannelsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channels = defaults.channels;
@@ -85,6 +68,7 @@ public final class GetConsumerChannelsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder channels(List<GetConsumerChannelsChannel> channels) {
             this.channels = Objects.requireNonNull(channels);
             return this;
@@ -92,14 +76,17 @@ public final class GetConsumerChannelsResult {
         public Builder channels(GetConsumerChannelsChannel... channels) {
             return channels(List.of(channels));
         }
+        @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
             this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -107,11 +94,19 @@ public final class GetConsumerChannelsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetConsumerChannelsResult build() {
-            return new GetConsumerChannelsResult(channels, dtsInstanceId, id, ids, outputFile);
+        }
+        public GetConsumerChannelsResult build() {
+            final var o = new GetConsumerChannelsResult();
+            o.channels = channels;
+            o.dtsInstanceId = dtsInstanceId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServerGroupServer {
-    private final Integer port;
-    private final List<String> serverIds;
-    private final @Nullable String type;
-    private final @Nullable Integer weight;
+    private Integer port;
+    private List<String> serverIds;
+    private @Nullable String type;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private ServerGroupServer(
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("serverIds") List<String> serverIds,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.port = port;
-        this.serverIds = serverIds;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private ServerGroupServer() {}
     public Integer port() {
         return this.port;
     }
@@ -50,17 +39,13 @@ public final class ServerGroupServer {
     public static Builder builder(ServerGroupServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
         private List<String> serverIds;
         private @Nullable String type;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
@@ -69,10 +54,12 @@ public final class ServerGroupServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder serverIds(List<String> serverIds) {
             this.serverIds = Objects.requireNonNull(serverIds);
             return this;
@@ -80,15 +67,23 @@ public final class ServerGroupServer {
         public Builder serverIds(String... serverIds) {
             return serverIds(List.of(serverIds));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public ServerGroupServer build() {
-            return new ServerGroupServer(port, serverIds, type, weight);
+        }
+        public ServerGroupServer build() {
+            final var o = new ServerGroupServer();
+            o.port = port;
+            o.serverIds = serverIds;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class DomainConfigFunctionArg {
      * @return The name of arg.
      * 
      */
-    private final String argName;
+    private String argName;
     /**
      * @return The value of arg.
      * 
      */
-    private final String argValue;
+    private String argValue;
 
-    @CustomType.Constructor
-    private DomainConfigFunctionArg(
-        @CustomType.Parameter("argName") String argName,
-        @CustomType.Parameter("argValue") String argValue) {
-        this.argName = argName;
-        this.argValue = argValue;
-    }
-
+    private DomainConfigFunctionArg() {}
     /**
      * @return The name of arg.
      * 
@@ -50,30 +43,32 @@ public final class DomainConfigFunctionArg {
     public static Builder builder(DomainConfigFunctionArg defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String argName;
         private String argValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainConfigFunctionArg defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.argName = defaults.argName;
     	      this.argValue = defaults.argValue;
         }
 
+        @CustomType.Setter
         public Builder argName(String argName) {
             this.argName = Objects.requireNonNull(argName);
             return this;
         }
+        @CustomType.Setter
         public Builder argValue(String argValue) {
             this.argValue = Objects.requireNonNull(argValue);
             return this;
-        }        public DomainConfigFunctionArg build() {
-            return new DomainConfigFunctionArg(argName, argValue);
+        }
+        public DomainConfigFunctionArg build() {
+            final var o = new DomainConfigFunctionArg();
+            o.argName = argName;
+            o.argValue = argValue;
+            return o;
         }
     }
 }

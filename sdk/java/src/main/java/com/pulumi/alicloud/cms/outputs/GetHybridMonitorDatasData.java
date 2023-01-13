@@ -16,28 +16,19 @@ public final class GetHybridMonitorDatasData {
      * @return The label of the time dimension.
      * 
      */
-    private final List<GetHybridMonitorDatasDataLabel> labels;
+    private List<GetHybridMonitorDatasDataLabel> labels;
     /**
      * @return The name of the monitoring indicator.
      * 
      */
-    private final String metricName;
+    private String metricName;
     /**
      * @return The metric values that are collected at different timestamps.
      * 
      */
-    private final List<GetHybridMonitorDatasDataValue> values;
+    private List<GetHybridMonitorDatasDataValue> values;
 
-    @CustomType.Constructor
-    private GetHybridMonitorDatasData(
-        @CustomType.Parameter("labels") List<GetHybridMonitorDatasDataLabel> labels,
-        @CustomType.Parameter("metricName") String metricName,
-        @CustomType.Parameter("values") List<GetHybridMonitorDatasDataValue> values) {
-        this.labels = labels;
-        this.metricName = metricName;
-        this.values = values;
-    }
-
+    private GetHybridMonitorDatasData() {}
     /**
      * @return The label of the time dimension.
      * 
@@ -67,16 +58,12 @@ public final class GetHybridMonitorDatasData {
     public static Builder builder(GetHybridMonitorDatasData defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHybridMonitorDatasDataLabel> labels;
         private String metricName;
         private List<GetHybridMonitorDatasDataValue> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorDatasData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
@@ -84,6 +71,7 @@ public final class GetHybridMonitorDatasData {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder labels(List<GetHybridMonitorDatasDataLabel> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
@@ -91,18 +79,25 @@ public final class GetHybridMonitorDatasData {
         public Builder labels(GetHybridMonitorDatasDataLabel... labels) {
             return labels(List.of(labels));
         }
+        @CustomType.Setter
         public Builder metricName(String metricName) {
             this.metricName = Objects.requireNonNull(metricName);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<GetHybridMonitorDatasDataValue> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(GetHybridMonitorDatasDataValue... values) {
             return values(List.of(values));
-        }        public GetHybridMonitorDatasData build() {
-            return new GetHybridMonitorDatasData(labels, metricName, values);
+        }
+        public GetHybridMonitorDatasData build() {
+            final var o = new GetHybridMonitorDatasData();
+            o.labels = labels;
+            o.metricName = metricName;
+            o.values = values;
+            return o;
         }
     }
 }

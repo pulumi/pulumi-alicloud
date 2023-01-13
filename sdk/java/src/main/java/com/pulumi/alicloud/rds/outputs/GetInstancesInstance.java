@@ -21,134 +21,134 @@ public final class GetInstancesInstance {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * 
      */
-    private final String acl;
+    private String acl;
     /**
      * @return Availability zone.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      * 
      */
-    private final String caType;
+    private String caType;
     /**
      * @return Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
      * 
      */
-    private final String chargeType;
+    private String chargeType;
     /**
      * @return (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String clientCaCert;
-    private final String clientCaCertExpireTime;
+    private String clientCaCert;
+    private String clientCaCertExpireTime;
     /**
      * @return (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String clientCertRevocationList;
+    private String clientCertRevocationList;
     /**
      * @return `Standard` for standard access mode and `Safe` for high security access mode.
      * 
      */
-    private final String connectionMode;
+    private String connectionMode;
     /**
      * @return (Available in 1.70.3+) RDS database connection string.
      * 
      */
-    private final String connectionString;
+    private String connectionString;
     /**
      * @return Creation time of the instance.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return (Available in 1.124.3+) The creator of the encryption key.
      * 
      */
-    private final String creator;
+    private String creator;
     /**
      * @return (Available in 1.70.3+) The storage type of the instance.
      * 
      */
-    private final String dbInstanceStorageType;
+    private String dbInstanceStorageType;
     /**
      * @return `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      * 
      */
-    private final String dbType;
+    private String dbType;
     /**
      * @return (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private final String deleteDate;
+    private String deleteDate;
     /**
      * @return (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
      * * **true**: The release protection feature is enabled.
      * * **false**: The release protection feature is disabled.
      * 
      */
-    private final Boolean deletionProtection;
+    private Boolean deletionProtection;
     /**
      * @return (Available in 1.124.3+) The description of the encryption key.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Available in 1.124.3+) The ID of the encryption key.
      * 
      */
-    private final String encryptionKey;
+    private String encryptionKey;
     /**
      * @return (Available in 1.124.3+) The status of the encryption key. Valid values:
      * - Enabled
      * - Disabled
      * 
      */
-    private final String encryptionKeyStatus;
+    private String encryptionKeyStatus;
     /**
      * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database version.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return Expiration time. Pay-As-You-Go instances never expire.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
      * 
      */
-    private final String guardInstanceId;
+    private String guardInstanceId;
     /**
      * @return The ID of the RDS instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Available in 1.70.3+) User-defined DB instance storage space.
      * 
      */
-    private final Integer instanceStorage;
+    private Integer instanceStorage;
     /**
      * @return Sizing of the RDS instance.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return (Available in 1.124.3+) The purpose of the encryption key.
      * 
      */
-    private final String keyUsage;
+    private String keyUsage;
     /**
      * @return (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - success
@@ -156,62 +156,62 @@ public final class GetInstancesInstance {
      * - failed
      * 
      */
-    private final String lastModifyStatus;
+    private String lastModifyStatus;
     /**
      * @return ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
      * 
      */
-    private final String masterInstanceId;
+    private String masterInstanceId;
     /**
      * @return (Available in 1.101.0+) The master zone of the instance.
      * 
      */
-    private final String masterZone;
+    private String masterZone;
     /**
      * @return (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private final String materialExpireTime;
+    private String materialExpireTime;
     /**
      * @return (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String modifyStatusReason;
+    private String modifyStatusReason;
     /**
      * @return The name of the RDS instance.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return `Internet` for public network or `Intranet` for private network.
      * 
      */
-    private final String netType;
+    private String netType;
     /**
      * @return (Available in 1.124.3+) The source of the encryption key.
      * 
      */
-    private final String origin;
+    private String origin;
     /**
      * @return (Available in 1.135.0+) Parameter list.
      * 
      */
-    private final List<GetInstancesInstanceParameter> parameters;
+    private List<GetInstancesInstanceParameter> parameters;
     /**
      * @return (Available in 1.70.3+) RDS database connection port.
      * 
      */
-    private final String port;
+    private String port;
     /**
      * @return A list of IDs of read-only instances attached to the primary instance.
      * 
      */
-    private final List<String> readonlyInstanceIds;
+    private List<String> readonlyInstanceIds;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - cert
@@ -220,7 +220,7 @@ public final class GetInstancesInstance {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * 
      */
-    private final String replicationAcl;
+    private String replicationAcl;
     /**
      * @return (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
      * - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
@@ -231,192 +231,81 @@ public final class GetInstancesInstance {
      * - 1: yes
      * 
      */
-    private final String requireUpdate;
+    private String requireUpdate;
     /**
      * @return (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String requireUpdateItem;
+    private String requireUpdateItem;
     /**
      * @return (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String requireUpdateReason;
+    private String requireUpdateReason;
     /**
      * @return (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String serverCaUrl;
+    private String serverCaUrl;
     /**
      * @return (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String serverCert;
+    private String serverCert;
     /**
      * @return (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
      * 
      */
-    private final String serverKey;
+    private String serverKey;
     /**
      * @return (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
      * 
      */
-    private final String sslCreateTime;
+    private String sslCreateTime;
     /**
      * @return (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
      * - on: enabled
      * - off: disabled
      * 
      */
-    private final String sslEnabled;
+    private String sslEnabled;
     /**
      * @return (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private final String sslExpireTime;
+    private String sslExpireTime;
     /**
      * @return Status of the instance.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
      * 
      */
-    private final String tempInstanceId;
+    private String tempInstanceId;
     /**
      * @return Used to retrieve instances belong to specified VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      * 
      */
-    private final String zoneIdSlaveA;
+    private String zoneIdSlaveA;
     /**
      * @return (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      * 
      */
-    private final String zoneIdSlaveB;
+    private String zoneIdSlaveB;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("acl") String acl,
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("caType") String caType,
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("clientCaCert") String clientCaCert,
-        @CustomType.Parameter("clientCaCertExpireTime") String clientCaCertExpireTime,
-        @CustomType.Parameter("clientCertRevocationList") String clientCertRevocationList,
-        @CustomType.Parameter("connectionMode") String connectionMode,
-        @CustomType.Parameter("connectionString") String connectionString,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("creator") String creator,
-        @CustomType.Parameter("dbInstanceStorageType") String dbInstanceStorageType,
-        @CustomType.Parameter("dbType") String dbType,
-        @CustomType.Parameter("deleteDate") String deleteDate,
-        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encryptionKey") String encryptionKey,
-        @CustomType.Parameter("encryptionKeyStatus") String encryptionKeyStatus,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("guardInstanceId") String guardInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceStorage") Integer instanceStorage,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("keyUsage") String keyUsage,
-        @CustomType.Parameter("lastModifyStatus") String lastModifyStatus,
-        @CustomType.Parameter("masterInstanceId") String masterInstanceId,
-        @CustomType.Parameter("masterZone") String masterZone,
-        @CustomType.Parameter("materialExpireTime") String materialExpireTime,
-        @CustomType.Parameter("modifyStatusReason") String modifyStatusReason,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("netType") String netType,
-        @CustomType.Parameter("origin") String origin,
-        @CustomType.Parameter("parameters") List<GetInstancesInstanceParameter> parameters,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("readonlyInstanceIds") List<String> readonlyInstanceIds,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("replicationAcl") String replicationAcl,
-        @CustomType.Parameter("requireUpdate") String requireUpdate,
-        @CustomType.Parameter("requireUpdateItem") String requireUpdateItem,
-        @CustomType.Parameter("requireUpdateReason") String requireUpdateReason,
-        @CustomType.Parameter("serverCaUrl") String serverCaUrl,
-        @CustomType.Parameter("serverCert") String serverCert,
-        @CustomType.Parameter("serverKey") String serverKey,
-        @CustomType.Parameter("sslCreateTime") String sslCreateTime,
-        @CustomType.Parameter("sslEnabled") String sslEnabled,
-        @CustomType.Parameter("sslExpireTime") String sslExpireTime,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tempInstanceId") String tempInstanceId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneIdSlaveA") String zoneIdSlaveA,
-        @CustomType.Parameter("zoneIdSlaveB") String zoneIdSlaveB) {
-        this.acl = acl;
-        this.availabilityZone = availabilityZone;
-        this.caType = caType;
-        this.chargeType = chargeType;
-        this.clientCaCert = clientCaCert;
-        this.clientCaCertExpireTime = clientCaCertExpireTime;
-        this.clientCertRevocationList = clientCertRevocationList;
-        this.connectionMode = connectionMode;
-        this.connectionString = connectionString;
-        this.createTime = createTime;
-        this.creator = creator;
-        this.dbInstanceStorageType = dbInstanceStorageType;
-        this.dbType = dbType;
-        this.deleteDate = deleteDate;
-        this.deletionProtection = deletionProtection;
-        this.description = description;
-        this.encryptionKey = encryptionKey;
-        this.encryptionKeyStatus = encryptionKeyStatus;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.expireTime = expireTime;
-        this.guardInstanceId = guardInstanceId;
-        this.id = id;
-        this.instanceStorage = instanceStorage;
-        this.instanceType = instanceType;
-        this.keyUsage = keyUsage;
-        this.lastModifyStatus = lastModifyStatus;
-        this.masterInstanceId = masterInstanceId;
-        this.masterZone = masterZone;
-        this.materialExpireTime = materialExpireTime;
-        this.modifyStatusReason = modifyStatusReason;
-        this.name = name;
-        this.netType = netType;
-        this.origin = origin;
-        this.parameters = parameters;
-        this.port = port;
-        this.readonlyInstanceIds = readonlyInstanceIds;
-        this.regionId = regionId;
-        this.replicationAcl = replicationAcl;
-        this.requireUpdate = requireUpdate;
-        this.requireUpdateItem = requireUpdateItem;
-        this.requireUpdateReason = requireUpdateReason;
-        this.serverCaUrl = serverCaUrl;
-        this.serverCert = serverCert;
-        this.serverKey = serverKey;
-        this.sslCreateTime = sslCreateTime;
-        this.sslEnabled = sslEnabled;
-        this.sslExpireTime = sslExpireTime;
-        this.status = status;
-        this.tempInstanceId = tempInstanceId;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneIdSlaveA = zoneIdSlaveA;
-        this.zoneIdSlaveB = zoneIdSlaveB;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - cert
@@ -824,7 +713,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acl;
         private String availabilityZone;
@@ -880,11 +769,7 @@ public final class GetInstancesInstance {
         private String vswitchId;
         private String zoneIdSlaveA;
         private String zoneIdSlaveB;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acl = defaults.acl;
@@ -943,142 +828,177 @@ public final class GetInstancesInstance {
     	      this.zoneIdSlaveB = defaults.zoneIdSlaveB;
         }
 
+        @CustomType.Setter
         public Builder acl(String acl) {
             this.acl = Objects.requireNonNull(acl);
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder caType(String caType) {
             this.caType = Objects.requireNonNull(caType);
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder clientCaCert(String clientCaCert) {
             this.clientCaCert = Objects.requireNonNull(clientCaCert);
             return this;
         }
+        @CustomType.Setter
         public Builder clientCaCertExpireTime(String clientCaCertExpireTime) {
             this.clientCaCertExpireTime = Objects.requireNonNull(clientCaCertExpireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder clientCertRevocationList(String clientCertRevocationList) {
             this.clientCertRevocationList = Objects.requireNonNull(clientCertRevocationList);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionMode(String connectionMode) {
             this.connectionMode = Objects.requireNonNull(connectionMode);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder creator(String creator) {
             this.creator = Objects.requireNonNull(creator);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
             this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteDate(String deleteDate) {
             this.deleteDate = Objects.requireNonNull(deleteDate);
             return this;
         }
+        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
             this.encryptionKey = Objects.requireNonNull(encryptionKey);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKeyStatus(String encryptionKeyStatus) {
             this.encryptionKeyStatus = Objects.requireNonNull(encryptionKeyStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder guardInstanceId(String guardInstanceId) {
             this.guardInstanceId = Objects.requireNonNull(guardInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceStorage(Integer instanceStorage) {
             this.instanceStorage = Objects.requireNonNull(instanceStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder keyUsage(String keyUsage) {
             this.keyUsage = Objects.requireNonNull(keyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModifyStatus(String lastModifyStatus) {
             this.lastModifyStatus = Objects.requireNonNull(lastModifyStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder masterInstanceId(String masterInstanceId) {
             this.masterInstanceId = Objects.requireNonNull(masterInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder masterZone(String masterZone) {
             this.masterZone = Objects.requireNonNull(masterZone);
             return this;
         }
+        @CustomType.Setter
         public Builder materialExpireTime(String materialExpireTime) {
             this.materialExpireTime = Objects.requireNonNull(materialExpireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder modifyStatusReason(String modifyStatusReason) {
             this.modifyStatusReason = Objects.requireNonNull(modifyStatusReason);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder netType(String netType) {
             this.netType = Objects.requireNonNull(netType);
             return this;
         }
+        @CustomType.Setter
         public Builder origin(String origin) {
             this.origin = Objects.requireNonNull(origin);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(List<GetInstancesInstanceParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -1086,10 +1006,12 @@ public final class GetInstancesInstance {
         public Builder parameters(GetInstancesInstanceParameter... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder readonlyInstanceIds(List<String> readonlyInstanceIds) {
             this.readonlyInstanceIds = Objects.requireNonNull(readonlyInstanceIds);
             return this;
@@ -1097,75 +1019,148 @@ public final class GetInstancesInstance {
         public Builder readonlyInstanceIds(String... readonlyInstanceIds) {
             return readonlyInstanceIds(List.of(readonlyInstanceIds));
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder replicationAcl(String replicationAcl) {
             this.replicationAcl = Objects.requireNonNull(replicationAcl);
             return this;
         }
+        @CustomType.Setter
         public Builder requireUpdate(String requireUpdate) {
             this.requireUpdate = Objects.requireNonNull(requireUpdate);
             return this;
         }
+        @CustomType.Setter
         public Builder requireUpdateItem(String requireUpdateItem) {
             this.requireUpdateItem = Objects.requireNonNull(requireUpdateItem);
             return this;
         }
+        @CustomType.Setter
         public Builder requireUpdateReason(String requireUpdateReason) {
             this.requireUpdateReason = Objects.requireNonNull(requireUpdateReason);
             return this;
         }
+        @CustomType.Setter
         public Builder serverCaUrl(String serverCaUrl) {
             this.serverCaUrl = Objects.requireNonNull(serverCaUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder serverCert(String serverCert) {
             this.serverCert = Objects.requireNonNull(serverCert);
             return this;
         }
+        @CustomType.Setter
         public Builder serverKey(String serverKey) {
             this.serverKey = Objects.requireNonNull(serverKey);
             return this;
         }
+        @CustomType.Setter
         public Builder sslCreateTime(String sslCreateTime) {
             this.sslCreateTime = Objects.requireNonNull(sslCreateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder sslEnabled(String sslEnabled) {
             this.sslEnabled = Objects.requireNonNull(sslEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder sslExpireTime(String sslExpireTime) {
             this.sslExpireTime = Objects.requireNonNull(sslExpireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tempInstanceId(String tempInstanceId) {
             this.tempInstanceId = Objects.requireNonNull(tempInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIdSlaveA(String zoneIdSlaveA) {
             this.zoneIdSlaveA = Objects.requireNonNull(zoneIdSlaveA);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIdSlaveB(String zoneIdSlaveB) {
             this.zoneIdSlaveB = Objects.requireNonNull(zoneIdSlaveB);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(acl, availabilityZone, caType, chargeType, clientCaCert, clientCaCertExpireTime, clientCertRevocationList, connectionMode, connectionString, createTime, creator, dbInstanceStorageType, dbType, deleteDate, deletionProtection, description, encryptionKey, encryptionKeyStatus, engine, engineVersion, expireTime, guardInstanceId, id, instanceStorage, instanceType, keyUsage, lastModifyStatus, masterInstanceId, masterZone, materialExpireTime, modifyStatusReason, name, netType, origin, parameters, port, readonlyInstanceIds, regionId, replicationAcl, requireUpdate, requireUpdateItem, requireUpdateReason, serverCaUrl, serverCert, serverKey, sslCreateTime, sslEnabled, sslExpireTime, status, tempInstanceId, vpcId, vswitchId, zoneIdSlaveA, zoneIdSlaveB);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.acl = acl;
+            o.availabilityZone = availabilityZone;
+            o.caType = caType;
+            o.chargeType = chargeType;
+            o.clientCaCert = clientCaCert;
+            o.clientCaCertExpireTime = clientCaCertExpireTime;
+            o.clientCertRevocationList = clientCertRevocationList;
+            o.connectionMode = connectionMode;
+            o.connectionString = connectionString;
+            o.createTime = createTime;
+            o.creator = creator;
+            o.dbInstanceStorageType = dbInstanceStorageType;
+            o.dbType = dbType;
+            o.deleteDate = deleteDate;
+            o.deletionProtection = deletionProtection;
+            o.description = description;
+            o.encryptionKey = encryptionKey;
+            o.encryptionKeyStatus = encryptionKeyStatus;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.expireTime = expireTime;
+            o.guardInstanceId = guardInstanceId;
+            o.id = id;
+            o.instanceStorage = instanceStorage;
+            o.instanceType = instanceType;
+            o.keyUsage = keyUsage;
+            o.lastModifyStatus = lastModifyStatus;
+            o.masterInstanceId = masterInstanceId;
+            o.masterZone = masterZone;
+            o.materialExpireTime = materialExpireTime;
+            o.modifyStatusReason = modifyStatusReason;
+            o.name = name;
+            o.netType = netType;
+            o.origin = origin;
+            o.parameters = parameters;
+            o.port = port;
+            o.readonlyInstanceIds = readonlyInstanceIds;
+            o.regionId = regionId;
+            o.replicationAcl = replicationAcl;
+            o.requireUpdate = requireUpdate;
+            o.requireUpdateItem = requireUpdateItem;
+            o.requireUpdateReason = requireUpdateReason;
+            o.serverCaUrl = serverCaUrl;
+            o.serverCert = serverCert;
+            o.serverKey = serverKey;
+            o.sslCreateTime = sslCreateTime;
+            o.sslEnabled = sslEnabled;
+            o.sslExpireTime = sslExpireTime;
+            o.status = status;
+            o.tempInstanceId = tempInstanceId;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneIdSlaveA = zoneIdSlaveA;
+            o.zoneIdSlaveB = zoneIdSlaveB;
+            return o;
         }
     }
 }

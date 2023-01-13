@@ -14,91 +14,64 @@ public final class GetPatchBaselinesBaseline {
      * @return Accept the rules.
      * 
      */
-    private final String approvalRules;
+    private String approvalRules;
     /**
      * @return The create time of patch baselines.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The user who created the patch baselines.
      * 
      */
-    private final String createdBy;
+    private String createdBy;
     /**
      * @return Patches baseline description information.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether it is the default patch baseline.
      * 
      */
-    private final Boolean isDefault;
+    private Boolean isDefault;
     /**
      * @return Operating system type.
      * 
      */
-    private final String operationSystem;
+    private String operationSystem;
     /**
      * @return Patch baseline ID.
      * 
      */
-    private final String patchBaselineId;
+    private String patchBaselineId;
     /**
      * @return The name of the patch baseline.
      * 
      */
-    private final String patchBaselineName;
+    private String patchBaselineName;
     /**
      * @return Patch baseline sharing type.
      * 
      */
-    private final String shareType;
+    private String shareType;
     /**
      * @return The user who updated the patch baselines.
      * 
      */
-    private final String updatedBy;
+    private String updatedBy;
     /**
      * @return The update time of patch baselines.
      * 
      */
-    private final String updatedDate;
+    private String updatedDate;
 
-    @CustomType.Constructor
-    private GetPatchBaselinesBaseline(
-        @CustomType.Parameter("approvalRules") String approvalRules,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createdBy") String createdBy,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isDefault") Boolean isDefault,
-        @CustomType.Parameter("operationSystem") String operationSystem,
-        @CustomType.Parameter("patchBaselineId") String patchBaselineId,
-        @CustomType.Parameter("patchBaselineName") String patchBaselineName,
-        @CustomType.Parameter("shareType") String shareType,
-        @CustomType.Parameter("updatedBy") String updatedBy,
-        @CustomType.Parameter("updatedDate") String updatedDate) {
-        this.approvalRules = approvalRules;
-        this.createTime = createTime;
-        this.createdBy = createdBy;
-        this.description = description;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.operationSystem = operationSystem;
-        this.patchBaselineId = patchBaselineId;
-        this.patchBaselineName = patchBaselineName;
-        this.shareType = shareType;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
-    }
-
+    private GetPatchBaselinesBaseline() {}
     /**
      * @return Accept the rules.
      * 
@@ -191,7 +164,7 @@ public final class GetPatchBaselinesBaseline {
     public static Builder builder(GetPatchBaselinesBaseline defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String approvalRules;
         private String createTime;
@@ -205,11 +178,7 @@ public final class GetPatchBaselinesBaseline {
         private String shareType;
         private String updatedBy;
         private String updatedDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPatchBaselinesBaseline defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.approvalRules = defaults.approvalRules;
@@ -226,55 +195,81 @@ public final class GetPatchBaselinesBaseline {
     	      this.updatedDate = defaults.updatedDate;
         }
 
+        @CustomType.Setter
         public Builder approvalRules(String approvalRules) {
             this.approvalRules = Objects.requireNonNull(approvalRules);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
+        @CustomType.Setter
         public Builder operationSystem(String operationSystem) {
             this.operationSystem = Objects.requireNonNull(operationSystem);
             return this;
         }
+        @CustomType.Setter
         public Builder patchBaselineId(String patchBaselineId) {
             this.patchBaselineId = Objects.requireNonNull(patchBaselineId);
             return this;
         }
+        @CustomType.Setter
         public Builder patchBaselineName(String patchBaselineName) {
             this.patchBaselineName = Objects.requireNonNull(patchBaselineName);
             return this;
         }
+        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
             this.updatedBy = Objects.requireNonNull(updatedBy);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
             this.updatedDate = Objects.requireNonNull(updatedDate);
             return this;
-        }        public GetPatchBaselinesBaseline build() {
-            return new GetPatchBaselinesBaseline(approvalRules, createTime, createdBy, description, id, isDefault, operationSystem, patchBaselineId, patchBaselineName, shareType, updatedBy, updatedDate);
+        }
+        public GetPatchBaselinesBaseline build() {
+            final var o = new GetPatchBaselinesBaseline();
+            o.approvalRules = approvalRules;
+            o.createTime = createTime;
+            o.createdBy = createdBy;
+            o.description = description;
+            o.id = id;
+            o.isDefault = isDefault;
+            o.operationSystem = operationSystem;
+            o.patchBaselineId = patchBaselineId;
+            o.patchBaselineName = patchBaselineName;
+            o.shareType = shareType;
+            o.updatedBy = updatedBy;
+            o.updatedDate = updatedDate;
+            return o;
         }
     }
 }

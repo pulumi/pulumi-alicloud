@@ -18,98 +18,69 @@ public final class GetAutoSnapshotPoliciesPolicy {
      * @return The ID of the Auto Snapshot Policy.
      * 
      */
-    private final String autoSnapshotPolicyId;
+    private String autoSnapshotPolicyId;
     /**
      * @return The retention period of the snapshot copied across regions.
      * 
      */
-    private final Integer copiedSnapshotsRetentionDays;
+    private Integer copiedSnapshotsRetentionDays;
     /**
      * @return The number of disks to which the automatic snapshot policy is applied.
      * 
      */
-    private final Integer diskNums;
+    private Integer diskNums;
     /**
      * @return Specifies whether to enable the system to automatically copy snapshots across regions.
      * 
      */
-    private final Boolean enableCrossRegionCopy;
+    private Boolean enableCrossRegionCopy;
     /**
      * @return The ID of the Auto Snapshot Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The snapshot policy name..
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The automatic snapshot repetition dates.
      * 
      */
-    private final List<String> repeatWeekdays;
+    private List<String> repeatWeekdays;
     /**
      * @return The snapshot retention time, and the unit of measurement is day.
      * 
      */
-    private final Integer retentionDays;
+    private Integer retentionDays;
     /**
      * @return The status of Auto Snapshot Policy.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The destination region to which the snapshot is copied.
      * 
      */
-    private final List<String> targetCopyRegions;
+    private List<String> targetCopyRegions;
     /**
      * @return The automatic snapshot creation schedule, and the unit of measurement is hour.
      * 
      */
-    private final List<String> timePoints;
+    private List<String> timePoints;
     /**
      * @return The number of extended volumes on which this policy is enabled.
      * 
      */
-    private final Integer volumeNums;
+    private Integer volumeNums;
 
-    @CustomType.Constructor
-    private GetAutoSnapshotPoliciesPolicy(
-        @CustomType.Parameter("autoSnapshotPolicyId") String autoSnapshotPolicyId,
-        @CustomType.Parameter("copiedSnapshotsRetentionDays") Integer copiedSnapshotsRetentionDays,
-        @CustomType.Parameter("diskNums") Integer diskNums,
-        @CustomType.Parameter("enableCrossRegionCopy") Boolean enableCrossRegionCopy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("repeatWeekdays") List<String> repeatWeekdays,
-        @CustomType.Parameter("retentionDays") Integer retentionDays,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("targetCopyRegions") List<String> targetCopyRegions,
-        @CustomType.Parameter("timePoints") List<String> timePoints,
-        @CustomType.Parameter("volumeNums") Integer volumeNums) {
-        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
-        this.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
-        this.diskNums = diskNums;
-        this.enableCrossRegionCopy = enableCrossRegionCopy;
-        this.id = id;
-        this.name = name;
-        this.repeatWeekdays = repeatWeekdays;
-        this.retentionDays = retentionDays;
-        this.status = status;
-        this.tags = tags;
-        this.targetCopyRegions = targetCopyRegions;
-        this.timePoints = timePoints;
-        this.volumeNums = volumeNums;
-    }
-
+    private GetAutoSnapshotPoliciesPolicy() {}
     /**
      * @return The ID of the Auto Snapshot Policy.
      * 
@@ -209,7 +180,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
     public static Builder builder(GetAutoSnapshotPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String autoSnapshotPolicyId;
         private Integer copiedSnapshotsRetentionDays;
@@ -224,11 +195,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
         private List<String> targetCopyRegions;
         private List<String> timePoints;
         private Integer volumeNums;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAutoSnapshotPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -246,30 +213,37 @@ public final class GetAutoSnapshotPoliciesPolicy {
     	      this.volumeNums = defaults.volumeNums;
         }
 
+        @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder copiedSnapshotsRetentionDays(Integer copiedSnapshotsRetentionDays) {
             this.copiedSnapshotsRetentionDays = Objects.requireNonNull(copiedSnapshotsRetentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder diskNums(Integer diskNums) {
             this.diskNums = Objects.requireNonNull(diskNums);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCrossRegionCopy(Boolean enableCrossRegionCopy) {
             this.enableCrossRegionCopy = Objects.requireNonNull(enableCrossRegionCopy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
             this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
             return this;
@@ -277,18 +251,22 @@ public final class GetAutoSnapshotPoliciesPolicy {
         public Builder repeatWeekdays(String... repeatWeekdays) {
             return repeatWeekdays(List.of(repeatWeekdays));
         }
+        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder targetCopyRegions(List<String> targetCopyRegions) {
             this.targetCopyRegions = Objects.requireNonNull(targetCopyRegions);
             return this;
@@ -296,6 +274,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
         public Builder targetCopyRegions(String... targetCopyRegions) {
             return targetCopyRegions(List.of(targetCopyRegions));
         }
+        @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
             this.timePoints = Objects.requireNonNull(timePoints);
             return this;
@@ -303,11 +282,27 @@ public final class GetAutoSnapshotPoliciesPolicy {
         public Builder timePoints(String... timePoints) {
             return timePoints(List.of(timePoints));
         }
+        @CustomType.Setter
         public Builder volumeNums(Integer volumeNums) {
             this.volumeNums = Objects.requireNonNull(volumeNums);
             return this;
-        }        public GetAutoSnapshotPoliciesPolicy build() {
-            return new GetAutoSnapshotPoliciesPolicy(autoSnapshotPolicyId, copiedSnapshotsRetentionDays, diskNums, enableCrossRegionCopy, id, name, repeatWeekdays, retentionDays, status, tags, targetCopyRegions, timePoints, volumeNums);
+        }
+        public GetAutoSnapshotPoliciesPolicy build() {
+            final var o = new GetAutoSnapshotPoliciesPolicy();
+            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            o.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
+            o.diskNums = diskNums;
+            o.enableCrossRegionCopy = enableCrossRegionCopy;
+            o.id = id;
+            o.name = name;
+            o.repeatWeekdays = repeatWeekdays;
+            o.retentionDays = retentionDays;
+            o.status = status;
+            o.tags = tags;
+            o.targetCopyRegions = targetCopyRegions;
+            o.timePoints = timePoints;
+            o.volumeNums = volumeNums;
+            return o;
         }
     }
 }

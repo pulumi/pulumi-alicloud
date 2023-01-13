@@ -13,42 +13,29 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
      * @return System disk description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return System disk name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The primary private IP address of the ENI.
      * 
      */
-    private final String primaryIp;
+    private String primaryIp;
     /**
      * @return The security group ID.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetEcsLaunchTemplatesTemplateNetworkInterface(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("primaryIp") String primaryIp,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.description = description;
-        this.name = name;
-        this.primaryIp = primaryIp;
-        this.securityGroupId = securityGroupId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetEcsLaunchTemplatesTemplateNetworkInterface() {}
     /**
      * @return System disk description.
      * 
@@ -92,18 +79,14 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
     public static Builder builder(GetEcsLaunchTemplatesTemplateNetworkInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String name;
         private String primaryIp;
         private String securityGroupId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsLaunchTemplatesTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -113,27 +96,39 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryIp(String primaryIp) {
             this.primaryIp = Objects.requireNonNull(primaryIp);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetEcsLaunchTemplatesTemplateNetworkInterface build() {
-            return new GetEcsLaunchTemplatesTemplateNetworkInterface(description, name, primaryIp, securityGroupId, vswitchId);
+        }
+        public GetEcsLaunchTemplatesTemplateNetworkInterface build() {
+            final var o = new GetEcsLaunchTemplatesTemplateNetworkInterface();
+            o.description = description;
+            o.name = name;
+            o.primaryIp = primaryIp;
+            o.securityGroupId = securityGroupId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

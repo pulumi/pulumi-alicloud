@@ -13,63 +13,44 @@ public final class GetChartRepositoriesRepository {
      * @return The first ID of the resource.
      * 
      */
-    private final String chartRepositoryId;
+    private String chartRepositoryId;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Chart Repository.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the Container Registry instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the repository.
      * 
      */
-    private final String repoName;
+    private String repoName;
     /**
      * @return The namespace to which the repository belongs.
      * 
      */
-    private final String repoNamespaceName;
+    private String repoNamespaceName;
     /**
      * @return The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
      * 
      */
-    private final String repoType;
+    private String repoType;
     /**
      * @return The summary about the repository.
      * 
      */
-    private final String summary;
+    private String summary;
 
-    @CustomType.Constructor
-    private GetChartRepositoriesRepository(
-        @CustomType.Parameter("chartRepositoryId") String chartRepositoryId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("repoName") String repoName,
-        @CustomType.Parameter("repoNamespaceName") String repoNamespaceName,
-        @CustomType.Parameter("repoType") String repoType,
-        @CustomType.Parameter("summary") String summary) {
-        this.chartRepositoryId = chartRepositoryId;
-        this.createTime = createTime;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.repoName = repoName;
-        this.repoNamespaceName = repoNamespaceName;
-        this.repoType = repoType;
-        this.summary = summary;
-    }
-
+    private GetChartRepositoriesRepository() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -134,7 +115,7 @@ public final class GetChartRepositoriesRepository {
     public static Builder builder(GetChartRepositoriesRepository defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String chartRepositoryId;
         private String createTime;
@@ -144,11 +125,7 @@ public final class GetChartRepositoriesRepository {
         private String repoNamespaceName;
         private String repoType;
         private String summary;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetChartRepositoriesRepository defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chartRepositoryId = defaults.chartRepositoryId;
@@ -161,39 +138,57 @@ public final class GetChartRepositoriesRepository {
     	      this.summary = defaults.summary;
         }
 
+        @CustomType.Setter
         public Builder chartRepositoryId(String chartRepositoryId) {
             this.chartRepositoryId = Objects.requireNonNull(chartRepositoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder repoName(String repoName) {
             this.repoName = Objects.requireNonNull(repoName);
             return this;
         }
+        @CustomType.Setter
         public Builder repoNamespaceName(String repoNamespaceName) {
             this.repoNamespaceName = Objects.requireNonNull(repoNamespaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder repoType(String repoType) {
             this.repoType = Objects.requireNonNull(repoType);
             return this;
         }
+        @CustomType.Setter
         public Builder summary(String summary) {
             this.summary = Objects.requireNonNull(summary);
             return this;
-        }        public GetChartRepositoriesRepository build() {
-            return new GetChartRepositoriesRepository(chartRepositoryId, createTime, id, instanceId, repoName, repoNamespaceName, repoType, summary);
+        }
+        public GetChartRepositoriesRepository build() {
+            final var o = new GetChartRepositoriesRepository();
+            o.chartRepositoryId = chartRepositoryId;
+            o.createTime = createTime;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.repoName = repoName;
+            o.repoNamespaceName = repoNamespaceName;
+            o.repoType = repoType;
+            o.summary = summary;
+            return o;
         }
     }
 }

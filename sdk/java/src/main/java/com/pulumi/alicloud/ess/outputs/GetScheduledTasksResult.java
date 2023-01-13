@@ -17,51 +17,32 @@ public final class GetScheduledTasksResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of scheduled task ids.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of scheduled task names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
-    private final @Nullable String scheduledAction;
-    private final @Nullable String scheduledTaskId;
+    private @Nullable String scheduledAction;
+    private @Nullable String scheduledTaskId;
     /**
      * @return A list of scheduled tasks. Each element contains the following attributes:
      * 
      */
-    private final List<GetScheduledTasksTask> tasks;
+    private List<GetScheduledTasksTask> tasks;
 
-    @CustomType.Constructor
-    private GetScheduledTasksResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("scheduledAction") @Nullable String scheduledAction,
-        @CustomType.Parameter("scheduledTaskId") @Nullable String scheduledTaskId,
-        @CustomType.Parameter("tasks") List<GetScheduledTasksTask> tasks) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.scheduledAction = scheduledAction;
-        this.scheduledTaskId = scheduledTaskId;
-        this.tasks = tasks;
-    }
-
+    private GetScheduledTasksResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -114,7 +95,7 @@ public final class GetScheduledTasksResult {
     public static Builder builder(GetScheduledTasksResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -124,11 +105,7 @@ public final class GetScheduledTasksResult {
         private @Nullable String scheduledAction;
         private @Nullable String scheduledTaskId;
         private List<GetScheduledTasksTask> tasks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetScheduledTasksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -141,10 +118,12 @@ public final class GetScheduledTasksResult {
     	      this.tasks = defaults.tasks;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,10 +131,12 @@ public final class GetScheduledTasksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -163,26 +144,40 @@ public final class GetScheduledTasksResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder scheduledAction(@Nullable String scheduledAction) {
             this.scheduledAction = scheduledAction;
             return this;
         }
+        @CustomType.Setter
         public Builder scheduledTaskId(@Nullable String scheduledTaskId) {
             this.scheduledTaskId = scheduledTaskId;
             return this;
         }
+        @CustomType.Setter
         public Builder tasks(List<GetScheduledTasksTask> tasks) {
             this.tasks = Objects.requireNonNull(tasks);
             return this;
         }
         public Builder tasks(GetScheduledTasksTask... tasks) {
             return tasks(List.of(tasks));
-        }        public GetScheduledTasksResult build() {
-            return new GetScheduledTasksResult(id, ids, nameRegex, names, outputFile, scheduledAction, scheduledTaskId, tasks);
+        }
+        public GetScheduledTasksResult build() {
+            final var o = new GetScheduledTasksResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.scheduledAction = scheduledAction;
+            o.scheduledTaskId = scheduledTaskId;
+            o.tasks = tasks;
+            return o;
         }
     }
 }

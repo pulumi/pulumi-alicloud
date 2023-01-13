@@ -18,32 +18,15 @@ public final class GetNamespacesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String keyword;
-    private final List<GetNamespacesNamespace> namespaces;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private @Nullable String keyword;
+    private List<GetNamespacesNamespace> namespaces;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetNamespacesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyword") @Nullable String keyword,
-        @CustomType.Parameter("namespaces") List<GetNamespacesNamespace> namespaces,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.id = id;
-        this.ids = ids;
-        this.keyword = keyword;
-        this.namespaces = namespaces;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetNamespacesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -77,7 +60,7 @@ public final class GetNamespacesResult {
     public static Builder builder(GetNamespacesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -86,11 +69,7 @@ public final class GetNamespacesResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -102,10 +81,12 @@ public final class GetNamespacesResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -113,10 +94,12 @@ public final class GetNamespacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
+        @CustomType.Setter
         public Builder namespaces(List<GetNamespacesNamespace> namespaces) {
             this.namespaces = Objects.requireNonNull(namespaces);
             return this;
@@ -124,19 +107,31 @@ public final class GetNamespacesResult {
         public Builder namespaces(GetNamespacesNamespace... namespaces) {
             return namespaces(List.of(namespaces));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetNamespacesResult build() {
-            return new GetNamespacesResult(id, ids, keyword, namespaces, outputFile, pageNumber, pageSize);
+        }
+        public GetNamespacesResult build() {
+            final var o = new GetNamespacesResult();
+            o.id = id;
+            o.ids = ids;
+            o.keyword = keyword;
+            o.namespaces = namespaces;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

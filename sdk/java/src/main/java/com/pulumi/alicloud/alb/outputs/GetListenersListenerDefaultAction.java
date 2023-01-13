@@ -15,21 +15,14 @@ public final class GetListenersListenerDefaultAction {
      * @return The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
      * 
      */
-    private final List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs;
+    private List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs;
     /**
      * @return Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetListenersListenerDefaultAction(
-        @CustomType.Parameter("forwardGroupConfigs") List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs,
-        @CustomType.Parameter("type") String type) {
-        this.forwardGroupConfigs = forwardGroupConfigs;
-        this.type = type;
-    }
-
+    private GetListenersListenerDefaultAction() {}
     /**
      * @return The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
      * 
@@ -52,21 +45,18 @@ public final class GetListenersListenerDefaultAction {
     public static Builder builder(GetListenersListenerDefaultAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListenerDefaultAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardGroupConfigs = defaults.forwardGroupConfigs;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder forwardGroupConfigs(List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs) {
             this.forwardGroupConfigs = Objects.requireNonNull(forwardGroupConfigs);
             return this;
@@ -74,11 +64,16 @@ public final class GetListenersListenerDefaultAction {
         public Builder forwardGroupConfigs(GetListenersListenerDefaultActionForwardGroupConfig... forwardGroupConfigs) {
             return forwardGroupConfigs(List.of(forwardGroupConfigs));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetListenersListenerDefaultAction build() {
-            return new GetListenersListenerDefaultAction(forwardGroupConfigs, type);
+        }
+        public GetListenersListenerDefaultAction build() {
+            final var o = new GetListenersListenerDefaultAction();
+            o.forwardGroupConfigs = forwardGroupConfigs;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -16,157 +16,110 @@ public final class GetBandwidthPackagesPackage {
      * @return The bandwidth in Mbps of the CEN bandwidth package.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The billing method, including `POSTPAY` and `PREPAY`.
      * 
      */
-    private final String bandwidthPackageChargeType;
+    private String bandwidthPackageChargeType;
     /**
      * @return Status of the CEN Bandwidth Package, including `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
-    private final String businessStatus;
+    private String businessStatus;
     /**
      * @return The ID of the bandwidth package.
      * 
      */
-    private final String cenBandwidthPackageId;
+    private String cenBandwidthPackageId;
     /**
      * @return The name of the bandwidth package.
      * 
      */
-    private final String cenBandwidthPackageName;
+    private String cenBandwidthPackageName;
     /**
      * @return The list of CEN instances that are associated with the bandwidth package.
      * 
      */
-    private final List<String> cenIds;
+    private List<String> cenIds;
     /**
      * @return Description of the CEN Bandwidth Package.
      * 
      */
-    private final String description;
-    private final String expiredTime;
+    private String description;
+    private String expiredTime;
     /**
      * @return Region ID of the interconnected regions.
      * 
      */
-    private final String geographicRegionAId;
+    private String geographicRegionAId;
     /**
      * @return Region ID of the interconnected regions.
      * 
      */
-    private final String geographicRegionBId;
+    private String geographicRegionBId;
     /**
      * @return The area ID of the cross-area connection.
      * 
      */
-    private final String geographicSpanId;
+    private String geographicSpanId;
     /**
      * @return Indicates whether renewal data is involved.
      * 
      */
-    private final String hasReservationData;
+    private String hasReservationData;
     /**
      * @return ID of the CEN Bandwidth Package.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of a CEN instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Indicates whether the bandwidth package is a cross-border bandwidth package.
      * 
      */
-    private final Boolean isCrossBorder;
+    private Boolean isCrossBorder;
     /**
      * @return Name of the CEN Bandwidth Package.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The billing method of the bandwidth package.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The expiration time of the temporary upgrade.
      * 
      */
-    private final String reservationActiveTime;
+    private String reservationActiveTime;
     /**
      * @return The restored bandwidth after the temporary upgrade.
      * 
      */
-    private final String reservationBandwidth;
+    private String reservationBandwidth;
     /**
      * @return The billing method after the configuration change.
      * 
      */
-    private final String reservationInternetChargeType;
+    private String reservationInternetChargeType;
     /**
      * @return The type of the configuration change.
      * 
      */
-    private final String reservationOrderType;
+    private String reservationOrderType;
     /**
      * @return Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBandwidthPackagesPackage(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("bandwidthPackageChargeType") String bandwidthPackageChargeType,
-        @CustomType.Parameter("businessStatus") String businessStatus,
-        @CustomType.Parameter("cenBandwidthPackageId") String cenBandwidthPackageId,
-        @CustomType.Parameter("cenBandwidthPackageName") String cenBandwidthPackageName,
-        @CustomType.Parameter("cenIds") List<String> cenIds,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("geographicRegionAId") String geographicRegionAId,
-        @CustomType.Parameter("geographicRegionBId") String geographicRegionBId,
-        @CustomType.Parameter("geographicSpanId") String geographicSpanId,
-        @CustomType.Parameter("hasReservationData") String hasReservationData,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("isCrossBorder") Boolean isCrossBorder,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("reservationActiveTime") String reservationActiveTime,
-        @CustomType.Parameter("reservationBandwidth") String reservationBandwidth,
-        @CustomType.Parameter("reservationInternetChargeType") String reservationInternetChargeType,
-        @CustomType.Parameter("reservationOrderType") String reservationOrderType,
-        @CustomType.Parameter("status") String status) {
-        this.bandwidth = bandwidth;
-        this.bandwidthPackageChargeType = bandwidthPackageChargeType;
-        this.businessStatus = businessStatus;
-        this.cenBandwidthPackageId = cenBandwidthPackageId;
-        this.cenBandwidthPackageName = cenBandwidthPackageName;
-        this.cenIds = cenIds;
-        this.description = description;
-        this.expiredTime = expiredTime;
-        this.geographicRegionAId = geographicRegionAId;
-        this.geographicRegionBId = geographicRegionBId;
-        this.geographicSpanId = geographicSpanId;
-        this.hasReservationData = hasReservationData;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.isCrossBorder = isCrossBorder;
-        this.name = name;
-        this.paymentType = paymentType;
-        this.reservationActiveTime = reservationActiveTime;
-        this.reservationBandwidth = reservationBandwidth;
-        this.reservationInternetChargeType = reservationInternetChargeType;
-        this.reservationOrderType = reservationOrderType;
-        this.status = status;
-    }
-
+    private GetBandwidthPackagesPackage() {}
     /**
      * @return The bandwidth in Mbps of the CEN bandwidth package.
      * 
@@ -325,7 +278,7 @@ public final class GetBandwidthPackagesPackage {
     public static Builder builder(GetBandwidthPackagesPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String bandwidthPackageChargeType;
@@ -349,11 +302,7 @@ public final class GetBandwidthPackagesPackage {
         private String reservationInternetChargeType;
         private String reservationOrderType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBandwidthPackagesPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -380,26 +329,32 @@ public final class GetBandwidthPackagesPackage {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageChargeType(String bandwidthPackageChargeType) {
             this.bandwidthPackageChargeType = Objects.requireNonNull(bandwidthPackageChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder cenBandwidthPackageId(String cenBandwidthPackageId) {
             this.cenBandwidthPackageId = Objects.requireNonNull(cenBandwidthPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder cenBandwidthPackageName(String cenBandwidthPackageName) {
             this.cenBandwidthPackageName = Objects.requireNonNull(cenBandwidthPackageName);
             return this;
         }
+        @CustomType.Setter
         public Builder cenIds(List<String> cenIds) {
             this.cenIds = Objects.requireNonNull(cenIds);
             return this;
@@ -407,71 +362,111 @@ public final class GetBandwidthPackagesPackage {
         public Builder cenIds(String... cenIds) {
             return cenIds(List.of(cenIds));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder geographicRegionAId(String geographicRegionAId) {
             this.geographicRegionAId = Objects.requireNonNull(geographicRegionAId);
             return this;
         }
+        @CustomType.Setter
         public Builder geographicRegionBId(String geographicRegionBId) {
             this.geographicRegionBId = Objects.requireNonNull(geographicRegionBId);
             return this;
         }
+        @CustomType.Setter
         public Builder geographicSpanId(String geographicSpanId) {
             this.geographicSpanId = Objects.requireNonNull(geographicSpanId);
             return this;
         }
+        @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
             this.hasReservationData = Objects.requireNonNull(hasReservationData);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder isCrossBorder(Boolean isCrossBorder) {
             this.isCrossBorder = Objects.requireNonNull(isCrossBorder);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
             this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
             this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
             this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
             this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBandwidthPackagesPackage build() {
-            return new GetBandwidthPackagesPackage(bandwidth, bandwidthPackageChargeType, businessStatus, cenBandwidthPackageId, cenBandwidthPackageName, cenIds, description, expiredTime, geographicRegionAId, geographicRegionBId, geographicSpanId, hasReservationData, id, instanceId, isCrossBorder, name, paymentType, reservationActiveTime, reservationBandwidth, reservationInternetChargeType, reservationOrderType, status);
+        }
+        public GetBandwidthPackagesPackage build() {
+            final var o = new GetBandwidthPackagesPackage();
+            o.bandwidth = bandwidth;
+            o.bandwidthPackageChargeType = bandwidthPackageChargeType;
+            o.businessStatus = businessStatus;
+            o.cenBandwidthPackageId = cenBandwidthPackageId;
+            o.cenBandwidthPackageName = cenBandwidthPackageName;
+            o.cenIds = cenIds;
+            o.description = description;
+            o.expiredTime = expiredTime;
+            o.geographicRegionAId = geographicRegionAId;
+            o.geographicRegionBId = geographicRegionBId;
+            o.geographicSpanId = geographicSpanId;
+            o.hasReservationData = hasReservationData;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.isCrossBorder = isCrossBorder;
+            o.name = name;
+            o.paymentType = paymentType;
+            o.reservationActiveTime = reservationActiveTime;
+            o.reservationBandwidth = reservationBandwidth;
+            o.reservationInternetChargeType = reservationInternetChargeType;
+            o.reservationOrderType = reservationOrderType;
+            o.status = status;
+            return o;
         }
     }
 }

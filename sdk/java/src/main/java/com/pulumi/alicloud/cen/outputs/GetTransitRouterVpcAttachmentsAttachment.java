@@ -15,77 +15,54 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      * @return The ID of the transit router.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Type of the resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
     /**
      * @return The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The description of transit router attachment.
      * 
      */
-    private final String transitRouterAttachmentDescription;
+    private String transitRouterAttachmentDescription;
     /**
      * @return ID of the transit router VBR attachment.
      * 
      */
-    private final String transitRouterAttachmentId;
+    private String transitRouterAttachmentId;
     /**
      * @return Name of the transit router attachment.
      * 
      */
-    private final String transitRouterAttachmentName;
+    private String transitRouterAttachmentName;
     /**
      * @return ID of the VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The Owner ID of the VPC.
      * 
      */
-    private final String vpcOwnerId;
+    private String vpcOwnerId;
     /**
      * @return The mappings of zone
      * 
      */
-    private final List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings;
+    private List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings;
 
-    @CustomType.Constructor
-    private GetTransitRouterVpcAttachmentsAttachment(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("resourceType") String resourceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterAttachmentDescription") String transitRouterAttachmentDescription,
-        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
-        @CustomType.Parameter("transitRouterAttachmentName") String transitRouterAttachmentName,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcOwnerId") String vpcOwnerId,
-        @CustomType.Parameter("zoneMappings") List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings) {
-        this.id = id;
-        this.paymentType = paymentType;
-        this.resourceType = resourceType;
-        this.status = status;
-        this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-        this.transitRouterAttachmentName = transitRouterAttachmentName;
-        this.vpcId = vpcId;
-        this.vpcOwnerId = vpcOwnerId;
-        this.zoneMappings = zoneMappings;
-    }
-
+    private GetTransitRouterVpcAttachmentsAttachment() {}
     /**
      * @return The ID of the transit router.
      * 
@@ -164,7 +141,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     public static Builder builder(GetTransitRouterVpcAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String paymentType;
@@ -176,11 +153,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         private String vpcId;
         private String vpcOwnerId;
         private List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterVpcAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -195,50 +168,72 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     	      this.zoneMappings = defaults.zoneMappings;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
             this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcOwnerId(String vpcOwnerId) {
             this.vpcOwnerId = Objects.requireNonNull(vpcOwnerId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneMappings(List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings) {
             this.zoneMappings = Objects.requireNonNull(zoneMappings);
             return this;
         }
         public Builder zoneMappings(GetTransitRouterVpcAttachmentsAttachmentZoneMapping... zoneMappings) {
             return zoneMappings(List.of(zoneMappings));
-        }        public GetTransitRouterVpcAttachmentsAttachment build() {
-            return new GetTransitRouterVpcAttachmentsAttachment(id, paymentType, resourceType, status, transitRouterAttachmentDescription, transitRouterAttachmentId, transitRouterAttachmentName, vpcId, vpcOwnerId, zoneMappings);
+        }
+        public GetTransitRouterVpcAttachmentsAttachment build() {
+            final var o = new GetTransitRouterVpcAttachmentsAttachment();
+            o.id = id;
+            o.paymentType = paymentType;
+            o.resourceType = resourceType;
+            o.status = status;
+            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterAttachmentName = transitRouterAttachmentName;
+            o.vpcId = vpcId;
+            o.vpcOwnerId = vpcOwnerId;
+            o.zoneMappings = zoneMappings;
+            return o;
         }
     }
 }

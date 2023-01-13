@@ -15,28 +15,19 @@ public final class ServerlessInstanceSecurityIpGroup {
      * @return The attribute of the IP whitelist. This parameter is empty by default.
      * 
      */
-    private final @Nullable String securityIpGroupAttribute;
+    private @Nullable String securityIpGroupAttribute;
     /**
      * @return The name of the IP whitelist.
      * 
      */
-    private final @Nullable String securityIpGroupName;
+    private @Nullable String securityIpGroupName;
     /**
      * @return The IP addresses in the whitelist.
      * 
      */
-    private final @Nullable String securityIpList;
+    private @Nullable String securityIpList;
 
-    @CustomType.Constructor
-    private ServerlessInstanceSecurityIpGroup(
-        @CustomType.Parameter("securityIpGroupAttribute") @Nullable String securityIpGroupAttribute,
-        @CustomType.Parameter("securityIpGroupName") @Nullable String securityIpGroupName,
-        @CustomType.Parameter("securityIpList") @Nullable String securityIpList) {
-        this.securityIpGroupAttribute = securityIpGroupAttribute;
-        this.securityIpGroupName = securityIpGroupName;
-        this.securityIpList = securityIpList;
-    }
-
+    private ServerlessInstanceSecurityIpGroup() {}
     /**
      * @return The attribute of the IP whitelist. This parameter is empty by default.
      * 
@@ -66,16 +57,12 @@ public final class ServerlessInstanceSecurityIpGroup {
     public static Builder builder(ServerlessInstanceSecurityIpGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String securityIpGroupAttribute;
         private @Nullable String securityIpGroupName;
         private @Nullable String securityIpList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerlessInstanceSecurityIpGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityIpGroupAttribute = defaults.securityIpGroupAttribute;
@@ -83,19 +70,27 @@ public final class ServerlessInstanceSecurityIpGroup {
     	      this.securityIpList = defaults.securityIpList;
         }
 
+        @CustomType.Setter
         public Builder securityIpGroupAttribute(@Nullable String securityIpGroupAttribute) {
             this.securityIpGroupAttribute = securityIpGroupAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder securityIpGroupName(@Nullable String securityIpGroupName) {
             this.securityIpGroupName = securityIpGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder securityIpList(@Nullable String securityIpList) {
             this.securityIpList = securityIpList;
             return this;
-        }        public ServerlessInstanceSecurityIpGroup build() {
-            return new ServerlessInstanceSecurityIpGroup(securityIpGroupAttribute, securityIpGroupName, securityIpList);
+        }
+        public ServerlessInstanceSecurityIpGroup build() {
+            final var o = new ServerlessInstanceSecurityIpGroup();
+            o.securityIpGroupAttribute = securityIpGroupAttribute;
+            o.securityIpGroupName = securityIpGroupName;
+            o.securityIpList = securityIpList;
+            return o;
         }
     }
 }

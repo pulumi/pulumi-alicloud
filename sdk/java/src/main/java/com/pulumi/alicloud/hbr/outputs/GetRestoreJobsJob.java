@@ -14,215 +14,148 @@ public final class GetRestoreJobsJob {
      * @return The actual size of Snapshot.
      * 
      */
-    private final String actualBytes;
+    private String actualBytes;
     /**
      * @return The actual number of files.
      * 
      */
-    private final String actualItems;
+    private String actualItems;
     /**
      * @return The size of restore job recovered.
      * 
      */
-    private final String bytesDone;
+    private String bytesDone;
     /**
      * @return The total size of restore job recovered.
      * 
      */
-    private final String bytesTotal;
+    private String bytesTotal;
     /**
      * @return The completion time of restore Job.
      * 
      */
-    private final String completeTime;
+    private String completeTime;
     /**
      * @return The creation time of restore job.
      * 
      */
-    private final String createTime;
-    private final String errorFile;
+    private String createTime;
+    private String errorFile;
     /**
      * @return The error message of recovery task execution.
      * 
      */
-    private final String errorMessage;
+    private String errorMessage;
     /**
      * @return The expiration time of restore job. Unix Time in seconds.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The ID of the restore job.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of items restore job recovered.
      * 
      */
-    private final String itemsDone;
+    private String itemsDone;
     /**
      * @return The total number of items restore job recovered.
      * 
      */
-    private final String itemsTotal;
+    private String itemsTotal;
     /**
      * @return Recovery Options.
      * 
      */
-    private final String options;
-    private final String parentId;
+    private String options;
+    private String parentId;
     /**
      * @return The recovery progress.
      * 
      */
-    private final Integer progress;
+    private Integer progress;
     /**
      * @return The ID of restore job.
      * 
      */
-    private final String restoreJobId;
+    private String restoreJobId;
     /**
      * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
      * 
      */
-    private final String restoreType;
+    private String restoreType;
     /**
      * @return The hashcode of Snapshot.
      * 
      */
-    private final String snapshotHash;
+    private String snapshotHash;
     /**
      * @return The ID of Snapshot.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return The start time of restore job. Unix Time in Seconds.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The status of restore job.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The name of target ofo OSS bucket.
      * 
      */
-    private final String targetBucket;
-    private final String targetClientId;
+    private String targetBucket;
+    private String targetClientId;
     /**
      * @return The creation time of destination file system.
      * 
      */
-    private final String targetCreateTime;
-    private final String targetDataSourceId;
+    private String targetCreateTime;
+    private String targetDataSourceId;
     /**
      * @return The ID of destination file system.
      * 
      */
-    private final String targetFileSystemId;
+    private String targetFileSystemId;
     /**
      * @return The ID of target ECS instance.
      * 
      */
-    private final String targetInstanceId;
+    private String targetInstanceId;
     /**
      * @return The target file path of ECS instance.
      * 
      */
-    private final String targetPath;
+    private String targetPath;
     /**
      * @return The file prefix of target OSS object.
      * 
      */
-    private final String targetPrefix;
+    private String targetPrefix;
     /**
      * @return The update Time of restore job. Unix Time in Seconds.
      * 
      */
-    private final String updatedTime;
+    private String updatedTime;
     /**
      * @return The ID of backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetRestoreJobsJob(
-        @CustomType.Parameter("actualBytes") String actualBytes,
-        @CustomType.Parameter("actualItems") String actualItems,
-        @CustomType.Parameter("bytesDone") String bytesDone,
-        @CustomType.Parameter("bytesTotal") String bytesTotal,
-        @CustomType.Parameter("completeTime") String completeTime,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("errorFile") String errorFile,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("itemsDone") String itemsDone,
-        @CustomType.Parameter("itemsTotal") String itemsTotal,
-        @CustomType.Parameter("options") String options,
-        @CustomType.Parameter("parentId") String parentId,
-        @CustomType.Parameter("progress") Integer progress,
-        @CustomType.Parameter("restoreJobId") String restoreJobId,
-        @CustomType.Parameter("restoreType") String restoreType,
-        @CustomType.Parameter("snapshotHash") String snapshotHash,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("targetBucket") String targetBucket,
-        @CustomType.Parameter("targetClientId") String targetClientId,
-        @CustomType.Parameter("targetCreateTime") String targetCreateTime,
-        @CustomType.Parameter("targetDataSourceId") String targetDataSourceId,
-        @CustomType.Parameter("targetFileSystemId") String targetFileSystemId,
-        @CustomType.Parameter("targetInstanceId") String targetInstanceId,
-        @CustomType.Parameter("targetPath") String targetPath,
-        @CustomType.Parameter("targetPrefix") String targetPrefix,
-        @CustomType.Parameter("updatedTime") String updatedTime,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.actualBytes = actualBytes;
-        this.actualItems = actualItems;
-        this.bytesDone = bytesDone;
-        this.bytesTotal = bytesTotal;
-        this.completeTime = completeTime;
-        this.createTime = createTime;
-        this.errorFile = errorFile;
-        this.errorMessage = errorMessage;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.itemsDone = itemsDone;
-        this.itemsTotal = itemsTotal;
-        this.options = options;
-        this.parentId = parentId;
-        this.progress = progress;
-        this.restoreJobId = restoreJobId;
-        this.restoreType = restoreType;
-        this.snapshotHash = snapshotHash;
-        this.snapshotId = snapshotId;
-        this.sourceType = sourceType;
-        this.startTime = startTime;
-        this.status = status;
-        this.targetBucket = targetBucket;
-        this.targetClientId = targetClientId;
-        this.targetCreateTime = targetCreateTime;
-        this.targetDataSourceId = targetDataSourceId;
-        this.targetFileSystemId = targetFileSystemId;
-        this.targetInstanceId = targetInstanceId;
-        this.targetPath = targetPath;
-        this.targetPrefix = targetPrefix;
-        this.updatedTime = updatedTime;
-        this.vaultId = vaultId;
-    }
-
+    private GetRestoreJobsJob() {}
     /**
      * @return The actual size of Snapshot.
      * 
@@ -439,7 +372,7 @@ public final class GetRestoreJobsJob {
     public static Builder builder(GetRestoreJobsJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String actualBytes;
         private String actualItems;
@@ -473,11 +406,7 @@ public final class GetRestoreJobsJob {
         private String targetPrefix;
         private String updatedTime;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRestoreJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualBytes = defaults.actualBytes;
@@ -514,135 +443,201 @@ public final class GetRestoreJobsJob {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
             this.actualBytes = Objects.requireNonNull(actualBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder actualItems(String actualItems) {
             this.actualItems = Objects.requireNonNull(actualItems);
             return this;
         }
+        @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
             this.bytesDone = Objects.requireNonNull(bytesDone);
             return this;
         }
+        @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
             this.bytesTotal = Objects.requireNonNull(bytesTotal);
             return this;
         }
+        @CustomType.Setter
         public Builder completeTime(String completeTime) {
             this.completeTime = Objects.requireNonNull(completeTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder errorFile(String errorFile) {
             this.errorFile = Objects.requireNonNull(errorFile);
             return this;
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder itemsDone(String itemsDone) {
             this.itemsDone = Objects.requireNonNull(itemsDone);
             return this;
         }
+        @CustomType.Setter
         public Builder itemsTotal(String itemsTotal) {
             this.itemsTotal = Objects.requireNonNull(itemsTotal);
             return this;
         }
+        @CustomType.Setter
         public Builder options(String options) {
             this.options = Objects.requireNonNull(options);
             return this;
         }
+        @CustomType.Setter
         public Builder parentId(String parentId) {
             this.parentId = Objects.requireNonNull(parentId);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(Integer progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder restoreJobId(String restoreJobId) {
             this.restoreJobId = Objects.requireNonNull(restoreJobId);
             return this;
         }
+        @CustomType.Setter
         public Builder restoreType(String restoreType) {
             this.restoreType = Objects.requireNonNull(restoreType);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotHash(String snapshotHash) {
             this.snapshotHash = Objects.requireNonNull(snapshotHash);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder targetBucket(String targetBucket) {
             this.targetBucket = Objects.requireNonNull(targetBucket);
             return this;
         }
+        @CustomType.Setter
         public Builder targetClientId(String targetClientId) {
             this.targetClientId = Objects.requireNonNull(targetClientId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetCreateTime(String targetCreateTime) {
             this.targetCreateTime = Objects.requireNonNull(targetCreateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder targetDataSourceId(String targetDataSourceId) {
             this.targetDataSourceId = Objects.requireNonNull(targetDataSourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetFileSystemId(String targetFileSystemId) {
             this.targetFileSystemId = Objects.requireNonNull(targetFileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetInstanceId(String targetInstanceId) {
             this.targetInstanceId = Objects.requireNonNull(targetInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPath(String targetPath) {
             this.targetPath = Objects.requireNonNull(targetPath);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPrefix(String targetPrefix) {
             this.targetPrefix = Objects.requireNonNull(targetPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetRestoreJobsJob build() {
-            return new GetRestoreJobsJob(actualBytes, actualItems, bytesDone, bytesTotal, completeTime, createTime, errorFile, errorMessage, expireTime, id, itemsDone, itemsTotal, options, parentId, progress, restoreJobId, restoreType, snapshotHash, snapshotId, sourceType, startTime, status, targetBucket, targetClientId, targetCreateTime, targetDataSourceId, targetFileSystemId, targetInstanceId, targetPath, targetPrefix, updatedTime, vaultId);
+        }
+        public GetRestoreJobsJob build() {
+            final var o = new GetRestoreJobsJob();
+            o.actualBytes = actualBytes;
+            o.actualItems = actualItems;
+            o.bytesDone = bytesDone;
+            o.bytesTotal = bytesTotal;
+            o.completeTime = completeTime;
+            o.createTime = createTime;
+            o.errorFile = errorFile;
+            o.errorMessage = errorMessage;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.itemsDone = itemsDone;
+            o.itemsTotal = itemsTotal;
+            o.options = options;
+            o.parentId = parentId;
+            o.progress = progress;
+            o.restoreJobId = restoreJobId;
+            o.restoreType = restoreType;
+            o.snapshotHash = snapshotHash;
+            o.snapshotId = snapshotId;
+            o.sourceType = sourceType;
+            o.startTime = startTime;
+            o.status = status;
+            o.targetBucket = targetBucket;
+            o.targetClientId = targetClientId;
+            o.targetCreateTime = targetCreateTime;
+            o.targetDataSourceId = targetDataSourceId;
+            o.targetFileSystemId = targetFileSystemId;
+            o.targetInstanceId = targetInstanceId;
+            o.targetPath = targetPath;
+            o.targetPrefix = targetPrefix;
+            o.updatedTime = updatedTime;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }

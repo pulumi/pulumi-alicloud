@@ -17,93 +17,62 @@ public final class GetForwardEntriesResult {
      * @return A list of Forward Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetForwardEntriesEntry> entries;
+    private List<GetForwardEntriesEntry> entries;
     /**
      * @return The public IP address.
      * 
      */
-    private final @Nullable String externalIp;
+    private @Nullable String externalIp;
     /**
      * @return The public port.
      * 
      */
-    private final @Nullable String externalPort;
+    private @Nullable String externalPort;
     /**
      * @return The name of forward entry.
      * 
      */
-    private final @Nullable String forwardEntryName;
-    private final String forwardTableId;
+    private @Nullable String forwardEntryName;
+    private String forwardTableId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Forward Entries IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return The private IP address.
      * 
      */
-    private final @Nullable String internalIp;
+    private @Nullable String internalIp;
     /**
      * @return The private port.
      * 
      */
-    private final @Nullable String internalPort;
+    private @Nullable String internalPort;
     /**
      * @return The protocol type.
      * 
      */
-    private final @Nullable String ipProtocol;
-    private final @Nullable String nameRegex;
+    private @Nullable String ipProtocol;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Forward Entries names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of forward entry.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetForwardEntriesResult(
-        @CustomType.Parameter("entries") List<GetForwardEntriesEntry> entries,
-        @CustomType.Parameter("externalIp") @Nullable String externalIp,
-        @CustomType.Parameter("externalPort") @Nullable String externalPort,
-        @CustomType.Parameter("forwardEntryName") @Nullable String forwardEntryName,
-        @CustomType.Parameter("forwardTableId") String forwardTableId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("internalIp") @Nullable String internalIp,
-        @CustomType.Parameter("internalPort") @Nullable String internalPort,
-        @CustomType.Parameter("ipProtocol") @Nullable String ipProtocol,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.entries = entries;
-        this.externalIp = externalIp;
-        this.externalPort = externalPort;
-        this.forwardEntryName = forwardEntryName;
-        this.forwardTableId = forwardTableId;
-        this.id = id;
-        this.ids = ids;
-        this.internalIp = internalIp;
-        this.internalPort = internalPort;
-        this.ipProtocol = ipProtocol;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetForwardEntriesResult() {}
     /**
      * @return A list of Forward Entries. Each element contains the following attributes:
      * 
@@ -198,7 +167,7 @@ public final class GetForwardEntriesResult {
     public static Builder builder(GetForwardEntriesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetForwardEntriesEntry> entries;
         private @Nullable String externalIp;
@@ -214,11 +183,7 @@ public final class GetForwardEntriesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetForwardEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entries = defaults.entries;
@@ -237,6 +202,7 @@ public final class GetForwardEntriesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder entries(List<GetForwardEntriesEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -244,26 +210,32 @@ public final class GetForwardEntriesResult {
         public Builder entries(GetForwardEntriesEntry... entries) {
             return entries(List.of(entries));
         }
+        @CustomType.Setter
         public Builder externalIp(@Nullable String externalIp) {
             this.externalIp = externalIp;
             return this;
         }
+        @CustomType.Setter
         public Builder externalPort(@Nullable String externalPort) {
             this.externalPort = externalPort;
             return this;
         }
+        @CustomType.Setter
         public Builder forwardEntryName(@Nullable String forwardEntryName) {
             this.forwardEntryName = forwardEntryName;
             return this;
         }
+        @CustomType.Setter
         public Builder forwardTableId(String forwardTableId) {
             this.forwardTableId = Objects.requireNonNull(forwardTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -271,22 +243,27 @@ public final class GetForwardEntriesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder internalIp(@Nullable String internalIp) {
             this.internalIp = internalIp;
             return this;
         }
+        @CustomType.Setter
         public Builder internalPort(@Nullable String internalPort) {
             this.internalPort = internalPort;
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
             this.ipProtocol = ipProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -294,15 +271,33 @@ public final class GetForwardEntriesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetForwardEntriesResult build() {
-            return new GetForwardEntriesResult(entries, externalIp, externalPort, forwardEntryName, forwardTableId, id, ids, internalIp, internalPort, ipProtocol, nameRegex, names, outputFile, status);
+        }
+        public GetForwardEntriesResult build() {
+            final var o = new GetForwardEntriesResult();
+            o.entries = entries;
+            o.externalIp = externalIp;
+            o.externalPort = externalPort;
+            o.forwardEntryName = forwardEntryName;
+            o.forwardTableId = forwardTableId;
+            o.id = id;
+            o.ids = ids;
+            o.internalIp = internalIp;
+            o.internalPort = internalPort;
+            o.ipProtocol = ipProtocol;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
-    private final Integer port;
-    private final String vserverGroupId;
-    private final Integer weight;
+    private Integer port;
+    private String vserverGroupId;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private ScalingGroupVServerGroupsVserverGroupVserverAttribute(
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("vserverGroupId") String vserverGroupId,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.port = port;
-        this.vserverGroupId = vserverGroupId;
-        this.weight = weight;
-    }
-
+    private ScalingGroupVServerGroupsVserverGroupVserverAttribute() {}
     public Integer port() {
         return this.port;
     }
@@ -41,16 +32,12 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
     public static Builder builder(ScalingGroupVServerGroupsVserverGroupVserverAttribute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
         private String vserverGroupId;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ScalingGroupVServerGroupsVserverGroupVserverAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
@@ -58,19 +45,27 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder vserverGroupId(String vserverGroupId) {
             this.vserverGroupId = Objects.requireNonNull(vserverGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public ScalingGroupVServerGroupsVserverGroupVserverAttribute build() {
-            return new ScalingGroupVServerGroupsVserverGroupVserverAttribute(port, vserverGroupId, weight);
+        }
+        public ScalingGroupVServerGroupsVserverGroupVserverAttribute build() {
+            final var o = new ScalingGroupVServerGroupsVserverGroupVserverAttribute();
+            o.port = port;
+            o.vserverGroupId = vserverGroupId;
+            o.weight = weight;
+            return o;
         }
     }
 }

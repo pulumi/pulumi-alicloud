@@ -17,48 +17,31 @@ public final class GetInstanceAttachmentsResult {
      * @return A list of instance attachments. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstanceAttachmentsAttachment> attachments;
+    private List<GetInstanceAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The instance name.
      * 
      */
-    private final String instanceName;
-    private final @Nullable String nameRegex;
+    private String instanceName;
+    private @Nullable String nameRegex;
     /**
      * @return A list of vpc names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of vpc ids.
      * 
      */
-    private final List<String> vpcIds;
+    private List<String> vpcIds;
 
-    @CustomType.Constructor
-    private GetInstanceAttachmentsResult(
-        @CustomType.Parameter("attachments") List<GetInstanceAttachmentsAttachment> attachments,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("vpcIds") List<String> vpcIds) {
-        this.attachments = attachments;
-        this.id = id;
-        this.instanceName = instanceName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.vpcIds = vpcIds;
-    }
-
+    private GetInstanceAttachmentsResult() {}
     /**
      * @return A list of instance attachments. Each element contains the following attributes:
      * 
@@ -108,7 +91,7 @@ public final class GetInstanceAttachmentsResult {
     public static Builder builder(GetInstanceAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceAttachmentsAttachment> attachments;
         private String id;
@@ -117,11 +100,7 @@ public final class GetInstanceAttachmentsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<String> vpcIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -133,6 +112,7 @@ public final class GetInstanceAttachmentsResult {
     	      this.vpcIds = defaults.vpcIds;
         }
 
+        @CustomType.Setter
         public Builder attachments(List<GetInstanceAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -140,18 +120,22 @@ public final class GetInstanceAttachmentsResult {
         public Builder attachments(GetInstanceAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -159,18 +143,29 @@ public final class GetInstanceAttachmentsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcIds(List<String> vpcIds) {
             this.vpcIds = Objects.requireNonNull(vpcIds);
             return this;
         }
         public Builder vpcIds(String... vpcIds) {
             return vpcIds(List.of(vpcIds));
-        }        public GetInstanceAttachmentsResult build() {
-            return new GetInstanceAttachmentsResult(attachments, id, instanceName, nameRegex, names, outputFile, vpcIds);
+        }
+        public GetInstanceAttachmentsResult build() {
+            final var o = new GetInstanceAttachmentsResult();
+            o.attachments = attachments;
+            o.id = id;
+            o.instanceName = instanceName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.vpcIds = vpcIds;
+            return o;
         }
     }
 }

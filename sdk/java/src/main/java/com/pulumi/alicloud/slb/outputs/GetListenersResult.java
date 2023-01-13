@@ -14,48 +14,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetListenersResult {
-    private final @Nullable String descriptionRegex;
+    private @Nullable String descriptionRegex;
     /**
      * @return Frontend port used to receive incoming traffic and distribute it to the backend servers.
      * 
      */
-    private final @Nullable Integer frontendPort;
+    private @Nullable Integer frontendPort;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String loadBalancerId;
-    private final @Nullable String outputFile;
+    private String id;
+    private String loadBalancerId;
+    private @Nullable String outputFile;
     /**
      * @return Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
      * 
      */
-    private final @Nullable String protocol;
+    private @Nullable String protocol;
     /**
      * @return A list of SLB listeners. Each element contains the following attributes:
      * 
      */
-    private final List<GetListenersSlbListener> slbListeners;
+    private List<GetListenersSlbListener> slbListeners;
 
-    @CustomType.Constructor
-    private GetListenersResult(
-        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
-        @CustomType.Parameter("frontendPort") @Nullable Integer frontendPort,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("protocol") @Nullable String protocol,
-        @CustomType.Parameter("slbListeners") List<GetListenersSlbListener> slbListeners) {
-        this.descriptionRegex = descriptionRegex;
-        this.frontendPort = frontendPort;
-        this.id = id;
-        this.loadBalancerId = loadBalancerId;
-        this.outputFile = outputFile;
-        this.protocol = protocol;
-        this.slbListeners = slbListeners;
-    }
-
+    private GetListenersResult() {}
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
@@ -101,7 +84,7 @@ public final class GetListenersResult {
     public static Builder builder(GetListenersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private @Nullable Integer frontendPort;
@@ -110,11 +93,7 @@ public final class GetListenersResult {
         private @Nullable String outputFile;
         private @Nullable String protocol;
         private List<GetListenersSlbListener> slbListeners;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
@@ -126,38 +105,54 @@ public final class GetListenersResult {
     	      this.slbListeners = defaults.slbListeners;
         }
 
+        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder frontendPort(@Nullable Integer frontendPort) {
             this.frontendPort = frontendPort;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
         }
+        @CustomType.Setter
         public Builder slbListeners(List<GetListenersSlbListener> slbListeners) {
             this.slbListeners = Objects.requireNonNull(slbListeners);
             return this;
         }
         public Builder slbListeners(GetListenersSlbListener... slbListeners) {
             return slbListeners(List.of(slbListeners));
-        }        public GetListenersResult build() {
-            return new GetListenersResult(descriptionRegex, frontendPort, id, loadBalancerId, outputFile, protocol, slbListeners);
+        }
+        public GetListenersResult build() {
+            final var o = new GetListenersResult();
+            o.descriptionRegex = descriptionRegex;
+            o.frontendPort = frontendPort;
+            o.id = id;
+            o.loadBalancerId = loadBalancerId;
+            o.outputFile = outputFile;
+            o.protocol = protocol;
+            o.slbListeners = slbListeners;
+            return o;
         }
     }
 }

@@ -17,48 +17,31 @@ public final class GetSslVpnClientCertsResult {
      * @return A list of SSL-VPN client certificates. Each element contains the following attributes:
      * 
      */
-    private final List<GetSslVpnClientCertsCert> certs;
+    private List<GetSslVpnClientCertsCert> certs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of SSL-VPN client cert IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of SSL-VPN client cert names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return ID of the SSL-VPN Server.
      * 
      */
-    private final @Nullable String sslVpnServerId;
+    private @Nullable String sslVpnServerId;
 
-    @CustomType.Constructor
-    private GetSslVpnClientCertsResult(
-        @CustomType.Parameter("certs") List<GetSslVpnClientCertsCert> certs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("sslVpnServerId") @Nullable String sslVpnServerId) {
-        this.certs = certs;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.sslVpnServerId = sslVpnServerId;
-    }
-
+    private GetSslVpnClientCertsResult() {}
     /**
      * @return A list of SSL-VPN client certificates. Each element contains the following attributes:
      * 
@@ -108,7 +91,7 @@ public final class GetSslVpnClientCertsResult {
     public static Builder builder(GetSslVpnClientCertsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetSslVpnClientCertsCert> certs;
         private String id;
@@ -117,11 +100,7 @@ public final class GetSslVpnClientCertsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String sslVpnServerId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSslVpnClientCertsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certs = defaults.certs;
@@ -133,6 +112,7 @@ public final class GetSslVpnClientCertsResult {
     	      this.sslVpnServerId = defaults.sslVpnServerId;
         }
 
+        @CustomType.Setter
         public Builder certs(List<GetSslVpnClientCertsCert> certs) {
             this.certs = Objects.requireNonNull(certs);
             return this;
@@ -140,10 +120,12 @@ public final class GetSslVpnClientCertsResult {
         public Builder certs(GetSslVpnClientCertsCert... certs) {
             return certs(List.of(certs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -151,10 +133,12 @@ public final class GetSslVpnClientCertsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -162,15 +146,26 @@ public final class GetSslVpnClientCertsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder sslVpnServerId(@Nullable String sslVpnServerId) {
             this.sslVpnServerId = sslVpnServerId;
             return this;
-        }        public GetSslVpnClientCertsResult build() {
-            return new GetSslVpnClientCertsResult(certs, id, ids, nameRegex, names, outputFile, sslVpnServerId);
+        }
+        public GetSslVpnClientCertsResult build() {
+            final var o = new GetSslVpnClientCertsResult();
+            o.certs = certs;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.sslVpnServerId = sslVpnServerId;
+            return o;
         }
     }
 }

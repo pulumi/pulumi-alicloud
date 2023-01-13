@@ -17,29 +17,14 @@ public final class GetDataLimitsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetDataLimitsLimit> limits;
-    private final @Nullable String outputFile;
-    private final @Nullable String parentId;
-    private final @Nullable String resourceType;
+    private String id;
+    private List<String> ids;
+    private List<GetDataLimitsLimit> limits;
+    private @Nullable String outputFile;
+    private @Nullable String parentId;
+    private @Nullable String resourceType;
 
-    @CustomType.Constructor
-    private GetDataLimitsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("limits") List<GetDataLimitsLimit> limits,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("parentId") @Nullable String parentId,
-        @CustomType.Parameter("resourceType") @Nullable String resourceType) {
-        this.id = id;
-        this.ids = ids;
-        this.limits = limits;
-        this.outputFile = outputFile;
-        this.parentId = parentId;
-        this.resourceType = resourceType;
-    }
-
+    private GetDataLimitsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetDataLimitsResult {
     public static Builder builder(GetDataLimitsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetDataLimitsResult {
         private @Nullable String outputFile;
         private @Nullable String parentId;
         private @Nullable String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDataLimitsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetDataLimitsResult {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,6 +87,7 @@ public final class GetDataLimitsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder limits(List<GetDataLimitsLimit> limits) {
             this.limits = Objects.requireNonNull(limits);
             return this;
@@ -111,19 +95,30 @@ public final class GetDataLimitsResult {
         public Builder limits(GetDataLimitsLimit... limits) {
             return limits(List.of(limits));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder parentId(@Nullable String parentId) {
             this.parentId = parentId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
-        }        public GetDataLimitsResult build() {
-            return new GetDataLimitsResult(id, ids, limits, outputFile, parentId, resourceType);
+        }
+        public GetDataLimitsResult build() {
+            final var o = new GetDataLimitsResult();
+            o.id = id;
+            o.ids = ids;
+            o.limits = limits;
+            o.outputFile = outputFile;
+            o.parentId = parentId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

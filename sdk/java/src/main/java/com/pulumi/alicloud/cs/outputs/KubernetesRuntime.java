@@ -15,21 +15,14 @@ public final class KubernetesRuntime {
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private KubernetesRuntime(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.name = name;
-        this.version = version;
-    }
-
+    private KubernetesRuntime() {}
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
@@ -52,30 +45,32 @@ public final class KubernetesRuntime {
     public static Builder builder(KubernetesRuntime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesRuntime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public KubernetesRuntime build() {
-            return new KubernetesRuntime(name, version);
+        }
+        public KubernetesRuntime build() {
+            final var o = new KubernetesRuntime();
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

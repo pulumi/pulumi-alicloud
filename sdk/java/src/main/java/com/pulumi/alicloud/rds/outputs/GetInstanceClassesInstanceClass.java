@@ -16,31 +16,20 @@ public final class GetInstanceClassesInstanceClass {
      * @return DB Instance available class.
      * 
      */
-    private final String instanceClass;
-    private final String price;
+    private String instanceClass;
+    private String price;
     /**
      * @return DB Instance available storage range.
      * 
      */
-    private final GetInstanceClassesInstanceClassStorageRange storageRange;
+    private GetInstanceClassesInstanceClassStorageRange storageRange;
     /**
      * @return A list of Zone to launch the DB instance.
      * 
      */
-    private final List<GetInstanceClassesInstanceClassZoneId> zoneIds;
+    private List<GetInstanceClassesInstanceClassZoneId> zoneIds;
 
-    @CustomType.Constructor
-    private GetInstanceClassesInstanceClass(
-        @CustomType.Parameter("instanceClass") String instanceClass,
-        @CustomType.Parameter("price") String price,
-        @CustomType.Parameter("storageRange") GetInstanceClassesInstanceClassStorageRange storageRange,
-        @CustomType.Parameter("zoneIds") List<GetInstanceClassesInstanceClassZoneId> zoneIds) {
-        this.instanceClass = instanceClass;
-        this.price = price;
-        this.storageRange = storageRange;
-        this.zoneIds = zoneIds;
-    }
-
+    private GetInstanceClassesInstanceClass() {}
     /**
      * @return DB Instance available class.
      * 
@@ -73,17 +62,13 @@ public final class GetInstanceClassesInstanceClass {
     public static Builder builder(GetInstanceClassesInstanceClass defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceClass;
         private String price;
         private GetInstanceClassesInstanceClassStorageRange storageRange;
         private List<GetInstanceClassesInstanceClassZoneId> zoneIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceClassesInstanceClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceClass = defaults.instanceClass;
@@ -92,26 +77,36 @@ public final class GetInstanceClassesInstanceClass {
     	      this.zoneIds = defaults.zoneIds;
         }
 
+        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
+        @CustomType.Setter
         public Builder price(String price) {
             this.price = Objects.requireNonNull(price);
             return this;
         }
+        @CustomType.Setter
         public Builder storageRange(GetInstanceClassesInstanceClassStorageRange storageRange) {
             this.storageRange = Objects.requireNonNull(storageRange);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIds(List<GetInstanceClassesInstanceClassZoneId> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(GetInstanceClassesInstanceClassZoneId... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }        public GetInstanceClassesInstanceClass build() {
-            return new GetInstanceClassesInstanceClass(instanceClass, price, storageRange, zoneIds);
+        }
+        public GetInstanceClassesInstanceClass build() {
+            final var o = new GetInstanceClassesInstanceClass();
+            o.instanceClass = instanceClass;
+            o.price = price;
+            o.storageRange = storageRange;
+            o.zoneIds = zoneIds;
+            return o;
         }
     }
 }

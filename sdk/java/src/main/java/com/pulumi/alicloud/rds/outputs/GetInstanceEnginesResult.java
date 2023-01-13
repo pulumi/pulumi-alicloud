@@ -18,64 +18,39 @@ public final class GetInstanceEnginesResult {
      * @return DB Instance category.
      * 
      */
-    private final @Nullable String category;
-    private final @Nullable String dbInstanceStorageType;
+    private @Nullable String category;
+    private @Nullable String dbInstanceStorageType;
     /**
      * @return Database type.
      * 
      */
-    private final @Nullable String engine;
+    private @Nullable String engine;
     /**
      * @return DB Instance version.
      * 
      */
-    private final @Nullable String engineVersion;
+    private @Nullable String engineVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of engines.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String instanceChargeType;
+    private List<String> ids;
+    private @Nullable String instanceChargeType;
     /**
      * @return A list of Rds available resource. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstanceEnginesInstanceEngine> instanceEngines;
-    private final @Nullable Boolean multiZone;
-    private final @Nullable String outputFile;
-    private final @Nullable String zoneId;
+    private List<GetInstanceEnginesInstanceEngine> instanceEngines;
+    private @Nullable Boolean multiZone;
+    private @Nullable String outputFile;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetInstanceEnginesResult(
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("dbInstanceStorageType") @Nullable String dbInstanceStorageType,
-        @CustomType.Parameter("engine") @Nullable String engine,
-        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
-        @CustomType.Parameter("instanceEngines") List<GetInstanceEnginesInstanceEngine> instanceEngines,
-        @CustomType.Parameter("multiZone") @Nullable Boolean multiZone,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.category = category;
-        this.dbInstanceStorageType = dbInstanceStorageType;
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.id = id;
-        this.ids = ids;
-        this.instanceChargeType = instanceChargeType;
-        this.instanceEngines = instanceEngines;
-        this.multiZone = multiZone;
-        this.outputFile = outputFile;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstanceEnginesResult() {}
     /**
      * @return DB Instance category.
      * 
@@ -141,7 +116,7 @@ public final class GetInstanceEnginesResult {
     public static Builder builder(GetInstanceEnginesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
         private @Nullable String dbInstanceStorageType;
@@ -154,11 +129,7 @@ public final class GetInstanceEnginesResult {
         private @Nullable Boolean multiZone;
         private @Nullable String outputFile;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceEnginesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -174,26 +145,32 @@ public final class GetInstanceEnginesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceStorageType(@Nullable String dbInstanceStorageType) {
             this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
+        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -201,10 +178,12 @@ public final class GetInstanceEnginesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceEngines(List<GetInstanceEnginesInstanceEngine> instanceEngines) {
             this.instanceEngines = Objects.requireNonNull(instanceEngines);
             return this;
@@ -212,19 +191,35 @@ public final class GetInstanceEnginesResult {
         public Builder instanceEngines(GetInstanceEnginesInstanceEngine... instanceEngines) {
             return instanceEngines(List.of(instanceEngines));
         }
+        @CustomType.Setter
         public Builder multiZone(@Nullable Boolean multiZone) {
             this.multiZone = multiZone;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetInstanceEnginesResult build() {
-            return new GetInstanceEnginesResult(category, dbInstanceStorageType, engine, engineVersion, id, ids, instanceChargeType, instanceEngines, multiZone, outputFile, zoneId);
+        }
+        public GetInstanceEnginesResult build() {
+            final var o = new GetInstanceEnginesResult();
+            o.category = category;
+            o.dbInstanceStorageType = dbInstanceStorageType;
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.id = id;
+            o.ids = ids;
+            o.instanceChargeType = instanceChargeType;
+            o.instanceEngines = instanceEngines;
+            o.multiZone = multiZone;
+            o.outputFile = outputFile;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

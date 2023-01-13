@@ -17,38 +17,25 @@ public final class GetKeyVersionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of KMS KeyVersion IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return ID of the key.
      * 
      */
-    private final String keyId;
-    private final @Nullable String outputFile;
+    private String keyId;
+    private @Nullable String outputFile;
     /**
      * @return A list of KMS KeyVersions. Each element contains the following attributes:
      * 
      */
-    private final List<GetKeyVersionsVersion> versions;
+    private List<GetKeyVersionsVersion> versions;
 
-    @CustomType.Constructor
-    private GetKeyVersionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyId") String keyId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("versions") List<GetKeyVersionsVersion> versions) {
-        this.id = id;
-        this.ids = ids;
-        this.keyId = keyId;
-        this.outputFile = outputFile;
-        this.versions = versions;
-    }
-
+    private GetKeyVersionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -88,18 +75,14 @@ public final class GetKeyVersionsResult {
     public static Builder builder(GetKeyVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private String keyId;
         private @Nullable String outputFile;
         private List<GetKeyVersionsVersion> versions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeyVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,10 +92,12 @@ public final class GetKeyVersionsResult {
     	      this.versions = defaults.versions;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,22 +105,32 @@ public final class GetKeyVersionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder versions(List<GetKeyVersionsVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
         }
         public Builder versions(GetKeyVersionsVersion... versions) {
             return versions(List.of(versions));
-        }        public GetKeyVersionsResult build() {
-            return new GetKeyVersionsResult(id, ids, keyId, outputFile, versions);
+        }
+        public GetKeyVersionsResult build() {
+            final var o = new GetKeyVersionsResult();
+            o.id = id;
+            o.ids = ids;
+            o.keyId = keyId;
+            o.outputFile = outputFile;
+            o.versions = versions;
+            return o;
         }
     }
 }

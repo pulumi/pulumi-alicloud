@@ -13,28 +13,19 @@ public final class ClusterMetaStoreConf {
      * @return Custom rds database password.
      * 
      */
-    private final String dbPassword;
+    private String dbPassword;
     /**
      * @return Custom rds database connection url.
      * 
      */
-    private final String dbUrl;
+    private String dbUrl;
     /**
      * @return Custom rds database user name.
      * 
      */
-    private final String dbUserName;
+    private String dbUserName;
 
-    @CustomType.Constructor
-    private ClusterMetaStoreConf(
-        @CustomType.Parameter("dbPassword") String dbPassword,
-        @CustomType.Parameter("dbUrl") String dbUrl,
-        @CustomType.Parameter("dbUserName") String dbUserName) {
-        this.dbPassword = dbPassword;
-        this.dbUrl = dbUrl;
-        this.dbUserName = dbUserName;
-    }
-
+    private ClusterMetaStoreConf() {}
     /**
      * @return Custom rds database password.
      * 
@@ -64,16 +55,12 @@ public final class ClusterMetaStoreConf {
     public static Builder builder(ClusterMetaStoreConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbPassword;
         private String dbUrl;
         private String dbUserName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMetaStoreConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbPassword = defaults.dbPassword;
@@ -81,19 +68,27 @@ public final class ClusterMetaStoreConf {
     	      this.dbUserName = defaults.dbUserName;
         }
 
+        @CustomType.Setter
         public Builder dbPassword(String dbPassword) {
             this.dbPassword = Objects.requireNonNull(dbPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder dbUrl(String dbUrl) {
             this.dbUrl = Objects.requireNonNull(dbUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder dbUserName(String dbUserName) {
             this.dbUserName = Objects.requireNonNull(dbUserName);
             return this;
-        }        public ClusterMetaStoreConf build() {
-            return new ClusterMetaStoreConf(dbPassword, dbUrl, dbUserName);
+        }
+        public ClusterMetaStoreConf build() {
+            final var o = new ClusterMetaStoreConf();
+            o.dbPassword = dbPassword;
+            o.dbUrl = dbUrl;
+            o.dbUserName = dbUserName;
+            return o;
         }
     }
 }

@@ -17,21 +17,14 @@ public final class DomainResourceProxyType {
      * @return the port number. This field is required and must be an integer.
      * 
      */
-    private final @Nullable List<Integer> proxyPorts;
+    private @Nullable List<Integer> proxyPorts;
     /**
      * @return the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
      * 
      */
-    private final @Nullable String proxyType;
+    private @Nullable String proxyType;
 
-    @CustomType.Constructor
-    private DomainResourceProxyType(
-        @CustomType.Parameter("proxyPorts") @Nullable List<Integer> proxyPorts,
-        @CustomType.Parameter("proxyType") @Nullable String proxyType) {
-        this.proxyPorts = proxyPorts;
-        this.proxyType = proxyType;
-    }
-
+    private DomainResourceProxyType() {}
     /**
      * @return the port number. This field is required and must be an integer.
      * 
@@ -54,21 +47,18 @@ public final class DomainResourceProxyType {
     public static Builder builder(DomainResourceProxyType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> proxyPorts;
         private @Nullable String proxyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainResourceProxyType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.proxyPorts = defaults.proxyPorts;
     	      this.proxyType = defaults.proxyType;
         }
 
+        @CustomType.Setter
         public Builder proxyPorts(@Nullable List<Integer> proxyPorts) {
             this.proxyPorts = proxyPorts;
             return this;
@@ -76,11 +66,16 @@ public final class DomainResourceProxyType {
         public Builder proxyPorts(Integer... proxyPorts) {
             return proxyPorts(List.of(proxyPorts));
         }
+        @CustomType.Setter
         public Builder proxyType(@Nullable String proxyType) {
             this.proxyType = proxyType;
             return this;
-        }        public DomainResourceProxyType build() {
-            return new DomainResourceProxyType(proxyPorts, proxyType);
+        }
+        public DomainResourceProxyType build() {
+            final var o = new DomainResourceProxyType();
+            o.proxyPorts = proxyPorts;
+            o.proxyType = proxyType;
+            return o;
         }
     }
 }

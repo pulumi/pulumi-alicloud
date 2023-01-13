@@ -15,20 +15,11 @@ public final class GetBlockedRegionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String language;
-    private final List<GetBlockedRegionsRegion> regions;
+    private String id;
+    private String language;
+    private List<GetBlockedRegionsRegion> regions;
 
-    @CustomType.Constructor
-    private GetBlockedRegionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("language") String language,
-        @CustomType.Parameter("regions") List<GetBlockedRegionsRegion> regions) {
-        this.id = id;
-        this.language = language;
-        this.regions = regions;
-    }
-
+    private GetBlockedRegionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -50,16 +41,12 @@ public final class GetBlockedRegionsResult {
     public static Builder builder(GetBlockedRegionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String language;
         private List<GetBlockedRegionsRegion> regions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBlockedRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -67,22 +54,30 @@ public final class GetBlockedRegionsResult {
     	      this.regions = defaults.regions;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder language(String language) {
             this.language = Objects.requireNonNull(language);
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<GetBlockedRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
         }
         public Builder regions(GetBlockedRegionsRegion... regions) {
             return regions(List.of(regions));
-        }        public GetBlockedRegionsResult build() {
-            return new GetBlockedRegionsResult(id, language, regions);
+        }
+        public GetBlockedRegionsResult build() {
+            final var o = new GetBlockedRegionsResult();
+            o.id = id;
+            o.language = language;
+            o.regions = regions;
+            return o;
         }
     }
 }

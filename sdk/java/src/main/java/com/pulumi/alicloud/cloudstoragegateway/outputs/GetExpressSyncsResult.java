@@ -17,29 +17,14 @@ public final class GetExpressSyncsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetExpressSyncsSync> syncs;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetExpressSyncsSync> syncs;
 
-    @CustomType.Constructor
-    private GetExpressSyncsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("syncs") List<GetExpressSyncsSync> syncs) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.syncs = syncs;
-    }
-
+    private GetExpressSyncsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetExpressSyncsResult {
     public static Builder builder(GetExpressSyncsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetExpressSyncsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetExpressSyncsSync> syncs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetExpressSyncsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetExpressSyncsResult {
     	      this.syncs = defaults.syncs;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,10 +87,12 @@ public final class GetExpressSyncsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -115,18 +100,28 @@ public final class GetExpressSyncsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder syncs(List<GetExpressSyncsSync> syncs) {
             this.syncs = Objects.requireNonNull(syncs);
             return this;
         }
         public Builder syncs(GetExpressSyncsSync... syncs) {
             return syncs(List.of(syncs));
-        }        public GetExpressSyncsResult build() {
-            return new GetExpressSyncsResult(id, ids, nameRegex, names, outputFile, syncs);
+        }
+        public GetExpressSyncsResult build() {
+            final var o = new GetExpressSyncsResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.syncs = syncs;
+            return o;
         }
     }
 }

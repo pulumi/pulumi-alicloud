@@ -13,21 +13,14 @@ public final class LoadBalancerZoneMapping {
      * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The ID of the zone to which the ALB instance belongs.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private LoadBalancerZoneMapping(
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private LoadBalancerZoneMapping() {}
     /**
      * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
@@ -50,30 +43,32 @@ public final class LoadBalancerZoneMapping {
     public static Builder builder(LoadBalancerZoneMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LoadBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public LoadBalancerZoneMapping build() {
-            return new LoadBalancerZoneMapping(vswitchId, zoneId);
+        }
+        public LoadBalancerZoneMapping build() {
+            final var o = new LoadBalancerZoneMapping();
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

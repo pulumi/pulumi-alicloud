@@ -14,63 +14,44 @@ public final class GetVbrHealthChecksCheck {
      * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return The time interval at which probe packets are sent during the health check.
      * 
      */
-    private final Integer healthCheckInterval;
+    private Integer healthCheckInterval;
     /**
      * @return The source IP address of the health check.
      * 
      */
-    private final String healthCheckSourceIp;
+    private String healthCheckSourceIp;
     /**
      * @return The destination IP address of the health check.
      * 
      */
-    private final String healthCheckTargetIp;
+    private String healthCheckTargetIp;
     /**
      * @return The number of probe packets that are sent during the health check.
      * 
      */
-    private final Integer healthyThreshold;
+    private Integer healthyThreshold;
     /**
      * @return The ID of the CEN VBR Heath Check.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the VBR instance.
      * 
      */
-    private final String vbrInstanceId;
+    private String vbrInstanceId;
     /**
      * @return The ID of the region where the VBR instance is deployed.
      * 
      */
-    private final String vbrInstanceRegionId;
+    private String vbrInstanceRegionId;
 
-    @CustomType.Constructor
-    private GetVbrHealthChecksCheck(
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("healthCheckInterval") Integer healthCheckInterval,
-        @CustomType.Parameter("healthCheckSourceIp") String healthCheckSourceIp,
-        @CustomType.Parameter("healthCheckTargetIp") String healthCheckTargetIp,
-        @CustomType.Parameter("healthyThreshold") Integer healthyThreshold,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("vbrInstanceId") String vbrInstanceId,
-        @CustomType.Parameter("vbrInstanceRegionId") String vbrInstanceRegionId) {
-        this.cenId = cenId;
-        this.healthCheckInterval = healthCheckInterval;
-        this.healthCheckSourceIp = healthCheckSourceIp;
-        this.healthCheckTargetIp = healthCheckTargetIp;
-        this.healthyThreshold = healthyThreshold;
-        this.id = id;
-        this.vbrInstanceId = vbrInstanceId;
-        this.vbrInstanceRegionId = vbrInstanceRegionId;
-    }
-
+    private GetVbrHealthChecksCheck() {}
     /**
      * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
@@ -135,7 +116,7 @@ public final class GetVbrHealthChecksCheck {
     public static Builder builder(GetVbrHealthChecksCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cenId;
         private Integer healthCheckInterval;
@@ -145,11 +126,7 @@ public final class GetVbrHealthChecksCheck {
         private String id;
         private String vbrInstanceId;
         private String vbrInstanceRegionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVbrHealthChecksCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -162,39 +139,57 @@ public final class GetVbrHealthChecksCheck {
     	      this.vbrInstanceRegionId = defaults.vbrInstanceRegionId;
         }
 
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
             this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckSourceIp(String healthCheckSourceIp) {
             this.healthCheckSourceIp = Objects.requireNonNull(healthCheckSourceIp);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckTargetIp(String healthCheckTargetIp) {
             this.healthCheckTargetIp = Objects.requireNonNull(healthCheckTargetIp);
             return this;
         }
+        @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
             this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder vbrInstanceId(String vbrInstanceId) {
             this.vbrInstanceId = Objects.requireNonNull(vbrInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vbrInstanceRegionId(String vbrInstanceRegionId) {
             this.vbrInstanceRegionId = Objects.requireNonNull(vbrInstanceRegionId);
             return this;
-        }        public GetVbrHealthChecksCheck build() {
-            return new GetVbrHealthChecksCheck(cenId, healthCheckInterval, healthCheckSourceIp, healthCheckTargetIp, healthyThreshold, id, vbrInstanceId, vbrInstanceRegionId);
+        }
+        public GetVbrHealthChecksCheck build() {
+            final var o = new GetVbrHealthChecksCheck();
+            o.cenId = cenId;
+            o.healthCheckInterval = healthCheckInterval;
+            o.healthCheckSourceIp = healthCheckSourceIp;
+            o.healthCheckTargetIp = healthCheckTargetIp;
+            o.healthyThreshold = healthyThreshold;
+            o.id = id;
+            o.vbrInstanceId = vbrInstanceId;
+            o.vbrInstanceRegionId = vbrInstanceRegionId;
+            return o;
         }
     }
 }

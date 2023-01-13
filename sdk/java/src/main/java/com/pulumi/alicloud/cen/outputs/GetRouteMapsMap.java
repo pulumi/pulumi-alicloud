@@ -16,217 +16,154 @@ public final class GetRouteMapsMap {
      * @return A match statement. It indicates the mode in which the as-path attribute is matched.
      * 
      */
-    private final String asPathMatchMode;
+    private String asPathMatchMode;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return The ID of the region to which the CEN instance belongs.
      * 
      */
-    private final String cenRegionId;
+    private String cenRegionId;
     /**
      * @return A match statement. It indicates the mode in which the prefix attribute is matched.
      * 
      */
-    private final String cidrMatchMode;
+    private String cidrMatchMode;
     /**
      * @return A match statement. It indicates the mode in which the community attribute is matched.
      * 
      */
-    private final String communityMatchMode;
+    private String communityMatchMode;
     /**
      * @return An action statement. It indicates the mode in which the community attribute is operated.
      * 
      */
-    private final String communityOperateMode;
+    private String communityOperateMode;
     /**
      * @return The description of the route map.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return A match statement that indicates the list of IDs of the destination instances.
      * 
      */
-    private final List<String> destinationChildInstanceTypes;
+    private List<String> destinationChildInstanceTypes;
     /**
      * @return A match statement that indicates the prefix list.
      * 
      */
-    private final List<String> destinationCidrBlocks;
+    private List<String> destinationCidrBlocks;
     /**
      * @return A match statement that indicates the list of IDs of the destination instances.
      * 
      */
-    private final List<String> destinationInstanceIds;
+    private List<String> destinationInstanceIds;
     /**
      * @return Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
      * 
      */
-    private final Boolean destinationInstanceIdsReverseMatch;
+    private Boolean destinationInstanceIdsReverseMatch;
     /**
      * @return A match statement that indicates the list of IDs of the destination route tables.
      * 
      */
-    private final List<String> destinationRouteTableIds;
+    private List<String> destinationRouteTableIds;
     /**
      * @return The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The action that is performed to a route if the route meets all the match conditions.
      * 
      */
-    private final String mapResult;
+    private String mapResult;
     /**
      * @return A match statement that indicates the As path list.
      * 
      */
-    private final List<String> matchAsns;
+    private List<String> matchAsns;
     /**
      * @return A match statement that indicates the community set.
      * 
      */
-    private final List<String> matchCommunitySets;
+    private List<String> matchCommunitySets;
     /**
      * @return The priority of the next route map that is associated with the current route map.
      * 
      */
-    private final Integer nextPriority;
+    private Integer nextPriority;
     /**
      * @return An action statement that operates the community attribute.
      * 
      */
-    private final List<String> operateCommunitySets;
+    private List<String> operateCommunitySets;
     /**
      * @return An action statement that modifies the preference of the route.
      * 
      */
-    private final Integer preference;
+    private Integer preference;
     /**
      * @return Indicates AS Path prepending when a regional gateway receives or publishes a route.
      * 
      */
-    private final List<String> prependAsPaths;
+    private List<String> prependAsPaths;
     /**
      * @return The priority of the route map.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return The ID of the route map.
      * 
      */
-    private final String routeMapId;
+    private String routeMapId;
     /**
      * @return A match statement that indicates the list of route types.
      * 
      */
-    private final List<String> routeTypes;
+    private List<String> routeTypes;
     /**
      * @return A match statement that indicates the list of IDs of the source instances.
      * 
      */
-    private final List<String> sourceChildInstanceTypes;
+    private List<String> sourceChildInstanceTypes;
     /**
      * @return A match statement that indicates the list of IDs of the source instances.
      * 
      */
-    private final List<String> sourceInstanceIds;
+    private List<String> sourceInstanceIds;
     /**
      * @return Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
      * 
      */
-    private final Boolean sourceInstanceIdsReverseMatch;
+    private Boolean sourceInstanceIdsReverseMatch;
     /**
      * @return A match statement that indicates the list of IDs of the source regions.
      * 
      */
-    private final List<String> sourceRegionIds;
+    private List<String> sourceRegionIds;
     /**
      * @return A match statement that indicates the list of IDs of the source route tables.
      * 
      */
-    private final List<String> sourceRouteTableIds;
+    private List<String> sourceRouteTableIds;
     /**
      * @return The status of the route map, including `Creating`, `Active` and `Deleting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
      * 
      */
-    private final String transmitDirection;
+    private String transmitDirection;
 
-    @CustomType.Constructor
-    private GetRouteMapsMap(
-        @CustomType.Parameter("asPathMatchMode") String asPathMatchMode,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("cenRegionId") String cenRegionId,
-        @CustomType.Parameter("cidrMatchMode") String cidrMatchMode,
-        @CustomType.Parameter("communityMatchMode") String communityMatchMode,
-        @CustomType.Parameter("communityOperateMode") String communityOperateMode,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("destinationChildInstanceTypes") List<String> destinationChildInstanceTypes,
-        @CustomType.Parameter("destinationCidrBlocks") List<String> destinationCidrBlocks,
-        @CustomType.Parameter("destinationInstanceIds") List<String> destinationInstanceIds,
-        @CustomType.Parameter("destinationInstanceIdsReverseMatch") Boolean destinationInstanceIdsReverseMatch,
-        @CustomType.Parameter("destinationRouteTableIds") List<String> destinationRouteTableIds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mapResult") String mapResult,
-        @CustomType.Parameter("matchAsns") List<String> matchAsns,
-        @CustomType.Parameter("matchCommunitySets") List<String> matchCommunitySets,
-        @CustomType.Parameter("nextPriority") Integer nextPriority,
-        @CustomType.Parameter("operateCommunitySets") List<String> operateCommunitySets,
-        @CustomType.Parameter("preference") Integer preference,
-        @CustomType.Parameter("prependAsPaths") List<String> prependAsPaths,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("routeMapId") String routeMapId,
-        @CustomType.Parameter("routeTypes") List<String> routeTypes,
-        @CustomType.Parameter("sourceChildInstanceTypes") List<String> sourceChildInstanceTypes,
-        @CustomType.Parameter("sourceInstanceIds") List<String> sourceInstanceIds,
-        @CustomType.Parameter("sourceInstanceIdsReverseMatch") Boolean sourceInstanceIdsReverseMatch,
-        @CustomType.Parameter("sourceRegionIds") List<String> sourceRegionIds,
-        @CustomType.Parameter("sourceRouteTableIds") List<String> sourceRouteTableIds,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transmitDirection") String transmitDirection) {
-        this.asPathMatchMode = asPathMatchMode;
-        this.cenId = cenId;
-        this.cenRegionId = cenRegionId;
-        this.cidrMatchMode = cidrMatchMode;
-        this.communityMatchMode = communityMatchMode;
-        this.communityOperateMode = communityOperateMode;
-        this.description = description;
-        this.destinationChildInstanceTypes = destinationChildInstanceTypes;
-        this.destinationCidrBlocks = destinationCidrBlocks;
-        this.destinationInstanceIds = destinationInstanceIds;
-        this.destinationInstanceIdsReverseMatch = destinationInstanceIdsReverseMatch;
-        this.destinationRouteTableIds = destinationRouteTableIds;
-        this.id = id;
-        this.mapResult = mapResult;
-        this.matchAsns = matchAsns;
-        this.matchCommunitySets = matchCommunitySets;
-        this.nextPriority = nextPriority;
-        this.operateCommunitySets = operateCommunitySets;
-        this.preference = preference;
-        this.prependAsPaths = prependAsPaths;
-        this.priority = priority;
-        this.routeMapId = routeMapId;
-        this.routeTypes = routeTypes;
-        this.sourceChildInstanceTypes = sourceChildInstanceTypes;
-        this.sourceInstanceIds = sourceInstanceIds;
-        this.sourceInstanceIdsReverseMatch = sourceInstanceIdsReverseMatch;
-        this.sourceRegionIds = sourceRegionIds;
-        this.sourceRouteTableIds = sourceRouteTableIds;
-        this.status = status;
-        this.transmitDirection = transmitDirection;
-    }
-
+    private GetRouteMapsMap() {}
     /**
      * @return A match statement. It indicates the mode in which the as-path attribute is matched.
      * 
@@ -445,7 +382,7 @@ public final class GetRouteMapsMap {
     public static Builder builder(GetRouteMapsMap defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String asPathMatchMode;
         private String cenId;
@@ -477,11 +414,7 @@ public final class GetRouteMapsMap {
         private List<String> sourceRouteTableIds;
         private String status;
         private String transmitDirection;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteMapsMap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asPathMatchMode = defaults.asPathMatchMode;
@@ -516,34 +449,42 @@ public final class GetRouteMapsMap {
     	      this.transmitDirection = defaults.transmitDirection;
         }
 
+        @CustomType.Setter
         public Builder asPathMatchMode(String asPathMatchMode) {
             this.asPathMatchMode = Objects.requireNonNull(asPathMatchMode);
             return this;
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder cenRegionId(String cenRegionId) {
             this.cenRegionId = Objects.requireNonNull(cenRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder cidrMatchMode(String cidrMatchMode) {
             this.cidrMatchMode = Objects.requireNonNull(cidrMatchMode);
             return this;
         }
+        @CustomType.Setter
         public Builder communityMatchMode(String communityMatchMode) {
             this.communityMatchMode = Objects.requireNonNull(communityMatchMode);
             return this;
         }
+        @CustomType.Setter
         public Builder communityOperateMode(String communityOperateMode) {
             this.communityOperateMode = Objects.requireNonNull(communityOperateMode);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationChildInstanceTypes(List<String> destinationChildInstanceTypes) {
             this.destinationChildInstanceTypes = Objects.requireNonNull(destinationChildInstanceTypes);
             return this;
@@ -551,6 +492,7 @@ public final class GetRouteMapsMap {
         public Builder destinationChildInstanceTypes(String... destinationChildInstanceTypes) {
             return destinationChildInstanceTypes(List.of(destinationChildInstanceTypes));
         }
+        @CustomType.Setter
         public Builder destinationCidrBlocks(List<String> destinationCidrBlocks) {
             this.destinationCidrBlocks = Objects.requireNonNull(destinationCidrBlocks);
             return this;
@@ -558,6 +500,7 @@ public final class GetRouteMapsMap {
         public Builder destinationCidrBlocks(String... destinationCidrBlocks) {
             return destinationCidrBlocks(List.of(destinationCidrBlocks));
         }
+        @CustomType.Setter
         public Builder destinationInstanceIds(List<String> destinationInstanceIds) {
             this.destinationInstanceIds = Objects.requireNonNull(destinationInstanceIds);
             return this;
@@ -565,10 +508,12 @@ public final class GetRouteMapsMap {
         public Builder destinationInstanceIds(String... destinationInstanceIds) {
             return destinationInstanceIds(List.of(destinationInstanceIds));
         }
+        @CustomType.Setter
         public Builder destinationInstanceIdsReverseMatch(Boolean destinationInstanceIdsReverseMatch) {
             this.destinationInstanceIdsReverseMatch = Objects.requireNonNull(destinationInstanceIdsReverseMatch);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationRouteTableIds(List<String> destinationRouteTableIds) {
             this.destinationRouteTableIds = Objects.requireNonNull(destinationRouteTableIds);
             return this;
@@ -576,14 +521,17 @@ public final class GetRouteMapsMap {
         public Builder destinationRouteTableIds(String... destinationRouteTableIds) {
             return destinationRouteTableIds(List.of(destinationRouteTableIds));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mapResult(String mapResult) {
             this.mapResult = Objects.requireNonNull(mapResult);
             return this;
         }
+        @CustomType.Setter
         public Builder matchAsns(List<String> matchAsns) {
             this.matchAsns = Objects.requireNonNull(matchAsns);
             return this;
@@ -591,6 +539,7 @@ public final class GetRouteMapsMap {
         public Builder matchAsns(String... matchAsns) {
             return matchAsns(List.of(matchAsns));
         }
+        @CustomType.Setter
         public Builder matchCommunitySets(List<String> matchCommunitySets) {
             this.matchCommunitySets = Objects.requireNonNull(matchCommunitySets);
             return this;
@@ -598,10 +547,12 @@ public final class GetRouteMapsMap {
         public Builder matchCommunitySets(String... matchCommunitySets) {
             return matchCommunitySets(List.of(matchCommunitySets));
         }
+        @CustomType.Setter
         public Builder nextPriority(Integer nextPriority) {
             this.nextPriority = Objects.requireNonNull(nextPriority);
             return this;
         }
+        @CustomType.Setter
         public Builder operateCommunitySets(List<String> operateCommunitySets) {
             this.operateCommunitySets = Objects.requireNonNull(operateCommunitySets);
             return this;
@@ -609,10 +560,12 @@ public final class GetRouteMapsMap {
         public Builder operateCommunitySets(String... operateCommunitySets) {
             return operateCommunitySets(List.of(operateCommunitySets));
         }
+        @CustomType.Setter
         public Builder preference(Integer preference) {
             this.preference = Objects.requireNonNull(preference);
             return this;
         }
+        @CustomType.Setter
         public Builder prependAsPaths(List<String> prependAsPaths) {
             this.prependAsPaths = Objects.requireNonNull(prependAsPaths);
             return this;
@@ -620,14 +573,17 @@ public final class GetRouteMapsMap {
         public Builder prependAsPaths(String... prependAsPaths) {
             return prependAsPaths(List.of(prependAsPaths));
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder routeMapId(String routeMapId) {
             this.routeMapId = Objects.requireNonNull(routeMapId);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTypes(List<String> routeTypes) {
             this.routeTypes = Objects.requireNonNull(routeTypes);
             return this;
@@ -635,6 +591,7 @@ public final class GetRouteMapsMap {
         public Builder routeTypes(String... routeTypes) {
             return routeTypes(List.of(routeTypes));
         }
+        @CustomType.Setter
         public Builder sourceChildInstanceTypes(List<String> sourceChildInstanceTypes) {
             this.sourceChildInstanceTypes = Objects.requireNonNull(sourceChildInstanceTypes);
             return this;
@@ -642,6 +599,7 @@ public final class GetRouteMapsMap {
         public Builder sourceChildInstanceTypes(String... sourceChildInstanceTypes) {
             return sourceChildInstanceTypes(List.of(sourceChildInstanceTypes));
         }
+        @CustomType.Setter
         public Builder sourceInstanceIds(List<String> sourceInstanceIds) {
             this.sourceInstanceIds = Objects.requireNonNull(sourceInstanceIds);
             return this;
@@ -649,10 +607,12 @@ public final class GetRouteMapsMap {
         public Builder sourceInstanceIds(String... sourceInstanceIds) {
             return sourceInstanceIds(List.of(sourceInstanceIds));
         }
+        @CustomType.Setter
         public Builder sourceInstanceIdsReverseMatch(Boolean sourceInstanceIdsReverseMatch) {
             this.sourceInstanceIdsReverseMatch = Objects.requireNonNull(sourceInstanceIdsReverseMatch);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceRegionIds(List<String> sourceRegionIds) {
             this.sourceRegionIds = Objects.requireNonNull(sourceRegionIds);
             return this;
@@ -660,6 +620,7 @@ public final class GetRouteMapsMap {
         public Builder sourceRegionIds(String... sourceRegionIds) {
             return sourceRegionIds(List.of(sourceRegionIds));
         }
+        @CustomType.Setter
         public Builder sourceRouteTableIds(List<String> sourceRouteTableIds) {
             this.sourceRouteTableIds = Objects.requireNonNull(sourceRouteTableIds);
             return this;
@@ -667,15 +628,49 @@ public final class GetRouteMapsMap {
         public Builder sourceRouteTableIds(String... sourceRouteTableIds) {
             return sourceRouteTableIds(List.of(sourceRouteTableIds));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transmitDirection(String transmitDirection) {
             this.transmitDirection = Objects.requireNonNull(transmitDirection);
             return this;
-        }        public GetRouteMapsMap build() {
-            return new GetRouteMapsMap(asPathMatchMode, cenId, cenRegionId, cidrMatchMode, communityMatchMode, communityOperateMode, description, destinationChildInstanceTypes, destinationCidrBlocks, destinationInstanceIds, destinationInstanceIdsReverseMatch, destinationRouteTableIds, id, mapResult, matchAsns, matchCommunitySets, nextPriority, operateCommunitySets, preference, prependAsPaths, priority, routeMapId, routeTypes, sourceChildInstanceTypes, sourceInstanceIds, sourceInstanceIdsReverseMatch, sourceRegionIds, sourceRouteTableIds, status, transmitDirection);
+        }
+        public GetRouteMapsMap build() {
+            final var o = new GetRouteMapsMap();
+            o.asPathMatchMode = asPathMatchMode;
+            o.cenId = cenId;
+            o.cenRegionId = cenRegionId;
+            o.cidrMatchMode = cidrMatchMode;
+            o.communityMatchMode = communityMatchMode;
+            o.communityOperateMode = communityOperateMode;
+            o.description = description;
+            o.destinationChildInstanceTypes = destinationChildInstanceTypes;
+            o.destinationCidrBlocks = destinationCidrBlocks;
+            o.destinationInstanceIds = destinationInstanceIds;
+            o.destinationInstanceIdsReverseMatch = destinationInstanceIdsReverseMatch;
+            o.destinationRouteTableIds = destinationRouteTableIds;
+            o.id = id;
+            o.mapResult = mapResult;
+            o.matchAsns = matchAsns;
+            o.matchCommunitySets = matchCommunitySets;
+            o.nextPriority = nextPriority;
+            o.operateCommunitySets = operateCommunitySets;
+            o.preference = preference;
+            o.prependAsPaths = prependAsPaths;
+            o.priority = priority;
+            o.routeMapId = routeMapId;
+            o.routeTypes = routeTypes;
+            o.sourceChildInstanceTypes = sourceChildInstanceTypes;
+            o.sourceInstanceIds = sourceInstanceIds;
+            o.sourceInstanceIdsReverseMatch = sourceInstanceIdsReverseMatch;
+            o.sourceRegionIds = sourceRegionIds;
+            o.sourceRouteTableIds = sourceRouteTableIds;
+            o.status = status;
+            o.transmitDirection = transmitDirection;
+            return o;
         }
     }
 }

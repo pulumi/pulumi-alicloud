@@ -18,203 +18,144 @@ public final class GetDedicatedHostGroupsGroup {
      * @return The policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      * 
      */
-    private final String allocationPolicy;
+    private String allocationPolicy;
     /**
      * @return The Bastion Instance id of the Dedicated Host Group.
      * 
      */
-    private final String bastionInstanceId;
+    private String bastionInstanceId;
     /**
      * @return The CPU overcommitment ratio of the dedicated cluster. If you set this parameter to 200, the CPU resources that can be allocated are twice as many as the CPU resources that are provided. This maximizes the CPU utilization. Valid values: 100 to 300. Default value: 200.
      * 
      */
-    private final Double cpuAllocateRation;
+    private Double cpuAllocateRation;
     /**
      * @return The CPU Allocated Amount of the Dedicated Host Group.
      * 
      */
-    private final Double cpuAllocatedAmount;
+    private Double cpuAllocatedAmount;
     /**
      * @return The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      * 
      */
-    private final Integer cpuAllocationRatio;
+    private Integer cpuAllocationRatio;
     /**
      * @return The Created Time of the Dedicated Host Group.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The Dedicated Host Count Group by Host Type of the Dedicated Host Group.
      * 
      */
-    private final List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes;
+    private List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes;
     /**
      * @return -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    private final String dedicatedHostGroupDesc;
+    private String dedicatedHostGroupDesc;
     /**
      * @return Dedicated Host Group ID.
      * 
      */
-    private final String dedicatedHostGroupId;
+    private String dedicatedHostGroupId;
     /**
      * @return The Deployment Type of the Dedicated Host Group.
      * 
      */
-    private final String deployType;
+    private String deployType;
     /**
      * @return The storage overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      * 
      */
-    private final Double diskAllocateRation;
+    private Double diskAllocateRation;
     /**
      * @return The Disk Allocated Amount of the Dedicated Host Group.
      * 
      */
-    private final Double diskAllocatedAmount;
+    private Double diskAllocatedAmount;
     /**
      * @return The Disk Allocation Ratio of the Dedicated Host Group.
      * 
      */
-    private final Integer diskAllocationRatio;
+    private Integer diskAllocationRatio;
     /**
      * @return The DiskUsedAmount of the Dedicated Host Group.
      * 
      */
-    private final Double diskUsedAmount;
+    private Double diskUsedAmount;
     /**
      * @return The DiskUtility of the Dedicated Host Group.
      * 
      */
-    private final Double diskUtility;
+    private Double diskUtility;
     /**
      * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return The Total Host Number  of the Dedicated Host Group.
      * 
      */
-    private final Integer hostNumber;
+    private Integer hostNumber;
     /**
      * @return The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      * 
      */
-    private final String hostReplacePolicy;
+    private String hostReplacePolicy;
     /**
      * @return The ID of the Dedicated Host Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Total Instance Number of the Dedicated Host Group.
      * 
      */
-    private final Integer instanceNumber;
+    private Integer instanceNumber;
     /**
      * @return The maximum memory usage of each host in the dedicated cluster.Valid values: 0 to 90. Default value: 90.
      * 
      */
-    private final Double memAllocateRation;
+    private Double memAllocateRation;
     /**
      * @return The MemAllocatedAmount of the Dedicated Host Group.
      * 
      */
-    private final Double memAllocatedAmount;
+    private Double memAllocatedAmount;
     /**
      * @return The Memory Allocation Ratio of the Dedicated Host Group.
      * 
      */
-    private final Integer memAllocationRatio;
+    private Integer memAllocationRatio;
     /**
      * @return The MemUsedAmount of the Dedicated Host Group.
      * 
      */
-    private final Double memUsedAmount;
+    private Double memUsedAmount;
     /**
      * @return The Mem Utility of the Dedicated Host Group.
      * 
      */
-    private final Double memUtility;
+    private Double memUtility;
     /**
      * @return The Text of the Dedicated Host Group.
      * 
      */
-    private final String text;
+    private String text;
     /**
      * @return The virtual private cloud (VPC) ID of the dedicated cluster.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ZoneIDList of the Dedicated Host Group.
      * 
      */
-    private final List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists;
+    private List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists;
 
-    @CustomType.Constructor
-    private GetDedicatedHostGroupsGroup(
-        @CustomType.Parameter("allocationPolicy") String allocationPolicy,
-        @CustomType.Parameter("bastionInstanceId") String bastionInstanceId,
-        @CustomType.Parameter("cpuAllocateRation") Double cpuAllocateRation,
-        @CustomType.Parameter("cpuAllocatedAmount") Double cpuAllocatedAmount,
-        @CustomType.Parameter("cpuAllocationRatio") Integer cpuAllocationRatio,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dedicatedHostCountGroupByHostTypes") List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes,
-        @CustomType.Parameter("dedicatedHostGroupDesc") String dedicatedHostGroupDesc,
-        @CustomType.Parameter("dedicatedHostGroupId") String dedicatedHostGroupId,
-        @CustomType.Parameter("deployType") String deployType,
-        @CustomType.Parameter("diskAllocateRation") Double diskAllocateRation,
-        @CustomType.Parameter("diskAllocatedAmount") Double diskAllocatedAmount,
-        @CustomType.Parameter("diskAllocationRatio") Integer diskAllocationRatio,
-        @CustomType.Parameter("diskUsedAmount") Double diskUsedAmount,
-        @CustomType.Parameter("diskUtility") Double diskUtility,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("hostNumber") Integer hostNumber,
-        @CustomType.Parameter("hostReplacePolicy") String hostReplacePolicy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceNumber") Integer instanceNumber,
-        @CustomType.Parameter("memAllocateRation") Double memAllocateRation,
-        @CustomType.Parameter("memAllocatedAmount") Double memAllocatedAmount,
-        @CustomType.Parameter("memAllocationRatio") Integer memAllocationRatio,
-        @CustomType.Parameter("memUsedAmount") Double memUsedAmount,
-        @CustomType.Parameter("memUtility") Double memUtility,
-        @CustomType.Parameter("text") String text,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("zoneIdLists") List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists) {
-        this.allocationPolicy = allocationPolicy;
-        this.bastionInstanceId = bastionInstanceId;
-        this.cpuAllocateRation = cpuAllocateRation;
-        this.cpuAllocatedAmount = cpuAllocatedAmount;
-        this.cpuAllocationRatio = cpuAllocationRatio;
-        this.createTime = createTime;
-        this.dedicatedHostCountGroupByHostTypes = dedicatedHostCountGroupByHostTypes;
-        this.dedicatedHostGroupDesc = dedicatedHostGroupDesc;
-        this.dedicatedHostGroupId = dedicatedHostGroupId;
-        this.deployType = deployType;
-        this.diskAllocateRation = diskAllocateRation;
-        this.diskAllocatedAmount = diskAllocatedAmount;
-        this.diskAllocationRatio = diskAllocationRatio;
-        this.diskUsedAmount = diskUsedAmount;
-        this.diskUtility = diskUtility;
-        this.engine = engine;
-        this.hostNumber = hostNumber;
-        this.hostReplacePolicy = hostReplacePolicy;
-        this.id = id;
-        this.instanceNumber = instanceNumber;
-        this.memAllocateRation = memAllocateRation;
-        this.memAllocatedAmount = memAllocatedAmount;
-        this.memAllocationRatio = memAllocationRatio;
-        this.memUsedAmount = memUsedAmount;
-        this.memUtility = memUtility;
-        this.text = text;
-        this.vpcId = vpcId;
-        this.zoneIdLists = zoneIdLists;
-    }
-
+    private GetDedicatedHostGroupsGroup() {}
     /**
      * @return The policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      * 
@@ -419,7 +360,7 @@ public final class GetDedicatedHostGroupsGroup {
     public static Builder builder(GetDedicatedHostGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocationPolicy;
         private String bastionInstanceId;
@@ -449,11 +390,7 @@ public final class GetDedicatedHostGroupsGroup {
         private String text;
         private String vpcId;
         private List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationPolicy = defaults.allocationPolicy;
@@ -486,30 +423,37 @@ public final class GetDedicatedHostGroupsGroup {
     	      this.zoneIdLists = defaults.zoneIdLists;
         }
 
+        @CustomType.Setter
         public Builder allocationPolicy(String allocationPolicy) {
             this.allocationPolicy = Objects.requireNonNull(allocationPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder bastionInstanceId(String bastionInstanceId) {
             this.bastionInstanceId = Objects.requireNonNull(bastionInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuAllocateRation(Double cpuAllocateRation) {
             this.cpuAllocateRation = Objects.requireNonNull(cpuAllocateRation);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuAllocatedAmount(Double cpuAllocatedAmount) {
             this.cpuAllocatedAmount = Objects.requireNonNull(cpuAllocatedAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuAllocationRatio(Integer cpuAllocationRatio) {
             this.cpuAllocationRatio = Objects.requireNonNull(cpuAllocationRatio);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dedicatedHostCountGroupByHostTypes(List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes) {
             this.dedicatedHostCountGroupByHostTypes = Objects.requireNonNull(dedicatedHostCountGroupByHostTypes);
             return this;
@@ -517,94 +461,145 @@ public final class GetDedicatedHostGroupsGroup {
         public Builder dedicatedHostCountGroupByHostTypes(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType... dedicatedHostCountGroupByHostTypes) {
             return dedicatedHostCountGroupByHostTypes(List.of(dedicatedHostCountGroupByHostTypes));
         }
+        @CustomType.Setter
         public Builder dedicatedHostGroupDesc(String dedicatedHostGroupDesc) {
             this.dedicatedHostGroupDesc = Objects.requireNonNull(dedicatedHostGroupDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
             this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder deployType(String deployType) {
             this.deployType = Objects.requireNonNull(deployType);
             return this;
         }
+        @CustomType.Setter
         public Builder diskAllocateRation(Double diskAllocateRation) {
             this.diskAllocateRation = Objects.requireNonNull(diskAllocateRation);
             return this;
         }
+        @CustomType.Setter
         public Builder diskAllocatedAmount(Double diskAllocatedAmount) {
             this.diskAllocatedAmount = Objects.requireNonNull(diskAllocatedAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder diskAllocationRatio(Integer diskAllocationRatio) {
             this.diskAllocationRatio = Objects.requireNonNull(diskAllocationRatio);
             return this;
         }
+        @CustomType.Setter
         public Builder diskUsedAmount(Double diskUsedAmount) {
             this.diskUsedAmount = Objects.requireNonNull(diskUsedAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder diskUtility(Double diskUtility) {
             this.diskUtility = Objects.requireNonNull(diskUtility);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder hostNumber(Integer hostNumber) {
             this.hostNumber = Objects.requireNonNull(hostNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder hostReplacePolicy(String hostReplacePolicy) {
             this.hostReplacePolicy = Objects.requireNonNull(hostReplacePolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNumber(Integer instanceNumber) {
             this.instanceNumber = Objects.requireNonNull(instanceNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder memAllocateRation(Double memAllocateRation) {
             this.memAllocateRation = Objects.requireNonNull(memAllocateRation);
             return this;
         }
+        @CustomType.Setter
         public Builder memAllocatedAmount(Double memAllocatedAmount) {
             this.memAllocatedAmount = Objects.requireNonNull(memAllocatedAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder memAllocationRatio(Integer memAllocationRatio) {
             this.memAllocationRatio = Objects.requireNonNull(memAllocationRatio);
             return this;
         }
+        @CustomType.Setter
         public Builder memUsedAmount(Double memUsedAmount) {
             this.memUsedAmount = Objects.requireNonNull(memUsedAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder memUtility(Double memUtility) {
             this.memUtility = Objects.requireNonNull(memUtility);
             return this;
         }
+        @CustomType.Setter
         public Builder text(String text) {
             this.text = Objects.requireNonNull(text);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIdLists(List<GetDedicatedHostGroupsGroupZoneIdList> zoneIdLists) {
             this.zoneIdLists = Objects.requireNonNull(zoneIdLists);
             return this;
         }
         public Builder zoneIdLists(GetDedicatedHostGroupsGroupZoneIdList... zoneIdLists) {
             return zoneIdLists(List.of(zoneIdLists));
-        }        public GetDedicatedHostGroupsGroup build() {
-            return new GetDedicatedHostGroupsGroup(allocationPolicy, bastionInstanceId, cpuAllocateRation, cpuAllocatedAmount, cpuAllocationRatio, createTime, dedicatedHostCountGroupByHostTypes, dedicatedHostGroupDesc, dedicatedHostGroupId, deployType, diskAllocateRation, diskAllocatedAmount, diskAllocationRatio, diskUsedAmount, diskUtility, engine, hostNumber, hostReplacePolicy, id, instanceNumber, memAllocateRation, memAllocatedAmount, memAllocationRatio, memUsedAmount, memUtility, text, vpcId, zoneIdLists);
+        }
+        public GetDedicatedHostGroupsGroup build() {
+            final var o = new GetDedicatedHostGroupsGroup();
+            o.allocationPolicy = allocationPolicy;
+            o.bastionInstanceId = bastionInstanceId;
+            o.cpuAllocateRation = cpuAllocateRation;
+            o.cpuAllocatedAmount = cpuAllocatedAmount;
+            o.cpuAllocationRatio = cpuAllocationRatio;
+            o.createTime = createTime;
+            o.dedicatedHostCountGroupByHostTypes = dedicatedHostCountGroupByHostTypes;
+            o.dedicatedHostGroupDesc = dedicatedHostGroupDesc;
+            o.dedicatedHostGroupId = dedicatedHostGroupId;
+            o.deployType = deployType;
+            o.diskAllocateRation = diskAllocateRation;
+            o.diskAllocatedAmount = diskAllocatedAmount;
+            o.diskAllocationRatio = diskAllocationRatio;
+            o.diskUsedAmount = diskUsedAmount;
+            o.diskUtility = diskUtility;
+            o.engine = engine;
+            o.hostNumber = hostNumber;
+            o.hostReplacePolicy = hostReplacePolicy;
+            o.id = id;
+            o.instanceNumber = instanceNumber;
+            o.memAllocateRation = memAllocateRation;
+            o.memAllocatedAmount = memAllocatedAmount;
+            o.memAllocationRatio = memAllocationRatio;
+            o.memUsedAmount = memUsedAmount;
+            o.memUtility = memUtility;
+            o.text = text;
+            o.vpcId = vpcId;
+            o.zoneIdLists = zoneIdLists;
+            return o;
         }
     }
 }

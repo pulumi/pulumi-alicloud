@@ -13,42 +13,29 @@ public final class GetKeyVersionsVersion {
      * @return Date and time when the key version was created (UTC time).
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return (Removed from v1.124.4) It has been removed and using `create_time` instead.
      * 
      */
-    private final String creationDate;
+    private String creationDate;
     /**
      * @return ID of the KMS KeyVersion resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The id of kms key.
      * 
      */
-    private final String keyId;
+    private String keyId;
     /**
      * @return ID of the key version.
      * 
      */
-    private final String keyVersionId;
+    private String keyVersionId;
 
-    @CustomType.Constructor
-    private GetKeyVersionsVersion(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("creationDate") String creationDate,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keyId") String keyId,
-        @CustomType.Parameter("keyVersionId") String keyVersionId) {
-        this.createTime = createTime;
-        this.creationDate = creationDate;
-        this.id = id;
-        this.keyId = keyId;
-        this.keyVersionId = keyVersionId;
-    }
-
+    private GetKeyVersionsVersion() {}
     /**
      * @return Date and time when the key version was created (UTC time).
      * 
@@ -92,18 +79,14 @@ public final class GetKeyVersionsVersion {
     public static Builder builder(GetKeyVersionsVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String creationDate;
         private String id;
         private String keyId;
         private String keyVersionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeyVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -113,27 +96,39 @@ public final class GetKeyVersionsVersion {
     	      this.keyVersionId = defaults.keyVersionId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder creationDate(String creationDate) {
             this.creationDate = Objects.requireNonNull(creationDate);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
         }
+        @CustomType.Setter
         public Builder keyVersionId(String keyVersionId) {
             this.keyVersionId = Objects.requireNonNull(keyVersionId);
             return this;
-        }        public GetKeyVersionsVersion build() {
-            return new GetKeyVersionsVersion(createTime, creationDate, id, keyId, keyVersionId);
+        }
+        public GetKeyVersionsVersion build() {
+            final var o = new GetKeyVersionsVersion();
+            o.createTime = createTime;
+            o.creationDate = creationDate;
+            o.id = id;
+            o.keyId = keyId;
+            o.keyVersionId = keyVersionId;
+            return o;
         }
     }
 }

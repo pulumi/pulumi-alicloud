@@ -16,21 +16,14 @@ public final class AccessStrategyDefaultAddrPool {
      * @return The ID of the address pool in the primary address pool group.
      * 
      */
-    private final String addrPoolId;
+    private String addrPoolId;
     /**
      * @return The weight of the address pool in the primary address pool group.
      * 
      */
-    private final @Nullable Integer lbaWeight;
+    private @Nullable Integer lbaWeight;
 
-    @CustomType.Constructor
-    private AccessStrategyDefaultAddrPool(
-        @CustomType.Parameter("addrPoolId") String addrPoolId,
-        @CustomType.Parameter("lbaWeight") @Nullable Integer lbaWeight) {
-        this.addrPoolId = addrPoolId;
-        this.lbaWeight = lbaWeight;
-    }
-
+    private AccessStrategyDefaultAddrPool() {}
     /**
      * @return The ID of the address pool in the primary address pool group.
      * 
@@ -53,30 +46,32 @@ public final class AccessStrategyDefaultAddrPool {
     public static Builder builder(AccessStrategyDefaultAddrPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addrPoolId;
         private @Nullable Integer lbaWeight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessStrategyDefaultAddrPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addrPoolId = defaults.addrPoolId;
     	      this.lbaWeight = defaults.lbaWeight;
         }
 
+        @CustomType.Setter
         public Builder addrPoolId(String addrPoolId) {
             this.addrPoolId = Objects.requireNonNull(addrPoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
             this.lbaWeight = lbaWeight;
             return this;
-        }        public AccessStrategyDefaultAddrPool build() {
-            return new AccessStrategyDefaultAddrPool(addrPoolId, lbaWeight);
+        }
+        public AccessStrategyDefaultAddrPool build() {
+            final var o = new AccessStrategyDefaultAddrPool();
+            o.addrPoolId = addrPoolId;
+            o.lbaWeight = lbaWeight;
+            return o;
         }
     }
 }

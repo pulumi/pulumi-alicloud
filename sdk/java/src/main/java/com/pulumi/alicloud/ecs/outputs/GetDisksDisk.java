@@ -20,103 +20,103 @@ public final class GetDisksDisk {
      * @return Disk attachment time.
      * 
      */
-    private final String attachedTime;
-    private final String autoSnapshotPolicyId;
+    private String attachedTime;
+    private String autoSnapshotPolicyId;
     /**
      * @return Availability zone of the disk.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return Disk creation time.
      * 
      */
-    private final String creationTime;
-    private final Boolean deleteAutoSnapshot;
-    private final Boolean deleteWithInstance;
+    private String creationTime;
+    private Boolean deleteAutoSnapshot;
+    private Boolean deleteWithInstance;
     /**
      * @return Disk description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Disk detachment time.
      * 
      */
-    private final String detachedTime;
-    private final String device;
-    private final String diskId;
-    private final String diskName;
-    private final String diskType;
-    private final Boolean enableAutoSnapshot;
-    private final Boolean enableAutomatedSnapshotPolicy;
+    private String detachedTime;
+    private String device;
+    private String diskId;
+    private String diskName;
+    private String diskType;
+    private Boolean enableAutoSnapshot;
+    private Boolean enableAutomatedSnapshotPolicy;
     /**
      * @return Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      * 
      */
-    private final String encrypted;
-    private final String expiredTime;
+    private String encrypted;
+    private String expiredTime;
     /**
      * @return ID of the disk.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of the image from which the disk is created. It is null unless the disk is created using an image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return Filter the results by the specified ECS instance ID.
      * 
      */
-    private final String instanceId;
-    private final Integer iops;
-    private final Integer iopsRead;
-    private final Integer iopsWrite;
-    private final String kmsKeyId;
-    private final Integer mountInstanceNum;
-    private final List<GetDisksDiskMountInstance> mountInstances;
+    private String instanceId;
+    private Integer iops;
+    private Integer iopsRead;
+    private Integer iopsWrite;
+    private String kmsKeyId;
+    private Integer mountInstanceNum;
+    private List<GetDisksDiskMountInstance> mountInstances;
     /**
      * @return Disk name.
      * 
      */
-    private final String name;
-    private final List<GetDisksDiskOperationLock> operationLocks;
-    private final String paymentType;
-    private final String performanceLevel;
-    private final Boolean portable;
-    private final String productCode;
+    private String name;
+    private List<GetDisksDiskOperationLock> operationLocks;
+    private String paymentType;
+    private String performanceLevel;
+    private Boolean portable;
+    private String productCode;
     /**
      * @return Region ID the disk belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The Id of resource group which the disk belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return Disk size in GiB.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
      * ```java
@@ -152,98 +152,15 @@ public final class GetDisksDisk {
      * ```
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return Disk type. Possible values: `system` and `data`.
      * 
      */
-    private final String type;
-    private final String zoneId;
+    private String type;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetDisksDisk(
-        @CustomType.Parameter("attachedTime") String attachedTime,
-        @CustomType.Parameter("autoSnapshotPolicyId") String autoSnapshotPolicyId,
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("deleteAutoSnapshot") Boolean deleteAutoSnapshot,
-        @CustomType.Parameter("deleteWithInstance") Boolean deleteWithInstance,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("detachedTime") String detachedTime,
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskName") String diskName,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("enableAutoSnapshot") Boolean enableAutoSnapshot,
-        @CustomType.Parameter("enableAutomatedSnapshotPolicy") Boolean enableAutomatedSnapshotPolicy,
-        @CustomType.Parameter("encrypted") String encrypted,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("iops") Integer iops,
-        @CustomType.Parameter("iopsRead") Integer iopsRead,
-        @CustomType.Parameter("iopsWrite") Integer iopsWrite,
-        @CustomType.Parameter("kmsKeyId") String kmsKeyId,
-        @CustomType.Parameter("mountInstanceNum") Integer mountInstanceNum,
-        @CustomType.Parameter("mountInstances") List<GetDisksDiskMountInstance> mountInstances,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("operationLocks") List<GetDisksDiskOperationLock> operationLocks,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("performanceLevel") String performanceLevel,
-        @CustomType.Parameter("portable") Boolean portable,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.attachedTime = attachedTime;
-        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
-        this.availabilityZone = availabilityZone;
-        this.category = category;
-        this.creationTime = creationTime;
-        this.deleteAutoSnapshot = deleteAutoSnapshot;
-        this.deleteWithInstance = deleteWithInstance;
-        this.description = description;
-        this.detachedTime = detachedTime;
-        this.device = device;
-        this.diskId = diskId;
-        this.diskName = diskName;
-        this.diskType = diskType;
-        this.enableAutoSnapshot = enableAutoSnapshot;
-        this.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
-        this.encrypted = encrypted;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.imageId = imageId;
-        this.instanceId = instanceId;
-        this.iops = iops;
-        this.iopsRead = iopsRead;
-        this.iopsWrite = iopsWrite;
-        this.kmsKeyId = kmsKeyId;
-        this.mountInstanceNum = mountInstanceNum;
-        this.mountInstances = mountInstances;
-        this.name = name;
-        this.operationLocks = operationLocks;
-        this.paymentType = paymentType;
-        this.performanceLevel = performanceLevel;
-        this.portable = portable;
-        this.productCode = productCode;
-        this.regionId = regionId;
-        this.resourceGroupId = resourceGroupId;
-        this.size = size;
-        this.snapshotId = snapshotId;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-        this.zoneId = zoneId;
-    }
-
+    private GetDisksDisk() {}
     /**
      * @return Disk attachment time.
      * 
@@ -475,7 +392,7 @@ public final class GetDisksDisk {
     public static Builder builder(GetDisksDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attachedTime;
         private String autoSnapshotPolicyId;
@@ -517,11 +434,7 @@ public final class GetDisksDisk {
         private Map<String,Object> tags;
         private String type;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDisksDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachedTime = defaults.attachedTime;
@@ -566,106 +479,132 @@ public final class GetDisksDisk {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder attachedTime(String attachedTime) {
             this.attachedTime = Objects.requireNonNull(attachedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteAutoSnapshot(Boolean deleteAutoSnapshot) {
             this.deleteAutoSnapshot = Objects.requireNonNull(deleteAutoSnapshot);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
             this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder detachedTime(String detachedTime) {
             this.detachedTime = Objects.requireNonNull(detachedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(String diskName) {
             this.diskName = Objects.requireNonNull(diskName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutoSnapshot(Boolean enableAutoSnapshot) {
             this.enableAutoSnapshot = Objects.requireNonNull(enableAutoSnapshot);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutomatedSnapshotPolicy(Boolean enableAutomatedSnapshotPolicy) {
             this.enableAutomatedSnapshotPolicy = Objects.requireNonNull(enableAutomatedSnapshotPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder encrypted(String encrypted) {
             this.encrypted = Objects.requireNonNull(encrypted);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder iops(Integer iops) {
             this.iops = Objects.requireNonNull(iops);
             return this;
         }
+        @CustomType.Setter
         public Builder iopsRead(Integer iopsRead) {
             this.iopsRead = Objects.requireNonNull(iopsRead);
             return this;
         }
+        @CustomType.Setter
         public Builder iopsWrite(Integer iopsWrite) {
             this.iopsWrite = Objects.requireNonNull(iopsWrite);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyId(String kmsKeyId) {
             this.kmsKeyId = Objects.requireNonNull(kmsKeyId);
             return this;
         }
+        @CustomType.Setter
         public Builder mountInstanceNum(Integer mountInstanceNum) {
             this.mountInstanceNum = Objects.requireNonNull(mountInstanceNum);
             return this;
         }
+        @CustomType.Setter
         public Builder mountInstances(List<GetDisksDiskMountInstance> mountInstances) {
             this.mountInstances = Objects.requireNonNull(mountInstances);
             return this;
@@ -673,10 +612,12 @@ public final class GetDisksDisk {
         public Builder mountInstances(GetDisksDiskMountInstance... mountInstances) {
             return mountInstances(List.of(mountInstances));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder operationLocks(List<GetDisksDiskOperationLock> operationLocks) {
             this.operationLocks = Objects.requireNonNull(operationLocks);
             return this;
@@ -684,55 +625,109 @@ public final class GetDisksDisk {
         public Builder operationLocks(GetDisksDiskOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
             this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder portable(Boolean portable) {
             this.portable = Objects.requireNonNull(portable);
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetDisksDisk build() {
-            return new GetDisksDisk(attachedTime, autoSnapshotPolicyId, availabilityZone, category, creationTime, deleteAutoSnapshot, deleteWithInstance, description, detachedTime, device, diskId, diskName, diskType, enableAutoSnapshot, enableAutomatedSnapshotPolicy, encrypted, expiredTime, id, imageId, instanceId, iops, iopsRead, iopsWrite, kmsKeyId, mountInstanceNum, mountInstances, name, operationLocks, paymentType, performanceLevel, portable, productCode, regionId, resourceGroupId, size, snapshotId, status, tags, type, zoneId);
+        }
+        public GetDisksDisk build() {
+            final var o = new GetDisksDisk();
+            o.attachedTime = attachedTime;
+            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            o.availabilityZone = availabilityZone;
+            o.category = category;
+            o.creationTime = creationTime;
+            o.deleteAutoSnapshot = deleteAutoSnapshot;
+            o.deleteWithInstance = deleteWithInstance;
+            o.description = description;
+            o.detachedTime = detachedTime;
+            o.device = device;
+            o.diskId = diskId;
+            o.diskName = diskName;
+            o.diskType = diskType;
+            o.enableAutoSnapshot = enableAutoSnapshot;
+            o.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
+            o.encrypted = encrypted;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.imageId = imageId;
+            o.instanceId = instanceId;
+            o.iops = iops;
+            o.iopsRead = iopsRead;
+            o.iopsWrite = iopsWrite;
+            o.kmsKeyId = kmsKeyId;
+            o.mountInstanceNum = mountInstanceNum;
+            o.mountInstances = mountInstances;
+            o.name = name;
+            o.operationLocks = operationLocks;
+            o.paymentType = paymentType;
+            o.performanceLevel = performanceLevel;
+            o.portable = portable;
+            o.productCode = productCode;
+            o.regionId = regionId;
+            o.resourceGroupId = resourceGroupId;
+            o.size = size;
+            o.snapshotId = snapshotId;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

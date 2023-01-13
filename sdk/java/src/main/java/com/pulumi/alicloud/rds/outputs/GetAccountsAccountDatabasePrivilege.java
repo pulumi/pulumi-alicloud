@@ -13,28 +13,19 @@ public final class GetAccountsAccountDatabasePrivilege {
      * @return The type of permission for the account.
      * 
      */
-    private final String accountPrivilege;
+    private String accountPrivilege;
     /**
      * @return The specific permissions corresponding to the type of account permissions.
      * 
      */
-    private final String accountPrivilegeDetail;
+    private String accountPrivilegeDetail;
     /**
      * @return Database name.
      * 
      */
-    private final String dbName;
+    private String dbName;
 
-    @CustomType.Constructor
-    private GetAccountsAccountDatabasePrivilege(
-        @CustomType.Parameter("accountPrivilege") String accountPrivilege,
-        @CustomType.Parameter("accountPrivilegeDetail") String accountPrivilegeDetail,
-        @CustomType.Parameter("dbName") String dbName) {
-        this.accountPrivilege = accountPrivilege;
-        this.accountPrivilegeDetail = accountPrivilegeDetail;
-        this.dbName = dbName;
-    }
-
+    private GetAccountsAccountDatabasePrivilege() {}
     /**
      * @return The type of permission for the account.
      * 
@@ -64,16 +55,12 @@ public final class GetAccountsAccountDatabasePrivilege {
     public static Builder builder(GetAccountsAccountDatabasePrivilege defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountPrivilege;
         private String accountPrivilegeDetail;
         private String dbName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountsAccountDatabasePrivilege defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountPrivilege = defaults.accountPrivilege;
@@ -81,19 +68,27 @@ public final class GetAccountsAccountDatabasePrivilege {
     	      this.dbName = defaults.dbName;
         }
 
+        @CustomType.Setter
         public Builder accountPrivilege(String accountPrivilege) {
             this.accountPrivilege = Objects.requireNonNull(accountPrivilege);
             return this;
         }
+        @CustomType.Setter
         public Builder accountPrivilegeDetail(String accountPrivilegeDetail) {
             this.accountPrivilegeDetail = Objects.requireNonNull(accountPrivilegeDetail);
             return this;
         }
+        @CustomType.Setter
         public Builder dbName(String dbName) {
             this.dbName = Objects.requireNonNull(dbName);
             return this;
-        }        public GetAccountsAccountDatabasePrivilege build() {
-            return new GetAccountsAccountDatabasePrivilege(accountPrivilege, accountPrivilegeDetail, dbName);
+        }
+        public GetAccountsAccountDatabasePrivilege build() {
+            final var o = new GetAccountsAccountDatabasePrivilege();
+            o.accountPrivilege = accountPrivilege;
+            o.accountPrivilegeDetail = accountPrivilegeDetail;
+            o.dbName = dbName;
+            return o;
         }
     }
 }

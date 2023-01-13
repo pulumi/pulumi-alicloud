@@ -16,42 +16,29 @@ public final class DomainNewSource {
      * @return The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The port of source. Valid values are `443` and `80`. Default value is `80`.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Priority of the source. Valid values are `0` and `100`. Default value is `20`.
      * 
      */
-    private final @Nullable Integer priority;
+    private @Nullable Integer priority;
     /**
      * @return The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private DomainNewSource(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("priority") @Nullable Integer priority,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.content = content;
-        this.port = port;
-        this.priority = priority;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private DomainNewSource() {}
     /**
      * @return The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
@@ -95,18 +82,14 @@ public final class DomainNewSource {
     public static Builder builder(DomainNewSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private @Nullable Integer port;
         private @Nullable Integer priority;
         private String type;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainNewSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -116,27 +99,39 @@ public final class DomainNewSource {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
             this.priority = priority;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public DomainNewSource build() {
-            return new DomainNewSource(content, port, priority, type, weight);
+        }
+        public DomainNewSource build() {
+            final var o = new DomainNewSource();
+            o.content = content;
+            o.port = port;
+            o.priority = priority;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

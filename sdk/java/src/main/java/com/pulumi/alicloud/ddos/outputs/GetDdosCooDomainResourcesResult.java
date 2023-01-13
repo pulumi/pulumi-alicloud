@@ -17,29 +17,14 @@ public final class GetDdosCooDomainResourcesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable List<String> instanceIds;
-    private final @Nullable String outputFile;
-    private final @Nullable String queryDomainPattern;
-    private final List<GetDdosCooDomainResourcesResource> resources;
+    private String id;
+    private List<String> ids;
+    private @Nullable List<String> instanceIds;
+    private @Nullable String outputFile;
+    private @Nullable String queryDomainPattern;
+    private List<GetDdosCooDomainResourcesResource> resources;
 
-    @CustomType.Constructor
-    private GetDdosCooDomainResourcesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceIds") @Nullable List<String> instanceIds,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("queryDomainPattern") @Nullable String queryDomainPattern,
-        @CustomType.Parameter("resources") List<GetDdosCooDomainResourcesResource> resources) {
-        this.id = id;
-        this.ids = ids;
-        this.instanceIds = instanceIds;
-        this.outputFile = outputFile;
-        this.queryDomainPattern = queryDomainPattern;
-        this.resources = resources;
-    }
-
+    private GetDdosCooDomainResourcesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetDdosCooDomainResourcesResult {
     public static Builder builder(GetDdosCooDomainResourcesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetDdosCooDomainResourcesResult {
         private @Nullable String outputFile;
         private @Nullable String queryDomainPattern;
         private List<GetDdosCooDomainResourcesResource> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosCooDomainResourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetDdosCooDomainResourcesResult {
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,6 +87,7 @@ public final class GetDdosCooDomainResourcesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
             this.instanceIds = instanceIds;
             return this;
@@ -111,22 +95,33 @@ public final class GetDdosCooDomainResourcesResult {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder queryDomainPattern(@Nullable String queryDomainPattern) {
             this.queryDomainPattern = queryDomainPattern;
             return this;
         }
+        @CustomType.Setter
         public Builder resources(List<GetDdosCooDomainResourcesResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
         }
         public Builder resources(GetDdosCooDomainResourcesResource... resources) {
             return resources(List.of(resources));
-        }        public GetDdosCooDomainResourcesResult build() {
-            return new GetDdosCooDomainResourcesResult(id, ids, instanceIds, outputFile, queryDomainPattern, resources);
+        }
+        public GetDdosCooDomainResourcesResult build() {
+            final var o = new GetDdosCooDomainResourcesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instanceIds = instanceIds;
+            o.outputFile = outputFile;
+            o.queryDomainPattern = queryDomainPattern;
+            o.resources = resources;
+            return o;
         }
     }
 }

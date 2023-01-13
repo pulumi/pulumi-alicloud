@@ -13,84 +13,59 @@ public final class GetMountPointsPoint {
      * @return The ID of the Access Group.
      * 
      */
-    private final String accessGroupId;
+    private String accessGroupId;
     /**
      * @return The created time of the Mount Point.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the Mount Point.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the File System.
      * 
      */
-    private final String fileSystemId;
+    private String fileSystemId;
     /**
      * @return The ID of the Mount Point.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The domain name of the Mount Point.
      * 
      */
-    private final String mountPointDomain;
+    private String mountPointDomain;
     /**
      * @return The ID of the Mount Point.
      * 
      */
-    private final String mountPointId;
+    private String mountPointId;
     /**
      * @return The network type of the Mount Point. Valid values: `VPC`.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The status of the Mount Point. Valid values: `Active`, `Inactive`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VPC network.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetMountPointsPoint(
-        @CustomType.Parameter("accessGroupId") String accessGroupId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("fileSystemId") String fileSystemId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mountPointDomain") String mountPointDomain,
-        @CustomType.Parameter("mountPointId") String mountPointId,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.accessGroupId = accessGroupId;
-        this.createTime = createTime;
-        this.description = description;
-        this.fileSystemId = fileSystemId;
-        this.id = id;
-        this.mountPointDomain = mountPointDomain;
-        this.mountPointId = mountPointId;
-        this.networkType = networkType;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetMountPointsPoint() {}
     /**
      * @return The ID of the Access Group.
      * 
@@ -176,7 +151,7 @@ public final class GetMountPointsPoint {
     public static Builder builder(GetMountPointsPoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessGroupId;
         private String createTime;
@@ -189,11 +164,7 @@ public final class GetMountPointsPoint {
         private String status;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMountPointsPoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupId = defaults.accessGroupId;
@@ -209,51 +180,75 @@ public final class GetMountPointsPoint {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
             this.accessGroupId = Objects.requireNonNull(accessGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mountPointDomain(String mountPointDomain) {
             this.mountPointDomain = Objects.requireNonNull(mountPointDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder mountPointId(String mountPointId) {
             this.mountPointId = Objects.requireNonNull(mountPointId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetMountPointsPoint build() {
-            return new GetMountPointsPoint(accessGroupId, createTime, description, fileSystemId, id, mountPointDomain, mountPointId, networkType, status, vpcId, vswitchId);
+        }
+        public GetMountPointsPoint build() {
+            final var o = new GetMountPointsPoint();
+            o.accessGroupId = accessGroupId;
+            o.createTime = createTime;
+            o.description = description;
+            o.fileSystemId = fileSystemId;
+            o.id = id;
+            o.mountPointDomain = mountPointDomain;
+            o.mountPointId = mountPointId;
+            o.networkType = networkType;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

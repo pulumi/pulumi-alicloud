@@ -15,91 +15,64 @@ public final class GetImagesImage {
      * @return The creation time of the image.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The size of data disk of the image.
      * 
      */
-    private final Integer dataDiskSize;
+    private Integer dataDiskSize;
     /**
      * @return The description of the image.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The Gpu Category of the image.
      * 
      */
-    private final Boolean gpuCategory;
+    private Boolean gpuCategory;
     /**
      * @return The ID of the Image.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The image id of the image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The image name.
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
      * 
      */
-    private final String imageType;
+    private String imageType;
     /**
      * @return The os type of the image.
      * 
      */
-    private final String osType;
+    private String osType;
     /**
      * @return The progress of the image.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The size of the image.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetImagesImage(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dataDiskSize") Integer dataDiskSize,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("gpuCategory") Boolean gpuCategory,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("osType") String osType,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.dataDiskSize = dataDiskSize;
-        this.description = description;
-        this.gpuCategory = gpuCategory;
-        this.id = id;
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.imageType = imageType;
-        this.osType = osType;
-        this.progress = progress;
-        this.size = size;
-        this.status = status;
-    }
-
+    private GetImagesImage() {}
     /**
      * @return The creation time of the image.
      * 
@@ -192,7 +165,7 @@ public final class GetImagesImage {
     public static Builder builder(GetImagesImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private Integer dataDiskSize;
@@ -206,11 +179,7 @@ public final class GetImagesImage {
         private String progress;
         private Integer size;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -227,55 +196,81 @@ public final class GetImagesImage {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dataDiskSize(Integer dataDiskSize) {
             this.dataDiskSize = Objects.requireNonNull(dataDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder gpuCategory(Boolean gpuCategory) {
             this.gpuCategory = Objects.requireNonNull(gpuCategory);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder osType(String osType) {
             this.osType = Objects.requireNonNull(osType);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetImagesImage build() {
-            return new GetImagesImage(createTime, dataDiskSize, description, gpuCategory, id, imageId, imageName, imageType, osType, progress, size, status);
+        }
+        public GetImagesImage build() {
+            final var o = new GetImagesImage();
+            o.createTime = createTime;
+            o.dataDiskSize = dataDiskSize;
+            o.description = description;
+            o.gpuCategory = gpuCategory;
+            o.id = id;
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.imageType = imageType;
+            o.osType = osType;
+            o.progress = progress;
+            o.size = size;
+            o.status = status;
+            return o;
         }
     }
 }

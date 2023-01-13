@@ -20,72 +20,72 @@ public final class GetSimpleOfficeSitesSite {
      * 
      */
     @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return Cloud Enterprise Network Instance Id.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return Workspace Corresponds to the Security Office Network of IPv4 Segment.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return Workspace Creation Time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Security Group ID.
      * 
      */
-    private final String customSecurityGroupId;
+    private String customSecurityGroupId;
     /**
      * @return Connect to the Cloud Desktop Allows the Use of the Access Mode of. Possible Values: the Internet: Only Allows the Client to Public Cloud Desktop. Virtual Private Cloud (VPC): Only Allows in the Virtual Private Cloud (VPC) in the Client to Connect to the Cloud Desktop. Any: Not by Way of Limitation. Use Client to Connect to the Cloud Desktop When It Is Possible to Choose the Connection.
      * 
      */
-    private final String desktopAccessType;
+    private String desktopAccessType;
     /**
      * @return The Desktop Vpc Endpoint.
      * 
      */
-    private final String desktopVpcEndpoint;
+    private String desktopVpcEndpoint;
     /**
      * @return Enterprise Ad Corresponding DNS Address.
      * 
      */
-    private final List<String> dnsAddresses;
+    private List<String> dnsAddresses;
     /**
      * @return Easy-to-Use DNS Name.
      * 
      */
-    private final String dnsUserName;
+    private String dnsUserName;
     /**
      * @return Enterprise of Ad Domain Name.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return Domain of the User Who Will Administer This Target Application Password.
      * 
      */
-    private final String domainPassword;
+    private String domainPassword;
     /**
      * @return The Domain Administrator&#39;s Username.
      * 
      */
-    private final String domainUserName;
+    private String domainUserName;
     /**
      * @return Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      * 
      */
-    private final Boolean enableAdminAccess;
+    private Boolean enableAdminAccess;
     /**
      * @return Enable Cross-Desktop Access.
      * 
      */
-    private final Boolean enableCrossDesktopAccess;
+    private Boolean enableCrossDesktopAccess;
     /**
      * @return Whether the Open Internet Access Function.
      * 
@@ -94,147 +94,84 @@ public final class GetSimpleOfficeSitesSite {
      * 
      */
     @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
-    private final Boolean enableInternetAccess;
+    private Boolean enableInternetAccess;
     /**
      * @return NAS File System ID.
      * 
      */
-    private final List<String> fileSystemIds;
+    private List<String> fileSystemIds;
     /**
      * @return The ID of the Simple Office Site.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether to Enable Multi-Factor Authentication MFA.
      * 
      */
-    private final Boolean mfaEnabled;
+    private Boolean mfaEnabled;
     /**
      * @return Internet Access ID.
      * 
      */
-    private final String networkPackageId;
+    private String networkPackageId;
     /**
      * @return The Workspace ID.
      * 
      */
-    private final String officeSiteId;
+    private String officeSiteId;
     /**
      * @return Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
      * 
      */
-    private final String officeSiteType;
+    private String officeSiteType;
     /**
      * @return The simple office site name.
      * 
      */
-    private final String simpleOfficeSiteName;
+    private String simpleOfficeSiteName;
     /**
      * @return Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      * 
      */
-    private final Boolean ssoEnabled;
+    private Boolean ssoEnabled;
     /**
      * @return Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      * 
      */
-    private final Boolean ssoStatus;
+    private Boolean ssoStatus;
     /**
      * @return Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return AD Subdomain of the DNS Address.
      * 
      */
-    private final List<String> subDnsAddresses;
+    private List<String> subDnsAddresses;
     /**
      * @return AD Domain DNS Name.
      * 
      */
-    private final String subDomainName;
+    private String subDomainName;
     /**
      * @return AD Trust Password.
      * 
      */
-    private final String trustPassword;
+    private String trustPassword;
     /**
      * @return Security Office VPC ID.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch ids.
      * 
      */
-    private final List<String> vswitchIds;
+    private List<String> vswitchIds;
 
-    @CustomType.Constructor
-    private GetSimpleOfficeSitesSite(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("customSecurityGroupId") String customSecurityGroupId,
-        @CustomType.Parameter("desktopAccessType") String desktopAccessType,
-        @CustomType.Parameter("desktopVpcEndpoint") String desktopVpcEndpoint,
-        @CustomType.Parameter("dnsAddresses") List<String> dnsAddresses,
-        @CustomType.Parameter("dnsUserName") String dnsUserName,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("domainPassword") String domainPassword,
-        @CustomType.Parameter("domainUserName") String domainUserName,
-        @CustomType.Parameter("enableAdminAccess") Boolean enableAdminAccess,
-        @CustomType.Parameter("enableCrossDesktopAccess") Boolean enableCrossDesktopAccess,
-        @CustomType.Parameter("enableInternetAccess") Boolean enableInternetAccess,
-        @CustomType.Parameter("fileSystemIds") List<String> fileSystemIds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mfaEnabled") Boolean mfaEnabled,
-        @CustomType.Parameter("networkPackageId") String networkPackageId,
-        @CustomType.Parameter("officeSiteId") String officeSiteId,
-        @CustomType.Parameter("officeSiteType") String officeSiteType,
-        @CustomType.Parameter("simpleOfficeSiteName") String simpleOfficeSiteName,
-        @CustomType.Parameter("ssoEnabled") Boolean ssoEnabled,
-        @CustomType.Parameter("ssoStatus") Boolean ssoStatus,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("subDnsAddresses") List<String> subDnsAddresses,
-        @CustomType.Parameter("subDomainName") String subDomainName,
-        @CustomType.Parameter("trustPassword") String trustPassword,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
-        this.bandwidth = bandwidth;
-        this.cenId = cenId;
-        this.cidrBlock = cidrBlock;
-        this.createTime = createTime;
-        this.customSecurityGroupId = customSecurityGroupId;
-        this.desktopAccessType = desktopAccessType;
-        this.desktopVpcEndpoint = desktopVpcEndpoint;
-        this.dnsAddresses = dnsAddresses;
-        this.dnsUserName = dnsUserName;
-        this.domainName = domainName;
-        this.domainPassword = domainPassword;
-        this.domainUserName = domainUserName;
-        this.enableAdminAccess = enableAdminAccess;
-        this.enableCrossDesktopAccess = enableCrossDesktopAccess;
-        this.enableInternetAccess = enableInternetAccess;
-        this.fileSystemIds = fileSystemIds;
-        this.id = id;
-        this.mfaEnabled = mfaEnabled;
-        this.networkPackageId = networkPackageId;
-        this.officeSiteId = officeSiteId;
-        this.officeSiteType = officeSiteType;
-        this.simpleOfficeSiteName = simpleOfficeSiteName;
-        this.ssoEnabled = ssoEnabled;
-        this.ssoStatus = ssoStatus;
-        this.status = status;
-        this.subDnsAddresses = subDnsAddresses;
-        this.subDomainName = subDomainName;
-        this.trustPassword = trustPassword;
-        this.vpcId = vpcId;
-        this.vswitchIds = vswitchIds;
-    }
-
+    private GetSimpleOfficeSitesSite() {}
     /**
      * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
      * 
@@ -461,7 +398,7 @@ public final class GetSimpleOfficeSitesSite {
     public static Builder builder(GetSimpleOfficeSitesSite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String cenId;
@@ -493,11 +430,7 @@ public final class GetSimpleOfficeSitesSite {
         private String trustPassword;
         private String vpcId;
         private List<String> vswitchIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSimpleOfficeSitesSite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -532,34 +465,42 @@ public final class GetSimpleOfficeSitesSite {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
             this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
             this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
             this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
             this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
             return this;
@@ -567,34 +508,42 @@ public final class GetSimpleOfficeSitesSite {
         public Builder dnsAddresses(String... dnsAddresses) {
             return dnsAddresses(List.of(dnsAddresses));
         }
+        @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
             this.dnsUserName = Objects.requireNonNull(dnsUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainPassword(String domainPassword) {
             this.domainPassword = Objects.requireNonNull(domainPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
             this.domainUserName = Objects.requireNonNull(domainUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
             this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
             this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
             this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
             this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
             return this;
@@ -602,42 +551,52 @@ public final class GetSimpleOfficeSitesSite {
         public Builder fileSystemIds(String... fileSystemIds) {
             return fileSystemIds(List.of(fileSystemIds));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
             this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
             this.networkPackageId = Objects.requireNonNull(networkPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
             this.officeSiteId = Objects.requireNonNull(officeSiteId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteType(String officeSiteType) {
             this.officeSiteType = Objects.requireNonNull(officeSiteType);
             return this;
         }
+        @CustomType.Setter
         public Builder simpleOfficeSiteName(String simpleOfficeSiteName) {
             this.simpleOfficeSiteName = Objects.requireNonNull(simpleOfficeSiteName);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
             this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoStatus(Boolean ssoStatus) {
             this.ssoStatus = Objects.requireNonNull(ssoStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder subDnsAddresses(List<String> subDnsAddresses) {
             this.subDnsAddresses = Objects.requireNonNull(subDnsAddresses);
             return this;
@@ -645,26 +604,62 @@ public final class GetSimpleOfficeSitesSite {
         public Builder subDnsAddresses(String... subDnsAddresses) {
             return subDnsAddresses(List.of(subDnsAddresses));
         }
+        @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
             this.subDomainName = Objects.requireNonNull(subDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
             this.trustPassword = Objects.requireNonNull(trustPassword);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }        public GetSimpleOfficeSitesSite build() {
-            return new GetSimpleOfficeSitesSite(bandwidth, cenId, cidrBlock, createTime, customSecurityGroupId, desktopAccessType, desktopVpcEndpoint, dnsAddresses, dnsUserName, domainName, domainPassword, domainUserName, enableAdminAccess, enableCrossDesktopAccess, enableInternetAccess, fileSystemIds, id, mfaEnabled, networkPackageId, officeSiteId, officeSiteType, simpleOfficeSiteName, ssoEnabled, ssoStatus, status, subDnsAddresses, subDomainName, trustPassword, vpcId, vswitchIds);
+        }
+        public GetSimpleOfficeSitesSite build() {
+            final var o = new GetSimpleOfficeSitesSite();
+            o.bandwidth = bandwidth;
+            o.cenId = cenId;
+            o.cidrBlock = cidrBlock;
+            o.createTime = createTime;
+            o.customSecurityGroupId = customSecurityGroupId;
+            o.desktopAccessType = desktopAccessType;
+            o.desktopVpcEndpoint = desktopVpcEndpoint;
+            o.dnsAddresses = dnsAddresses;
+            o.dnsUserName = dnsUserName;
+            o.domainName = domainName;
+            o.domainPassword = domainPassword;
+            o.domainUserName = domainUserName;
+            o.enableAdminAccess = enableAdminAccess;
+            o.enableCrossDesktopAccess = enableCrossDesktopAccess;
+            o.enableInternetAccess = enableInternetAccess;
+            o.fileSystemIds = fileSystemIds;
+            o.id = id;
+            o.mfaEnabled = mfaEnabled;
+            o.networkPackageId = networkPackageId;
+            o.officeSiteId = officeSiteId;
+            o.officeSiteType = officeSiteType;
+            o.simpleOfficeSiteName = simpleOfficeSiteName;
+            o.ssoEnabled = ssoEnabled;
+            o.ssoStatus = ssoStatus;
+            o.status = status;
+            o.subDnsAddresses = subDnsAddresses;
+            o.subDomainName = subDomainName;
+            o.trustPassword = trustPassword;
+            o.vpcId = vpcId;
+            o.vswitchIds = vswitchIds;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
      * @return The condition for triggering critical-level alerts.
      * 
      */
-    private final List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals;
+    private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals;
     /**
      * @return The condition for triggering info-level alerts.
      * 
      */
-    private final List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos;
+    private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos;
     /**
      * @return The condition for triggering warn-level alerts.
      * 
      */
-    private final List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns;
+    private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns;
 
-    @CustomType.Constructor
-    private GetMetricRuleTemplatesTemplateAlertTemplateEscalation(
-        @CustomType.Parameter("criticals") List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals,
-        @CustomType.Parameter("infos") List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos,
-        @CustomType.Parameter("warns") List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns) {
-        this.criticals = criticals;
-        this.infos = infos;
-        this.warns = warns;
-    }
-
+    private GetMetricRuleTemplatesTemplateAlertTemplateEscalation() {}
     /**
      * @return The condition for triggering critical-level alerts.
      * 
@@ -67,16 +58,12 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
     public static Builder builder(GetMetricRuleTemplatesTemplateAlertTemplateEscalation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals;
         private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos;
         private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMetricRuleTemplatesTemplateAlertTemplateEscalation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.criticals = defaults.criticals;
@@ -84,6 +71,7 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
     	      this.warns = defaults.warns;
         }
 
+        @CustomType.Setter
         public Builder criticals(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals) {
             this.criticals = Objects.requireNonNull(criticals);
             return this;
@@ -91,6 +79,7 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
         public Builder criticals(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical... criticals) {
             return criticals(List.of(criticals));
         }
+        @CustomType.Setter
         public Builder infos(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos) {
             this.infos = Objects.requireNonNull(infos);
             return this;
@@ -98,14 +87,20 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
         public Builder infos(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo... infos) {
             return infos(List.of(infos));
         }
+        @CustomType.Setter
         public Builder warns(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns) {
             this.warns = Objects.requireNonNull(warns);
             return this;
         }
         public Builder warns(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn... warns) {
             return warns(List.of(warns));
-        }        public GetMetricRuleTemplatesTemplateAlertTemplateEscalation build() {
-            return new GetMetricRuleTemplatesTemplateAlertTemplateEscalation(criticals, infos, warns);
+        }
+        public GetMetricRuleTemplatesTemplateAlertTemplateEscalation build() {
+            final var o = new GetMetricRuleTemplatesTemplateAlertTemplateEscalation();
+            o.criticals = criticals;
+            o.infos = infos;
+            o.warns = warns;
+            return o;
         }
     }
 }

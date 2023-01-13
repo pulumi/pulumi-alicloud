@@ -14,84 +14,59 @@ public final class GetServerDisksDisk {
      * @return Disk type. Possible values: `ESSD`, `SSD`.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The device name of the disk on the simple application server.
      * 
      */
-    private final String device;
+    private String device;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String diskName;
+    private String diskName;
     /**
      * @return The type of the disk. Possible values: `System`, `Data`.
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return The ID of the Disk.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Alibaba Cloud simple application server instance ID.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The size of the disk. Unit: `GB`.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetServerDisksDisk(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskName") String diskName,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("status") String status) {
-        this.category = category;
-        this.createTime = createTime;
-        this.device = device;
-        this.diskId = diskId;
-        this.diskName = diskName;
-        this.diskType = diskType;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.paymentType = paymentType;
-        this.size = size;
-        this.status = status;
-    }
-
+    private GetServerDisksDisk() {}
     /**
      * @return Disk type. Possible values: `ESSD`, `SSD`.
      * 
@@ -177,7 +152,7 @@ public final class GetServerDisksDisk {
     public static Builder builder(GetServerDisksDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String createTime;
@@ -190,11 +165,7 @@ public final class GetServerDisksDisk {
         private String paymentType;
         private Integer size;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerDisksDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -210,51 +181,75 @@ public final class GetServerDisksDisk {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(String diskName) {
             this.diskName = Objects.requireNonNull(diskName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetServerDisksDisk build() {
-            return new GetServerDisksDisk(category, createTime, device, diskId, diskName, diskType, id, instanceId, paymentType, size, status);
+        }
+        public GetServerDisksDisk build() {
+            final var o = new GetServerDisksDisk();
+            o.category = category;
+            o.createTime = createTime;
+            o.device = device;
+            o.diskId = diskId;
+            o.diskName = diskName;
+            o.diskType = diskType;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.paymentType = paymentType;
+            o.size = size;
+            o.status = status;
+            return o;
         }
     }
 }

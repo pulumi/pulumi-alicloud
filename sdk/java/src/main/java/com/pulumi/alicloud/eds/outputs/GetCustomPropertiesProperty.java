@@ -15,35 +15,24 @@ public final class GetCustomPropertiesProperty {
      * @return The first ID of the resource.
      * 
      */
-    private final String customPropertyId;
+    private String customPropertyId;
     /**
      * @return The ID of the Custom Property.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Custom attribute key.
      * 
      */
-    private final String propertyKey;
+    private String propertyKey;
     /**
      * @return Custom attribute sets the value of.
      * 
      */
-    private final List<GetCustomPropertiesPropertyPropertyValue> propertyValues;
+    private List<GetCustomPropertiesPropertyPropertyValue> propertyValues;
 
-    @CustomType.Constructor
-    private GetCustomPropertiesProperty(
-        @CustomType.Parameter("customPropertyId") String customPropertyId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("propertyKey") String propertyKey,
-        @CustomType.Parameter("propertyValues") List<GetCustomPropertiesPropertyPropertyValue> propertyValues) {
-        this.customPropertyId = customPropertyId;
-        this.id = id;
-        this.propertyKey = propertyKey;
-        this.propertyValues = propertyValues;
-    }
-
+    private GetCustomPropertiesProperty() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -80,17 +69,13 @@ public final class GetCustomPropertiesProperty {
     public static Builder builder(GetCustomPropertiesProperty defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String customPropertyId;
         private String id;
         private String propertyKey;
         private List<GetCustomPropertiesPropertyPropertyValue> propertyValues;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomPropertiesProperty defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customPropertyId = defaults.customPropertyId;
@@ -99,26 +84,36 @@ public final class GetCustomPropertiesProperty {
     	      this.propertyValues = defaults.propertyValues;
         }
 
+        @CustomType.Setter
         public Builder customPropertyId(String customPropertyId) {
             this.customPropertyId = Objects.requireNonNull(customPropertyId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder propertyKey(String propertyKey) {
             this.propertyKey = Objects.requireNonNull(propertyKey);
             return this;
         }
+        @CustomType.Setter
         public Builder propertyValues(List<GetCustomPropertiesPropertyPropertyValue> propertyValues) {
             this.propertyValues = Objects.requireNonNull(propertyValues);
             return this;
         }
         public Builder propertyValues(GetCustomPropertiesPropertyPropertyValue... propertyValues) {
             return propertyValues(List.of(propertyValues));
-        }        public GetCustomPropertiesProperty build() {
-            return new GetCustomPropertiesProperty(customPropertyId, id, propertyKey, propertyValues);
+        }
+        public GetCustomPropertiesProperty build() {
+            final var o = new GetCustomPropertiesProperty();
+            o.customPropertyId = customPropertyId;
+            o.id = id;
+            o.propertyKey = propertyKey;
+            o.propertyValues = propertyValues;
+            return o;
         }
     }
 }

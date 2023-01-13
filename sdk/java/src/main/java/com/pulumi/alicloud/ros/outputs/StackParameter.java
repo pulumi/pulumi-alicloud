@@ -15,21 +15,14 @@ public final class StackParameter {
      * @return The parameter key.
      * 
      */
-    private final @Nullable String parameterKey;
+    private @Nullable String parameterKey;
     /**
      * @return The parameter value.
      * 
      */
-    private final String parameterValue;
+    private String parameterValue;
 
-    @CustomType.Constructor
-    private StackParameter(
-        @CustomType.Parameter("parameterKey") @Nullable String parameterKey,
-        @CustomType.Parameter("parameterValue") String parameterValue) {
-        this.parameterKey = parameterKey;
-        this.parameterValue = parameterValue;
-    }
-
+    private StackParameter() {}
     /**
      * @return The parameter key.
      * 
@@ -52,30 +45,32 @@ public final class StackParameter {
     public static Builder builder(StackParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String parameterKey;
         private String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StackParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterKey(@Nullable String parameterKey) {
             this.parameterKey = parameterKey;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }        public StackParameter build() {
-            return new StackParameter(parameterKey, parameterValue);
+        }
+        public StackParameter build() {
+            final var o = new StackParameter();
+            o.parameterKey = parameterKey;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

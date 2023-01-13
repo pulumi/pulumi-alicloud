@@ -15,56 +15,39 @@ public final class InstanceReplicaSet {
      * @return The connection address of the node.
      * 
      */
-    private final @Nullable String connectionDomain;
+    private @Nullable String connectionDomain;
     /**
      * @return The connection port of the node.
      * 
      */
-    private final @Nullable String connectionPort;
+    private @Nullable String connectionPort;
     /**
      * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
      * 
      */
-    private final @Nullable String networkType;
+    private @Nullable String networkType;
     /**
      * @return The role of the node. Valid values: `Primary`,`Secondary`.
      * 
      */
-    private final @Nullable String replicaSetRole;
+    private @Nullable String replicaSetRole;
     /**
      * @return VPC instance ID.
      * 
      */
-    private final @Nullable String vpcCloudInstanceId;
+    private @Nullable String vpcCloudInstanceId;
     /**
      * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private InstanceReplicaSet(
-        @CustomType.Parameter("connectionDomain") @Nullable String connectionDomain,
-        @CustomType.Parameter("connectionPort") @Nullable String connectionPort,
-        @CustomType.Parameter("networkType") @Nullable String networkType,
-        @CustomType.Parameter("replicaSetRole") @Nullable String replicaSetRole,
-        @CustomType.Parameter("vpcCloudInstanceId") @Nullable String vpcCloudInstanceId,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.connectionDomain = connectionDomain;
-        this.connectionPort = connectionPort;
-        this.networkType = networkType;
-        this.replicaSetRole = replicaSetRole;
-        this.vpcCloudInstanceId = vpcCloudInstanceId;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private InstanceReplicaSet() {}
     /**
      * @return The connection address of the node.
      * 
@@ -122,7 +105,7 @@ public final class InstanceReplicaSet {
     public static Builder builder(InstanceReplicaSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionDomain;
         private @Nullable String connectionPort;
@@ -131,11 +114,7 @@ public final class InstanceReplicaSet {
         private @Nullable String vpcCloudInstanceId;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceReplicaSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionDomain = defaults.connectionDomain;
@@ -147,35 +126,51 @@ public final class InstanceReplicaSet {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder connectionDomain(@Nullable String connectionDomain) {
             this.connectionDomain = connectionDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder connectionPort(@Nullable String connectionPort) {
             this.connectionPort = connectionPort;
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
+        @CustomType.Setter
         public Builder replicaSetRole(@Nullable String replicaSetRole) {
             this.replicaSetRole = replicaSetRole;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcCloudInstanceId(@Nullable String vpcCloudInstanceId) {
             this.vpcCloudInstanceId = vpcCloudInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public InstanceReplicaSet build() {
-            return new InstanceReplicaSet(connectionDomain, connectionPort, networkType, replicaSetRole, vpcCloudInstanceId, vpcId, vswitchId);
+        }
+        public InstanceReplicaSet build() {
+            final var o = new InstanceReplicaSet();
+            o.connectionDomain = connectionDomain;
+            o.connectionPort = connectionPort;
+            o.networkType = networkType;
+            o.replicaSetRole = replicaSetRole;
+            o.vpcCloudInstanceId = vpcCloudInstanceId;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

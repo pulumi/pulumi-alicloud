@@ -13,51 +13,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConsumerGroupsResult {
-    private final @Nullable String consumerIdRegex;
-    private final List<String> consumerIds;
+    private @Nullable String consumerIdRegex;
+    private List<String> consumerIds;
     /**
      * @return A list of consumer group. Each element contains the following attributes:
      * 
      */
-    private final List<GetConsumerGroupsGroup> groups;
+    private List<GetConsumerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
+    private String id;
+    private List<String> ids;
     /**
      * @return The instance_id of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return A list of consumer group names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetConsumerGroupsResult(
-        @CustomType.Parameter("consumerIdRegex") @Nullable String consumerIdRegex,
-        @CustomType.Parameter("consumerIds") List<String> consumerIds,
-        @CustomType.Parameter("groups") List<GetConsumerGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.consumerIdRegex = consumerIdRegex;
-        this.consumerIds = consumerIds;
-        this.groups = groups;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetConsumerGroupsResult() {}
     public Optional<String> consumerIdRegex() {
         return Optional.ofNullable(this.consumerIdRegex);
     }
@@ -106,7 +87,7 @@ public final class GetConsumerGroupsResult {
     public static Builder builder(GetConsumerGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String consumerIdRegex;
         private List<String> consumerIds;
@@ -116,11 +97,7 @@ public final class GetConsumerGroupsResult {
         private String instanceId;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConsumerGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerIdRegex = defaults.consumerIdRegex;
@@ -133,10 +110,12 @@ public final class GetConsumerGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder consumerIdRegex(@Nullable String consumerIdRegex) {
             this.consumerIdRegex = consumerIdRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerIds(List<String> consumerIds) {
             this.consumerIds = Objects.requireNonNull(consumerIds);
             return this;
@@ -144,6 +123,7 @@ public final class GetConsumerGroupsResult {
         public Builder consumerIds(String... consumerIds) {
             return consumerIds(List.of(consumerIds));
         }
+        @CustomType.Setter
         public Builder groups(List<GetConsumerGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -151,10 +131,12 @@ public final class GetConsumerGroupsResult {
         public Builder groups(GetConsumerGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -162,10 +144,12 @@ public final class GetConsumerGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -173,11 +157,22 @@ public final class GetConsumerGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetConsumerGroupsResult build() {
-            return new GetConsumerGroupsResult(consumerIdRegex, consumerIds, groups, id, ids, instanceId, names, outputFile);
+        }
+        public GetConsumerGroupsResult build() {
+            final var o = new GetConsumerGroupsResult();
+            o.consumerIdRegex = consumerIdRegex;
+            o.consumerIds = consumerIds;
+            o.groups = groups;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

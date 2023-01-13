@@ -14,42 +14,29 @@ public final class GetMasterSlaveServerGroupsGroupServer {
      * @return ID of the attached ECS instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return (Removed from v1.63.0) Determine if the server is executing.
      * 
      */
-    private final Integer isBackup;
+    private Integer isBackup;
     /**
      * @return The port used by the master slave server group.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The server type of the attached ECS instance.
      * 
      */
-    private final String serverType;
+    private String serverType;
     /**
      * @return Weight associated to the ECS instance.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetMasterSlaveServerGroupsGroupServer(
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("isBackup") Integer isBackup,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("serverType") String serverType,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.instanceId = instanceId;
-        this.isBackup = isBackup;
-        this.port = port;
-        this.serverType = serverType;
-        this.weight = weight;
-    }
-
+    private GetMasterSlaveServerGroupsGroupServer() {}
     /**
      * @return ID of the attached ECS instance.
      * 
@@ -93,18 +80,14 @@ public final class GetMasterSlaveServerGroupsGroupServer {
     public static Builder builder(GetMasterSlaveServerGroupsGroupServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceId;
         private Integer isBackup;
         private Integer port;
         private String serverType;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMasterSlaveServerGroupsGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceId = defaults.instanceId;
@@ -114,27 +97,39 @@ public final class GetMasterSlaveServerGroupsGroupServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder isBackup(Integer isBackup) {
             this.isBackup = Objects.requireNonNull(isBackup);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetMasterSlaveServerGroupsGroupServer build() {
-            return new GetMasterSlaveServerGroupsGroupServer(instanceId, isBackup, port, serverType, weight);
+        }
+        public GetMasterSlaveServerGroupsGroupServer build() {
+            final var o = new GetMasterSlaveServerGroupsGroupServer();
+            o.instanceId = instanceId;
+            o.isBackup = isBackup;
+            o.port = port;
+            o.serverType = serverType;
+            o.weight = weight;
+            return o;
         }
     }
 }

@@ -13,27 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAuditPoliciesResult {
-    private final String dbInstanceId;
+    private String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
-    private final List<GetAuditPoliciesPolicy> policies;
+    private String id;
+    private @Nullable String outputFile;
+    private List<GetAuditPoliciesPolicy> policies;
 
-    @CustomType.Constructor
-    private GetAuditPoliciesResult(
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetAuditPoliciesPolicy> policies) {
-        this.dbInstanceId = dbInstanceId;
-        this.id = id;
-        this.outputFile = outputFile;
-        this.policies = policies;
-    }
-
+    private GetAuditPoliciesResult() {}
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -58,17 +47,13 @@ public final class GetAuditPoliciesResult {
     public static Builder builder(GetAuditPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbInstanceId;
         private String id;
         private @Nullable String outputFile;
         private List<GetAuditPoliciesPolicy> policies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuditPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceId = defaults.dbInstanceId;
@@ -77,26 +62,36 @@ public final class GetAuditPoliciesResult {
     	      this.policies = defaults.policies;
         }
 
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetAuditPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
         }
         public Builder policies(GetAuditPoliciesPolicy... policies) {
             return policies(List.of(policies));
-        }        public GetAuditPoliciesResult build() {
-            return new GetAuditPoliciesResult(dbInstanceId, id, outputFile, policies);
+        }
+        public GetAuditPoliciesResult build() {
+            final var o = new GetAuditPoliciesResult();
+            o.dbInstanceId = dbInstanceId;
+            o.id = id;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            return o;
         }
     }
 }

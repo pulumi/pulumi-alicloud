@@ -13,49 +13,34 @@ public final class GetRouteEntriesEntry {
      * @return The destination CIDR block of the route entry.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return The instance ID of the next hop.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The type of the next hop.
      * 
      */
-    private final String nextHopType;
+    private String nextHopType;
     /**
      * @return The ID of the router table to which the route entry belongs.
      * 
      */
-    private final String routeTableId;
+    private String routeTableId;
     /**
      * @return The status of the route entry.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the route entry.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetRouteEntriesEntry(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("nextHopType") String nextHopType,
-        @CustomType.Parameter("routeTableId") String routeTableId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type) {
-        this.cidrBlock = cidrBlock;
-        this.instanceId = instanceId;
-        this.nextHopType = nextHopType;
-        this.routeTableId = routeTableId;
-        this.status = status;
-        this.type = type;
-    }
-
+    private GetRouteEntriesEntry() {}
     /**
      * @return The destination CIDR block of the route entry.
      * 
@@ -106,7 +91,7 @@ public final class GetRouteEntriesEntry {
     public static Builder builder(GetRouteEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private String instanceId;
@@ -114,11 +99,7 @@ public final class GetRouteEntriesEntry {
         private String routeTableId;
         private String status;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -129,31 +110,45 @@ public final class GetRouteEntriesEntry {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
             this.nextHopType = Objects.requireNonNull(nextHopType);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetRouteEntriesEntry build() {
-            return new GetRouteEntriesEntry(cidrBlock, instanceId, nextHopType, routeTableId, status, type);
+        }
+        public GetRouteEntriesEntry build() {
+            final var o = new GetRouteEntriesEntry();
+            o.cidrBlock = cidrBlock;
+            o.instanceId = instanceId;
+            o.nextHopType = nextHopType;
+            o.routeTableId = routeTableId;
+            o.status = status;
+            o.type = type;
+            return o;
         }
     }
 }

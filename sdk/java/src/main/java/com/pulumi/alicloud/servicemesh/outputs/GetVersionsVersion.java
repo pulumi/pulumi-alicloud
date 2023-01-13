@@ -13,28 +13,19 @@ public final class GetVersionsVersion {
      * @return The edition of the ASM instance.
      * 
      */
-    private final String edition;
+    private String edition;
     /**
      * @return The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The AMS version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetVersionsVersion(
-        @CustomType.Parameter("edition") String edition,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("version") String version) {
-        this.edition = edition;
-        this.id = id;
-        this.version = version;
-    }
-
+    private GetVersionsVersion() {}
     /**
      * @return The edition of the ASM instance.
      * 
@@ -64,16 +55,12 @@ public final class GetVersionsVersion {
     public static Builder builder(GetVersionsVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String edition;
         private String id;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.edition = defaults.edition;
@@ -81,19 +68,27 @@ public final class GetVersionsVersion {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder edition(String edition) {
             this.edition = Objects.requireNonNull(edition);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetVersionsVersion build() {
-            return new GetVersionsVersion(edition, id, version);
+        }
+        public GetVersionsVersion build() {
+            final var o = new GetVersionsVersion();
+            o.edition = edition;
+            o.id = id;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
      * @return The destination server group to which requests are forwarded.
      * 
      */
-    private final List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples;
+    private List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig(@CustomType.Parameter("serverGroupTuples") List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples) {
-        this.serverGroupTuples = serverGroupTuples;
-    }
-
+    private GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig() {}
     /**
      * @return The destination server group to which requests are forwarded.
      * 
@@ -36,27 +32,27 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
     public static Builder builder(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupTuples = defaults.serverGroupTuples;
         }
 
+        @CustomType.Setter
         public Builder serverGroupTuples(List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples) {
             this.serverGroupTuples = Objects.requireNonNull(serverGroupTuples);
             return this;
         }
         public Builder serverGroupTuples(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
-        }        public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig build() {
-            return new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig(serverGroupTuples);
+        }
+        public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig build() {
+            final var o = new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig();
+            o.serverGroupTuples = serverGroupTuples;
+            return o;
         }
     }
 }

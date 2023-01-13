@@ -13,63 +13,44 @@ public final class GetScimServerCredentialsCredential {
      * @return The CreateTime of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The CredentialId of the resource.
      * 
      */
-    private final String credentialId;
+    private String credentialId;
     /**
      * @return The CredentialSecret of the resource.
      * 
      */
-    private final String credentialSecret;
+    private String credentialSecret;
     /**
      * @return The CredentialType of the resource.
      * 
      */
-    private final String credentialType;
+    private String credentialType;
     /**
      * @return The ID of the Directory.
      * 
      */
-    private final String directoryId;
+    private String directoryId;
     /**
      * @return The ExpireTime of the resource.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The ID of the SCIM Server Credential.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetScimServerCredentialsCredential(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("credentialId") String credentialId,
-        @CustomType.Parameter("credentialSecret") String credentialSecret,
-        @CustomType.Parameter("credentialType") String credentialType,
-        @CustomType.Parameter("directoryId") String directoryId,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.credentialId = credentialId;
-        this.credentialSecret = credentialSecret;
-        this.credentialType = credentialType;
-        this.directoryId = directoryId;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetScimServerCredentialsCredential() {}
     /**
      * @return The CreateTime of the resource.
      * 
@@ -134,7 +115,7 @@ public final class GetScimServerCredentialsCredential {
     public static Builder builder(GetScimServerCredentialsCredential defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String credentialId;
@@ -144,11 +125,7 @@ public final class GetScimServerCredentialsCredential {
         private String expireTime;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetScimServerCredentialsCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -161,39 +138,57 @@ public final class GetScimServerCredentialsCredential {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder credentialId(String credentialId) {
             this.credentialId = Objects.requireNonNull(credentialId);
             return this;
         }
+        @CustomType.Setter
         public Builder credentialSecret(String credentialSecret) {
             this.credentialSecret = Objects.requireNonNull(credentialSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder credentialType(String credentialType) {
             this.credentialType = Objects.requireNonNull(credentialType);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetScimServerCredentialsCredential build() {
-            return new GetScimServerCredentialsCredential(createTime, credentialId, credentialSecret, credentialType, directoryId, expireTime, id, status);
+        }
+        public GetScimServerCredentialsCredential build() {
+            final var o = new GetScimServerCredentialsCredential();
+            o.createTime = createTime;
+            o.credentialId = credentialId;
+            o.credentialSecret = credentialSecret;
+            o.credentialType = credentialType;
+            o.directoryId = directoryId;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

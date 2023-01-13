@@ -17,21 +17,14 @@ public final class TemplateScratchSourceTag {
      * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
      * 
      */
-    private final Map<String,Object> resourceTags;
+    private Map<String,Object> resourceTags;
     /**
      * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
      * 
      */
-    private final @Nullable List<String> resourceTypeFilters;
+    private @Nullable List<String> resourceTypeFilters;
 
-    @CustomType.Constructor
-    private TemplateScratchSourceTag(
-        @CustomType.Parameter("resourceTags") Map<String,Object> resourceTags,
-        @CustomType.Parameter("resourceTypeFilters") @Nullable List<String> resourceTypeFilters) {
-        this.resourceTags = resourceTags;
-        this.resourceTypeFilters = resourceTypeFilters;
-    }
-
+    private TemplateScratchSourceTag() {}
     /**
      * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
      * 
@@ -54,33 +47,35 @@ public final class TemplateScratchSourceTag {
     public static Builder builder(TemplateScratchSourceTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> resourceTags;
         private @Nullable List<String> resourceTypeFilters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TemplateScratchSourceTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceTags = defaults.resourceTags;
     	      this.resourceTypeFilters = defaults.resourceTypeFilters;
         }
 
+        @CustomType.Setter
         public Builder resourceTags(Map<String,Object> resourceTags) {
             this.resourceTags = Objects.requireNonNull(resourceTags);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypeFilters(@Nullable List<String> resourceTypeFilters) {
             this.resourceTypeFilters = resourceTypeFilters;
             return this;
         }
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
-        }        public TemplateScratchSourceTag build() {
-            return new TemplateScratchSourceTag(resourceTags, resourceTypeFilters);
+        }
+        public TemplateScratchSourceTag build() {
+            final var o = new TemplateScratchSourceTag();
+            o.resourceTags = resourceTags;
+            o.resourceTypeFilters = resourceTypeFilters;
+            return o;
         }
     }
 }

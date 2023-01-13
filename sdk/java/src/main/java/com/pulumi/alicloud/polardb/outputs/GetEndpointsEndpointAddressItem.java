@@ -13,49 +13,34 @@ public final class GetEndpointsEndpointAddressItem {
      * @return Connection instance string.
      * 
      */
-    private final String connectionString;
+    private String connectionString;
     /**
      * @return The ip address of connection string.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return IP network type:`Public` or `Private`.
      * 
      */
-    private final String netType;
+    private String netType;
     /**
      * @return Intranet connection port.
      * 
      */
-    private final String port;
+    private String port;
     /**
      * @return ID of the VPC the instance belongs to.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return ID of the VSwitch the cluster belongs to.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetEndpointsEndpointAddressItem(
-        @CustomType.Parameter("connectionString") String connectionString,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("netType") String netType,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.connectionString = connectionString;
-        this.ipAddress = ipAddress;
-        this.netType = netType;
-        this.port = port;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetEndpointsEndpointAddressItem() {}
     /**
      * @return Connection instance string.
      * 
@@ -106,7 +91,7 @@ public final class GetEndpointsEndpointAddressItem {
     public static Builder builder(GetEndpointsEndpointAddressItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String connectionString;
         private String ipAddress;
@@ -114,11 +99,7 @@ public final class GetEndpointsEndpointAddressItem {
         private String port;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointsEndpointAddressItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionString = defaults.connectionString;
@@ -129,31 +110,45 @@ public final class GetEndpointsEndpointAddressItem {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder netType(String netType) {
             this.netType = Objects.requireNonNull(netType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetEndpointsEndpointAddressItem build() {
-            return new GetEndpointsEndpointAddressItem(connectionString, ipAddress, netType, port, vpcId, vswitchId);
+        }
+        public GetEndpointsEndpointAddressItem build() {
+            final var o = new GetEndpointsEndpointAddressItem();
+            o.connectionString = connectionString;
+            o.ipAddress = ipAddress;
+            o.netType = netType;
+            o.port = port;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

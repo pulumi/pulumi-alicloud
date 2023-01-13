@@ -15,152 +15,95 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkInterfacesInterface {
-    private final List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
+    private List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
     /**
      * @return Creation time of the ENI.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Description of the ENI.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the ENI.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ID of the instance that the ENI is attached to.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return MAC address of the ENI.
      * 
      */
-    private final String mac;
+    private String mac;
     /**
      * @return Name of the ENI.
      * 
      */
-    private final String name;
-    private final String networkInterfaceId;
-    private final String networkInterfaceName;
-    private final String networkInterfaceTrafficMode;
-    private final String ownerId;
-    private final String primaryIpAddress;
+    private String name;
+    private String networkInterfaceId;
+    private String networkInterfaceName;
+    private String networkInterfaceTrafficMode;
+    private String ownerId;
+    private String primaryIpAddress;
     /**
      * @return Primary private IP of the ENI.
      * 
      */
-    private final String privateIp;
-    private final List<String> privateIpAddresses;
+    private String privateIp;
+    private List<String> privateIpAddresses;
     /**
      * @return A list of secondary private IP address that is assigned to the ENI.
      * 
      */
-    private final List<String> privateIps;
-    private final Integer queueNumber;
+    private List<String> privateIps;
+    private Integer queueNumber;
     /**
      * @return The Id of resource group.
      * 
      */
-    private final String resourceGroupId;
-    private final List<String> securityGroupIds;
+    private String resourceGroupId;
+    private List<String> securityGroupIds;
     /**
      * @return A list of security group that the ENI belongs to.
      * 
      */
-    private final List<String> securityGroups;
-    private final Integer serviceId;
-    private final Boolean serviceManaged;
+    private List<String> securityGroups;
+    private Integer serviceId;
+    private Boolean serviceManaged;
     /**
      * @return Current status of the ENI.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A map of tags assigned to the ENI.
      * 
      */
-    private final Map<String,Object> tags;
-    private final String type;
+    private Map<String,Object> tags;
+    private String type;
     /**
      * @return ID of the VPC that the ENI belongs to.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return ID of the VSwitch that the ENI is linked to.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return ID of the availability zone that the ENI belongs to.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetNetworkInterfacesInterface(
-        @CustomType.Parameter("associatedPublicIps") List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("mac") String mac,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("networkInterfaceName") String networkInterfaceName,
-        @CustomType.Parameter("networkInterfaceTrafficMode") String networkInterfaceTrafficMode,
-        @CustomType.Parameter("ownerId") String ownerId,
-        @CustomType.Parameter("primaryIpAddress") String primaryIpAddress,
-        @CustomType.Parameter("privateIp") String privateIp,
-        @CustomType.Parameter("privateIpAddresses") List<String> privateIpAddresses,
-        @CustomType.Parameter("privateIps") List<String> privateIps,
-        @CustomType.Parameter("queueNumber") Integer queueNumber,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
-        @CustomType.Parameter("securityGroups") List<String> securityGroups,
-        @CustomType.Parameter("serviceId") Integer serviceId,
-        @CustomType.Parameter("serviceManaged") Boolean serviceManaged,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.associatedPublicIps = associatedPublicIps;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.mac = mac;
-        this.name = name;
-        this.networkInterfaceId = networkInterfaceId;
-        this.networkInterfaceName = networkInterfaceName;
-        this.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
-        this.ownerId = ownerId;
-        this.primaryIpAddress = primaryIpAddress;
-        this.privateIp = privateIp;
-        this.privateIpAddresses = privateIpAddresses;
-        this.privateIps = privateIps;
-        this.queueNumber = queueNumber;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroupIds = securityGroupIds;
-        this.securityGroups = securityGroups;
-        this.serviceId = serviceId;
-        this.serviceManaged = serviceManaged;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetNetworkInterfacesInterface() {}
     public List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps() {
         return this.associatedPublicIps;
     }
@@ -310,7 +253,7 @@ public final class GetNetworkInterfacesInterface {
     public static Builder builder(GetNetworkInterfacesInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
         private String creationTime;
@@ -339,11 +282,7 @@ public final class GetNetworkInterfacesInterface {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkInterfacesInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associatedPublicIps = defaults.associatedPublicIps;
@@ -375,6 +314,7 @@ public final class GetNetworkInterfacesInterface {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder associatedPublicIps(List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps) {
             this.associatedPublicIps = Objects.requireNonNull(associatedPublicIps);
             return this;
@@ -382,54 +322,67 @@ public final class GetNetworkInterfacesInterface {
         public Builder associatedPublicIps(GetNetworkInterfacesInterfaceAssociatedPublicIp... associatedPublicIps) {
             return associatedPublicIps(List.of(associatedPublicIps));
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder mac(String mac) {
             this.mac = Objects.requireNonNull(mac);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceName(String networkInterfaceName) {
             this.networkInterfaceName = Objects.requireNonNull(networkInterfaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
             this.networkInterfaceTrafficMode = Objects.requireNonNull(networkInterfaceTrafficMode);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerId(String ownerId) {
             this.ownerId = Objects.requireNonNull(ownerId);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryIpAddress(String primaryIpAddress) {
             this.primaryIpAddress = Objects.requireNonNull(primaryIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(String privateIp) {
             this.privateIp = Objects.requireNonNull(privateIp);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpAddresses(List<String> privateIpAddresses) {
             this.privateIpAddresses = Objects.requireNonNull(privateIpAddresses);
             return this;
@@ -437,6 +390,7 @@ public final class GetNetworkInterfacesInterface {
         public Builder privateIpAddresses(String... privateIpAddresses) {
             return privateIpAddresses(List.of(privateIpAddresses));
         }
+        @CustomType.Setter
         public Builder privateIps(List<String> privateIps) {
             this.privateIps = Objects.requireNonNull(privateIps);
             return this;
@@ -444,14 +398,17 @@ public final class GetNetworkInterfacesInterface {
         public Builder privateIps(String... privateIps) {
             return privateIps(List.of(privateIps));
         }
+        @CustomType.Setter
         public Builder queueNumber(Integer queueNumber) {
             this.queueNumber = Objects.requireNonNull(queueNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -459,6 +416,7 @@ public final class GetNetworkInterfacesInterface {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
@@ -466,39 +424,76 @@ public final class GetNetworkInterfacesInterface {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder serviceId(Integer serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceManaged(Boolean serviceManaged) {
             this.serviceManaged = Objects.requireNonNull(serviceManaged);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetNetworkInterfacesInterface build() {
-            return new GetNetworkInterfacesInterface(associatedPublicIps, creationTime, description, id, instanceId, mac, name, networkInterfaceId, networkInterfaceName, networkInterfaceTrafficMode, ownerId, primaryIpAddress, privateIp, privateIpAddresses, privateIps, queueNumber, resourceGroupId, securityGroupIds, securityGroups, serviceId, serviceManaged, status, tags, type, vpcId, vswitchId, zoneId);
+        }
+        public GetNetworkInterfacesInterface build() {
+            final var o = new GetNetworkInterfacesInterface();
+            o.associatedPublicIps = associatedPublicIps;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.mac = mac;
+            o.name = name;
+            o.networkInterfaceId = networkInterfaceId;
+            o.networkInterfaceName = networkInterfaceName;
+            o.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            o.ownerId = ownerId;
+            o.primaryIpAddress = primaryIpAddress;
+            o.privateIp = privateIp;
+            o.privateIpAddresses = privateIpAddresses;
+            o.privateIps = privateIps;
+            o.queueNumber = queueNumber;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroupIds = securityGroupIds;
+            o.securityGroups = securityGroups;
+            o.serviceId = serviceId;
+            o.serviceManaged = serviceManaged;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

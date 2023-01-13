@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainGroupsGroup {
-    private final String groupId;
-    private final String groupName;
+    private String groupId;
+    private String groupName;
 
-    @CustomType.Constructor
-    private GetDomainGroupsGroup(
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName) {
-        this.groupId = groupId;
-        this.groupName = groupName;
-    }
-
+    private GetDomainGroupsGroup() {}
     public String groupId() {
         return this.groupId;
     }
@@ -34,30 +27,32 @@ public final class GetDomainGroupsGroup {
     public static Builder builder(GetDomainGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String groupId;
         private String groupName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
         }
 
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
-        }        public GetDomainGroupsGroup build() {
-            return new GetDomainGroupsGroup(groupId, groupName);
+        }
+        public GetDomainGroupsGroup build() {
+            final var o = new GetDomainGroupsGroup();
+            o.groupId = groupId;
+            o.groupName = groupName;
+            return o;
         }
     }
 }

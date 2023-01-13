@@ -17,35 +17,16 @@ public final class GetImagesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String imageType;
-    private final List<GetImagesImage> images;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String platform;
+    private String id;
+    private List<String> ids;
+    private @Nullable String imageType;
+    private List<GetImagesImage> images;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String platform;
 
-    @CustomType.Constructor
-    private GetImagesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("images") List<GetImagesImage> images,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("platform") @Nullable String platform) {
-        this.id = id;
-        this.ids = ids;
-        this.imageType = imageType;
-        this.images = images;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.platform = platform;
-    }
-
+    private GetImagesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,7 +63,7 @@ public final class GetImagesResult {
     public static Builder builder(GetImagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -92,11 +73,7 @@ public final class GetImagesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String platform;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,10 +86,12 @@ public final class GetImagesResult {
     	      this.platform = defaults.platform;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,10 +99,12 @@ public final class GetImagesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -131,10 +112,12 @@ public final class GetImagesResult {
         public Builder images(GetImagesImage... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -142,15 +125,27 @@ public final class GetImagesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder platform(@Nullable String platform) {
             this.platform = platform;
             return this;
-        }        public GetImagesResult build() {
-            return new GetImagesResult(id, ids, imageType, images, nameRegex, names, outputFile, platform);
+        }
+        public GetImagesResult build() {
+            final var o = new GetImagesResult();
+            o.id = id;
+            o.ids = ids;
+            o.imageType = imageType;
+            o.images = images;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.platform = platform;
+            return o;
         }
     }
 }

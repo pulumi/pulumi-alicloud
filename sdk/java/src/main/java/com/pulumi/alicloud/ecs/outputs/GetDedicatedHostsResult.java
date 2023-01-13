@@ -20,89 +20,58 @@ public final class GetDedicatedHostsResult {
      * @return ID of the ECS Dedicated Host.
      * 
      */
-    private final @Nullable String dedicatedHostId;
+    private @Nullable String dedicatedHostId;
     /**
      * @return The name of the dedicated host.
      * 
      */
-    private final @Nullable String dedicatedHostName;
+    private @Nullable String dedicatedHostName;
     /**
      * @return The type of the dedicated host.
      * 
      */
-    private final @Nullable String dedicatedHostType;
+    private @Nullable String dedicatedHostType;
     /**
      * @return A list of ECS Dedicated Hosts. Each element contains the following attributes:
      * 
      */
-    private final List<GetDedicatedHostsHost> hosts;
+    private List<GetDedicatedHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of ECS Dedicated Host ids.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of ECS Dedicated Host names.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
     /**
      * @return (Available in 1.123.1+) The operation_locks. contains the following attribute:
      * 
      */
-    private final @Nullable List<GetDedicatedHostsOperationLock> operationLocks;
-    private final @Nullable String outputFile;
+    private @Nullable List<GetDedicatedHostsOperationLock> operationLocks;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the resource group to which the dedicated host belongs.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The service status of the dedicated host.
      * 
      */
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String zoneId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetDedicatedHostsResult(
-        @CustomType.Parameter("dedicatedHostId") @Nullable String dedicatedHostId,
-        @CustomType.Parameter("dedicatedHostName") @Nullable String dedicatedHostName,
-        @CustomType.Parameter("dedicatedHostType") @Nullable String dedicatedHostType,
-        @CustomType.Parameter("hosts") List<GetDedicatedHostsHost> hosts,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("operationLocks") @Nullable List<GetDedicatedHostsOperationLock> operationLocks,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.dedicatedHostId = dedicatedHostId;
-        this.dedicatedHostName = dedicatedHostName;
-        this.dedicatedHostType = dedicatedHostType;
-        this.hosts = hosts;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.operationLocks = operationLocks;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.tags = tags;
-        this.zoneId = zoneId;
-    }
-
+    private GetDedicatedHostsResult() {}
     /**
      * @return ID of the ECS Dedicated Host.
      * 
@@ -193,7 +162,7 @@ public final class GetDedicatedHostsResult {
     public static Builder builder(GetDedicatedHostsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dedicatedHostId;
         private @Nullable String dedicatedHostName;
@@ -209,11 +178,7 @@ public final class GetDedicatedHostsResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dedicatedHostId = defaults.dedicatedHostId;
@@ -232,18 +197,22 @@ public final class GetDedicatedHostsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder dedicatedHostId(@Nullable String dedicatedHostId) {
             this.dedicatedHostId = dedicatedHostId;
             return this;
         }
+        @CustomType.Setter
         public Builder dedicatedHostName(@Nullable String dedicatedHostName) {
             this.dedicatedHostName = dedicatedHostName;
             return this;
         }
+        @CustomType.Setter
         public Builder dedicatedHostType(@Nullable String dedicatedHostType) {
             this.dedicatedHostType = dedicatedHostType;
             return this;
         }
+        @CustomType.Setter
         public Builder hosts(List<GetDedicatedHostsHost> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -251,10 +220,12 @@ public final class GetDedicatedHostsResult {
         public Builder hosts(GetDedicatedHostsHost... hosts) {
             return hosts(List.of(hosts));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -262,10 +233,12 @@ public final class GetDedicatedHostsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -273,6 +246,7 @@ public final class GetDedicatedHostsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder operationLocks(@Nullable List<GetDedicatedHostsOperationLock> operationLocks) {
             this.operationLocks = operationLocks;
             return this;
@@ -280,27 +254,48 @@ public final class GetDedicatedHostsResult {
         public Builder operationLocks(GetDedicatedHostsOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetDedicatedHostsResult build() {
-            return new GetDedicatedHostsResult(dedicatedHostId, dedicatedHostName, dedicatedHostType, hosts, id, ids, nameRegex, names, operationLocks, outputFile, resourceGroupId, status, tags, zoneId);
+        }
+        public GetDedicatedHostsResult build() {
+            final var o = new GetDedicatedHostsResult();
+            o.dedicatedHostId = dedicatedHostId;
+            o.dedicatedHostName = dedicatedHostName;
+            o.dedicatedHostType = dedicatedHostType;
+            o.hosts = hosts;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.operationLocks = operationLocks;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

@@ -14,56 +14,39 @@ public final class GetReceiversReceiverse {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Receivers.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return -The Receivers Alias.
      * 
      */
-    private final String receiversAlias;
+    private String receiversAlias;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String receiversId;
+    private String receiversId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String receiversName;
+    private String receiversName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final Integer status;
+    private Integer status;
 
-    @CustomType.Constructor
-    private GetReceiversReceiverse(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("receiversAlias") String receiversAlias,
-        @CustomType.Parameter("receiversId") String receiversId,
-        @CustomType.Parameter("receiversName") String receiversName,
-        @CustomType.Parameter("status") Integer status) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.receiversAlias = receiversAlias;
-        this.receiversId = receiversId;
-        this.receiversName = receiversName;
-        this.status = status;
-    }
-
+    private GetReceiversReceiverse() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -121,7 +104,7 @@ public final class GetReceiversReceiverse {
     public static Builder builder(GetReceiversReceiverse defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -130,11 +113,7 @@ public final class GetReceiversReceiverse {
         private String receiversId;
         private String receiversName;
         private Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetReceiversReceiverse defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -146,35 +125,51 @@ public final class GetReceiversReceiverse {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder receiversAlias(String receiversAlias) {
             this.receiversAlias = Objects.requireNonNull(receiversAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder receiversId(String receiversId) {
             this.receiversId = Objects.requireNonNull(receiversId);
             return this;
         }
+        @CustomType.Setter
         public Builder receiversName(String receiversName) {
             this.receiversName = Objects.requireNonNull(receiversName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetReceiversReceiverse build() {
-            return new GetReceiversReceiverse(createTime, description, id, receiversAlias, receiversId, receiversName, status);
+        }
+        public GetReceiversReceiverse build() {
+            final var o = new GetReceiversReceiverse();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.receiversAlias = receiversAlias;
+            o.receiversId = receiversId;
+            o.receiversName = receiversName;
+            o.status = status;
+            return o;
         }
     }
 }

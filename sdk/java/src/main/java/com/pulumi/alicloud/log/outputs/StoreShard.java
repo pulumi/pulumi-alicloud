@@ -16,35 +16,24 @@ public final class StoreShard {
      * @return The begin value of the shard range(MD5), included in the shard range.
      * 
      */
-    private final @Nullable String beginKey;
+    private @Nullable String beginKey;
     /**
      * @return The end value of the shard range(MD5), not included in shard range.
      * 
      */
-    private final @Nullable String endKey;
+    private @Nullable String endKey;
     /**
      * @return The ID of the shard.
      * 
      */
-    private final @Nullable Integer id;
+    private @Nullable Integer id;
     /**
      * @return Shard status, only two status of `readwrite` and `readonly`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private StoreShard(
-        @CustomType.Parameter("beginKey") @Nullable String beginKey,
-        @CustomType.Parameter("endKey") @Nullable String endKey,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.beginKey = beginKey;
-        this.endKey = endKey;
-        this.id = id;
-        this.status = status;
-    }
-
+    private StoreShard() {}
     /**
      * @return The begin value of the shard range(MD5), included in the shard range.
      * 
@@ -81,17 +70,13 @@ public final class StoreShard {
     public static Builder builder(StoreShard defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String beginKey;
         private @Nullable String endKey;
         private @Nullable Integer id;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StoreShard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.beginKey = defaults.beginKey;
@@ -100,23 +85,33 @@ public final class StoreShard {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder beginKey(@Nullable String beginKey) {
             this.beginKey = beginKey;
             return this;
         }
+        @CustomType.Setter
         public Builder endKey(@Nullable String endKey) {
             this.endKey = endKey;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public StoreShard build() {
-            return new StoreShard(beginKey, endKey, id, status);
+        }
+        public StoreShard build() {
+            final var o = new StoreShard();
+            o.beginKey = beginKey;
+            o.endKey = endKey;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -13,28 +13,19 @@ public final class GetMetaTagsTag {
      * @return The type of the resource tags.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The name of the key.
      * 
      */
-    private final String keyName;
+    private String keyName;
     /**
      * @return The name of the value.
      * 
      */
-    private final String valueName;
+    private String valueName;
 
-    @CustomType.Constructor
-    private GetMetaTagsTag(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("keyName") String keyName,
-        @CustomType.Parameter("valueName") String valueName) {
-        this.category = category;
-        this.keyName = keyName;
-        this.valueName = valueName;
-    }
-
+    private GetMetaTagsTag() {}
     /**
      * @return The type of the resource tags.
      * 
@@ -64,16 +55,12 @@ public final class GetMetaTagsTag {
     public static Builder builder(GetMetaTagsTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String keyName;
         private String valueName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMetaTagsTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -81,19 +68,27 @@ public final class GetMetaTagsTag {
     	      this.valueName = defaults.valueName;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder keyName(String keyName) {
             this.keyName = Objects.requireNonNull(keyName);
             return this;
         }
+        @CustomType.Setter
         public Builder valueName(String valueName) {
             this.valueName = Objects.requireNonNull(valueName);
             return this;
-        }        public GetMetaTagsTag build() {
-            return new GetMetaTagsTag(category, keyName, valueName);
+        }
+        public GetMetaTagsTag build() {
+            final var o = new GetMetaTagsTag();
+            o.category = category;
+            o.keyName = keyName;
+            o.valueName = valueName;
+            return o;
         }
     }
 }

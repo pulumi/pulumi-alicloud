@@ -15,70 +15,49 @@ public final class GetAutoSnapshotPoliciesPolicy {
      * @return The ID of the automatic snapshot policy.
      * 
      */
-    private final String autoSnapshotPolicyId;
+    private String autoSnapshotPolicyId;
     /**
      * @return The name of the automatic snapshot policy.
      * 
      */
-    private final String autoSnapshotPolicyName;
+    private String autoSnapshotPolicyName;
     /**
      * @return The time when the automatic snapshot policy was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The number of file systems to which the automatic snapshot policy applies.
      * 
      */
-    private final Integer fileSystemNums;
+    private Integer fileSystemNums;
     /**
      * @return ID of the Auto Snapshot Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The day on which an auto snapshot was created.
      * 
      */
-    private final List<String> repeatWeekdays;
+    private List<String> repeatWeekdays;
     /**
      * @return The number of days for which you want to retain auto snapshots.
      * 
      */
-    private final Integer retentionDays;
+    private Integer retentionDays;
     /**
      * @return The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The point in time at which an auto snapshot was created. Unit: hours.
      * 
      */
-    private final List<String> timePoints;
+    private List<String> timePoints;
 
-    @CustomType.Constructor
-    private GetAutoSnapshotPoliciesPolicy(
-        @CustomType.Parameter("autoSnapshotPolicyId") String autoSnapshotPolicyId,
-        @CustomType.Parameter("autoSnapshotPolicyName") String autoSnapshotPolicyName,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("fileSystemNums") Integer fileSystemNums,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("repeatWeekdays") List<String> repeatWeekdays,
-        @CustomType.Parameter("retentionDays") Integer retentionDays,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("timePoints") List<String> timePoints) {
-        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
-        this.autoSnapshotPolicyName = autoSnapshotPolicyName;
-        this.createTime = createTime;
-        this.fileSystemNums = fileSystemNums;
-        this.id = id;
-        this.repeatWeekdays = repeatWeekdays;
-        this.retentionDays = retentionDays;
-        this.status = status;
-        this.timePoints = timePoints;
-    }
-
+    private GetAutoSnapshotPoliciesPolicy() {}
     /**
      * @return The ID of the automatic snapshot policy.
      * 
@@ -150,7 +129,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
     public static Builder builder(GetAutoSnapshotPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String autoSnapshotPolicyId;
         private String autoSnapshotPolicyName;
@@ -161,11 +140,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
         private Integer retentionDays;
         private String status;
         private List<String> timePoints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAutoSnapshotPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -179,26 +154,32 @@ public final class GetAutoSnapshotPoliciesPolicy {
     	      this.timePoints = defaults.timePoints;
         }
 
+        @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
             this.autoSnapshotPolicyName = Objects.requireNonNull(autoSnapshotPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemNums(Integer fileSystemNums) {
             this.fileSystemNums = Objects.requireNonNull(fileSystemNums);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
             this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
             return this;
@@ -206,22 +187,36 @@ public final class GetAutoSnapshotPoliciesPolicy {
         public Builder repeatWeekdays(String... repeatWeekdays) {
             return repeatWeekdays(List.of(repeatWeekdays));
         }
+        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
             this.timePoints = Objects.requireNonNull(timePoints);
             return this;
         }
         public Builder timePoints(String... timePoints) {
             return timePoints(List.of(timePoints));
-        }        public GetAutoSnapshotPoliciesPolicy build() {
-            return new GetAutoSnapshotPoliciesPolicy(autoSnapshotPolicyId, autoSnapshotPolicyName, createTime, fileSystemNums, id, repeatWeekdays, retentionDays, status, timePoints);
+        }
+        public GetAutoSnapshotPoliciesPolicy build() {
+            final var o = new GetAutoSnapshotPoliciesPolicy();
+            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            o.autoSnapshotPolicyName = autoSnapshotPolicyName;
+            o.createTime = createTime;
+            o.fileSystemNums = fileSystemNums;
+            o.id = id;
+            o.repeatWeekdays = repeatWeekdays;
+            o.retentionDays = retentionDays;
+            o.status = status;
+            o.timePoints = timePoints;
+            return o;
         }
     }
 }

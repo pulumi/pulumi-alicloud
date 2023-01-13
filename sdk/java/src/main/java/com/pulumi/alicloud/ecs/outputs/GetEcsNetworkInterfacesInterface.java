@@ -19,192 +19,135 @@ public final class GetEcsNetworkInterfacesInterface {
      * @return The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
      * 
      */
-    private final List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
+    private List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
     /**
      * @return The creation time.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return The description of the ENI.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Network Interface.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The instance id.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The MAC address of the ENI.
      * 
      */
-    private final String mac;
+    private String mac;
     /**
      * @return The network interface name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The network interface id.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return The network interface name.
      * 
      */
-    private final String networkInterfaceName;
+    private String networkInterfaceName;
     /**
      * @return The communication mode of the elastic network card.
      * 
      */
-    private final String networkInterfaceTrafficMode;
+    private String networkInterfaceTrafficMode;
     /**
      * @return The ID of the account to which the ENIC belongs.
      * 
      */
-    private final String ownerId;
+    private String ownerId;
     /**
      * @return The primary private IP address of the ENI.
      * 
      */
-    private final String primaryIpAddress;
+    private String primaryIpAddress;
     /**
      * @return The primary private IP address of the ENI.
      * 
      */
-    private final String privateIp;
-    private final List<String> privateIpAddresses;
+    private String privateIp;
+    private List<String> privateIpAddresses;
     /**
      * @return A list of secondary private IP address that is assigned to the ENI.
      * 
      */
-    private final List<String> privateIps;
+    private List<String> privateIps;
     /**
      * @return Number of network card queues.
      * 
      */
-    private final Integer queueNumber;
+    private Integer queueNumber;
     /**
      * @return The resource group id.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The security group ids.
      * 
      */
-    private final List<String> securityGroupIds;
+    private List<String> securityGroupIds;
     /**
      * @return The security groups.
      * 
      */
-    private final List<String> securityGroups;
+    private List<String> securityGroups;
     /**
      * @return The service id.
      * 
      */
-    private final Integer serviceId;
+    private Integer serviceId;
     /**
      * @return Whether the user of the elastic network card is a cloud product or a virtual vendor.
      * 
      */
-    private final Boolean serviceManaged;
+    private Boolean serviceManaged;
     /**
      * @return The status of the ENI.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The tags.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The type of the ENI.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The Vpc Id.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The zone id.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetEcsNetworkInterfacesInterface(
-        @CustomType.Parameter("associatedPublicIps") List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("mac") String mac,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("networkInterfaceName") String networkInterfaceName,
-        @CustomType.Parameter("networkInterfaceTrafficMode") String networkInterfaceTrafficMode,
-        @CustomType.Parameter("ownerId") String ownerId,
-        @CustomType.Parameter("primaryIpAddress") String primaryIpAddress,
-        @CustomType.Parameter("privateIp") String privateIp,
-        @CustomType.Parameter("privateIpAddresses") List<String> privateIpAddresses,
-        @CustomType.Parameter("privateIps") List<String> privateIps,
-        @CustomType.Parameter("queueNumber") Integer queueNumber,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
-        @CustomType.Parameter("securityGroups") List<String> securityGroups,
-        @CustomType.Parameter("serviceId") Integer serviceId,
-        @CustomType.Parameter("serviceManaged") Boolean serviceManaged,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.associatedPublicIps = associatedPublicIps;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.mac = mac;
-        this.name = name;
-        this.networkInterfaceId = networkInterfaceId;
-        this.networkInterfaceName = networkInterfaceName;
-        this.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
-        this.ownerId = ownerId;
-        this.primaryIpAddress = primaryIpAddress;
-        this.privateIp = privateIp;
-        this.privateIpAddresses = privateIpAddresses;
-        this.privateIps = privateIps;
-        this.queueNumber = queueNumber;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroupIds = securityGroupIds;
-        this.securityGroups = securityGroups;
-        this.serviceId = serviceId;
-        this.serviceManaged = serviceManaged;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetEcsNetworkInterfacesInterface() {}
     /**
      * @return The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
      * 
@@ -398,7 +341,7 @@ public final class GetEcsNetworkInterfacesInterface {
     public static Builder builder(GetEcsNetworkInterfacesInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
         private String creationTime;
@@ -427,11 +370,7 @@ public final class GetEcsNetworkInterfacesInterface {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsNetworkInterfacesInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associatedPublicIps = defaults.associatedPublicIps;
@@ -463,6 +402,7 @@ public final class GetEcsNetworkInterfacesInterface {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder associatedPublicIps(List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps) {
             this.associatedPublicIps = Objects.requireNonNull(associatedPublicIps);
             return this;
@@ -470,54 +410,67 @@ public final class GetEcsNetworkInterfacesInterface {
         public Builder associatedPublicIps(GetEcsNetworkInterfacesInterfaceAssociatedPublicIp... associatedPublicIps) {
             return associatedPublicIps(List.of(associatedPublicIps));
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder mac(String mac) {
             this.mac = Objects.requireNonNull(mac);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceName(String networkInterfaceName) {
             this.networkInterfaceName = Objects.requireNonNull(networkInterfaceName);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
             this.networkInterfaceTrafficMode = Objects.requireNonNull(networkInterfaceTrafficMode);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerId(String ownerId) {
             this.ownerId = Objects.requireNonNull(ownerId);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryIpAddress(String primaryIpAddress) {
             this.primaryIpAddress = Objects.requireNonNull(primaryIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(String privateIp) {
             this.privateIp = Objects.requireNonNull(privateIp);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpAddresses(List<String> privateIpAddresses) {
             this.privateIpAddresses = Objects.requireNonNull(privateIpAddresses);
             return this;
@@ -525,6 +478,7 @@ public final class GetEcsNetworkInterfacesInterface {
         public Builder privateIpAddresses(String... privateIpAddresses) {
             return privateIpAddresses(List.of(privateIpAddresses));
         }
+        @CustomType.Setter
         public Builder privateIps(List<String> privateIps) {
             this.privateIps = Objects.requireNonNull(privateIps);
             return this;
@@ -532,14 +486,17 @@ public final class GetEcsNetworkInterfacesInterface {
         public Builder privateIps(String... privateIps) {
             return privateIps(List.of(privateIps));
         }
+        @CustomType.Setter
         public Builder queueNumber(Integer queueNumber) {
             this.queueNumber = Objects.requireNonNull(queueNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -547,6 +504,7 @@ public final class GetEcsNetworkInterfacesInterface {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
@@ -554,39 +512,76 @@ public final class GetEcsNetworkInterfacesInterface {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder serviceId(Integer serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceManaged(Boolean serviceManaged) {
             this.serviceManaged = Objects.requireNonNull(serviceManaged);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetEcsNetworkInterfacesInterface build() {
-            return new GetEcsNetworkInterfacesInterface(associatedPublicIps, creationTime, description, id, instanceId, mac, name, networkInterfaceId, networkInterfaceName, networkInterfaceTrafficMode, ownerId, primaryIpAddress, privateIp, privateIpAddresses, privateIps, queueNumber, resourceGroupId, securityGroupIds, securityGroups, serviceId, serviceManaged, status, tags, type, vpcId, vswitchId, zoneId);
+        }
+        public GetEcsNetworkInterfacesInterface build() {
+            final var o = new GetEcsNetworkInterfacesInterface();
+            o.associatedPublicIps = associatedPublicIps;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.mac = mac;
+            o.name = name;
+            o.networkInterfaceId = networkInterfaceId;
+            o.networkInterfaceName = networkInterfaceName;
+            o.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            o.ownerId = ownerId;
+            o.primaryIpAddress = primaryIpAddress;
+            o.privateIp = privateIp;
+            o.privateIpAddresses = privateIpAddresses;
+            o.privateIps = privateIps;
+            o.queueNumber = queueNumber;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroupIds = securityGroupIds;
+            o.securityGroups = securityGroups;
+            o.serviceId = serviceId;
+            o.serviceManaged = serviceManaged;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

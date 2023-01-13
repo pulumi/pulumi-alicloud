@@ -14,70 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of zone IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String keyword;
-    private final @Nullable String lang;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String keyword;
+    private @Nullable String lang;
+    private @Nullable String nameRegex;
     /**
      * @return A list of zone names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String queryRegionId;
-    private final @Nullable String queryVpcId;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String queryRegionId;
+    private @Nullable String queryVpcId;
     /**
      * @return The Id of resource group which the Private Zone belongs.
      * 
      */
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String searchMode;
+    private @Nullable String resourceGroupId;
+    private @Nullable String searchMode;
     /**
      * @return A list of zones. Each element contains the following attributes:
      * 
      */
-    private final List<GetZonesZone> zones;
+    private List<GetZonesZone> zones;
 
-    @CustomType.Constructor
-    private GetZonesResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyword") @Nullable String keyword,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("queryRegionId") @Nullable String queryRegionId,
-        @CustomType.Parameter("queryVpcId") @Nullable String queryVpcId,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("searchMode") @Nullable String searchMode,
-        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.keyword = keyword;
-        this.lang = lang;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.queryRegionId = queryRegionId;
-        this.queryVpcId = queryVpcId;
-        this.resourceGroupId = resourceGroupId;
-        this.searchMode = searchMode;
-        this.zones = zones;
-    }
-
+    private GetZonesResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -145,7 +116,7 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -160,11 +131,7 @@ public final class GetZonesResult {
         private @Nullable String resourceGroupId;
         private @Nullable String searchMode;
         private List<GetZonesZone> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -182,14 +149,17 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -197,18 +167,22 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -216,34 +190,55 @@ public final class GetZonesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder queryRegionId(@Nullable String queryRegionId) {
             this.queryRegionId = queryRegionId;
             return this;
         }
+        @CustomType.Setter
         public Builder queryVpcId(@Nullable String queryVpcId) {
             this.queryVpcId = queryVpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
             this.searchMode = searchMode;
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }        public GetZonesResult build() {
-            return new GetZonesResult(enableDetails, id, ids, keyword, lang, nameRegex, names, outputFile, queryRegionId, queryVpcId, resourceGroupId, searchMode, zones);
+        }
+        public GetZonesResult build() {
+            final var o = new GetZonesResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.keyword = keyword;
+            o.lang = lang;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.queryRegionId = queryRegionId;
+            o.queryVpcId = queryVpcId;
+            o.resourceGroupId = resourceGroupId;
+            o.searchMode = searchMode;
+            o.zones = zones;
+            return o;
         }
     }
 }

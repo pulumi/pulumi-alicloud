@@ -13,45 +13,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImagesResult {
-    private final @Nullable String desktopInstanceType;
+    private @Nullable String desktopInstanceType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String imageType;
-    private final List<GetImagesImage> images;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String osType;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String imageType;
+    private List<GetImagesImage> images;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String osType;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetImagesResult(
-        @CustomType.Parameter("desktopInstanceType") @Nullable String desktopInstanceType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("images") List<GetImagesImage> images,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("osType") @Nullable String osType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.desktopInstanceType = desktopInstanceType;
-        this.id = id;
-        this.ids = ids;
-        this.imageType = imageType;
-        this.images = images;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.osType = osType;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetImagesResult() {}
     public Optional<String> desktopInstanceType() {
         return Optional.ofNullable(this.desktopInstanceType);
     }
@@ -94,7 +71,7 @@ public final class GetImagesResult {
     public static Builder builder(GetImagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String desktopInstanceType;
         private String id;
@@ -106,11 +83,7 @@ public final class GetImagesResult {
         private @Nullable String osType;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desktopInstanceType = defaults.desktopInstanceType;
@@ -125,14 +98,17 @@ public final class GetImagesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder desktopInstanceType(@Nullable String desktopInstanceType) {
             this.desktopInstanceType = desktopInstanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -140,10 +116,12 @@ public final class GetImagesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<GetImagesImage> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -151,10 +129,12 @@ public final class GetImagesResult {
         public Builder images(GetImagesImage... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -162,19 +142,34 @@ public final class GetImagesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder osType(@Nullable String osType) {
             this.osType = osType;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetImagesResult build() {
-            return new GetImagesResult(desktopInstanceType, id, ids, imageType, images, nameRegex, names, osType, outputFile, status);
+        }
+        public GetImagesResult build() {
+            final var o = new GetImagesResult();
+            o.desktopInstanceType = desktopInstanceType;
+            o.id = id;
+            o.ids = ids;
+            o.imageType = imageType;
+            o.images = images;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.osType = osType;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

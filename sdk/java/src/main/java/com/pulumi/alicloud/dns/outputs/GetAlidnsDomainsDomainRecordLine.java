@@ -13,35 +13,24 @@ public final class GetAlidnsDomainsDomainRecordLine {
      * @return The code of the parent line, or empty if there is none.
      * 
      */
-    private final String fatherCode;
+    private String fatherCode;
     /**
      * @return Sub-line Code.
      * 
      */
-    private final String lineCode;
+    private String lineCode;
     /**
      * @return Parent line display name.
      * 
      */
-    private final String lineDisplayName;
+    private String lineDisplayName;
     /**
      * @return Sub-line display name.
      * 
      */
-    private final String lineName;
+    private String lineName;
 
-    @CustomType.Constructor
-    private GetAlidnsDomainsDomainRecordLine(
-        @CustomType.Parameter("fatherCode") String fatherCode,
-        @CustomType.Parameter("lineCode") String lineCode,
-        @CustomType.Parameter("lineDisplayName") String lineDisplayName,
-        @CustomType.Parameter("lineName") String lineName) {
-        this.fatherCode = fatherCode;
-        this.lineCode = lineCode;
-        this.lineDisplayName = lineDisplayName;
-        this.lineName = lineName;
-    }
-
+    private GetAlidnsDomainsDomainRecordLine() {}
     /**
      * @return The code of the parent line, or empty if there is none.
      * 
@@ -78,17 +67,13 @@ public final class GetAlidnsDomainsDomainRecordLine {
     public static Builder builder(GetAlidnsDomainsDomainRecordLine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fatherCode;
         private String lineCode;
         private String lineDisplayName;
         private String lineName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlidnsDomainsDomainRecordLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fatherCode = defaults.fatherCode;
@@ -97,23 +82,33 @@ public final class GetAlidnsDomainsDomainRecordLine {
     	      this.lineName = defaults.lineName;
         }
 
+        @CustomType.Setter
         public Builder fatherCode(String fatherCode) {
             this.fatherCode = Objects.requireNonNull(fatherCode);
             return this;
         }
+        @CustomType.Setter
         public Builder lineCode(String lineCode) {
             this.lineCode = Objects.requireNonNull(lineCode);
             return this;
         }
+        @CustomType.Setter
         public Builder lineDisplayName(String lineDisplayName) {
             this.lineDisplayName = Objects.requireNonNull(lineDisplayName);
             return this;
         }
+        @CustomType.Setter
         public Builder lineName(String lineName) {
             this.lineName = Objects.requireNonNull(lineName);
             return this;
-        }        public GetAlidnsDomainsDomainRecordLine build() {
-            return new GetAlidnsDomainsDomainRecordLine(fatherCode, lineCode, lineDisplayName, lineName);
+        }
+        public GetAlidnsDomainsDomainRecordLine build() {
+            final var o = new GetAlidnsDomainsDomainRecordLine();
+            o.fatherCode = fatherCode;
+            o.lineCode = lineCode;
+            o.lineDisplayName = lineDisplayName;
+            o.lineName = lineName;
+            return o;
         }
     }
 }

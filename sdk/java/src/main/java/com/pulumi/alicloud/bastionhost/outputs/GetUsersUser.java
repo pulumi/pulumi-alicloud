@@ -13,91 +13,64 @@ public final class GetUsersUser {
      * @return Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return Specify the New Created the User&#39;s Display Name. Supports up to 128 Characters.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Specify the New User&#39;s Mailbox.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The ID of the User.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return You Want to Query the User the Bastion Host ID of.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Specify the New of the User That Created a Different Mobile Phone Number from Your.
      * 
      */
-    private final String mobile;
+    private String mobile;
     /**
      * @return Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
      * 
      */
-    private final String mobileCountryCode;
+    private String mobileCountryCode;
     /**
      * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
      * 
      */
-    private final String source;
+    private String source;
     /**
      * @return Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User&#39;s Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      * 
      */
-    private final String sourceUserId;
+    private String sourceUserId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The User ID.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      * 
      */
-    private final String userName;
+    private String userName;
 
-    @CustomType.Constructor
-    private GetUsersUser(
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("mobile") String mobile,
-        @CustomType.Parameter("mobileCountryCode") String mobileCountryCode,
-        @CustomType.Parameter("source") String source,
-        @CustomType.Parameter("sourceUserId") String sourceUserId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("userName") String userName) {
-        this.comment = comment;
-        this.displayName = displayName;
-        this.email = email;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.mobile = mobile;
-        this.mobileCountryCode = mobileCountryCode;
-        this.source = source;
-        this.sourceUserId = sourceUserId;
-        this.status = status;
-        this.userId = userId;
-        this.userName = userName;
-    }
-
+    private GetUsersUser() {}
     /**
      * @return Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      * 
@@ -190,7 +163,7 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comment;
         private String displayName;
@@ -204,11 +177,7 @@ public final class GetUsersUser {
         private String status;
         private String userId;
         private String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -225,55 +194,81 @@ public final class GetUsersUser {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder mobile(String mobile) {
             this.mobile = Objects.requireNonNull(mobile);
             return this;
         }
+        @CustomType.Setter
         public Builder mobileCountryCode(String mobileCountryCode) {
             this.mobileCountryCode = Objects.requireNonNull(mobileCountryCode);
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUserId(String sourceUserId) {
             this.sourceUserId = Objects.requireNonNull(sourceUserId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }        public GetUsersUser build() {
-            return new GetUsersUser(comment, displayName, email, id, instanceId, mobile, mobileCountryCode, source, sourceUserId, status, userId, userName);
+        }
+        public GetUsersUser build() {
+            final var o = new GetUsersUser();
+            o.comment = comment;
+            o.displayName = displayName;
+            o.email = email;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.mobile = mobile;
+            o.mobileCountryCode = mobileCountryCode;
+            o.source = source;
+            o.sourceUserId = sourceUserId;
+            o.status = status;
+            o.userId = userId;
+            o.userName = userName;
+            return o;
         }
     }
 }

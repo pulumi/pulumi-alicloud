@@ -17,90 +17,61 @@ public final class GetRouterInterfacesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of router interface IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of router interfaces. Each element contains the following attributes:
      * 
      */
-    private final List<GetRouterInterfacesInterface> interfaces;
-    private final @Nullable String nameRegex;
+    private List<GetRouterInterfacesInterface> interfaces;
+    private @Nullable String nameRegex;
     /**
      * @return A list of router interface names.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
     /**
      * @return Peer router interface ID.
      * 
      */
-    private final @Nullable String oppositeInterfaceId;
+    private @Nullable String oppositeInterfaceId;
     /**
      * @return Account ID of the owner of the peer router interface.
      * 
      */
-    private final @Nullable String oppositeInterfaceOwnerId;
-    private final @Nullable String outputFile;
+    private @Nullable String oppositeInterfaceOwnerId;
+    private @Nullable String outputFile;
     /**
      * @return Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
      * 
      */
-    private final @Nullable String role;
+    private @Nullable String role;
     /**
      * @return ID of the VRouter located in the local region.
      * 
      */
-    private final @Nullable String routerId;
+    private @Nullable String routerId;
     /**
      * @return Router type in the local region. Possible values: `VRouter` and `VBR`.
      * 
      */
-    private final @Nullable String routerType;
+    private @Nullable String routerType;
     /**
      * @return Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
      * 
      */
-    private final @Nullable String specification;
+    private @Nullable String specification;
     /**
      * @return Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetRouterInterfacesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("interfaces") List<GetRouterInterfacesInterface> interfaces,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("oppositeInterfaceId") @Nullable String oppositeInterfaceId,
-        @CustomType.Parameter("oppositeInterfaceOwnerId") @Nullable String oppositeInterfaceOwnerId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("role") @Nullable String role,
-        @CustomType.Parameter("routerId") @Nullable String routerId,
-        @CustomType.Parameter("routerType") @Nullable String routerType,
-        @CustomType.Parameter("specification") @Nullable String specification,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.interfaces = interfaces;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.oppositeInterfaceId = oppositeInterfaceId;
-        this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-        this.outputFile = outputFile;
-        this.role = role;
-        this.routerId = routerId;
-        this.routerType = routerType;
-        this.specification = specification;
-        this.status = status;
-    }
-
+    private GetRouterInterfacesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -192,7 +163,7 @@ public final class GetRouterInterfacesResult {
     public static Builder builder(GetRouterInterfacesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -207,11 +178,7 @@ public final class GetRouterInterfacesResult {
         private @Nullable String routerType;
         private @Nullable String specification;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterInterfacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -229,10 +196,12 @@ public final class GetRouterInterfacesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -240,6 +209,7 @@ public final class GetRouterInterfacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder interfaces(List<GetRouterInterfacesInterface> interfaces) {
             this.interfaces = Objects.requireNonNull(interfaces);
             return this;
@@ -247,10 +217,12 @@ public final class GetRouterInterfacesResult {
         public Builder interfaces(GetRouterInterfacesInterface... interfaces) {
             return interfaces(List.of(interfaces));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -258,39 +230,62 @@ public final class GetRouterInterfacesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder oppositeInterfaceId(@Nullable String oppositeInterfaceId) {
             this.oppositeInterfaceId = oppositeInterfaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder oppositeInterfaceOwnerId(@Nullable String oppositeInterfaceOwnerId) {
             this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
             this.routerId = routerId;
             return this;
         }
+        @CustomType.Setter
         public Builder routerType(@Nullable String routerType) {
             this.routerType = routerType;
             return this;
         }
+        @CustomType.Setter
         public Builder specification(@Nullable String specification) {
             this.specification = specification;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetRouterInterfacesResult build() {
-            return new GetRouterInterfacesResult(id, ids, interfaces, nameRegex, names, oppositeInterfaceId, oppositeInterfaceOwnerId, outputFile, role, routerId, routerType, specification, status);
+        }
+        public GetRouterInterfacesResult build() {
+            final var o = new GetRouterInterfacesResult();
+            o.id = id;
+            o.ids = ids;
+            o.interfaces = interfaces;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.oppositeInterfaceId = oppositeInterfaceId;
+            o.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
+            o.outputFile = outputFile;
+            o.role = role;
+            o.routerId = routerId;
+            o.routerType = routerType;
+            o.specification = specification;
+            o.status = status;
+            return o;
         }
     }
 }

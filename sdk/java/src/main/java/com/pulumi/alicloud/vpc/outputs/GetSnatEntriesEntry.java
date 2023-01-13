@@ -13,56 +13,39 @@ public final class GetSnatEntriesEntry {
      * @return The ID of the Snat Entry.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of snat entry.
      * 
      */
-    private final String snatEntryId;
+    private String snatEntryId;
     /**
      * @return The name of snat entry.
      * 
      */
-    private final String snatEntryName;
+    private String snatEntryName;
     /**
      * @return The public IP of the Snat Entry.
      * 
      */
-    private final String snatIp;
+    private String snatIp;
     /**
      * @return The source CIDR block of the Snat Entry.
      * 
      */
-    private final String sourceCidr;
+    private String sourceCidr;
     /**
      * @return The source vswitch ID.
      * 
      */
-    private final String sourceVswitchId;
+    private String sourceVswitchId;
     /**
      * @return The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSnatEntriesEntry(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("snatEntryId") String snatEntryId,
-        @CustomType.Parameter("snatEntryName") String snatEntryName,
-        @CustomType.Parameter("snatIp") String snatIp,
-        @CustomType.Parameter("sourceCidr") String sourceCidr,
-        @CustomType.Parameter("sourceVswitchId") String sourceVswitchId,
-        @CustomType.Parameter("status") String status) {
-        this.id = id;
-        this.snatEntryId = snatEntryId;
-        this.snatEntryName = snatEntryName;
-        this.snatIp = snatIp;
-        this.sourceCidr = sourceCidr;
-        this.sourceVswitchId = sourceVswitchId;
-        this.status = status;
-    }
-
+    private GetSnatEntriesEntry() {}
     /**
      * @return The ID of the Snat Entry.
      * 
@@ -120,7 +103,7 @@ public final class GetSnatEntriesEntry {
     public static Builder builder(GetSnatEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String snatEntryId;
@@ -129,11 +112,7 @@ public final class GetSnatEntriesEntry {
         private String sourceCidr;
         private String sourceVswitchId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnatEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -145,35 +124,51 @@ public final class GetSnatEntriesEntry {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder snatEntryId(String snatEntryId) {
             this.snatEntryId = Objects.requireNonNull(snatEntryId);
             return this;
         }
+        @CustomType.Setter
         public Builder snatEntryName(String snatEntryName) {
             this.snatEntryName = Objects.requireNonNull(snatEntryName);
             return this;
         }
+        @CustomType.Setter
         public Builder snatIp(String snatIp) {
             this.snatIp = Objects.requireNonNull(snatIp);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceCidr(String sourceCidr) {
             this.sourceCidr = Objects.requireNonNull(sourceCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceVswitchId(String sourceVswitchId) {
             this.sourceVswitchId = Objects.requireNonNull(sourceVswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSnatEntriesEntry build() {
-            return new GetSnatEntriesEntry(id, snatEntryId, snatEntryName, snatIp, sourceCidr, sourceVswitchId, status);
+        }
+        public GetSnatEntriesEntry build() {
+            final var o = new GetSnatEntriesEntry();
+            o.id = id;
+            o.snatEntryId = snatEntryId;
+            o.snatEntryName = snatEntryName;
+            o.snatIp = snatIp;
+            o.sourceCidr = sourceCidr;
+            o.sourceVswitchId = sourceVswitchId;
+            o.status = status;
+            return o;
         }
     }
 }

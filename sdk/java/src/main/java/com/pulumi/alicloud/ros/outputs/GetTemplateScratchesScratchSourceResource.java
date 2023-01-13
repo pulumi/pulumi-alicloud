@@ -13,21 +13,14 @@ public final class GetTemplateScratchesScratchSourceResource {
      * @return The ID of the Source Resource.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return The type of the Source resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private GetTemplateScratchesScratchSourceResource(
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-    }
-
+    private GetTemplateScratchesScratchSourceResource() {}
     /**
      * @return The ID of the Source Resource.
      * 
@@ -50,30 +43,32 @@ public final class GetTemplateScratchesScratchSourceResource {
     public static Builder builder(GetTemplateScratchesScratchSourceResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceId;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTemplateScratchesScratchSourceResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public GetTemplateScratchesScratchSourceResource build() {
-            return new GetTemplateScratchesScratchSourceResource(resourceId, resourceType);
+        }
+        public GetTemplateScratchesScratchSourceResource build() {
+            final var o = new GetTemplateScratchesScratchSourceResource();
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

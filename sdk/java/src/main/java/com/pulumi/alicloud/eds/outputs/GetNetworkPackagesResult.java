@@ -17,26 +17,13 @@ public final class GetNetworkPackagesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetNetworkPackagesPackage> packages;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetNetworkPackagesPackage> packages;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetNetworkPackagesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("packages") List<GetNetworkPackagesPackage> packages,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.packages = packages;
-        this.status = status;
-    }
-
+    private GetNetworkPackagesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,18 +51,14 @@ public final class GetNetworkPackagesResult {
     public static Builder builder(GetNetworkPackagesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetNetworkPackagesPackage> packages;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkPackagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -85,10 +68,12 @@ public final class GetNetworkPackagesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -96,10 +81,12 @@ public final class GetNetworkPackagesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder packages(List<GetNetworkPackagesPackage> packages) {
             this.packages = Objects.requireNonNull(packages);
             return this;
@@ -107,11 +94,19 @@ public final class GetNetworkPackagesResult {
         public Builder packages(GetNetworkPackagesPackage... packages) {
             return packages(List.of(packages));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetNetworkPackagesResult build() {
-            return new GetNetworkPackagesResult(id, ids, outputFile, packages, status);
+        }
+        public GetNetworkPackagesResult build() {
+            final var o = new GetNetworkPackagesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.packages = packages;
+            o.status = status;
+            return o;
         }
     }
 }

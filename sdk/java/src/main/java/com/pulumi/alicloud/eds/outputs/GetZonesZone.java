@@ -13,13 +13,9 @@ public final class GetZonesZone {
      * @return String to filter results by zone id.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetZonesZone(@CustomType.Parameter("zoneId") String zoneId) {
-        this.zoneId = zoneId;
-    }
-
+    private GetZonesZone() {}
     /**
      * @return String to filter results by zone id.
      * 
@@ -35,24 +31,24 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetZonesZone build() {
-            return new GetZonesZone(zoneId);
+        }
+        public GetZonesZone build() {
+            final var o = new GetZonesZone();
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

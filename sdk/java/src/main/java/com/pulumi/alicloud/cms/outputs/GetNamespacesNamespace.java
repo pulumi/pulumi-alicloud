@@ -13,56 +13,39 @@ public final class GetNamespacesNamespace {
      * @return Create the timestamp of the indicator warehouse.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Description of indicator warehouse.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Namespace.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The timestamp of the last modification indicator warehouse.
      * 
      */
-    private final String modifyTime;
+    private String modifyTime;
     /**
      * @return Indicator warehouse name.
      * 
      */
-    private final String namespace;
+    private String namespace;
     /**
      * @return The ID of the Namespace.
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return Data storage duration.
      * 
      */
-    private final String specification;
+    private String specification;
 
-    @CustomType.Constructor
-    private GetNamespacesNamespace(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("modifyTime") String modifyTime,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("specification") String specification) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.modifyTime = modifyTime;
-        this.namespace = namespace;
-        this.namespaceId = namespaceId;
-        this.specification = specification;
-    }
-
+    private GetNamespacesNamespace() {}
     /**
      * @return Create the timestamp of the indicator warehouse.
      * 
@@ -120,7 +103,7 @@ public final class GetNamespacesNamespace {
     public static Builder builder(GetNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -129,11 +112,7 @@ public final class GetNamespacesNamespace {
         private String namespace;
         private String namespaceId;
         private String specification;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -145,35 +124,51 @@ public final class GetNamespacesNamespace {
     	      this.specification = defaults.specification;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
             this.modifyTime = Objects.requireNonNull(modifyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
-        }        public GetNamespacesNamespace build() {
-            return new GetNamespacesNamespace(createTime, description, id, modifyTime, namespace, namespaceId, specification);
+        }
+        public GetNamespacesNamespace build() {
+            final var o = new GetNamespacesNamespace();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.modifyTime = modifyTime;
+            o.namespace = namespace;
+            o.namespaceId = namespaceId;
+            o.specification = specification;
+            return o;
         }
     }
 }

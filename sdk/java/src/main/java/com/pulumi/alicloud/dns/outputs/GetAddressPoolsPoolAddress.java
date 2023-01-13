@@ -14,42 +14,29 @@ public final class GetAddressPoolsPoolAddress {
      * @return The address that you want to add to the address pool.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The source region of the address.
      * 
      */
-    private final String attributeInfo;
+    private String attributeInfo;
     /**
      * @return The weight of the address.
      * 
      */
-    private final Integer lbaWeight;
+    private Integer lbaWeight;
     /**
      * @return The type of the address.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The description of the address.
      * 
      */
-    private final String remark;
+    private String remark;
 
-    @CustomType.Constructor
-    private GetAddressPoolsPoolAddress(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("attributeInfo") String attributeInfo,
-        @CustomType.Parameter("lbaWeight") Integer lbaWeight,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("remark") String remark) {
-        this.address = address;
-        this.attributeInfo = attributeInfo;
-        this.lbaWeight = lbaWeight;
-        this.mode = mode;
-        this.remark = remark;
-    }
-
+    private GetAddressPoolsPoolAddress() {}
     /**
      * @return The address that you want to add to the address pool.
      * 
@@ -93,18 +80,14 @@ public final class GetAddressPoolsPoolAddress {
     public static Builder builder(GetAddressPoolsPoolAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String attributeInfo;
         private Integer lbaWeight;
         private String mode;
         private String remark;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAddressPoolsPoolAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -114,27 +97,39 @@ public final class GetAddressPoolsPoolAddress {
     	      this.remark = defaults.remark;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder attributeInfo(String attributeInfo) {
             this.attributeInfo = Objects.requireNonNull(attributeInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder lbaWeight(Integer lbaWeight) {
             this.lbaWeight = Objects.requireNonNull(lbaWeight);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
-        }        public GetAddressPoolsPoolAddress build() {
-            return new GetAddressPoolsPoolAddress(address, attributeInfo, lbaWeight, mode, remark);
+        }
+        public GetAddressPoolsPoolAddress build() {
+            final var o = new GetAddressPoolsPoolAddress();
+            o.address = address;
+            o.attributeInfo = attributeInfo;
+            o.lbaWeight = lbaWeight;
+            o.mode = mode;
+            o.remark = remark;
+            return o;
         }
     }
 }

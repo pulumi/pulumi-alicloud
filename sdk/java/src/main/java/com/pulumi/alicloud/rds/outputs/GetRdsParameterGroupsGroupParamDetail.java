@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRdsParameterGroupsGroupParamDetail {
-    private final String paramName;
-    private final String paramValue;
+    private String paramName;
+    private String paramValue;
 
-    @CustomType.Constructor
-    private GetRdsParameterGroupsGroupParamDetail(
-        @CustomType.Parameter("paramName") String paramName,
-        @CustomType.Parameter("paramValue") String paramValue) {
-        this.paramName = paramName;
-        this.paramValue = paramValue;
-    }
-
+    private GetRdsParameterGroupsGroupParamDetail() {}
     public String paramName() {
         return this.paramName;
     }
@@ -34,30 +27,32 @@ public final class GetRdsParameterGroupsGroupParamDetail {
     public static Builder builder(GetRdsParameterGroupsGroupParamDetail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String paramName;
         private String paramValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRdsParameterGroupsGroupParamDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.paramName = defaults.paramName;
     	      this.paramValue = defaults.paramValue;
         }
 
+        @CustomType.Setter
         public Builder paramName(String paramName) {
             this.paramName = Objects.requireNonNull(paramName);
             return this;
         }
+        @CustomType.Setter
         public Builder paramValue(String paramValue) {
             this.paramValue = Objects.requireNonNull(paramValue);
             return this;
-        }        public GetRdsParameterGroupsGroupParamDetail build() {
-            return new GetRdsParameterGroupsGroupParamDetail(paramName, paramValue);
+        }
+        public GetRdsParameterGroupsGroupParamDetail build() {
+            final var o = new GetRdsParameterGroupsGroupParamDetail();
+            o.paramName = paramName;
+            o.paramValue = paramValue;
+            return o;
         }
     }
 }

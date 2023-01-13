@@ -15,44 +15,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    private final @Nullable String descriptionRegex;
-    private final List<String> descriptions;
+    private @Nullable String descriptionRegex;
+    private List<String> descriptions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
+    private String id;
+    private List<String> ids;
     /**
      * @return A list of apis. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String outputFile;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String outputFile;
     /**
      * @return A map of tags assigned to the bastionhost instance.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
-        @CustomType.Parameter("descriptions") List<String> descriptions,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.descriptionRegex = descriptionRegex;
-        this.descriptions = descriptions;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.outputFile = outputFile;
-        this.tags = tags;
-    }
-
+    private GetInstancesResult() {}
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
@@ -94,7 +77,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private List<String> descriptions;
@@ -103,11 +86,7 @@ public final class GetInstancesResult {
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
@@ -119,10 +98,12 @@ public final class GetInstancesResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
             this.descriptions = Objects.requireNonNull(descriptions);
             return this;
@@ -130,10 +111,12 @@ public final class GetInstancesResult {
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,6 +124,7 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -148,15 +132,26 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(descriptionRegex, descriptions, id, ids, instances, outputFile, tags);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.descriptionRegex = descriptionRegex;
+            o.descriptions = descriptions;
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            o.tags = tags;
+            return o;
         }
     }
 }
