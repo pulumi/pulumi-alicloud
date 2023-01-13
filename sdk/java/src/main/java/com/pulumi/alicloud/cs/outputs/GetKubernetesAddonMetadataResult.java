@@ -9,34 +9,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKubernetesAddonMetadataResult {
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The addon configuration that can be customized. The returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet.
      * 
      */
-    private final String configSchema;
+    private String configSchema;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String version;
+    private String id;
+    private String name;
+    private String version;
 
-    @CustomType.Constructor
-    private GetKubernetesAddonMetadataResult(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("configSchema") String configSchema,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("version") String version) {
-        this.clusterId = clusterId;
-        this.configSchema = configSchema;
-        this.id = id;
-        this.name = name;
-        this.version = version;
-    }
-
+    private GetKubernetesAddonMetadataResult() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -68,18 +55,14 @@ public final class GetKubernetesAddonMetadataResult {
     public static Builder builder(GetKubernetesAddonMetadataResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String configSchema;
         private String id;
         private String name;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAddonMetadataResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -89,27 +72,39 @@ public final class GetKubernetesAddonMetadataResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder configSchema(String configSchema) {
             this.configSchema = Objects.requireNonNull(configSchema);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetKubernetesAddonMetadataResult build() {
-            return new GetKubernetesAddonMetadataResult(clusterId, configSchema, id, name, version);
+        }
+        public GetKubernetesAddonMetadataResult build() {
+            final var o = new GetKubernetesAddonMetadataResult();
+            o.clusterId = clusterId;
+            o.configSchema = configSchema;
+            o.id = id;
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

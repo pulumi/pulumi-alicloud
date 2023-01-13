@@ -13,28 +13,19 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
      * @return The function that is used to aggregate log data within a statistical period.
      * 
      */
-    private final String function;
+    private String function;
     /**
      * @return The name of the instance.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetHybridMonitorSlsTasksTaskMatchExpress(
-        @CustomType.Parameter("function") String function,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.function = function;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetHybridMonitorSlsTasksTaskMatchExpress() {}
     /**
      * @return The function that is used to aggregate log data within a statistical period.
      * 
@@ -64,16 +55,12 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
     public static Builder builder(GetHybridMonitorSlsTasksTaskMatchExpress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String function;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorSlsTasksTaskMatchExpress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.function = defaults.function;
@@ -81,19 +68,27 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder function(String function) {
             this.function = Objects.requireNonNull(function);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetHybridMonitorSlsTasksTaskMatchExpress build() {
-            return new GetHybridMonitorSlsTasksTaskMatchExpress(function, name, value);
+        }
+        public GetHybridMonitorSlsTasksTaskMatchExpress build() {
+            final var o = new GetHybridMonitorSlsTasksTaskMatchExpress();
+            o.function = function;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

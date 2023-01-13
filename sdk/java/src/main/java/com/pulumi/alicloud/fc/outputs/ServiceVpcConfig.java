@@ -16,24 +16,15 @@ public final class ServiceVpcConfig {
      * @return A security group ID associated with the Function Compute Service.
      * 
      */
-    private final String securityGroupId;
-    private final @Nullable String vpcId;
+    private String securityGroupId;
+    private @Nullable String vpcId;
     /**
      * @return A list of vswitch IDs associated with the Function Compute Service.
      * 
      */
-    private final List<String> vswitchIds;
+    private List<String> vswitchIds;
 
-    @CustomType.Constructor
-    private ServiceVpcConfig(
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
-        this.securityGroupId = securityGroupId;
-        this.vpcId = vpcId;
-        this.vswitchIds = vswitchIds;
-    }
-
+    private ServiceVpcConfig() {}
     /**
      * @return A security group ID associated with the Function Compute Service.
      * 
@@ -59,16 +50,12 @@ public final class ServiceVpcConfig {
     public static Builder builder(ServiceVpcConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String securityGroupId;
         private @Nullable String vpcId;
         private List<String> vswitchIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceVpcConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityGroupId = defaults.securityGroupId;
@@ -76,22 +63,30 @@ public final class ServiceVpcConfig {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }        public ServiceVpcConfig build() {
-            return new ServiceVpcConfig(securityGroupId, vpcId, vswitchIds);
+        }
+        public ServiceVpcConfig build() {
+            final var o = new ServiceVpcConfig();
+            o.securityGroupId = securityGroupId;
+            o.vpcId = vpcId;
+            o.vswitchIds = vswitchIds;
+            return o;
         }
     }
 }

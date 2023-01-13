@@ -13,21 +13,14 @@ public final class GetListenersListenerCertificate {
      * @return The ID of the Listener.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The type of the certificate.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetListenersListenerCertificate(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("type") String type) {
-        this.id = id;
-        this.type = type;
-    }
-
+    private GetListenersListenerCertificate() {}
     /**
      * @return The ID of the Listener.
      * 
@@ -50,30 +43,32 @@ public final class GetListenersListenerCertificate {
     public static Builder builder(GetListenersListenerCertificate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListenerCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetListenersListenerCertificate build() {
-            return new GetListenersListenerCertificate(id, type);
+        }
+        public GetListenersListenerCertificate build() {
+            final var o = new GetListenersListenerCertificate();
+            o.id = id;
+            o.type = type;
+            return o;
         }
     }
 }

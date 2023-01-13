@@ -13,21 +13,14 @@ public final class CustomLineIpSegmentList {
      * @return The end IP address of the CIDR block.
      * 
      */
-    private final String endIp;
+    private String endIp;
     /**
      * @return The start IP address of the CIDR block.
      * 
      */
-    private final String startIp;
+    private String startIp;
 
-    @CustomType.Constructor
-    private CustomLineIpSegmentList(
-        @CustomType.Parameter("endIp") String endIp,
-        @CustomType.Parameter("startIp") String startIp) {
-        this.endIp = endIp;
-        this.startIp = startIp;
-    }
-
+    private CustomLineIpSegmentList() {}
     /**
      * @return The end IP address of the CIDR block.
      * 
@@ -50,30 +43,32 @@ public final class CustomLineIpSegmentList {
     public static Builder builder(CustomLineIpSegmentList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endIp;
         private String startIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CustomLineIpSegmentList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endIp = defaults.endIp;
     	      this.startIp = defaults.startIp;
         }
 
+        @CustomType.Setter
         public Builder endIp(String endIp) {
             this.endIp = Objects.requireNonNull(endIp);
             return this;
         }
+        @CustomType.Setter
         public Builder startIp(String startIp) {
             this.startIp = Objects.requireNonNull(startIp);
             return this;
-        }        public CustomLineIpSegmentList build() {
-            return new CustomLineIpSegmentList(endIp, startIp);
+        }
+        public CustomLineIpSegmentList build() {
+            final var o = new CustomLineIpSegmentList();
+            o.endIp = endIp;
+            o.startIp = startIp;
+            return o;
         }
     }
 }

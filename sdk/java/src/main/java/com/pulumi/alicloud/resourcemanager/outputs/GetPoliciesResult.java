@@ -17,44 +17,27 @@ public final class GetPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of policy IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of policy names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of policies. Each element contains the following attributes:
      * 
      */
-    private final List<GetPoliciesPolicy> policies;
-    private final @Nullable String policyType;
+    private List<GetPoliciesPolicy> policies;
+    private @Nullable String policyType;
 
-    @CustomType.Constructor
-    private GetPoliciesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetPoliciesPolicy> policies,
-        @CustomType.Parameter("policyType") @Nullable String policyType) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.policyType = policyType;
-    }
-
+    private GetPoliciesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -100,7 +83,7 @@ public final class GetPoliciesResult {
     public static Builder builder(GetPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -109,11 +92,7 @@ public final class GetPoliciesResult {
         private @Nullable String outputFile;
         private List<GetPoliciesPolicy> policies;
         private @Nullable String policyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,10 +104,12 @@ public final class GetPoliciesResult {
     	      this.policyType = defaults.policyType;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,10 +117,12 @@ public final class GetPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,10 +130,12 @@ public final class GetPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -158,11 +143,21 @@ public final class GetPoliciesResult {
         public Builder policies(GetPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
-        }        public GetPoliciesResult build() {
-            return new GetPoliciesResult(id, ids, nameRegex, names, outputFile, policies, policyType);
+        }
+        public GetPoliciesResult build() {
+            final var o = new GetPoliciesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.policyType = policyType;
+            return o;
         }
     }
 }

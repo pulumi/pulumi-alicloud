@@ -15,24 +15,15 @@ public final class BucketReplicationDestination {
      * @return The destination bucket to which the data is replicated.
      * 
      */
-    private final String bucket;
-    private final String location;
+    private String bucket;
+    private String location;
     /**
      * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
      * 
      */
-    private final @Nullable String transferType;
+    private @Nullable String transferType;
 
-    @CustomType.Constructor
-    private BucketReplicationDestination(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("transferType") @Nullable String transferType) {
-        this.bucket = bucket;
-        this.location = location;
-        this.transferType = transferType;
-    }
-
+    private BucketReplicationDestination() {}
     /**
      * @return The destination bucket to which the data is replicated.
      * 
@@ -58,16 +49,12 @@ public final class BucketReplicationDestination {
     public static Builder builder(BucketReplicationDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private String location;
         private @Nullable String transferType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketReplicationDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -75,19 +62,27 @@ public final class BucketReplicationDestination {
     	      this.transferType = defaults.transferType;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder transferType(@Nullable String transferType) {
             this.transferType = transferType;
             return this;
-        }        public BucketReplicationDestination build() {
-            return new BucketReplicationDestination(bucket, location, transferType);
+        }
+        public BucketReplicationDestination build() {
+            final var o = new BucketReplicationDestination();
+            o.bucket = bucket;
+            o.location = location;
+            o.transferType = transferType;
+            return o;
         }
     }
 }

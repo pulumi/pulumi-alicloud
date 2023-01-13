@@ -17,72 +17,47 @@ public final class GetFlowlogsResult {
      * @return The ID of the CEN Instance.
      * 
      */
-    private final @Nullable String cenId;
+    private @Nullable String cenId;
     /**
      * @return The description of flowlog.
      * 
      */
-    private final @Nullable String description;
-    private final List<GetFlowlogsFlowlog> flowlogs;
+    private @Nullable String description;
+    private List<GetFlowlogsFlowlog> flowlogs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of CEN flow log IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return The name of the log store which is in the  `project_name` SLS project.
      * 
      */
-    private final @Nullable String logStoreName;
-    private final @Nullable String nameRegex;
+    private @Nullable String logStoreName;
+    private @Nullable String nameRegex;
     /**
      * @return A list of CEN flow log names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The name of the SLS project.
      * 
      */
-    private final @Nullable String projectName;
+    private @Nullable String projectName;
     /**
      * @return The status of flowlog.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetFlowlogsResult(
-        @CustomType.Parameter("cenId") @Nullable String cenId,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("flowlogs") List<GetFlowlogsFlowlog> flowlogs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("logStoreName") @Nullable String logStoreName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("projectName") @Nullable String projectName,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.cenId = cenId;
-        this.description = description;
-        this.flowlogs = flowlogs;
-        this.id = id;
-        this.ids = ids;
-        this.logStoreName = logStoreName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.projectName = projectName;
-        this.status = status;
-    }
-
+    private GetFlowlogsResult() {}
     /**
      * @return The ID of the CEN Instance.
      * 
@@ -156,7 +131,7 @@ public final class GetFlowlogsResult {
     public static Builder builder(GetFlowlogsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cenId;
         private @Nullable String description;
@@ -169,11 +144,7 @@ public final class GetFlowlogsResult {
         private @Nullable String outputFile;
         private @Nullable String projectName;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlowlogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -189,14 +160,17 @@ public final class GetFlowlogsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
             this.cenId = cenId;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder flowlogs(List<GetFlowlogsFlowlog> flowlogs) {
             this.flowlogs = Objects.requireNonNull(flowlogs);
             return this;
@@ -204,10 +178,12 @@ public final class GetFlowlogsResult {
         public Builder flowlogs(GetFlowlogsFlowlog... flowlogs) {
             return flowlogs(List.of(flowlogs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -215,14 +191,17 @@ public final class GetFlowlogsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder logStoreName(@Nullable String logStoreName) {
             this.logStoreName = logStoreName;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -230,19 +209,35 @@ public final class GetFlowlogsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder projectName(@Nullable String projectName) {
             this.projectName = projectName;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetFlowlogsResult build() {
-            return new GetFlowlogsResult(cenId, description, flowlogs, id, ids, logStoreName, nameRegex, names, outputFile, projectName, status);
+        }
+        public GetFlowlogsResult build() {
+            final var o = new GetFlowlogsResult();
+            o.cenId = cenId;
+            o.description = description;
+            o.flowlogs = flowlogs;
+            o.id = id;
+            o.ids = ids;
+            o.logStoreName = logStoreName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.projectName = projectName;
+            o.status = status;
+            return o;
         }
     }
 }

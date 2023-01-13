@@ -15,84 +15,59 @@ public final class GetGatewaysGateway {
      * @return The backup vswitch id.
      * 
      */
-    private final String backupVswitchId;
+    private String backupVswitchId;
     /**
      * @return The name of the Gateway.
      * 
      */
-    private final String gatewayName;
+    private String gatewayName;
     /**
      * @return Gateway unique identification.
      * 
      */
-    private final String gatewayUniqueId;
+    private String gatewayUniqueId;
     /**
      * @return The ID of the Gateway.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Number of Gateway Nodes.
      * 
      */
-    private final String replica;
+    private String replica;
     /**
      * @return A list of gateway Slb.
      * 
      */
-    private final List<GetGatewaysGatewaySlbList> slbLists;
+    private List<GetGatewaysGatewaySlbList> slbLists;
     /**
      * @return Gateway Node Specifications.
      * 
      */
-    private final String spec;
+    private String spec;
     /**
      * @return The status of the gateway.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the vpc.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of the vswitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetGatewaysGateway(
-        @CustomType.Parameter("backupVswitchId") String backupVswitchId,
-        @CustomType.Parameter("gatewayName") String gatewayName,
-        @CustomType.Parameter("gatewayUniqueId") String gatewayUniqueId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("replica") String replica,
-        @CustomType.Parameter("slbLists") List<GetGatewaysGatewaySlbList> slbLists,
-        @CustomType.Parameter("spec") String spec,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.backupVswitchId = backupVswitchId;
-        this.gatewayName = gatewayName;
-        this.gatewayUniqueId = gatewayUniqueId;
-        this.id = id;
-        this.paymentType = paymentType;
-        this.replica = replica;
-        this.slbLists = slbLists;
-        this.spec = spec;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetGatewaysGateway() {}
     /**
      * @return The backup vswitch id.
      * 
@@ -178,7 +153,7 @@ public final class GetGatewaysGateway {
     public static Builder builder(GetGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backupVswitchId;
         private String gatewayName;
@@ -191,11 +166,7 @@ public final class GetGatewaysGateway {
         private String status;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupVswitchId = defaults.backupVswitchId;
@@ -211,30 +182,37 @@ public final class GetGatewaysGateway {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder backupVswitchId(String backupVswitchId) {
             this.backupVswitchId = Objects.requireNonNull(backupVswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
             this.gatewayName = Objects.requireNonNull(gatewayName);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayUniqueId(String gatewayUniqueId) {
             this.gatewayUniqueId = Objects.requireNonNull(gatewayUniqueId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder replica(String replica) {
             this.replica = Objects.requireNonNull(replica);
             return this;
         }
+        @CustomType.Setter
         public Builder slbLists(List<GetGatewaysGatewaySlbList> slbLists) {
             this.slbLists = Objects.requireNonNull(slbLists);
             return this;
@@ -242,23 +220,40 @@ public final class GetGatewaysGateway {
         public Builder slbLists(GetGatewaysGatewaySlbList... slbLists) {
             return slbLists(List.of(slbLists));
         }
+        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetGatewaysGateway build() {
-            return new GetGatewaysGateway(backupVswitchId, gatewayName, gatewayUniqueId, id, paymentType, replica, slbLists, spec, status, vpcId, vswitchId);
+        }
+        public GetGatewaysGateway build() {
+            final var o = new GetGatewaysGateway();
+            o.backupVswitchId = backupVswitchId;
+            o.gatewayName = gatewayName;
+            o.gatewayUniqueId = gatewayUniqueId;
+            o.id = id;
+            o.paymentType = paymentType;
+            o.replica = replica;
+            o.slbLists = slbLists;
+            o.spec = spec;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

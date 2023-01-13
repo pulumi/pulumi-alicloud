@@ -13,28 +13,19 @@ public final class GetRulesRuleRuleActionRewriteConfig {
      * @return The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: &#34; % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
-    private final String query;
+    private String query;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleActionRewriteConfig(
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("query") String query) {
-        this.host = host;
-        this.path = path;
-        this.query = query;
-    }
-
+    private GetRulesRuleRuleActionRewriteConfig() {}
     /**
      * @return The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
@@ -64,16 +55,12 @@ public final class GetRulesRuleRuleActionRewriteConfig {
     public static Builder builder(GetRulesRuleRuleActionRewriteConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String host;
         private String path;
         private String query;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleActionRewriteConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -81,19 +68,27 @@ public final class GetRulesRuleRuleActionRewriteConfig {
     	      this.query = defaults.query;
         }
 
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
-        }        public GetRulesRuleRuleActionRewriteConfig build() {
-            return new GetRulesRuleRuleActionRewriteConfig(host, path, query);
+        }
+        public GetRulesRuleRuleActionRewriteConfig build() {
+            final var o = new GetRulesRuleRuleActionRewriteConfig();
+            o.host = host;
+            o.path = path;
+            o.query = query;
+            return o;
         }
     }
 }

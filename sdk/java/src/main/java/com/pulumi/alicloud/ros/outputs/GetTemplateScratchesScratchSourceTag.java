@@ -16,21 +16,14 @@ public final class GetTemplateScratchesScratchSourceTag {
      * @return Source label.
      * 
      */
-    private final Map<String,Object> resourceTags;
+    private Map<String,Object> resourceTags;
     /**
      * @return Source resource type filter list.
      * 
      */
-    private final List<String> resourceTypeFilters;
+    private List<String> resourceTypeFilters;
 
-    @CustomType.Constructor
-    private GetTemplateScratchesScratchSourceTag(
-        @CustomType.Parameter("resourceTags") Map<String,Object> resourceTags,
-        @CustomType.Parameter("resourceTypeFilters") List<String> resourceTypeFilters) {
-        this.resourceTags = resourceTags;
-        this.resourceTypeFilters = resourceTypeFilters;
-    }
-
+    private GetTemplateScratchesScratchSourceTag() {}
     /**
      * @return Source label.
      * 
@@ -53,33 +46,35 @@ public final class GetTemplateScratchesScratchSourceTag {
     public static Builder builder(GetTemplateScratchesScratchSourceTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> resourceTags;
         private List<String> resourceTypeFilters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTemplateScratchesScratchSourceTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceTags = defaults.resourceTags;
     	      this.resourceTypeFilters = defaults.resourceTypeFilters;
         }
 
+        @CustomType.Setter
         public Builder resourceTags(Map<String,Object> resourceTags) {
             this.resourceTags = Objects.requireNonNull(resourceTags);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypeFilters(List<String> resourceTypeFilters) {
             this.resourceTypeFilters = Objects.requireNonNull(resourceTypeFilters);
             return this;
         }
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
-        }        public GetTemplateScratchesScratchSourceTag build() {
-            return new GetTemplateScratchesScratchSourceTag(resourceTags, resourceTypeFilters);
+        }
+        public GetTemplateScratchesScratchSourceTag build() {
+            final var o = new GetTemplateScratchesScratchSourceTag();
+            o.resourceTags = resourceTags;
+            o.resourceTypeFilters = resourceTypeFilters;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class GetKubernetesVersionMetadataRuntime {
      * @return The runtime name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The runtime version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetKubernetesVersionMetadataRuntime(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("version") String version) {
-        this.name = name;
-        this.version = version;
-    }
-
+    private GetKubernetesVersionMetadataRuntime() {}
     /**
      * @return The runtime name.
      * 
@@ -50,30 +43,32 @@ public final class GetKubernetesVersionMetadataRuntime {
     public static Builder builder(GetKubernetesVersionMetadataRuntime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesVersionMetadataRuntime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetKubernetesVersionMetadataRuntime build() {
-            return new GetKubernetesVersionMetadataRuntime(name, version);
+        }
+        public GetKubernetesVersionMetadataRuntime build() {
+            final var o = new GetKubernetesVersionMetadataRuntime();
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

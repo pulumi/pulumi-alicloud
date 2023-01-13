@@ -13,35 +13,24 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
      * @return The IPsec authentication algorithm.
      * 
      */
-    private final String ipsecAuthAlg;
+    private String ipsecAuthAlg;
     /**
      * @return The IPsec encryption algorithm.
      * 
      */
-    private final String ipsecEncAlg;
+    private String ipsecEncAlg;
     /**
      * @return The IPsec lifetime. Unit: seconds.
      * 
      */
-    private final String ipsecLifetime;
+    private String ipsecLifetime;
     /**
      * @return The DH group.
      * 
      */
-    private final String ipsecPfs;
+    private String ipsecPfs;
 
-    @CustomType.Constructor
-    private GetGatewayVpnAttachmentsAttachmentIpsecConfig(
-        @CustomType.Parameter("ipsecAuthAlg") String ipsecAuthAlg,
-        @CustomType.Parameter("ipsecEncAlg") String ipsecEncAlg,
-        @CustomType.Parameter("ipsecLifetime") String ipsecLifetime,
-        @CustomType.Parameter("ipsecPfs") String ipsecPfs) {
-        this.ipsecAuthAlg = ipsecAuthAlg;
-        this.ipsecEncAlg = ipsecEncAlg;
-        this.ipsecLifetime = ipsecLifetime;
-        this.ipsecPfs = ipsecPfs;
-    }
-
+    private GetGatewayVpnAttachmentsAttachmentIpsecConfig() {}
     /**
      * @return The IPsec authentication algorithm.
      * 
@@ -78,17 +67,13 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
     public static Builder builder(GetGatewayVpnAttachmentsAttachmentIpsecConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipsecAuthAlg;
         private String ipsecEncAlg;
         private String ipsecLifetime;
         private String ipsecPfs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayVpnAttachmentsAttachmentIpsecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipsecAuthAlg = defaults.ipsecAuthAlg;
@@ -97,23 +82,33 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
     	      this.ipsecPfs = defaults.ipsecPfs;
         }
 
+        @CustomType.Setter
         public Builder ipsecAuthAlg(String ipsecAuthAlg) {
             this.ipsecAuthAlg = Objects.requireNonNull(ipsecAuthAlg);
             return this;
         }
+        @CustomType.Setter
         public Builder ipsecEncAlg(String ipsecEncAlg) {
             this.ipsecEncAlg = Objects.requireNonNull(ipsecEncAlg);
             return this;
         }
+        @CustomType.Setter
         public Builder ipsecLifetime(String ipsecLifetime) {
             this.ipsecLifetime = Objects.requireNonNull(ipsecLifetime);
             return this;
         }
+        @CustomType.Setter
         public Builder ipsecPfs(String ipsecPfs) {
             this.ipsecPfs = Objects.requireNonNull(ipsecPfs);
             return this;
-        }        public GetGatewayVpnAttachmentsAttachmentIpsecConfig build() {
-            return new GetGatewayVpnAttachmentsAttachmentIpsecConfig(ipsecAuthAlg, ipsecEncAlg, ipsecLifetime, ipsecPfs);
+        }
+        public GetGatewayVpnAttachmentsAttachmentIpsecConfig build() {
+            final var o = new GetGatewayVpnAttachmentsAttachmentIpsecConfig();
+            o.ipsecAuthAlg = ipsecAuthAlg;
+            o.ipsecEncAlg = ipsecEncAlg;
+            o.ipsecLifetime = ipsecLifetime;
+            o.ipsecPfs = ipsecPfs;
+            return o;
         }
     }
 }

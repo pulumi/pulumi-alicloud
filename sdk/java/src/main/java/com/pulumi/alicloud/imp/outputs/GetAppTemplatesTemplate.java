@@ -15,91 +15,64 @@ public final class GetAppTemplatesTemplate {
      * @return Apply template creator.
      * 
      */
-    private final String appTemplateCreator;
+    private String appTemplateCreator;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String appTemplateId;
+    private String appTemplateId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String appTemplateName;
+    private String appTemplateName;
     /**
      * @return List of components.
      * 
      */
-    private final List<String> componentLists;
+    private List<String> componentLists;
     /**
      * @return List of config.
      * 
      */
-    private final List<GetAppTemplatesTemplateConfigList> configLists;
+    private List<GetAppTemplatesTemplateConfigList> configLists;
     /**
      * @return Creation time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the App Template.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Integration mode (Integrated SDK:paasSDK, Model Room: standardRoom).
      * 
      */
-    private final String integrationMode;
+    private String integrationMode;
     /**
      * @return Application Template scenario, e-commerce business, classroom classroom.
      * 
      */
-    private final String scene;
+    private String scene;
     /**
      * @return SDK information.
      * 
      */
-    private final String sdkInfo;
+    private String sdkInfo;
     /**
      * @return Model room information.
      * 
      */
-    private final String standardRoomInfo;
+    private String standardRoomInfo;
     /**
      * @return Application template usage status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetAppTemplatesTemplate(
-        @CustomType.Parameter("appTemplateCreator") String appTemplateCreator,
-        @CustomType.Parameter("appTemplateId") String appTemplateId,
-        @CustomType.Parameter("appTemplateName") String appTemplateName,
-        @CustomType.Parameter("componentLists") List<String> componentLists,
-        @CustomType.Parameter("configLists") List<GetAppTemplatesTemplateConfigList> configLists,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("integrationMode") String integrationMode,
-        @CustomType.Parameter("scene") String scene,
-        @CustomType.Parameter("sdkInfo") String sdkInfo,
-        @CustomType.Parameter("standardRoomInfo") String standardRoomInfo,
-        @CustomType.Parameter("status") String status) {
-        this.appTemplateCreator = appTemplateCreator;
-        this.appTemplateId = appTemplateId;
-        this.appTemplateName = appTemplateName;
-        this.componentLists = componentLists;
-        this.configLists = configLists;
-        this.createTime = createTime;
-        this.id = id;
-        this.integrationMode = integrationMode;
-        this.scene = scene;
-        this.sdkInfo = sdkInfo;
-        this.standardRoomInfo = standardRoomInfo;
-        this.status = status;
-    }
-
+    private GetAppTemplatesTemplate() {}
     /**
      * @return Apply template creator.
      * 
@@ -192,7 +165,7 @@ public final class GetAppTemplatesTemplate {
     public static Builder builder(GetAppTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appTemplateCreator;
         private String appTemplateId;
@@ -206,11 +179,7 @@ public final class GetAppTemplatesTemplate {
         private String sdkInfo;
         private String standardRoomInfo;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appTemplateCreator = defaults.appTemplateCreator;
@@ -227,18 +196,22 @@ public final class GetAppTemplatesTemplate {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder appTemplateCreator(String appTemplateCreator) {
             this.appTemplateCreator = Objects.requireNonNull(appTemplateCreator);
             return this;
         }
+        @CustomType.Setter
         public Builder appTemplateId(String appTemplateId) {
             this.appTemplateId = Objects.requireNonNull(appTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder appTemplateName(String appTemplateName) {
             this.appTemplateName = Objects.requireNonNull(appTemplateName);
             return this;
         }
+        @CustomType.Setter
         public Builder componentLists(List<String> componentLists) {
             this.componentLists = Objects.requireNonNull(componentLists);
             return this;
@@ -246,6 +219,7 @@ public final class GetAppTemplatesTemplate {
         public Builder componentLists(String... componentLists) {
             return componentLists(List.of(componentLists));
         }
+        @CustomType.Setter
         public Builder configLists(List<GetAppTemplatesTemplateConfigList> configLists) {
             this.configLists = Objects.requireNonNull(configLists);
             return this;
@@ -253,35 +227,56 @@ public final class GetAppTemplatesTemplate {
         public Builder configLists(GetAppTemplatesTemplateConfigList... configLists) {
             return configLists(List.of(configLists));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder integrationMode(String integrationMode) {
             this.integrationMode = Objects.requireNonNull(integrationMode);
             return this;
         }
+        @CustomType.Setter
         public Builder scene(String scene) {
             this.scene = Objects.requireNonNull(scene);
             return this;
         }
+        @CustomType.Setter
         public Builder sdkInfo(String sdkInfo) {
             this.sdkInfo = Objects.requireNonNull(sdkInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder standardRoomInfo(String standardRoomInfo) {
             this.standardRoomInfo = Objects.requireNonNull(standardRoomInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAppTemplatesTemplate build() {
-            return new GetAppTemplatesTemplate(appTemplateCreator, appTemplateId, appTemplateName, componentLists, configLists, createTime, id, integrationMode, scene, sdkInfo, standardRoomInfo, status);
+        }
+        public GetAppTemplatesTemplate build() {
+            final var o = new GetAppTemplatesTemplate();
+            o.appTemplateCreator = appTemplateCreator;
+            o.appTemplateId = appTemplateId;
+            o.appTemplateName = appTemplateName;
+            o.componentLists = componentLists;
+            o.configLists = configLists;
+            o.createTime = createTime;
+            o.id = id;
+            o.integrationMode = integrationMode;
+            o.scene = scene;
+            o.sdkInfo = sdkInfo;
+            o.standardRoomInfo = standardRoomInfo;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssumeRole {
-    private final @Nullable String policy;
-    private final String roleArn;
-    private final @Nullable Integer sessionExpiration;
-    private final @Nullable String sessionName;
+    private @Nullable String policy;
+    private String roleArn;
+    private @Nullable Integer sessionExpiration;
+    private @Nullable String sessionName;
 
-    @CustomType.Constructor
-    private AssumeRole(
-        @CustomType.Parameter("policy") @Nullable String policy,
-        @CustomType.Parameter("roleArn") String roleArn,
-        @CustomType.Parameter("sessionExpiration") @Nullable Integer sessionExpiration,
-        @CustomType.Parameter("sessionName") @Nullable String sessionName) {
-        this.policy = policy;
-        this.roleArn = roleArn;
-        this.sessionExpiration = sessionExpiration;
-        this.sessionName = sessionName;
-    }
-
+    private AssumeRole() {}
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
@@ -49,17 +38,13 @@ public final class AssumeRole {
     public static Builder builder(AssumeRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String policy;
         private String roleArn;
         private @Nullable Integer sessionExpiration;
         private @Nullable String sessionName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssumeRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.policy = defaults.policy;
@@ -68,23 +53,33 @@ public final class AssumeRole {
     	      this.sessionName = defaults.sessionName;
         }
 
+        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder sessionExpiration(@Nullable Integer sessionExpiration) {
             this.sessionExpiration = sessionExpiration;
             return this;
         }
+        @CustomType.Setter
         public Builder sessionName(@Nullable String sessionName) {
             this.sessionName = sessionName;
             return this;
-        }        public AssumeRole build() {
-            return new AssumeRole(policy, roleArn, sessionExpiration, sessionName);
+        }
+        public AssumeRole build() {
+            final var o = new AssumeRole();
+            o.policy = policy;
+            o.roleArn = roleArn;
+            o.sessionExpiration = sessionExpiration;
+            o.sessionName = sessionName;
+            return o;
         }
     }
 }

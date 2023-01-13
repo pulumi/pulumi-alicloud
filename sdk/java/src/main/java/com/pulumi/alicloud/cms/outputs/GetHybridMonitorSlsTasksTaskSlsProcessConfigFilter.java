@@ -15,21 +15,14 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
      * @return The conditions that are used to filter logs imported from Log Service.
      * 
      */
-    private final List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters;
+    private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters;
     /**
      * @return The relationship between multiple filter conditions.
      * 
      */
-    private final String relation;
+    private String relation;
 
-    @CustomType.Constructor
-    private GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter(
-        @CustomType.Parameter("filters") List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters,
-        @CustomType.Parameter("relation") String relation) {
-        this.filters = filters;
-        this.relation = relation;
-    }
-
+    private GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter() {}
     /**
      * @return The conditions that are used to filter logs imported from Log Service.
      * 
@@ -52,21 +45,18 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
     public static Builder builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters;
         private String relation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
     	      this.relation = defaults.relation;
         }
 
+        @CustomType.Setter
         public Builder filters(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters) {
             this.filters = Objects.requireNonNull(filters);
             return this;
@@ -74,11 +64,16 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
         public Builder filters(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder relation(String relation) {
             this.relation = Objects.requireNonNull(relation);
             return this;
-        }        public GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter build() {
-            return new GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter(filters, relation);
+        }
+        public GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter build() {
+            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter();
+            o.filters = filters;
+            o.relation = relation;
+            return o;
         }
     }
 }

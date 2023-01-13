@@ -14,21 +14,14 @@ public final class GetRulesRuleRuleConditionHeaderConfig {
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Add one or more IP addresses or IP address segments.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleConditionHeaderConfig(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private GetRulesRuleRuleConditionHeaderConfig() {}
     /**
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
@@ -51,33 +44,35 @@ public final class GetRulesRuleRuleConditionHeaderConfig {
     public static Builder builder(GetRulesRuleRuleConditionHeaderConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleConditionHeaderConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetRulesRuleRuleConditionHeaderConfig build() {
-            return new GetRulesRuleRuleConditionHeaderConfig(key, values);
+        }
+        public GetRulesRuleRuleConditionHeaderConfig build() {
+            final var o = new GetRulesRuleRuleConditionHeaderConfig();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

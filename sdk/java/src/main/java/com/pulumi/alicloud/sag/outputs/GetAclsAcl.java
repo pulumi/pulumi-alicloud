@@ -13,21 +13,14 @@ public final class GetAclsAcl {
      * @return The ID of the ACL. For example &#34;acl-xxx&#34;.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the Acl.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetAclsAcl(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name) {
-        this.id = id;
-        this.name = name;
-    }
-
+    private GetAclsAcl() {}
     /**
      * @return The ID of the ACL. For example &#34;acl-xxx&#34;.
      * 
@@ -50,30 +43,32 @@ public final class GetAclsAcl {
     public static Builder builder(GetAclsAcl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetAclsAcl build() {
-            return new GetAclsAcl(id, name);
+        }
+        public GetAclsAcl build() {
+            final var o = new GetAclsAcl();
+            o.id = id;
+            o.name = name;
+            return o;
         }
     }
 }

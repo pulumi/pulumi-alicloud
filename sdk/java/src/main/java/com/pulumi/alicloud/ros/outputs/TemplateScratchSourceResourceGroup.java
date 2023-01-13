@@ -15,21 +15,14 @@ public final class TemplateScratchSourceResourceGroup {
      * @return The ID of the Source Resource Group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
      * 
      */
-    private final @Nullable List<String> resourceTypeFilters;
+    private @Nullable List<String> resourceTypeFilters;
 
-    @CustomType.Constructor
-    private TemplateScratchSourceResourceGroup(
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("resourceTypeFilters") @Nullable List<String> resourceTypeFilters) {
-        this.resourceGroupId = resourceGroupId;
-        this.resourceTypeFilters = resourceTypeFilters;
-    }
-
+    private TemplateScratchSourceResourceGroup() {}
     /**
      * @return The ID of the Source Resource Group.
      * 
@@ -52,33 +45,35 @@ public final class TemplateScratchSourceResourceGroup {
     public static Builder builder(TemplateScratchSourceResourceGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceGroupId;
         private @Nullable List<String> resourceTypeFilters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TemplateScratchSourceResourceGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.resourceTypeFilters = defaults.resourceTypeFilters;
         }
 
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypeFilters(@Nullable List<String> resourceTypeFilters) {
             this.resourceTypeFilters = resourceTypeFilters;
             return this;
         }
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
-        }        public TemplateScratchSourceResourceGroup build() {
-            return new TemplateScratchSourceResourceGroup(resourceGroupId, resourceTypeFilters);
+        }
+        public TemplateScratchSourceResourceGroup build() {
+            final var o = new TemplateScratchSourceResourceGroup();
+            o.resourceGroupId = resourceGroupId;
+            o.resourceTypeFilters = resourceTypeFilters;
+            return o;
         }
     }
 }

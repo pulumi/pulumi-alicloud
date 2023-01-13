@@ -13,21 +13,14 @@ public final class GetZonesZoneOption {
      * @return The protocol type. Valid values: `HDFS`.
      * 
      */
-    private final String protocolType;
+    private String protocolType;
     /**
      * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
      * 
      */
-    private final String storageType;
+    private String storageType;
 
-    @CustomType.Constructor
-    private GetZonesZoneOption(
-        @CustomType.Parameter("protocolType") String protocolType,
-        @CustomType.Parameter("storageType") String storageType) {
-        this.protocolType = protocolType;
-        this.storageType = storageType;
-    }
-
+    private GetZonesZoneOption() {}
     /**
      * @return The protocol type. Valid values: `HDFS`.
      * 
@@ -50,30 +43,32 @@ public final class GetZonesZoneOption {
     public static Builder builder(GetZonesZoneOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String protocolType;
         private String storageType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZoneOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.protocolType = defaults.protocolType;
     	      this.storageType = defaults.storageType;
         }
 
+        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
-        }        public GetZonesZoneOption build() {
-            return new GetZonesZoneOption(protocolType, storageType);
+        }
+        public GetZonesZoneOption build() {
+            final var o = new GetZonesZoneOption();
+            o.protocolType = protocolType;
+            o.storageType = storageType;
+            return o;
         }
     }
 }

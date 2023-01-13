@@ -17,63 +17,44 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
      * @return The current monitoring indicator elasticity list.
      * 
      */
-    private final List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics;
+    private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics;
     /**
      * @return The number of current instances.
      * 
      */
-    private final Integer currentReplicas;
+    private Integer currentReplicas;
     /**
      * @return The number of target instances.
      * 
      */
-    private final Integer desiredReplicas;
+    private Integer desiredReplicas;
     /**
      * @return The time of the last elastic expansion.
      * 
      */
-    private final String lastScaleTime;
+    private String lastScaleTime;
     /**
      * @return The maximum number of instances.
      * 
      */
-    private final Integer maxReplicas;
+    private Integer maxReplicas;
     /**
      * @return The minimum number of instances.
      * 
      */
-    private final Integer minReplicas;
+    private Integer minReplicas;
     /**
      * @return Next monitoring indicator elasticity list
      * 
      */
-    private final List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics;
+    private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics;
     /**
      * @return The next cycle of monitoring indicator elasticity.
      * 
      */
-    private final Integer nextScaleTimePeriod;
+    private Integer nextScaleTimePeriod;
 
-    @CustomType.Constructor
-    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus(
-        @CustomType.Parameter("currentMetrics") List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics,
-        @CustomType.Parameter("currentReplicas") Integer currentReplicas,
-        @CustomType.Parameter("desiredReplicas") Integer desiredReplicas,
-        @CustomType.Parameter("lastScaleTime") String lastScaleTime,
-        @CustomType.Parameter("maxReplicas") Integer maxReplicas,
-        @CustomType.Parameter("minReplicas") Integer minReplicas,
-        @CustomType.Parameter("nextScaleMetrics") List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics,
-        @CustomType.Parameter("nextScaleTimePeriod") Integer nextScaleTimePeriod) {
-        this.currentMetrics = currentMetrics;
-        this.currentReplicas = currentReplicas;
-        this.desiredReplicas = desiredReplicas;
-        this.lastScaleTime = lastScaleTime;
-        this.maxReplicas = maxReplicas;
-        this.minReplicas = minReplicas;
-        this.nextScaleMetrics = nextScaleMetrics;
-        this.nextScaleTimePeriod = nextScaleTimePeriod;
-    }
-
+    private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus() {}
     /**
      * @return The current monitoring indicator elasticity list.
      * 
@@ -138,7 +119,7 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics;
         private Integer currentReplicas;
@@ -148,11 +129,7 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
         private Integer minReplicas;
         private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics;
         private Integer nextScaleTimePeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentMetrics = defaults.currentMetrics;
@@ -165,6 +142,7 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
     	      this.nextScaleTimePeriod = defaults.nextScaleTimePeriod;
         }
 
+        @CustomType.Setter
         public Builder currentMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics) {
             this.currentMetrics = Objects.requireNonNull(currentMetrics);
             return this;
@@ -172,26 +150,32 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
         public Builder currentMetrics(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric... currentMetrics) {
             return currentMetrics(List.of(currentMetrics));
         }
+        @CustomType.Setter
         public Builder currentReplicas(Integer currentReplicas) {
             this.currentReplicas = Objects.requireNonNull(currentReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder desiredReplicas(Integer desiredReplicas) {
             this.desiredReplicas = Objects.requireNonNull(desiredReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder lastScaleTime(String lastScaleTime) {
             this.lastScaleTime = Objects.requireNonNull(lastScaleTime);
             return this;
         }
+        @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
             this.maxReplicas = Objects.requireNonNull(maxReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
             this.minReplicas = Objects.requireNonNull(minReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder nextScaleMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics) {
             this.nextScaleMetrics = Objects.requireNonNull(nextScaleMetrics);
             return this;
@@ -199,11 +183,22 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
         public Builder nextScaleMetrics(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric... nextScaleMetrics) {
             return nextScaleMetrics(List.of(nextScaleMetrics));
         }
+        @CustomType.Setter
         public Builder nextScaleTimePeriod(Integer nextScaleTimePeriod) {
             this.nextScaleTimePeriod = Objects.requireNonNull(nextScaleTimePeriod);
             return this;
-        }        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus build() {
-            return new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus(currentMetrics, currentReplicas, desiredReplicas, lastScaleTime, maxReplicas, minReplicas, nextScaleMetrics, nextScaleTimePeriod);
+        }
+        public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus build() {
+            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus();
+            o.currentMetrics = currentMetrics;
+            o.currentReplicas = currentReplicas;
+            o.desiredReplicas = desiredReplicas;
+            o.lastScaleTime = lastScaleTime;
+            o.maxReplicas = maxReplicas;
+            o.minReplicas = minReplicas;
+            o.nextScaleMetrics = nextScaleMetrics;
+            o.nextScaleTimePeriod = nextScaleTimePeriod;
+            return o;
         }
     }
 }

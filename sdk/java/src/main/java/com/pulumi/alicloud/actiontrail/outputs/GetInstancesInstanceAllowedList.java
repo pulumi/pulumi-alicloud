@@ -16,28 +16,19 @@ public final class GetInstancesInstanceAllowedList {
      * @return The deployed type of the instance.
      * 
      */
-    private final String deployType;
+    private String deployType;
     /**
      * @return The internet list of the instance.
      * 
      */
-    private final List<GetInstancesInstanceAllowedListInternetList> internetLists;
+    private List<GetInstancesInstanceAllowedListInternetList> internetLists;
     /**
      * @return The vpc list of the instance.
      * 
      */
-    private final List<GetInstancesInstanceAllowedListVpcList> vpcLists;
+    private List<GetInstancesInstanceAllowedListVpcList> vpcLists;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceAllowedList(
-        @CustomType.Parameter("deployType") String deployType,
-        @CustomType.Parameter("internetLists") List<GetInstancesInstanceAllowedListInternetList> internetLists,
-        @CustomType.Parameter("vpcLists") List<GetInstancesInstanceAllowedListVpcList> vpcLists) {
-        this.deployType = deployType;
-        this.internetLists = internetLists;
-        this.vpcLists = vpcLists;
-    }
-
+    private GetInstancesInstanceAllowedList() {}
     /**
      * @return The deployed type of the instance.
      * 
@@ -67,16 +58,12 @@ public final class GetInstancesInstanceAllowedList {
     public static Builder builder(GetInstancesInstanceAllowedList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String deployType;
         private List<GetInstancesInstanceAllowedListInternetList> internetLists;
         private List<GetInstancesInstanceAllowedListVpcList> vpcLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceAllowedList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployType = defaults.deployType;
@@ -84,10 +71,12 @@ public final class GetInstancesInstanceAllowedList {
     	      this.vpcLists = defaults.vpcLists;
         }
 
+        @CustomType.Setter
         public Builder deployType(String deployType) {
             this.deployType = Objects.requireNonNull(deployType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetLists(List<GetInstancesInstanceAllowedListInternetList> internetLists) {
             this.internetLists = Objects.requireNonNull(internetLists);
             return this;
@@ -95,14 +84,20 @@ public final class GetInstancesInstanceAllowedList {
         public Builder internetLists(GetInstancesInstanceAllowedListInternetList... internetLists) {
             return internetLists(List.of(internetLists));
         }
+        @CustomType.Setter
         public Builder vpcLists(List<GetInstancesInstanceAllowedListVpcList> vpcLists) {
             this.vpcLists = Objects.requireNonNull(vpcLists);
             return this;
         }
         public Builder vpcLists(GetInstancesInstanceAllowedListVpcList... vpcLists) {
             return vpcLists(List.of(vpcLists));
-        }        public GetInstancesInstanceAllowedList build() {
-            return new GetInstancesInstanceAllowedList(deployType, internetLists, vpcLists);
+        }
+        public GetInstancesInstanceAllowedList build() {
+            final var o = new GetInstancesInstanceAllowedList();
+            o.deployType = deployType;
+            o.internetLists = internetLists;
+            o.vpcLists = vpcLists;
+            return o;
         }
     }
 }

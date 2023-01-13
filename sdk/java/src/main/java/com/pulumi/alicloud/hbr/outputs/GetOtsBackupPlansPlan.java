@@ -16,88 +16,61 @@ public final class GetOtsBackupPlansPlan {
      * @return The Backup type. Valid values: `COMPLETE`.
      * 
      */
-    private final String backupType;
+    private String backupType;
     /**
      * @return The creation time of the backup plan. UNIX time in seconds.
      * 
      */
-    private final String createdTime;
+    private String createdTime;
     /**
      * @return Whether to be suspended. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
     /**
      * @return The ID of ots backup plan.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of ots backup plan.
      * 
      */
-    private final String otsBackupPlanId;
+    private String otsBackupPlanId;
     /**
      * @return The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      * 
      */
-    private final String otsBackupPlanName;
-    private final List<GetOtsBackupPlansPlanOtsDetail> otsDetails;
+    private String otsBackupPlanName;
+    private List<GetOtsBackupPlansPlanOtsDetail> otsDetails;
     /**
      * @return The Backup retention days, the minimum is 1.
      * 
      */
-    private final String retention;
+    private String retention;
     /**
      * @return The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
      * 
      */
-    private final String schedule;
+    private String schedule;
     /**
      * @return The type of the data source.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return The update time of the backup plan. UNIX time in seconds.
      * *ots_detail - The details about the Tablestore instance.
      * 
      */
-    private final String updatedTime;
+    private String updatedTime;
     /**
      * @return The ID of backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetOtsBackupPlansPlan(
-        @CustomType.Parameter("backupType") String backupType,
-        @CustomType.Parameter("createdTime") String createdTime,
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("otsBackupPlanId") String otsBackupPlanId,
-        @CustomType.Parameter("otsBackupPlanName") String otsBackupPlanName,
-        @CustomType.Parameter("otsDetails") List<GetOtsBackupPlansPlanOtsDetail> otsDetails,
-        @CustomType.Parameter("retention") String retention,
-        @CustomType.Parameter("schedule") String schedule,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("updatedTime") String updatedTime,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.backupType = backupType;
-        this.createdTime = createdTime;
-        this.disabled = disabled;
-        this.id = id;
-        this.otsBackupPlanId = otsBackupPlanId;
-        this.otsBackupPlanName = otsBackupPlanName;
-        this.otsDetails = otsDetails;
-        this.retention = retention;
-        this.schedule = schedule;
-        this.sourceType = sourceType;
-        this.updatedTime = updatedTime;
-        this.vaultId = vaultId;
-    }
-
+    private GetOtsBackupPlansPlan() {}
     /**
      * @return The Backup type. Valid values: `COMPLETE`.
      * 
@@ -187,7 +160,7 @@ public final class GetOtsBackupPlansPlan {
     public static Builder builder(GetOtsBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backupType;
         private String createdTime;
@@ -201,11 +174,7 @@ public final class GetOtsBackupPlansPlan {
         private String sourceType;
         private String updatedTime;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOtsBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupType = defaults.backupType;
@@ -222,30 +191,37 @@ public final class GetOtsBackupPlansPlan {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
+        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder otsBackupPlanId(String otsBackupPlanId) {
             this.otsBackupPlanId = Objects.requireNonNull(otsBackupPlanId);
             return this;
         }
+        @CustomType.Setter
         public Builder otsBackupPlanName(String otsBackupPlanName) {
             this.otsBackupPlanName = Objects.requireNonNull(otsBackupPlanName);
             return this;
         }
+        @CustomType.Setter
         public Builder otsDetails(List<GetOtsBackupPlansPlanOtsDetail> otsDetails) {
             this.otsDetails = Objects.requireNonNull(otsDetails);
             return this;
@@ -253,27 +229,46 @@ public final class GetOtsBackupPlansPlan {
         public Builder otsDetails(GetOtsBackupPlansPlanOtsDetail... otsDetails) {
             return otsDetails(List.of(otsDetails));
         }
+        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetOtsBackupPlansPlan build() {
-            return new GetOtsBackupPlansPlan(backupType, createdTime, disabled, id, otsBackupPlanId, otsBackupPlanName, otsDetails, retention, schedule, sourceType, updatedTime, vaultId);
+        }
+        public GetOtsBackupPlansPlan build() {
+            final var o = new GetOtsBackupPlansPlan();
+            o.backupType = backupType;
+            o.createdTime = createdTime;
+            o.disabled = disabled;
+            o.id = id;
+            o.otsBackupPlanId = otsBackupPlanId;
+            o.otsBackupPlanName = otsBackupPlanName;
+            o.otsDetails = otsDetails;
+            o.retention = retention;
+            o.schedule = schedule;
+            o.sourceType = sourceType;
+            o.updatedTime = updatedTime;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }

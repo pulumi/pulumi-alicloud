@@ -14,49 +14,49 @@ public final class GetRdsBackupsBackup {
      * @return The backup download url.
      * 
      */
-    private final String backupDownloadUrl;
+    private String backupDownloadUrl;
     /**
      * @return BackupEndTime.
      * 
      */
-    private final String backupEndTime;
+    private String backupEndTime;
     /**
      * @return BackupId.
      * 
      */
-    private final String backupId;
+    private String backupId;
     /**
      * @return The initiator of the backup task. Value:
      * * **System**: automatically initiated by the System
      * * **User**: manually initiated by the User.
      * 
      */
-    private final String backupInitiator;
+    private String backupInitiator;
     /**
      * @return The backup intranet download url.
      * 
      */
-    private final String backupIntranetDownloadUrl;
+    private String backupIntranetDownloadUrl;
     /**
      * @return BackupMethod.
      * 
      */
-    private final String backupMethod;
+    private String backupMethod;
     /**
      * @return BackupMode.
      * 
      */
-    private final String backupMode;
+    private String backupMode;
     /**
      * @return BackupSize.
      * 
      */
-    private final String backupSize;
+    private String backupSize;
     /**
      * @return BackupStartTime.
      * 
      */
-    private final String backupStartTime;
+    private String backupStartTime;
     /**
      * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
      * * **NoStart**: Not started
@@ -68,51 +68,51 @@ public final class GetRdsBackupsBackup {
      * * **Failed**: backup Failed
      * 
      */
-    private final String backupStatus;
+    private String backupStatus;
     /**
      * @return BackupType.
      * 
      */
-    private final String backupType;
+    private String backupType;
     /**
      * @return The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
      * 
      */
-    private final String consistentTime;
+    private String consistentTime;
     /**
      * @return The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
      * * **0**: General Backup Mode
      * * **1**: Copy only mode
      * 
      */
-    private final String copyOnlyBackup;
+    private String copyOnlyBackup;
     /**
      * @return The db instance id.
      * 
      */
-    private final String dbInstanceId;
+    private String dbInstanceId;
     /**
      * @return The encrypted information of the backup set.
      * 
      */
-    private final String encryption;
+    private String encryption;
     /**
      * @return HostInstanceID.
      * 
      */
-    private final String hostInstanceId;
+    private String hostInstanceId;
     /**
      * @return The ID of the Backup.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether the backup set is available, the value is:
      * * **0**: Not available
      * * **1**: Available.
      * 
      */
-    private final Integer isAvail;
+    private Integer isAvail;
     /**
      * @return The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
      * * **OK**: normal.
@@ -120,66 +120,21 @@ public final class GetRdsBackupsBackup {
      * * **EMPTY**: The backup set that failed to be backed up.
      * 
      */
-    private final String metaStatus;
+    private String metaStatus;
     /**
      * @return The storage medium for the backup set. Valid values:
      * * **0**: Regular storage
      * * **1**: Archive storage.
      * 
      */
-    private final String storageClass;
+    private String storageClass;
     /**
      * @return StoreStatus.
      * 
      */
-    private final String storeStatus;
+    private String storeStatus;
 
-    @CustomType.Constructor
-    private GetRdsBackupsBackup(
-        @CustomType.Parameter("backupDownloadUrl") String backupDownloadUrl,
-        @CustomType.Parameter("backupEndTime") String backupEndTime,
-        @CustomType.Parameter("backupId") String backupId,
-        @CustomType.Parameter("backupInitiator") String backupInitiator,
-        @CustomType.Parameter("backupIntranetDownloadUrl") String backupIntranetDownloadUrl,
-        @CustomType.Parameter("backupMethod") String backupMethod,
-        @CustomType.Parameter("backupMode") String backupMode,
-        @CustomType.Parameter("backupSize") String backupSize,
-        @CustomType.Parameter("backupStartTime") String backupStartTime,
-        @CustomType.Parameter("backupStatus") String backupStatus,
-        @CustomType.Parameter("backupType") String backupType,
-        @CustomType.Parameter("consistentTime") String consistentTime,
-        @CustomType.Parameter("copyOnlyBackup") String copyOnlyBackup,
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("encryption") String encryption,
-        @CustomType.Parameter("hostInstanceId") String hostInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isAvail") Integer isAvail,
-        @CustomType.Parameter("metaStatus") String metaStatus,
-        @CustomType.Parameter("storageClass") String storageClass,
-        @CustomType.Parameter("storeStatus") String storeStatus) {
-        this.backupDownloadUrl = backupDownloadUrl;
-        this.backupEndTime = backupEndTime;
-        this.backupId = backupId;
-        this.backupInitiator = backupInitiator;
-        this.backupIntranetDownloadUrl = backupIntranetDownloadUrl;
-        this.backupMethod = backupMethod;
-        this.backupMode = backupMode;
-        this.backupSize = backupSize;
-        this.backupStartTime = backupStartTime;
-        this.backupStatus = backupStatus;
-        this.backupType = backupType;
-        this.consistentTime = consistentTime;
-        this.copyOnlyBackup = copyOnlyBackup;
-        this.dbInstanceId = dbInstanceId;
-        this.encryption = encryption;
-        this.hostInstanceId = hostInstanceId;
-        this.id = id;
-        this.isAvail = isAvail;
-        this.metaStatus = metaStatus;
-        this.storageClass = storageClass;
-        this.storeStatus = storeStatus;
-    }
-
+    private GetRdsBackupsBackup() {}
     /**
      * @return The backup download url.
      * 
@@ -353,7 +308,7 @@ public final class GetRdsBackupsBackup {
     public static Builder builder(GetRdsBackupsBackup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backupDownloadUrl;
         private String backupEndTime;
@@ -376,11 +331,7 @@ public final class GetRdsBackupsBackup {
         private String metaStatus;
         private String storageClass;
         private String storeStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRdsBackupsBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupDownloadUrl = defaults.backupDownloadUrl;
@@ -406,91 +357,135 @@ public final class GetRdsBackupsBackup {
     	      this.storeStatus = defaults.storeStatus;
         }
 
+        @CustomType.Setter
         public Builder backupDownloadUrl(String backupDownloadUrl) {
             this.backupDownloadUrl = Objects.requireNonNull(backupDownloadUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder backupEndTime(String backupEndTime) {
             this.backupEndTime = Objects.requireNonNull(backupEndTime);
             return this;
         }
+        @CustomType.Setter
         public Builder backupId(String backupId) {
             this.backupId = Objects.requireNonNull(backupId);
             return this;
         }
+        @CustomType.Setter
         public Builder backupInitiator(String backupInitiator) {
             this.backupInitiator = Objects.requireNonNull(backupInitiator);
             return this;
         }
+        @CustomType.Setter
         public Builder backupIntranetDownloadUrl(String backupIntranetDownloadUrl) {
             this.backupIntranetDownloadUrl = Objects.requireNonNull(backupIntranetDownloadUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
             this.backupMethod = Objects.requireNonNull(backupMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder backupMode(String backupMode) {
             this.backupMode = Objects.requireNonNull(backupMode);
             return this;
         }
+        @CustomType.Setter
         public Builder backupSize(String backupSize) {
             this.backupSize = Objects.requireNonNull(backupSize);
             return this;
         }
+        @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
             this.backupStartTime = Objects.requireNonNull(backupStartTime);
             return this;
         }
+        @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
             this.backupStatus = Objects.requireNonNull(backupStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
+        @CustomType.Setter
         public Builder consistentTime(String consistentTime) {
             this.consistentTime = Objects.requireNonNull(consistentTime);
             return this;
         }
+        @CustomType.Setter
         public Builder copyOnlyBackup(String copyOnlyBackup) {
             this.copyOnlyBackup = Objects.requireNonNull(copyOnlyBackup);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder encryption(String encryption) {
             this.encryption = Objects.requireNonNull(encryption);
             return this;
         }
+        @CustomType.Setter
         public Builder hostInstanceId(String hostInstanceId) {
             this.hostInstanceId = Objects.requireNonNull(hostInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isAvail(Integer isAvail) {
             this.isAvail = Objects.requireNonNull(isAvail);
             return this;
         }
+        @CustomType.Setter
         public Builder metaStatus(String metaStatus) {
             this.metaStatus = Objects.requireNonNull(metaStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
+        @CustomType.Setter
         public Builder storeStatus(String storeStatus) {
             this.storeStatus = Objects.requireNonNull(storeStatus);
             return this;
-        }        public GetRdsBackupsBackup build() {
-            return new GetRdsBackupsBackup(backupDownloadUrl, backupEndTime, backupId, backupInitiator, backupIntranetDownloadUrl, backupMethod, backupMode, backupSize, backupStartTime, backupStatus, backupType, consistentTime, copyOnlyBackup, dbInstanceId, encryption, hostInstanceId, id, isAvail, metaStatus, storageClass, storeStatus);
+        }
+        public GetRdsBackupsBackup build() {
+            final var o = new GetRdsBackupsBackup();
+            o.backupDownloadUrl = backupDownloadUrl;
+            o.backupEndTime = backupEndTime;
+            o.backupId = backupId;
+            o.backupInitiator = backupInitiator;
+            o.backupIntranetDownloadUrl = backupIntranetDownloadUrl;
+            o.backupMethod = backupMethod;
+            o.backupMode = backupMode;
+            o.backupSize = backupSize;
+            o.backupStartTime = backupStartTime;
+            o.backupStatus = backupStatus;
+            o.backupType = backupType;
+            o.consistentTime = consistentTime;
+            o.copyOnlyBackup = copyOnlyBackup;
+            o.dbInstanceId = dbInstanceId;
+            o.encryption = encryption;
+            o.hostInstanceId = hostInstanceId;
+            o.id = id;
+            o.isAvail = isAvail;
+            o.metaStatus = metaStatus;
+            o.storageClass = storageClass;
+            o.storeStatus = storeStatus;
+            return o;
         }
     }
 }

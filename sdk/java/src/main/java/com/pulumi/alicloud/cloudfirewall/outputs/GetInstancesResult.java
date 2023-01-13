@@ -17,20 +17,11 @@ public final class GetInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.id = id;
-        this.instances = instances;
-        this.outputFile = outputFile;
-    }
-
+    private GetInstancesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -52,16 +43,12 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -69,10 +56,12 @@ public final class GetInstancesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -80,11 +69,17 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(id, instances, outputFile);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.id = id;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

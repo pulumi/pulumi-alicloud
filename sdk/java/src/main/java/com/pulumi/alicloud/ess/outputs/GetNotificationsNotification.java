@@ -14,35 +14,24 @@ public final class GetNotificationsNotification {
      * @return ID of the notification.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Alibaba Cloud Resource Name (ARN) for the notification object.
      * 
      */
-    private final String notificationArn;
+    private String notificationArn;
     /**
      * @return The notification types of Auto Scaling events and resource changes.
      * 
      */
-    private final List<String> notificationTypes;
+    private List<String> notificationTypes;
     /**
      * @return Scaling group id the notifications belong to.
      * 
      */
-    private final String scalingGroupId;
+    private String scalingGroupId;
 
-    @CustomType.Constructor
-    private GetNotificationsNotification(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("notificationArn") String notificationArn,
-        @CustomType.Parameter("notificationTypes") List<String> notificationTypes,
-        @CustomType.Parameter("scalingGroupId") String scalingGroupId) {
-        this.id = id;
-        this.notificationArn = notificationArn;
-        this.notificationTypes = notificationTypes;
-        this.scalingGroupId = scalingGroupId;
-    }
-
+    private GetNotificationsNotification() {}
     /**
      * @return ID of the notification.
      * 
@@ -79,17 +68,13 @@ public final class GetNotificationsNotification {
     public static Builder builder(GetNotificationsNotification defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String notificationArn;
         private List<String> notificationTypes;
         private String scalingGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotificationsNotification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,14 +83,17 @@ public final class GetNotificationsNotification {
     	      this.scalingGroupId = defaults.scalingGroupId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationArn(String notificationArn) {
             this.notificationArn = Objects.requireNonNull(notificationArn);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationTypes(List<String> notificationTypes) {
             this.notificationTypes = Objects.requireNonNull(notificationTypes);
             return this;
@@ -113,11 +101,18 @@ public final class GetNotificationsNotification {
         public Builder notificationTypes(String... notificationTypes) {
             return notificationTypes(List.of(notificationTypes));
         }
+        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
-        }        public GetNotificationsNotification build() {
-            return new GetNotificationsNotification(id, notificationArn, notificationTypes, scalingGroupId);
+        }
+        public GetNotificationsNotification build() {
+            final var o = new GetNotificationsNotification();
+            o.id = id;
+            o.notificationArn = notificationArn;
+            o.notificationTypes = notificationTypes;
+            o.scalingGroupId = scalingGroupId;
+            return o;
         }
     }
 }

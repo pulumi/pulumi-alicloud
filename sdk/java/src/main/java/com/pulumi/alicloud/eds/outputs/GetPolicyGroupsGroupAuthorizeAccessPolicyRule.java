@@ -13,21 +13,14 @@ public final class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
      * @return The cidrip of security rules.
      * 
      */
-    private final String cidrIp;
+    private String cidrIp;
     /**
      * @return The description of security rules.
      * 
      */
-    private final String description;
+    private String description;
 
-    @CustomType.Constructor
-    private GetPolicyGroupsGroupAuthorizeAccessPolicyRule(
-        @CustomType.Parameter("cidrIp") String cidrIp,
-        @CustomType.Parameter("description") String description) {
-        this.cidrIp = cidrIp;
-        this.description = description;
-    }
-
+    private GetPolicyGroupsGroupAuthorizeAccessPolicyRule() {}
     /**
      * @return The cidrip of security rules.
      * 
@@ -50,30 +43,32 @@ public final class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
     public static Builder builder(GetPolicyGroupsGroupAuthorizeAccessPolicyRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrIp;
         private String description;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyGroupsGroupAuthorizeAccessPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrIp = defaults.cidrIp;
     	      this.description = defaults.description;
         }
 
+        @CustomType.Setter
         public Builder cidrIp(String cidrIp) {
             this.cidrIp = Objects.requireNonNull(cidrIp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
-        }        public GetPolicyGroupsGroupAuthorizeAccessPolicyRule build() {
-            return new GetPolicyGroupsGroupAuthorizeAccessPolicyRule(cidrIp, description);
+        }
+        public GetPolicyGroupsGroupAuthorizeAccessPolicyRule build() {
+            final var o = new GetPolicyGroupsGroupAuthorizeAccessPolicyRule();
+            o.cidrIp = cidrIp;
+            o.description = description;
+            return o;
         }
     }
 }

@@ -13,28 +13,19 @@ public final class GetDedicatedHostAccountsAccount {
      * @return The name of the Dedicated host account.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return The ID of the Dedicated host.
      * 
      */
-    private final String dedicatedHostId;
+    private String dedicatedHostId;
     /**
      * @return The ID of the Dedicated Host Account. The value formats as `&lt;dedicated_host_id&gt;:&lt;account_name&gt;`.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetDedicatedHostAccountsAccount(
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("dedicatedHostId") String dedicatedHostId,
-        @CustomType.Parameter("id") String id) {
-        this.accountName = accountName;
-        this.dedicatedHostId = dedicatedHostId;
-        this.id = id;
-    }
-
+    private GetDedicatedHostAccountsAccount() {}
     /**
      * @return The name of the Dedicated host account.
      * 
@@ -64,16 +55,12 @@ public final class GetDedicatedHostAccountsAccount {
     public static Builder builder(GetDedicatedHostAccountsAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountName;
         private String dedicatedHostId;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -81,19 +68,27 @@ public final class GetDedicatedHostAccountsAccount {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder dedicatedHostId(String dedicatedHostId) {
             this.dedicatedHostId = Objects.requireNonNull(dedicatedHostId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetDedicatedHostAccountsAccount build() {
-            return new GetDedicatedHostAccountsAccount(accountName, dedicatedHostId, id);
+        }
+        public GetDedicatedHostAccountsAccount build() {
+            final var o = new GetDedicatedHostAccountsAccount();
+            o.accountName = accountName;
+            o.dedicatedHostId = dedicatedHostId;
+            o.id = id;
+            return o;
         }
     }
 }

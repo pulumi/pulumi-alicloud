@@ -13,28 +13,19 @@ public final class GetImagesImageDiskDeviceMapping {
      * @return Device information of the created disk: such as /dev/xvdb.
      * 
      */
-    private final String device;
+    private String device;
     /**
      * @return Size of the created disk.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return The ID of the snapshot used to create the custom image.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
 
-    @CustomType.Constructor
-    private GetImagesImageDiskDeviceMapping(
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("snapshotId") String snapshotId) {
-        this.device = device;
-        this.size = size;
-        this.snapshotId = snapshotId;
-    }
-
+    private GetImagesImageDiskDeviceMapping() {}
     /**
      * @return Device information of the created disk: such as /dev/xvdb.
      * 
@@ -64,16 +55,12 @@ public final class GetImagesImageDiskDeviceMapping {
     public static Builder builder(GetImagesImageDiskDeviceMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String device;
         private String size;
         private String snapshotId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImagesImageDiskDeviceMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -81,19 +68,27 @@ public final class GetImagesImageDiskDeviceMapping {
     	      this.snapshotId = defaults.snapshotId;
         }
 
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
-        }        public GetImagesImageDiskDeviceMapping build() {
-            return new GetImagesImageDiskDeviceMapping(device, size, snapshotId);
+        }
+        public GetImagesImageDiskDeviceMapping build() {
+            final var o = new GetImagesImageDiskDeviceMapping();
+            o.device = device;
+            o.size = size;
+            o.snapshotId = snapshotId;
+            return o;
         }
     }
 }

@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerListenerPortsAndProtocal {
-    private final Integer listenerPort;
-    private final String listenerProtocal;
+    private Integer listenerPort;
+    private String listenerProtocal;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerListenerPortsAndProtocal(
-        @CustomType.Parameter("listenerPort") Integer listenerPort,
-        @CustomType.Parameter("listenerProtocal") String listenerProtocal) {
-        this.listenerPort = listenerPort;
-        this.listenerProtocal = listenerProtocal;
-    }
-
+    private GetLoadBalancersBalancerListenerPortsAndProtocal() {}
     public Integer listenerPort() {
         return this.listenerPort;
     }
@@ -35,30 +28,32 @@ public final class GetLoadBalancersBalancerListenerPortsAndProtocal {
     public static Builder builder(GetLoadBalancersBalancerListenerPortsAndProtocal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer listenerPort;
         private String listenerProtocal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerListenerPortsAndProtocal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.listenerPort = defaults.listenerPort;
     	      this.listenerProtocal = defaults.listenerProtocal;
         }
 
+        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerProtocal(String listenerProtocal) {
             this.listenerProtocal = Objects.requireNonNull(listenerProtocal);
             return this;
-        }        public GetLoadBalancersBalancerListenerPortsAndProtocal build() {
-            return new GetLoadBalancersBalancerListenerPortsAndProtocal(listenerPort, listenerProtocal);
+        }
+        public GetLoadBalancersBalancerListenerPortsAndProtocal build() {
+            final var o = new GetLoadBalancersBalancerListenerPortsAndProtocal();
+            o.listenerPort = listenerPort;
+            o.listenerProtocal = listenerProtocal;
+            return o;
         }
     }
 }

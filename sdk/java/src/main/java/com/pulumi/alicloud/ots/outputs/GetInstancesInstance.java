@@ -16,47 +16,47 @@ public final class GetInstancesInstance {
      * @return The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
      * 
      */
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return The create time of the instance.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the instance.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The instance quota which indicating the maximum number of tables.
      * 
      */
-    private final Integer entityQuota;
+    private Integer entityQuota;
     /**
      * @return ID of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Instance name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return The maximum adjustable read capacity unit of the instance.
      * 
      */
-    private final Integer readCapacity;
+    private Integer readCapacity;
     /**
      * @return Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A map of tags assigned to the instance. It must be in the format:
      * ```java
@@ -89,46 +89,19 @@ public final class GetInstancesInstance {
      * ```
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The user id of the instance.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return The maximum adjustable write capacity unit of the instance.
      * 
      */
-    private final Integer writeCapacity;
+    private Integer writeCapacity;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("entityQuota") Integer entityQuota,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("readCapacity") Integer readCapacity,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("writeCapacity") Integer writeCapacity) {
-        this.clusterType = clusterType;
-        this.createTime = createTime;
-        this.description = description;
-        this.entityQuota = entityQuota;
-        this.id = id;
-        this.name = name;
-        this.network = network;
-        this.readCapacity = readCapacity;
-        this.status = status;
-        this.tags = tags;
-        this.userId = userId;
-        this.writeCapacity = writeCapacity;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
      * 
@@ -249,7 +222,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterType;
         private String createTime;
@@ -263,11 +236,7 @@ public final class GetInstancesInstance {
         private Map<String,Object> tags;
         private String userId;
         private Integer writeCapacity;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -284,55 +253,81 @@ public final class GetInstancesInstance {
     	      this.writeCapacity = defaults.writeCapacity;
         }
 
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder entityQuota(Integer entityQuota) {
             this.entityQuota = Objects.requireNonNull(entityQuota);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder readCapacity(Integer readCapacity) {
             this.readCapacity = Objects.requireNonNull(readCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder writeCapacity(Integer writeCapacity) {
             this.writeCapacity = Objects.requireNonNull(writeCapacity);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(clusterType, createTime, description, entityQuota, id, name, network, readCapacity, status, tags, userId, writeCapacity);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.clusterType = clusterType;
+            o.createTime = createTime;
+            o.description = description;
+            o.entityQuota = entityQuota;
+            o.id = id;
+            o.name = name;
+            o.network = network;
+            o.readCapacity = readCapacity;
+            o.status = status;
+            o.tags = tags;
+            o.userId = userId;
+            o.writeCapacity = writeCapacity;
+            return o;
         }
     }
 }

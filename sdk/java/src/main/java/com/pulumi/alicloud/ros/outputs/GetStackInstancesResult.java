@@ -14,42 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStackInstancesResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetStackInstancesInstance> instances;
-    private final @Nullable String outputFile;
-    private final String stackGroupName;
-    private final @Nullable String stackInstanceAccountId;
-    private final @Nullable String stackInstanceRegionId;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private List<GetStackInstancesInstance> instances;
+    private @Nullable String outputFile;
+    private String stackGroupName;
+    private @Nullable String stackInstanceAccountId;
+    private @Nullable String stackInstanceRegionId;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetStackInstancesResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetStackInstancesInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("stackGroupName") String stackGroupName,
-        @CustomType.Parameter("stackInstanceAccountId") @Nullable String stackInstanceAccountId,
-        @CustomType.Parameter("stackInstanceRegionId") @Nullable String stackInstanceRegionId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.outputFile = outputFile;
-        this.stackGroupName = stackGroupName;
-        this.stackInstanceAccountId = stackInstanceAccountId;
-        this.stackInstanceRegionId = stackInstanceRegionId;
-        this.status = status;
-    }
-
+    private GetStackInstancesResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -89,7 +68,7 @@ public final class GetStackInstancesResult {
     public static Builder builder(GetStackInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -100,11 +79,7 @@ public final class GetStackInstancesResult {
         private @Nullable String stackInstanceAccountId;
         private @Nullable String stackInstanceRegionId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStackInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -118,14 +93,17 @@ public final class GetStackInstancesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -133,6 +111,7 @@ public final class GetStackInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetStackInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -140,27 +119,43 @@ public final class GetStackInstancesResult {
         public Builder instances(GetStackInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
             this.stackGroupName = Objects.requireNonNull(stackGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder stackInstanceAccountId(@Nullable String stackInstanceAccountId) {
             this.stackInstanceAccountId = stackInstanceAccountId;
             return this;
         }
+        @CustomType.Setter
         public Builder stackInstanceRegionId(@Nullable String stackInstanceRegionId) {
             this.stackInstanceRegionId = stackInstanceRegionId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetStackInstancesResult build() {
-            return new GetStackInstancesResult(enableDetails, id, ids, instances, outputFile, stackGroupName, stackInstanceAccountId, stackInstanceRegionId, status);
+        }
+        public GetStackInstancesResult build() {
+            final var o = new GetStackInstancesResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            o.stackGroupName = stackGroupName;
+            o.stackInstanceAccountId = stackInstanceAccountId;
+            o.stackInstanceRegionId = stackInstanceRegionId;
+            o.status = status;
+            return o;
         }
     }
 }

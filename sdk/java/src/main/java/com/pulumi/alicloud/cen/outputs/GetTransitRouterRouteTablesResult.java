@@ -17,60 +17,35 @@ public final class GetTransitRouterRouteTablesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of CEN Transit Router Route Table IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of CEN Transit Router Route Tables.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String status;
     /**
      * @return A list of CEN Route Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetTransitRouterRouteTablesTable> tables;
-    private final String transitRouterId;
-    private final @Nullable List<String> transitRouterRouteTableIds;
-    private final @Nullable List<String> transitRouterRouteTableNames;
+    private List<GetTransitRouterRouteTablesTable> tables;
+    private String transitRouterId;
+    private @Nullable List<String> transitRouterRouteTableIds;
+    private @Nullable List<String> transitRouterRouteTableNames;
     /**
      * @return The status of the route table.
      * 
      */
-    private final @Nullable String transitRouterRouteTableStatus;
+    private @Nullable String transitRouterRouteTableStatus;
 
-    @CustomType.Constructor
-    private GetTransitRouterRouteTablesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tables") List<GetTransitRouterRouteTablesTable> tables,
-        @CustomType.Parameter("transitRouterId") String transitRouterId,
-        @CustomType.Parameter("transitRouterRouteTableIds") @Nullable List<String> transitRouterRouteTableIds,
-        @CustomType.Parameter("transitRouterRouteTableNames") @Nullable List<String> transitRouterRouteTableNames,
-        @CustomType.Parameter("transitRouterRouteTableStatus") @Nullable String transitRouterRouteTableStatus) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.tables = tables;
-        this.transitRouterId = transitRouterId;
-        this.transitRouterRouteTableIds = transitRouterRouteTableIds;
-        this.transitRouterRouteTableNames = transitRouterRouteTableNames;
-        this.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
-    }
-
+    private GetTransitRouterRouteTablesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -132,7 +107,7 @@ public final class GetTransitRouterRouteTablesResult {
     public static Builder builder(GetTransitRouterRouteTablesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -145,11 +120,7 @@ public final class GetTransitRouterRouteTablesResult {
         private @Nullable List<String> transitRouterRouteTableIds;
         private @Nullable List<String> transitRouterRouteTableNames;
         private @Nullable String transitRouterRouteTableStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterRouteTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -165,10 +136,12 @@ public final class GetTransitRouterRouteTablesResult {
     	      this.transitRouterRouteTableStatus = defaults.transitRouterRouteTableStatus;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -176,10 +149,12 @@ public final class GetTransitRouterRouteTablesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -187,14 +162,17 @@ public final class GetTransitRouterRouteTablesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tables(List<GetTransitRouterRouteTablesTable> tables) {
             this.tables = Objects.requireNonNull(tables);
             return this;
@@ -202,10 +180,12 @@ public final class GetTransitRouterRouteTablesResult {
         public Builder tables(GetTransitRouterRouteTablesTable... tables) {
             return tables(List.of(tables));
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteTableIds(@Nullable List<String> transitRouterRouteTableIds) {
             this.transitRouterRouteTableIds = transitRouterRouteTableIds;
             return this;
@@ -213,6 +193,7 @@ public final class GetTransitRouterRouteTablesResult {
         public Builder transitRouterRouteTableIds(String... transitRouterRouteTableIds) {
             return transitRouterRouteTableIds(List.of(transitRouterRouteTableIds));
         }
+        @CustomType.Setter
         public Builder transitRouterRouteTableNames(@Nullable List<String> transitRouterRouteTableNames) {
             this.transitRouterRouteTableNames = transitRouterRouteTableNames;
             return this;
@@ -220,11 +201,25 @@ public final class GetTransitRouterRouteTablesResult {
         public Builder transitRouterRouteTableNames(String... transitRouterRouteTableNames) {
             return transitRouterRouteTableNames(List.of(transitRouterRouteTableNames));
         }
+        @CustomType.Setter
         public Builder transitRouterRouteTableStatus(@Nullable String transitRouterRouteTableStatus) {
             this.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
             return this;
-        }        public GetTransitRouterRouteTablesResult build() {
-            return new GetTransitRouterRouteTablesResult(id, ids, nameRegex, names, outputFile, status, tables, transitRouterId, transitRouterRouteTableIds, transitRouterRouteTableNames, transitRouterRouteTableStatus);
+        }
+        public GetTransitRouterRouteTablesResult build() {
+            final var o = new GetTransitRouterRouteTablesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.tables = tables;
+            o.transitRouterId = transitRouterId;
+            o.transitRouterRouteTableIds = transitRouterRouteTableIds;
+            o.transitRouterRouteTableNames = transitRouterRouteTableNames;
+            o.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
+            return o;
         }
     }
 }

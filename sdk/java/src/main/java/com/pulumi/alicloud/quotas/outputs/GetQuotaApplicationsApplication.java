@@ -17,119 +17,84 @@ public final class GetQuotaApplicationsApplication {
      * @return The first ID of the resource.
      * 
      */
-    private final String applicationId;
+    private String applicationId;
     /**
      * @return The approve value.
      * 
      */
-    private final String approveValue;
+    private String approveValue;
     /**
      * @return The audit reason.
      * 
      */
-    private final String auditReason;
+    private String auditReason;
     /**
      * @return The desire value of the quota application.
      * 
      */
-    private final Double desireValue;
+    private Double desireValue;
     /**
      * @return The quota dimensions.
      * 
      */
-    private final List<GetQuotaApplicationsApplicationDimension> dimensions;
+    private List<GetQuotaApplicationsApplicationDimension> dimensions;
     /**
      * @return The effective time.
      * 
      */
-    private final String effectiveTime;
+    private String effectiveTime;
     /**
      * @return The expire time.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The ID of the Application Info.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The notice type.
      * 
      */
-    private final Integer noticeType;
+    private Integer noticeType;
     /**
      * @return The product code.
      * 
      */
-    private final String productCode;
+    private String productCode;
     /**
      * @return The ID of quota action..
      * 
      */
-    private final String quotaActionCode;
+    private String quotaActionCode;
     /**
      * @return The description of the quota.
      * 
      */
-    private final String quotaDescription;
+    private String quotaDescription;
     /**
      * @return The name of the quota.
      * 
      */
-    private final String quotaName;
+    private String quotaName;
     /**
      * @return The quota unit.
      * 
      */
-    private final String quotaUnit;
+    private String quotaUnit;
     /**
      * @return The reason of the quota application.
      * 
      */
-    private final String reason;
+    private String reason;
     /**
      * @return The status of the quota application.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetQuotaApplicationsApplication(
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("approveValue") String approveValue,
-        @CustomType.Parameter("auditReason") String auditReason,
-        @CustomType.Parameter("desireValue") Double desireValue,
-        @CustomType.Parameter("dimensions") List<GetQuotaApplicationsApplicationDimension> dimensions,
-        @CustomType.Parameter("effectiveTime") String effectiveTime,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("noticeType") Integer noticeType,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("quotaActionCode") String quotaActionCode,
-        @CustomType.Parameter("quotaDescription") String quotaDescription,
-        @CustomType.Parameter("quotaName") String quotaName,
-        @CustomType.Parameter("quotaUnit") String quotaUnit,
-        @CustomType.Parameter("reason") String reason,
-        @CustomType.Parameter("status") String status) {
-        this.applicationId = applicationId;
-        this.approveValue = approveValue;
-        this.auditReason = auditReason;
-        this.desireValue = desireValue;
-        this.dimensions = dimensions;
-        this.effectiveTime = effectiveTime;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.noticeType = noticeType;
-        this.productCode = productCode;
-        this.quotaActionCode = quotaActionCode;
-        this.quotaDescription = quotaDescription;
-        this.quotaName = quotaName;
-        this.quotaUnit = quotaUnit;
-        this.reason = reason;
-        this.status = status;
-    }
-
+    private GetQuotaApplicationsApplication() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -250,7 +215,7 @@ public final class GetQuotaApplicationsApplication {
     public static Builder builder(GetQuotaApplicationsApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String applicationId;
         private String approveValue;
@@ -268,11 +233,7 @@ public final class GetQuotaApplicationsApplication {
         private String quotaUnit;
         private String reason;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotaApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationId = defaults.applicationId;
@@ -293,22 +254,27 @@ public final class GetQuotaApplicationsApplication {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder approveValue(String approveValue) {
             this.approveValue = Objects.requireNonNull(approveValue);
             return this;
         }
+        @CustomType.Setter
         public Builder auditReason(String auditReason) {
             this.auditReason = Objects.requireNonNull(auditReason);
             return this;
         }
+        @CustomType.Setter
         public Builder desireValue(Double desireValue) {
             this.desireValue = Objects.requireNonNull(desireValue);
             return this;
         }
+        @CustomType.Setter
         public Builder dimensions(List<GetQuotaApplicationsApplicationDimension> dimensions) {
             this.dimensions = Objects.requireNonNull(dimensions);
             return this;
@@ -316,51 +282,80 @@ public final class GetQuotaApplicationsApplication {
         public Builder dimensions(GetQuotaApplicationsApplicationDimension... dimensions) {
             return dimensions(List.of(dimensions));
         }
+        @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
             this.effectiveTime = Objects.requireNonNull(effectiveTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder noticeType(Integer noticeType) {
             this.noticeType = Objects.requireNonNull(noticeType);
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
             this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaDescription(String quotaDescription) {
             this.quotaDescription = Objects.requireNonNull(quotaDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaName(String quotaName) {
             this.quotaName = Objects.requireNonNull(quotaName);
             return this;
         }
+        @CustomType.Setter
         public Builder quotaUnit(String quotaUnit) {
             this.quotaUnit = Objects.requireNonNull(quotaUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder reason(String reason) {
             this.reason = Objects.requireNonNull(reason);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetQuotaApplicationsApplication build() {
-            return new GetQuotaApplicationsApplication(applicationId, approveValue, auditReason, desireValue, dimensions, effectiveTime, expireTime, id, noticeType, productCode, quotaActionCode, quotaDescription, quotaName, quotaUnit, reason, status);
+        }
+        public GetQuotaApplicationsApplication build() {
+            final var o = new GetQuotaApplicationsApplication();
+            o.applicationId = applicationId;
+            o.approveValue = approveValue;
+            o.auditReason = auditReason;
+            o.desireValue = desireValue;
+            o.dimensions = dimensions;
+            o.effectiveTime = effectiveTime;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.noticeType = noticeType;
+            o.productCode = productCode;
+            o.quotaActionCode = quotaActionCode;
+            o.quotaDescription = quotaDescription;
+            o.quotaName = quotaName;
+            o.quotaUnit = quotaUnit;
+            o.reason = reason;
+            o.status = status;
+            return o;
         }
     }
 }

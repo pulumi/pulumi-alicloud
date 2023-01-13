@@ -17,105 +17,74 @@ public final class GetAcceleratorsAccelerator {
      * @return The ID of the GA instance to query.
      * 
      */
-    private final String acceleratorId;
+    private String acceleratorId;
     /**
      * @return The Name of the GA instance.
      * 
      */
-    private final String acceleratorName;
+    private String acceleratorName;
     /**
      * @return Details of the basic bandwidth package bound to the global acceleration instance.
      * 
      */
-    private final List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages;
+    private List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages;
     /**
      * @return The cloud enterprise network instance ID bound to the global acceleration instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return Details of the cross-domain acceleration package bound to the global acceleration instance.
      * 
      */
-    private final List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages;
+    private List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages;
     /**
      * @return DDoS high-defense instance ID that is unbound from the global acceleration instance.
      * 
      */
-    private final String ddosId;
+    private String ddosId;
     /**
      * @return Descriptive information of the global acceleration instance.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return CNAME address assigned by Global Acceleration instance.
      * 
      */
-    private final String dnsName;
+    private String dnsName;
     /**
      * @return Time when the global acceleration instance expires.
      * 
      */
-    private final Integer expiredTime;
+    private Integer expiredTime;
     /**
      * @return The ID of the Accelerator.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Payment Typethe GA instance.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
      * 
      */
-    private final String secondDnsName;
+    private String secondDnsName;
     /**
      * @return The instance type of the GA instance.
      * 
      */
-    private final String spec;
+    private String spec;
     /**
      * @return The status of the GA instance.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetAcceleratorsAccelerator(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("acceleratorName") String acceleratorName,
-        @CustomType.Parameter("basicBandwidthPackages") List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("crossDomainBandwidthPackages") List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages,
-        @CustomType.Parameter("ddosId") String ddosId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dnsName") String dnsName,
-        @CustomType.Parameter("expiredTime") Integer expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("secondDnsName") String secondDnsName,
-        @CustomType.Parameter("spec") String spec,
-        @CustomType.Parameter("status") String status) {
-        this.acceleratorId = acceleratorId;
-        this.acceleratorName = acceleratorName;
-        this.basicBandwidthPackages = basicBandwidthPackages;
-        this.cenId = cenId;
-        this.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
-        this.ddosId = ddosId;
-        this.description = description;
-        this.dnsName = dnsName;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.paymentType = paymentType;
-        this.secondDnsName = secondDnsName;
-        this.spec = spec;
-        this.status = status;
-    }
-
+    private GetAcceleratorsAccelerator() {}
     /**
      * @return The ID of the GA instance to query.
      * 
@@ -222,7 +191,7 @@ public final class GetAcceleratorsAccelerator {
     public static Builder builder(GetAcceleratorsAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private String acceleratorName;
@@ -238,11 +207,7 @@ public final class GetAcceleratorsAccelerator {
         private String secondDnsName;
         private String spec;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAcceleratorsAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -261,14 +226,17 @@ public final class GetAcceleratorsAccelerator {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder acceleratorName(String acceleratorName) {
             this.acceleratorName = Objects.requireNonNull(acceleratorName);
             return this;
         }
+        @CustomType.Setter
         public Builder basicBandwidthPackages(List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages) {
             this.basicBandwidthPackages = Objects.requireNonNull(basicBandwidthPackages);
             return this;
@@ -276,10 +244,12 @@ public final class GetAcceleratorsAccelerator {
         public Builder basicBandwidthPackages(GetAcceleratorsAcceleratorBasicBandwidthPackage... basicBandwidthPackages) {
             return basicBandwidthPackages(List.of(basicBandwidthPackages));
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder crossDomainBandwidthPackages(List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages) {
             this.crossDomainBandwidthPackages = Objects.requireNonNull(crossDomainBandwidthPackages);
             return this;
@@ -287,43 +257,68 @@ public final class GetAcceleratorsAccelerator {
         public Builder crossDomainBandwidthPackages(GetAcceleratorsAcceleratorCrossDomainBandwidthPackage... crossDomainBandwidthPackages) {
             return crossDomainBandwidthPackages(List.of(crossDomainBandwidthPackages));
         }
+        @CustomType.Setter
         public Builder ddosId(String ddosId) {
             this.ddosId = Objects.requireNonNull(ddosId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder secondDnsName(String secondDnsName) {
             this.secondDnsName = Objects.requireNonNull(secondDnsName);
             return this;
         }
+        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAcceleratorsAccelerator build() {
-            return new GetAcceleratorsAccelerator(acceleratorId, acceleratorName, basicBandwidthPackages, cenId, crossDomainBandwidthPackages, ddosId, description, dnsName, expiredTime, id, paymentType, secondDnsName, spec, status);
+        }
+        public GetAcceleratorsAccelerator build() {
+            final var o = new GetAcceleratorsAccelerator();
+            o.acceleratorId = acceleratorId;
+            o.acceleratorName = acceleratorName;
+            o.basicBandwidthPackages = basicBandwidthPackages;
+            o.cenId = cenId;
+            o.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
+            o.ddosId = ddosId;
+            o.description = description;
+            o.dnsName = dnsName;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.paymentType = paymentType;
+            o.secondDnsName = secondDnsName;
+            o.spec = spec;
+            o.status = status;
+            return o;
         }
     }
 }

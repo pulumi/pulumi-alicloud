@@ -22,70 +22,49 @@ public final class GetRulesRuleRuleAction {
      * @return The configuration of the fixed response.
      * 
      */
-    private final List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs;
+    private List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs;
     /**
      * @return The configurations of the destination server groups.
      * 
      */
-    private final List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
+    private List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
     /**
      * @return The configuration of the inserted header field.
      * 
      */
-    private final List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs;
+    private List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs;
     /**
      * @return The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
      * 
      */
-    private final Integer order;
+    private Integer order;
     /**
      * @return The configuration of the external redirect action.
      * 
      */
-    private final List<GetRulesRuleRuleActionRedirectConfig> redirectConfigs;
+    private List<GetRulesRuleRuleActionRedirectConfig> redirectConfigs;
     /**
      * @return The redirect action within ALB.
      * 
      */
-    private final List<GetRulesRuleRuleActionRewriteConfig> rewriteConfigs;
+    private List<GetRulesRuleRuleActionRewriteConfig> rewriteConfigs;
     /**
      * @return The Flow speed limit.
      * 
      */
-    private final List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs;
+    private List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs;
     /**
      * @return The Traffic mirroring.
      * 
      */
-    private final List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs;
+    private List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs;
     /**
      * @return The type of the forwarding rule.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleAction(
-        @CustomType.Parameter("fixedResponseConfigs") List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs,
-        @CustomType.Parameter("forwardGroupConfigs") List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs,
-        @CustomType.Parameter("insertHeaderConfigs") List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs,
-        @CustomType.Parameter("order") Integer order,
-        @CustomType.Parameter("redirectConfigs") List<GetRulesRuleRuleActionRedirectConfig> redirectConfigs,
-        @CustomType.Parameter("rewriteConfigs") List<GetRulesRuleRuleActionRewriteConfig> rewriteConfigs,
-        @CustomType.Parameter("trafficLimitConfigs") List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs,
-        @CustomType.Parameter("trafficMirrorConfigs") List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs,
-        @CustomType.Parameter("type") String type) {
-        this.fixedResponseConfigs = fixedResponseConfigs;
-        this.forwardGroupConfigs = forwardGroupConfigs;
-        this.insertHeaderConfigs = insertHeaderConfigs;
-        this.order = order;
-        this.redirectConfigs = redirectConfigs;
-        this.rewriteConfigs = rewriteConfigs;
-        this.trafficLimitConfigs = trafficLimitConfigs;
-        this.trafficMirrorConfigs = trafficMirrorConfigs;
-        this.type = type;
-    }
-
+    private GetRulesRuleRuleAction() {}
     /**
      * @return The configuration of the fixed response.
      * 
@@ -157,7 +136,7 @@ public final class GetRulesRuleRuleAction {
     public static Builder builder(GetRulesRuleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs;
         private List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
@@ -168,11 +147,7 @@ public final class GetRulesRuleRuleAction {
         private List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs;
         private List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedResponseConfigs = defaults.fixedResponseConfigs;
@@ -186,6 +161,7 @@ public final class GetRulesRuleRuleAction {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder fixedResponseConfigs(List<GetRulesRuleRuleActionFixedResponseConfig> fixedResponseConfigs) {
             this.fixedResponseConfigs = Objects.requireNonNull(fixedResponseConfigs);
             return this;
@@ -193,6 +169,7 @@ public final class GetRulesRuleRuleAction {
         public Builder fixedResponseConfigs(GetRulesRuleRuleActionFixedResponseConfig... fixedResponseConfigs) {
             return fixedResponseConfigs(List.of(fixedResponseConfigs));
         }
+        @CustomType.Setter
         public Builder forwardGroupConfigs(List<GetRulesRuleRuleActionForwardGroupConfig> forwardGroupConfigs) {
             this.forwardGroupConfigs = Objects.requireNonNull(forwardGroupConfigs);
             return this;
@@ -200,6 +177,7 @@ public final class GetRulesRuleRuleAction {
         public Builder forwardGroupConfigs(GetRulesRuleRuleActionForwardGroupConfig... forwardGroupConfigs) {
             return forwardGroupConfigs(List.of(forwardGroupConfigs));
         }
+        @CustomType.Setter
         public Builder insertHeaderConfigs(List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs) {
             this.insertHeaderConfigs = Objects.requireNonNull(insertHeaderConfigs);
             return this;
@@ -207,10 +185,12 @@ public final class GetRulesRuleRuleAction {
         public Builder insertHeaderConfigs(GetRulesRuleRuleActionInsertHeaderConfig... insertHeaderConfigs) {
             return insertHeaderConfigs(List.of(insertHeaderConfigs));
         }
+        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
+        @CustomType.Setter
         public Builder redirectConfigs(List<GetRulesRuleRuleActionRedirectConfig> redirectConfigs) {
             this.redirectConfigs = Objects.requireNonNull(redirectConfigs);
             return this;
@@ -218,6 +198,7 @@ public final class GetRulesRuleRuleAction {
         public Builder redirectConfigs(GetRulesRuleRuleActionRedirectConfig... redirectConfigs) {
             return redirectConfigs(List.of(redirectConfigs));
         }
+        @CustomType.Setter
         public Builder rewriteConfigs(List<GetRulesRuleRuleActionRewriteConfig> rewriteConfigs) {
             this.rewriteConfigs = Objects.requireNonNull(rewriteConfigs);
             return this;
@@ -225,6 +206,7 @@ public final class GetRulesRuleRuleAction {
         public Builder rewriteConfigs(GetRulesRuleRuleActionRewriteConfig... rewriteConfigs) {
             return rewriteConfigs(List.of(rewriteConfigs));
         }
+        @CustomType.Setter
         public Builder trafficLimitConfigs(List<GetRulesRuleRuleActionTrafficLimitConfig> trafficLimitConfigs) {
             this.trafficLimitConfigs = Objects.requireNonNull(trafficLimitConfigs);
             return this;
@@ -232,6 +214,7 @@ public final class GetRulesRuleRuleAction {
         public Builder trafficLimitConfigs(GetRulesRuleRuleActionTrafficLimitConfig... trafficLimitConfigs) {
             return trafficLimitConfigs(List.of(trafficLimitConfigs));
         }
+        @CustomType.Setter
         public Builder trafficMirrorConfigs(List<GetRulesRuleRuleActionTrafficMirrorConfig> trafficMirrorConfigs) {
             this.trafficMirrorConfigs = Objects.requireNonNull(trafficMirrorConfigs);
             return this;
@@ -239,11 +222,23 @@ public final class GetRulesRuleRuleAction {
         public Builder trafficMirrorConfigs(GetRulesRuleRuleActionTrafficMirrorConfig... trafficMirrorConfigs) {
             return trafficMirrorConfigs(List.of(trafficMirrorConfigs));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetRulesRuleRuleAction build() {
-            return new GetRulesRuleRuleAction(fixedResponseConfigs, forwardGroupConfigs, insertHeaderConfigs, order, redirectConfigs, rewriteConfigs, trafficLimitConfigs, trafficMirrorConfigs, type);
+        }
+        public GetRulesRuleRuleAction build() {
+            final var o = new GetRulesRuleRuleAction();
+            o.fixedResponseConfigs = fixedResponseConfigs;
+            o.forwardGroupConfigs = forwardGroupConfigs;
+            o.insertHeaderConfigs = insertHeaderConfigs;
+            o.order = order;
+            o.redirectConfigs = redirectConfigs;
+            o.rewriteConfigs = rewriteConfigs;
+            o.trafficLimitConfigs = trafficLimitConfigs;
+            o.trafficMirrorConfigs = trafficMirrorConfigs;
+            o.type = type;
+            return o;
         }
     }
 }

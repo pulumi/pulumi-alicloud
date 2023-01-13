@@ -17,55 +17,36 @@ public final class GetTunnelsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of tunnel IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return The OTS instance name.
      * 
      */
-    private final String instanceName;
-    private final @Nullable String nameRegex;
+    private String instanceName;
+    private @Nullable String nameRegex;
     /**
      * @return A list of tunnel names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The table name of the OTS which could not be changed.
      * 
      */
-    private final String tableName;
+    private String tableName;
     /**
      * @return A list of tunnels. Each element contains the following attributes:
      * 
      */
-    private final List<GetTunnelsTunnel> tunnels;
+    private List<GetTunnelsTunnel> tunnels;
 
-    @CustomType.Constructor
-    private GetTunnelsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("tableName") String tableName,
-        @CustomType.Parameter("tunnels") List<GetTunnelsTunnel> tunnels) {
-        this.id = id;
-        this.ids = ids;
-        this.instanceName = instanceName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.tableName = tableName;
-        this.tunnels = tunnels;
-    }
-
+    private GetTunnelsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -122,7 +103,7 @@ public final class GetTunnelsResult {
     public static Builder builder(GetTunnelsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -132,11 +113,7 @@ public final class GetTunnelsResult {
         private @Nullable String outputFile;
         private String tableName;
         private List<GetTunnelsTunnel> tunnels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTunnelsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -149,10 +126,12 @@ public final class GetTunnelsResult {
     	      this.tunnels = defaults.tunnels;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -160,14 +139,17 @@ public final class GetTunnelsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -175,22 +157,35 @@ public final class GetTunnelsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
+        @CustomType.Setter
         public Builder tunnels(List<GetTunnelsTunnel> tunnels) {
             this.tunnels = Objects.requireNonNull(tunnels);
             return this;
         }
         public Builder tunnels(GetTunnelsTunnel... tunnels) {
             return tunnels(List.of(tunnels));
-        }        public GetTunnelsResult build() {
-            return new GetTunnelsResult(id, ids, instanceName, nameRegex, names, outputFile, tableName, tunnels);
+        }
+        public GetTunnelsResult build() {
+            final var o = new GetTunnelsResult();
+            o.id = id;
+            o.ids = ids;
+            o.instanceName = instanceName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.tableName = tableName;
+            o.tunnels = tunnels;
+            return o;
         }
     }
 }

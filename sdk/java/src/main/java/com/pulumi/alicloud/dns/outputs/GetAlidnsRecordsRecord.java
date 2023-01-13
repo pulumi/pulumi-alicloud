@@ -15,91 +15,64 @@ public final class GetAlidnsRecordsRecord {
      * @return The domain name associated to the records.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return ID of the resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
      * 
      */
-    private final String line;
+    private String line;
     /**
      * @return Indicates whether the record is locked.
      * 
      */
-    private final Boolean locked;
+    private Boolean locked;
     /**
      * @return Priority of the `MX` record.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return ID of the record.
      * 
      */
-    private final String recordId;
+    private String recordId;
     /**
      * @return The remark of the domain record.  **NOTE:** Available in 1.144.0+.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return Host record of the domain.
      * 
      */
-    private final String rr;
+    private String rr;
     /**
      * @return Record status. Valid values: `ENABLE` and `DISABLE`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return TTL of the record.
      * 
      */
-    private final Integer ttl;
+    private Integer ttl;
     /**
      * @return Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Host record value of the domain.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetAlidnsRecordsRecord(
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("line") String line,
-        @CustomType.Parameter("locked") Boolean locked,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("recordId") String recordId,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("rr") String rr,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") String value) {
-        this.domainName = domainName;
-        this.id = id;
-        this.line = line;
-        this.locked = locked;
-        this.priority = priority;
-        this.recordId = recordId;
-        this.remark = remark;
-        this.rr = rr;
-        this.status = status;
-        this.ttl = ttl;
-        this.type = type;
-        this.value = value;
-    }
-
+    private GetAlidnsRecordsRecord() {}
     /**
      * @return The domain name associated to the records.
      * 
@@ -192,7 +165,7 @@ public final class GetAlidnsRecordsRecord {
     public static Builder builder(GetAlidnsRecordsRecord defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainName;
         private String id;
@@ -206,11 +179,7 @@ public final class GetAlidnsRecordsRecord {
         private Integer ttl;
         private String type;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlidnsRecordsRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -227,55 +196,81 @@ public final class GetAlidnsRecordsRecord {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder line(String line) {
             this.line = Objects.requireNonNull(line);
             return this;
         }
+        @CustomType.Setter
         public Builder locked(Boolean locked) {
             this.locked = Objects.requireNonNull(locked);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder recordId(String recordId) {
             this.recordId = Objects.requireNonNull(recordId);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder rr(String rr) {
             this.rr = Objects.requireNonNull(rr);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetAlidnsRecordsRecord build() {
-            return new GetAlidnsRecordsRecord(domainName, id, line, locked, priority, recordId, remark, rr, status, ttl, type, value);
+        }
+        public GetAlidnsRecordsRecord build() {
+            final var o = new GetAlidnsRecordsRecord();
+            o.domainName = domainName;
+            o.id = id;
+            o.line = line;
+            o.locked = locked;
+            o.priority = priority;
+            o.recordId = recordId;
+            o.remark = remark;
+            o.rr = rr;
+            o.status = status;
+            o.ttl = ttl;
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

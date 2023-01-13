@@ -13,52 +13,35 @@ public final class GetBackendsBackend {
      * @return The id of the Backend.
      * 
      */
-    private final String backendId;
+    private String backendId;
     /**
      * @return The name of the Backend.
      * 
      */
-    private final String backendName;
+    private String backendName;
     /**
      * @return The type of the Backend.
      * 
      */
-    private final String backendType;
+    private String backendType;
     /**
      * @return The created time of the Backend.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the Backend.
      * 
      */
-    private final String description;
-    private final String id;
+    private String description;
+    private String id;
     /**
      * @return The modified time of the Backend.
      * 
      */
-    private final String modifiedTime;
+    private String modifiedTime;
 
-    @CustomType.Constructor
-    private GetBackendsBackend(
-        @CustomType.Parameter("backendId") String backendId,
-        @CustomType.Parameter("backendName") String backendName,
-        @CustomType.Parameter("backendType") String backendType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("modifiedTime") String modifiedTime) {
-        this.backendId = backendId;
-        this.backendName = backendName;
-        this.backendType = backendType;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.modifiedTime = modifiedTime;
-    }
-
+    private GetBackendsBackend() {}
     /**
      * @return The id of the Backend.
      * 
@@ -112,7 +95,7 @@ public final class GetBackendsBackend {
     public static Builder builder(GetBackendsBackend defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendId;
         private String backendName;
@@ -121,11 +104,7 @@ public final class GetBackendsBackend {
         private String description;
         private String id;
         private String modifiedTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendsBackend defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendId = defaults.backendId;
@@ -137,35 +116,51 @@ public final class GetBackendsBackend {
     	      this.modifiedTime = defaults.modifiedTime;
         }
 
+        @CustomType.Setter
         public Builder backendId(String backendId) {
             this.backendId = Objects.requireNonNull(backendId);
             return this;
         }
+        @CustomType.Setter
         public Builder backendName(String backendName) {
             this.backendName = Objects.requireNonNull(backendName);
             return this;
         }
+        @CustomType.Setter
         public Builder backendType(String backendType) {
             this.backendType = Objects.requireNonNull(backendType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
-        }        public GetBackendsBackend build() {
-            return new GetBackendsBackend(backendId, backendName, backendType, createTime, description, id, modifiedTime);
+        }
+        public GetBackendsBackend build() {
+            final var o = new GetBackendsBackend();
+            o.backendId = backendId;
+            o.backendName = backendName;
+            o.backendType = backendType;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.modifiedTime = modifiedTime;
+            return o;
         }
     }
 }

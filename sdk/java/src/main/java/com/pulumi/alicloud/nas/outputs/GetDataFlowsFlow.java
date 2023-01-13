@@ -14,98 +14,69 @@ public final class GetDataFlowsFlow {
      * @return The time when Fileset was created. Executing the ISO8601 standard means that the return format is: &#39;yyyy-MM-ddTHH:mm:ssZ&#39;.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Data Flow.
      * 
      */
-    private final String dataFlowId;
+    private String dataFlowId;
     /**
      * @return The Description of data flow.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Error message.
      * 
      */
-    private final String errorMessage;
+    private String errorMessage;
     /**
      * @return The ID of the file system.
      * 
      */
-    private final String fileSystemId;
+    private String fileSystemId;
     /**
      * @return The path of Fileset in the CPFS file system.
      * 
      */
-    private final String fileSystemPath;
+    private String fileSystemPath;
     /**
      * @return Description of automatic update.
      * 
      */
-    private final String fsetDescription;
+    private String fsetDescription;
     /**
      * @return The ID of the Fileset.
      * 
      */
-    private final String fsetId;
+    private String fsetId;
     /**
      * @return The resource ID of the data flow. The value formats as `&lt;file_system_id&gt;:&lt;data_flow_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The security protection type of the source storage.
      * 
      */
-    private final String sourceSecurityType;
+    private String sourceSecurityType;
     /**
      * @return The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`.
      * 
      */
-    private final String sourceStorage;
+    private String sourceStorage;
     /**
      * @return The status of the Data flow.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The maximum transmission bandwidth of data flow, unit: `MB/s`.
      * 
      */
-    private final Integer throughput;
+    private Integer throughput;
 
-    @CustomType.Constructor
-    private GetDataFlowsFlow(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dataFlowId") String dataFlowId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("fileSystemId") String fileSystemId,
-        @CustomType.Parameter("fileSystemPath") String fileSystemPath,
-        @CustomType.Parameter("fsetDescription") String fsetDescription,
-        @CustomType.Parameter("fsetId") String fsetId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("sourceSecurityType") String sourceSecurityType,
-        @CustomType.Parameter("sourceStorage") String sourceStorage,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("throughput") Integer throughput) {
-        this.createTime = createTime;
-        this.dataFlowId = dataFlowId;
-        this.description = description;
-        this.errorMessage = errorMessage;
-        this.fileSystemId = fileSystemId;
-        this.fileSystemPath = fileSystemPath;
-        this.fsetDescription = fsetDescription;
-        this.fsetId = fsetId;
-        this.id = id;
-        this.sourceSecurityType = sourceSecurityType;
-        this.sourceStorage = sourceStorage;
-        this.status = status;
-        this.throughput = throughput;
-    }
-
+    private GetDataFlowsFlow() {}
     /**
      * @return The time when Fileset was created. Executing the ISO8601 standard means that the return format is: &#39;yyyy-MM-ddTHH:mm:ssZ&#39;.
      * 
@@ -205,7 +176,7 @@ public final class GetDataFlowsFlow {
     public static Builder builder(GetDataFlowsFlow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String dataFlowId;
@@ -220,11 +191,7 @@ public final class GetDataFlowsFlow {
         private String sourceStorage;
         private String status;
         private Integer throughput;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDataFlowsFlow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -242,59 +209,87 @@ public final class GetDataFlowsFlow {
     	      this.throughput = defaults.throughput;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dataFlowId(String dataFlowId) {
             this.dataFlowId = Objects.requireNonNull(dataFlowId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemPath(String fileSystemPath) {
             this.fileSystemPath = Objects.requireNonNull(fileSystemPath);
             return this;
         }
+        @CustomType.Setter
         public Builder fsetDescription(String fsetDescription) {
             this.fsetDescription = Objects.requireNonNull(fsetDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder fsetId(String fsetId) {
             this.fsetId = Objects.requireNonNull(fsetId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceSecurityType(String sourceSecurityType) {
             this.sourceSecurityType = Objects.requireNonNull(sourceSecurityType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceStorage(String sourceStorage) {
             this.sourceStorage = Objects.requireNonNull(sourceStorage);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder throughput(Integer throughput) {
             this.throughput = Objects.requireNonNull(throughput);
             return this;
-        }        public GetDataFlowsFlow build() {
-            return new GetDataFlowsFlow(createTime, dataFlowId, description, errorMessage, fileSystemId, fileSystemPath, fsetDescription, fsetId, id, sourceSecurityType, sourceStorage, status, throughput);
+        }
+        public GetDataFlowsFlow build() {
+            final var o = new GetDataFlowsFlow();
+            o.createTime = createTime;
+            o.dataFlowId = dataFlowId;
+            o.description = description;
+            o.errorMessage = errorMessage;
+            o.fileSystemId = fileSystemId;
+            o.fileSystemPath = fileSystemPath;
+            o.fsetDescription = fsetDescription;
+            o.fsetId = fsetId;
+            o.id = id;
+            o.sourceSecurityType = sourceSecurityType;
+            o.sourceStorage = sourceStorage;
+            o.status = status;
+            o.throughput = throughput;
+            return o;
         }
     }
 }

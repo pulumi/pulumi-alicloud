@@ -15,79 +15,52 @@ public final class GetScheduledTasksTask {
      * @return Description of the scheduled task.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the scheduled task id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The time period during which a failed scheduled task is retried.
      * 
      */
-    private final Integer launchExpirationTime;
+    private Integer launchExpirationTime;
     /**
      * @return The time at which the scheduled task is triggered.
      * 
      */
-    private final String launchTime;
-    private final Integer maxValue;
-    private final Integer minValue;
+    private String launchTime;
+    private Integer maxValue;
+    private Integer minValue;
     /**
      * @return Name of the scheduled task name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Specifies the end time after which the scheduled task is no longer repeated.
      * 
      */
-    private final String recurrenceEndTime;
+    private String recurrenceEndTime;
     /**
      * @return Specifies the recurrence type of the scheduled task.
      * 
      */
-    private final String recurrenceType;
+    private String recurrenceType;
     /**
      * @return Specifies how often a scheduled task recurs.
      * 
      */
-    private final String recurrenceValue;
+    private String recurrenceValue;
     /**
      * @return The operation to be performed when a scheduled task is triggered.
      * 
      */
-    private final String scheduledAction;
-    private final Boolean taskEnabled;
+    private String scheduledAction;
+    private Boolean taskEnabled;
 
-    @CustomType.Constructor
-    private GetScheduledTasksTask(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("launchExpirationTime") Integer launchExpirationTime,
-        @CustomType.Parameter("launchTime") String launchTime,
-        @CustomType.Parameter("maxValue") Integer maxValue,
-        @CustomType.Parameter("minValue") Integer minValue,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("recurrenceEndTime") String recurrenceEndTime,
-        @CustomType.Parameter("recurrenceType") String recurrenceType,
-        @CustomType.Parameter("recurrenceValue") String recurrenceValue,
-        @CustomType.Parameter("scheduledAction") String scheduledAction,
-        @CustomType.Parameter("taskEnabled") Boolean taskEnabled) {
-        this.description = description;
-        this.id = id;
-        this.launchExpirationTime = launchExpirationTime;
-        this.launchTime = launchTime;
-        this.maxValue = maxValue;
-        this.minValue = minValue;
-        this.name = name;
-        this.recurrenceEndTime = recurrenceEndTime;
-        this.recurrenceType = recurrenceType;
-        this.recurrenceValue = recurrenceValue;
-        this.scheduledAction = scheduledAction;
-        this.taskEnabled = taskEnabled;
-    }
-
+    private GetScheduledTasksTask() {}
     /**
      * @return Description of the scheduled task.
      * 
@@ -168,7 +141,7 @@ public final class GetScheduledTasksTask {
     public static Builder builder(GetScheduledTasksTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -182,11 +155,7 @@ public final class GetScheduledTasksTask {
         private String recurrenceValue;
         private String scheduledAction;
         private Boolean taskEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetScheduledTasksTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -203,55 +172,81 @@ public final class GetScheduledTasksTask {
     	      this.taskEnabled = defaults.taskEnabled;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder launchExpirationTime(Integer launchExpirationTime) {
             this.launchExpirationTime = Objects.requireNonNull(launchExpirationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder launchTime(String launchTime) {
             this.launchTime = Objects.requireNonNull(launchTime);
             return this;
         }
+        @CustomType.Setter
         public Builder maxValue(Integer maxValue) {
             this.maxValue = Objects.requireNonNull(maxValue);
             return this;
         }
+        @CustomType.Setter
         public Builder minValue(Integer minValue) {
             this.minValue = Objects.requireNonNull(minValue);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder recurrenceEndTime(String recurrenceEndTime) {
             this.recurrenceEndTime = Objects.requireNonNull(recurrenceEndTime);
             return this;
         }
+        @CustomType.Setter
         public Builder recurrenceType(String recurrenceType) {
             this.recurrenceType = Objects.requireNonNull(recurrenceType);
             return this;
         }
+        @CustomType.Setter
         public Builder recurrenceValue(String recurrenceValue) {
             this.recurrenceValue = Objects.requireNonNull(recurrenceValue);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduledAction(String scheduledAction) {
             this.scheduledAction = Objects.requireNonNull(scheduledAction);
             return this;
         }
+        @CustomType.Setter
         public Builder taskEnabled(Boolean taskEnabled) {
             this.taskEnabled = Objects.requireNonNull(taskEnabled);
             return this;
-        }        public GetScheduledTasksTask build() {
-            return new GetScheduledTasksTask(description, id, launchExpirationTime, launchTime, maxValue, minValue, name, recurrenceEndTime, recurrenceType, recurrenceValue, scheduledAction, taskEnabled);
+        }
+        public GetScheduledTasksTask build() {
+            final var o = new GetScheduledTasksTask();
+            o.description = description;
+            o.id = id;
+            o.launchExpirationTime = launchExpirationTime;
+            o.launchTime = launchTime;
+            o.maxValue = maxValue;
+            o.minValue = minValue;
+            o.name = name;
+            o.recurrenceEndTime = recurrenceEndTime;
+            o.recurrenceType = recurrenceType;
+            o.recurrenceValue = recurrenceValue;
+            o.scheduledAction = scheduledAction;
+            o.taskEnabled = taskEnabled;
+            return o;
         }
     }
 }

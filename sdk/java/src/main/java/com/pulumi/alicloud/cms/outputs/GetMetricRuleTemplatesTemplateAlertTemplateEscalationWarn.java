@@ -13,36 +13,25 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
      * @return The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
      */
-    private final String comparisonOperator;
+    private String comparisonOperator;
     /**
      * @return The statistical aggregation method for warn-level alerts.
      * 
      */
-    private final String statistics;
+    private String statistics;
     /**
      * @return The threshold for warn-level alerts.
      * 
      */
-    private final String threshold;
+    private String threshold;
     /**
      * @return The consecutive number of times for which the metric value is measured before a warn-level
      * alert is triggered.
      * 
      */
-    private final String times;
+    private String times;
 
-    @CustomType.Constructor
-    private GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn(
-        @CustomType.Parameter("comparisonOperator") String comparisonOperator,
-        @CustomType.Parameter("statistics") String statistics,
-        @CustomType.Parameter("threshold") String threshold,
-        @CustomType.Parameter("times") String times) {
-        this.comparisonOperator = comparisonOperator;
-        this.statistics = statistics;
-        this.threshold = threshold;
-        this.times = times;
-    }
-
+    private GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn() {}
     /**
      * @return The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
@@ -80,17 +69,13 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
     public static Builder builder(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comparisonOperator;
         private String statistics;
         private String threshold;
         private String times;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -99,23 +84,33 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
     	      this.times = defaults.times;
         }
 
+        @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
             this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
             return this;
         }
+        @CustomType.Setter
         public Builder statistics(String statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
         }
+        @CustomType.Setter
         public Builder times(String times) {
             this.times = Objects.requireNonNull(times);
             return this;
-        }        public GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn build() {
-            return new GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn(comparisonOperator, statistics, threshold, times);
+        }
+        public GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn build() {
+            final var o = new GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn();
+            o.comparisonOperator = comparisonOperator;
+            o.statistics = statistics;
+            o.threshold = threshold;
+            o.times = times;
+            return o;
         }
     }
 }

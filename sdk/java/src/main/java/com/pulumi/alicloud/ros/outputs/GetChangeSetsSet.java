@@ -17,98 +17,69 @@ public final class GetChangeSetsSet {
      * @return The ID of the change set.
      * 
      */
-    private final String changeSetId;
+    private String changeSetId;
     /**
      * @return The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      * 
      */
-    private final String changeSetName;
+    private String changeSetName;
     /**
      * @return The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
      * 
      */
-    private final String changeSetType;
+    private String changeSetType;
     /**
      * @return The description of the change set. The description can be up to 1,024 bytes in length.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      * 
      */
-    private final Boolean disableRollback;
+    private Boolean disableRollback;
     /**
      * @return The execution status of change set N. Maximum value of N: 5. Valid values:  UNAVAILABLE AVAILABLE EXECUTE_IN_PROGRESS EXECUTE_COMPLETE EXECUTE_FAILED OBSOLETE.
      * 
      */
-    private final String executionStatus;
+    private String executionStatus;
     /**
      * @return The ID of the Change Set.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Parameters.
      * 
      */
-    private final List<GetChangeSetsSetParameter> parameters;
+    private List<GetChangeSetsSetParameter> parameters;
     /**
      * @return The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
      * 
      */
-    private final String stackId;
+    private String stackId;
     /**
      * @return The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      * 
      */
-    private final String stackName;
+    private String stackName;
     /**
      * @return The status of the change set.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
      * 
      */
-    private final String templateBody;
+    private String templateBody;
     /**
      * @return Timeout In Minutes.
      * 
      */
-    private final Integer timeoutInMinutes;
+    private Integer timeoutInMinutes;
 
-    @CustomType.Constructor
-    private GetChangeSetsSet(
-        @CustomType.Parameter("changeSetId") String changeSetId,
-        @CustomType.Parameter("changeSetName") String changeSetName,
-        @CustomType.Parameter("changeSetType") String changeSetType,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("disableRollback") Boolean disableRollback,
-        @CustomType.Parameter("executionStatus") String executionStatus,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parameters") List<GetChangeSetsSetParameter> parameters,
-        @CustomType.Parameter("stackId") String stackId,
-        @CustomType.Parameter("stackName") String stackName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("templateBody") String templateBody,
-        @CustomType.Parameter("timeoutInMinutes") Integer timeoutInMinutes) {
-        this.changeSetId = changeSetId;
-        this.changeSetName = changeSetName;
-        this.changeSetType = changeSetType;
-        this.description = description;
-        this.disableRollback = disableRollback;
-        this.executionStatus = executionStatus;
-        this.id = id;
-        this.parameters = parameters;
-        this.stackId = stackId;
-        this.stackName = stackName;
-        this.status = status;
-        this.templateBody = templateBody;
-        this.timeoutInMinutes = timeoutInMinutes;
-    }
-
+    private GetChangeSetsSet() {}
     /**
      * @return The ID of the change set.
      * 
@@ -208,7 +179,7 @@ public final class GetChangeSetsSet {
     public static Builder builder(GetChangeSetsSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String changeSetId;
         private String changeSetName;
@@ -223,11 +194,7 @@ public final class GetChangeSetsSet {
         private String status;
         private String templateBody;
         private Integer timeoutInMinutes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetChangeSetsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.changeSetId = defaults.changeSetId;
@@ -245,34 +212,42 @@ public final class GetChangeSetsSet {
     	      this.timeoutInMinutes = defaults.timeoutInMinutes;
         }
 
+        @CustomType.Setter
         public Builder changeSetId(String changeSetId) {
             this.changeSetId = Objects.requireNonNull(changeSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder changeSetName(String changeSetName) {
             this.changeSetName = Objects.requireNonNull(changeSetName);
             return this;
         }
+        @CustomType.Setter
         public Builder changeSetType(String changeSetType) {
             this.changeSetType = Objects.requireNonNull(changeSetType);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder disableRollback(Boolean disableRollback) {
             this.disableRollback = Objects.requireNonNull(disableRollback);
             return this;
         }
+        @CustomType.Setter
         public Builder executionStatus(String executionStatus) {
             this.executionStatus = Objects.requireNonNull(executionStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(List<GetChangeSetsSetParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -280,27 +255,47 @@ public final class GetChangeSetsSet {
         public Builder parameters(GetChangeSetsSetParameter... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
+        @CustomType.Setter
         public Builder stackName(String stackName) {
             this.stackName = Objects.requireNonNull(stackName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder templateBody(String templateBody) {
             this.templateBody = Objects.requireNonNull(templateBody);
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutInMinutes(Integer timeoutInMinutes) {
             this.timeoutInMinutes = Objects.requireNonNull(timeoutInMinutes);
             return this;
-        }        public GetChangeSetsSet build() {
-            return new GetChangeSetsSet(changeSetId, changeSetName, changeSetType, description, disableRollback, executionStatus, id, parameters, stackId, stackName, status, templateBody, timeoutInMinutes);
+        }
+        public GetChangeSetsSet build() {
+            final var o = new GetChangeSetsSet();
+            o.changeSetId = changeSetId;
+            o.changeSetName = changeSetName;
+            o.changeSetType = changeSetType;
+            o.description = description;
+            o.disableRollback = disableRollback;
+            o.executionStatus = executionStatus;
+            o.id = id;
+            o.parameters = parameters;
+            o.stackId = stackId;
+            o.stackName = stackName;
+            o.status = status;
+            o.templateBody = templateBody;
+            o.timeoutInMinutes = timeoutInMinutes;
+            return o;
         }
     }
 }

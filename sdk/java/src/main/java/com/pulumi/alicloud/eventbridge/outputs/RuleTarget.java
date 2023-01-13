@@ -15,35 +15,24 @@ public final class RuleTarget {
      * @return The endpoint of target.
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return A list of param.
      * 
      */
-    private final List<RuleTargetParamList> paramLists;
+    private List<RuleTargetParamList> paramLists;
     /**
      * @return The ID of target.
      * 
      */
-    private final String targetId;
+    private String targetId;
     /**
      * @return The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private RuleTarget(
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("paramLists") List<RuleTargetParamList> paramLists,
-        @CustomType.Parameter("targetId") String targetId,
-        @CustomType.Parameter("type") String type) {
-        this.endpoint = endpoint;
-        this.paramLists = paramLists;
-        this.targetId = targetId;
-        this.type = type;
-    }
-
+    private RuleTarget() {}
     /**
      * @return The endpoint of target.
      * 
@@ -80,17 +69,13 @@ public final class RuleTarget {
     public static Builder builder(RuleTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpoint;
         private List<RuleTargetParamList> paramLists;
         private String targetId;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
@@ -99,10 +84,12 @@ public final class RuleTarget {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder paramLists(List<RuleTargetParamList> paramLists) {
             this.paramLists = Objects.requireNonNull(paramLists);
             return this;
@@ -110,15 +97,23 @@ public final class RuleTarget {
         public Builder paramLists(RuleTargetParamList... paramLists) {
             return paramLists(List.of(paramLists));
         }
+        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public RuleTarget build() {
-            return new RuleTarget(endpoint, paramLists, targetId, type);
+        }
+        public RuleTarget build() {
+            final var o = new RuleTarget();
+            o.endpoint = endpoint;
+            o.paramLists = paramLists;
+            o.targetId = targetId;
+            o.type = type;
+            return o;
         }
     }
 }

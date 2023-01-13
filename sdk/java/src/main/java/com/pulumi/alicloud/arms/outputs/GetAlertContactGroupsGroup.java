@@ -14,42 +14,29 @@ public final class GetAlertContactGroupsGroup {
      * @return The first ID of the resource.
      * 
      */
-    private final String alertContactGroupId;
+    private String alertContactGroupId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String alertContactGroupName;
+    private String alertContactGroupName;
     /**
      * @return contact ids.
      * 
      */
-    private final List<String> contactIds;
+    private List<String> contactIds;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Alert Contact Group.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetAlertContactGroupsGroup(
-        @CustomType.Parameter("alertContactGroupId") String alertContactGroupId,
-        @CustomType.Parameter("alertContactGroupName") String alertContactGroupName,
-        @CustomType.Parameter("contactIds") List<String> contactIds,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id) {
-        this.alertContactGroupId = alertContactGroupId;
-        this.alertContactGroupName = alertContactGroupName;
-        this.contactIds = contactIds;
-        this.createTime = createTime;
-        this.id = id;
-    }
-
+    private GetAlertContactGroupsGroup() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -93,18 +80,14 @@ public final class GetAlertContactGroupsGroup {
     public static Builder builder(GetAlertContactGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alertContactGroupId;
         private String alertContactGroupName;
         private List<String> contactIds;
         private String createTime;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlertContactGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertContactGroupId = defaults.alertContactGroupId;
@@ -114,14 +97,17 @@ public final class GetAlertContactGroupsGroup {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder alertContactGroupId(String alertContactGroupId) {
             this.alertContactGroupId = Objects.requireNonNull(alertContactGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder alertContactGroupName(String alertContactGroupName) {
             this.alertContactGroupName = Objects.requireNonNull(alertContactGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder contactIds(List<String> contactIds) {
             this.contactIds = Objects.requireNonNull(contactIds);
             return this;
@@ -129,15 +115,24 @@ public final class GetAlertContactGroupsGroup {
         public Builder contactIds(String... contactIds) {
             return contactIds(List.of(contactIds));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetAlertContactGroupsGroup build() {
-            return new GetAlertContactGroupsGroup(alertContactGroupId, alertContactGroupName, contactIds, createTime, id);
+        }
+        public GetAlertContactGroupsGroup build() {
+            final var o = new GetAlertContactGroupsGroup();
+            o.alertContactGroupId = alertContactGroupId;
+            o.alertContactGroupName = alertContactGroupName;
+            o.contactIds = contactIds;
+            o.createTime = createTime;
+            o.id = id;
+            return o;
         }
     }
 }

@@ -13,12 +13,12 @@ public final class GetPolicyAttachmentsAttachment {
      * @return The time when the policy was attached.
      * 
      */
-    private final String attachDate;
+    private String attachDate;
     /**
      * @return The description of the policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Resource Manager Policy Attachment.
      * * `policy_name`- The name of the policy.
@@ -27,53 +27,34 @@ public final class GetPolicyAttachmentsAttachment {
      * * `principal_type`- The type of the object to which the policy is attached.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      * 
      */
-    private final String policyName;
+    private String policyName;
     /**
      * @return The type of the policy. Valid values: `Custom` and `System`.
      * 
      */
-    private final String policyType;
+    private String policyType;
     /**
      * @return The name of the object to which the policy is attached.
      * 
      */
-    private final String principalName;
+    private String principalName;
     /**
      * @return The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      * 
      */
-    private final String principalType;
+    private String principalType;
     /**
      * @return The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
 
-    @CustomType.Constructor
-    private GetPolicyAttachmentsAttachment(
-        @CustomType.Parameter("attachDate") String attachDate,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("policyName") String policyName,
-        @CustomType.Parameter("policyType") String policyType,
-        @CustomType.Parameter("principalName") String principalName,
-        @CustomType.Parameter("principalType") String principalType,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId) {
-        this.attachDate = attachDate;
-        this.description = description;
-        this.id = id;
-        this.policyName = policyName;
-        this.policyType = policyType;
-        this.principalName = principalName;
-        this.principalType = principalType;
-        this.resourceGroupId = resourceGroupId;
-    }
-
+    private GetPolicyAttachmentsAttachment() {}
     /**
      * @return The time when the policy was attached.
      * 
@@ -142,7 +123,7 @@ public final class GetPolicyAttachmentsAttachment {
     public static Builder builder(GetPolicyAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attachDate;
         private String description;
@@ -152,11 +133,7 @@ public final class GetPolicyAttachmentsAttachment {
         private String principalName;
         private String principalType;
         private String resourceGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachDate = defaults.attachDate;
@@ -169,39 +146,57 @@ public final class GetPolicyAttachmentsAttachment {
     	      this.resourceGroupId = defaults.resourceGroupId;
         }
 
+        @CustomType.Setter
         public Builder attachDate(String attachDate) {
             this.attachDate = Objects.requireNonNull(attachDate);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
+        @CustomType.Setter
         public Builder policyType(String policyType) {
             this.policyType = Objects.requireNonNull(policyType);
             return this;
         }
+        @CustomType.Setter
         public Builder principalName(String principalName) {
             this.principalName = Objects.requireNonNull(principalName);
             return this;
         }
+        @CustomType.Setter
         public Builder principalType(String principalType) {
             this.principalType = Objects.requireNonNull(principalType);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
-        }        public GetPolicyAttachmentsAttachment build() {
-            return new GetPolicyAttachmentsAttachment(attachDate, description, id, policyName, policyType, principalName, principalType, resourceGroupId);
+        }
+        public GetPolicyAttachmentsAttachment build() {
+            final var o = new GetPolicyAttachmentsAttachment();
+            o.attachDate = attachDate;
+            o.description = description;
+            o.id = id;
+            o.policyName = policyName;
+            o.policyType = policyType;
+            o.principalName = principalName;
+            o.principalType = principalType;
+            o.resourceGroupId = resourceGroupId;
+            return o;
         }
     }
 }

@@ -17,45 +17,30 @@ public final class GetUserTenantsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of DMS User Tenant IDs (UID).
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of DMS User Tenant names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the user tenant.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A list of DMS User Tenants. Each element contains the following attributes:
      * 
      */
-    private final List<GetUserTenantsTenant> tenants;
+    private List<GetUserTenantsTenant> tenants;
 
-    @CustomType.Constructor
-    private GetUserTenantsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tenants") List<GetUserTenantsTenant> tenants) {
-        this.id = id;
-        this.ids = ids;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.tenants = tenants;
-    }
-
+    private GetUserTenantsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -102,7 +87,7 @@ public final class GetUserTenantsResult {
     public static Builder builder(GetUserTenantsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -110,11 +95,7 @@ public final class GetUserTenantsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetUserTenantsTenant> tenants;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserTenantsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,10 +106,12 @@ public final class GetUserTenantsResult {
     	      this.tenants = defaults.tenants;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,6 +119,7 @@ public final class GetUserTenantsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,22 +127,33 @@ public final class GetUserTenantsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tenants(List<GetUserTenantsTenant> tenants) {
             this.tenants = Objects.requireNonNull(tenants);
             return this;
         }
         public Builder tenants(GetUserTenantsTenant... tenants) {
             return tenants(List.of(tenants));
-        }        public GetUserTenantsResult build() {
-            return new GetUserTenantsResult(id, ids, names, outputFile, status, tenants);
+        }
+        public GetUserTenantsResult build() {
+            final var o = new GetUserTenantsResult();
+            o.id = id;
+            o.ids = ids;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.tenants = tenants;
+            return o;
         }
     }
 }

@@ -14,51 +14,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKeysResult {
-    private final @Nullable String descriptionRegex;
-    private final @Nullable Boolean enableDetails;
-    private final @Nullable String filters;
+    private @Nullable String descriptionRegex;
+    private @Nullable Boolean enableDetails;
+    private @Nullable String filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of KMS key IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of KMS keys. Each element contains the following attributes:
      * 
      */
-    private final List<GetKeysKey> keys;
-    private final @Nullable String outputFile;
+    private List<GetKeysKey> keys;
+    private @Nullable String outputFile;
     /**
      * @return Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetKeysResult(
-        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("filters") @Nullable String filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keys") List<GetKeysKey> keys,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.descriptionRegex = descriptionRegex;
-        this.enableDetails = enableDetails;
-        this.filters = filters;
-        this.id = id;
-        this.ids = ids;
-        this.keys = keys;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetKeysResult() {}
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
@@ -107,7 +88,7 @@ public final class GetKeysResult {
     public static Builder builder(GetKeysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private @Nullable Boolean enableDetails;
@@ -117,11 +98,7 @@ public final class GetKeysResult {
         private List<GetKeysKey> keys;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
@@ -134,22 +111,27 @@ public final class GetKeysResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder filters(@Nullable String filters) {
             this.filters = filters;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -157,6 +139,7 @@ public final class GetKeysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keys(List<GetKeysKey> keys) {
             this.keys = Objects.requireNonNull(keys);
             return this;
@@ -164,15 +147,27 @@ public final class GetKeysResult {
         public Builder keys(GetKeysKey... keys) {
             return keys(List.of(keys));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetKeysResult build() {
-            return new GetKeysResult(descriptionRegex, enableDetails, filters, id, ids, keys, outputFile, status);
+        }
+        public GetKeysResult build() {
+            final var o = new GetKeysResult();
+            o.descriptionRegex = descriptionRegex;
+            o.enableDetails = enableDetails;
+            o.filters = filters;
+            o.id = id;
+            o.ids = ids;
+            o.keys = keys;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

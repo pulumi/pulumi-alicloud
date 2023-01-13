@@ -17,26 +17,13 @@ public final class GetMonitorGroupInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String ids;
-    private final List<GetMonitorGroupInstancesInstance> instances;
-    private final @Nullable String keyword;
-    private final @Nullable String outputFile;
+    private String id;
+    private String ids;
+    private List<GetMonitorGroupInstancesInstance> instances;
+    private @Nullable String keyword;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetMonitorGroupInstancesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") String ids,
-        @CustomType.Parameter("instances") List<GetMonitorGroupInstancesInstance> instances,
-        @CustomType.Parameter("keyword") @Nullable String keyword,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.keyword = keyword;
-        this.outputFile = outputFile;
-    }
-
+    private GetMonitorGroupInstancesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,18 +51,14 @@ public final class GetMonitorGroupInstancesResult {
     public static Builder builder(GetMonitorGroupInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String ids;
         private List<GetMonitorGroupInstancesInstance> instances;
         private @Nullable String keyword;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMonitorGroupInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -85,14 +68,17 @@ public final class GetMonitorGroupInstancesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(String ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetMonitorGroupInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -100,15 +86,24 @@ public final class GetMonitorGroupInstancesResult {
         public Builder instances(GetMonitorGroupInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetMonitorGroupInstancesResult build() {
-            return new GetMonitorGroupInstancesResult(id, ids, instances, keyword, outputFile);
+        }
+        public GetMonitorGroupInstancesResult build() {
+            final var o = new GetMonitorGroupInstancesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.keyword = keyword;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

@@ -16,42 +16,29 @@ public final class AlertNotificationList {
      * @return Notice content of alarm.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return Email address list.
      * 
      */
-    private final @Nullable List<String> emailLists;
+    private @Nullable List<String> emailLists;
     /**
      * @return SMS sending mobile number.
      * 
      */
-    private final @Nullable List<String> mobileLists;
+    private @Nullable List<String> mobileLists;
     /**
      * @return Request address.
      * 
      */
-    private final @Nullable String serviceUri;
+    private @Nullable String serviceUri;
     /**
      * @return including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private AlertNotificationList(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("emailLists") @Nullable List<String> emailLists,
-        @CustomType.Parameter("mobileLists") @Nullable List<String> mobileLists,
-        @CustomType.Parameter("serviceUri") @Nullable String serviceUri,
-        @CustomType.Parameter("type") String type) {
-        this.content = content;
-        this.emailLists = emailLists;
-        this.mobileLists = mobileLists;
-        this.serviceUri = serviceUri;
-        this.type = type;
-    }
-
+    private AlertNotificationList() {}
     /**
      * @return Notice content of alarm.
      * 
@@ -95,18 +82,14 @@ public final class AlertNotificationList {
     public static Builder builder(AlertNotificationList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private @Nullable List<String> emailLists;
         private @Nullable List<String> mobileLists;
         private @Nullable String serviceUri;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertNotificationList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -116,10 +99,12 @@ public final class AlertNotificationList {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder emailLists(@Nullable List<String> emailLists) {
             this.emailLists = emailLists;
             return this;
@@ -127,6 +112,7 @@ public final class AlertNotificationList {
         public Builder emailLists(String... emailLists) {
             return emailLists(List.of(emailLists));
         }
+        @CustomType.Setter
         public Builder mobileLists(@Nullable List<String> mobileLists) {
             this.mobileLists = mobileLists;
             return this;
@@ -134,15 +120,24 @@ public final class AlertNotificationList {
         public Builder mobileLists(String... mobileLists) {
             return mobileLists(List.of(mobileLists));
         }
+        @CustomType.Setter
         public Builder serviceUri(@Nullable String serviceUri) {
             this.serviceUri = serviceUri;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public AlertNotificationList build() {
-            return new AlertNotificationList(content, emailLists, mobileLists, serviceUri, type);
+        }
+        public AlertNotificationList build() {
+            final var o = new AlertNotificationList();
+            o.content = content;
+            o.emailLists = emailLists;
+            o.mobileLists = mobileLists;
+            o.serviceUri = serviceUri;
+            o.type = type;
+            return o;
         }
     }
 }

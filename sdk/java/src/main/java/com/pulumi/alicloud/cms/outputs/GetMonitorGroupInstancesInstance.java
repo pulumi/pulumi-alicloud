@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMonitorGroupInstancesInstance {
-    private final List<GetMonitorGroupInstancesInstanceInstance> instances;
+    private List<GetMonitorGroupInstancesInstanceInstance> instances;
 
-    @CustomType.Constructor
-    private GetMonitorGroupInstancesInstance(@CustomType.Parameter("instances") List<GetMonitorGroupInstancesInstanceInstance> instances) {
-        this.instances = instances;
-    }
-
+    private GetMonitorGroupInstancesInstance() {}
     public List<GetMonitorGroupInstancesInstanceInstance> instances() {
         return this.instances;
     }
@@ -28,27 +24,27 @@ public final class GetMonitorGroupInstancesInstance {
     public static Builder builder(GetMonitorGroupInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetMonitorGroupInstancesInstanceInstance> instances;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMonitorGroupInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instances = defaults.instances;
         }
 
+        @CustomType.Setter
         public Builder instances(List<GetMonitorGroupInstancesInstanceInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
         }
         public Builder instances(GetMonitorGroupInstancesInstanceInstance... instances) {
             return instances(List.of(instances));
-        }        public GetMonitorGroupInstancesInstance build() {
-            return new GetMonitorGroupInstancesInstance(instances);
+        }
+        public GetMonitorGroupInstancesInstance build() {
+            final var o = new GetMonitorGroupInstancesInstance();
+            o.instances = instances;
+            return o;
         }
     }
 }

@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessStrategiesResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String lang;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetAccessStrategiesStrategy> strategies;
-    private final String strategyMode;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String lang;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetAccessStrategiesStrategy> strategies;
+    private String strategyMode;
 
-    @CustomType.Constructor
-    private GetAccessStrategiesResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("strategies") List<GetAccessStrategiesStrategy> strategies,
-        @CustomType.Parameter("strategyMode") String strategyMode) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.lang = lang;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.strategies = strategies;
-        this.strategyMode = strategyMode;
-    }
-
+    private GetAccessStrategiesResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -95,7 +72,7 @@ public final class GetAccessStrategiesResult {
     public static Builder builder(GetAccessStrategiesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -107,11 +84,7 @@ public final class GetAccessStrategiesResult {
         private @Nullable String outputFile;
         private List<GetAccessStrategiesStrategy> strategies;
         private String strategyMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessStrategiesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -126,14 +99,17 @@ public final class GetAccessStrategiesResult {
     	      this.strategyMode = defaults.strategyMode;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,18 +117,22 @@ public final class GetAccessStrategiesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -160,10 +140,12 @@ public final class GetAccessStrategiesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder strategies(List<GetAccessStrategiesStrategy> strategies) {
             this.strategies = Objects.requireNonNull(strategies);
             return this;
@@ -171,11 +153,24 @@ public final class GetAccessStrategiesResult {
         public Builder strategies(GetAccessStrategiesStrategy... strategies) {
             return strategies(List.of(strategies));
         }
+        @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
             this.strategyMode = Objects.requireNonNull(strategyMode);
             return this;
-        }        public GetAccessStrategiesResult build() {
-            return new GetAccessStrategiesResult(enableDetails, id, ids, instanceId, lang, nameRegex, names, outputFile, strategies, strategyMode);
+        }
+        public GetAccessStrategiesResult build() {
+            final var o = new GetAccessStrategiesResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.lang = lang;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.strategies = strategies;
+            o.strategyMode = strategyMode;
+            return o;
         }
     }
 }

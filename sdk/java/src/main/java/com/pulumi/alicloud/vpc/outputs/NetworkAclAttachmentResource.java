@@ -13,21 +13,14 @@ public final class NetworkAclAttachmentResource {
      * @return The resource id that the network acl will associate with.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return The resource id that the network acl will associate with. Only support `VSwitch` now.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private NetworkAclAttachmentResource(
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-    }
-
+    private NetworkAclAttachmentResource() {}
     /**
      * @return The resource id that the network acl will associate with.
      * 
@@ -50,30 +43,32 @@ public final class NetworkAclAttachmentResource {
     public static Builder builder(NetworkAclAttachmentResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceId;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NetworkAclAttachmentResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public NetworkAclAttachmentResource build() {
-            return new NetworkAclAttachmentResource(resourceId, resourceType);
+        }
+        public NetworkAclAttachmentResource build() {
+            final var o = new NetworkAclAttachmentResource();
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

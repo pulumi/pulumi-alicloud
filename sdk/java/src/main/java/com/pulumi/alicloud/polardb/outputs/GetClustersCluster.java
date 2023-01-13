@@ -16,147 +16,104 @@ public final class GetClustersCluster {
      * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
      * 
      */
-    private final String chargeType;
+    private String chargeType;
     /**
      * @return The create_time of the db_nodes.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The db_node_class of the db_nodes.
      * 
      */
-    private final String dbNodeClass;
+    private String dbNodeClass;
     /**
      * @return The DBNodeNumber of the PolarDB cluster.
      * 
      */
-    private final Integer dbNodeNumber;
+    private Integer dbNodeNumber;
     /**
      * @return The DBNodes of the PolarDB cluster.
      * 
      */
-    private final List<GetClustersClusterDbNode> dbNodes;
+    private List<GetClustersClusterDbNode> dbNodes;
     /**
      * @return Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
      * 
      */
-    private final String dbType;
+    private String dbType;
     /**
      * @return The DBVersion of the PolarDB cluster.
      * 
      */
-    private final String dbVersion;
+    private String dbVersion;
     /**
      * @return The DeleteLock of the PolarDB cluster.
      * 
      */
-    private final Integer deleteLock;
+    private Integer deleteLock;
     /**
      * @return The description of the PolarDB cluster.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Expiration time. Pay-As-You-Go clusters never expire.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The expired of the PolarDB cluster.
      * 
      */
-    private final String expired;
+    private String expired;
     /**
      * @return The ID of the PolarDB cluster.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The LockMode of the PolarDB cluster.
      * 
      */
-    private final String lockMode;
+    private String lockMode;
     /**
      * @return The DBClusterNetworkType of the PolarDB cluster.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The region_id of the db_nodes.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return status of the cluster.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The StorageUsed of the PolarDB cluster.
      * 
      */
-    private final Integer storageUsed;
+    private Integer storageUsed;
     /**
      * @return ID of the VPC the cluster belongs to.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The zone_id of the db_nodes.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetClustersCluster(
-        @CustomType.Parameter("chargeType") String chargeType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbNodeClass") String dbNodeClass,
-        @CustomType.Parameter("dbNodeNumber") Integer dbNodeNumber,
-        @CustomType.Parameter("dbNodes") List<GetClustersClusterDbNode> dbNodes,
-        @CustomType.Parameter("dbType") String dbType,
-        @CustomType.Parameter("dbVersion") String dbVersion,
-        @CustomType.Parameter("deleteLock") Integer deleteLock,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("expired") String expired,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lockMode") String lockMode,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storageUsed") Integer storageUsed,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.chargeType = chargeType;
-        this.createTime = createTime;
-        this.dbNodeClass = dbNodeClass;
-        this.dbNodeNumber = dbNodeNumber;
-        this.dbNodes = dbNodes;
-        this.dbType = dbType;
-        this.dbVersion = dbVersion;
-        this.deleteLock = deleteLock;
-        this.description = description;
-        this.engine = engine;
-        this.expireTime = expireTime;
-        this.expired = expired;
-        this.id = id;
-        this.lockMode = lockMode;
-        this.networkType = networkType;
-        this.regionId = regionId;
-        this.status = status;
-        this.storageUsed = storageUsed;
-        this.vpcId = vpcId;
-        this.zoneId = zoneId;
-    }
-
+    private GetClustersCluster() {}
     /**
      * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
      * 
@@ -305,7 +262,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String chargeType;
         private String createTime;
@@ -327,11 +284,7 @@ public final class GetClustersCluster {
         private Integer storageUsed;
         private String vpcId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chargeType = defaults.chargeType;
@@ -356,22 +309,27 @@ public final class GetClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
             this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodeNumber(Integer dbNodeNumber) {
             this.dbNodeNumber = Objects.requireNonNull(dbNodeNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder dbNodes(List<GetClustersClusterDbNode> dbNodes) {
             this.dbNodes = Objects.requireNonNull(dbNodes);
             return this;
@@ -379,67 +337,104 @@ public final class GetClustersCluster {
         public Builder dbNodes(GetClustersClusterDbNode... dbNodes) {
             return dbNodes(List.of(dbNodes));
         }
+        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
             this.dbVersion = Objects.requireNonNull(dbVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteLock(Integer deleteLock) {
             this.deleteLock = Objects.requireNonNull(deleteLock);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expired(String expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storageUsed(Integer storageUsed) {
             this.storageUsed = Objects.requireNonNull(storageUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetClustersCluster build() {
-            return new GetClustersCluster(chargeType, createTime, dbNodeClass, dbNodeNumber, dbNodes, dbType, dbVersion, deleteLock, description, engine, expireTime, expired, id, lockMode, networkType, regionId, status, storageUsed, vpcId, zoneId);
+        }
+        public GetClustersCluster build() {
+            final var o = new GetClustersCluster();
+            o.chargeType = chargeType;
+            o.createTime = createTime;
+            o.dbNodeClass = dbNodeClass;
+            o.dbNodeNumber = dbNodeNumber;
+            o.dbNodes = dbNodes;
+            o.dbType = dbType;
+            o.dbVersion = dbVersion;
+            o.deleteLock = deleteLock;
+            o.description = description;
+            o.engine = engine;
+            o.expireTime = expireTime;
+            o.expired = expired;
+            o.id = id;
+            o.lockMode = lockMode;
+            o.networkType = networkType;
+            o.regionId = regionId;
+            o.status = status;
+            o.storageUsed = storageUsed;
+            o.vpcId = vpcId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

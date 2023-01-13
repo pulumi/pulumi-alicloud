@@ -17,23 +17,12 @@ public final class GetCustomPropertiesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetCustomPropertiesProperty> properties;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetCustomPropertiesProperty> properties;
 
-    @CustomType.Constructor
-    private GetCustomPropertiesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("properties") List<GetCustomPropertiesProperty> properties) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.properties = properties;
-    }
-
+    private GetCustomPropertiesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,17 +47,13 @@ public final class GetCustomPropertiesResult {
     public static Builder builder(GetCustomPropertiesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetCustomPropertiesProperty> properties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomPropertiesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -77,10 +62,12 @@ public final class GetCustomPropertiesResult {
     	      this.properties = defaults.properties;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -88,18 +75,26 @@ public final class GetCustomPropertiesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(List<GetCustomPropertiesProperty> properties) {
             this.properties = Objects.requireNonNull(properties);
             return this;
         }
         public Builder properties(GetCustomPropertiesProperty... properties) {
             return properties(List.of(properties));
-        }        public GetCustomPropertiesResult build() {
-            return new GetCustomPropertiesResult(id, ids, outputFile, properties);
+        }
+        public GetCustomPropertiesResult build() {
+            final var o = new GetCustomPropertiesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.properties = properties;
+            return o;
         }
     }
 }

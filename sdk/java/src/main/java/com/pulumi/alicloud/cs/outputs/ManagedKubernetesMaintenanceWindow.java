@@ -14,35 +14,24 @@ public final class ManagedKubernetesMaintenanceWindow {
      * @return The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return Whether to open the maintenance window. The following parameters take effect only `enable = true`.
      * 
      */
-    private final Boolean enable;
+    private Boolean enable;
     /**
      * @return Initial maintenance time, For example:&#34;03:00:00Z&#34;.
      * 
      */
-    private final String maintenanceTime;
+    private String maintenanceTime;
     /**
      * @return Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
      * 
      */
-    private final String weeklyPeriod;
+    private String weeklyPeriod;
 
-    @CustomType.Constructor
-    private ManagedKubernetesMaintenanceWindow(
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("maintenanceTime") String maintenanceTime,
-        @CustomType.Parameter("weeklyPeriod") String weeklyPeriod) {
-        this.duration = duration;
-        this.enable = enable;
-        this.maintenanceTime = maintenanceTime;
-        this.weeklyPeriod = weeklyPeriod;
-    }
-
+    private ManagedKubernetesMaintenanceWindow() {}
     /**
      * @return The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
@@ -79,17 +68,13 @@ public final class ManagedKubernetesMaintenanceWindow {
     public static Builder builder(ManagedKubernetesMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String duration;
         private Boolean enable;
         private String maintenanceTime;
         private String weeklyPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedKubernetesMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.duration = defaults.duration;
@@ -98,23 +83,33 @@ public final class ManagedKubernetesMaintenanceWindow {
     	      this.weeklyPeriod = defaults.weeklyPeriod;
         }
 
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceTime(String maintenanceTime) {
             this.maintenanceTime = Objects.requireNonNull(maintenanceTime);
             return this;
         }
+        @CustomType.Setter
         public Builder weeklyPeriod(String weeklyPeriod) {
             this.weeklyPeriod = Objects.requireNonNull(weeklyPeriod);
             return this;
-        }        public ManagedKubernetesMaintenanceWindow build() {
-            return new ManagedKubernetesMaintenanceWindow(duration, enable, maintenanceTime, weeklyPeriod);
+        }
+        public ManagedKubernetesMaintenanceWindow build() {
+            final var o = new ManagedKubernetesMaintenanceWindow();
+            o.duration = duration;
+            o.enable = enable;
+            o.maintenanceTime = maintenanceTime;
+            o.weeklyPeriod = weeklyPeriod;
+            return o;
         }
     }
 }

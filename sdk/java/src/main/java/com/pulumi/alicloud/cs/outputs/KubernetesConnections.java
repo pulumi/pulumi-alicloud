@@ -15,35 +15,24 @@ public final class KubernetesConnections {
      * @return API Server Internet endpoint.
      * 
      */
-    private final @Nullable String apiServerInternet;
+    private @Nullable String apiServerInternet;
     /**
      * @return API Server Intranet endpoint.
      * 
      */
-    private final @Nullable String apiServerIntranet;
+    private @Nullable String apiServerIntranet;
     /**
      * @return Master node SSH IP address.
      * 
      */
-    private final @Nullable String masterPublicIp;
+    private @Nullable String masterPublicIp;
     /**
      * @return Service Access Domain.
      * 
      */
-    private final @Nullable String serviceDomain;
+    private @Nullable String serviceDomain;
 
-    @CustomType.Constructor
-    private KubernetesConnections(
-        @CustomType.Parameter("apiServerInternet") @Nullable String apiServerInternet,
-        @CustomType.Parameter("apiServerIntranet") @Nullable String apiServerIntranet,
-        @CustomType.Parameter("masterPublicIp") @Nullable String masterPublicIp,
-        @CustomType.Parameter("serviceDomain") @Nullable String serviceDomain) {
-        this.apiServerInternet = apiServerInternet;
-        this.apiServerIntranet = apiServerIntranet;
-        this.masterPublicIp = masterPublicIp;
-        this.serviceDomain = serviceDomain;
-    }
-
+    private KubernetesConnections() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -80,17 +69,13 @@ public final class KubernetesConnections {
     public static Builder builder(KubernetesConnections defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String apiServerInternet;
         private @Nullable String apiServerIntranet;
         private @Nullable String masterPublicIp;
         private @Nullable String serviceDomain;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesConnections defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
@@ -99,23 +84,33 @@ public final class KubernetesConnections {
     	      this.serviceDomain = defaults.serviceDomain;
         }
 
+        @CustomType.Setter
         public Builder apiServerInternet(@Nullable String apiServerInternet) {
             this.apiServerInternet = apiServerInternet;
             return this;
         }
+        @CustomType.Setter
         public Builder apiServerIntranet(@Nullable String apiServerIntranet) {
             this.apiServerIntranet = apiServerIntranet;
             return this;
         }
+        @CustomType.Setter
         public Builder masterPublicIp(@Nullable String masterPublicIp) {
             this.masterPublicIp = masterPublicIp;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceDomain(@Nullable String serviceDomain) {
             this.serviceDomain = serviceDomain;
             return this;
-        }        public KubernetesConnections build() {
-            return new KubernetesConnections(apiServerInternet, apiServerIntranet, masterPublicIp, serviceDomain);
+        }
+        public KubernetesConnections build() {
+            final var o = new KubernetesConnections();
+            o.apiServerInternet = apiServerInternet;
+            o.apiServerIntranet = apiServerIntranet;
+            o.masterPublicIp = masterPublicIp;
+            o.serviceDomain = serviceDomain;
+            return o;
         }
     }
 }

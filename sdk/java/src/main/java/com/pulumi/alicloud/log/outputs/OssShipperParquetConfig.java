@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class OssShipperParquetConfig {
-    private final String name;
-    private final String type;
+    private String name;
+    private String type;
 
-    @CustomType.Constructor
-    private OssShipperParquetConfig(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private OssShipperParquetConfig() {}
     public String name() {
         return this.name;
     }
@@ -34,30 +27,32 @@ public final class OssShipperParquetConfig {
     public static Builder builder(OssShipperParquetConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OssShipperParquetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public OssShipperParquetConfig build() {
-            return new OssShipperParquetConfig(name, type);
+        }
+        public OssShipperParquetConfig build() {
+            final var o = new OssShipperParquetConfig();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

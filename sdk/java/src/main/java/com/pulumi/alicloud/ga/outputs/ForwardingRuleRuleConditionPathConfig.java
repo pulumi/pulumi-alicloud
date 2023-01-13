@@ -15,13 +15,9 @@ public final class ForwardingRuleRuleConditionPathConfig {
      * @return The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private ForwardingRuleRuleConditionPathConfig(@CustomType.Parameter("values") @Nullable List<String> values) {
-        this.values = values;
-    }
-
+    private ForwardingRuleRuleConditionPathConfig() {}
     /**
      * @return The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
      * 
@@ -37,27 +33,27 @@ public final class ForwardingRuleRuleConditionPathConfig {
     public static Builder builder(ForwardingRuleRuleConditionPathConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ForwardingRuleRuleConditionPathConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public ForwardingRuleRuleConditionPathConfig build() {
-            return new ForwardingRuleRuleConditionPathConfig(values);
+        }
+        public ForwardingRuleRuleConditionPathConfig build() {
+            final var o = new ForwardingRuleRuleConditionPathConfig();
+            o.values = values;
+            return o;
         }
     }
 }

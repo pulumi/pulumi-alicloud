@@ -15,66 +15,45 @@ public final class GetEndpointsEndpoint {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String endpointName;
-    private final String id;
+    private String endpointName;
+    private String id;
     /**
      * @return The Ip Configs.
      * 
      */
-    private final List<GetEndpointsEndpointIpConfig> ipConfigs;
+    private List<GetEndpointsEndpointIpConfig> ipConfigs;
     /**
      * @return The ID of the Security Group.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The VPC ID.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The name of the VPC.
      * 
      */
-    private final String vpcName;
+    private String vpcName;
     /**
      * @return The Region of the VPC.
      * 
      */
-    private final String vpcRegionId;
+    private String vpcRegionId;
 
-    @CustomType.Constructor
-    private GetEndpointsEndpoint(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("endpointName") String endpointName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipConfigs") List<GetEndpointsEndpointIpConfig> ipConfigs,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcName") String vpcName,
-        @CustomType.Parameter("vpcRegionId") String vpcRegionId) {
-        this.createTime = createTime;
-        this.endpointName = endpointName;
-        this.id = id;
-        this.ipConfigs = ipConfigs;
-        this.securityGroupId = securityGroupId;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vpcName = vpcName;
-        this.vpcRegionId = vpcRegionId;
-    }
-
+    private GetEndpointsEndpoint() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -142,7 +121,7 @@ public final class GetEndpointsEndpoint {
     public static Builder builder(GetEndpointsEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String endpointName;
@@ -153,11 +132,7 @@ public final class GetEndpointsEndpoint {
         private String vpcId;
         private String vpcName;
         private String vpcRegionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -171,18 +146,22 @@ public final class GetEndpointsEndpoint {
     	      this.vpcRegionId = defaults.vpcRegionId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointName(String endpointName) {
             this.endpointName = Objects.requireNonNull(endpointName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipConfigs(List<GetEndpointsEndpointIpConfig> ipConfigs) {
             this.ipConfigs = Objects.requireNonNull(ipConfigs);
             return this;
@@ -190,27 +169,43 @@ public final class GetEndpointsEndpoint {
         public Builder ipConfigs(GetEndpointsEndpointIpConfig... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcRegionId(String vpcRegionId) {
             this.vpcRegionId = Objects.requireNonNull(vpcRegionId);
             return this;
-        }        public GetEndpointsEndpoint build() {
-            return new GetEndpointsEndpoint(createTime, endpointName, id, ipConfigs, securityGroupId, status, vpcId, vpcName, vpcRegionId);
+        }
+        public GetEndpointsEndpoint build() {
+            final var o = new GetEndpointsEndpoint();
+            o.createTime = createTime;
+            o.endpointName = endpointName;
+            o.id = id;
+            o.ipConfigs = ipConfigs;
+            o.securityGroupId = securityGroupId;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vpcName = vpcName;
+            o.vpcRegionId = vpcRegionId;
+            return o;
         }
     }
 }

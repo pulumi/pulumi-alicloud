@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIndustrialPidLoopsResult {
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetIndustrialPidLoopsLoop> loops;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String pidLoopName;
-    private final String pidProjectId;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private List<GetIndustrialPidLoopsLoop> loops;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String pidLoopName;
+    private String pidProjectId;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetIndustrialPidLoopsResult(
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("loops") List<GetIndustrialPidLoopsLoop> loops,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pidLoopName") @Nullable String pidLoopName,
-        @CustomType.Parameter("pidProjectId") String pidProjectId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.loops = loops;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pidLoopName = pidLoopName;
-        this.pidProjectId = pidProjectId;
-        this.status = status;
-    }
-
+    private GetIndustrialPidLoopsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -95,7 +72,7 @@ public final class GetIndustrialPidLoopsResult {
     public static Builder builder(GetIndustrialPidLoopsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -107,11 +84,7 @@ public final class GetIndustrialPidLoopsResult {
         private @Nullable String pidLoopName;
         private String pidProjectId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIndustrialPidLoopsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -126,14 +99,17 @@ public final class GetIndustrialPidLoopsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,6 +117,7 @@ public final class GetIndustrialPidLoopsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder loops(List<GetIndustrialPidLoopsLoop> loops) {
             this.loops = Objects.requireNonNull(loops);
             return this;
@@ -148,10 +125,12 @@ public final class GetIndustrialPidLoopsResult {
         public Builder loops(GetIndustrialPidLoopsLoop... loops) {
             return loops(List.of(loops));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -159,23 +138,39 @@ public final class GetIndustrialPidLoopsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pidLoopName(@Nullable String pidLoopName) {
             this.pidLoopName = pidLoopName;
             return this;
         }
+        @CustomType.Setter
         public Builder pidProjectId(String pidProjectId) {
             this.pidProjectId = Objects.requireNonNull(pidProjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetIndustrialPidLoopsResult build() {
-            return new GetIndustrialPidLoopsResult(enableDetails, id, ids, loops, nameRegex, names, outputFile, pidLoopName, pidProjectId, status);
+        }
+        public GetIndustrialPidLoopsResult build() {
+            final var o = new GetIndustrialPidLoopsResult();
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.loops = loops;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pidLoopName = pidLoopName;
+            o.pidProjectId = pidProjectId;
+            o.status = status;
+            return o;
         }
     }
 }

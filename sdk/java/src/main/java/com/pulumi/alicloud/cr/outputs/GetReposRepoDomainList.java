@@ -13,28 +13,19 @@ public final class GetReposRepoDomainList {
      * @return Domain of internal endpoint, only in some regions.
      * 
      */
-    private final String internal;
+    private String internal;
     /**
      * @return Domain of public endpoint.
      * 
      */
-    private final String public_;
+    private String public_;
     /**
      * @return Domain of vpc endpoint.
      * 
      */
-    private final String vpc;
+    private String vpc;
 
-    @CustomType.Constructor
-    private GetReposRepoDomainList(
-        @CustomType.Parameter("internal") String internal,
-        @CustomType.Parameter("public") String public_,
-        @CustomType.Parameter("vpc") String vpc) {
-        this.internal = internal;
-        this.public_ = public_;
-        this.vpc = vpc;
-    }
-
+    private GetReposRepoDomainList() {}
     /**
      * @return Domain of internal endpoint, only in some regions.
      * 
@@ -64,16 +55,12 @@ public final class GetReposRepoDomainList {
     public static Builder builder(GetReposRepoDomainList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String internal;
         private String public_;
         private String vpc;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetReposRepoDomainList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.internal = defaults.internal;
@@ -81,19 +68,27 @@ public final class GetReposRepoDomainList {
     	      this.vpc = defaults.vpc;
         }
 
+        @CustomType.Setter
         public Builder internal(String internal) {
             this.internal = Objects.requireNonNull(internal);
             return this;
         }
+        @CustomType.Setter("public")
         public Builder public_(String public_) {
             this.public_ = Objects.requireNonNull(public_);
             return this;
         }
+        @CustomType.Setter
         public Builder vpc(String vpc) {
             this.vpc = Objects.requireNonNull(vpc);
             return this;
-        }        public GetReposRepoDomainList build() {
-            return new GetReposRepoDomainList(internal, public_, vpc);
+        }
+        public GetReposRepoDomainList build() {
+            final var o = new GetReposRepoDomainList();
+            o.internal = internal;
+            o.public_ = public_;
+            o.vpc = vpc;
+            return o;
         }
     }
 }

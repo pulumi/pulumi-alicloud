@@ -16,105 +16,74 @@ public final class GetTrafficMirrorSessionsSession {
      * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The ID of the Traffic Mirror Session.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The maximum transmission unit (MTU).
      * 
      */
-    private final Integer packetLength;
+    private Integer packetLength;
     /**
      * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the filter.
      * 
      */
-    private final String trafficMirrorFilterId;
+    private String trafficMirrorFilterId;
     /**
      * @return The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
      * 
      */
-    private final String trafficMirrorSessionBusinessStatus;
+    private String trafficMirrorSessionBusinessStatus;
     /**
      * @return The description of the traffic mirror session.
      * 
      */
-    private final String trafficMirrorSessionDescription;
+    private String trafficMirrorSessionDescription;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String trafficMirrorSessionId;
+    private String trafficMirrorSessionId;
     /**
      * @return The name of the traffic mirror session.
      * 
      */
-    private final String trafficMirrorSessionName;
+    private String trafficMirrorSessionName;
     /**
      * @return The ID of the mirror source.
      * 
      */
-    private final List<String> trafficMirrorSourceIds;
+    private List<String> trafficMirrorSourceIds;
     /**
      * @return The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
      * 
      */
-    private final String trafficMirrorTargetId;
+    private String trafficMirrorTargetId;
     /**
      * @return The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
      * 
      */
-    private final String trafficMirrorTargetType;
+    private String trafficMirrorTargetType;
     /**
      * @return You can specify VNIs to distinguish different mirrored traffic.
      * 
      */
-    private final Integer virtualNetworkId;
+    private Integer virtualNetworkId;
 
-    @CustomType.Constructor
-    private GetTrafficMirrorSessionsSession(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("packetLength") Integer packetLength,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("trafficMirrorFilterId") String trafficMirrorFilterId,
-        @CustomType.Parameter("trafficMirrorSessionBusinessStatus") String trafficMirrorSessionBusinessStatus,
-        @CustomType.Parameter("trafficMirrorSessionDescription") String trafficMirrorSessionDescription,
-        @CustomType.Parameter("trafficMirrorSessionId") String trafficMirrorSessionId,
-        @CustomType.Parameter("trafficMirrorSessionName") String trafficMirrorSessionName,
-        @CustomType.Parameter("trafficMirrorSourceIds") List<String> trafficMirrorSourceIds,
-        @CustomType.Parameter("trafficMirrorTargetId") String trafficMirrorTargetId,
-        @CustomType.Parameter("trafficMirrorTargetType") String trafficMirrorTargetType,
-        @CustomType.Parameter("virtualNetworkId") Integer virtualNetworkId) {
-        this.enabled = enabled;
-        this.id = id;
-        this.packetLength = packetLength;
-        this.priority = priority;
-        this.status = status;
-        this.trafficMirrorFilterId = trafficMirrorFilterId;
-        this.trafficMirrorSessionBusinessStatus = trafficMirrorSessionBusinessStatus;
-        this.trafficMirrorSessionDescription = trafficMirrorSessionDescription;
-        this.trafficMirrorSessionId = trafficMirrorSessionId;
-        this.trafficMirrorSessionName = trafficMirrorSessionName;
-        this.trafficMirrorSourceIds = trafficMirrorSourceIds;
-        this.trafficMirrorTargetId = trafficMirrorTargetId;
-        this.trafficMirrorTargetType = trafficMirrorTargetType;
-        this.virtualNetworkId = virtualNetworkId;
-    }
-
+    private GetTrafficMirrorSessionsSession() {}
     /**
      * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
      * 
@@ -221,7 +190,7 @@ public final class GetTrafficMirrorSessionsSession {
     public static Builder builder(GetTrafficMirrorSessionsSession defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String id;
@@ -237,11 +206,7 @@ public final class GetTrafficMirrorSessionsSession {
         private String trafficMirrorTargetId;
         private String trafficMirrorTargetType;
         private Integer virtualNetworkId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrafficMirrorSessionsSession defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -260,46 +225,57 @@ public final class GetTrafficMirrorSessionsSession {
     	      this.virtualNetworkId = defaults.virtualNetworkId;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder packetLength(Integer packetLength) {
             this.packetLength = Objects.requireNonNull(packetLength);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
             this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSessionBusinessStatus(String trafficMirrorSessionBusinessStatus) {
             this.trafficMirrorSessionBusinessStatus = Objects.requireNonNull(trafficMirrorSessionBusinessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSessionDescription(String trafficMirrorSessionDescription) {
             this.trafficMirrorSessionDescription = Objects.requireNonNull(trafficMirrorSessionDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSessionId(String trafficMirrorSessionId) {
             this.trafficMirrorSessionId = Objects.requireNonNull(trafficMirrorSessionId);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSessionName(String trafficMirrorSessionName) {
             this.trafficMirrorSessionName = Objects.requireNonNull(trafficMirrorSessionName);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorSourceIds(List<String> trafficMirrorSourceIds) {
             this.trafficMirrorSourceIds = Objects.requireNonNull(trafficMirrorSourceIds);
             return this;
@@ -307,19 +283,38 @@ public final class GetTrafficMirrorSessionsSession {
         public Builder trafficMirrorSourceIds(String... trafficMirrorSourceIds) {
             return trafficMirrorSourceIds(List.of(trafficMirrorSourceIds));
         }
+        @CustomType.Setter
         public Builder trafficMirrorTargetId(String trafficMirrorTargetId) {
             this.trafficMirrorTargetId = Objects.requireNonNull(trafficMirrorTargetId);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficMirrorTargetType(String trafficMirrorTargetType) {
             this.trafficMirrorTargetType = Objects.requireNonNull(trafficMirrorTargetType);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNetworkId(Integer virtualNetworkId) {
             this.virtualNetworkId = Objects.requireNonNull(virtualNetworkId);
             return this;
-        }        public GetTrafficMirrorSessionsSession build() {
-            return new GetTrafficMirrorSessionsSession(enabled, id, packetLength, priority, status, trafficMirrorFilterId, trafficMirrorSessionBusinessStatus, trafficMirrorSessionDescription, trafficMirrorSessionId, trafficMirrorSessionName, trafficMirrorSourceIds, trafficMirrorTargetId, trafficMirrorTargetType, virtualNetworkId);
+        }
+        public GetTrafficMirrorSessionsSession build() {
+            final var o = new GetTrafficMirrorSessionsSession();
+            o.enabled = enabled;
+            o.id = id;
+            o.packetLength = packetLength;
+            o.priority = priority;
+            o.status = status;
+            o.trafficMirrorFilterId = trafficMirrorFilterId;
+            o.trafficMirrorSessionBusinessStatus = trafficMirrorSessionBusinessStatus;
+            o.trafficMirrorSessionDescription = trafficMirrorSessionDescription;
+            o.trafficMirrorSessionId = trafficMirrorSessionId;
+            o.trafficMirrorSessionName = trafficMirrorSessionName;
+            o.trafficMirrorSourceIds = trafficMirrorSourceIds;
+            o.trafficMirrorTargetId = trafficMirrorTargetId;
+            o.trafficMirrorTargetType = trafficMirrorTargetType;
+            o.virtualNetworkId = virtualNetworkId;
+            return o;
         }
     }
 }

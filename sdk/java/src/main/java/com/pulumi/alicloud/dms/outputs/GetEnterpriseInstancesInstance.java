@@ -14,167 +14,116 @@ public final class GetEnterpriseInstancesInstance {
      * @return The name of the data link for the database instance.
      * 
      */
-    private final String dataLinkName;
+    private String dataLinkName;
     /**
      * @return The logon password of the database instance.
      * 
      */
-    private final String databasePassword;
+    private String databasePassword;
     /**
      * @return The logon username of the database instance.
      * 
      */
-    private final String databaseUser;
+    private String databaseUser;
     /**
      * @return The ID of the database administrator (DBA) of the database instance.
      * 
      */
-    private final String dbaId;
+    private String dbaId;
     /**
      * @return The nickname of the DBA.
      * 
      */
-    private final String dbaNickName;
+    private String dbaNickName;
     /**
      * @return Indicates whether the online data description language (DDL) service was enabled for the database instance.
      * 
      */
-    private final Integer ddlOnline;
+    private Integer ddlOnline;
     /**
      * @return The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
      * 
      */
-    private final String ecsInstanceId;
+    private String ecsInstanceId;
     /**
      * @return The region where the database instance resides.
      * 
      */
-    private final String ecsRegion;
+    private String ecsRegion;
     /**
      * @return The type of the environment to which the database instance belongs.
      * 
      */
-    private final String envType;
+    private String envType;
     /**
      * @return The timeout period for exporting the database instance.
      * 
      */
-    private final Integer exportTimeout;
+    private Integer exportTimeout;
     /**
      * @return The endpoint of the database instance.
      * 
      */
-    private final String host;
-    private final String id;
+    private String host;
+    private String id;
     /**
      * @return The alias of the database instance.
      * 
      */
-    private final String instanceAlias;
+    private String instanceAlias;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private final String instanceId;
-    private final String instanceName;
+    private String instanceId;
+    private String instanceName;
     /**
      * @return The source of the database instance.
      * 
      */
-    private final String instanceSource;
+    private String instanceSource;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return The connection port of the database instance.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The timeout period for querying the database instance.
      * 
      */
-    private final Integer queryTimeout;
+    private Integer queryTimeout;
     /**
      * @return The ID of the security rule for the database instance.
      * 
      */
-    private final String safeRuleId;
+    private String safeRuleId;
     /**
      * @return The system ID (SID) of the database instance.
      * 
      */
-    private final String sid;
+    private String sid;
     /**
      * @return Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Indicates whether cross-database query was enabled for the database instance.
      * 
      */
-    private final Integer useDsql;
+    private Integer useDsql;
     /**
      * @return The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetEnterpriseInstancesInstance(
-        @CustomType.Parameter("dataLinkName") String dataLinkName,
-        @CustomType.Parameter("databasePassword") String databasePassword,
-        @CustomType.Parameter("databaseUser") String databaseUser,
-        @CustomType.Parameter("dbaId") String dbaId,
-        @CustomType.Parameter("dbaNickName") String dbaNickName,
-        @CustomType.Parameter("ddlOnline") Integer ddlOnline,
-        @CustomType.Parameter("ecsInstanceId") String ecsInstanceId,
-        @CustomType.Parameter("ecsRegion") String ecsRegion,
-        @CustomType.Parameter("envType") String envType,
-        @CustomType.Parameter("exportTimeout") Integer exportTimeout,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceAlias") String instanceAlias,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("instanceSource") String instanceSource,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("queryTimeout") Integer queryTimeout,
-        @CustomType.Parameter("safeRuleId") String safeRuleId,
-        @CustomType.Parameter("sid") String sid,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("useDsql") Integer useDsql,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.dataLinkName = dataLinkName;
-        this.databasePassword = databasePassword;
-        this.databaseUser = databaseUser;
-        this.dbaId = dbaId;
-        this.dbaNickName = dbaNickName;
-        this.ddlOnline = ddlOnline;
-        this.ecsInstanceId = ecsInstanceId;
-        this.ecsRegion = ecsRegion;
-        this.envType = envType;
-        this.exportTimeout = exportTimeout;
-        this.host = host;
-        this.id = id;
-        this.instanceAlias = instanceAlias;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.instanceSource = instanceSource;
-        this.instanceType = instanceType;
-        this.port = port;
-        this.queryTimeout = queryTimeout;
-        this.safeRuleId = safeRuleId;
-        this.sid = sid;
-        this.status = status;
-        this.useDsql = useDsql;
-        this.vpcId = vpcId;
-    }
-
+    private GetEnterpriseInstancesInstance() {}
     /**
      * @return The name of the data link for the database instance.
      * 
@@ -343,7 +292,7 @@ public final class GetEnterpriseInstancesInstance {
     public static Builder builder(GetEnterpriseInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dataLinkName;
         private String databasePassword;
@@ -369,11 +318,7 @@ public final class GetEnterpriseInstancesInstance {
         private String status;
         private Integer useDsql;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnterpriseInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataLinkName = defaults.dataLinkName;
@@ -402,103 +347,153 @@ public final class GetEnterpriseInstancesInstance {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder dataLinkName(String dataLinkName) {
             this.dataLinkName = Objects.requireNonNull(dataLinkName);
             return this;
         }
+        @CustomType.Setter
         public Builder databasePassword(String databasePassword) {
             this.databasePassword = Objects.requireNonNull(databasePassword);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseUser(String databaseUser) {
             this.databaseUser = Objects.requireNonNull(databaseUser);
             return this;
         }
+        @CustomType.Setter
         public Builder dbaId(String dbaId) {
             this.dbaId = Objects.requireNonNull(dbaId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbaNickName(String dbaNickName) {
             this.dbaNickName = Objects.requireNonNull(dbaNickName);
             return this;
         }
+        @CustomType.Setter
         public Builder ddlOnline(Integer ddlOnline) {
             this.ddlOnline = Objects.requireNonNull(ddlOnline);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsInstanceId(String ecsInstanceId) {
             this.ecsInstanceId = Objects.requireNonNull(ecsInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsRegion(String ecsRegion) {
             this.ecsRegion = Objects.requireNonNull(ecsRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder envType(String envType) {
             this.envType = Objects.requireNonNull(envType);
             return this;
         }
+        @CustomType.Setter
         public Builder exportTimeout(Integer exportTimeout) {
             this.exportTimeout = Objects.requireNonNull(exportTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceAlias(String instanceAlias) {
             this.instanceAlias = Objects.requireNonNull(instanceAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceSource(String instanceSource) {
             this.instanceSource = Objects.requireNonNull(instanceSource);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder queryTimeout(Integer queryTimeout) {
             this.queryTimeout = Objects.requireNonNull(queryTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder safeRuleId(String safeRuleId) {
             this.safeRuleId = Objects.requireNonNull(safeRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder sid(String sid) {
             this.sid = Objects.requireNonNull(sid);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder useDsql(Integer useDsql) {
             this.useDsql = Objects.requireNonNull(useDsql);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetEnterpriseInstancesInstance build() {
-            return new GetEnterpriseInstancesInstance(dataLinkName, databasePassword, databaseUser, dbaId, dbaNickName, ddlOnline, ecsInstanceId, ecsRegion, envType, exportTimeout, host, id, instanceAlias, instanceId, instanceName, instanceSource, instanceType, port, queryTimeout, safeRuleId, sid, status, useDsql, vpcId);
+        }
+        public GetEnterpriseInstancesInstance build() {
+            final var o = new GetEnterpriseInstancesInstance();
+            o.dataLinkName = dataLinkName;
+            o.databasePassword = databasePassword;
+            o.databaseUser = databaseUser;
+            o.dbaId = dbaId;
+            o.dbaNickName = dbaNickName;
+            o.ddlOnline = ddlOnline;
+            o.ecsInstanceId = ecsInstanceId;
+            o.ecsRegion = ecsRegion;
+            o.envType = envType;
+            o.exportTimeout = exportTimeout;
+            o.host = host;
+            o.id = id;
+            o.instanceAlias = instanceAlias;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.instanceSource = instanceSource;
+            o.instanceType = instanceType;
+            o.port = port;
+            o.queryTimeout = queryTimeout;
+            o.safeRuleId = safeRuleId;
+            o.sid = sid;
+            o.status = status;
+            o.useDsql = useDsql;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

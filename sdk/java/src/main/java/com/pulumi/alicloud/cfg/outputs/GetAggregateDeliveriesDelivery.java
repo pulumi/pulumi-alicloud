@@ -15,112 +15,79 @@ public final class GetAggregateDeliveriesDelivery {
      * @return The Aliyun User Id.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The ID of the Aggregator.
      * 
      */
-    private final String aggregatorId;
+    private String aggregatorId;
     /**
      * @return Open or close delivery configuration change history.
      * 
      */
-    private final Boolean configurationItemChangeNotification;
+    private Boolean configurationItemChangeNotification;
     /**
      * @return Open or close timed snapshot of shipping resources.
      * 
      */
-    private final Boolean configurationSnapshot;
+    private Boolean configurationSnapshot;
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
      * 
      */
-    private final String deliveryChannelAssumeRoleArn;
+    private String deliveryChannelAssumeRoleArn;
     /**
      * @return The rule attached to the delivery method.
      * 
      */
-    private final String deliveryChannelCondition;
+    private String deliveryChannelCondition;
     /**
      * @return The ID of the delivery method.
      * 
      */
-    private final String deliveryChannelId;
+    private String deliveryChannelId;
     /**
      * @return The name of the delivery method.
      * 
      */
-    private final String deliveryChannelName;
+    private String deliveryChannelName;
     /**
      * @return The ARN of the delivery destination.
      * 
      */
-    private final String deliveryChannelTargetArn;
+    private String deliveryChannelTargetArn;
     /**
      * @return The type of the delivery method.
      * 
      */
-    private final String deliveryChannelType;
+    private String deliveryChannelType;
     /**
      * @return The description of the delivery method.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Aggregate Delivery.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Open or close non-compliance events of delivery resources.
      * 
      */
-    private final Boolean nonCompliantNotification;
+    private Boolean nonCompliantNotification;
     /**
      * @return The oss ARN of the delivery channel when the value data oversized limit.
      * 
      */
-    private final String oversizedDataOssTargetArn;
+    private String oversizedDataOssTargetArn;
     /**
      * @return The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
      * 
      */
-    private final Integer status;
+    private Integer status;
 
-    @CustomType.Constructor
-    private GetAggregateDeliveriesDelivery(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("aggregatorId") String aggregatorId,
-        @CustomType.Parameter("configurationItemChangeNotification") Boolean configurationItemChangeNotification,
-        @CustomType.Parameter("configurationSnapshot") Boolean configurationSnapshot,
-        @CustomType.Parameter("deliveryChannelAssumeRoleArn") String deliveryChannelAssumeRoleArn,
-        @CustomType.Parameter("deliveryChannelCondition") String deliveryChannelCondition,
-        @CustomType.Parameter("deliveryChannelId") String deliveryChannelId,
-        @CustomType.Parameter("deliveryChannelName") String deliveryChannelName,
-        @CustomType.Parameter("deliveryChannelTargetArn") String deliveryChannelTargetArn,
-        @CustomType.Parameter("deliveryChannelType") String deliveryChannelType,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nonCompliantNotification") Boolean nonCompliantNotification,
-        @CustomType.Parameter("oversizedDataOssTargetArn") String oversizedDataOssTargetArn,
-        @CustomType.Parameter("status") Integer status) {
-        this.accountId = accountId;
-        this.aggregatorId = aggregatorId;
-        this.configurationItemChangeNotification = configurationItemChangeNotification;
-        this.configurationSnapshot = configurationSnapshot;
-        this.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
-        this.deliveryChannelCondition = deliveryChannelCondition;
-        this.deliveryChannelId = deliveryChannelId;
-        this.deliveryChannelName = deliveryChannelName;
-        this.deliveryChannelTargetArn = deliveryChannelTargetArn;
-        this.deliveryChannelType = deliveryChannelType;
-        this.description = description;
-        this.id = id;
-        this.nonCompliantNotification = nonCompliantNotification;
-        this.oversizedDataOssTargetArn = oversizedDataOssTargetArn;
-        this.status = status;
-    }
-
+    private GetAggregateDeliveriesDelivery() {}
     /**
      * @return The Aliyun User Id.
      * 
@@ -234,7 +201,7 @@ public final class GetAggregateDeliveriesDelivery {
     public static Builder builder(GetAggregateDeliveriesDelivery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String aggregatorId;
@@ -251,11 +218,7 @@ public final class GetAggregateDeliveriesDelivery {
         private Boolean nonCompliantNotification;
         private String oversizedDataOssTargetArn;
         private Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateDeliveriesDelivery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -275,67 +238,99 @@ public final class GetAggregateDeliveriesDelivery {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
             this.aggregatorId = Objects.requireNonNull(aggregatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder configurationItemChangeNotification(Boolean configurationItemChangeNotification) {
             this.configurationItemChangeNotification = Objects.requireNonNull(configurationItemChangeNotification);
             return this;
         }
+        @CustomType.Setter
         public Builder configurationSnapshot(Boolean configurationSnapshot) {
             this.configurationSnapshot = Objects.requireNonNull(configurationSnapshot);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelAssumeRoleArn(String deliveryChannelAssumeRoleArn) {
             this.deliveryChannelAssumeRoleArn = Objects.requireNonNull(deliveryChannelAssumeRoleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelCondition(String deliveryChannelCondition) {
             this.deliveryChannelCondition = Objects.requireNonNull(deliveryChannelCondition);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelId(String deliveryChannelId) {
             this.deliveryChannelId = Objects.requireNonNull(deliveryChannelId);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelName(String deliveryChannelName) {
             this.deliveryChannelName = Objects.requireNonNull(deliveryChannelName);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelTargetArn(String deliveryChannelTargetArn) {
             this.deliveryChannelTargetArn = Objects.requireNonNull(deliveryChannelTargetArn);
             return this;
         }
+        @CustomType.Setter
         public Builder deliveryChannelType(String deliveryChannelType) {
             this.deliveryChannelType = Objects.requireNonNull(deliveryChannelType);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nonCompliantNotification(Boolean nonCompliantNotification) {
             this.nonCompliantNotification = Objects.requireNonNull(nonCompliantNotification);
             return this;
         }
+        @CustomType.Setter
         public Builder oversizedDataOssTargetArn(String oversizedDataOssTargetArn) {
             this.oversizedDataOssTargetArn = Objects.requireNonNull(oversizedDataOssTargetArn);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAggregateDeliveriesDelivery build() {
-            return new GetAggregateDeliveriesDelivery(accountId, aggregatorId, configurationItemChangeNotification, configurationSnapshot, deliveryChannelAssumeRoleArn, deliveryChannelCondition, deliveryChannelId, deliveryChannelName, deliveryChannelTargetArn, deliveryChannelType, description, id, nonCompliantNotification, oversizedDataOssTargetArn, status);
+        }
+        public GetAggregateDeliveriesDelivery build() {
+            final var o = new GetAggregateDeliveriesDelivery();
+            o.accountId = accountId;
+            o.aggregatorId = aggregatorId;
+            o.configurationItemChangeNotification = configurationItemChangeNotification;
+            o.configurationSnapshot = configurationSnapshot;
+            o.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
+            o.deliveryChannelCondition = deliveryChannelCondition;
+            o.deliveryChannelId = deliveryChannelId;
+            o.deliveryChannelName = deliveryChannelName;
+            o.deliveryChannelTargetArn = deliveryChannelTargetArn;
+            o.deliveryChannelType = deliveryChannelType;
+            o.description = description;
+            o.id = id;
+            o.nonCompliantNotification = nonCompliantNotification;
+            o.oversizedDataOssTargetArn = oversizedDataOssTargetArn;
+            o.status = status;
+            return o;
         }
     }
 }

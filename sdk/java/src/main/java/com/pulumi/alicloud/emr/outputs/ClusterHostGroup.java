@@ -17,115 +17,80 @@ public final class ClusterHostGroup {
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
      */
-    private final @Nullable Boolean autoRenew;
+    private @Nullable Boolean autoRenew;
     /**
      * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
      * 
      */
-    private final @Nullable String chargeType;
+    private @Nullable String chargeType;
     /**
      * @return Graceful decommission timeout, unit: seconds.
      * 
      */
-    private final @Nullable Integer decommissionTimeout;
+    private @Nullable Integer decommissionTimeout;
     /**
      * @return Data disk capacity.
      * 
      */
-    private final @Nullable String diskCapacity;
+    private @Nullable String diskCapacity;
     /**
      * @return Data disk count.
      * 
      */
-    private final @Nullable String diskCount;
+    private @Nullable String diskCount;
     /**
      * @return Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
      * 
      */
-    private final @Nullable String diskType;
+    private @Nullable String diskType;
     /**
      * @return Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
      * 
      */
-    private final @Nullable Boolean enableGracefulDecommission;
-    private final @Nullable String gpuDriver;
+    private @Nullable Boolean enableGracefulDecommission;
+    private @Nullable String gpuDriver;
     /**
      * @return host group name.
      * 
      */
-    private final @Nullable String hostGroupName;
+    private @Nullable String hostGroupName;
     /**
      * @return host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
      * 
      */
-    private final @Nullable String hostGroupType;
+    private @Nullable String hostGroupType;
     /**
      * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
      * 
      */
-    private final @Nullable String instanceList;
+    private @Nullable String instanceList;
     /**
      * @return Host Ecs instance type.
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
      * @return Host number in this group.
      * 
      */
-    private final @Nullable String nodeCount;
+    private @Nullable String nodeCount;
     /**
      * @return If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      * 
      */
-    private final @Nullable Integer period;
+    private @Nullable Integer period;
     /**
      * @return System disk capacity.
      * 
      */
-    private final @Nullable String sysDiskCapacity;
+    private @Nullable String sysDiskCapacity;
     /**
      * @return System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
      * 
      */
-    private final @Nullable String sysDiskType;
+    private @Nullable String sysDiskType;
 
-    @CustomType.Constructor
-    private ClusterHostGroup(
-        @CustomType.Parameter("autoRenew") @Nullable Boolean autoRenew,
-        @CustomType.Parameter("chargeType") @Nullable String chargeType,
-        @CustomType.Parameter("decommissionTimeout") @Nullable Integer decommissionTimeout,
-        @CustomType.Parameter("diskCapacity") @Nullable String diskCapacity,
-        @CustomType.Parameter("diskCount") @Nullable String diskCount,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("enableGracefulDecommission") @Nullable Boolean enableGracefulDecommission,
-        @CustomType.Parameter("gpuDriver") @Nullable String gpuDriver,
-        @CustomType.Parameter("hostGroupName") @Nullable String hostGroupName,
-        @CustomType.Parameter("hostGroupType") @Nullable String hostGroupType,
-        @CustomType.Parameter("instanceList") @Nullable String instanceList,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("nodeCount") @Nullable String nodeCount,
-        @CustomType.Parameter("period") @Nullable Integer period,
-        @CustomType.Parameter("sysDiskCapacity") @Nullable String sysDiskCapacity,
-        @CustomType.Parameter("sysDiskType") @Nullable String sysDiskType) {
-        this.autoRenew = autoRenew;
-        this.chargeType = chargeType;
-        this.decommissionTimeout = decommissionTimeout;
-        this.diskCapacity = diskCapacity;
-        this.diskCount = diskCount;
-        this.diskType = diskType;
-        this.enableGracefulDecommission = enableGracefulDecommission;
-        this.gpuDriver = gpuDriver;
-        this.hostGroupName = hostGroupName;
-        this.hostGroupType = hostGroupType;
-        this.instanceList = instanceList;
-        this.instanceType = instanceType;
-        this.nodeCount = nodeCount;
-        this.period = period;
-        this.sysDiskCapacity = sysDiskCapacity;
-        this.sysDiskType = sysDiskType;
-    }
-
+    private ClusterHostGroup() {}
     /**
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
@@ -242,7 +207,7 @@ public final class ClusterHostGroup {
     public static Builder builder(ClusterHostGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoRenew;
         private @Nullable String chargeType;
@@ -260,11 +225,7 @@ public final class ClusterHostGroup {
         private @Nullable Integer period;
         private @Nullable String sysDiskCapacity;
         private @Nullable String sysDiskType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterHostGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenew = defaults.autoRenew;
@@ -285,71 +246,105 @@ public final class ClusterHostGroup {
     	      this.sysDiskType = defaults.sysDiskType;
         }
 
+        @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
             this.autoRenew = autoRenew;
             return this;
         }
+        @CustomType.Setter
         public Builder chargeType(@Nullable String chargeType) {
             this.chargeType = chargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder decommissionTimeout(@Nullable Integer decommissionTimeout) {
             this.decommissionTimeout = decommissionTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder diskCapacity(@Nullable String diskCapacity) {
             this.diskCapacity = diskCapacity;
             return this;
         }
+        @CustomType.Setter
         public Builder diskCount(@Nullable String diskCount) {
             this.diskCount = diskCount;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder enableGracefulDecommission(@Nullable Boolean enableGracefulDecommission) {
             this.enableGracefulDecommission = enableGracefulDecommission;
             return this;
         }
+        @CustomType.Setter
         public Builder gpuDriver(@Nullable String gpuDriver) {
             this.gpuDriver = gpuDriver;
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupName(@Nullable String hostGroupName) {
             this.hostGroupName = hostGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupType(@Nullable String hostGroupType) {
             this.hostGroupType = hostGroupType;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceList(@Nullable String instanceList) {
             this.instanceList = instanceList;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(@Nullable String nodeCount) {
             this.nodeCount = nodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder period(@Nullable Integer period) {
             this.period = period;
             return this;
         }
+        @CustomType.Setter
         public Builder sysDiskCapacity(@Nullable String sysDiskCapacity) {
             this.sysDiskCapacity = sysDiskCapacity;
             return this;
         }
+        @CustomType.Setter
         public Builder sysDiskType(@Nullable String sysDiskType) {
             this.sysDiskType = sysDiskType;
             return this;
-        }        public ClusterHostGroup build() {
-            return new ClusterHostGroup(autoRenew, chargeType, decommissionTimeout, diskCapacity, diskCount, diskType, enableGracefulDecommission, gpuDriver, hostGroupName, hostGroupType, instanceList, instanceType, nodeCount, period, sysDiskCapacity, sysDiskType);
+        }
+        public ClusterHostGroup build() {
+            final var o = new ClusterHostGroup();
+            o.autoRenew = autoRenew;
+            o.chargeType = chargeType;
+            o.decommissionTimeout = decommissionTimeout;
+            o.diskCapacity = diskCapacity;
+            o.diskCount = diskCount;
+            o.diskType = diskType;
+            o.enableGracefulDecommission = enableGracefulDecommission;
+            o.gpuDriver = gpuDriver;
+            o.hostGroupName = hostGroupName;
+            o.hostGroupType = hostGroupType;
+            o.instanceList = instanceList;
+            o.instanceType = instanceType;
+            o.nodeCount = nodeCount;
+            o.period = period;
+            o.sysDiskCapacity = sysDiskCapacity;
+            o.sysDiskType = sysDiskType;
+            return o;
         }
     }
 }

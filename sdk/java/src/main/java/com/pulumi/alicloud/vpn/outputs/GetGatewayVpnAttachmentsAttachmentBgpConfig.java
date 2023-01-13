@@ -13,35 +13,24 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
      * @return The ASN on the Alibaba Cloud side.
      * 
      */
-    private final String localAsn;
+    private String localAsn;
     /**
      * @return The BGP IP address on the Alibaba Cloud side.
      * 
      */
-    private final String localBgpIp;
+    private String localBgpIp;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
      * 
      */
-    private final String tunnelCidr;
+    private String tunnelCidr;
 
-    @CustomType.Constructor
-    private GetGatewayVpnAttachmentsAttachmentBgpConfig(
-        @CustomType.Parameter("localAsn") String localAsn,
-        @CustomType.Parameter("localBgpIp") String localBgpIp,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tunnelCidr") String tunnelCidr) {
-        this.localAsn = localAsn;
-        this.localBgpIp = localBgpIp;
-        this.status = status;
-        this.tunnelCidr = tunnelCidr;
-    }
-
+    private GetGatewayVpnAttachmentsAttachmentBgpConfig() {}
     /**
      * @return The ASN on the Alibaba Cloud side.
      * 
@@ -78,17 +67,13 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
     public static Builder builder(GetGatewayVpnAttachmentsAttachmentBgpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String localAsn;
         private String localBgpIp;
         private String status;
         private String tunnelCidr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayVpnAttachmentsAttachmentBgpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localAsn = defaults.localAsn;
@@ -97,23 +82,33 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
     	      this.tunnelCidr = defaults.tunnelCidr;
         }
 
+        @CustomType.Setter
         public Builder localAsn(String localAsn) {
             this.localAsn = Objects.requireNonNull(localAsn);
             return this;
         }
+        @CustomType.Setter
         public Builder localBgpIp(String localBgpIp) {
             this.localBgpIp = Objects.requireNonNull(localBgpIp);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tunnelCidr(String tunnelCidr) {
             this.tunnelCidr = Objects.requireNonNull(tunnelCidr);
             return this;
-        }        public GetGatewayVpnAttachmentsAttachmentBgpConfig build() {
-            return new GetGatewayVpnAttachmentsAttachmentBgpConfig(localAsn, localBgpIp, status, tunnelCidr);
+        }
+        public GetGatewayVpnAttachmentsAttachmentBgpConfig build() {
+            final var o = new GetGatewayVpnAttachmentsAttachmentBgpConfig();
+            o.localAsn = localAsn;
+            o.localBgpIp = localBgpIp;
+            o.status = status;
+            o.tunnelCidr = tunnelCidr;
+            return o;
         }
     }
 }

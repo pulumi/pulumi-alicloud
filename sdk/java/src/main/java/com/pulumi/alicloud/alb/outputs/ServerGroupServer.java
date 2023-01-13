@@ -16,57 +16,40 @@ public final class ServerGroupServer {
      * @return The description of the server.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The port that is used by the server. Valid values: `1` to `65535`.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return The ID of the ECS instance, ENI instance or ECI instance.
      * 
      */
-    private final @Nullable String serverId;
+    private @Nullable String serverId;
     /**
      * @return The IP address of the ENI instance when it is in the inclusive ENI mode.
      * 
      */
-    private final @Nullable String serverIp;
+    private @Nullable String serverIp;
     /**
      * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
      * 
      */
-    private final @Nullable String serverType;
+    private @Nullable String serverType;
     /**
      * @return The status of the resource.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
      * requests are forwarded to the server.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private ServerGroupServer(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("serverId") @Nullable String serverId,
-        @CustomType.Parameter("serverIp") @Nullable String serverIp,
-        @CustomType.Parameter("serverType") @Nullable String serverType,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.description = description;
-        this.port = port;
-        this.serverId = serverId;
-        this.serverIp = serverIp;
-        this.serverType = serverType;
-        this.status = status;
-        this.weight = weight;
-    }
-
+    private ServerGroupServer() {}
     /**
      * @return The description of the server.
      * 
@@ -125,7 +108,7 @@ public final class ServerGroupServer {
     public static Builder builder(ServerGroupServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Integer port;
@@ -134,11 +117,7 @@ public final class ServerGroupServer {
         private @Nullable String serverType;
         private @Nullable String status;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -150,35 +129,51 @@ public final class ServerGroupServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder serverId(@Nullable String serverId) {
             this.serverId = serverId;
             return this;
         }
+        @CustomType.Setter
         public Builder serverIp(@Nullable String serverIp) {
             this.serverIp = serverIp;
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(@Nullable String serverType) {
             this.serverType = serverType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public ServerGroupServer build() {
-            return new ServerGroupServer(description, port, serverId, serverIp, serverType, status, weight);
+        }
+        public ServerGroupServer build() {
+            final var o = new ServerGroupServer();
+            o.description = description;
+            o.port = port;
+            o.serverId = serverId;
+            o.serverIp = serverIp;
+            o.serverType = serverType;
+            o.status = status;
+            o.weight = weight;
+            return o;
         }
     }
 }

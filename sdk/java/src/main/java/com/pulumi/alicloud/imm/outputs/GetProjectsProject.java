@@ -14,70 +14,49 @@ public final class GetProjectsProject {
      * @return The billing type. **Note:** This parameter is deprecated from 2021-04-01.
      * 
      */
-    private final String billingType;
+    private String billingType;
     /**
      * @return The maximum number of requests that can be processed per second. **Note:** This parameter is deprecated from 2021-04-01.
      * 
      */
-    private final Integer computeUnit;
+    private Integer computeUnit;
     /**
      * @return The creation time of project.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The service address of project.
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return The ID of project.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The modification time of project.
      * 
      */
-    private final String modifyTime;
+    private String modifyTime;
     /**
      * @return -The name of project.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return The service role authorized to the Intelligent Media Management service to access other cloud resources.
      * 
      */
-    private final String serviceRole;
+    private String serviceRole;
     /**
      * @return The type of project.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetProjectsProject(
-        @CustomType.Parameter("billingType") String billingType,
-        @CustomType.Parameter("computeUnit") Integer computeUnit,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("modifyTime") String modifyTime,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceRole") String serviceRole,
-        @CustomType.Parameter("type") String type) {
-        this.billingType = billingType;
-        this.computeUnit = computeUnit;
-        this.createTime = createTime;
-        this.endpoint = endpoint;
-        this.id = id;
-        this.modifyTime = modifyTime;
-        this.project = project;
-        this.serviceRole = serviceRole;
-        this.type = type;
-    }
-
+    private GetProjectsProject() {}
     /**
      * @return The billing type. **Note:** This parameter is deprecated from 2021-04-01.
      * 
@@ -149,7 +128,7 @@ public final class GetProjectsProject {
     public static Builder builder(GetProjectsProject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String billingType;
         private Integer computeUnit;
@@ -160,11 +139,7 @@ public final class GetProjectsProject {
         private String project;
         private String serviceRole;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.billingType = defaults.billingType;
@@ -178,43 +153,63 @@ public final class GetProjectsProject {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder billingType(String billingType) {
             this.billingType = Objects.requireNonNull(billingType);
             return this;
         }
+        @CustomType.Setter
         public Builder computeUnit(Integer computeUnit) {
             this.computeUnit = Objects.requireNonNull(computeUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
             this.modifyTime = Objects.requireNonNull(modifyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceRole(String serviceRole) {
             this.serviceRole = Objects.requireNonNull(serviceRole);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetProjectsProject build() {
-            return new GetProjectsProject(billingType, computeUnit, createTime, endpoint, id, modifyTime, project, serviceRole, type);
+        }
+        public GetProjectsProject build() {
+            final var o = new GetProjectsProject();
+            o.billingType = billingType;
+            o.computeUnit = computeUnit;
+            o.createTime = createTime;
+            o.endpoint = endpoint;
+            o.id = id;
+            o.modifyTime = modifyTime;
+            o.project = project;
+            o.serviceRole = serviceRole;
+            o.type = type;
+            return o;
         }
     }
 }

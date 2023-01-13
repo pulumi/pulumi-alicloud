@@ -13,56 +13,39 @@ public final class GetInstanceAttachmentsAttachment {
      * @return The domain of the instance attachment.
      * 
      */
-    private final String domain;
+    private String domain;
     /**
      * @return The access endpoint of the instance attachment.
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return The resource ID, the value is same as &#34;instance_name&#34;.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of OTS instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The region of the instance attachment.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The ID of attaching VPC to instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The name of attaching VPC to instance.
      * 
      */
-    private final String vpcName;
+    private String vpcName;
 
-    @CustomType.Constructor
-    private GetInstanceAttachmentsAttachment(
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcName") String vpcName) {
-        this.domain = domain;
-        this.endpoint = endpoint;
-        this.id = id;
-        this.instanceName = instanceName;
-        this.region = region;
-        this.vpcId = vpcId;
-        this.vpcName = vpcName;
-    }
-
+    private GetInstanceAttachmentsAttachment() {}
     /**
      * @return The domain of the instance attachment.
      * 
@@ -120,7 +103,7 @@ public final class GetInstanceAttachmentsAttachment {
     public static Builder builder(GetInstanceAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domain;
         private String endpoint;
@@ -129,11 +112,7 @@ public final class GetInstanceAttachmentsAttachment {
         private String region;
         private String vpcId;
         private String vpcName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -145,35 +124,51 @@ public final class GetInstanceAttachmentsAttachment {
     	      this.vpcName = defaults.vpcName;
         }
 
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
-        }        public GetInstanceAttachmentsAttachment build() {
-            return new GetInstanceAttachmentsAttachment(domain, endpoint, id, instanceName, region, vpcId, vpcName);
+        }
+        public GetInstanceAttachmentsAttachment build() {
+            final var o = new GetInstanceAttachmentsAttachment();
+            o.domain = domain;
+            o.endpoint = endpoint;
+            o.id = id;
+            o.instanceName = instanceName;
+            o.region = region;
+            o.vpcId = vpcId;
+            o.vpcName = vpcName;
+            return o;
         }
     }
 }

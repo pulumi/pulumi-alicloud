@@ -13,21 +13,14 @@ public final class GetApplicationsApplicationMountDesc {
      * @return The Container mount path.
      * 
      */
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return NAS relative file directory.
      * 
      */
-    private final String nasPath;
+    private String nasPath;
 
-    @CustomType.Constructor
-    private GetApplicationsApplicationMountDesc(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("nasPath") String nasPath) {
-        this.mountPath = mountPath;
-        this.nasPath = nasPath;
-    }
-
+    private GetApplicationsApplicationMountDesc() {}
     /**
      * @return The Container mount path.
      * 
@@ -50,30 +43,32 @@ public final class GetApplicationsApplicationMountDesc {
     public static Builder builder(GetApplicationsApplicationMountDesc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private String nasPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationsApplicationMountDesc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.nasPath = defaults.nasPath;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder nasPath(String nasPath) {
             this.nasPath = Objects.requireNonNull(nasPath);
             return this;
-        }        public GetApplicationsApplicationMountDesc build() {
-            return new GetApplicationsApplicationMountDesc(mountPath, nasPath);
+        }
+        public GetApplicationsApplicationMountDesc build() {
+            final var o = new GetApplicationsApplicationMountDesc();
+            o.mountPath = mountPath;
+            o.nasPath = nasPath;
+            return o;
         }
     }
 }

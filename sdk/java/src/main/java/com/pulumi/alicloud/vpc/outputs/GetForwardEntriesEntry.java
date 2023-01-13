@@ -13,77 +13,54 @@ public final class GetForwardEntriesEntry {
      * @return The public IP address.
      * 
      */
-    private final String externalIp;
+    private String externalIp;
     /**
      * @return The public port.
      * 
      */
-    private final String externalPort;
+    private String externalPort;
     /**
      * @return The forward entry ID.
      * 
      */
-    private final String forwardEntryId;
+    private String forwardEntryId;
     /**
      * @return The name of forward entry.
      * 
      */
-    private final String forwardEntryName;
+    private String forwardEntryName;
     /**
      * @return The ID of the Forward Entry.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The private IP address.
      * 
      */
-    private final String internalIp;
+    private String internalIp;
     /**
      * @return The internal port.
      * 
      */
-    private final String internalPort;
+    private String internalPort;
     /**
      * @return The ip protocol. Valid values: `any`,`tcp` and `udp`.
      * 
      */
-    private final String ipProtocol;
+    private String ipProtocol;
     /**
      * @return The forward entry name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetForwardEntriesEntry(
-        @CustomType.Parameter("externalIp") String externalIp,
-        @CustomType.Parameter("externalPort") String externalPort,
-        @CustomType.Parameter("forwardEntryId") String forwardEntryId,
-        @CustomType.Parameter("forwardEntryName") String forwardEntryName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("internalIp") String internalIp,
-        @CustomType.Parameter("internalPort") String internalPort,
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("status") String status) {
-        this.externalIp = externalIp;
-        this.externalPort = externalPort;
-        this.forwardEntryId = forwardEntryId;
-        this.forwardEntryName = forwardEntryName;
-        this.id = id;
-        this.internalIp = internalIp;
-        this.internalPort = internalPort;
-        this.ipProtocol = ipProtocol;
-        this.name = name;
-        this.status = status;
-    }
-
+    private GetForwardEntriesEntry() {}
     /**
      * @return The public IP address.
      * 
@@ -162,7 +139,7 @@ public final class GetForwardEntriesEntry {
     public static Builder builder(GetForwardEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String externalIp;
         private String externalPort;
@@ -174,11 +151,7 @@ public final class GetForwardEntriesEntry {
         private String ipProtocol;
         private String name;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetForwardEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalIp = defaults.externalIp;
@@ -193,47 +166,69 @@ public final class GetForwardEntriesEntry {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder externalIp(String externalIp) {
             this.externalIp = Objects.requireNonNull(externalIp);
             return this;
         }
+        @CustomType.Setter
         public Builder externalPort(String externalPort) {
             this.externalPort = Objects.requireNonNull(externalPort);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardEntryId(String forwardEntryId) {
             this.forwardEntryId = Objects.requireNonNull(forwardEntryId);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardEntryName(String forwardEntryName) {
             this.forwardEntryName = Objects.requireNonNull(forwardEntryName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder internalIp(String internalIp) {
             this.internalIp = Objects.requireNonNull(internalIp);
             return this;
         }
+        @CustomType.Setter
         public Builder internalPort(String internalPort) {
             this.internalPort = Objects.requireNonNull(internalPort);
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetForwardEntriesEntry build() {
-            return new GetForwardEntriesEntry(externalIp, externalPort, forwardEntryId, forwardEntryName, id, internalIp, internalPort, ipProtocol, name, status);
+        }
+        public GetForwardEntriesEntry build() {
+            final var o = new GetForwardEntriesEntry();
+            o.externalIp = externalIp;
+            o.externalPort = externalPort;
+            o.forwardEntryId = forwardEntryId;
+            o.forwardEntryName = forwardEntryName;
+            o.id = id;
+            o.internalIp = internalIp;
+            o.internalPort = internalPort;
+            o.ipProtocol = ipProtocol;
+            o.name = name;
+            o.status = status;
+            return o;
         }
     }
 }

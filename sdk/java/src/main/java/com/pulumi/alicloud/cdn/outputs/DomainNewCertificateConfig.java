@@ -15,49 +15,34 @@ public final class DomainNewCertificateConfig {
      * @return The SSL certificate name.
      * 
      */
-    private final @Nullable String certName;
+    private @Nullable String certName;
     /**
      * @return The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
      * 
      */
-    private final @Nullable String certType;
+    private @Nullable String certType;
     /**
      * @return Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
      * 
      */
-    private final @Nullable String forceSet;
+    private @Nullable String forceSet;
     /**
      * @return The SSL private key. This is required if `server_certificate_status` is `on`
      * 
      */
-    private final @Nullable String privateKey;
+    private @Nullable String privateKey;
     /**
      * @return The SSL server certificate string. This is required if `server_certificate_status` is `on`
      * 
      */
-    private final @Nullable String serverCertificate;
+    private @Nullable String serverCertificate;
     /**
      * @return This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
      * 
      */
-    private final @Nullable String serverCertificateStatus;
+    private @Nullable String serverCertificateStatus;
 
-    @CustomType.Constructor
-    private DomainNewCertificateConfig(
-        @CustomType.Parameter("certName") @Nullable String certName,
-        @CustomType.Parameter("certType") @Nullable String certType,
-        @CustomType.Parameter("forceSet") @Nullable String forceSet,
-        @CustomType.Parameter("privateKey") @Nullable String privateKey,
-        @CustomType.Parameter("serverCertificate") @Nullable String serverCertificate,
-        @CustomType.Parameter("serverCertificateStatus") @Nullable String serverCertificateStatus) {
-        this.certName = certName;
-        this.certType = certType;
-        this.forceSet = forceSet;
-        this.privateKey = privateKey;
-        this.serverCertificate = serverCertificate;
-        this.serverCertificateStatus = serverCertificateStatus;
-    }
-
+    private DomainNewCertificateConfig() {}
     /**
      * @return The SSL certificate name.
      * 
@@ -108,7 +93,7 @@ public final class DomainNewCertificateConfig {
     public static Builder builder(DomainNewCertificateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certName;
         private @Nullable String certType;
@@ -116,11 +101,7 @@ public final class DomainNewCertificateConfig {
         private @Nullable String privateKey;
         private @Nullable String serverCertificate;
         private @Nullable String serverCertificateStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainNewCertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -131,31 +112,45 @@ public final class DomainNewCertificateConfig {
     	      this.serverCertificateStatus = defaults.serverCertificateStatus;
         }
 
+        @CustomType.Setter
         public Builder certName(@Nullable String certName) {
             this.certName = certName;
             return this;
         }
+        @CustomType.Setter
         public Builder certType(@Nullable String certType) {
             this.certType = certType;
             return this;
         }
+        @CustomType.Setter
         public Builder forceSet(@Nullable String forceSet) {
             this.forceSet = forceSet;
             return this;
         }
+        @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
             this.privateKey = privateKey;
             return this;
         }
+        @CustomType.Setter
         public Builder serverCertificate(@Nullable String serverCertificate) {
             this.serverCertificate = serverCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder serverCertificateStatus(@Nullable String serverCertificateStatus) {
             this.serverCertificateStatus = serverCertificateStatus;
             return this;
-        }        public DomainNewCertificateConfig build() {
-            return new DomainNewCertificateConfig(certName, certType, forceSet, privateKey, serverCertificate, serverCertificateStatus);
+        }
+        public DomainNewCertificateConfig build() {
+            final var o = new DomainNewCertificateConfig();
+            o.certName = certName;
+            o.certType = certType;
+            o.forceSet = forceSet;
+            o.privateKey = privateKey;
+            o.serverCertificate = serverCertificate;
+            o.serverCertificateStatus = serverCertificateStatus;
+            return o;
         }
     }
 }

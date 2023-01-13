@@ -13,28 +13,19 @@ public final class GetEcsDisksDiskMountInstance {
      * @return A mount of time.
      * 
      */
-    private final String attachedTime;
+    private String attachedTime;
     /**
      * @return The mount point of the disk.
      * 
      */
-    private final String device;
+    private String device;
     /**
      * @return The instance ID of the disk mount.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
 
-    @CustomType.Constructor
-    private GetEcsDisksDiskMountInstance(
-        @CustomType.Parameter("attachedTime") String attachedTime,
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("instanceId") String instanceId) {
-        this.attachedTime = attachedTime;
-        this.device = device;
-        this.instanceId = instanceId;
-    }
-
+    private GetEcsDisksDiskMountInstance() {}
     /**
      * @return A mount of time.
      * 
@@ -64,16 +55,12 @@ public final class GetEcsDisksDiskMountInstance {
     public static Builder builder(GetEcsDisksDiskMountInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attachedTime;
         private String device;
         private String instanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsDisksDiskMountInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachedTime = defaults.attachedTime;
@@ -81,19 +68,27 @@ public final class GetEcsDisksDiskMountInstance {
     	      this.instanceId = defaults.instanceId;
         }
 
+        @CustomType.Setter
         public Builder attachedTime(String attachedTime) {
             this.attachedTime = Objects.requireNonNull(attachedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
-        }        public GetEcsDisksDiskMountInstance build() {
-            return new GetEcsDisksDiskMountInstance(attachedTime, device, instanceId);
+        }
+        public GetEcsDisksDiskMountInstance build() {
+            final var o = new GetEcsDisksDiskMountInstance();
+            o.attachedTime = attachedTime;
+            o.device = device;
+            o.instanceId = instanceId;
+            return o;
         }
     }
 }

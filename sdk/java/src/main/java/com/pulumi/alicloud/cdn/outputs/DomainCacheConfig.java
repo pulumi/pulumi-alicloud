@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainCacheConfig {
-    private final String cacheContent;
-    private final @Nullable String cacheId;
-    private final String cacheType;
-    private final Integer ttl;
-    private final @Nullable Integer weight;
+    private String cacheContent;
+    private @Nullable String cacheId;
+    private String cacheType;
+    private Integer ttl;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private DomainCacheConfig(
-        @CustomType.Parameter("cacheContent") String cacheContent,
-        @CustomType.Parameter("cacheId") @Nullable String cacheId,
-        @CustomType.Parameter("cacheType") String cacheType,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.cacheContent = cacheContent;
-        this.cacheId = cacheId;
-        this.cacheType = cacheType;
-        this.ttl = ttl;
-        this.weight = weight;
-    }
-
+    private DomainCacheConfig() {}
     public String cacheContent() {
         return this.cacheContent;
     }
@@ -55,18 +42,14 @@ public final class DomainCacheConfig {
     public static Builder builder(DomainCacheConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cacheContent;
         private @Nullable String cacheId;
         private String cacheType;
         private Integer ttl;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainCacheConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheContent = defaults.cacheContent;
@@ -76,27 +59,39 @@ public final class DomainCacheConfig {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder cacheContent(String cacheContent) {
             this.cacheContent = Objects.requireNonNull(cacheContent);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheId(@Nullable String cacheId) {
             this.cacheId = cacheId;
             return this;
         }
+        @CustomType.Setter
         public Builder cacheType(String cacheType) {
             this.cacheType = Objects.requireNonNull(cacheType);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public DomainCacheConfig build() {
-            return new DomainCacheConfig(cacheContent, cacheId, cacheType, ttl, weight);
+        }
+        public DomainCacheConfig build() {
+            final var o = new DomainCacheConfig();
+            o.cacheContent = cacheContent;
+            o.cacheId = cacheId;
+            o.cacheType = cacheType;
+            o.ttl = ttl;
+            o.weight = weight;
+            return o;
         }
     }
 }

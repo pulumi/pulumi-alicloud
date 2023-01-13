@@ -14,21 +14,14 @@ public final class GetRegionsRegionZoneId {
      * @return Whether to support vpc network.
      * 
      */
-    private final Boolean vpcEnabled;
+    private Boolean vpcEnabled;
     /**
      * @return The zone ID.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetRegionsRegionZoneId(
-        @CustomType.Parameter("vpcEnabled") Boolean vpcEnabled,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.vpcEnabled = vpcEnabled;
-        this.zoneId = zoneId;
-    }
-
+    private GetRegionsRegionZoneId() {}
     /**
      * @return Whether to support vpc network.
      * 
@@ -51,30 +44,32 @@ public final class GetRegionsRegionZoneId {
     public static Builder builder(GetRegionsRegionZoneId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean vpcEnabled;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionsRegionZoneId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.vpcEnabled = defaults.vpcEnabled;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder vpcEnabled(Boolean vpcEnabled) {
             this.vpcEnabled = Objects.requireNonNull(vpcEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetRegionsRegionZoneId build() {
-            return new GetRegionsRegionZoneId(vpcEnabled, zoneId);
+        }
+        public GetRegionsRegionZoneId build() {
+            final var o = new GetRegionsRegionZoneId();
+            o.vpcEnabled = vpcEnabled;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

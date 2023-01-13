@@ -13,21 +13,14 @@ public final class ChangeSetParameter {
      * @return The parameter key.
      * 
      */
-    private final String parameterKey;
+    private String parameterKey;
     /**
      * @return The parameter value.
      * 
      */
-    private final String parameterValue;
+    private String parameterValue;
 
-    @CustomType.Constructor
-    private ChangeSetParameter(
-        @CustomType.Parameter("parameterKey") String parameterKey,
-        @CustomType.Parameter("parameterValue") String parameterValue) {
-        this.parameterKey = parameterKey;
-        this.parameterValue = parameterValue;
-    }
-
+    private ChangeSetParameter() {}
     /**
      * @return The parameter key.
      * 
@@ -50,30 +43,32 @@ public final class ChangeSetParameter {
     public static Builder builder(ChangeSetParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ChangeSetParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }        public ChangeSetParameter build() {
-            return new ChangeSetParameter(parameterKey, parameterValue);
+        }
+        public ChangeSetParameter build() {
+            final var o = new ChangeSetParameter();
+            o.parameterKey = parameterKey;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

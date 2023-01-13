@@ -14,84 +14,59 @@ public final class GetHavipsHavip {
      * @return EIP bound to HaVip.
      * 
      */
-    private final List<String> associatedEipAddresses;
+    private List<String> associatedEipAddresses;
     /**
      * @return An ECS instance that is bound to HaVip.
      * 
      */
-    private final List<String> associatedInstances;
+    private List<String> associatedInstances;
     /**
      * @return Dependence of a HaVip instance.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The  ID of the resource.
      * 
      */
-    private final String havipId;
+    private String havipId;
     /**
      * @return The name of the HaVip instance.
      * 
      */
-    private final String havipName;
+    private String havipName;
     /**
      * @return The ID of the Ha Vip.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return IP address of private network.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return The primary instance ID bound to HaVip.
      * 
      */
-    private final String masterInstanceId;
+    private String masterInstanceId;
     /**
      * @return The status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The VPC ID to which the HaVip instance belongs.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetHavipsHavip(
-        @CustomType.Parameter("associatedEipAddresses") List<String> associatedEipAddresses,
-        @CustomType.Parameter("associatedInstances") List<String> associatedInstances,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("havipId") String havipId,
-        @CustomType.Parameter("havipName") String havipName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("masterInstanceId") String masterInstanceId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.associatedEipAddresses = associatedEipAddresses;
-        this.associatedInstances = associatedInstances;
-        this.description = description;
-        this.havipId = havipId;
-        this.havipName = havipName;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.masterInstanceId = masterInstanceId;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetHavipsHavip() {}
     /**
      * @return EIP bound to HaVip.
      * 
@@ -177,7 +152,7 @@ public final class GetHavipsHavip {
     public static Builder builder(GetHavipsHavip defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> associatedEipAddresses;
         private List<String> associatedInstances;
@@ -190,11 +165,7 @@ public final class GetHavipsHavip {
         private String status;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHavipsHavip defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associatedEipAddresses = defaults.associatedEipAddresses;
@@ -210,6 +181,7 @@ public final class GetHavipsHavip {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder associatedEipAddresses(List<String> associatedEipAddresses) {
             this.associatedEipAddresses = Objects.requireNonNull(associatedEipAddresses);
             return this;
@@ -217,6 +189,7 @@ public final class GetHavipsHavip {
         public Builder associatedEipAddresses(String... associatedEipAddresses) {
             return associatedEipAddresses(List.of(associatedEipAddresses));
         }
+        @CustomType.Setter
         public Builder associatedInstances(List<String> associatedInstances) {
             this.associatedInstances = Objects.requireNonNull(associatedInstances);
             return this;
@@ -224,43 +197,65 @@ public final class GetHavipsHavip {
         public Builder associatedInstances(String... associatedInstances) {
             return associatedInstances(List.of(associatedInstances));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder havipId(String havipId) {
             this.havipId = Objects.requireNonNull(havipId);
             return this;
         }
+        @CustomType.Setter
         public Builder havipName(String havipName) {
             this.havipName = Objects.requireNonNull(havipName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder masterInstanceId(String masterInstanceId) {
             this.masterInstanceId = Objects.requireNonNull(masterInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetHavipsHavip build() {
-            return new GetHavipsHavip(associatedEipAddresses, associatedInstances, description, havipId, havipName, id, ipAddress, masterInstanceId, status, vpcId, vswitchId);
+        }
+        public GetHavipsHavip build() {
+            final var o = new GetHavipsHavip();
+            o.associatedEipAddresses = associatedEipAddresses;
+            o.associatedInstances = associatedInstances;
+            o.description = description;
+            o.havipId = havipId;
+            o.havipName = havipName;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.masterInstanceId = masterInstanceId;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class EcsInstanceSetExcludeInstanceFilter {
      * @return The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private EcsInstanceSetExcludeInstanceFilter(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private EcsInstanceSetExcludeInstanceFilter() {}
     /**
      * @return The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
      * 
@@ -51,33 +44,35 @@ public final class EcsInstanceSetExcludeInstanceFilter {
     public static Builder builder(EcsInstanceSetExcludeInstanceFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EcsInstanceSetExcludeInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public EcsInstanceSetExcludeInstanceFilter build() {
-            return new EcsInstanceSetExcludeInstanceFilter(key, values);
+        }
+        public EcsInstanceSetExcludeInstanceFilter build() {
+            final var o = new EcsInstanceSetExcludeInstanceFilter();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

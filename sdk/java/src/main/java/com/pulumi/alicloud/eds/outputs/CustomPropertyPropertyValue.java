@@ -15,21 +15,14 @@ public final class CustomPropertyPropertyValue {
      * @return The value of an attribute.
      * 
      */
-    private final @Nullable String propertyValue;
+    private @Nullable String propertyValue;
     /**
      * @return The value of an attribute id.
      * 
      */
-    private final @Nullable String propertyValueId;
+    private @Nullable String propertyValueId;
 
-    @CustomType.Constructor
-    private CustomPropertyPropertyValue(
-        @CustomType.Parameter("propertyValue") @Nullable String propertyValue,
-        @CustomType.Parameter("propertyValueId") @Nullable String propertyValueId) {
-        this.propertyValue = propertyValue;
-        this.propertyValueId = propertyValueId;
-    }
-
+    private CustomPropertyPropertyValue() {}
     /**
      * @return The value of an attribute.
      * 
@@ -52,30 +45,32 @@ public final class CustomPropertyPropertyValue {
     public static Builder builder(CustomPropertyPropertyValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String propertyValue;
         private @Nullable String propertyValueId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CustomPropertyPropertyValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.propertyValue = defaults.propertyValue;
     	      this.propertyValueId = defaults.propertyValueId;
         }
 
+        @CustomType.Setter
         public Builder propertyValue(@Nullable String propertyValue) {
             this.propertyValue = propertyValue;
             return this;
         }
+        @CustomType.Setter
         public Builder propertyValueId(@Nullable String propertyValueId) {
             this.propertyValueId = propertyValueId;
             return this;
-        }        public CustomPropertyPropertyValue build() {
-            return new CustomPropertyPropertyValue(propertyValue, propertyValueId);
+        }
+        public CustomPropertyPropertyValue build() {
+            final var o = new CustomPropertyPropertyValue();
+            o.propertyValue = propertyValue;
+            o.propertyValueId = propertyValueId;
+            return o;
         }
     }
 }

@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainHttpHeaderConfig {
-    private final @Nullable String headerId;
-    private final String headerKey;
-    private final String headerValue;
+    private @Nullable String headerId;
+    private String headerKey;
+    private String headerValue;
 
-    @CustomType.Constructor
-    private DomainHttpHeaderConfig(
-        @CustomType.Parameter("headerId") @Nullable String headerId,
-        @CustomType.Parameter("headerKey") String headerKey,
-        @CustomType.Parameter("headerValue") String headerValue) {
-        this.headerId = headerId;
-        this.headerKey = headerKey;
-        this.headerValue = headerValue;
-    }
-
+    private DomainHttpHeaderConfig() {}
     public Optional<String> headerId() {
         return Optional.ofNullable(this.headerId);
     }
@@ -42,16 +33,12 @@ public final class DomainHttpHeaderConfig {
     public static Builder builder(DomainHttpHeaderConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String headerId;
         private String headerKey;
         private String headerValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainHttpHeaderConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerId = defaults.headerId;
@@ -59,19 +46,27 @@ public final class DomainHttpHeaderConfig {
     	      this.headerValue = defaults.headerValue;
         }
 
+        @CustomType.Setter
         public Builder headerId(@Nullable String headerId) {
             this.headerId = headerId;
             return this;
         }
+        @CustomType.Setter
         public Builder headerKey(String headerKey) {
             this.headerKey = Objects.requireNonNull(headerKey);
             return this;
         }
+        @CustomType.Setter
         public Builder headerValue(String headerValue) {
             this.headerValue = Objects.requireNonNull(headerValue);
             return this;
-        }        public DomainHttpHeaderConfig build() {
-            return new DomainHttpHeaderConfig(headerId, headerKey, headerValue);
+        }
+        public DomainHttpHeaderConfig build() {
+            final var o = new DomainHttpHeaderConfig();
+            o.headerId = headerId;
+            o.headerKey = headerKey;
+            o.headerValue = headerValue;
+            return o;
         }
     }
 }

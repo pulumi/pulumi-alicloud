@@ -13,30 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlansResult {
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetBackupPlansPlan> plans;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetBackupPlansPlan> plans;
 
-    @CustomType.Constructor
-    private GetBackupPlansResult(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("plans") List<GetBackupPlansPlan> plans) {
-        this.clusterId = clusterId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.plans = plans;
-    }
-
+    private GetBackupPlansResult() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -64,18 +51,14 @@ public final class GetBackupPlansResult {
     public static Builder builder(GetBackupPlansResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetBackupPlansPlan> plans;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupPlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -85,14 +68,17 @@ public final class GetBackupPlansResult {
     	      this.plans = defaults.plans;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -100,18 +86,27 @@ public final class GetBackupPlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder plans(List<GetBackupPlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
         }
         public Builder plans(GetBackupPlansPlan... plans) {
             return plans(List.of(plans));
-        }        public GetBackupPlansResult build() {
-            return new GetBackupPlansResult(clusterId, id, ids, outputFile, plans);
+        }
+        public GetBackupPlansResult build() {
+            final var o = new GetBackupPlansResult();
+            o.clusterId = clusterId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.plans = plans;
+            return o;
         }
     }
 }

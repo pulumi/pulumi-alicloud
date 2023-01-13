@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    private final @Nullable String appKey;
-    private final @Nullable Boolean enableDetails;
-    private final @Nullable String engineType;
+    private @Nullable String appKey;
+    private @Nullable Boolean enableDetails;
+    private @Nullable String engineType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String outputFile;
-    private final @Nullable String queryStr;
-    private final @Nullable String status;
-    private final @Nullable String statusList;
+    private String id;
+    private List<String> ids;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String outputFile;
+    private @Nullable String queryStr;
+    private @Nullable String status;
+    private @Nullable String statusList;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("appKey") @Nullable String appKey,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("engineType") @Nullable String engineType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("queryStr") @Nullable String queryStr,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("statusList") @Nullable String statusList) {
-        this.appKey = appKey;
-        this.enableDetails = enableDetails;
-        this.engineType = engineType;
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.outputFile = outputFile;
-        this.queryStr = queryStr;
-        this.status = status;
-        this.statusList = statusList;
-    }
-
+    private GetInstancesResult() {}
     public Optional<String> appKey() {
         return Optional.ofNullable(this.appKey);
     }
@@ -95,7 +72,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appKey;
         private @Nullable Boolean enableDetails;
@@ -107,11 +84,7 @@ public final class GetInstancesResult {
         private @Nullable String queryStr;
         private @Nullable String status;
         private @Nullable String statusList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appKey = defaults.appKey;
@@ -126,22 +99,27 @@ public final class GetInstancesResult {
     	      this.statusList = defaults.statusList;
         }
 
+        @CustomType.Setter
         public Builder appKey(@Nullable String appKey) {
             this.appKey = appKey;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder engineType(@Nullable String engineType) {
             this.engineType = engineType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -149,6 +127,7 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -156,23 +135,39 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder queryStr(@Nullable String queryStr) {
             this.queryStr = queryStr;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder statusList(@Nullable String statusList) {
             this.statusList = statusList;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(appKey, enableDetails, engineType, id, ids, instances, outputFile, queryStr, status, statusList);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.appKey = appKey;
+            o.enableDetails = enableDetails;
+            o.engineType = engineType;
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            o.queryStr = queryStr;
+            o.status = status;
+            o.statusList = statusList;
+            return o;
         }
     }
 }

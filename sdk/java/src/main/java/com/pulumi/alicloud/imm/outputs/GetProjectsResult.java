@@ -17,23 +17,12 @@ public final class GetProjectsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetProjectsProject> projects;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetProjectsProject> projects;
 
-    @CustomType.Constructor
-    private GetProjectsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("projects") List<GetProjectsProject> projects) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.projects = projects;
-    }
-
+    private GetProjectsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,17 +47,13 @@ public final class GetProjectsResult {
     public static Builder builder(GetProjectsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetProjectsProject> projects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -77,10 +62,12 @@ public final class GetProjectsResult {
     	      this.projects = defaults.projects;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -88,18 +75,26 @@ public final class GetProjectsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder projects(List<GetProjectsProject> projects) {
             this.projects = Objects.requireNonNull(projects);
             return this;
         }
         public Builder projects(GetProjectsProject... projects) {
             return projects(List.of(projects));
-        }        public GetProjectsResult build() {
-            return new GetProjectsResult(id, ids, outputFile, projects);
+        }
+        public GetProjectsResult build() {
+            final var o = new GetProjectsResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.projects = projects;
+            return o;
         }
     }
 }

@@ -14,63 +14,44 @@ public final class GetInstancesInstance {
      * @return Creation time of the instance.
      * 
      */
-    private final Integer createTime;
+    private Integer createTime;
     /**
      * @return The DRDS instance description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the DRDS instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return `Classic` for public classic network or `VPC` for private network.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return Status of the instance.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The DRDS Instance type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The DRDS Instance version.
      * 
      */
-    private final Integer version;
+    private Integer version;
     /**
      * @return Zone ID the instance belongs to.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("version") Integer version,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.networkType = networkType;
-        this.status = status;
-        this.type = type;
-        this.version = version;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return Creation time of the instance.
      * 
@@ -135,7 +116,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer createTime;
         private String description;
@@ -145,11 +126,7 @@ public final class GetInstancesInstance {
         private String type;
         private Integer version;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -162,39 +139,57 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(createTime, description, id, networkType, status, type, version, zoneId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.networkType = networkType;
+            o.status = status;
+            o.type = type;
+            o.version = version;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class DirectorySamlIdentityProviderConfiguration {
      * @return Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
      * 
      */
-    private final @Nullable String encodedMetadataDocument;
+    private @Nullable String encodedMetadataDocument;
     /**
      * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
      */
-    private final @Nullable String ssoStatus;
+    private @Nullable String ssoStatus;
 
-    @CustomType.Constructor
-    private DirectorySamlIdentityProviderConfiguration(
-        @CustomType.Parameter("encodedMetadataDocument") @Nullable String encodedMetadataDocument,
-        @CustomType.Parameter("ssoStatus") @Nullable String ssoStatus) {
-        this.encodedMetadataDocument = encodedMetadataDocument;
-        this.ssoStatus = ssoStatus;
-    }
-
+    private DirectorySamlIdentityProviderConfiguration() {}
     /**
      * @return Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
      * 
@@ -52,30 +45,32 @@ public final class DirectorySamlIdentityProviderConfiguration {
     public static Builder builder(DirectorySamlIdentityProviderConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String encodedMetadataDocument;
         private @Nullable String ssoStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DirectorySamlIdentityProviderConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encodedMetadataDocument = defaults.encodedMetadataDocument;
     	      this.ssoStatus = defaults.ssoStatus;
         }
 
+        @CustomType.Setter
         public Builder encodedMetadataDocument(@Nullable String encodedMetadataDocument) {
             this.encodedMetadataDocument = encodedMetadataDocument;
             return this;
         }
+        @CustomType.Setter
         public Builder ssoStatus(@Nullable String ssoStatus) {
             this.ssoStatus = ssoStatus;
             return this;
-        }        public DirectorySamlIdentityProviderConfiguration build() {
-            return new DirectorySamlIdentityProviderConfiguration(encodedMetadataDocument, ssoStatus);
+        }
+        public DirectorySamlIdentityProviderConfiguration build() {
+            final var o = new DirectorySamlIdentityProviderConfiguration();
+            o.encodedMetadataDocument = encodedMetadataDocument;
+            o.ssoStatus = ssoStatus;
+            return o;
         }
     }
 }

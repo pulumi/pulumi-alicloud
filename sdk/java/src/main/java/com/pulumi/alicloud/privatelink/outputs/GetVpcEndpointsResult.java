@@ -14,51 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointsResult {
-    private final @Nullable String connectionStatus;
-    private final @Nullable Boolean enableDetails;
-    private final List<GetVpcEndpointsEndpoint> endpoints;
+    private @Nullable String connectionStatus;
+    private @Nullable Boolean enableDetails;
+    private List<GetVpcEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String serviceName;
-    private final @Nullable String status;
-    private final @Nullable String vpcEndpointName;
-    private final @Nullable String vpcId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String serviceName;
+    private @Nullable String status;
+    private @Nullable String vpcEndpointName;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private GetVpcEndpointsResult(
-        @CustomType.Parameter("connectionStatus") @Nullable String connectionStatus,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("endpoints") List<GetVpcEndpointsEndpoint> endpoints,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vpcEndpointName") @Nullable String vpcEndpointName,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.connectionStatus = connectionStatus;
-        this.enableDetails = enableDetails;
-        this.endpoints = endpoints;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.serviceName = serviceName;
-        this.status = status;
-        this.vpcEndpointName = vpcEndpointName;
-        this.vpcId = vpcId;
-    }
-
+    private GetVpcEndpointsResult() {}
     public Optional<String> connectionStatus() {
         return Optional.ofNullable(this.connectionStatus);
     }
@@ -107,7 +80,7 @@ public final class GetVpcEndpointsResult {
     public static Builder builder(GetVpcEndpointsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionStatus;
         private @Nullable Boolean enableDetails;
@@ -121,11 +94,7 @@ public final class GetVpcEndpointsResult {
         private @Nullable String status;
         private @Nullable String vpcEndpointName;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionStatus = defaults.connectionStatus;
@@ -142,14 +111,17 @@ public final class GetVpcEndpointsResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder connectionStatus(@Nullable String connectionStatus) {
             this.connectionStatus = connectionStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoints(List<GetVpcEndpointsEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -157,10 +129,12 @@ public final class GetVpcEndpointsResult {
         public Builder endpoints(GetVpcEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -168,10 +142,12 @@ public final class GetVpcEndpointsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -179,27 +155,46 @@ public final class GetVpcEndpointsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcEndpointName(@Nullable String vpcEndpointName) {
             this.vpcEndpointName = vpcEndpointName;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public GetVpcEndpointsResult build() {
-            return new GetVpcEndpointsResult(connectionStatus, enableDetails, endpoints, id, ids, nameRegex, names, outputFile, serviceName, status, vpcEndpointName, vpcId);
+        }
+        public GetVpcEndpointsResult build() {
+            final var o = new GetVpcEndpointsResult();
+            o.connectionStatus = connectionStatus;
+            o.enableDetails = enableDetails;
+            o.endpoints = endpoints;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.serviceName = serviceName;
+            o.status = status;
+            o.vpcEndpointName = vpcEndpointName;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

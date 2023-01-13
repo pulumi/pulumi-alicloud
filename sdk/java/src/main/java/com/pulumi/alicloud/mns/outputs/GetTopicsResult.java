@@ -17,34 +17,21 @@ public final class GetTopicsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String namePrefix;
+    private String id;
+    private @Nullable String namePrefix;
     /**
      * @return A list of topic names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of topics. Each element contains the following attributes:
      * 
      */
-    private final List<GetTopicsTopic> topics;
+    private List<GetTopicsTopic> topics;
 
-    @CustomType.Constructor
-    private GetTopicsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namePrefix") @Nullable String namePrefix,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("topics") List<GetTopicsTopic> topics) {
-        this.id = id;
-        this.namePrefix = namePrefix;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.topics = topics;
-    }
-
+    private GetTopicsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -80,18 +67,14 @@ public final class GetTopicsResult {
     public static Builder builder(GetTopicsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String namePrefix;
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetTopicsTopic> topics;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,14 +84,17 @@ public final class GetTopicsResult {
     	      this.topics = defaults.topics;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
             this.namePrefix = namePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -116,18 +102,27 @@ public final class GetTopicsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder topics(List<GetTopicsTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
         }
         public Builder topics(GetTopicsTopic... topics) {
             return topics(List.of(topics));
-        }        public GetTopicsResult build() {
-            return new GetTopicsResult(id, namePrefix, names, outputFile, topics);
+        }
+        public GetTopicsResult build() {
+            final var o = new GetTopicsResult();
+            o.id = id;
+            o.namePrefix = namePrefix;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.topics = topics;
+            return o;
         }
     }
 }

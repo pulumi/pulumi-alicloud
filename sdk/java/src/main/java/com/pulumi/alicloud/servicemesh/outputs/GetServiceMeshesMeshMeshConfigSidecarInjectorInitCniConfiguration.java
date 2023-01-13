@@ -14,21 +14,14 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigura
      * @return Whether to enable Service grid audit.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The excluded namespace of the CNI.
      * 
      */
-    private final String excludeNamespaces;
+    private String excludeNamespaces;
 
-    @CustomType.Constructor
-    private GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("excludeNamespaces") String excludeNamespaces) {
-        this.enabled = enabled;
-        this.excludeNamespaces = excludeNamespaces;
-    }
-
+    private GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration() {}
     /**
      * @return Whether to enable Service grid audit.
      * 
@@ -51,30 +44,32 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigura
     public static Builder builder(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String excludeNamespaces;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.excludeNamespaces = defaults.excludeNamespaces;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder excludeNamespaces(String excludeNamespaces) {
             this.excludeNamespaces = Objects.requireNonNull(excludeNamespaces);
             return this;
-        }        public GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration build() {
-            return new GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration(enabled, excludeNamespaces);
+        }
+        public GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration build() {
+            final var o = new GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration();
+            o.enabled = enabled;
+            o.excludeNamespaces = excludeNamespaces;
+            return o;
         }
     }
 }

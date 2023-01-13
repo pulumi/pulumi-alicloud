@@ -14,98 +14,69 @@ public final class GetMscSubContactsContact {
      * @return UID.
      * 
      */
-    private final String accountUid;
+    private String accountUid;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String contactId;
+    private String contactId;
     /**
      * @return The User&#39;s Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
      * 
      */
-    private final String contactName;
+    private String contactName;
     /**
      * @return The User&#39;s Contact Email Address.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The ID of the Contact.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates Whether the BGP Group Is the Account Itself.
      * 
      */
-    private final Boolean isAccount;
+    private Boolean isAccount;
     /**
      * @return Whether They Have Expired Or Not.
      * 
      */
-    private final Boolean isObsolete;
+    private Boolean isObsolete;
     /**
      * @return Email Validation for.
      * 
      */
-    private final Boolean isVerifiedEmail;
+    private Boolean isVerifiedEmail;
     /**
      * @return If the Phone Verification.
      * 
      */
-    private final Boolean isVerifiedMobile;
+    private Boolean isVerifiedMobile;
     /**
      * @return Last Verification Email Transmission Time.
      * 
      */
-    private final String lastEmailVerificationTimeStamp;
+    private String lastEmailVerificationTimeStamp;
     /**
      * @return The Pieces of Authentication SMS Sending Time.
      * 
      */
-    private final String lastMobileVerificationTimeStamp;
+    private String lastMobileVerificationTimeStamp;
     /**
      * @return The User&#39;s Telephone.
      * 
      */
-    private final String mobile;
+    private String mobile;
     /**
      * @return The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      * 
      */
-    private final String position;
+    private String position;
 
-    @CustomType.Constructor
-    private GetMscSubContactsContact(
-        @CustomType.Parameter("accountUid") String accountUid,
-        @CustomType.Parameter("contactId") String contactId,
-        @CustomType.Parameter("contactName") String contactName,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isAccount") Boolean isAccount,
-        @CustomType.Parameter("isObsolete") Boolean isObsolete,
-        @CustomType.Parameter("isVerifiedEmail") Boolean isVerifiedEmail,
-        @CustomType.Parameter("isVerifiedMobile") Boolean isVerifiedMobile,
-        @CustomType.Parameter("lastEmailVerificationTimeStamp") String lastEmailVerificationTimeStamp,
-        @CustomType.Parameter("lastMobileVerificationTimeStamp") String lastMobileVerificationTimeStamp,
-        @CustomType.Parameter("mobile") String mobile,
-        @CustomType.Parameter("position") String position) {
-        this.accountUid = accountUid;
-        this.contactId = contactId;
-        this.contactName = contactName;
-        this.email = email;
-        this.id = id;
-        this.isAccount = isAccount;
-        this.isObsolete = isObsolete;
-        this.isVerifiedEmail = isVerifiedEmail;
-        this.isVerifiedMobile = isVerifiedMobile;
-        this.lastEmailVerificationTimeStamp = lastEmailVerificationTimeStamp;
-        this.lastMobileVerificationTimeStamp = lastMobileVerificationTimeStamp;
-        this.mobile = mobile;
-        this.position = position;
-    }
-
+    private GetMscSubContactsContact() {}
     /**
      * @return UID.
      * 
@@ -205,7 +176,7 @@ public final class GetMscSubContactsContact {
     public static Builder builder(GetMscSubContactsContact defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountUid;
         private String contactId;
@@ -220,11 +191,7 @@ public final class GetMscSubContactsContact {
         private String lastMobileVerificationTimeStamp;
         private String mobile;
         private String position;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMscSubContactsContact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountUid = defaults.accountUid;
@@ -242,59 +209,87 @@ public final class GetMscSubContactsContact {
     	      this.position = defaults.position;
         }
 
+        @CustomType.Setter
         public Builder accountUid(String accountUid) {
             this.accountUid = Objects.requireNonNull(accountUid);
             return this;
         }
+        @CustomType.Setter
         public Builder contactId(String contactId) {
             this.contactId = Objects.requireNonNull(contactId);
             return this;
         }
+        @CustomType.Setter
         public Builder contactName(String contactName) {
             this.contactName = Objects.requireNonNull(contactName);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isAccount(Boolean isAccount) {
             this.isAccount = Objects.requireNonNull(isAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder isObsolete(Boolean isObsolete) {
             this.isObsolete = Objects.requireNonNull(isObsolete);
             return this;
         }
+        @CustomType.Setter
         public Builder isVerifiedEmail(Boolean isVerifiedEmail) {
             this.isVerifiedEmail = Objects.requireNonNull(isVerifiedEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder isVerifiedMobile(Boolean isVerifiedMobile) {
             this.isVerifiedMobile = Objects.requireNonNull(isVerifiedMobile);
             return this;
         }
+        @CustomType.Setter
         public Builder lastEmailVerificationTimeStamp(String lastEmailVerificationTimeStamp) {
             this.lastEmailVerificationTimeStamp = Objects.requireNonNull(lastEmailVerificationTimeStamp);
             return this;
         }
+        @CustomType.Setter
         public Builder lastMobileVerificationTimeStamp(String lastMobileVerificationTimeStamp) {
             this.lastMobileVerificationTimeStamp = Objects.requireNonNull(lastMobileVerificationTimeStamp);
             return this;
         }
+        @CustomType.Setter
         public Builder mobile(String mobile) {
             this.mobile = Objects.requireNonNull(mobile);
             return this;
         }
+        @CustomType.Setter
         public Builder position(String position) {
             this.position = Objects.requireNonNull(position);
             return this;
-        }        public GetMscSubContactsContact build() {
-            return new GetMscSubContactsContact(accountUid, contactId, contactName, email, id, isAccount, isObsolete, isVerifiedEmail, isVerifiedMobile, lastEmailVerificationTimeStamp, lastMobileVerificationTimeStamp, mobile, position);
+        }
+        public GetMscSubContactsContact build() {
+            final var o = new GetMscSubContactsContact();
+            o.accountUid = accountUid;
+            o.contactId = contactId;
+            o.contactName = contactName;
+            o.email = email;
+            o.id = id;
+            o.isAccount = isAccount;
+            o.isObsolete = isObsolete;
+            o.isVerifiedEmail = isVerifiedEmail;
+            o.isVerifiedMobile = isVerifiedMobile;
+            o.lastEmailVerificationTimeStamp = lastEmailVerificationTimeStamp;
+            o.lastMobileVerificationTimeStamp = lastMobileVerificationTimeStamp;
+            o.mobile = mobile;
+            o.position = position;
+            return o;
         }
     }
 }

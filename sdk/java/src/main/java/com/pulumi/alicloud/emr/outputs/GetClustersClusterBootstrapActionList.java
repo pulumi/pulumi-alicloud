@@ -13,28 +13,19 @@ public final class GetClustersClusterBootstrapActionList {
      * @return Parameters of the boot operation.
      * 
      */
-    private final String arg;
+    private String arg;
     /**
      * @return The internal name of the service.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Boot operation script path.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private GetClustersClusterBootstrapActionList(
-        @CustomType.Parameter("arg") String arg,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("path") String path) {
-        this.arg = arg;
-        this.name = name;
-        this.path = path;
-    }
-
+    private GetClustersClusterBootstrapActionList() {}
     /**
      * @return Parameters of the boot operation.
      * 
@@ -64,16 +55,12 @@ public final class GetClustersClusterBootstrapActionList {
     public static Builder builder(GetClustersClusterBootstrapActionList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arg;
         private String name;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterBootstrapActionList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arg = defaults.arg;
@@ -81,19 +68,27 @@ public final class GetClustersClusterBootstrapActionList {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder arg(String arg) {
             this.arg = Objects.requireNonNull(arg);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public GetClustersClusterBootstrapActionList build() {
-            return new GetClustersClusterBootstrapActionList(arg, name, path);
+        }
+        public GetClustersClusterBootstrapActionList build() {
+            final var o = new GetClustersClusterBootstrapActionList();
+            o.arg = arg;
+            o.name = name;
+            o.path = path;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class GetQuotaApplicationsApplicationDimension {
      * @return The key of dimensions.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The value of dimensions.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetQuotaApplicationsApplicationDimension(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetQuotaApplicationsApplicationDimension() {}
     /**
      * @return The key of dimensions.
      * 
@@ -50,30 +43,32 @@ public final class GetQuotaApplicationsApplicationDimension {
     public static Builder builder(GetQuotaApplicationsApplicationDimension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotaApplicationsApplicationDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetQuotaApplicationsApplicationDimension build() {
-            return new GetQuotaApplicationsApplicationDimension(key, value);
+        }
+        public GetQuotaApplicationsApplicationDimension build() {
+            final var o = new GetQuotaApplicationsApplicationDimension();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

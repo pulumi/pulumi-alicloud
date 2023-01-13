@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerListenerPortsAndProtocol {
-    private final String description;
-    private final Integer forwardPort;
-    private final String listenerForward;
-    private final Integer listenerPort;
-    private final String listenerProtocol;
+    private String description;
+    private Integer forwardPort;
+    private String listenerForward;
+    private Integer listenerPort;
+    private String listenerProtocol;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerListenerPortsAndProtocol(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("forwardPort") Integer forwardPort,
-        @CustomType.Parameter("listenerForward") String listenerForward,
-        @CustomType.Parameter("listenerPort") Integer listenerPort,
-        @CustomType.Parameter("listenerProtocol") String listenerProtocol) {
-        this.description = description;
-        this.forwardPort = forwardPort;
-        this.listenerForward = listenerForward;
-        this.listenerPort = listenerPort;
-        this.listenerProtocol = listenerProtocol;
-    }
-
+    private GetLoadBalancersBalancerListenerPortsAndProtocol() {}
     public String description() {
         return this.description;
     }
@@ -53,18 +40,14 @@ public final class GetLoadBalancersBalancerListenerPortsAndProtocol {
     public static Builder builder(GetLoadBalancersBalancerListenerPortsAndProtocol defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private Integer forwardPort;
         private String listenerForward;
         private Integer listenerPort;
         private String listenerProtocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerListenerPortsAndProtocol defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -74,27 +57,39 @@ public final class GetLoadBalancersBalancerListenerPortsAndProtocol {
     	      this.listenerProtocol = defaults.listenerProtocol;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder forwardPort(Integer forwardPort) {
             this.forwardPort = Objects.requireNonNull(forwardPort);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerForward(String listenerForward) {
             this.listenerForward = Objects.requireNonNull(listenerForward);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
             this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
             return this;
-        }        public GetLoadBalancersBalancerListenerPortsAndProtocol build() {
-            return new GetLoadBalancersBalancerListenerPortsAndProtocol(description, forwardPort, listenerForward, listenerPort, listenerProtocol);
+        }
+        public GetLoadBalancersBalancerListenerPortsAndProtocol build() {
+            final var o = new GetLoadBalancersBalancerListenerPortsAndProtocol();
+            o.description = description;
+            o.forwardPort = forwardPort;
+            o.listenerForward = listenerForward;
+            o.listenerPort = listenerPort;
+            o.listenerProtocol = listenerProtocol;
+            return o;
         }
     }
 }

@@ -14,119 +14,84 @@ public final class GetDdosCooInstancesInstance {
      * @return The instance&#39;s elastic defend bandwidth.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The instance&#39;s base defend bandwidth.
      * 
      */
-    private final Integer baseBandwidth;
+    private Integer baseBandwidth;
     /**
      * @return The creation time of the instance.
      * 
      */
-    private final Integer createTime;
+    private Integer createTime;
     /**
      * @return The debt status of the instance.
      * 
      */
-    private final Integer debtStatus;
+    private Integer debtStatus;
     /**
      * @return The instance&#39;s count of domain retransmission config.
      * 
      */
-    private final Integer domainCount;
+    private Integer domainCount;
     /**
      * @return The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
      * 
      */
-    private final Integer edition;
+    private Integer edition;
     /**
      * @return The enabled of the instance. The Valid Values : `0`, `1`.
      * 
      */
-    private final Integer enabled;
+    private Integer enabled;
     /**
      * @return The expiry time of the instance.
      * 
      */
-    private final Integer expireTime;
+    private Integer expireTime;
     /**
      * @return The instance&#39;s id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
      * 
      */
-    private final String ipMode;
+    private String ipMode;
     /**
      * @return The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
      * 
      */
-    private final String ipVersion;
+    private String ipVersion;
     /**
      * @return The instance&#39;s remark.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The instance&#39;s count of port retransmission config.
      * 
      */
-    private final Integer portCount;
+    private Integer portCount;
     /**
      * @return The remark of the instance.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return The instance&#39;s business bandwidth.
      * 
      */
-    private final Integer serviceBandwidth;
+    private Integer serviceBandwidth;
     /**
      * @return The status of the instance. The Valid Values : `1`, `2`.
      * 
      */
-    private final Integer status;
+    private Integer status;
 
-    @CustomType.Constructor
-    private GetDdosCooInstancesInstance(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("baseBandwidth") Integer baseBandwidth,
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("debtStatus") Integer debtStatus,
-        @CustomType.Parameter("domainCount") Integer domainCount,
-        @CustomType.Parameter("edition") Integer edition,
-        @CustomType.Parameter("enabled") Integer enabled,
-        @CustomType.Parameter("expireTime") Integer expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipMode") String ipMode,
-        @CustomType.Parameter("ipVersion") String ipVersion,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("portCount") Integer portCount,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("serviceBandwidth") Integer serviceBandwidth,
-        @CustomType.Parameter("status") Integer status) {
-        this.bandwidth = bandwidth;
-        this.baseBandwidth = baseBandwidth;
-        this.createTime = createTime;
-        this.debtStatus = debtStatus;
-        this.domainCount = domainCount;
-        this.edition = edition;
-        this.enabled = enabled;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.ipMode = ipMode;
-        this.ipVersion = ipVersion;
-        this.name = name;
-        this.portCount = portCount;
-        this.remark = remark;
-        this.serviceBandwidth = serviceBandwidth;
-        this.status = status;
-    }
-
+    private GetDdosCooInstancesInstance() {}
     /**
      * @return The instance&#39;s elastic defend bandwidth.
      * 
@@ -247,7 +212,7 @@ public final class GetDdosCooInstancesInstance {
     public static Builder builder(GetDdosCooInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private Integer baseBandwidth;
@@ -265,11 +230,7 @@ public final class GetDdosCooInstancesInstance {
         private String remark;
         private Integer serviceBandwidth;
         private Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosCooInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -290,71 +251,105 @@ public final class GetDdosCooInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder baseBandwidth(Integer baseBandwidth) {
             this.baseBandwidth = Objects.requireNonNull(baseBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder debtStatus(Integer debtStatus) {
             this.debtStatus = Objects.requireNonNull(debtStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder domainCount(Integer domainCount) {
             this.domainCount = Objects.requireNonNull(domainCount);
             return this;
         }
+        @CustomType.Setter
         public Builder edition(Integer edition) {
             this.edition = Objects.requireNonNull(edition);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Integer enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(Integer expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipMode(String ipMode) {
             this.ipMode = Objects.requireNonNull(ipMode);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder portCount(Integer portCount) {
             this.portCount = Objects.requireNonNull(portCount);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceBandwidth(Integer serviceBandwidth) {
             this.serviceBandwidth = Objects.requireNonNull(serviceBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDdosCooInstancesInstance build() {
-            return new GetDdosCooInstancesInstance(bandwidth, baseBandwidth, createTime, debtStatus, domainCount, edition, enabled, expireTime, id, ipMode, ipVersion, name, portCount, remark, serviceBandwidth, status);
+        }
+        public GetDdosCooInstancesInstance build() {
+            final var o = new GetDdosCooInstancesInstance();
+            o.bandwidth = bandwidth;
+            o.baseBandwidth = baseBandwidth;
+            o.createTime = createTime;
+            o.debtStatus = debtStatus;
+            o.domainCount = domainCount;
+            o.edition = edition;
+            o.enabled = enabled;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.ipMode = ipMode;
+            o.ipVersion = ipVersion;
+            o.name = name;
+            o.portCount = portCount;
+            o.remark = remark;
+            o.serviceBandwidth = serviceBandwidth;
+            o.status = status;
+            return o;
         }
     }
 }

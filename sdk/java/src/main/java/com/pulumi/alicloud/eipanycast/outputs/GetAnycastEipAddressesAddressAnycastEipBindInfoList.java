@@ -13,35 +13,24 @@ public final class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
      * @return The bound cloud resource instance ID.
      * 
      */
-    private final String bindInstanceId;
+    private String bindInstanceId;
     /**
      * @return The region ID of the bound cloud resource instance.
      * 
      */
-    private final String bindInstanceRegionId;
+    private String bindInstanceRegionId;
     /**
      * @return Bind the cloud resource instance type.
      * 
      */
-    private final String bindInstanceType;
+    private String bindInstanceType;
     /**
      * @return Binding time.
      * 
      */
-    private final String bindTime;
+    private String bindTime;
 
-    @CustomType.Constructor
-    private GetAnycastEipAddressesAddressAnycastEipBindInfoList(
-        @CustomType.Parameter("bindInstanceId") String bindInstanceId,
-        @CustomType.Parameter("bindInstanceRegionId") String bindInstanceRegionId,
-        @CustomType.Parameter("bindInstanceType") String bindInstanceType,
-        @CustomType.Parameter("bindTime") String bindTime) {
-        this.bindInstanceId = bindInstanceId;
-        this.bindInstanceRegionId = bindInstanceRegionId;
-        this.bindInstanceType = bindInstanceType;
-        this.bindTime = bindTime;
-    }
-
+    private GetAnycastEipAddressesAddressAnycastEipBindInfoList() {}
     /**
      * @return The bound cloud resource instance ID.
      * 
@@ -78,17 +67,13 @@ public final class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
     public static Builder builder(GetAnycastEipAddressesAddressAnycastEipBindInfoList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bindInstanceId;
         private String bindInstanceRegionId;
         private String bindInstanceType;
         private String bindTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAnycastEipAddressesAddressAnycastEipBindInfoList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindInstanceId = defaults.bindInstanceId;
@@ -97,23 +82,33 @@ public final class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
     	      this.bindTime = defaults.bindTime;
         }
 
+        @CustomType.Setter
         public Builder bindInstanceId(String bindInstanceId) {
             this.bindInstanceId = Objects.requireNonNull(bindInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder bindInstanceRegionId(String bindInstanceRegionId) {
             this.bindInstanceRegionId = Objects.requireNonNull(bindInstanceRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder bindInstanceType(String bindInstanceType) {
             this.bindInstanceType = Objects.requireNonNull(bindInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder bindTime(String bindTime) {
             this.bindTime = Objects.requireNonNull(bindTime);
             return this;
-        }        public GetAnycastEipAddressesAddressAnycastEipBindInfoList build() {
-            return new GetAnycastEipAddressesAddressAnycastEipBindInfoList(bindInstanceId, bindInstanceRegionId, bindInstanceType, bindTime);
+        }
+        public GetAnycastEipAddressesAddressAnycastEipBindInfoList build() {
+            final var o = new GetAnycastEipAddressesAddressAnycastEipBindInfoList();
+            o.bindInstanceId = bindInstanceId;
+            o.bindInstanceRegionId = bindInstanceRegionId;
+            o.bindInstanceType = bindInstanceType;
+            o.bindTime = bindTime;
+            return o;
         }
     }
 }

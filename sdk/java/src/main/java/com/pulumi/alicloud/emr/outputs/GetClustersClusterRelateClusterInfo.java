@@ -13,35 +13,24 @@ public final class GetClustersClusterRelateClusterInfo {
      * @return The ID of the associated cluster.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The name of the associated cluster.
      * 
      */
-    private final String clusterName;
+    private String clusterName;
     /**
      * @return Cluster type:
      * 
      */
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return The cluster status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetClustersClusterRelateClusterInfo(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("status") String status) {
-        this.clusterId = clusterId;
-        this.clusterName = clusterName;
-        this.clusterType = clusterType;
-        this.status = status;
-    }
-
+    private GetClustersClusterRelateClusterInfo() {}
     /**
      * @return The ID of the associated cluster.
      * 
@@ -78,17 +67,13 @@ public final class GetClustersClusterRelateClusterInfo {
     public static Builder builder(GetClustersClusterRelateClusterInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String clusterName;
         private String clusterType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterRelateClusterInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -97,23 +82,33 @@ public final class GetClustersClusterRelateClusterInfo {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetClustersClusterRelateClusterInfo build() {
-            return new GetClustersClusterRelateClusterInfo(clusterId, clusterName, clusterType, status);
+        }
+        public GetClustersClusterRelateClusterInfo build() {
+            final var o = new GetClustersClusterRelateClusterInfo();
+            o.clusterId = clusterId;
+            o.clusterName = clusterName;
+            o.clusterType = clusterType;
+            o.status = status;
+            return o;
         }
     }
 }

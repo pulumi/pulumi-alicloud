@@ -15,21 +15,14 @@ public final class ContainerGroupEciSecurityContextSysctl {
      * @return The name of the security context that the container group runs.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The variable value of the security context that the container group runs.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ContainerGroupEciSecurityContextSysctl(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.name = name;
-        this.value = value;
-    }
-
+    private ContainerGroupEciSecurityContextSysctl() {}
     /**
      * @return The name of the security context that the container group runs.
      * 
@@ -52,30 +45,32 @@ public final class ContainerGroupEciSecurityContextSysctl {
     public static Builder builder(ContainerGroupEciSecurityContextSysctl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupEciSecurityContextSysctl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ContainerGroupEciSecurityContextSysctl build() {
-            return new ContainerGroupEciSecurityContextSysctl(name, value);
+        }
+        public ContainerGroupEciSecurityContextSysctl build() {
+            final var o = new ContainerGroupEciSecurityContextSysctl();
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

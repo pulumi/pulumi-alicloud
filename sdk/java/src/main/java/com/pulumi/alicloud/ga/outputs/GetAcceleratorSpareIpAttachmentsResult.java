@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAcceleratorSpareIpAttachmentsResult {
-    private final String acceleratorId;
-    private final List<GetAcceleratorSpareIpAttachmentsAttachment> attachments;
+    private String acceleratorId;
+    private List<GetAcceleratorSpareIpAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetAcceleratorSpareIpAttachmentsResult(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("attachments") List<GetAcceleratorSpareIpAttachmentsAttachment> attachments,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.acceleratorId = acceleratorId;
-        this.attachments = attachments;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetAcceleratorSpareIpAttachmentsResult() {}
     public String acceleratorId() {
         return this.acceleratorId;
     }
@@ -70,7 +55,7 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
     public static Builder builder(GetAcceleratorSpareIpAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private List<GetAcceleratorSpareIpAttachmentsAttachment> attachments;
@@ -78,11 +63,7 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAcceleratorSpareIpAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -93,10 +74,12 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder attachments(List<GetAcceleratorSpareIpAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -104,10 +87,12 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
         public Builder attachments(GetAcceleratorSpareIpAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -115,15 +100,25 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetAcceleratorSpareIpAttachmentsResult build() {
-            return new GetAcceleratorSpareIpAttachmentsResult(acceleratorId, attachments, id, ids, outputFile, status);
+        }
+        public GetAcceleratorSpareIpAttachmentsResult build() {
+            final var o = new GetAcceleratorSpareIpAttachmentsResult();
+            o.acceleratorId = acceleratorId;
+            o.attachments = attachments;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

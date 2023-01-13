@@ -16,42 +16,29 @@ public final class TunnelChannel {
      * @return The id of the channel.
      * 
      */
-    private final @Nullable String channelId;
+    private @Nullable String channelId;
     /**
      * @return The latest consumption time of the channel, unix time in nanosecond.
      * 
      */
-    private final @Nullable Integer channelRpo;
+    private @Nullable Integer channelRpo;
     /**
      * @return The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
      * 
      */
-    private final @Nullable String channelStatus;
+    private @Nullable String channelStatus;
     /**
      * @return The type of the channel, valid values: `BaseData`, `Stream`.
      * 
      */
-    private final @Nullable String channelType;
+    private @Nullable String channelType;
     /**
      * @return The client id of the channel.
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
 
-    @CustomType.Constructor
-    private TunnelChannel(
-        @CustomType.Parameter("channelId") @Nullable String channelId,
-        @CustomType.Parameter("channelRpo") @Nullable Integer channelRpo,
-        @CustomType.Parameter("channelStatus") @Nullable String channelStatus,
-        @CustomType.Parameter("channelType") @Nullable String channelType,
-        @CustomType.Parameter("clientId") @Nullable String clientId) {
-        this.channelId = channelId;
-        this.channelRpo = channelRpo;
-        this.channelStatus = channelStatus;
-        this.channelType = channelType;
-        this.clientId = clientId;
-    }
-
+    private TunnelChannel() {}
     /**
      * @return The id of the channel.
      * 
@@ -95,18 +82,14 @@ public final class TunnelChannel {
     public static Builder builder(TunnelChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String channelId;
         private @Nullable Integer channelRpo;
         private @Nullable String channelStatus;
         private @Nullable String channelType;
         private @Nullable String clientId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TunnelChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channelId = defaults.channelId;
@@ -116,27 +99,39 @@ public final class TunnelChannel {
     	      this.clientId = defaults.clientId;
         }
 
+        @CustomType.Setter
         public Builder channelId(@Nullable String channelId) {
             this.channelId = channelId;
             return this;
         }
+        @CustomType.Setter
         public Builder channelRpo(@Nullable Integer channelRpo) {
             this.channelRpo = channelRpo;
             return this;
         }
+        @CustomType.Setter
         public Builder channelStatus(@Nullable String channelStatus) {
             this.channelStatus = channelStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder channelType(@Nullable String channelType) {
             this.channelType = channelType;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
-        }        public TunnelChannel build() {
-            return new TunnelChannel(channelId, channelRpo, channelStatus, channelType, clientId);
+        }
+        public TunnelChannel build() {
+            final var o = new TunnelChannel();
+            o.channelId = channelId;
+            o.channelRpo = channelRpo;
+            o.channelStatus = channelStatus;
+            o.channelType = channelType;
+            o.clientId = clientId;
+            return o;
         }
     }
 }

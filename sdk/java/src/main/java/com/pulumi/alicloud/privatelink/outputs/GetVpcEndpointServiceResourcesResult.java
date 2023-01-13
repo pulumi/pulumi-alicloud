@@ -17,26 +17,13 @@ public final class GetVpcEndpointServiceResourcesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetVpcEndpointServiceResourcesResource> resources;
-    private final String serviceId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetVpcEndpointServiceResourcesResource> resources;
+    private String serviceId;
 
-    @CustomType.Constructor
-    private GetVpcEndpointServiceResourcesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resources") List<GetVpcEndpointServiceResourcesResource> resources,
-        @CustomType.Parameter("serviceId") String serviceId) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.resources = resources;
-        this.serviceId = serviceId;
-    }
-
+    private GetVpcEndpointServiceResourcesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,18 +51,14 @@ public final class GetVpcEndpointServiceResourcesResult {
     public static Builder builder(GetVpcEndpointServiceResourcesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetVpcEndpointServiceResourcesResource> resources;
         private String serviceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointServiceResourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -85,10 +68,12 @@ public final class GetVpcEndpointServiceResourcesResult {
     	      this.serviceId = defaults.serviceId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -96,10 +81,12 @@ public final class GetVpcEndpointServiceResourcesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resources(List<GetVpcEndpointServiceResourcesResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
@@ -107,11 +94,19 @@ public final class GetVpcEndpointServiceResourcesResult {
         public Builder resources(GetVpcEndpointServiceResourcesResource... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
-        }        public GetVpcEndpointServiceResourcesResult build() {
-            return new GetVpcEndpointServiceResourcesResult(id, ids, outputFile, resources, serviceId);
+        }
+        public GetVpcEndpointServiceResourcesResult build() {
+            final var o = new GetVpcEndpointServiceResourcesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.resources = resources;
+            o.serviceId = serviceId;
+            return o;
         }
     }
 }

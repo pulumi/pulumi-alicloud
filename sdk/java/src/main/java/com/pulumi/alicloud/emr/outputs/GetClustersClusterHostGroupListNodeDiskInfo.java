@@ -14,42 +14,29 @@ public final class GetClustersClusterHostGroupListNodeDiskInfo {
      * @return The disk name.
      * 
      */
-    private final String device;
+    private String device;
     /**
      * @return The ID of the disk.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The disk name.
      * 
      */
-    private final String diskName;
+    private String diskName;
     /**
      * @return Disk capacity.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return Disk type.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetClustersClusterHostGroupListNodeDiskInfo(
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskName") String diskName,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("type") String type) {
-        this.device = device;
-        this.diskId = diskId;
-        this.diskName = diskName;
-        this.size = size;
-        this.type = type;
-    }
-
+    private GetClustersClusterHostGroupListNodeDiskInfo() {}
     /**
      * @return The disk name.
      * 
@@ -93,18 +80,14 @@ public final class GetClustersClusterHostGroupListNodeDiskInfo {
     public static Builder builder(GetClustersClusterHostGroupListNodeDiskInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String device;
         private String diskId;
         private String diskName;
         private Integer size;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterHostGroupListNodeDiskInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -114,27 +97,39 @@ public final class GetClustersClusterHostGroupListNodeDiskInfo {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(String diskName) {
             this.diskName = Objects.requireNonNull(diskName);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetClustersClusterHostGroupListNodeDiskInfo build() {
-            return new GetClustersClusterHostGroupListNodeDiskInfo(device, diskId, diskName, size, type);
+        }
+        public GetClustersClusterHostGroupListNodeDiskInfo build() {
+            final var o = new GetClustersClusterHostGroupListNodeDiskInfo();
+            o.device = device;
+            o.diskId = diskId;
+            o.diskName = diskName;
+            o.size = size;
+            o.type = type;
+            return o;
         }
     }
 }

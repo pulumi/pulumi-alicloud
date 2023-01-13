@@ -18,126 +18,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsDisksResult {
-    private final @Nullable List<String> additionalAttributes;
-    private final @Nullable String autoSnapshotPolicyId;
+    private @Nullable List<String> additionalAttributes;
+    private @Nullable String autoSnapshotPolicyId;
     /**
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
-    private final @Nullable String availabilityZone;
-    private final @Nullable String category;
-    private final @Nullable Boolean deleteAutoSnapshot;
-    private final @Nullable Boolean deleteWithInstance;
-    private final @Nullable String diskName;
-    private final @Nullable String diskType;
-    private final List<GetEcsDisksDisk> disks;
-    private final @Nullable Boolean dryRun;
-    private final @Nullable Boolean enableAutoSnapshot;
-    private final @Nullable Boolean enableAutomatedSnapshotPolicy;
-    private final @Nullable Boolean enableShared;
-    private final @Nullable String encrypted;
+    private @Nullable String availabilityZone;
+    private @Nullable String category;
+    private @Nullable Boolean deleteAutoSnapshot;
+    private @Nullable Boolean deleteWithInstance;
+    private @Nullable String diskName;
+    private @Nullable String diskType;
+    private List<GetEcsDisksDisk> disks;
+    private @Nullable Boolean dryRun;
+    private @Nullable Boolean enableAutoSnapshot;
+    private @Nullable Boolean enableAutomatedSnapshotPolicy;
+    private @Nullable Boolean enableShared;
+    private @Nullable String encrypted;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceId;
-    private final @Nullable String kmsKeyId;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable List<GetEcsDisksOperationLock> operationLocks;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String paymentType;
-    private final @Nullable Boolean portable;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String snapshotId;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final Integer totalCount;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceId;
+    private @Nullable String kmsKeyId;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable List<GetEcsDisksOperationLock> operationLocks;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String paymentType;
+    private @Nullable Boolean portable;
+    private @Nullable String resourceGroupId;
+    private @Nullable String snapshotId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private Integer totalCount;
     /**
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
      * 
      */
     @Deprecated /* Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead. */
-    private final @Nullable String type;
-    private final @Nullable String zoneId;
+    private @Nullable String type;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetEcsDisksResult(
-        @CustomType.Parameter("additionalAttributes") @Nullable List<String> additionalAttributes,
-        @CustomType.Parameter("autoSnapshotPolicyId") @Nullable String autoSnapshotPolicyId,
-        @CustomType.Parameter("availabilityZone") @Nullable String availabilityZone,
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("deleteAutoSnapshot") @Nullable Boolean deleteAutoSnapshot,
-        @CustomType.Parameter("deleteWithInstance") @Nullable Boolean deleteWithInstance,
-        @CustomType.Parameter("diskName") @Nullable String diskName,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("disks") List<GetEcsDisksDisk> disks,
-        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
-        @CustomType.Parameter("enableAutoSnapshot") @Nullable Boolean enableAutoSnapshot,
-        @CustomType.Parameter("enableAutomatedSnapshotPolicy") @Nullable Boolean enableAutomatedSnapshotPolicy,
-        @CustomType.Parameter("enableShared") @Nullable Boolean enableShared,
-        @CustomType.Parameter("encrypted") @Nullable String encrypted,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("operationLocks") @Nullable List<GetEcsDisksOperationLock> operationLocks,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("paymentType") @Nullable String paymentType,
-        @CustomType.Parameter("portable") @Nullable Boolean portable,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("snapshotId") @Nullable String snapshotId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCount") Integer totalCount,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.additionalAttributes = additionalAttributes;
-        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
-        this.availabilityZone = availabilityZone;
-        this.category = category;
-        this.deleteAutoSnapshot = deleteAutoSnapshot;
-        this.deleteWithInstance = deleteWithInstance;
-        this.diskName = diskName;
-        this.diskType = diskType;
-        this.disks = disks;
-        this.dryRun = dryRun;
-        this.enableAutoSnapshot = enableAutoSnapshot;
-        this.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
-        this.enableShared = enableShared;
-        this.encrypted = encrypted;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.kmsKeyId = kmsKeyId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.operationLocks = operationLocks;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.paymentType = paymentType;
-        this.portable = portable;
-        this.resourceGroupId = resourceGroupId;
-        this.snapshotId = snapshotId;
-        this.status = status;
-        this.tags = tags;
-        this.totalCount = totalCount;
-        this.type = type;
-        this.zoneId = zoneId;
-    }
-
+    private GetEcsDisksResult() {}
     public List<String> additionalAttributes() {
         return this.additionalAttributes == null ? List.of() : this.additionalAttributes;
     }
@@ -261,7 +192,7 @@ public final class GetEcsDisksResult {
     public static Builder builder(GetEcsDisksResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalAttributes;
         private @Nullable String autoSnapshotPolicyId;
@@ -296,11 +227,7 @@ public final class GetEcsDisksResult {
         private Integer totalCount;
         private @Nullable String type;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsDisksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalAttributes = defaults.additionalAttributes;
@@ -338,6 +265,7 @@ public final class GetEcsDisksResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder additionalAttributes(@Nullable List<String> additionalAttributes) {
             this.additionalAttributes = additionalAttributes;
             return this;
@@ -345,34 +273,42 @@ public final class GetEcsDisksResult {
         public Builder additionalAttributes(String... additionalAttributes) {
             return additionalAttributes(List.of(additionalAttributes));
         }
+        @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
             return this;
         }
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteAutoSnapshot(@Nullable Boolean deleteAutoSnapshot) {
             this.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
             this.deleteWithInstance = deleteWithInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
             this.diskName = diskName;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder disks(List<GetEcsDisksDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -380,30 +316,37 @@ public final class GetEcsDisksResult {
         public Builder disks(GetEcsDisksDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutoSnapshot(@Nullable Boolean enableAutoSnapshot) {
             this.enableAutoSnapshot = enableAutoSnapshot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAutomatedSnapshotPolicy(@Nullable Boolean enableAutomatedSnapshotPolicy) {
             this.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder enableShared(@Nullable Boolean enableShared) {
             this.enableShared = enableShared;
             return this;
         }
+        @CustomType.Setter
         public Builder encrypted(@Nullable String encrypted) {
             this.encrypted = encrypted;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -411,18 +354,22 @@ public final class GetEcsDisksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -430,6 +377,7 @@ public final class GetEcsDisksResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder operationLocks(@Nullable List<GetEcsDisksOperationLock> operationLocks) {
             this.operationLocks = operationLocks;
             return this;
@@ -437,55 +385,102 @@ public final class GetEcsDisksResult {
         public Builder operationLocks(GetEcsDisksOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
+        @CustomType.Setter
         public Builder portable(@Nullable Boolean portable) {
             this.portable = portable;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetEcsDisksResult build() {
-            return new GetEcsDisksResult(additionalAttributes, autoSnapshotPolicyId, availabilityZone, category, deleteAutoSnapshot, deleteWithInstance, diskName, diskType, disks, dryRun, enableAutoSnapshot, enableAutomatedSnapshotPolicy, enableShared, encrypted, id, ids, instanceId, kmsKeyId, nameRegex, names, operationLocks, outputFile, pageNumber, pageSize, paymentType, portable, resourceGroupId, snapshotId, status, tags, totalCount, type, zoneId);
+        }
+        public GetEcsDisksResult build() {
+            final var o = new GetEcsDisksResult();
+            o.additionalAttributes = additionalAttributes;
+            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            o.availabilityZone = availabilityZone;
+            o.category = category;
+            o.deleteAutoSnapshot = deleteAutoSnapshot;
+            o.deleteWithInstance = deleteWithInstance;
+            o.diskName = diskName;
+            o.diskType = diskType;
+            o.disks = disks;
+            o.dryRun = dryRun;
+            o.enableAutoSnapshot = enableAutoSnapshot;
+            o.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
+            o.enableShared = enableShared;
+            o.encrypted = encrypted;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.kmsKeyId = kmsKeyId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.operationLocks = operationLocks;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.paymentType = paymentType;
+            o.portable = portable;
+            o.resourceGroupId = resourceGroupId;
+            o.snapshotId = snapshotId;
+            o.status = status;
+            o.tags = tags;
+            o.totalCount = totalCount;
+            o.type = type;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

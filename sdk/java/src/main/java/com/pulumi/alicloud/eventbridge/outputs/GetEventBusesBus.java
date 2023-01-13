@@ -13,35 +13,24 @@ public final class GetEventBusesBus {
      * @return The time of this bus was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of event bus.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The name of event bus.
      * 
      */
-    private final String eventBusName;
+    private String eventBusName;
     /**
      * @return The ID of the Event Bus. Its value is same as Queue Name.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetEventBusesBus(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("eventBusName") String eventBusName,
-        @CustomType.Parameter("id") String id) {
-        this.createTime = createTime;
-        this.description = description;
-        this.eventBusName = eventBusName;
-        this.id = id;
-    }
-
+    private GetEventBusesBus() {}
     /**
      * @return The time of this bus was created.
      * 
@@ -78,17 +67,13 @@ public final class GetEventBusesBus {
     public static Builder builder(GetEventBusesBus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
         private String eventBusName;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEventBusesBus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -97,23 +82,33 @@ public final class GetEventBusesBus {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder eventBusName(String eventBusName) {
             this.eventBusName = Objects.requireNonNull(eventBusName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetEventBusesBus build() {
-            return new GetEventBusesBus(createTime, description, eventBusName, id);
+        }
+        public GetEventBusesBus build() {
+            final var o = new GetEventBusesBus();
+            o.createTime = createTime;
+            o.description = description;
+            o.eventBusName = eventBusName;
+            o.id = id;
+            return o;
         }
     }
 }

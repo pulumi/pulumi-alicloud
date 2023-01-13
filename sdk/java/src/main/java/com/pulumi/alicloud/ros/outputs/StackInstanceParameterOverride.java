@@ -15,21 +15,14 @@ public final class StackInstanceParameterOverride {
      * @return The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
      * 
      */
-    private final @Nullable String parameterKey;
+    private @Nullable String parameterKey;
     /**
      * @return The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
      * 
      */
-    private final @Nullable String parameterValue;
+    private @Nullable String parameterValue;
 
-    @CustomType.Constructor
-    private StackInstanceParameterOverride(
-        @CustomType.Parameter("parameterKey") @Nullable String parameterKey,
-        @CustomType.Parameter("parameterValue") @Nullable String parameterValue) {
-        this.parameterKey = parameterKey;
-        this.parameterValue = parameterValue;
-    }
-
+    private StackInstanceParameterOverride() {}
     /**
      * @return The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
      * 
@@ -52,30 +45,32 @@ public final class StackInstanceParameterOverride {
     public static Builder builder(StackInstanceParameterOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String parameterKey;
         private @Nullable String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StackInstanceParameterOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterKey(@Nullable String parameterKey) {
             this.parameterKey = parameterKey;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
             this.parameterValue = parameterValue;
             return this;
-        }        public StackInstanceParameterOverride build() {
-            return new StackInstanceParameterOverride(parameterKey, parameterValue);
+        }
+        public StackInstanceParameterOverride build() {
+            final var o = new StackInstanceParameterOverride();
+            o.parameterKey = parameterKey;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

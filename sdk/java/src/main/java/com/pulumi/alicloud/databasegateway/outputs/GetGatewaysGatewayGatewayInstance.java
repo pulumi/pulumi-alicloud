@@ -13,77 +13,54 @@ public final class GetGatewaysGatewayGatewayInstance {
      * @return The connection type of Gateway instance.
      * 
      */
-    private final String connectEndpointType;
+    private String connectEndpointType;
     /**
      * @return The process of version number of Gateway instance.
      * 
      */
-    private final String currentDaemonVersion;
+    private String currentDaemonVersion;
     /**
      * @return The version of Gateway instance.
      * 
      */
-    private final String currentVersion;
+    private String currentVersion;
     /**
      * @return The endpoint address of Gateway instance.
      * 
      */
-    private final String endPoint;
+    private String endPoint;
     /**
      * @return The id of Gateway instance.
      * 
      */
-    private final String gatewayInstanceId;
+    private String gatewayInstanceId;
     /**
      * @return The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      * 
      */
-    private final String gatewayInstanceStatus;
+    private String gatewayInstanceStatus;
     /**
      * @return The last Updated time stamp of Gateway instance.
      * 
      */
-    private final String lastUpdateTime;
+    private String lastUpdateTime;
     /**
      * @return The Local IP ADDRESS of Gateway instance.
      * 
      */
-    private final String localIp;
+    private String localIp;
     /**
      * @return The prompt information of Gateway instance.
      * 
      */
-    private final String message;
+    private String message;
     /**
      * @return The host of Gateway instance.
      * 
      */
-    private final String outputIp;
+    private String outputIp;
 
-    @CustomType.Constructor
-    private GetGatewaysGatewayGatewayInstance(
-        @CustomType.Parameter("connectEndpointType") String connectEndpointType,
-        @CustomType.Parameter("currentDaemonVersion") String currentDaemonVersion,
-        @CustomType.Parameter("currentVersion") String currentVersion,
-        @CustomType.Parameter("endPoint") String endPoint,
-        @CustomType.Parameter("gatewayInstanceId") String gatewayInstanceId,
-        @CustomType.Parameter("gatewayInstanceStatus") String gatewayInstanceStatus,
-        @CustomType.Parameter("lastUpdateTime") String lastUpdateTime,
-        @CustomType.Parameter("localIp") String localIp,
-        @CustomType.Parameter("message") String message,
-        @CustomType.Parameter("outputIp") String outputIp) {
-        this.connectEndpointType = connectEndpointType;
-        this.currentDaemonVersion = currentDaemonVersion;
-        this.currentVersion = currentVersion;
-        this.endPoint = endPoint;
-        this.gatewayInstanceId = gatewayInstanceId;
-        this.gatewayInstanceStatus = gatewayInstanceStatus;
-        this.lastUpdateTime = lastUpdateTime;
-        this.localIp = localIp;
-        this.message = message;
-        this.outputIp = outputIp;
-    }
-
+    private GetGatewaysGatewayGatewayInstance() {}
     /**
      * @return The connection type of Gateway instance.
      * 
@@ -162,7 +139,7 @@ public final class GetGatewaysGatewayGatewayInstance {
     public static Builder builder(GetGatewaysGatewayGatewayInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String connectEndpointType;
         private String currentDaemonVersion;
@@ -174,11 +151,7 @@ public final class GetGatewaysGatewayGatewayInstance {
         private String localIp;
         private String message;
         private String outputIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGatewayGatewayInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectEndpointType = defaults.connectEndpointType;
@@ -193,47 +166,69 @@ public final class GetGatewaysGatewayGatewayInstance {
     	      this.outputIp = defaults.outputIp;
         }
 
+        @CustomType.Setter
         public Builder connectEndpointType(String connectEndpointType) {
             this.connectEndpointType = Objects.requireNonNull(connectEndpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder currentDaemonVersion(String currentDaemonVersion) {
             this.currentDaemonVersion = Objects.requireNonNull(currentDaemonVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
             this.currentVersion = Objects.requireNonNull(currentVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder endPoint(String endPoint) {
             this.endPoint = Objects.requireNonNull(endPoint);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayInstanceId(String gatewayInstanceId) {
             this.gatewayInstanceId = Objects.requireNonNull(gatewayInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayInstanceStatus(String gatewayInstanceStatus) {
             this.gatewayInstanceStatus = Objects.requireNonNull(gatewayInstanceStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder lastUpdateTime(String lastUpdateTime) {
             this.lastUpdateTime = Objects.requireNonNull(lastUpdateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder localIp(String localIp) {
             this.localIp = Objects.requireNonNull(localIp);
             return this;
         }
+        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
+        @CustomType.Setter
         public Builder outputIp(String outputIp) {
             this.outputIp = Objects.requireNonNull(outputIp);
             return this;
-        }        public GetGatewaysGatewayGatewayInstance build() {
-            return new GetGatewaysGatewayGatewayInstance(connectEndpointType, currentDaemonVersion, currentVersion, endPoint, gatewayInstanceId, gatewayInstanceStatus, lastUpdateTime, localIp, message, outputIp);
+        }
+        public GetGatewaysGatewayGatewayInstance build() {
+            final var o = new GetGatewaysGatewayGatewayInstance();
+            o.connectEndpointType = connectEndpointType;
+            o.currentDaemonVersion = currentDaemonVersion;
+            o.currentVersion = currentVersion;
+            o.endPoint = endPoint;
+            o.gatewayInstanceId = gatewayInstanceId;
+            o.gatewayInstanceStatus = gatewayInstanceStatus;
+            o.lastUpdateTime = lastUpdateTime;
+            o.localIp = localIp;
+            o.message = message;
+            o.outputIp = outputIp;
+            return o;
         }
     }
 }

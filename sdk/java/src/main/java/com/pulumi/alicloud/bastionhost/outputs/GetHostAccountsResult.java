@@ -13,45 +13,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostAccountsResult {
-    private final List<GetHostAccountsAccount> accounts;
-    private final @Nullable String hostAccountName;
-    private final String hostId;
+    private List<GetHostAccountsAccount> accounts;
+    private @Nullable String hostAccountName;
+    private String hostId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String protocolName;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String protocolName;
 
-    @CustomType.Constructor
-    private GetHostAccountsResult(
-        @CustomType.Parameter("accounts") List<GetHostAccountsAccount> accounts,
-        @CustomType.Parameter("hostAccountName") @Nullable String hostAccountName,
-        @CustomType.Parameter("hostId") String hostId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("protocolName") @Nullable String protocolName) {
-        this.accounts = accounts;
-        this.hostAccountName = hostAccountName;
-        this.hostId = hostId;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.protocolName = protocolName;
-    }
-
+    private GetHostAccountsResult() {}
     public List<GetHostAccountsAccount> accounts() {
         return this.accounts;
     }
@@ -94,7 +71,7 @@ public final class GetHostAccountsResult {
     public static Builder builder(GetHostAccountsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHostAccountsAccount> accounts;
         private @Nullable String hostAccountName;
@@ -106,11 +83,7 @@ public final class GetHostAccountsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String protocolName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
@@ -125,6 +98,7 @@ public final class GetHostAccountsResult {
     	      this.protocolName = defaults.protocolName;
         }
 
+        @CustomType.Setter
         public Builder accounts(List<GetHostAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -132,18 +106,22 @@ public final class GetHostAccountsResult {
         public Builder accounts(GetHostAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
+        @CustomType.Setter
         public Builder hostAccountName(@Nullable String hostAccountName) {
             this.hostAccountName = hostAccountName;
             return this;
         }
+        @CustomType.Setter
         public Builder hostId(String hostId) {
             this.hostId = Objects.requireNonNull(hostId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -151,14 +129,17 @@ public final class GetHostAccountsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -166,15 +147,29 @@ public final class GetHostAccountsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder protocolName(@Nullable String protocolName) {
             this.protocolName = protocolName;
             return this;
-        }        public GetHostAccountsResult build() {
-            return new GetHostAccountsResult(accounts, hostAccountName, hostId, id, ids, instanceId, nameRegex, names, outputFile, protocolName);
+        }
+        public GetHostAccountsResult build() {
+            final var o = new GetHostAccountsResult();
+            o.accounts = accounts;
+            o.hostAccountName = hostAccountName;
+            o.hostId = hostId;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.protocolName = protocolName;
+            return o;
         }
     }
 }

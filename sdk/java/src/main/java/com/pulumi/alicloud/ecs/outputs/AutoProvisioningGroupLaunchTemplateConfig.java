@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AutoProvisioningGroupLaunchTemplateConfig {
-    private final @Nullable String instanceType;
-    private final String maxPrice;
-    private final @Nullable String priority;
-    private final String vswitchId;
-    private final String weightedCapacity;
+    private @Nullable String instanceType;
+    private String maxPrice;
+    private @Nullable String priority;
+    private String vswitchId;
+    private String weightedCapacity;
 
-    @CustomType.Constructor
-    private AutoProvisioningGroupLaunchTemplateConfig(
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("maxPrice") String maxPrice,
-        @CustomType.Parameter("priority") @Nullable String priority,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("weightedCapacity") String weightedCapacity) {
-        this.instanceType = instanceType;
-        this.maxPrice = maxPrice;
-        this.priority = priority;
-        this.vswitchId = vswitchId;
-        this.weightedCapacity = weightedCapacity;
-    }
-
+    private AutoProvisioningGroupLaunchTemplateConfig() {}
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
@@ -54,18 +41,14 @@ public final class AutoProvisioningGroupLaunchTemplateConfig {
     public static Builder builder(AutoProvisioningGroupLaunchTemplateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instanceType;
         private String maxPrice;
         private @Nullable String priority;
         private String vswitchId;
         private String weightedCapacity;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoProvisioningGroupLaunchTemplateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceType = defaults.instanceType;
@@ -75,27 +58,39 @@ public final class AutoProvisioningGroupLaunchTemplateConfig {
     	      this.weightedCapacity = defaults.weightedCapacity;
         }
 
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPrice(String maxPrice) {
             this.maxPrice = Objects.requireNonNull(maxPrice);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(@Nullable String priority) {
             this.priority = priority;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder weightedCapacity(String weightedCapacity) {
             this.weightedCapacity = Objects.requireNonNull(weightedCapacity);
             return this;
-        }        public AutoProvisioningGroupLaunchTemplateConfig build() {
-            return new AutoProvisioningGroupLaunchTemplateConfig(instanceType, maxPrice, priority, vswitchId, weightedCapacity);
+        }
+        public AutoProvisioningGroupLaunchTemplateConfig build() {
+            final var o = new AutoProvisioningGroupLaunchTemplateConfig();
+            o.instanceType = instanceType;
+            o.maxPrice = maxPrice;
+            o.priority = priority;
+            o.vswitchId = vswitchId;
+            o.weightedCapacity = weightedCapacity;
+            return o;
         }
     }
 }

@@ -14,56 +14,39 @@ public final class GetReposRepoTag {
      * @return Digest of this image.
      * 
      */
-    private final String digest;
+    private String digest;
     /**
      * @return Create time of this image, unix time in nanoseconds.
      * 
      */
-    private final Integer imageCreate;
+    private Integer imageCreate;
     /**
      * @return Id of this image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return Status of this image, in bytes.
      * 
      */
-    private final Integer imageSize;
+    private Integer imageSize;
     /**
      * @return Last update time of this image, unix time in nanoseconds.
      * 
      */
-    private final Integer imageUpdate;
+    private Integer imageUpdate;
     /**
      * @return Status of this image.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Tag of this image.
      * 
      */
-    private final String tag;
+    private String tag;
 
-    @CustomType.Constructor
-    private GetReposRepoTag(
-        @CustomType.Parameter("digest") String digest,
-        @CustomType.Parameter("imageCreate") Integer imageCreate,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageSize") Integer imageSize,
-        @CustomType.Parameter("imageUpdate") Integer imageUpdate,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tag") String tag) {
-        this.digest = digest;
-        this.imageCreate = imageCreate;
-        this.imageId = imageId;
-        this.imageSize = imageSize;
-        this.imageUpdate = imageUpdate;
-        this.status = status;
-        this.tag = tag;
-    }
-
+    private GetReposRepoTag() {}
     /**
      * @return Digest of this image.
      * 
@@ -121,7 +104,7 @@ public final class GetReposRepoTag {
     public static Builder builder(GetReposRepoTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String digest;
         private Integer imageCreate;
@@ -130,11 +113,7 @@ public final class GetReposRepoTag {
         private Integer imageUpdate;
         private String status;
         private String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetReposRepoTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.digest = defaults.digest;
@@ -146,35 +125,51 @@ public final class GetReposRepoTag {
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder digest(String digest) {
             this.digest = Objects.requireNonNull(digest);
             return this;
         }
+        @CustomType.Setter
         public Builder imageCreate(Integer imageCreate) {
             this.imageCreate = Objects.requireNonNull(imageCreate);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageSize(Integer imageSize) {
             this.imageSize = Objects.requireNonNull(imageSize);
             return this;
         }
+        @CustomType.Setter
         public Builder imageUpdate(Integer imageUpdate) {
             this.imageUpdate = Objects.requireNonNull(imageUpdate);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
-        }        public GetReposRepoTag build() {
-            return new GetReposRepoTag(digest, imageCreate, imageId, imageSize, imageUpdate, status, tag);
+        }
+        public GetReposRepoTag build() {
+            final var o = new GetReposRepoTag();
+            o.digest = digest;
+            o.imageCreate = imageCreate;
+            o.imageId = imageId;
+            o.imageSize = imageSize;
+            o.imageUpdate = imageUpdate;
+            o.status = status;
+            o.tag = tag;
+            return o;
         }
     }
 }

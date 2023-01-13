@@ -15,13 +15,9 @@ public final class ChainChainConfigRouterTo {
      * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
      * 
      */
-    private final @Nullable String nodeName;
+    private @Nullable String nodeName;
 
-    @CustomType.Constructor
-    private ChainChainConfigRouterTo(@CustomType.Parameter("nodeName") @Nullable String nodeName) {
-        this.nodeName = nodeName;
-    }
-
+    private ChainChainConfigRouterTo() {}
     /**
      * @return The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
      * 
@@ -37,24 +33,24 @@ public final class ChainChainConfigRouterTo {
     public static Builder builder(ChainChainConfigRouterTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String nodeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ChainChainConfigRouterTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeName = defaults.nodeName;
         }
 
+        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
-        }        public ChainChainConfigRouterTo build() {
-            return new ChainChainConfigRouterTo(nodeName);
+        }
+        public ChainChainConfigRouterTo build() {
+            final var o = new ChainChainConfigRouterTo();
+            o.nodeName = nodeName;
+            return o;
         }
     }
 }

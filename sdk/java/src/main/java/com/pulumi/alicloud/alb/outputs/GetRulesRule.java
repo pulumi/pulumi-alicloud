@@ -17,70 +17,49 @@ public final class GetRulesRule {
      * @return The ID of the Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the listener to which the forwarding rule belongs.
      * 
      */
-    private final String listenerId;
+    private String listenerId;
     /**
      * @return The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
      * 
      */
-    private final String loadBalancerId;
+    private String loadBalancerId;
     /**
      * @return The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return The actions of the forwarding rules.
      * 
      */
-    private final List<GetRulesRuleRuleAction> ruleActions;
+    private List<GetRulesRuleRuleAction> ruleActions;
     /**
      * @return The conditions of the forwarding rule.
      * 
      */
-    private final List<GetRulesRuleRuleCondition> ruleConditions;
+    private List<GetRulesRuleRuleCondition> ruleConditions;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String ruleId;
+    private String ruleId;
     /**
      * @return The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    private final String ruleName;
+    private String ruleName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetRulesRule(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("ruleActions") List<GetRulesRuleRuleAction> ruleActions,
-        @CustomType.Parameter("ruleConditions") List<GetRulesRuleRuleCondition> ruleConditions,
-        @CustomType.Parameter("ruleId") String ruleId,
-        @CustomType.Parameter("ruleName") String ruleName,
-        @CustomType.Parameter("status") String status) {
-        this.id = id;
-        this.listenerId = listenerId;
-        this.loadBalancerId = loadBalancerId;
-        this.priority = priority;
-        this.ruleActions = ruleActions;
-        this.ruleConditions = ruleConditions;
-        this.ruleId = ruleId;
-        this.ruleName = ruleName;
-        this.status = status;
-    }
-
+    private GetRulesRule() {}
     /**
      * @return The ID of the Rule.
      * 
@@ -152,7 +131,7 @@ public final class GetRulesRule {
     public static Builder builder(GetRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String listenerId;
@@ -163,11 +142,7 @@ public final class GetRulesRule {
         private String ruleId;
         private String ruleName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -181,22 +156,27 @@ public final class GetRulesRule {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleActions(List<GetRulesRuleRuleAction> ruleActions) {
             this.ruleActions = Objects.requireNonNull(ruleActions);
             return this;
@@ -204,6 +184,7 @@ public final class GetRulesRule {
         public Builder ruleActions(GetRulesRuleRuleAction... ruleActions) {
             return ruleActions(List.of(ruleActions));
         }
+        @CustomType.Setter
         public Builder ruleConditions(List<GetRulesRuleRuleCondition> ruleConditions) {
             this.ruleConditions = Objects.requireNonNull(ruleConditions);
             return this;
@@ -211,19 +192,33 @@ public final class GetRulesRule {
         public Builder ruleConditions(GetRulesRuleRuleCondition... ruleConditions) {
             return ruleConditions(List.of(ruleConditions));
         }
+        @CustomType.Setter
         public Builder ruleId(String ruleId) {
             this.ruleId = Objects.requireNonNull(ruleId);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetRulesRule build() {
-            return new GetRulesRule(id, listenerId, loadBalancerId, priority, ruleActions, ruleConditions, ruleId, ruleName, status);
+        }
+        public GetRulesRule build() {
+            final var o = new GetRulesRule();
+            o.id = id;
+            o.listenerId = listenerId;
+            o.loadBalancerId = loadBalancerId;
+            o.priority = priority;
+            o.ruleActions = ruleActions;
+            o.ruleConditions = ruleConditions;
+            o.ruleId = ruleId;
+            o.ruleName = ruleName;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -18,44 +18,27 @@ public final class GetInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Optional) A list of WAF instance IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String instanceSource;
+    private List<String> ids;
+    private @Nullable String instanceSource;
     /**
      * @return A list of WAF instances. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
     /**
      * @return Indicates whether the WAF instance has expired.
      * 
      */
-    private final @Nullable Integer status;
+    private @Nullable Integer status;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceSource") @Nullable String instanceSource,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable Integer status) {
-        this.id = id;
-        this.ids = ids;
-        this.instanceSource = instanceSource;
-        this.instances = instances;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-    }
-
+    private GetInstancesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -101,7 +84,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -110,11 +93,7 @@ public final class GetInstancesResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable Integer status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -126,10 +105,12 @@ public final class GetInstancesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,10 +118,12 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceSource(@Nullable String instanceSource) {
             this.instanceSource = instanceSource;
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -148,19 +131,31 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable Integer status) {
             this.status = status;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(id, ids, instanceSource, instances, outputFile, resourceGroupId, status);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instanceSource = instanceSource;
+            o.instances = instances;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            return o;
         }
     }
 }

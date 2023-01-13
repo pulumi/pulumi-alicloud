@@ -13,35 +13,24 @@ public final class GetRamDirectoriesDirectoryAdConnector {
      * @return The address of AD connector.
      * 
      */
-    private final String adConnectorAddress;
+    private String adConnectorAddress;
     /**
      * @return The status of connector.
      * 
      */
-    private final String connectorStatus;
+    private String connectorStatus;
     /**
      * @return The ID of the network interface.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return The ID of VSwitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetRamDirectoriesDirectoryAdConnector(
-        @CustomType.Parameter("adConnectorAddress") String adConnectorAddress,
-        @CustomType.Parameter("connectorStatus") String connectorStatus,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.adConnectorAddress = adConnectorAddress;
-        this.connectorStatus = connectorStatus;
-        this.networkInterfaceId = networkInterfaceId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetRamDirectoriesDirectoryAdConnector() {}
     /**
      * @return The address of AD connector.
      * 
@@ -78,17 +67,13 @@ public final class GetRamDirectoriesDirectoryAdConnector {
     public static Builder builder(GetRamDirectoriesDirectoryAdConnector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String adConnectorAddress;
         private String connectorStatus;
         private String networkInterfaceId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRamDirectoriesDirectoryAdConnector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adConnectorAddress = defaults.adConnectorAddress;
@@ -97,23 +82,33 @@ public final class GetRamDirectoriesDirectoryAdConnector {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder adConnectorAddress(String adConnectorAddress) {
             this.adConnectorAddress = Objects.requireNonNull(adConnectorAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder connectorStatus(String connectorStatus) {
             this.connectorStatus = Objects.requireNonNull(connectorStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetRamDirectoriesDirectoryAdConnector build() {
-            return new GetRamDirectoriesDirectoryAdConnector(adConnectorAddress, connectorStatus, networkInterfaceId, vswitchId);
+        }
+        public GetRamDirectoriesDirectoryAdConnector build() {
+            final var o = new GetRamDirectoriesDirectoryAdConnector();
+            o.adConnectorAddress = adConnectorAddress;
+            o.connectorStatus = connectorStatus;
+            o.networkInterfaceId = networkInterfaceId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

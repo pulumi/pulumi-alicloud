@@ -13,28 +13,19 @@ public final class GetOrganizationsOrganization {
      * @return The ID of the Organization.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String organizationId;
+    private String organizationId;
     /**
      * @return Company name.
      * 
      */
-    private final String organizationName;
+    private String organizationName;
 
-    @CustomType.Constructor
-    private GetOrganizationsOrganization(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("organizationId") String organizationId,
-        @CustomType.Parameter("organizationName") String organizationName) {
-        this.id = id;
-        this.organizationId = organizationId;
-        this.organizationName = organizationName;
-    }
-
+    private GetOrganizationsOrganization() {}
     /**
      * @return The ID of the Organization.
      * 
@@ -64,16 +55,12 @@ public final class GetOrganizationsOrganization {
     public static Builder builder(GetOrganizationsOrganization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String organizationId;
         private String organizationName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationsOrganization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -81,19 +68,27 @@ public final class GetOrganizationsOrganization {
     	      this.organizationName = defaults.organizationName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             this.organizationId = Objects.requireNonNull(organizationId);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationName(String organizationName) {
             this.organizationName = Objects.requireNonNull(organizationName);
             return this;
-        }        public GetOrganizationsOrganization build() {
-            return new GetOrganizationsOrganization(id, organizationId, organizationName);
+        }
+        public GetOrganizationsOrganization build() {
+            final var o = new GetOrganizationsOrganization();
+            o.id = id;
+            o.organizationId = organizationId;
+            o.organizationName = organizationName;
+            return o;
         }
     }
 }

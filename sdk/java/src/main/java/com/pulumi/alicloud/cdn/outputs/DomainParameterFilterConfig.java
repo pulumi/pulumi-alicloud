@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainParameterFilterConfig {
-    private final @Nullable String enable;
-    private final @Nullable List<String> hashKeyArgs;
+    private @Nullable String enable;
+    private @Nullable List<String> hashKeyArgs;
 
-    @CustomType.Constructor
-    private DomainParameterFilterConfig(
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("hashKeyArgs") @Nullable List<String> hashKeyArgs) {
-        this.enable = enable;
-        this.hashKeyArgs = hashKeyArgs;
-    }
-
+    private DomainParameterFilterConfig() {}
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -37,33 +30,35 @@ public final class DomainParameterFilterConfig {
     public static Builder builder(DomainParameterFilterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String enable;
         private @Nullable List<String> hashKeyArgs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainParameterFilterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.hashKeyArgs = defaults.hashKeyArgs;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder hashKeyArgs(@Nullable List<String> hashKeyArgs) {
             this.hashKeyArgs = hashKeyArgs;
             return this;
         }
         public Builder hashKeyArgs(String... hashKeyArgs) {
             return hashKeyArgs(List.of(hashKeyArgs));
-        }        public DomainParameterFilterConfig build() {
-            return new DomainParameterFilterConfig(enable, hashKeyArgs);
+        }
+        public DomainParameterFilterConfig build() {
+            final var o = new DomainParameterFilterConfig();
+            o.enable = enable;
+            o.hashKeyArgs = hashKeyArgs;
+            return o;
         }
     }
 }

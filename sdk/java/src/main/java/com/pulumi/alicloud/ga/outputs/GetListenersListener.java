@@ -16,70 +16,49 @@ public final class GetListenersListener {
      * @return The certificates of the listener.
      * 
      */
-    private final List<GetListenersListenerCertificate> certificates;
+    private List<GetListenersListenerCertificate> certificates;
     /**
      * @return The clientAffinity of the listener.
      * 
      */
-    private final String clientAffinity;
+    private String clientAffinity;
     /**
      * @return The description of the listener.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Listener.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The listenerId of the listener.
      * 
      */
-    private final String listenerId;
+    private String listenerId;
     /**
      * @return The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The portRanges of the listener.
      * 
      */
-    private final List<GetListenersListenerPortRange> portRanges;
+    private List<GetListenersListenerPortRange> portRanges;
     /**
      * @return Type of network transport protocol monitored.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The status of the listener.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetListenersListener(
-        @CustomType.Parameter("certificates") List<GetListenersListenerCertificate> certificates,
-        @CustomType.Parameter("clientAffinity") String clientAffinity,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("portRanges") List<GetListenersListenerPortRange> portRanges,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("status") String status) {
-        this.certificates = certificates;
-        this.clientAffinity = clientAffinity;
-        this.description = description;
-        this.id = id;
-        this.listenerId = listenerId;
-        this.name = name;
-        this.portRanges = portRanges;
-        this.protocol = protocol;
-        this.status = status;
-    }
-
+    private GetListenersListener() {}
     /**
      * @return The certificates of the listener.
      * 
@@ -151,7 +130,7 @@ public final class GetListenersListener {
     public static Builder builder(GetListenersListener defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetListenersListenerCertificate> certificates;
         private String clientAffinity;
@@ -162,11 +141,7 @@ public final class GetListenersListener {
         private List<GetListenersListenerPortRange> portRanges;
         private String protocol;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetListenersListener defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificates = defaults.certificates;
@@ -180,6 +155,7 @@ public final class GetListenersListener {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder certificates(List<GetListenersListenerCertificate> certificates) {
             this.certificates = Objects.requireNonNull(certificates);
             return this;
@@ -187,26 +163,32 @@ public final class GetListenersListener {
         public Builder certificates(GetListenersListenerCertificate... certificates) {
             return certificates(List.of(certificates));
         }
+        @CustomType.Setter
         public Builder clientAffinity(String clientAffinity) {
             this.clientAffinity = Objects.requireNonNull(clientAffinity);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder portRanges(List<GetListenersListenerPortRange> portRanges) {
             this.portRanges = Objects.requireNonNull(portRanges);
             return this;
@@ -214,15 +196,28 @@ public final class GetListenersListener {
         public Builder portRanges(GetListenersListenerPortRange... portRanges) {
             return portRanges(List.of(portRanges));
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetListenersListener build() {
-            return new GetListenersListener(certificates, clientAffinity, description, id, listenerId, name, portRanges, protocol, status);
+        }
+        public GetListenersListener build() {
+            final var o = new GetListenersListener();
+            o.certificates = certificates;
+            o.clientAffinity = clientAffinity;
+            o.description = description;
+            o.id = id;
+            o.listenerId = listenerId;
+            o.name = name;
+            o.portRanges = portRanges;
+            o.protocol = protocol;
+            o.status = status;
+            return o;
         }
     }
 }

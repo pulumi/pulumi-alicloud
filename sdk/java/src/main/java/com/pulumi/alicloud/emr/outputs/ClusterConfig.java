@@ -13,35 +13,24 @@ public final class ClusterConfig {
      * @return Custom configuration service config key, e.g. ’dfs.replication’.
      * 
      */
-    private final String configKey;
+    private String configKey;
     /**
      * @return Custom configuration service config value, e.g. ’3’.
      * 
      */
-    private final String configValue;
+    private String configValue;
     /**
      * @return Custom configuration service file name, e.g. ’hdfs-site’.
      * 
      */
-    private final String fileName;
+    private String fileName;
     /**
      * @return Cluster service configuration modification name, e.g. ’HDFS’.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private ClusterConfig(
-        @CustomType.Parameter("configKey") String configKey,
-        @CustomType.Parameter("configValue") String configValue,
-        @CustomType.Parameter("fileName") String fileName,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.configKey = configKey;
-        this.configValue = configValue;
-        this.fileName = fileName;
-        this.serviceName = serviceName;
-    }
-
+    private ClusterConfig() {}
     /**
      * @return Custom configuration service config key, e.g. ’dfs.replication’.
      * 
@@ -78,17 +67,13 @@ public final class ClusterConfig {
     public static Builder builder(ClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configKey;
         private String configValue;
         private String fileName;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configKey = defaults.configKey;
@@ -97,23 +82,33 @@ public final class ClusterConfig {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder configKey(String configKey) {
             this.configKey = Objects.requireNonNull(configKey);
             return this;
         }
+        @CustomType.Setter
         public Builder configValue(String configValue) {
             this.configValue = Objects.requireNonNull(configValue);
             return this;
         }
+        @CustomType.Setter
         public Builder fileName(String fileName) {
             this.fileName = Objects.requireNonNull(fileName);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public ClusterConfig build() {
-            return new ClusterConfig(configKey, configValue, fileName, serviceName);
+        }
+        public ClusterConfig build() {
+            final var o = new ClusterConfig();
+            o.configKey = configKey;
+            o.configValue = configValue;
+            o.fileName = fileName;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

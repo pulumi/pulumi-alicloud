@@ -15,63 +15,44 @@ public final class GetTlsCipherPoliciesPolicy {
      * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
      * 
      */
-    private final List<String> ciphers;
+    private List<String> ciphers;
     /**
      * @return The creation time timestamp.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Tls Cipher Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Array of Relate Listeners.
      * 
      */
-    private final List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners;
+    private List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners;
     /**
      * @return TLS policy instance state.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of TLS cipher policy.
      * 
      */
-    private final String tlsCipherPolicyId;
+    private String tlsCipherPolicyId;
     /**
      * @return TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      * 
      */
-    private final String tlsCipherPolicyName;
+    private String tlsCipherPolicyName;
     /**
      * @return The version of TLS protocol.
      * 
      */
-    private final List<String> tlsVersions;
+    private List<String> tlsVersions;
 
-    @CustomType.Constructor
-    private GetTlsCipherPoliciesPolicy(
-        @CustomType.Parameter("ciphers") List<String> ciphers,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("relateListeners") List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tlsCipherPolicyId") String tlsCipherPolicyId,
-        @CustomType.Parameter("tlsCipherPolicyName") String tlsCipherPolicyName,
-        @CustomType.Parameter("tlsVersions") List<String> tlsVersions) {
-        this.ciphers = ciphers;
-        this.createTime = createTime;
-        this.id = id;
-        this.relateListeners = relateListeners;
-        this.status = status;
-        this.tlsCipherPolicyId = tlsCipherPolicyId;
-        this.tlsCipherPolicyName = tlsCipherPolicyName;
-        this.tlsVersions = tlsVersions;
-    }
-
+    private GetTlsCipherPoliciesPolicy() {}
     /**
      * @return The encryption algorithms supported. It depends on the value of `tls_versions`.
      * 
@@ -136,7 +117,7 @@ public final class GetTlsCipherPoliciesPolicy {
     public static Builder builder(GetTlsCipherPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> ciphers;
         private String createTime;
@@ -146,11 +127,7 @@ public final class GetTlsCipherPoliciesPolicy {
         private String tlsCipherPolicyId;
         private String tlsCipherPolicyName;
         private List<String> tlsVersions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTlsCipherPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphers = defaults.ciphers;
@@ -163,6 +140,7 @@ public final class GetTlsCipherPoliciesPolicy {
     	      this.tlsVersions = defaults.tlsVersions;
         }
 
+        @CustomType.Setter
         public Builder ciphers(List<String> ciphers) {
             this.ciphers = Objects.requireNonNull(ciphers);
             return this;
@@ -170,14 +148,17 @@ public final class GetTlsCipherPoliciesPolicy {
         public Builder ciphers(String... ciphers) {
             return ciphers(List.of(ciphers));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder relateListeners(List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners) {
             this.relateListeners = Objects.requireNonNull(relateListeners);
             return this;
@@ -185,26 +166,40 @@ public final class GetTlsCipherPoliciesPolicy {
         public Builder relateListeners(GetTlsCipherPoliciesPolicyRelateListener... relateListeners) {
             return relateListeners(List.of(relateListeners));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsCipherPolicyId(String tlsCipherPolicyId) {
             this.tlsCipherPolicyId = Objects.requireNonNull(tlsCipherPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsCipherPolicyName(String tlsCipherPolicyName) {
             this.tlsCipherPolicyName = Objects.requireNonNull(tlsCipherPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsVersions(List<String> tlsVersions) {
             this.tlsVersions = Objects.requireNonNull(tlsVersions);
             return this;
         }
         public Builder tlsVersions(String... tlsVersions) {
             return tlsVersions(List.of(tlsVersions));
-        }        public GetTlsCipherPoliciesPolicy build() {
-            return new GetTlsCipherPoliciesPolicy(ciphers, createTime, id, relateListeners, status, tlsCipherPolicyId, tlsCipherPolicyName, tlsVersions);
+        }
+        public GetTlsCipherPoliciesPolicy build() {
+            final var o = new GetTlsCipherPoliciesPolicy();
+            o.ciphers = ciphers;
+            o.createTime = createTime;
+            o.id = id;
+            o.relateListeners = relateListeners;
+            o.status = status;
+            o.tlsCipherPolicyId = tlsCipherPolicyId;
+            o.tlsCipherPolicyName = tlsCipherPolicyName;
+            o.tlsVersions = tlsVersions;
+            return o;
         }
     }
 }

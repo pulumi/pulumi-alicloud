@@ -13,21 +13,14 @@ public final class ListenerPortRange {
      * @return The initial listening port used to receive requests and forward them to terminal nodes.
      * 
      */
-    private final Integer fromPort;
+    private Integer fromPort;
     /**
      * @return The end listening port used to receive requests and forward them to terminal nodes.
      * 
      */
-    private final Integer toPort;
+    private Integer toPort;
 
-    @CustomType.Constructor
-    private ListenerPortRange(
-        @CustomType.Parameter("fromPort") Integer fromPort,
-        @CustomType.Parameter("toPort") Integer toPort) {
-        this.fromPort = fromPort;
-        this.toPort = toPort;
-    }
-
+    private ListenerPortRange() {}
     /**
      * @return The initial listening port used to receive requests and forward them to terminal nodes.
      * 
@@ -50,30 +43,32 @@ public final class ListenerPortRange {
     public static Builder builder(ListenerPortRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer fromPort;
         private Integer toPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ListenerPortRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fromPort = defaults.fromPort;
     	      this.toPort = defaults.toPort;
         }
 
+        @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
             this.fromPort = Objects.requireNonNull(fromPort);
             return this;
         }
+        @CustomType.Setter
         public Builder toPort(Integer toPort) {
             this.toPort = Objects.requireNonNull(toPort);
             return this;
-        }        public ListenerPortRange build() {
-            return new ListenerPortRange(fromPort, toPort);
+        }
+        public ListenerPortRange build() {
+            final var o = new ListenerPortRange();
+            o.fromPort = fromPort;
+            o.toPort = toPort;
+            return o;
         }
     }
 }

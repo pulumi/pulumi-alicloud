@@ -15,49 +15,34 @@ public final class NetworkAclEgressAclEntry {
      * @return The description of egress entries.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The destination cidr ip of egress entries.
      * 
      */
-    private final @Nullable String destinationCidrIp;
+    private @Nullable String destinationCidrIp;
     /**
      * @return The entry name of egress entries.
      * 
      */
-    private final @Nullable String networkAclEntryName;
+    private @Nullable String networkAclEntryName;
     /**
      * @return The policy of egress entries. Valid values `accept` and `drop`.
      * 
      */
-    private final @Nullable String policy;
+    private @Nullable String policy;
     /**
      * @return The port of egress entries.
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
      * 
      */
-    private final @Nullable String protocol;
+    private @Nullable String protocol;
 
-    @CustomType.Constructor
-    private NetworkAclEgressAclEntry(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("destinationCidrIp") @Nullable String destinationCidrIp,
-        @CustomType.Parameter("networkAclEntryName") @Nullable String networkAclEntryName,
-        @CustomType.Parameter("policy") @Nullable String policy,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("protocol") @Nullable String protocol) {
-        this.description = description;
-        this.destinationCidrIp = destinationCidrIp;
-        this.networkAclEntryName = networkAclEntryName;
-        this.policy = policy;
-        this.port = port;
-        this.protocol = protocol;
-    }
-
+    private NetworkAclEgressAclEntry() {}
     /**
      * @return The description of egress entries.
      * 
@@ -108,7 +93,7 @@ public final class NetworkAclEgressAclEntry {
     public static Builder builder(NetworkAclEgressAclEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String destinationCidrIp;
@@ -116,11 +101,7 @@ public final class NetworkAclEgressAclEntry {
         private @Nullable String policy;
         private @Nullable String port;
         private @Nullable String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NetworkAclEgressAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -131,31 +112,45 @@ public final class NetworkAclEgressAclEntry {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationCidrIp(@Nullable String destinationCidrIp) {
             this.destinationCidrIp = destinationCidrIp;
             return this;
         }
+        @CustomType.Setter
         public Builder networkAclEntryName(@Nullable String networkAclEntryName) {
             this.networkAclEntryName = networkAclEntryName;
             return this;
         }
+        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
-        }        public NetworkAclEgressAclEntry build() {
-            return new NetworkAclEgressAclEntry(description, destinationCidrIp, networkAclEntryName, policy, port, protocol);
+        }
+        public NetworkAclEgressAclEntry build() {
+            final var o = new NetworkAclEgressAclEntry();
+            o.description = description;
+            o.destinationCidrIp = destinationCidrIp;
+            o.networkAclEntryName = networkAclEntryName;
+            o.policy = policy;
+            o.port = port;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

@@ -15,28 +15,19 @@ public final class ForwardingRuleRuleAction {
      * @return Forwarding configuration.
      * 
      */
-    private final ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig;
+    private ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig;
     /**
      * @return Forwarding priority.
      * 
      */
-    private final Integer order;
+    private Integer order;
     /**
      * @return Forward action type. Default: forwardgroup.
      * 
      */
-    private final String ruleActionType;
+    private String ruleActionType;
 
-    @CustomType.Constructor
-    private ForwardingRuleRuleAction(
-        @CustomType.Parameter("forwardGroupConfig") ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig,
-        @CustomType.Parameter("order") Integer order,
-        @CustomType.Parameter("ruleActionType") String ruleActionType) {
-        this.forwardGroupConfig = forwardGroupConfig;
-        this.order = order;
-        this.ruleActionType = ruleActionType;
-    }
-
+    private ForwardingRuleRuleAction() {}
     /**
      * @return Forwarding configuration.
      * 
@@ -66,16 +57,12 @@ public final class ForwardingRuleRuleAction {
     public static Builder builder(ForwardingRuleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig;
         private Integer order;
         private String ruleActionType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ForwardingRuleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardGroupConfig = defaults.forwardGroupConfig;
@@ -83,19 +70,27 @@ public final class ForwardingRuleRuleAction {
     	      this.ruleActionType = defaults.ruleActionType;
         }
 
+        @CustomType.Setter
         public Builder forwardGroupConfig(ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig) {
             this.forwardGroupConfig = Objects.requireNonNull(forwardGroupConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleActionType(String ruleActionType) {
             this.ruleActionType = Objects.requireNonNull(ruleActionType);
             return this;
-        }        public ForwardingRuleRuleAction build() {
-            return new ForwardingRuleRuleAction(forwardGroupConfig, order, ruleActionType);
+        }
+        public ForwardingRuleRuleAction build() {
+            final var o = new ForwardingRuleRuleAction();
+            o.forwardGroupConfig = forwardGroupConfig;
+            o.order = order;
+            o.ruleActionType = ruleActionType;
+            return o;
         }
     }
 }

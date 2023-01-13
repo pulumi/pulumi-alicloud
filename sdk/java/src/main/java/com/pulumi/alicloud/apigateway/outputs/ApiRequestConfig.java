@@ -15,42 +15,29 @@ public final class ApiRequestConfig {
      * @return The body format of the api, which support the values of &#39;STREAM&#39; and &#39;FORM&#39;.
      * 
      */
-    private final @Nullable String bodyFormat;
+    private @Nullable String bodyFormat;
     /**
      * @return The http method of backend service.
      * 
      */
-    private final String method;
+    private String method;
     /**
      * @return The mode of the parameters between request parameters and service parameters, which support the values of &#39;MAPPING&#39; and &#39;PASSTHROUGH&#39;.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The path of backend service.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The protocol of api which supports values of &#39;HTTP&#39;,&#39;HTTPS&#39; or &#39;HTTP,HTTPS&#39;.
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private ApiRequestConfig(
-        @CustomType.Parameter("bodyFormat") @Nullable String bodyFormat,
-        @CustomType.Parameter("method") String method,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.bodyFormat = bodyFormat;
-        this.method = method;
-        this.mode = mode;
-        this.path = path;
-        this.protocol = protocol;
-    }
-
+    private ApiRequestConfig() {}
     /**
      * @return The body format of the api, which support the values of &#39;STREAM&#39; and &#39;FORM&#39;.
      * 
@@ -94,18 +81,14 @@ public final class ApiRequestConfig {
     public static Builder builder(ApiRequestConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bodyFormat;
         private String method;
         private String mode;
         private String path;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiRequestConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bodyFormat = defaults.bodyFormat;
@@ -115,27 +98,39 @@ public final class ApiRequestConfig {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder bodyFormat(@Nullable String bodyFormat) {
             this.bodyFormat = bodyFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder method(String method) {
             this.method = Objects.requireNonNull(method);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public ApiRequestConfig build() {
-            return new ApiRequestConfig(bodyFormat, method, mode, path, protocol);
+        }
+        public ApiRequestConfig build() {
+            final var o = new ApiRequestConfig();
+            o.bodyFormat = bodyFormat;
+            o.method = method;
+            o.mode = mode;
+            o.path = path;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

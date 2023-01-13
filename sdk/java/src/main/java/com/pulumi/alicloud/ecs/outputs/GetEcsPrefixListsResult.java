@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsPrefixListsResult {
-    private final @Nullable String addressFamily;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String addressFamily;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetEcsPrefixListsList> lists;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private List<GetEcsPrefixListsList> lists;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetEcsPrefixListsResult(
-        @CustomType.Parameter("addressFamily") @Nullable String addressFamily,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lists") List<GetEcsPrefixListsList> lists,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.addressFamily = addressFamily;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.lists = lists;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetEcsPrefixListsResult() {}
     public Optional<String> addressFamily() {
         return Optional.ofNullable(this.addressFamily);
     }
@@ -83,7 +64,7 @@ public final class GetEcsPrefixListsResult {
     public static Builder builder(GetEcsPrefixListsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String addressFamily;
         private @Nullable Boolean enableDetails;
@@ -93,11 +74,7 @@ public final class GetEcsPrefixListsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsPrefixListsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressFamily = defaults.addressFamily;
@@ -110,18 +87,22 @@ public final class GetEcsPrefixListsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder addressFamily(@Nullable String addressFamily) {
             this.addressFamily = addressFamily;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,6 +110,7 @@ public final class GetEcsPrefixListsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lists(List<GetEcsPrefixListsList> lists) {
             this.lists = Objects.requireNonNull(lists);
             return this;
@@ -136,10 +118,12 @@ public final class GetEcsPrefixListsResult {
         public Builder lists(GetEcsPrefixListsList... lists) {
             return lists(List.of(lists));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,11 +131,22 @@ public final class GetEcsPrefixListsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetEcsPrefixListsResult build() {
-            return new GetEcsPrefixListsResult(addressFamily, enableDetails, id, ids, lists, nameRegex, names, outputFile);
+        }
+        public GetEcsPrefixListsResult build() {
+            final var o = new GetEcsPrefixListsResult();
+            o.addressFamily = addressFamily;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.lists = lists;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

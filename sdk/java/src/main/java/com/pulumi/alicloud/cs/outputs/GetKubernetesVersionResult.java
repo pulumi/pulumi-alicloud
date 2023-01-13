@@ -13,34 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubernetesVersionResult {
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String kubernetesVersion;
+    private String id;
+    private @Nullable String kubernetesVersion;
     /**
      * @return A list of metadata of kubernetes version.
      * 
      */
-    private final List<GetKubernetesVersionMetadata> metadatas;
-    private final @Nullable String profile;
+    private List<GetKubernetesVersionMetadata> metadatas;
+    private @Nullable String profile;
 
-    @CustomType.Constructor
-    private GetKubernetesVersionResult(
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kubernetesVersion") @Nullable String kubernetesVersion,
-        @CustomType.Parameter("metadatas") List<GetKubernetesVersionMetadata> metadatas,
-        @CustomType.Parameter("profile") @Nullable String profile) {
-        this.clusterType = clusterType;
-        this.id = id;
-        this.kubernetesVersion = kubernetesVersion;
-        this.metadatas = metadatas;
-        this.profile = profile;
-    }
-
+    private GetKubernetesVersionResult() {}
     public String clusterType() {
         return this.clusterType;
     }
@@ -72,18 +59,14 @@ public final class GetKubernetesVersionResult {
     public static Builder builder(GetKubernetesVersionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterType;
         private String id;
         private @Nullable String kubernetesVersion;
         private List<GetKubernetesVersionMetadata> metadatas;
         private @Nullable String profile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesVersionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -93,18 +76,22 @@ public final class GetKubernetesVersionResult {
     	      this.profile = defaults.profile;
         }
 
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder metadatas(List<GetKubernetesVersionMetadata> metadatas) {
             this.metadatas = Objects.requireNonNull(metadatas);
             return this;
@@ -112,11 +99,19 @@ public final class GetKubernetesVersionResult {
         public Builder metadatas(GetKubernetesVersionMetadata... metadatas) {
             return metadatas(List.of(metadatas));
         }
+        @CustomType.Setter
         public Builder profile(@Nullable String profile) {
             this.profile = profile;
             return this;
-        }        public GetKubernetesVersionResult build() {
-            return new GetKubernetesVersionResult(clusterType, id, kubernetesVersion, metadatas, profile);
+        }
+        public GetKubernetesVersionResult build() {
+            final var o = new GetKubernetesVersionResult();
+            o.clusterType = clusterType;
+            o.id = id;
+            o.kubernetesVersion = kubernetesVersion;
+            o.metadatas = metadatas;
+            o.profile = profile;
+            return o;
         }
     }
 }

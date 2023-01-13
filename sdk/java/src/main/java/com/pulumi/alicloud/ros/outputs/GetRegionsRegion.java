@@ -13,28 +13,19 @@ public final class GetRegionsRegion {
      * @return The name of the region.
      * 
      */
-    private final String localName;
+    private String localName;
     /**
      * @return The endpoint of the region.
      * 
      */
-    private final String regionEndpoint;
+    private String regionEndpoint;
     /**
      * @return The ID of the region.
      * 
      */
-    private final String regionId;
+    private String regionId;
 
-    @CustomType.Constructor
-    private GetRegionsRegion(
-        @CustomType.Parameter("localName") String localName,
-        @CustomType.Parameter("regionEndpoint") String regionEndpoint,
-        @CustomType.Parameter("regionId") String regionId) {
-        this.localName = localName;
-        this.regionEndpoint = regionEndpoint;
-        this.regionId = regionId;
-    }
-
+    private GetRegionsRegion() {}
     /**
      * @return The name of the region.
      * 
@@ -64,16 +55,12 @@ public final class GetRegionsRegion {
     public static Builder builder(GetRegionsRegion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String localName;
         private String regionEndpoint;
         private String regionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localName = defaults.localName;
@@ -81,19 +68,27 @@ public final class GetRegionsRegion {
     	      this.regionId = defaults.regionId;
         }
 
+        @CustomType.Setter
         public Builder localName(String localName) {
             this.localName = Objects.requireNonNull(localName);
             return this;
         }
+        @CustomType.Setter
         public Builder regionEndpoint(String regionEndpoint) {
             this.regionEndpoint = Objects.requireNonNull(regionEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }        public GetRegionsRegion build() {
-            return new GetRegionsRegion(localName, regionEndpoint, regionId);
+        }
+        public GetRegionsRegion build() {
+            final var o = new GetRegionsRegion();
+            o.localName = localName;
+            o.regionEndpoint = regionEndpoint;
+            o.regionId = regionId;
+            return o;
         }
     }
 }

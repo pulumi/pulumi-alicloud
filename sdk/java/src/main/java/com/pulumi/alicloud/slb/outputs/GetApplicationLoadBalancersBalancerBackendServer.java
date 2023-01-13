@@ -14,35 +14,24 @@ public final class GetApplicationLoadBalancersBalancerBackendServer {
      * @return The description of protocol.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The server ID.
      * 
      */
-    private final String serverId;
+    private String serverId;
     /**
      * @return The type of servers.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The weight of servers.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetApplicationLoadBalancersBalancerBackendServer(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("serverId") String serverId,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.description = description;
-        this.serverId = serverId;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private GetApplicationLoadBalancersBalancerBackendServer() {}
     /**
      * @return The description of protocol.
      * 
@@ -79,17 +68,13 @@ public final class GetApplicationLoadBalancersBalancerBackendServer {
     public static Builder builder(GetApplicationLoadBalancersBalancerBackendServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String serverId;
         private String type;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationLoadBalancersBalancerBackendServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -98,23 +83,33 @@ public final class GetApplicationLoadBalancersBalancerBackendServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetApplicationLoadBalancersBalancerBackendServer build() {
-            return new GetApplicationLoadBalancersBalancerBackendServer(description, serverId, type, weight);
+        }
+        public GetApplicationLoadBalancersBalancerBackendServer build() {
+            final var o = new GetApplicationLoadBalancersBalancerBackendServer();
+            o.description = description;
+            o.serverId = serverId;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

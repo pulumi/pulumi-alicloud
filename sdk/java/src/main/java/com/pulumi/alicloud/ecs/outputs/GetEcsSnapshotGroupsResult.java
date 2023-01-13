@@ -15,45 +15,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsSnapshotGroupsResult {
-    private final List<GetEcsSnapshotGroupsGroup> groups;
+    private List<GetEcsSnapshotGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceId;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String snapshotGroupName;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceId;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String snapshotGroupName;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEcsSnapshotGroupsResult(
-        @CustomType.Parameter("groups") List<GetEcsSnapshotGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("snapshotGroupName") @Nullable String snapshotGroupName,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.groups = groups;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.snapshotGroupName = snapshotGroupName;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetEcsSnapshotGroupsResult() {}
     public List<GetEcsSnapshotGroupsGroup> groups() {
         return this.groups;
     }
@@ -96,7 +73,7 @@ public final class GetEcsSnapshotGroupsResult {
     public static Builder builder(GetEcsSnapshotGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEcsSnapshotGroupsGroup> groups;
         private String id;
@@ -108,11 +85,7 @@ public final class GetEcsSnapshotGroupsResult {
         private @Nullable String snapshotGroupName;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsSnapshotGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -127,6 +100,7 @@ public final class GetEcsSnapshotGroupsResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder groups(List<GetEcsSnapshotGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -134,10 +108,12 @@ public final class GetEcsSnapshotGroupsResult {
         public Builder groups(GetEcsSnapshotGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,14 +121,17 @@ public final class GetEcsSnapshotGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -160,23 +139,39 @@ public final class GetEcsSnapshotGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotGroupName(@Nullable String snapshotGroupName) {
             this.snapshotGroupName = snapshotGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetEcsSnapshotGroupsResult build() {
-            return new GetEcsSnapshotGroupsResult(groups, id, ids, instanceId, nameRegex, names, outputFile, snapshotGroupName, status, tags);
+        }
+        public GetEcsSnapshotGroupsResult build() {
+            final var o = new GetEcsSnapshotGroupsResult();
+            o.groups = groups;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.snapshotGroupName = snapshotGroupName;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

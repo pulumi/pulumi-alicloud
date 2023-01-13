@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOtsSnapshotsResult {
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetOtsSnapshotsSnapshot> snapshots;
-    private final @Nullable String startTime;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetOtsSnapshotsSnapshot> snapshots;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private GetOtsSnapshotsResult(
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("snapshots") List<GetOtsSnapshotsSnapshot> snapshots,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.endTime = endTime;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.snapshots = snapshots;
-        this.startTime = startTime;
-    }
-
+    private GetOtsSnapshotsResult() {}
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
@@ -70,7 +55,7 @@ public final class GetOtsSnapshotsResult {
     public static Builder builder(GetOtsSnapshotsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endTime;
         private String id;
@@ -78,11 +63,7 @@ public final class GetOtsSnapshotsResult {
         private @Nullable String outputFile;
         private List<GetOtsSnapshotsSnapshot> snapshots;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOtsSnapshotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -93,14 +74,17 @@ public final class GetOtsSnapshotsResult {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -108,10 +92,12 @@ public final class GetOtsSnapshotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshots(List<GetOtsSnapshotsSnapshot> snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
@@ -119,11 +105,20 @@ public final class GetOtsSnapshotsResult {
         public Builder snapshots(GetOtsSnapshotsSnapshot... snapshots) {
             return snapshots(List.of(snapshots));
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public GetOtsSnapshotsResult build() {
-            return new GetOtsSnapshotsResult(endTime, id, ids, outputFile, snapshots, startTime);
+        }
+        public GetOtsSnapshotsResult build() {
+            final var o = new GetOtsSnapshotsResult();
+            o.endTime = endTime;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.snapshots = snapshots;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

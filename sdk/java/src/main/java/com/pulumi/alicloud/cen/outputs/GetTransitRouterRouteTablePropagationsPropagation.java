@@ -9,42 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterRouteTablePropagationsPropagation {
-    private final String id;
+    private String id;
     /**
      * @return ID of the transit router route table association.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return Type of the resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
     /**
      * @return The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return ID of the cen transit router attachment.
      * 
      */
-    private final String transitRouterAttachmentId;
+    private String transitRouterAttachmentId;
 
-    @CustomType.Constructor
-    private GetTransitRouterRouteTablePropagationsPropagation(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceType") String resourceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId) {
-        this.id = id;
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-        this.status = status;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-    }
-
+    private GetTransitRouterRouteTablePropagationsPropagation() {}
     public String id() {
         return this.id;
     }
@@ -84,18 +71,14 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
     public static Builder builder(GetTransitRouterRouteTablePropagationsPropagation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String resourceId;
         private String resourceType;
         private String status;
         private String transitRouterAttachmentId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterRouteTablePropagationsPropagation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -105,27 +88,39 @@ public final class GetTransitRouterRouteTablePropagationsPropagation {
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
-        }        public GetTransitRouterRouteTablePropagationsPropagation build() {
-            return new GetTransitRouterRouteTablePropagationsPropagation(id, resourceId, resourceType, status, transitRouterAttachmentId);
+        }
+        public GetTransitRouterRouteTablePropagationsPropagation build() {
+            final var o = new GetTransitRouterRouteTablePropagationsPropagation();
+            o.id = id;
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            return o;
         }
     }
 }

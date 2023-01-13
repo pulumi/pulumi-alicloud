@@ -15,21 +15,14 @@ public final class DhcpOptionsSetAssociateVpc {
      * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
      * 
      */
-    private final @Nullable String associateStatus;
+    private @Nullable String associateStatus;
     /**
      * @return The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private DhcpOptionsSetAssociateVpc(
-        @CustomType.Parameter("associateStatus") @Nullable String associateStatus,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.associateStatus = associateStatus;
-        this.vpcId = vpcId;
-    }
-
+    private DhcpOptionsSetAssociateVpc() {}
     /**
      * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
      * 
@@ -52,30 +45,32 @@ public final class DhcpOptionsSetAssociateVpc {
     public static Builder builder(DhcpOptionsSetAssociateVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String associateStatus;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DhcpOptionsSetAssociateVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associateStatus = defaults.associateStatus;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder associateStatus(@Nullable String associateStatus) {
             this.associateStatus = associateStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public DhcpOptionsSetAssociateVpc build() {
-            return new DhcpOptionsSetAssociateVpc(associateStatus, vpcId);
+        }
+        public DhcpOptionsSetAssociateVpc build() {
+            final var o = new DhcpOptionsSetAssociateVpc();
+            o.associateStatus = associateStatus;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

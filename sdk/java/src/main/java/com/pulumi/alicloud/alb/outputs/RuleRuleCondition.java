@@ -22,63 +22,44 @@ public final class RuleRuleCondition {
      * @return The configuration of the cookie. See the following `Block cookie_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionCookieConfig cookieConfig;
+    private @Nullable RuleRuleConditionCookieConfig cookieConfig;
     /**
      * @return The configuration of the header field. See the following `Block header_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionHeaderConfig headerConfig;
+    private @Nullable RuleRuleConditionHeaderConfig headerConfig;
     /**
      * @return The configuration of the host field. See the following `Block host_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionHostConfig hostConfig;
+    private @Nullable RuleRuleConditionHostConfig hostConfig;
     /**
      * @return The configuration of the request method. See the following `Block method_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionMethodConfig methodConfig;
+    private @Nullable RuleRuleConditionMethodConfig methodConfig;
     /**
      * @return The configuration of the path for the request to be forwarded. See the following `Block path_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionPathConfig pathConfig;
+    private @Nullable RuleRuleConditionPathConfig pathConfig;
     /**
      * @return The configuration of the query string. See the following `Block query_string_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
+    private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
     /**
      * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
      * 
      */
-    private final @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
+    private @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
     /**
      * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private RuleRuleCondition(
-        @CustomType.Parameter("cookieConfig") @Nullable RuleRuleConditionCookieConfig cookieConfig,
-        @CustomType.Parameter("headerConfig") @Nullable RuleRuleConditionHeaderConfig headerConfig,
-        @CustomType.Parameter("hostConfig") @Nullable RuleRuleConditionHostConfig hostConfig,
-        @CustomType.Parameter("methodConfig") @Nullable RuleRuleConditionMethodConfig methodConfig,
-        @CustomType.Parameter("pathConfig") @Nullable RuleRuleConditionPathConfig pathConfig,
-        @CustomType.Parameter("queryStringConfig") @Nullable RuleRuleConditionQueryStringConfig queryStringConfig,
-        @CustomType.Parameter("sourceIpConfig") @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig,
-        @CustomType.Parameter("type") String type) {
-        this.cookieConfig = cookieConfig;
-        this.headerConfig = headerConfig;
-        this.hostConfig = hostConfig;
-        this.methodConfig = methodConfig;
-        this.pathConfig = pathConfig;
-        this.queryStringConfig = queryStringConfig;
-        this.sourceIpConfig = sourceIpConfig;
-        this.type = type;
-    }
-
+    private RuleRuleCondition() {}
     /**
      * @return The configuration of the cookie. See the following `Block cookie_config`.
      * 
@@ -143,7 +124,7 @@ public final class RuleRuleCondition {
     public static Builder builder(RuleRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RuleRuleConditionCookieConfig cookieConfig;
         private @Nullable RuleRuleConditionHeaderConfig headerConfig;
@@ -153,11 +134,7 @@ public final class RuleRuleCondition {
         private @Nullable RuleRuleConditionQueryStringConfig queryStringConfig;
         private @Nullable RuleRuleConditionSourceIpConfig sourceIpConfig;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookieConfig = defaults.cookieConfig;
@@ -170,39 +147,57 @@ public final class RuleRuleCondition {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cookieConfig(@Nullable RuleRuleConditionCookieConfig cookieConfig) {
             this.cookieConfig = cookieConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder headerConfig(@Nullable RuleRuleConditionHeaderConfig headerConfig) {
             this.headerConfig = headerConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder hostConfig(@Nullable RuleRuleConditionHostConfig hostConfig) {
             this.hostConfig = hostConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder methodConfig(@Nullable RuleRuleConditionMethodConfig methodConfig) {
             this.methodConfig = methodConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder pathConfig(@Nullable RuleRuleConditionPathConfig pathConfig) {
             this.pathConfig = pathConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder queryStringConfig(@Nullable RuleRuleConditionQueryStringConfig queryStringConfig) {
             this.queryStringConfig = queryStringConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceIpConfig(@Nullable RuleRuleConditionSourceIpConfig sourceIpConfig) {
             this.sourceIpConfig = sourceIpConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public RuleRuleCondition build() {
-            return new RuleRuleCondition(cookieConfig, headerConfig, hostConfig, methodConfig, pathConfig, queryStringConfig, sourceIpConfig, type);
+        }
+        public RuleRuleCondition build() {
+            final var o = new RuleRuleCondition();
+            o.cookieConfig = cookieConfig;
+            o.headerConfig = headerConfig;
+            o.hostConfig = hostConfig;
+            o.methodConfig = methodConfig;
+            o.pathConfig = pathConfig;
+            o.queryStringConfig = queryStringConfig;
+            o.sourceIpConfig = sourceIpConfig;
+            o.type = type;
+            return o;
         }
     }
 }

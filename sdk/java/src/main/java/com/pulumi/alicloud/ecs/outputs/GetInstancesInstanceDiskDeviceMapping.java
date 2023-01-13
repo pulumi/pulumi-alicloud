@@ -14,49 +14,34 @@ public final class GetInstancesInstanceDiskDeviceMapping {
      * @return Cloud disk category.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return Device information of the created disk: such as /dev/xvdb.
      * 
      */
-    private final String device;
+    private String device;
     /**
      * @return The ID of the Disk.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The name of the Disk.
      * 
      */
-    private final String diskName;
+    private String diskName;
     /**
      * @return Size of the created disk.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return Cloud disk type: system disk or data disk.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceDiskDeviceMapping(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("device") String device,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskName") String diskName,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("type") String type) {
-        this.category = category;
-        this.device = device;
-        this.diskId = diskId;
-        this.diskName = diskName;
-        this.size = size;
-        this.type = type;
-    }
-
+    private GetInstancesInstanceDiskDeviceMapping() {}
     /**
      * @return Cloud disk category.
      * 
@@ -107,7 +92,7 @@ public final class GetInstancesInstanceDiskDeviceMapping {
     public static Builder builder(GetInstancesInstanceDiskDeviceMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String device;
@@ -115,11 +100,7 @@ public final class GetInstancesInstanceDiskDeviceMapping {
         private String diskName;
         private Integer size;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceDiskDeviceMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -130,31 +111,45 @@ public final class GetInstancesInstanceDiskDeviceMapping {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder device(String device) {
             this.device = Objects.requireNonNull(device);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(String diskName) {
             this.diskName = Objects.requireNonNull(diskName);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetInstancesInstanceDiskDeviceMapping build() {
-            return new GetInstancesInstanceDiskDeviceMapping(category, device, diskId, diskName, size, type);
+        }
+        public GetInstancesInstanceDiskDeviceMapping build() {
+            final var o = new GetInstancesInstanceDiskDeviceMapping();
+            o.category = category;
+            o.device = device;
+            o.diskId = diskId;
+            o.diskName = diskName;
+            o.size = size;
+            o.type = type;
+            return o;
         }
     }
 }

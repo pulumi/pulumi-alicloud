@@ -14,217 +14,154 @@ public final class GetMigrationJobsJob {
      * @return Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
      * 
      */
-    private final Boolean dataInitialization;
+    private Boolean dataInitialization;
     /**
      * @return Whether to perform incremental data migration for migration types or synchronization values include:
      * 
      */
-    private final Boolean dataSynchronization;
+    private Boolean dataSynchronization;
     /**
      * @return The Migration object, in the format of JSON strings.
      * 
      */
-    private final String dbList;
+    private String dbList;
     /**
      * @return The name of migrate the database.
      * 
      */
-    private final String destinationEndpointDataBaseName;
+    private String destinationEndpointDataBaseName;
     /**
      * @return The type of destination database.
      * 
      */
-    private final String destinationEndpointEngineName;
+    private String destinationEndpointEngineName;
     /**
      * @return The ID of destination instance.
      * 
      */
-    private final String destinationEndpointInstanceId;
+    private String destinationEndpointInstanceId;
     /**
      * @return The type of destination instance.
      * 
      */
-    private final String destinationEndpointInstanceType;
+    private String destinationEndpointInstanceType;
     /**
      * @return The ip of source endpoint.
      * 
      */
-    private final String destinationEndpointIp;
+    private String destinationEndpointIp;
     /**
      * @return The SID of Oracle database.
      * 
      */
-    private final String destinationEndpointOracleSid;
+    private String destinationEndpointOracleSid;
     /**
      * @return The port of source endpoint.
      * 
      */
-    private final String destinationEndpointPort;
+    private String destinationEndpointPort;
     /**
      * @return The region of destination instance.
      * 
      */
-    private final String destinationEndpointRegion;
+    private String destinationEndpointRegion;
     /**
      * @return The username of database account.
      * 
      */
-    private final String destinationEndpointUserName;
+    private String destinationEndpointUserName;
     /**
      * @return The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
      * 
      */
-    private final String dtsInstanceId;
+    private String dtsInstanceId;
     /**
      * @return The ID of the Migration Job.
      * 
      */
-    private final String dtsJobId;
+    private String dtsJobId;
     /**
      * @return The name of synchronization job.
      * 
      */
-    private final String dtsJobName;
+    private String dtsJobName;
     /**
      * @return The ID of the Migration Job. Its value is same as `dts_job_id`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The payment type of the Migration Instance.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The name of migrate the database.
      * 
      */
-    private final String sourceEndpointDatabaseName;
+    private String sourceEndpointDatabaseName;
     /**
      * @return The type of source database.
      * 
      */
-    private final String sourceEndpointEngineName;
+    private String sourceEndpointEngineName;
     /**
      * @return The ID of source instance.
      * 
      */
-    private final String sourceEndpointInstanceId;
+    private String sourceEndpointInstanceId;
     /**
      * @return The type of source instance.
      * 
      */
-    private final String sourceEndpointInstanceType;
+    private String sourceEndpointInstanceType;
     /**
      * @return The ip of source endpoint.
      * 
      */
-    private final String sourceEndpointIp;
+    private String sourceEndpointIp;
     /**
      * @return The SID of Oracle database.
      * 
      */
-    private final String sourceEndpointOracleSid;
+    private String sourceEndpointOracleSid;
     /**
      * @return The Alibaba Cloud account ID to which the source instance belongs.
      * 
      */
-    private final String sourceEndpointOwnerId;
+    private String sourceEndpointOwnerId;
     /**
      * @return The port of source endpoint.
      * 
      */
-    private final String sourceEndpointPort;
+    private String sourceEndpointPort;
     /**
      * @return The region of source instance.
      * 
      */
-    private final String sourceEndpointRegion;
+    private String sourceEndpointRegion;
     /**
      * @return The name of the role configured for the cloud account to which the source instance belongs.
      * 
      */
-    private final String sourceEndpointRole;
+    private String sourceEndpointRole;
     /**
      * @return The username of database account.
      * 
      */
-    private final String sourceEndpointUserName;
+    private String sourceEndpointUserName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Whether to perform a database table structure to migrate or initialization.
      * 
      */
-    private final Boolean structureInitialization;
+    private Boolean structureInitialization;
 
-    @CustomType.Constructor
-    private GetMigrationJobsJob(
-        @CustomType.Parameter("dataInitialization") Boolean dataInitialization,
-        @CustomType.Parameter("dataSynchronization") Boolean dataSynchronization,
-        @CustomType.Parameter("dbList") String dbList,
-        @CustomType.Parameter("destinationEndpointDataBaseName") String destinationEndpointDataBaseName,
-        @CustomType.Parameter("destinationEndpointEngineName") String destinationEndpointEngineName,
-        @CustomType.Parameter("destinationEndpointInstanceId") String destinationEndpointInstanceId,
-        @CustomType.Parameter("destinationEndpointInstanceType") String destinationEndpointInstanceType,
-        @CustomType.Parameter("destinationEndpointIp") String destinationEndpointIp,
-        @CustomType.Parameter("destinationEndpointOracleSid") String destinationEndpointOracleSid,
-        @CustomType.Parameter("destinationEndpointPort") String destinationEndpointPort,
-        @CustomType.Parameter("destinationEndpointRegion") String destinationEndpointRegion,
-        @CustomType.Parameter("destinationEndpointUserName") String destinationEndpointUserName,
-        @CustomType.Parameter("dtsInstanceId") String dtsInstanceId,
-        @CustomType.Parameter("dtsJobId") String dtsJobId,
-        @CustomType.Parameter("dtsJobName") String dtsJobName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("sourceEndpointDatabaseName") String sourceEndpointDatabaseName,
-        @CustomType.Parameter("sourceEndpointEngineName") String sourceEndpointEngineName,
-        @CustomType.Parameter("sourceEndpointInstanceId") String sourceEndpointInstanceId,
-        @CustomType.Parameter("sourceEndpointInstanceType") String sourceEndpointInstanceType,
-        @CustomType.Parameter("sourceEndpointIp") String sourceEndpointIp,
-        @CustomType.Parameter("sourceEndpointOracleSid") String sourceEndpointOracleSid,
-        @CustomType.Parameter("sourceEndpointOwnerId") String sourceEndpointOwnerId,
-        @CustomType.Parameter("sourceEndpointPort") String sourceEndpointPort,
-        @CustomType.Parameter("sourceEndpointRegion") String sourceEndpointRegion,
-        @CustomType.Parameter("sourceEndpointRole") String sourceEndpointRole,
-        @CustomType.Parameter("sourceEndpointUserName") String sourceEndpointUserName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("structureInitialization") Boolean structureInitialization) {
-        this.dataInitialization = dataInitialization;
-        this.dataSynchronization = dataSynchronization;
-        this.dbList = dbList;
-        this.destinationEndpointDataBaseName = destinationEndpointDataBaseName;
-        this.destinationEndpointEngineName = destinationEndpointEngineName;
-        this.destinationEndpointInstanceId = destinationEndpointInstanceId;
-        this.destinationEndpointInstanceType = destinationEndpointInstanceType;
-        this.destinationEndpointIp = destinationEndpointIp;
-        this.destinationEndpointOracleSid = destinationEndpointOracleSid;
-        this.destinationEndpointPort = destinationEndpointPort;
-        this.destinationEndpointRegion = destinationEndpointRegion;
-        this.destinationEndpointUserName = destinationEndpointUserName;
-        this.dtsInstanceId = dtsInstanceId;
-        this.dtsJobId = dtsJobId;
-        this.dtsJobName = dtsJobName;
-        this.id = id;
-        this.paymentType = paymentType;
-        this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
-        this.sourceEndpointEngineName = sourceEndpointEngineName;
-        this.sourceEndpointInstanceId = sourceEndpointInstanceId;
-        this.sourceEndpointInstanceType = sourceEndpointInstanceType;
-        this.sourceEndpointIp = sourceEndpointIp;
-        this.sourceEndpointOracleSid = sourceEndpointOracleSid;
-        this.sourceEndpointOwnerId = sourceEndpointOwnerId;
-        this.sourceEndpointPort = sourceEndpointPort;
-        this.sourceEndpointRegion = sourceEndpointRegion;
-        this.sourceEndpointRole = sourceEndpointRole;
-        this.sourceEndpointUserName = sourceEndpointUserName;
-        this.status = status;
-        this.structureInitialization = structureInitialization;
-    }
-
+    private GetMigrationJobsJob() {}
     /**
      * @return Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
      * 
@@ -443,7 +380,7 @@ public final class GetMigrationJobsJob {
     public static Builder builder(GetMigrationJobsJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean dataInitialization;
         private Boolean dataSynchronization;
@@ -475,11 +412,7 @@ public final class GetMigrationJobsJob {
         private String sourceEndpointUserName;
         private String status;
         private Boolean structureInitialization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMigrationJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataInitialization = defaults.dataInitialization;
@@ -514,127 +447,189 @@ public final class GetMigrationJobsJob {
     	      this.structureInitialization = defaults.structureInitialization;
         }
 
+        @CustomType.Setter
         public Builder dataInitialization(Boolean dataInitialization) {
             this.dataInitialization = Objects.requireNonNull(dataInitialization);
             return this;
         }
+        @CustomType.Setter
         public Builder dataSynchronization(Boolean dataSynchronization) {
             this.dataSynchronization = Objects.requireNonNull(dataSynchronization);
             return this;
         }
+        @CustomType.Setter
         public Builder dbList(String dbList) {
             this.dbList = Objects.requireNonNull(dbList);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointDataBaseName(String destinationEndpointDataBaseName) {
             this.destinationEndpointDataBaseName = Objects.requireNonNull(destinationEndpointDataBaseName);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointEngineName(String destinationEndpointEngineName) {
             this.destinationEndpointEngineName = Objects.requireNonNull(destinationEndpointEngineName);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointInstanceId(String destinationEndpointInstanceId) {
             this.destinationEndpointInstanceId = Objects.requireNonNull(destinationEndpointInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointInstanceType(String destinationEndpointInstanceType) {
             this.destinationEndpointInstanceType = Objects.requireNonNull(destinationEndpointInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointIp(String destinationEndpointIp) {
             this.destinationEndpointIp = Objects.requireNonNull(destinationEndpointIp);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointOracleSid(String destinationEndpointOracleSid) {
             this.destinationEndpointOracleSid = Objects.requireNonNull(destinationEndpointOracleSid);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointPort(String destinationEndpointPort) {
             this.destinationEndpointPort = Objects.requireNonNull(destinationEndpointPort);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointRegion(String destinationEndpointRegion) {
             this.destinationEndpointRegion = Objects.requireNonNull(destinationEndpointRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEndpointUserName(String destinationEndpointUserName) {
             this.destinationEndpointUserName = Objects.requireNonNull(destinationEndpointUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
             this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
             this.dtsJobId = Objects.requireNonNull(dtsJobId);
             return this;
         }
+        @CustomType.Setter
         public Builder dtsJobName(String dtsJobName) {
             this.dtsJobName = Objects.requireNonNull(dtsJobName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
             this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
             this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
             this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
             this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointIp(String sourceEndpointIp) {
             this.sourceEndpointIp = Objects.requireNonNull(sourceEndpointIp);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointOracleSid(String sourceEndpointOracleSid) {
             this.sourceEndpointOracleSid = Objects.requireNonNull(sourceEndpointOracleSid);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointOwnerId(String sourceEndpointOwnerId) {
             this.sourceEndpointOwnerId = Objects.requireNonNull(sourceEndpointOwnerId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointPort(String sourceEndpointPort) {
             this.sourceEndpointPort = Objects.requireNonNull(sourceEndpointPort);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
             this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointRole(String sourceEndpointRole) {
             this.sourceEndpointRole = Objects.requireNonNull(sourceEndpointRole);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
             this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder structureInitialization(Boolean structureInitialization) {
             this.structureInitialization = Objects.requireNonNull(structureInitialization);
             return this;
-        }        public GetMigrationJobsJob build() {
-            return new GetMigrationJobsJob(dataInitialization, dataSynchronization, dbList, destinationEndpointDataBaseName, destinationEndpointEngineName, destinationEndpointInstanceId, destinationEndpointInstanceType, destinationEndpointIp, destinationEndpointOracleSid, destinationEndpointPort, destinationEndpointRegion, destinationEndpointUserName, dtsInstanceId, dtsJobId, dtsJobName, id, paymentType, sourceEndpointDatabaseName, sourceEndpointEngineName, sourceEndpointInstanceId, sourceEndpointInstanceType, sourceEndpointIp, sourceEndpointOracleSid, sourceEndpointOwnerId, sourceEndpointPort, sourceEndpointRegion, sourceEndpointRole, sourceEndpointUserName, status, structureInitialization);
+        }
+        public GetMigrationJobsJob build() {
+            final var o = new GetMigrationJobsJob();
+            o.dataInitialization = dataInitialization;
+            o.dataSynchronization = dataSynchronization;
+            o.dbList = dbList;
+            o.destinationEndpointDataBaseName = destinationEndpointDataBaseName;
+            o.destinationEndpointEngineName = destinationEndpointEngineName;
+            o.destinationEndpointInstanceId = destinationEndpointInstanceId;
+            o.destinationEndpointInstanceType = destinationEndpointInstanceType;
+            o.destinationEndpointIp = destinationEndpointIp;
+            o.destinationEndpointOracleSid = destinationEndpointOracleSid;
+            o.destinationEndpointPort = destinationEndpointPort;
+            o.destinationEndpointRegion = destinationEndpointRegion;
+            o.destinationEndpointUserName = destinationEndpointUserName;
+            o.dtsInstanceId = dtsInstanceId;
+            o.dtsJobId = dtsJobId;
+            o.dtsJobName = dtsJobName;
+            o.id = id;
+            o.paymentType = paymentType;
+            o.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
+            o.sourceEndpointEngineName = sourceEndpointEngineName;
+            o.sourceEndpointInstanceId = sourceEndpointInstanceId;
+            o.sourceEndpointInstanceType = sourceEndpointInstanceType;
+            o.sourceEndpointIp = sourceEndpointIp;
+            o.sourceEndpointOracleSid = sourceEndpointOracleSid;
+            o.sourceEndpointOwnerId = sourceEndpointOwnerId;
+            o.sourceEndpointPort = sourceEndpointPort;
+            o.sourceEndpointRegion = sourceEndpointRegion;
+            o.sourceEndpointRole = sourceEndpointRole;
+            o.sourceEndpointUserName = sourceEndpointUserName;
+            o.status = status;
+            o.structureInitialization = structureInitialization;
+            return o;
         }
     }
 }

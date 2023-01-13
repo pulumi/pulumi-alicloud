@@ -14,60 +14,35 @@ public final class GetTrailsDeprecatedTrail {
      * @return Indicates whether the event is a read or a write event.
      * 
      */
-    private final String eventRw;
-    private final String id;
-    private final Boolean isOrganizationTrail;
+    private String eventRw;
+    private String id;
+    private Boolean isOrganizationTrail;
     /**
      * @return The name of the specified OSS bucket.
      * 
      */
-    private final String ossBucketName;
+    private String ossBucketName;
     /**
      * @return The prefix of the specified OSS bucket name.
      * 
      */
-    private final String ossKeyPrefix;
-    private final String ossWriteRoleArn;
+    private String ossKeyPrefix;
+    private String ossWriteRoleArn;
     /**
      * @return The unique ARN of the Log Service project.
      * 
      */
-    private final String slsProjectArn;
+    private String slsProjectArn;
     /**
      * @return The unique ARN of the Log Service role.
      * 
      */
-    private final String slsWriteRoleArn;
-    private final String status;
-    private final String trailName;
-    private final String trailRegion;
+    private String slsWriteRoleArn;
+    private String status;
+    private String trailName;
+    private String trailRegion;
 
-    @CustomType.Constructor
-    private GetTrailsDeprecatedTrail(
-        @CustomType.Parameter("eventRw") String eventRw,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isOrganizationTrail") Boolean isOrganizationTrail,
-        @CustomType.Parameter("ossBucketName") String ossBucketName,
-        @CustomType.Parameter("ossKeyPrefix") String ossKeyPrefix,
-        @CustomType.Parameter("ossWriteRoleArn") String ossWriteRoleArn,
-        @CustomType.Parameter("slsProjectArn") String slsProjectArn,
-        @CustomType.Parameter("slsWriteRoleArn") String slsWriteRoleArn,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("trailName") String trailName,
-        @CustomType.Parameter("trailRegion") String trailRegion) {
-        this.eventRw = eventRw;
-        this.id = id;
-        this.isOrganizationTrail = isOrganizationTrail;
-        this.ossBucketName = ossBucketName;
-        this.ossKeyPrefix = ossKeyPrefix;
-        this.ossWriteRoleArn = ossWriteRoleArn;
-        this.slsProjectArn = slsProjectArn;
-        this.slsWriteRoleArn = slsWriteRoleArn;
-        this.status = status;
-        this.trailName = trailName;
-        this.trailRegion = trailRegion;
-    }
-
+    private GetTrailsDeprecatedTrail() {}
     /**
      * @return Indicates whether the event is a read or a write event.
      * 
@@ -129,7 +104,7 @@ public final class GetTrailsDeprecatedTrail {
     public static Builder builder(GetTrailsDeprecatedTrail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String eventRw;
         private String id;
@@ -142,11 +117,7 @@ public final class GetTrailsDeprecatedTrail {
         private String status;
         private String trailName;
         private String trailRegion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrailsDeprecatedTrail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventRw = defaults.eventRw;
@@ -162,51 +133,75 @@ public final class GetTrailsDeprecatedTrail {
     	      this.trailRegion = defaults.trailRegion;
         }
 
+        @CustomType.Setter
         public Builder eventRw(String eventRw) {
             this.eventRw = Objects.requireNonNull(eventRw);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isOrganizationTrail(Boolean isOrganizationTrail) {
             this.isOrganizationTrail = Objects.requireNonNull(isOrganizationTrail);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
             this.ossBucketName = Objects.requireNonNull(ossBucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder ossKeyPrefix(String ossKeyPrefix) {
             this.ossKeyPrefix = Objects.requireNonNull(ossKeyPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder ossWriteRoleArn(String ossWriteRoleArn) {
             this.ossWriteRoleArn = Objects.requireNonNull(ossWriteRoleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder slsProjectArn(String slsProjectArn) {
             this.slsProjectArn = Objects.requireNonNull(slsProjectArn);
             return this;
         }
+        @CustomType.Setter
         public Builder slsWriteRoleArn(String slsWriteRoleArn) {
             this.slsWriteRoleArn = Objects.requireNonNull(slsWriteRoleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder trailName(String trailName) {
             this.trailName = Objects.requireNonNull(trailName);
             return this;
         }
+        @CustomType.Setter
         public Builder trailRegion(String trailRegion) {
             this.trailRegion = Objects.requireNonNull(trailRegion);
             return this;
-        }        public GetTrailsDeprecatedTrail build() {
-            return new GetTrailsDeprecatedTrail(eventRw, id, isOrganizationTrail, ossBucketName, ossKeyPrefix, ossWriteRoleArn, slsProjectArn, slsWriteRoleArn, status, trailName, trailRegion);
+        }
+        public GetTrailsDeprecatedTrail build() {
+            final var o = new GetTrailsDeprecatedTrail();
+            o.eventRw = eventRw;
+            o.id = id;
+            o.isOrganizationTrail = isOrganizationTrail;
+            o.ossBucketName = ossBucketName;
+            o.ossKeyPrefix = ossKeyPrefix;
+            o.ossWriteRoleArn = ossWriteRoleArn;
+            o.slsProjectArn = slsProjectArn;
+            o.slsWriteRoleArn = slsWriteRoleArn;
+            o.status = status;
+            o.trailName = trailName;
+            o.trailRegion = trailRegion;
+            return o;
         }
     }
 }

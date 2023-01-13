@@ -13,13 +13,9 @@ public final class GetLoadBalancersBalancerLoadBalancerBillingConfig {
      * @return The billing method of the ALB instance. Valid value: `PayAsYouGo`.
      * 
      */
-    private final String payType;
+    private String payType;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerLoadBalancerBillingConfig(@CustomType.Parameter("payType") String payType) {
-        this.payType = payType;
-    }
-
+    private GetLoadBalancersBalancerLoadBalancerBillingConfig() {}
     /**
      * @return The billing method of the ALB instance. Valid value: `PayAsYouGo`.
      * 
@@ -35,24 +31,24 @@ public final class GetLoadBalancersBalancerLoadBalancerBillingConfig {
     public static Builder builder(GetLoadBalancersBalancerLoadBalancerBillingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String payType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerLoadBalancerBillingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.payType = defaults.payType;
         }
 
+        @CustomType.Setter
         public Builder payType(String payType) {
             this.payType = Objects.requireNonNull(payType);
             return this;
-        }        public GetLoadBalancersBalancerLoadBalancerBillingConfig build() {
-            return new GetLoadBalancersBalancerLoadBalancerBillingConfig(payType);
+        }
+        public GetLoadBalancersBalancerLoadBalancerBillingConfig build() {
+            final var o = new GetLoadBalancersBalancerLoadBalancerBillingConfig();
+            o.payType = payType;
+            return o;
         }
     }
 }

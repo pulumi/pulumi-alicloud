@@ -13,28 +13,19 @@ public final class GetDatabasesDatabaseAccount {
      * @return Account name.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return Account status.
      * 
      */
-    private final String accountStatus;
+    private String accountStatus;
     /**
      * @return The privilege status of account.
      * 
      */
-    private final String privilegeStatus;
+    private String privilegeStatus;
 
-    @CustomType.Constructor
-    private GetDatabasesDatabaseAccount(
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("accountStatus") String accountStatus,
-        @CustomType.Parameter("privilegeStatus") String privilegeStatus) {
-        this.accountName = accountName;
-        this.accountStatus = accountStatus;
-        this.privilegeStatus = privilegeStatus;
-    }
-
+    private GetDatabasesDatabaseAccount() {}
     /**
      * @return Account name.
      * 
@@ -64,16 +55,12 @@ public final class GetDatabasesDatabaseAccount {
     public static Builder builder(GetDatabasesDatabaseAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountName;
         private String accountStatus;
         private String privilegeStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabasesDatabaseAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -81,19 +68,27 @@ public final class GetDatabasesDatabaseAccount {
     	      this.privilegeStatus = defaults.privilegeStatus;
         }
 
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder accountStatus(String accountStatus) {
             this.accountStatus = Objects.requireNonNull(accountStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder privilegeStatus(String privilegeStatus) {
             this.privilegeStatus = Objects.requireNonNull(privilegeStatus);
             return this;
-        }        public GetDatabasesDatabaseAccount build() {
-            return new GetDatabasesDatabaseAccount(accountName, accountStatus, privilegeStatus);
+        }
+        public GetDatabasesDatabaseAccount build() {
+            final var o = new GetDatabasesDatabaseAccount();
+            o.accountName = accountName;
+            o.accountStatus = accountStatus;
+            o.privilegeStatus = privilegeStatus;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
      * @return The Zone to launch the DB instance
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
      * 
      */
-    private final List<String> subZoneIds;
+    private List<String> subZoneIds;
 
-    @CustomType.Constructor
-    private GetInstanceEnginesInstanceEngineZoneId(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("subZoneIds") List<String> subZoneIds) {
-        this.id = id;
-        this.subZoneIds = subZoneIds;
-    }
-
+    private GetInstanceEnginesInstanceEngineZoneId() {}
     /**
      * @return The Zone to launch the DB instance
      * 
@@ -51,33 +44,35 @@ public final class GetInstanceEnginesInstanceEngineZoneId {
     public static Builder builder(GetInstanceEnginesInstanceEngineZoneId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> subZoneIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceEnginesInstanceEngineZoneId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.subZoneIds = defaults.subZoneIds;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder subZoneIds(List<String> subZoneIds) {
             this.subZoneIds = Objects.requireNonNull(subZoneIds);
             return this;
         }
         public Builder subZoneIds(String... subZoneIds) {
             return subZoneIds(List.of(subZoneIds));
-        }        public GetInstanceEnginesInstanceEngineZoneId build() {
-            return new GetInstanceEnginesInstanceEngineZoneId(id, subZoneIds);
+        }
+        public GetInstanceEnginesInstanceEngineZoneId build() {
+            final var o = new GetInstanceEnginesInstanceEngineZoneId();
+            o.id = id;
+            o.subZoneIds = subZoneIds;
+            return o;
         }
     }
 }

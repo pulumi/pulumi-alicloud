@@ -15,112 +15,79 @@ public final class GetStateConfigurationsConfiguration {
      * @return The configuration mode.
      * 
      */
-    private final String configureMode;
+    private String configureMode;
     /**
      * @return The creation time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the State Configuration.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The parameters.
      * 
      */
-    private final String parameters;
+    private String parameters;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The schedule expression.
      * 
      */
-    private final String scheduleExpression;
+    private String scheduleExpression;
     /**
      * @return The schedule type.
      * 
      */
-    private final String scheduleType;
+    private String scheduleType;
     /**
      * @return The ID of the final state configuration.
      * 
      */
-    private final String stateConfigurationId;
+    private String stateConfigurationId;
     /**
      * @return The tag of the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The target resource.
      * 
      */
-    private final String targets;
+    private String targets;
     /**
      * @return The ID of the template.
      * 
      */
-    private final String templateId;
+    private String templateId;
     /**
      * @return The name of the template.
      * 
      */
-    private final String templateName;
+    private String templateName;
     /**
      * @return The version of the template.
      * 
      */
-    private final String templateVersion;
+    private String templateVersion;
     /**
      * @return The time when the configuration is updated.
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetStateConfigurationsConfiguration(
-        @CustomType.Parameter("configureMode") String configureMode,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parameters") String parameters,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("scheduleExpression") String scheduleExpression,
-        @CustomType.Parameter("scheduleType") String scheduleType,
-        @CustomType.Parameter("stateConfigurationId") String stateConfigurationId,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("targets") String targets,
-        @CustomType.Parameter("templateId") String templateId,
-        @CustomType.Parameter("templateName") String templateName,
-        @CustomType.Parameter("templateVersion") String templateVersion,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.configureMode = configureMode;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.parameters = parameters;
-        this.resourceGroupId = resourceGroupId;
-        this.scheduleExpression = scheduleExpression;
-        this.scheduleType = scheduleType;
-        this.stateConfigurationId = stateConfigurationId;
-        this.tags = tags;
-        this.targets = targets;
-        this.templateId = templateId;
-        this.templateName = templateName;
-        this.templateVersion = templateVersion;
-        this.updateTime = updateTime;
-    }
-
+    private GetStateConfigurationsConfiguration() {}
     /**
      * @return The configuration mode.
      * 
@@ -234,7 +201,7 @@ public final class GetStateConfigurationsConfiguration {
     public static Builder builder(GetStateConfigurationsConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configureMode;
         private String createTime;
@@ -251,11 +218,7 @@ public final class GetStateConfigurationsConfiguration {
         private String templateName;
         private String templateVersion;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStateConfigurationsConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configureMode = defaults.configureMode;
@@ -275,67 +238,99 @@ public final class GetStateConfigurationsConfiguration {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder configureMode(String configureMode) {
             this.configureMode = Objects.requireNonNull(configureMode);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(String parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleExpression(String scheduleExpression) {
             this.scheduleExpression = Objects.requireNonNull(scheduleExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleType(String scheduleType) {
             this.scheduleType = Objects.requireNonNull(scheduleType);
             return this;
         }
+        @CustomType.Setter
         public Builder stateConfigurationId(String stateConfigurationId) {
             this.stateConfigurationId = Objects.requireNonNull(stateConfigurationId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder targets(String targets) {
             this.targets = Objects.requireNonNull(targets);
             return this;
         }
+        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
         }
+        @CustomType.Setter
         public Builder templateName(String templateName) {
             this.templateName = Objects.requireNonNull(templateName);
             return this;
         }
+        @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
             this.templateVersion = Objects.requireNonNull(templateVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetStateConfigurationsConfiguration build() {
-            return new GetStateConfigurationsConfiguration(configureMode, createTime, description, id, parameters, resourceGroupId, scheduleExpression, scheduleType, stateConfigurationId, tags, targets, templateId, templateName, templateVersion, updateTime);
+        }
+        public GetStateConfigurationsConfiguration build() {
+            final var o = new GetStateConfigurationsConfiguration();
+            o.configureMode = configureMode;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.parameters = parameters;
+            o.resourceGroupId = resourceGroupId;
+            o.scheduleExpression = scheduleExpression;
+            o.scheduleType = scheduleType;
+            o.stateConfigurationId = stateConfigurationId;
+            o.tags = tags;
+            o.targets = targets;
+            o.templateId = templateId;
+            o.templateName = templateName;
+            o.templateVersion = templateVersion;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

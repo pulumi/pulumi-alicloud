@@ -19,69 +19,44 @@ public final class GetAggregateConfigRulesResult {
      * @return The name of the rule.
      * 
      */
-    private final @Nullable String aggregateConfigRuleName;
+    private @Nullable String aggregateConfigRuleName;
     /**
      * @return The ID of Aggregator.
      * * `compliance` -The Compliance information.
      * 
      */
-    private final String aggregatorId;
-    private final @Nullable Boolean enableDetails;
+    private String aggregatorId;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Aggregate Config Rule names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
      * 
      */
-    private final @Nullable Integer riskLevel;
+    private @Nullable Integer riskLevel;
     /**
      * @return A list of Config Aggregate Config Rules. Each element contains the following attributes:
      * 
      */
-    private final List<GetAggregateConfigRulesRule> rules;
+    private List<GetAggregateConfigRulesRule> rules;
     /**
      * @return The status of the rule.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetAggregateConfigRulesResult(
-        @CustomType.Parameter("aggregateConfigRuleName") @Nullable String aggregateConfigRuleName,
-        @CustomType.Parameter("aggregatorId") String aggregatorId,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("riskLevel") @Nullable Integer riskLevel,
-        @CustomType.Parameter("rules") List<GetAggregateConfigRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.aggregateConfigRuleName = aggregateConfigRuleName;
-        this.aggregatorId = aggregatorId;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.riskLevel = riskLevel;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetAggregateConfigRulesResult() {}
     /**
      * @return The name of the rule.
      * 
@@ -152,7 +127,7 @@ public final class GetAggregateConfigRulesResult {
     public static Builder builder(GetAggregateConfigRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggregateConfigRuleName;
         private String aggregatorId;
@@ -165,11 +140,7 @@ public final class GetAggregateConfigRulesResult {
         private @Nullable Integer riskLevel;
         private List<GetAggregateConfigRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateConfigRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregateConfigRuleName = defaults.aggregateConfigRuleName;
@@ -185,22 +156,27 @@ public final class GetAggregateConfigRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder aggregateConfigRuleName(@Nullable String aggregateConfigRuleName) {
             this.aggregateConfigRuleName = aggregateConfigRuleName;
             return this;
         }
+        @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
             this.aggregatorId = Objects.requireNonNull(aggregatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -208,10 +184,12 @@ public final class GetAggregateConfigRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -219,14 +197,17 @@ public final class GetAggregateConfigRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder riskLevel(@Nullable Integer riskLevel) {
             this.riskLevel = riskLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetAggregateConfigRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -234,11 +215,25 @@ public final class GetAggregateConfigRulesResult {
         public Builder rules(GetAggregateConfigRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetAggregateConfigRulesResult build() {
-            return new GetAggregateConfigRulesResult(aggregateConfigRuleName, aggregatorId, enableDetails, id, ids, nameRegex, names, outputFile, riskLevel, rules, status);
+        }
+        public GetAggregateConfigRulesResult build() {
+            final var o = new GetAggregateConfigRulesResult();
+            o.aggregateConfigRuleName = aggregateConfigRuleName;
+            o.aggregatorId = aggregatorId;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.riskLevel = riskLevel;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

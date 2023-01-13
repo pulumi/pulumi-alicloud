@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeLocalStorage {
-    private final String amount;
-    private final String capacity;
-    private final String category;
+    private String amount;
+    private String capacity;
+    private String category;
 
-    @CustomType.Constructor
-    private GetInstanceTypesInstanceTypeLocalStorage(
-        @CustomType.Parameter("amount") String amount,
-        @CustomType.Parameter("capacity") String capacity,
-        @CustomType.Parameter("category") String category) {
-        this.amount = amount;
-        this.capacity = capacity;
-        this.category = category;
-    }
-
+    private GetInstanceTypesInstanceTypeLocalStorage() {}
     public String amount() {
         return this.amount;
     }
@@ -40,16 +31,12 @@ public final class GetInstanceTypesInstanceTypeLocalStorage {
     public static Builder builder(GetInstanceTypesInstanceTypeLocalStorage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String amount;
         private String capacity;
         private String category;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesInstanceTypeLocalStorage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.amount = defaults.amount;
@@ -57,19 +44,27 @@ public final class GetInstanceTypesInstanceTypeLocalStorage {
     	      this.category = defaults.category;
         }
 
+        @CustomType.Setter
         public Builder amount(String amount) {
             this.amount = Objects.requireNonNull(amount);
             return this;
         }
+        @CustomType.Setter
         public Builder capacity(String capacity) {
             this.capacity = Objects.requireNonNull(capacity);
             return this;
         }
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
-        }        public GetInstanceTypesInstanceTypeLocalStorage build() {
-            return new GetInstanceTypesInstanceTypeLocalStorage(amount, capacity, category);
+        }
+        public GetInstanceTypesInstanceTypeLocalStorage build() {
+            final var o = new GetInstanceTypesInstanceTypeLocalStorage();
+            o.amount = amount;
+            o.capacity = capacity;
+            o.category = category;
+            return o;
         }
     }
 }

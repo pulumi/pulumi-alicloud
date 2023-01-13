@@ -15,21 +15,14 @@ public final class ZoneAttachmentVpc {
      * @return The region of the vpc. If not set, the current region will instead of.
      * 
      */
-    private final @Nullable String regionId;
+    private @Nullable String regionId;
     /**
      * @return The Id of the vpc.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private ZoneAttachmentVpc(
-        @CustomType.Parameter("regionId") @Nullable String regionId,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.regionId = regionId;
-        this.vpcId = vpcId;
-    }
-
+    private ZoneAttachmentVpc() {}
     /**
      * @return The region of the vpc. If not set, the current region will instead of.
      * 
@@ -52,30 +45,32 @@ public final class ZoneAttachmentVpc {
     public static Builder builder(ZoneAttachmentVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String regionId;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ZoneAttachmentVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public ZoneAttachmentVpc build() {
-            return new ZoneAttachmentVpc(regionId, vpcId);
+        }
+        public ZoneAttachmentVpc build() {
+            final var o = new ZoneAttachmentVpc();
+            o.regionId = regionId;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

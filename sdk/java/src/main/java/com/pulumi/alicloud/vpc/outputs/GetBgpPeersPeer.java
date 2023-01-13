@@ -15,140 +15,99 @@ public final class GetBgpPeersPeer {
      * @return The authentication key of the BGP group.
      * 
      */
-    private final String authKey;
+    private String authKey;
     /**
      * @return The BFD hop count.
      * 
      */
-    private final Integer bfdMultiHop;
+    private Integer bfdMultiHop;
     /**
      * @return The ID of the BGP group.
      * 
      */
-    private final String bgpGroupId;
+    private String bgpGroupId;
     /**
      * @return The ID of the BGP neighbor.
      * 
      */
-    private final String bgpPeerId;
+    private String bgpPeerId;
     /**
      * @return The name of the BGP neighbor.
      * 
      */
-    private final String bgpPeerName;
+    private String bgpPeerName;
     /**
      * @return The status of the BGP connection.
      * 
      */
-    private final String bgpStatus;
+    private String bgpStatus;
     /**
      * @return The description of the BGP group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
      * 
      */
-    private final Boolean enableBfd;
+    private Boolean enableBfd;
     /**
      * @return The hold time.
      * 
      */
-    private final String hold;
+    private String hold;
     /**
      * @return The ID of the Bgp Peer.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The IP version.
      * 
      */
-    private final String ipVersion;
+    private String ipVersion;
     /**
      * @return Indicates whether a fake AS number is used.
      * 
      */
-    private final Boolean isFake;
+    private Boolean isFake;
     /**
      * @return The keepalive time.
      * 
      */
-    private final String keepalive;
+    private String keepalive;
     /**
      * @return The AS number of the device on the Alibaba Cloud side.
      * 
      */
-    private final String localAsn;
+    private String localAsn;
     /**
      * @return The autonomous system (AS) number of the BGP peer.
      * 
      */
-    private final String peerAsn;
+    private String peerAsn;
     /**
      * @return The IP address of the BGP neighbor.
      * 
      */
-    private final String peerIpAddress;
+    private String peerIpAddress;
     /**
      * @return The limit on routes.
      * 
      */
-    private final String routeLimit;
+    private String routeLimit;
     /**
      * @return The ID of the router.
      * 
      */
-    private final String routerId;
+    private String routerId;
     /**
      * @return The status of the BGP peer.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBgpPeersPeer(
-        @CustomType.Parameter("authKey") String authKey,
-        @CustomType.Parameter("bfdMultiHop") Integer bfdMultiHop,
-        @CustomType.Parameter("bgpGroupId") String bgpGroupId,
-        @CustomType.Parameter("bgpPeerId") String bgpPeerId,
-        @CustomType.Parameter("bgpPeerName") String bgpPeerName,
-        @CustomType.Parameter("bgpStatus") String bgpStatus,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableBfd") Boolean enableBfd,
-        @CustomType.Parameter("hold") String hold,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipVersion") String ipVersion,
-        @CustomType.Parameter("isFake") Boolean isFake,
-        @CustomType.Parameter("keepalive") String keepalive,
-        @CustomType.Parameter("localAsn") String localAsn,
-        @CustomType.Parameter("peerAsn") String peerAsn,
-        @CustomType.Parameter("peerIpAddress") String peerIpAddress,
-        @CustomType.Parameter("routeLimit") String routeLimit,
-        @CustomType.Parameter("routerId") String routerId,
-        @CustomType.Parameter("status") String status) {
-        this.authKey = authKey;
-        this.bfdMultiHop = bfdMultiHop;
-        this.bgpGroupId = bgpGroupId;
-        this.bgpPeerId = bgpPeerId;
-        this.bgpPeerName = bgpPeerName;
-        this.bgpStatus = bgpStatus;
-        this.description = description;
-        this.enableBfd = enableBfd;
-        this.hold = hold;
-        this.id = id;
-        this.ipVersion = ipVersion;
-        this.isFake = isFake;
-        this.keepalive = keepalive;
-        this.localAsn = localAsn;
-        this.peerAsn = peerAsn;
-        this.peerIpAddress = peerIpAddress;
-        this.routeLimit = routeLimit;
-        this.routerId = routerId;
-        this.status = status;
-    }
-
+    private GetBgpPeersPeer() {}
     /**
      * @return The authentication key of the BGP group.
      * 
@@ -290,7 +249,7 @@ public final class GetBgpPeersPeer {
     public static Builder builder(GetBgpPeersPeer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authKey;
         private Integer bfdMultiHop;
@@ -311,11 +270,7 @@ public final class GetBgpPeersPeer {
         private String routeLimit;
         private String routerId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBgpPeersPeer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authKey = defaults.authKey;
@@ -339,83 +294,123 @@ public final class GetBgpPeersPeer {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder authKey(String authKey) {
             this.authKey = Objects.requireNonNull(authKey);
             return this;
         }
+        @CustomType.Setter
         public Builder bfdMultiHop(Integer bfdMultiHop) {
             this.bfdMultiHop = Objects.requireNonNull(bfdMultiHop);
             return this;
         }
+        @CustomType.Setter
         public Builder bgpGroupId(String bgpGroupId) {
             this.bgpGroupId = Objects.requireNonNull(bgpGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder bgpPeerId(String bgpPeerId) {
             this.bgpPeerId = Objects.requireNonNull(bgpPeerId);
             return this;
         }
+        @CustomType.Setter
         public Builder bgpPeerName(String bgpPeerName) {
             this.bgpPeerName = Objects.requireNonNull(bgpPeerName);
             return this;
         }
+        @CustomType.Setter
         public Builder bgpStatus(String bgpStatus) {
             this.bgpStatus = Objects.requireNonNull(bgpStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableBfd(Boolean enableBfd) {
             this.enableBfd = Objects.requireNonNull(enableBfd);
             return this;
         }
+        @CustomType.Setter
         public Builder hold(String hold) {
             this.hold = Objects.requireNonNull(hold);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder isFake(Boolean isFake) {
             this.isFake = Objects.requireNonNull(isFake);
             return this;
         }
+        @CustomType.Setter
         public Builder keepalive(String keepalive) {
             this.keepalive = Objects.requireNonNull(keepalive);
             return this;
         }
+        @CustomType.Setter
         public Builder localAsn(String localAsn) {
             this.localAsn = Objects.requireNonNull(localAsn);
             return this;
         }
+        @CustomType.Setter
         public Builder peerAsn(String peerAsn) {
             this.peerAsn = Objects.requireNonNull(peerAsn);
             return this;
         }
+        @CustomType.Setter
         public Builder peerIpAddress(String peerIpAddress) {
             this.peerIpAddress = Objects.requireNonNull(peerIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder routeLimit(String routeLimit) {
             this.routeLimit = Objects.requireNonNull(routeLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBgpPeersPeer build() {
-            return new GetBgpPeersPeer(authKey, bfdMultiHop, bgpGroupId, bgpPeerId, bgpPeerName, bgpStatus, description, enableBfd, hold, id, ipVersion, isFake, keepalive, localAsn, peerAsn, peerIpAddress, routeLimit, routerId, status);
+        }
+        public GetBgpPeersPeer build() {
+            final var o = new GetBgpPeersPeer();
+            o.authKey = authKey;
+            o.bfdMultiHop = bfdMultiHop;
+            o.bgpGroupId = bgpGroupId;
+            o.bgpPeerId = bgpPeerId;
+            o.bgpPeerName = bgpPeerName;
+            o.bgpStatus = bgpStatus;
+            o.description = description;
+            o.enableBfd = enableBfd;
+            o.hold = hold;
+            o.id = id;
+            o.ipVersion = ipVersion;
+            o.isFake = isFake;
+            o.keepalive = keepalive;
+            o.localAsn = localAsn;
+            o.peerAsn = peerAsn;
+            o.peerIpAddress = peerIpAddress;
+            o.routeLimit = routeLimit;
+            o.routerId = routerId;
+            o.status = status;
+            return o;
         }
     }
 }

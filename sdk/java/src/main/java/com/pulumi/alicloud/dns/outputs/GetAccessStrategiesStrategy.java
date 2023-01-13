@@ -18,175 +18,124 @@ public final class GetAccessStrategiesStrategy {
      * @return The primary/secondary switchover policy for address pool groups.
      * 
      */
-    private final String accessMode;
+    private String accessMode;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String accessStrategyId;
+    private String accessStrategyId;
     /**
      * @return The time when the access policy was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The timestamp that indicates when the access policy was created.
      * 
      */
-    private final String createTimestamp;
+    private String createTimestamp;
     /**
      * @return The type of the primary address pool.
      * 
      */
-    private final String defaultAddrPoolType;
+    private String defaultAddrPoolType;
     /**
      * @return The address pools in the primary address pool group.
      * 
      */
-    private final List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools;
+    private List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools;
     /**
      * @return The number of addresses currently available in the primary address pool.
      * 
      */
-    private final Integer defaultAvailableAddrNum;
+    private Integer defaultAvailableAddrNum;
     /**
      * @return Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
      * 
      */
-    private final String defaultLatencyOptimization;
+    private String defaultLatencyOptimization;
     /**
      * @return The load balancing policy of the primary address pool group.
      * 
      */
-    private final String defaultLbaStrategy;
+    private String defaultLbaStrategy;
     /**
      * @return The maximum number of addresses returned by the primary address pool set.
      * 
      */
-    private final Integer defaultMaxReturnAddrNum;
+    private Integer defaultMaxReturnAddrNum;
     /**
      * @return The minimum number of available addresses for the primary address pool set.
      * 
      */
-    private final Integer defaultMinAvailableAddrNum;
+    private Integer defaultMinAvailableAddrNum;
     /**
      * @return The type of the active address pool group.
      * 
      */
-    private final String effectiveAddrPoolGroupType;
+    private String effectiveAddrPoolGroupType;
     /**
      * @return The type of the secondary address pool.
      * 
      */
-    private final String failoverAddrPoolType;
+    private String failoverAddrPoolType;
     /**
      * @return The address pools in the secondary address pool group.
      * 
      */
-    private final List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools;
+    private List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools;
     /**
      * @return The number of available addresses in the standby address pool.
      * 
      */
-    private final Integer failoverAvailableAddrNum;
+    private Integer failoverAvailableAddrNum;
     /**
      * @return Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
      * 
      */
-    private final String failoverLatencyOptimization;
+    private String failoverLatencyOptimization;
     /**
      * @return The load balancing policy of the secondary address pool group.
      * 
      */
-    private final String failoverLbaStrategy;
+    private String failoverLbaStrategy;
     /**
      * @return The maximum number of returned addresses in the standby address pool.
      * 
      */
-    private final Integer failoverMaxReturnAddrNum;
+    private Integer failoverMaxReturnAddrNum;
     /**
      * @return The minimum number of available addresses in the standby address pool.
      * 
      */
-    private final Integer failoverMinAvailableAddrNum;
+    private Integer failoverMinAvailableAddrNum;
     /**
      * @return The ID of the Access Strategy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Id of the associated instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return List of source regions.
      * 
      */
-    private final List<GetAccessStrategiesStrategyLine> lines;
+    private List<GetAccessStrategiesStrategyLine> lines;
     /**
      * @return The type of the access policy.
      * 
      */
-    private final String strategyMode;
+    private String strategyMode;
     /**
      * @return The name of the access policy.
      * 
      */
-    private final String strategyName;
+    private String strategyName;
 
-    @CustomType.Constructor
-    private GetAccessStrategiesStrategy(
-        @CustomType.Parameter("accessMode") String accessMode,
-        @CustomType.Parameter("accessStrategyId") String accessStrategyId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createTimestamp") String createTimestamp,
-        @CustomType.Parameter("defaultAddrPoolType") String defaultAddrPoolType,
-        @CustomType.Parameter("defaultAddrPools") List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools,
-        @CustomType.Parameter("defaultAvailableAddrNum") Integer defaultAvailableAddrNum,
-        @CustomType.Parameter("defaultLatencyOptimization") String defaultLatencyOptimization,
-        @CustomType.Parameter("defaultLbaStrategy") String defaultLbaStrategy,
-        @CustomType.Parameter("defaultMaxReturnAddrNum") Integer defaultMaxReturnAddrNum,
-        @CustomType.Parameter("defaultMinAvailableAddrNum") Integer defaultMinAvailableAddrNum,
-        @CustomType.Parameter("effectiveAddrPoolGroupType") String effectiveAddrPoolGroupType,
-        @CustomType.Parameter("failoverAddrPoolType") String failoverAddrPoolType,
-        @CustomType.Parameter("failoverAddrPools") List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools,
-        @CustomType.Parameter("failoverAvailableAddrNum") Integer failoverAvailableAddrNum,
-        @CustomType.Parameter("failoverLatencyOptimization") String failoverLatencyOptimization,
-        @CustomType.Parameter("failoverLbaStrategy") String failoverLbaStrategy,
-        @CustomType.Parameter("failoverMaxReturnAddrNum") Integer failoverMaxReturnAddrNum,
-        @CustomType.Parameter("failoverMinAvailableAddrNum") Integer failoverMinAvailableAddrNum,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("lines") List<GetAccessStrategiesStrategyLine> lines,
-        @CustomType.Parameter("strategyMode") String strategyMode,
-        @CustomType.Parameter("strategyName") String strategyName) {
-        this.accessMode = accessMode;
-        this.accessStrategyId = accessStrategyId;
-        this.createTime = createTime;
-        this.createTimestamp = createTimestamp;
-        this.defaultAddrPoolType = defaultAddrPoolType;
-        this.defaultAddrPools = defaultAddrPools;
-        this.defaultAvailableAddrNum = defaultAvailableAddrNum;
-        this.defaultLatencyOptimization = defaultLatencyOptimization;
-        this.defaultLbaStrategy = defaultLbaStrategy;
-        this.defaultMaxReturnAddrNum = defaultMaxReturnAddrNum;
-        this.defaultMinAvailableAddrNum = defaultMinAvailableAddrNum;
-        this.effectiveAddrPoolGroupType = effectiveAddrPoolGroupType;
-        this.failoverAddrPoolType = failoverAddrPoolType;
-        this.failoverAddrPools = failoverAddrPools;
-        this.failoverAvailableAddrNum = failoverAvailableAddrNum;
-        this.failoverLatencyOptimization = failoverLatencyOptimization;
-        this.failoverLbaStrategy = failoverLbaStrategy;
-        this.failoverMaxReturnAddrNum = failoverMaxReturnAddrNum;
-        this.failoverMinAvailableAddrNum = failoverMinAvailableAddrNum;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.lines = lines;
-        this.strategyMode = strategyMode;
-        this.strategyName = strategyName;
-    }
-
+    private GetAccessStrategiesStrategy() {}
     /**
      * @return The primary/secondary switchover policy for address pool groups.
      * 
@@ -363,7 +312,7 @@ public final class GetAccessStrategiesStrategy {
     public static Builder builder(GetAccessStrategiesStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessMode;
         private String accessStrategyId;
@@ -389,11 +338,7 @@ public final class GetAccessStrategiesStrategy {
         private List<GetAccessStrategiesStrategyLine> lines;
         private String strategyMode;
         private String strategyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessStrategiesStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessMode = defaults.accessMode;
@@ -422,26 +367,32 @@ public final class GetAccessStrategiesStrategy {
     	      this.strategyName = defaults.strategyName;
         }
 
+        @CustomType.Setter
         public Builder accessMode(String accessMode) {
             this.accessMode = Objects.requireNonNull(accessMode);
             return this;
         }
+        @CustomType.Setter
         public Builder accessStrategyId(String accessStrategyId) {
             this.accessStrategyId = Objects.requireNonNull(accessStrategyId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createTimestamp(String createTimestamp) {
             this.createTimestamp = Objects.requireNonNull(createTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultAddrPoolType(String defaultAddrPoolType) {
             this.defaultAddrPoolType = Objects.requireNonNull(defaultAddrPoolType);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultAddrPools(List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools) {
             this.defaultAddrPools = Objects.requireNonNull(defaultAddrPools);
             return this;
@@ -449,34 +400,42 @@ public final class GetAccessStrategiesStrategy {
         public Builder defaultAddrPools(GetAccessStrategiesStrategyDefaultAddrPool... defaultAddrPools) {
             return defaultAddrPools(List.of(defaultAddrPools));
         }
+        @CustomType.Setter
         public Builder defaultAvailableAddrNum(Integer defaultAvailableAddrNum) {
             this.defaultAvailableAddrNum = Objects.requireNonNull(defaultAvailableAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultLatencyOptimization(String defaultLatencyOptimization) {
             this.defaultLatencyOptimization = Objects.requireNonNull(defaultLatencyOptimization);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultLbaStrategy(String defaultLbaStrategy) {
             this.defaultLbaStrategy = Objects.requireNonNull(defaultLbaStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultMaxReturnAddrNum(Integer defaultMaxReturnAddrNum) {
             this.defaultMaxReturnAddrNum = Objects.requireNonNull(defaultMaxReturnAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultMinAvailableAddrNum(Integer defaultMinAvailableAddrNum) {
             this.defaultMinAvailableAddrNum = Objects.requireNonNull(defaultMinAvailableAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder effectiveAddrPoolGroupType(String effectiveAddrPoolGroupType) {
             this.effectiveAddrPoolGroupType = Objects.requireNonNull(effectiveAddrPoolGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverAddrPoolType(String failoverAddrPoolType) {
             this.failoverAddrPoolType = Objects.requireNonNull(failoverAddrPoolType);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverAddrPools(List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools) {
             this.failoverAddrPools = Objects.requireNonNull(failoverAddrPools);
             return this;
@@ -484,34 +443,42 @@ public final class GetAccessStrategiesStrategy {
         public Builder failoverAddrPools(GetAccessStrategiesStrategyFailoverAddrPool... failoverAddrPools) {
             return failoverAddrPools(List.of(failoverAddrPools));
         }
+        @CustomType.Setter
         public Builder failoverAvailableAddrNum(Integer failoverAvailableAddrNum) {
             this.failoverAvailableAddrNum = Objects.requireNonNull(failoverAvailableAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverLatencyOptimization(String failoverLatencyOptimization) {
             this.failoverLatencyOptimization = Objects.requireNonNull(failoverLatencyOptimization);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverLbaStrategy(String failoverLbaStrategy) {
             this.failoverLbaStrategy = Objects.requireNonNull(failoverLbaStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverMaxReturnAddrNum(Integer failoverMaxReturnAddrNum) {
             this.failoverMaxReturnAddrNum = Objects.requireNonNull(failoverMaxReturnAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverMinAvailableAddrNum(Integer failoverMinAvailableAddrNum) {
             this.failoverMinAvailableAddrNum = Objects.requireNonNull(failoverMinAvailableAddrNum);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder lines(List<GetAccessStrategiesStrategyLine> lines) {
             this.lines = Objects.requireNonNull(lines);
             return this;
@@ -519,15 +486,43 @@ public final class GetAccessStrategiesStrategy {
         public Builder lines(GetAccessStrategiesStrategyLine... lines) {
             return lines(List.of(lines));
         }
+        @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
             this.strategyMode = Objects.requireNonNull(strategyMode);
             return this;
         }
+        @CustomType.Setter
         public Builder strategyName(String strategyName) {
             this.strategyName = Objects.requireNonNull(strategyName);
             return this;
-        }        public GetAccessStrategiesStrategy build() {
-            return new GetAccessStrategiesStrategy(accessMode, accessStrategyId, createTime, createTimestamp, defaultAddrPoolType, defaultAddrPools, defaultAvailableAddrNum, defaultLatencyOptimization, defaultLbaStrategy, defaultMaxReturnAddrNum, defaultMinAvailableAddrNum, effectiveAddrPoolGroupType, failoverAddrPoolType, failoverAddrPools, failoverAvailableAddrNum, failoverLatencyOptimization, failoverLbaStrategy, failoverMaxReturnAddrNum, failoverMinAvailableAddrNum, id, instanceId, lines, strategyMode, strategyName);
+        }
+        public GetAccessStrategiesStrategy build() {
+            final var o = new GetAccessStrategiesStrategy();
+            o.accessMode = accessMode;
+            o.accessStrategyId = accessStrategyId;
+            o.createTime = createTime;
+            o.createTimestamp = createTimestamp;
+            o.defaultAddrPoolType = defaultAddrPoolType;
+            o.defaultAddrPools = defaultAddrPools;
+            o.defaultAvailableAddrNum = defaultAvailableAddrNum;
+            o.defaultLatencyOptimization = defaultLatencyOptimization;
+            o.defaultLbaStrategy = defaultLbaStrategy;
+            o.defaultMaxReturnAddrNum = defaultMaxReturnAddrNum;
+            o.defaultMinAvailableAddrNum = defaultMinAvailableAddrNum;
+            o.effectiveAddrPoolGroupType = effectiveAddrPoolGroupType;
+            o.failoverAddrPoolType = failoverAddrPoolType;
+            o.failoverAddrPools = failoverAddrPools;
+            o.failoverAvailableAddrNum = failoverAvailableAddrNum;
+            o.failoverLatencyOptimization = failoverLatencyOptimization;
+            o.failoverLbaStrategy = failoverLbaStrategy;
+            o.failoverMaxReturnAddrNum = failoverMaxReturnAddrNum;
+            o.failoverMinAvailableAddrNum = failoverMinAvailableAddrNum;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.lines = lines;
+            o.strategyMode = strategyMode;
+            o.strategyName = strategyName;
+            return o;
         }
     }
 }

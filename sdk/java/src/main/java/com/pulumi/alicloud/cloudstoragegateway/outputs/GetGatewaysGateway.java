@@ -15,181 +15,126 @@ public final class GetGatewaysGateway {
      * @return gateway .
      * 
      */
-    private final String activatedTime;
-    private final String buyUrl;
+    private String activatedTime;
+    private String buyUrl;
     /**
      * @return gateway category.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return gateway created timestamp in second format.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return gateway description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return gateway ecs instance id.
      * 
      */
-    private final String ecsInstanceId;
+    private String ecsInstanceId;
     /**
      * @return gateway expiration status.
      * 
      */
-    private final Integer expireStatus;
+    private Integer expireStatus;
     /**
      * @return gateway expiration timestamp in second format.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return gateway class.
      * 
      */
-    private final String gatewayClass;
+    private String gatewayClass;
     /**
      * @return gateway id.
      * 
      */
-    private final String gatewayId;
+    private String gatewayId;
     /**
      * @return gateway name.
      * 
      */
-    private final String gatewayName;
+    private String gatewayName;
     /**
      * @return gateway version.
      * 
      */
-    private final String gatewayVersion;
+    private String gatewayVersion;
     /**
      * @return The ID of the Gateway.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return gateway service ip.
      * 
      */
-    private final String innerIp;
+    private String innerIp;
     /**
      * @return gateway public ip.
      * 
      */
-    private final String ip;
+    private String ip;
     /**
      * @return whether subscription gateway is released after expiration or not.
      * 
      */
-    private final Boolean isReleaseAfterExpiration;
+    private Boolean isReleaseAfterExpiration;
     /**
      * @return gateway location.
      * 
      */
-    private final String location;
+    private String location;
     /**
      * @return gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return gateway public network bandwidth.
      * 
      */
-    private final Integer publicNetworkBandwidth;
-    private final String renewUrl;
+    private Integer publicNetworkBandwidth;
+    private String renewUrl;
     /**
      * @return gateway status.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return storage bundle id.
      * 
      */
-    private final String storageBundleId;
+    private String storageBundleId;
     /**
      * @return gateway task id.
      * 
      */
-    private final String taskId;
+    private String taskId;
     /**
      * @return gateway type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return gateway vpc id.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetGatewaysGateway(
-        @CustomType.Parameter("activatedTime") String activatedTime,
-        @CustomType.Parameter("buyUrl") String buyUrl,
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("ecsInstanceId") String ecsInstanceId,
-        @CustomType.Parameter("expireStatus") Integer expireStatus,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("gatewayClass") String gatewayClass,
-        @CustomType.Parameter("gatewayId") String gatewayId,
-        @CustomType.Parameter("gatewayName") String gatewayName,
-        @CustomType.Parameter("gatewayVersion") String gatewayVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("innerIp") String innerIp,
-        @CustomType.Parameter("ip") String ip,
-        @CustomType.Parameter("isReleaseAfterExpiration") Boolean isReleaseAfterExpiration,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("publicNetworkBandwidth") Integer publicNetworkBandwidth,
-        @CustomType.Parameter("renewUrl") String renewUrl,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storageBundleId") String storageBundleId,
-        @CustomType.Parameter("taskId") String taskId,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.activatedTime = activatedTime;
-        this.buyUrl = buyUrl;
-        this.category = category;
-        this.createTime = createTime;
-        this.description = description;
-        this.ecsInstanceId = ecsInstanceId;
-        this.expireStatus = expireStatus;
-        this.expiredTime = expiredTime;
-        this.gatewayClass = gatewayClass;
-        this.gatewayId = gatewayId;
-        this.gatewayName = gatewayName;
-        this.gatewayVersion = gatewayVersion;
-        this.id = id;
-        this.innerIp = innerIp;
-        this.ip = ip;
-        this.isReleaseAfterExpiration = isReleaseAfterExpiration;
-        this.location = location;
-        this.paymentType = paymentType;
-        this.publicNetworkBandwidth = publicNetworkBandwidth;
-        this.renewUrl = renewUrl;
-        this.status = status;
-        this.storageBundleId = storageBundleId;
-        this.taskId = taskId;
-        this.type = type;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetGatewaysGateway() {}
     /**
      * @return gateway .
      * 
@@ -372,7 +317,7 @@ public final class GetGatewaysGateway {
     public static Builder builder(GetGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String activatedTime;
         private String buyUrl;
@@ -400,11 +345,7 @@ public final class GetGatewaysGateway {
         private String type;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activatedTime = defaults.activatedTime;
@@ -435,111 +376,165 @@ public final class GetGatewaysGateway {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder activatedTime(String activatedTime) {
             this.activatedTime = Objects.requireNonNull(activatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder buyUrl(String buyUrl) {
             this.buyUrl = Objects.requireNonNull(buyUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsInstanceId(String ecsInstanceId) {
             this.ecsInstanceId = Objects.requireNonNull(ecsInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder expireStatus(Integer expireStatus) {
             this.expireStatus = Objects.requireNonNull(expireStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayClass(String gatewayClass) {
             this.gatewayClass = Objects.requireNonNull(gatewayClass);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
             this.gatewayName = Objects.requireNonNull(gatewayName);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayVersion(String gatewayVersion) {
             this.gatewayVersion = Objects.requireNonNull(gatewayVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder innerIp(String innerIp) {
             this.innerIp = Objects.requireNonNull(innerIp);
             return this;
         }
+        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
+        @CustomType.Setter
         public Builder isReleaseAfterExpiration(Boolean isReleaseAfterExpiration) {
             this.isReleaseAfterExpiration = Objects.requireNonNull(isReleaseAfterExpiration);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder publicNetworkBandwidth(Integer publicNetworkBandwidth) {
             this.publicNetworkBandwidth = Objects.requireNonNull(publicNetworkBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder renewUrl(String renewUrl) {
             this.renewUrl = Objects.requireNonNull(renewUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
             this.storageBundleId = Objects.requireNonNull(storageBundleId);
             return this;
         }
+        @CustomType.Setter
         public Builder taskId(String taskId) {
             this.taskId = Objects.requireNonNull(taskId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetGatewaysGateway build() {
-            return new GetGatewaysGateway(activatedTime, buyUrl, category, createTime, description, ecsInstanceId, expireStatus, expiredTime, gatewayClass, gatewayId, gatewayName, gatewayVersion, id, innerIp, ip, isReleaseAfterExpiration, location, paymentType, publicNetworkBandwidth, renewUrl, status, storageBundleId, taskId, type, vpcId, vswitchId);
+        }
+        public GetGatewaysGateway build() {
+            final var o = new GetGatewaysGateway();
+            o.activatedTime = activatedTime;
+            o.buyUrl = buyUrl;
+            o.category = category;
+            o.createTime = createTime;
+            o.description = description;
+            o.ecsInstanceId = ecsInstanceId;
+            o.expireStatus = expireStatus;
+            o.expiredTime = expiredTime;
+            o.gatewayClass = gatewayClass;
+            o.gatewayId = gatewayId;
+            o.gatewayName = gatewayName;
+            o.gatewayVersion = gatewayVersion;
+            o.id = id;
+            o.innerIp = innerIp;
+            o.ip = ip;
+            o.isReleaseAfterExpiration = isReleaseAfterExpiration;
+            o.location = location;
+            o.paymentType = paymentType;
+            o.publicNetworkBandwidth = publicNetworkBandwidth;
+            o.renewUrl = renewUrl;
+            o.status = status;
+            o.storageBundleId = storageBundleId;
+            o.taskId = taskId;
+            o.type = type;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

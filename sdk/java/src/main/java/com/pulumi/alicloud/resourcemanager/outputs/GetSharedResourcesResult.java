@@ -17,29 +17,14 @@ public final class GetSharedResourcesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceShareId;
-    private final List<GetSharedResourcesResource> resources;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String resourceShareId;
+    private List<GetSharedResourcesResource> resources;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetSharedResourcesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceShareId") @Nullable String resourceShareId,
-        @CustomType.Parameter("resources") List<GetSharedResourcesResource> resources,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.resourceShareId = resourceShareId;
-        this.resources = resources;
-        this.status = status;
-    }
-
+    private GetSharedResourcesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,7 +55,7 @@ public final class GetSharedResourcesResult {
     public static Builder builder(GetSharedResourcesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,11 +63,7 @@ public final class GetSharedResourcesResult {
         private @Nullable String resourceShareId;
         private List<GetSharedResourcesResource> resources;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSharedResourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,10 +74,12 @@ public final class GetSharedResourcesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,14 +87,17 @@ public final class GetSharedResourcesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceShareId(@Nullable String resourceShareId) {
             this.resourceShareId = resourceShareId;
             return this;
         }
+        @CustomType.Setter
         public Builder resources(List<GetSharedResourcesResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
@@ -119,11 +105,20 @@ public final class GetSharedResourcesResult {
         public Builder resources(GetSharedResourcesResource... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetSharedResourcesResult build() {
-            return new GetSharedResourcesResult(id, ids, outputFile, resourceShareId, resources, status);
+        }
+        public GetSharedResourcesResult build() {
+            final var o = new GetSharedResourcesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.resourceShareId = resourceShareId;
+            o.resources = resources;
+            o.status = status;
+            return o;
         }
     }
 }

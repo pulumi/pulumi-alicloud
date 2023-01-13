@@ -14,30 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerBackupPlansResult {
-    private final @Nullable List<GetServerBackupPlansFilter> filters;
+    private @Nullable List<GetServerBackupPlansFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final List<GetServerBackupPlansPlan> plans;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private List<GetServerBackupPlansPlan> plans;
 
-    @CustomType.Constructor
-    private GetServerBackupPlansResult(
-        @CustomType.Parameter("filters") @Nullable List<GetServerBackupPlansFilter> filters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("plans") List<GetServerBackupPlansPlan> plans) {
-        this.filters = filters;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.plans = plans;
-    }
-
+    private GetServerBackupPlansResult() {}
     public List<GetServerBackupPlansFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -65,18 +52,14 @@ public final class GetServerBackupPlansResult {
     public static Builder builder(GetServerBackupPlansResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetServerBackupPlansFilter> filters;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetServerBackupPlansPlan> plans;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerBackupPlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -86,6 +69,7 @@ public final class GetServerBackupPlansResult {
     	      this.plans = defaults.plans;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<GetServerBackupPlansFilter> filters) {
             this.filters = filters;
             return this;
@@ -93,10 +77,12 @@ public final class GetServerBackupPlansResult {
         public Builder filters(GetServerBackupPlansFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,18 +90,27 @@ public final class GetServerBackupPlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder plans(List<GetServerBackupPlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
         }
         public Builder plans(GetServerBackupPlansPlan... plans) {
             return plans(List.of(plans));
-        }        public GetServerBackupPlansResult build() {
-            return new GetServerBackupPlansResult(filters, id, ids, outputFile, plans);
+        }
+        public GetServerBackupPlansResult build() {
+            final var o = new GetServerBackupPlansResult();
+            o.filters = filters;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.plans = plans;
+            return o;
         }
     }
 }

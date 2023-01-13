@@ -16,28 +16,19 @@ public final class ContainerGroupContainerVolumeMount {
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
      * 
      */
-    private final @Nullable String mountPath;
+    private @Nullable String mountPath;
     /**
      * @return The name of the security context that the container group runs.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Default to `false`.
      * 
      */
-    private final @Nullable Boolean readOnly;
+    private @Nullable Boolean readOnly;
 
-    @CustomType.Constructor
-    private ContainerGroupContainerVolumeMount(
-        @CustomType.Parameter("mountPath") @Nullable String mountPath,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly) {
-        this.mountPath = mountPath;
-        this.name = name;
-        this.readOnly = readOnly;
-    }
-
+    private ContainerGroupContainerVolumeMount() {}
     /**
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
      * 
@@ -67,16 +58,12 @@ public final class ContainerGroupContainerVolumeMount {
     public static Builder builder(ContainerGroupContainerVolumeMount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mountPath;
         private @Nullable String name;
         private @Nullable Boolean readOnly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
@@ -84,19 +71,27 @@ public final class ContainerGroupContainerVolumeMount {
     	      this.readOnly = defaults.readOnly;
         }
 
+        @CustomType.Setter
         public Builder mountPath(@Nullable String mountPath) {
             this.mountPath = mountPath;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
-        }        public ContainerGroupContainerVolumeMount build() {
-            return new ContainerGroupContainerVolumeMount(mountPath, name, readOnly);
+        }
+        public ContainerGroupContainerVolumeMount build() {
+            final var o = new ContainerGroupContainerVolumeMount();
+            o.mountPath = mountPath;
+            o.name = name;
+            o.readOnly = readOnly;
+            return o;
         }
     }
 }

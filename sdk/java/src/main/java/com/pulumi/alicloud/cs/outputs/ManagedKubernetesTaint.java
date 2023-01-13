@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedKubernetesTaint {
-    private final @Nullable String effect;
-    private final @Nullable String key;
-    private final @Nullable String value;
+    private @Nullable String effect;
+    private @Nullable String key;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ManagedKubernetesTaint(
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private ManagedKubernetesTaint() {}
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
@@ -42,16 +33,12 @@ public final class ManagedKubernetesTaint {
     public static Builder builder(ManagedKubernetesTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String effect;
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedKubernetesTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -59,19 +46,27 @@ public final class ManagedKubernetesTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ManagedKubernetesTaint build() {
-            return new ManagedKubernetesTaint(effect, key, value);
+        }
+        public ManagedKubernetesTaint build() {
+            final var o = new ManagedKubernetesTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

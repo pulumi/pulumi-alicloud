@@ -13,56 +13,39 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
      * @return Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The ID of the Network Interface Permission.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the network interface.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return The ID of the Network Interface Permissions.
      * 
      */
-    private final String networkInterfacePermissionId;
+    private String networkInterfacePermissionId;
     /**
      * @return The permissions of the Network Interface.
      * 
      */
-    private final String permission;
+    private String permission;
     /**
      * @return Alibaba Cloud service name.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return The Status of the Network Interface Permissions.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetEcsNetworkInterfacePermissionsPermission(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("networkInterfacePermissionId") String networkInterfacePermissionId,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("status") String status) {
-        this.accountId = accountId;
-        this.id = id;
-        this.networkInterfaceId = networkInterfaceId;
-        this.networkInterfacePermissionId = networkInterfacePermissionId;
-        this.permission = permission;
-        this.serviceName = serviceName;
-        this.status = status;
-    }
-
+    private GetEcsNetworkInterfacePermissionsPermission() {}
     /**
      * @return Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
      * 
@@ -120,7 +103,7 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
     public static Builder builder(GetEcsNetworkInterfacePermissionsPermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String id;
@@ -129,11 +112,7 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
         private String permission;
         private String serviceName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsNetworkInterfacePermissionsPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -145,35 +124,51 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfacePermissionId(String networkInterfacePermissionId) {
             this.networkInterfacePermissionId = Objects.requireNonNull(networkInterfacePermissionId);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetEcsNetworkInterfacePermissionsPermission build() {
-            return new GetEcsNetworkInterfacePermissionsPermission(accountId, id, networkInterfaceId, networkInterfacePermissionId, permission, serviceName, status);
+        }
+        public GetEcsNetworkInterfacePermissionsPermission build() {
+            final var o = new GetEcsNetworkInterfacePermissionsPermission();
+            o.accountId = accountId;
+            o.id = id;
+            o.networkInterfaceId = networkInterfaceId;
+            o.networkInterfacePermissionId = networkInterfacePermissionId;
+            o.permission = permission;
+            o.serviceName = serviceName;
+            o.status = status;
+            return o;
         }
     }
 }

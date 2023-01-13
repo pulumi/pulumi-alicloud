@@ -13,21 +13,14 @@ public final class AlertAnnotation {
      * @return Annotations&#39;s key for new alert.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Annotations&#39;s value for new alert.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private AlertAnnotation(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private AlertAnnotation() {}
     /**
      * @return Annotations&#39;s key for new alert.
      * 
@@ -50,30 +43,32 @@ public final class AlertAnnotation {
     public static Builder builder(AlertAnnotation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertAnnotation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public AlertAnnotation build() {
-            return new AlertAnnotation(key, value);
+        }
+        public AlertAnnotation build() {
+            final var o = new AlertAnnotation();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }
